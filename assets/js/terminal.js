@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Dynamic Role Rotation
-    const roles = ['SOC Trainee', 'Security Researcher', 'Network Security Analyst', 'IT Infrastructure Engineer', 'Technical Blogger'];
+    const roles = ['SOC Analyst & Engineer', 'Security Researcher', 'Network Security', 'IT Infrastructure Engineer', 'Technical Blogger'];
     let roleIndex = 0;
     const roleElement = document.getElementById('dynamicRole');
     
