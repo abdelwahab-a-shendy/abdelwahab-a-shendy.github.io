@@ -3,684 +3,646 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Abdelwahab Shandy | SOC Analyst &  Engineer | IT Infrastructure ">
+    <meta name="description" content="Abdelwahab Shandy | SOC Analyst & Security Engineer | IT Infrastructure Specialist | Cybersecurity Portfolio">
     <meta name="author" content="Abdelwahab Ahmed Shandy">
-    <meta name="keywords" content="AAS, Abdelwahab Shandy, SOC Analyst, Digital Forensics, Network Security, Cybersecurity Portfolio, Information Systems">
+    <meta name="keywords" content="AAS, Abdelwahab Shandy, SOC Analyst, Digital Forensics, Network Security, Cybersecurity Portfolio, Information Systems, Security Engineer">
     <meta name="theme-color" content="#0a0c15">
+    <meta name="robots" content="index, follow">
     
-    <meta property="og:title" content="Abdelwahab A. Shandy | AAS">
-    <meta property="og:description" content="SOC Analyst &  Engineer | IT Infrastructure. Explore my technical projects, CTF write-ups, and security lab.">
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Abdelwahab A. Shandy | SOC Analyst & Security Engineer">
+    <meta property="og:description" content="Cybersecurity professional specializing in SOC operations, Network Security, and IT Infrastructure. Explore my security labs, CTF write-ups, and technical projects.">
     <meta property="og:image" content="./assets/img/AbdelwahabShandyPhoto.jpeg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abdelwahab-ahmed-shandy.github.io">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Abdelwahab A. Shandy">
-    <meta name="twitter:description" content="SOC Analyst &  Engineer | IT Infrastructure.">
+    <meta name="twitter:title" content="Abdelwahab A. Shandy | SOC Analyst">
+    <meta name="twitter:description" content="Cybersecurity Portfolio - SOC Analyst & Security Engineer">
     <meta name="twitter:image" content="./assets/img/AbdelwahabShandyPhoto.jpeg">
 
-    <title>Abdelwahab A. Shandy | AAS</title>
+    <title>Abdelwahab A. Shandy | SOC Analyst & Security Engineer</title>
     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="./assets/css/style.css">
     
     <link rel="icon" href="./assets/img/gemini-svg.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./assets/img/AbdelwahabShandyPhoto.jpeg">
 
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Abdelwahab Ahmed Shandy",
         "alternateName": "AAS",
-        "jobTitle": "SOC Analyst & Engineer | Network Security",
+        "jobTitle": "SOC Analyst & Security Engineer",
+        "description": "Cybersecurity professional specializing in SOC operations, network security, and IT infrastructure",
         "url": "https://abdelwahab-ahmed-shandy.github.io",
         "sameAs": [
             "https://github.com/abdelwahab-ahmed-shandy",
             "https://www.linkedin.com/in/abdelwahab-ahmed-shandy",
             "https://abdelwahabshandy.hashnode.dev",
             "https://medium.com/@AAAS"
-        ]
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Mansoura University"
+        },
+        "knowsAbout": ["SOC Analysis", "Network Security", "Digital Forensics", "SIEM", "SOAR", "Threat Hunting"]
     }
     </script>
 </head>
 <body>
+    <!-- Reading Progress Bar -->
+    <div class="progress-bar" id="readingProgress"></div>
+
     <header class="header">
         <div class="container header__inner">
-            <a href="#" class="logo">
+            <a href="#" class="logo" aria-label="Home">
                 <span class="logo__text">AAS<span class="dot-color">.</span>Sec</span>
             </a>
-            <nav class="nav">
+            <nav class="nav" aria-label="Main navigation">
                 <a href="#home" class="nav__link">About</a>
                 <a href="#projects" class="nav__link">Projects</a>
+                <a href="#experience" class="nav__link">Experience</a>
             </nav>
-            <div class="header__cta">
-                <a href="#contact" class="btn btn--sm btn--primary"><i class="fas fa-paper-plane"></i> Connect</a>
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#contact" class="btn btn--sm btn--primary">
+                    <i class="fas fa-paper-plane"></i> Connect
+                </a>
             </div>
         </div>
     </header>
+    
     <main>  
-    <!-- Hero section with enhanced professional design -->
-    <section id="home" class="section hero">
-    <div class="container">
-        <div class="profile-wrapper">
-            <!-- Enhanced image area with modern effects -->
-            <div class="profile-image-area">
-                <div class="image-frame">
-                    <div class="image-glow"></div>
-                    <img class="profile-img" 
-                         src="./assets/img/AbdelwahabShandyPhoto.jpeg" 
-                         alt="Abdelwahab Shandy Profile Photo"
-                         loading="lazy"
-                         decoding="async"
-                         onerror="this.src='https://placehold.co/400x400/1e293b/3b82f6?text=AAS'">
-                    <div class="image-overlay">
-                        <div class="status-badge">
-                            <span class="status-dot"></span>
-                            Open for Opportunities
+        <!-- Hero Section -->
+        <section id="home" class="section hero">
+            <div class="container">
+                <div class="profile-wrapper">
+                    <div class="profile-image-area">
+                        <div class="image-frame">
+                            <div class="image-glow"></div>
+                            <img class="profile-img" 
+                                 src="./assets/img/AbdelwahabShandyPhoto.jpeg" 
+                                 alt="Abdelwahab Shandy - SOC Analyst Profile Photo"
+                                 width="400"
+                                 height="400"
+                                 loading="eager"
+                                 decoding="async"
+                                 onerror="this.src='https://placehold.co/400x400/1e293b/3b82f6?text=AAS'">
+                            <div class="image-overlay">
+                                <div class="status-badge">
+                                    <span class="status-dot"></span>
+                                    Open for Opportunities
+                                </div>
+                            </div>
+                        </div>
+                        <div class="floating-elements">
+                            <div class="floating-icon icon-1"><i class="fas fa-shield-haltered"></i></div>
+                            <div class="floating-icon icon-2"><i class="fas fa-code"></i></div>
+                            <div class="floating-icon icon-3"><i class="fas fa-terminal"></i></div>
+                            <div class="floating-icon icon-4"><i class="fas fa-network-wired"></i></div>
                         </div>
                     </div>
-                </div>
-                <div class="floating-elements">
-                    <div class="floating-icon icon-1"><i class="fas fa-shield-haltered"></i></div>
-                    <div class="floating-icon icon-2"><i class="fas fa-code"></i></div>
-                    <div class="floating-icon icon-3"><i class="fas fa-terminal"></i></div>
-                    <div class="floating-icon icon-4"><i class="fas fa-network-wired"></i></div>
-                </div>
-            </div>
-            
-            <div class="hero-content">
-                <div class="greeting-badge">
-                    <span class="wave-emoji">👋</span> Hello, I'm
-                </div>
-                <h1 class="hero__title">
-                    Abdelwahab <span class="text-gradient">Shandy</span>
-                </h1>
-                
-                <!-- Enhanced Animated Role with Multiple Roles -->
-                <div class="animated-role-container">
-                    <div class="animated-role">
-                        <span class="role-label">⚡</span>
-                        <span class="role-text" id="dynamicRole">SOC Trainee</span>
-                        <span class="role-cursor">|</span>
-                    </div>
-                </div>
-                
-                <!-- Professional Info Badges -->
-                <div class="professional-info">
-                    <div class="info-chip">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>June 2026 Graduate</span>
-                    </div>
-                    <div class="info-chip">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>SOC Trainee</span>
-                    </div>
-                    <div class="info-chip">
-                        <i class="fas fa-network-wired"></i>
-                        <span>Network Security</span>
-                    </div>
-                    <div class="info-chip">
-                        <i class="fas fa-server"></i>
-                        <span>IT Infrastructure</span>
-                    </div>
-                    <div class="info-chip">
-                        <i class="fas fa-blog"></i>
-                        <span>Technical Blogger</span>
-                    </div>
-                </div>
-                
-                <p class="hero__subtitle">
-                    Passionate Security Researcher and SOC Trainee with expertise in Network Security and IT Infrastructure. 
-                    Building resilient systems, hunting threats & automating intelligence. Graduating June 2026 with excellence.
-                </p>
-                
-                <div class="hero-badges">
-                    <span class="badge"><i class="fas fa-shield-alt"></i> SOC Analyst & Engineer</span>
-                    <span class="badge"><i class="fas fa-microchip"></i> DFIR</span>
-                    <span class="badge"><i class="fas fa-robot"></i> n8n Automations</span>
-                    <span class="badge"><i class="fas fa-flag-checkered"></i> CTF Player</span>
-                    <span class="badge"><i class="fas fa-blog"></i> Technical Writer</span>
-                </div>
-                
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn--primary btn--large">
-                        <i class="fas fa-arrow-down"></i> View Projects
-                    </a>
-                    <a href="#contact" class="btn btn--outline btn--large">
-                        <i class="fas fa-paper-plane"></i> Contact Me
-                    </a>
-                    <!-- CV Download Button -->
-                    <!-- <div class="cv-dropdown">
-                        <button class="btn btn--cv btn--large" id="cvBtn">
-                            <i class="fas fa-file-alt"></i> Resume / CV
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="cv-dropdown-menu" id="cvDropdown">
-                            <a href="./docs/Abdelwahab_Shandy_CV.pdf" download class="cv-option">
-                                <i class="fas fa-download"></i>
-                                <div>
-                                    <strong>Download CV</strong>
-                                    <small>PDF format</small>
-                                </div>
+                    
+                    <div class="hero-content">
+                        <div class="greeting-badge">
+                            <span class="wave-emoji">👋</span> Hello, I'm
+                        </div>
+                        <h1 class="hero__title">
+                            Abdelwahab <span class="text-gradient">Shandy</span>
+                        </h1>
+                        
+                        <div class="animated-role-container">
+                            <div class="animated-role">
+                                <span class="role-label">⚡</span>
+                                <span class="role-text" id="dynamicRole">SOC Analyst</span>
+                                <span class="role-cursor">|</span>
+                            </div>
+                        </div>
+                        
+                        <div class="professional-info">
+                            <div class="info-chip"><i class="fas fa-graduation-cap"></i><span>June 2026 Graduate</span></div>
+                            <div class="info-chip"><i class="fas fa-shield-alt"></i><span>SOC Analyst</span></div>
+                            <div class="info-chip"><i class="fas fa-network-wired"></i><span>Network Security</span></div>
+                            <div class="info-chip"><i class="fas fa-server"></i><span>IT Infrastructure</span></div>
+                            <div class="info-chip"><i class="fas fa-blog"></i><span>Technical Blogger</span></div>
+                        </div>
+                        
+                        <p class="hero__subtitle">
+                            Passionate Security Researcher and SOC Analyst with expertise in Network Security and IT Infrastructure. 
+                            Building resilient systems, hunting threats & automating intelligence. Graduating June 2026.
+                        </p>
+                        
+                        <div class="hero-badges">
+                            <span class="badge"><i class="fas fa-shield-alt"></i> SOC Analyst</span>
+                            <span class="badge"><i class="fas fa-microchip"></i> DFIR</span>
+                            <span class="badge"><i class="fas fa-robot"></i> n8n Automations</span>
+                            <span class="badge"><i class="fas fa-flag-checkered"></i> CTF Player</span>
+                            <span class="badge"><i class="fas fa-blog"></i> Technical Writer</span>
+                        </div>
+                        
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn--primary btn--large">
+                                <i class="fas fa-arrow-down"></i> View Projects
                             </a>
-                            <a href="./docs/Abdelwahab_Shandy_CV.pdf" target="_blank" class="cv-option">
-                                <i class="fas fa-eye"></i>
-                                <div>
-                                    <strong>View Online</strong>
-                                    <small>Open in new tab</small>
-                                </div>
+                            <a href="#contact" class="btn btn--outline btn--large">
+                                <i class="fas fa-paper-plane"></i> Contact Me
                             </a>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
-                
-            </div>
-        </div>
 
-        <!-- Enhanced Terminal Window with Realistic Commands -->
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                </div>
-                <div class="terminal-title">aas@security-lab:~/portfolio$</div>
-                <div class="terminal-actions">
-                    <i class="fas fa-times" id="closeTerminal" style="display: none;"></i>
+                <!-- Terminal Window -->
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="terminal-title">aas@security-lab:~/portfolio$</div>
+                    </div>
+                    <div class="terminal-body" id="dynamicTerminal">
+                        <div class="terminal-line">
+                            <span class="prompt">➜</span> <span class="command">initializing_profile...</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="terminal-body" id="dynamicTerminal">
-                <div class="terminal-line">
-                    <span class="prompt">➜</span> <span class="command">initializing_profile...</span>
-                </div>
-            </div>
-            <div class="terminal-input-line" style="display: none;">
-                <span class="prompt">➜</span>
-                <input type="text" class="terminal-input" placeholder="Type a command...">
-            </div>
-        </div>
-    </div>
-    </section>
+        </section>
         
-    <!-- Projects Section with Enhanced Design -->
-    <section id="projects" class="section section-bg-alt">
-    <div class="container">
-        <div class="section__head">
-            <div class="section-badge">
-                <i class="fas fa-code-branch"></i> My Portfolio
-            </div>
-            <h2 class="section__title">Featured <span class="text-gradient">Projects</span></h2>
-            <p class="section__subtitle">A showcase of my security labs, infrastructure work, and programming achievements</p>
-        </div>
-
-        <div class="projects-filter">
-            <button class="filter-btn active" data-filter="all">
-                <i class="fas fa-th-large"></i> All Projects
-            </button>
-            <button class="filter-btn" data-filter="security">
-                <i class="fas fa-shield-alt"></i> Security
-                <span class="filter-count" id="securityCount">3</span>
-            </button>
-            <button class="filter-btn" data-filter="infrastructure">
-                <i class="fas fa-server"></i> IT Infrastructure
-                <span class="filter-count" id="infrastructureCount">1</span>
-            </button>
-            <button class="filter-btn" data-filter="programming">
-                <i class="fas fa-code"></i> Programming
-                <span class="filter-count" id="programmingCount">6</span>
-            </button>
-        </div>
-
-        <div class="grid grid--projects" id="projectsGrid">
-            
-        <!-- ==================== Graduation Project ==================== -->
-
-<article class="project-card" data-category="programming">
-    <div class="project-card__media">
-        <img class="project-img" 
-             src="./assets/img/SmartBI.png" 
-             alt="Smart BI Reporting System"
-             loading="lazy"
-             onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Smart+BI+Project'">
-        <div class="project-overlay">
-            <span class="project-date"><i class="far fa-calendar-alt"></i> Feb 2026 – Present</span>
-            <span class="project-status status-active"><i class="fas fa-circle"></i> Graduation Project</span>
-        </div>
-    </div>
-    <div class="project-card__body">
-        <div class="project-tags">
-            <span class="tag tag-dev">AI & Automation</span>
-            <span class="tag tag-dev">n8n</span>
-            <span class="tag tag-dev">Business Intelligence</span>
-        </div>
-        <h3 class="project-card__title">Smart Business Intelligence Reporting System</h3>
-        <p class="project-card__desc">Graduation Project (MCI Academy 2026). An end-to-end automated BI pipeline that processes Excel datasets through a dual-path engine: a "Fast Track" for real-time KPI visualization and a "Slow Track" for AI-driven strategic analysis (SWOT, Trends, Forecasting) using LLMs.</p>
-        <div class="project-card__meta">
-            <span class="pill"><i class="fas fa-robot"></i> n8n Workflows</span>
-            <span class="pill"><i class="fas fa-brain"></i> LLMs (GPT-4o/Claude)</span>
-            <span class="pill"><i class="fas fa-chart-pie"></i> Chart.js</span>
-            <span class="pill"><i class="fas fa-envelope"></i> SMTP Automation</span>
-        </div>
-        <div class="project-card__actions">
-            <a href="https://github.com/abdelwahab-ahmed-shandy/Smart-BI-Project" target="_blank" class="btn btn--sm btn--primary">
-                <i class="fab fa-github"></i> Source Code
-            </a>
-            <a href="https://abdelwahab-ahmed-shandy.github.io/Smart-BI-Project/Frontend/index.html" target="_blank" class="btn btn--sm btn--ghost">
-                <i class="fas fa-external-link-alt"></i> Live Demo
-            </a>
-        </div>
-    </div>
-</article>
-            
-            <!-- ==================== SECURITY PROJECTS ==================== -->
-            <!-- Project 1: Enterprise Offensive & Defensive Security Simulation Lab -->
-            <article class="project-card" data-category="security">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/OffensiveandDefensive.png" 
-                         alt="Enterprise Security Lab"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Security+Lab'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2025 – Present</span>
-                        <span class="project-status status-active"><i class="fas fa-circle"></i> Active</span>
+        <!-- Projects Section -->
+        <section id="projects" class="section section-bg-alt">
+            <div class="container">
+                <div class="section__head">
+                    <div class="section-badge">
+                        <i class="fas fa-code-branch"></i> My Portfolio
                     </div>
+                    <h2 class="section__title">Featured <span class="text-gradient">Projects</span></h2>
+                    <p class="section__subtitle">A showcase of my security labs, infrastructure work, and programming achievements</p>
                 </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-security">Red Team</span>
-                        <span class="tag tag-security">Blue Team</span>
-                        <span class="tag tag-security">SOAR</span>
+
+                <!-- Search and Filter -->
+                <div class="projects-search-section">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="projectSearch" placeholder="Search projects by title, technology, or keyword..." class="project-search-input">
+                        <button id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
                     </div>
-                    <h3 class="project-card__title">Enterprise Offensive & Defensive Security Simulation Lab</h3>
-                    <p class="project-card__desc">Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, and vulnerable targets for realistic Red Team/Blue Team exercises.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fas fa-firewall"></i> pfSense</span>
-                        <span class="pill"><i class="fas fa-chart-line"></i> ELK Stack</span>
-                        <span class="pill"><i class="fas fa-robot"></i> n8n</span>
-                        <span class="pill"><i class="fas fa-shield-haltered"></i> Kali Linux</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/objective" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fas fa-book-open"></i> Read Write-up
-                        </a>
-                        <button class="btn btn--sm btn--ghost more-details-btn" data-project="security-lab-1">
-                            <i class="fas fa-ellipsis-h"></i> More Details
+                    
+                    <div class="projects-filter">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="fas fa-th-large"></i> All
+                            <span class="filter-count" id="allCount">10</span>
+                        </button>
+                        <button class="filter-btn" data-filter="security">
+                            <i class="fas fa-shield-alt"></i> Security
+                            <span class="filter-count" id="securityCount">3</span>
+                        </button>
+                        <button class="filter-btn" data-filter="infrastructure">
+                            <i class="fas fa-server"></i> Infrastructure
+                            <span class="filter-count" id="infrastructureCount">1</span>
+                        </button>
+                        <button class="filter-btn" data-filter="programming">
+                            <i class="fas fa-code"></i> Programming
+                            <span class="filter-count" id="programmingCount">6</span>
                         </button>
                     </div>
-                    <div class="project-details-dropdown" id="security-lab-1-details" style="display: none;">
-                        <div class="dropdown-content">
-                            <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk" target="_blank">
-                                <i class="fas fa-database"></i> Building SIEM
-                            </a>
-                            <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone" target="_blank">
-                                <i class="fas fa-network-wired"></i> Building Internal Zone
-                            </a>
-                            <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone" target="_blank">
-                                <i class="fas fa-cloud"></i> Building DMZ Zone
-                            </a>
-                            <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/external-zone" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Building External Zone
-                            </a>
-                            <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/log-collection-strategies-and-architectures" target="_blank">
-                                <i class="fas fa-chart-line"></i> Log Collection
-                            </a>
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No projects found</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                </div>
+
+                <div class="grid grid--projects" id="projectsGrid">
+                    <!-- Graduation Project -->
+                    <article class="project-card" data-category="programming" data-title="Smart BI Reporting System" data-tech="n8n,LLM,Chart.js,BI">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/SmartBI.png" alt="Smart BI Reporting System" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Smart+BI'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Feb 2026 – Present</span>
+                                <span class="project-status status-active"><i class="fas fa-circle"></i> Graduation Project</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </article>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-dev">AI & Automation</span>
+                                <span class="tag tag-dev">n8n</span>
+                                <span class="tag tag-dev">Business Intelligence</span>
+                            </div>
+                            <h3 class="project-card__title">Smart Business Intelligence Reporting System</h3>
+                            <p class="project-card__desc">Graduation Project (MCI Academy 2026). An end-to-end automated BI pipeline that processes Excel datasets through a dual-path engine: a "Fast Track" for real-time KPI visualization and a "Slow Track" for AI-driven strategic analysis using LLMs.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-robot"></i> n8n Workflows</span>
+                                <span class="pill"><i class="fas fa-brain"></i> LLMs (GPT-4o/Claude)</span>
+                                <span class="pill"><i class="fas fa-chart-pie"></i> Chart.js</span>
+                                <span class="pill"><i class="fas fa-envelope"></i> SMTP Automation</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Smart-BI-Project" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
+                                <a href="https://abdelwahab-ahmed-shandy.github.io/Smart-BI-Project/Frontend/index.html" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Security Lab Project -->
+                    <article class="project-card" data-category="security" data-title="Enterprise Security Simulation Lab" data-tech="pfSense,ELK,n8n,Kali,SIEM,SOAR">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/OffensiveandDefensive.png" alt="Enterprise Security Simulation Lab" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=Security+Lab'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2025 – Present</span>
+                                <span class="project-status status-active"><i class="fas fa-circle"></i> Active</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-security">Red Team</span>
+                                <span class="tag tag-security">Blue Team</span>
+                                <span class="tag tag-security">SOAR</span>
+                            </div>
+                            <h3 class="project-card__title">Enterprise Offensive & Defensive Security Lab</h3>
+                            <p class="project-card__desc">Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, and vulnerable targets for realistic Red Team/Blue Team exercises.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-firewall"></i> pfSense</span>
+                                <span class="pill"><i class="fas fa-chart-line"></i> ELK Stack</span>
+                                <span class="pill"><i class="fas fa-robot"></i> n8n</span>
+                                <span class="pill"><i class="fas fa-shield-haltered"></i> Kali Linux</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/objective" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="security-lab-1"><i class="fas fa-ellipsis-h"></i> More Details</button>
+                            </div>
+                            <div class="project-details-dropdown" id="security-lab-1-details" style="display: none;">
+                                <div class="dropdown-content">
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk" target="_blank" rel="noopener noreferrer"><i class="fas fa-database"></i> Building SIEM</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-network-wired"></i> Internal Zone</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-cloud"></i> DMZ Zone</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/external-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> External Zone</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- Project 2: Multi-Stage Active Directory Attack Detection using ELK -->
-            <article class="project-card" data-category="security">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/MSADADES.png" 
-                         alt="Active Directory Attack Detection"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=AD+Attack+Detection'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2026</span>
-                        <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-security">Detection Engineering</span>
-                        <span class="tag tag-security">Active Directory</span>
-                        <span class="tag tag-security">SIEM</span>
-                    </div>
-                    <h3 class="project-card__title">Multi-Stage Active Directory Attack Detection using ELK</h3>
-                    <p class="project-card__desc">A realistic AD lab simulating a full Windows attack chain: Initial Access, Privilege Escalation (SeImpersonate), Credential Dumping (LSASS), and Lateral Movement (PtH). Includes custom Sigma rules mapped to MITRE ATT&CK.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fas fa-search"></i> Sigma Rules</span>
-                        <span class="pill"><i class="fas fa-project-diagram"></i> MITRE ATT&CK</span>
-                        <span class="pill"><i class="fas fa-terminal"></i> Sysmon</span>
-                        <span class="pill"><i class="fas fa-user-shield"></i> Privilege Escalation</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://abdelwahab-ahmed-shandy.github.io/docs/MSADADES.pdf" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fas fa-book-open"></i> View Document
-                        </a>
-                    </div>
-                </div>
-            </article>
+                    <!-- Active Directory Attack Detection -->
+                    <article class="project-card" data-category="security" data-title="Active Directory Attack Detection" data-tech="ELK,Sigma,MITRE,Sysmon,AD">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/MSADADES.png" alt="Active Directory Attack Detection" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=AD+Attack+Detection'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2026</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-security">Detection Engineering</span>
+                                <span class="tag tag-security">Active Directory</span>
+                                <span class="tag tag-security">SIEM</span>
+                            </div>
+                            <h3 class="project-card__title">Multi-Stage Active Directory Attack Detection</h3>
+                            <p class="project-card__desc">A realistic AD lab simulating a full Windows attack chain: Initial Access, Privilege Escalation, Credential Dumping, and Lateral Movement. Includes custom Sigma rules mapped to MITRE ATT&CK.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-search"></i> Sigma Rules</span>
+                                <span class="pill"><i class="fas fa-project-diagram"></i> MITRE ATT&CK</span>
+                                <span class="pill"><i class="fas fa-terminal"></i> Sysmon</span>
+                                <span class="pill"><i class="fas fa-user-shield"></i> Privilege Escalation</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://abdelwahab-ahmed-shandy.github.io/docs/MSADADES.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> View Document</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- Project 3: SOC Home Lab -->
-            <article class="project-card" data-category="security">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/SOCHome.png" 
-                         alt="SOC Home Lab"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=SOC+Lab'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> Oct 2025 – Dec 2025</span>
-                        <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-security">SIEM</span>
-                        <span class="tag tag-security">SOC</span>
-                        <span class="tag tag-security">Automation</span>
-                    </div>
-                    <h3 class="project-card__title">SOC Home Lab</h3>
-                    <p class="project-card__desc">Complete SOC environment with ELK Stack SIEM, Fluent Bit and Winlogbeat for log collection, plus n8n SOAR automation for automated incident response (VirusTotal API integration and email alerts).</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fas fa-database"></i> Elasticsearch</span>
-                        <span class="pill"><i class="fas fa-chart-bar"></i> Kibana</span>
-                        <span class="pill"><i class="fas fa-exchange-alt"></i> Logstash</span>
-                        <span class="pill"><i class="fas fa-bolt"></i> n8n</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fas fa-book-open"></i> Read Write-up
-                        </a>
-                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/soar" target="_blank" class="btn btn--sm btn--ghost">
-                            <i class="fas fa-robot"></i> SOAR Automation
-                        </a>
-                    </div>
-                </div>
-            </article>
+                    <!-- SOC Home Lab -->
+                    <article class="project-card" data-category="security" data-title="SOC Home Lab" data-tech="ELK,Elasticsearch,Kibana,n8n,SIEM,SOAR">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/SOCHome.png" alt="SOC Home Lab" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=SOC+Lab'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Oct 2025 – Dec 2025</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-security">SIEM</span>
+                                <span class="tag tag-security">SOC</span>
+                                <span class="tag tag-security">Automation</span>
+                            </div>
+                            <h3 class="project-card__title">SOC Home Lab</h3>
+                            <p class="project-card__desc">Complete SOC environment with ELK Stack SIEM, Fluent Bit and Winlogbeat for log collection, plus n8n SOAR automation for automated incident response.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-database"></i> Elasticsearch</span>
+                                <span class="pill"><i class="fas fa-chart-bar"></i> Kibana</span>
+                                <span class="pill"><i class="fas fa-exchange-alt"></i> Logstash</span>
+                                <span class="pill"><i class="fas fa-bolt"></i> n8n</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- ==================== IT INFRASTRUCTURE PROJECTS ==================== -->
-            
-            <!-- Project 3: Enterprise Infrastructure Simulation Labs -->
-            <article class="project-card" data-category="infrastructure">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/IT.png" 
-                         alt="Enterprise Infrastructure"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure+Lab'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> Jun 2025 – Sep 2025</span>
-                        <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-infra">Active Directory</span>
-                        <span class="tag tag-infra">Windows Server</span>
-                        <span class="tag tag-infra">Networking</span>
-                    </div>
-                    <h3 class="project-card__title">Enterprise Infrastructure Simulation Labs</h3>
-                    <p class="project-card__desc">Comprehensive hands-on labs simulating real-world enterprise IT environment. Focus on Windows Server administration, Active Directory, Group Policy, networking fundamentals (TCP/IP, Routing, Switching), and virtualization.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fab fa-windows"></i> Windows Server</span>
-                        <span class="pill"><i class="fas fa-users"></i> Active Directory</span>
-                        <span class="pill"><i class="fas fa-network-wired"></i> TCP/IP</span>
-                        <span class="pill"><i class="fas fa-server"></i> Virtualization</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fab fa-github"></i> Lab Guide
-                        </a>
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/blob/main/0.Enterprise%20Infrastructure%20(Windows%20Server%20Full%20Lab)/1.Practical%20implementation.md" target="_blank" class="btn btn--sm btn--ghost">
-                            <i class="fas fa-chalkboard"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </article>
+                    <!-- Infrastructure Project -->
+                    <article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure Simulation" data-tech="Active Directory,Windows Server,TCP/IP,Virtualization">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/IT.png" alt="Enterprise Infrastructure Simulation" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Jun 2025 – Sep 2025</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-infra">Active Directory</span>
+                                <span class="tag tag-infra">Windows Server</span>
+                                <span class="tag tag-infra">Networking</span>
+                            </div>
+                            <h3 class="project-card__title">Enterprise Infrastructure Simulation Labs</h3>
+                            <p class="project-card__desc">Comprehensive hands-on labs simulating real-world enterprise IT environment. Focus on Windows Server administration, Active Directory, Group Policy, and networking fundamentals.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fab fa-windows"></i> Windows Server</span>
+                                <span class="pill"><i class="fas fa-users"></i> Active Directory</span>
+                                <span class="pill"><i class="fas fa-network-wired"></i> TCP/IP</span>
+                                <span class="pill"><i class="fas fa-server"></i> Virtualization</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Lab Guide</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- ==================== PROGRAMMING PROJECTS ==================== -->
-            
-            <!-- Project 4: Movie Market -->
-            <article class="project-card" data-category="programming">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/MovieMarket.png" 
-                         alt="Movie Market"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=Movie+Market'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025 – Jul 2025</span>
-                        <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-dev">ASP.NET Core</span>
-                        <span class="tag tag-dev">MVC</span>
-                        <span class="tag tag-dev">3-Tier Arch</span>
-                    </div>
-                    <h3 class="project-card__title">Movie Market</h3>
-                    <p class="project-card__desc">Full-featured cinema ticket booking platform built with ASP.NET Core MVC following clean 3-Tier Architecture (Presentation, BLL, DAL). Complete movie experience with cinema management, series/seasons, user/admin areas, and flexible service-based logic.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fas fa-code"></i> ASP.NET Core</span>
-                        <span class="pill"><i class="fas fa-layer-group"></i> 3-Tier Arch</span>
-                        <span class="pill"><i class="fas fa-database"></i> SQL Server</span>
-                        <span class="pill"><i class="fas fa-ticket-alt"></i> Booking System</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Movie-Market" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fab fa-github"></i> Source Code
-                        </a>
-                        <a href="https://www.linkedin.com/posts/abdelwahab-ahmed-shandy_aspnetcore-entityframework-webdevelopment-activity-7347088295245312001-cwM5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9GDgYBA065TqN0qcT1JFeSRWxxbogH5ZE" target="_blank" class="btn btn--sm btn--ghost">
-                            <i class="fas fa-chalkboard"></i> Demo
-                        </a>
-                    </div>
-                </div>
-            </article>
+                    <!-- Movie Market -->
+                    <article class="project-card" data-category="programming" data-title="Movie Market" data-tech="ASP.NET Core,MVC,SQL Server,3-Tier">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/MovieMarket.png" alt="Movie Market" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=Movie+Market'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025 – Jul 2025</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-dev">ASP.NET Core</span>
+                                <span class="tag tag-dev">MVC</span>
+                                <span class="tag tag-dev">3-Tier Arch</span>
+                            </div>
+                            <h3 class="project-card__title">Movie Market</h3>
+                            <p class="project-card__desc">Full-featured cinema ticket booking platform built with ASP.NET Core MVC following clean 3-Tier Architecture. Complete movie experience with cinema management and flexible service-based logic.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-code"></i> ASP.NET Core</span>
+                                <span class="pill"><i class="fas fa-layer-group"></i> 3-Tier Arch</span>
+                                <span class="pill"><i class="fas fa-database"></i> SQL Server</span>
+                                <span class="pill"><i class="fas fa-ticket-alt"></i> Booking System</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Movie-Market" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- Project 5: Programming Challenges Multi Language -->
-            <article class="project-card" data-category="programming">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/ProgrammingChallenges.png" 
-                         alt="Programming Challenges"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/f59e0b?text=Programming+Challenges'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2024 – Jun 2025</span>
-                        <span class="project-status status-active"><i class="fas fa-circle"></i> Ongoing</span>
-                    </div>
-                </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-prog">Multi-Language</span>
-                        <span class="tag tag-prog">Problem Solving</span>
-                        <span class="tag tag-prog">Algorithms</span>
-                    </div>
-                    <h3 class="project-card__title">Programming Challenges Multi Language</h3>
-                    <p class="project-card__desc">Curated collection of programming challenges solved in multiple languages (C++, C#, Python). Demonstrates strong algorithmic thinking, data structures, and cross-language proficiency.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fab fa-cuttlefish"></i> C++</span>
-                        <span class="pill"><i class="fas fa-code"></i> C#</span>
-                        <span class="pill"><i class="fab fa-python"></i> Python</span>
-                        <span class="pill"><i class="fas fa-brain"></i> Algorithms</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Programming-Challenges-Multi-Language" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fab fa-github"></i> Repository
-                        </a>
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Programming-Challenges-Multi-Language/tree/main/Scripting/Bash%20Scripting" target="_blank" class="btn btn--sm btn--ghost">
-                            <i class="fas fa-terminal"></i> Bash Scripting
-                        </a>
-                    </div>
-                </div>
-            </article>
+                    <!-- Programming Challenges -->
+                    <article class="project-card" data-category="programming" data-title="Programming Challenges" data-tech="C++,C#,Python,Algorithms">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/ProgrammingChallenges.png" alt="Programming Challenges" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/f59e0b?text=Programming+Challenges'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2024 – Jun 2025</span>
+                                <span class="project-status status-active"><i class="fas fa-circle"></i> Ongoing</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-prog">Multi-Language</span>
+                                <span class="tag tag-prog">Problem Solving</span>
+                                <span class="tag tag-prog">Algorithms</span>
+                            </div>
+                            <h3 class="project-card__title">Programming Challenges Multi Language</h3>
+                            <p class="project-card__desc">Curated collection of programming challenges solved in multiple languages (C++, C#, Python). Demonstrates strong algorithmic thinking and cross-language proficiency.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fab fa-cuttlefish"></i> C++</span>
+                                <span class="pill"><i class="fas fa-code"></i> C#</span>
+                                <span class="pill"><i class="fab fa-python"></i> Python</span>
+                                <span class="pill"><i class="fas fa-brain"></i> Algorithms</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Programming-Challenges-Multi-Language" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- Project 6: Arduino Calculator -->
-            <article class="project-card" data-category="programming">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/ArduinoCalculator.png" 
-                         alt="Arduino Calculator"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/06b6d4?text=Arduino+Calculator'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025</span>
-                        <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-iot">Arduino</span>
-                        <span class="tag tag-iot">Embedded Systems</span>
-                        <span class="tag tag-iot">IoT</span>
-                    </div>
-                    <h3 class="project-card__title">Arduino Calculator 4x4 Keypad LCD</h3>
-                    <p class="project-card__desc">Simple calculator built with Arduino Uno, 4x4 keypad, and I2C LCD screen. Users can input numbers, choose operations (+, -, *, /), and view results. University project with custom code development and logic design.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fas fa-microchip"></i> Arduino Uno</span>
-                        <span class="pill"><i class="fas fa-keyboard"></i> 4x4 Keypad</span>
-                        <span class="pill"><i class="fas fa-tv"></i> LCD I2C</span>
-                        <span class="pill"><i class="fas fa-calculator"></i> Embedded C++</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Arduino-Calculator-4x4-Keypad-LCD" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Arduino-Calculator-4x4-Keypad-LCD/blob/main/images/Arduino_Calculator-2.jpg" target="_blank" class="btn btn--sm btn--ghost">
-                            <i class="fas fa-image"></i> Photos
-                        </a>
-                    </div>
-                </div>
-            </article>
+                    <!-- Arduino Calculator -->
+                    <article class="project-card" data-category="programming" data-title="Arduino Calculator" data-tech="Arduino,Embedded C++,IoT">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/ArduinoCalculator.png" alt="Arduino Calculator" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/06b6d4?text=Arduino+Calculator'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-iot">Arduino</span>
+                                <span class="tag tag-iot">Embedded Systems</span>
+                                <span class="tag tag-iot">IoT</span>
+                            </div>
+                            <h3 class="project-card__title">Arduino Calculator 4x4 Keypad LCD</h3>
+                            <p class="project-card__desc">Simple calculator built with Arduino Uno, 4x4 keypad, and I2C LCD screen. Users can input numbers, choose operations, and view results.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-microchip"></i> Arduino Uno</span>
+                                <span class="pill"><i class="fas fa-keyboard"></i> 4x4 Keypad</span>
+                                <span class="pill"><i class="fas fa-tv"></i> LCD I2C</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Arduino-Calculator-4x4-Keypad-LCD" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Code</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- Project 7: OOP Mini Projects -->
-            <article class="project-card" data-category="programming">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/OOPMiniProjects.png" 
-                         alt="OOP Projects"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/8b5cf6?text=OOP+Projects'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> Nov 2024 – Feb 2025</span>
-                        <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
-                </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-prog">OOP</span>
-                        <span class="tag tag-prog">C#</span>
-                        <span class="tag tag-prog">C++</span>
-                    </div>
-                    <h3 class="project-card__title">OOP Mini Projects</h3>
-                    <p class="project-card__desc">Collection of small projects demonstrating Object-Oriented Programming concepts in C# and C++. Includes inheritance, polymorphism, encapsulation, abstraction, and design patterns implementation.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fab fa-cuttlefish"></i> C++ OOP</span>
-                        <span class="pill"><i class="fas fa-code"></i> C# OOP</span>
-                        <span class="pill"><i class="fas fa-cubes"></i> Intro Design Patterns</span>
-                        <span class="pill"><i class="fas fa-project-diagram"></i> Intro SOLID</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/OOP-Mini-Projects" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fab fa-github"></i> Repository
-                        </a>
-                    </div>
-                </div>
-            </article>
+                    <!-- OOP Mini Projects -->
+                    <article class="project-card" data-category="programming" data-title="OOP Mini Projects" data-tech="C++,C#,OOP,Design Patterns">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/OOPMiniProjects.png" alt="OOP Mini Projects" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/8b5cf6?text=OOP+Projects'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Nov 2024 – Feb 2025</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-prog">OOP</span>
+                                <span class="tag tag-prog">C#</span>
+                                <span class="tag tag-prog">C++</span>
+                            </div>
+                            <h3 class="project-card__title">OOP Mini Projects</h3>
+                            <p class="project-card__desc">Collection of small projects demonstrating Object-Oriented Programming concepts in C# and C++. Includes inheritance, polymorphism, and design patterns implementation.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fab fa-cuttlefish"></i> C++ OOP</span>
+                                <span class="pill"><i class="fas fa-code"></i> C# OOP</span>
+                                <span class="pill"><i class="fas fa-cubes"></i> Design Patterns</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/OOP-Mini-Projects" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                    </article>
 
-            <!-- Project 8: Database Design -->
-            <article class="project-card" data-category="programming">
-                <div class="project-card__media">
-                    <img class="project-img" 
-                         src="./assets/img/DataBaseDesign.png" 
-                         alt="Database Design"
-                         loading="lazy"
-                         onerror="this.src='https://placehold.co/600x400/1e293b/a855f7?text=Database+Design'">
-                    <div class="project-overlay">
-                        <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2024 – Jan 2025</span>
-                        <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                    </div>
+                    <!-- Database Design -->
+                    <article class="project-card" data-category="programming" data-title="Database Design" data-tech="SQL,ERD,Database Design,Normalization">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/DataBaseDesign.png" alt="Database Design" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/a855f7?text=Database+Design'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2024 – Jan 2025</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-db">Database Design</span>
+                                <span class="tag tag-db">SQL</span>
+                                <span class="tag tag-db">ERD</span>
+                            </div>
+                            <h3 class="project-card__title">Database Design with ERD, EERD & SQL</h3>
+                            <p class="project-card__desc">Practical examples and detailed explanations on designing ERD and EERD diagrams, converting to Relational Schemas, and implementing with SQL code.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-project-diagram"></i> ERD/EERD</span>
+                                <span class="pill"><i class="fas fa-table"></i> Relational Schema</span>
+                                <span class="pill"><i class="fas fa-database"></i> SQL</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Database-Design-with-ERD-EERD-Relational-Schemas-SQL-Implementation" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> SQL Scripts</a>
+                            </div>
+                        </div>
+                    </article>
                 </div>
-                <div class="project-card__body">
-                    <div class="project-tags">
-                        <span class="tag tag-db">Database Design</span>
-                        <span class="tag tag-db">SQL</span>
-                        <span class="tag tag-db">ERD</span>
-                    </div>
-                    <h3 class="project-card__title">Database Design with ERD, EERD & SQL Implementation</h3>
-                    <p class="project-card__desc">Practical examples and detailed explanations on designing ERD and EERD diagrams, converting to Relational Schemas, and implementing with SQL code. Includes normalization and advanced SQL queries.</p>
-                    <div class="project-card__meta">
-                        <span class="pill"><i class="fas fa-project-diagram"></i> ERD/EERD</span>
-                        <span class="pill"><i class="fas fa-table"></i> Relational Schema</span>
-                        <span class="pill"><i class="fas fa-database"></i> SQL</span>
-                        <span class="pill"><i class="fas fa-chart-line"></i> Normalization</span>
-                    </div>
-                    <div class="project-card__actions">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Database-Design-with-ERD-EERD-Relational-Schemas-SQL-Implementation" target="_blank" class="btn btn--sm btn--primary">
-                            <i class="fab fa-github"></i> SQL Scripts
-                        </a>
-                        <a href="https://github.com/abdelwahab-ahmed-shandy/Database-Design-with-ERD-EERD-Relational-Schemas-SQL-Implementation/tree/main/01-Mini%20Project%20Data%20Base" target="_blank" class="btn btn--sm btn--ghost">
-                            <i class="fas fa-chart-pie"></i> Mini Project
-                        </a>
-                    </div>
+                
+                <div class="project-stats">
+                    <div class="stat-item"><i class="fas fa-code-branch"></i><span>10</span><small>Total Projects</small></div>
+                    <div class="stat-item"><i class="fas fa-shield-alt"></i><span>3</span><small>Security Labs</small></div>
+                    <div class="stat-item"><i class="fas fa-server"></i><span>1</span><small>Infrastructure</small></div>
+                    <div class="stat-item"><i class="fas fa-code"></i><span>6</span><small>Programming</small></div>
                 </div>
-            </article>
-        </div>
-        
-        <!-- Project Stats Footer -->
-        <div class="project-stats">
-            <div class="stat-item">
-                <i class="fas fa-code-branch"></i>
-                <span>10</span>
-                <small>Total Projects</small>
             </div>
-            <div class="stat-item">
-                <i class="fas fa-shield-alt"></i>
-                <span>3</span>
-                <small>Security Labs</small>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-server"></i>
-                <span>1</span>
-                <small>Infrastructure</small>
-            </div>
-            <div class="stat-item">
-                <i class="fas fa-code"></i>
-                <span>6</span>
-                <small>Programming</small>
-            </div>
-        </div>
-    </div>
-    </section>
+        </section>
 
-    <!-- Contact section -->
-    <section id="contact" class="section">
+        <!-- Experience Section -->
+        <section id="experience" class="section section-bg-alt">
+            <div class="container">
+                <div class="section__head">
+                    <div class="section-badge"><i class="fas fa-briefcase"></i> Professional Journey</div>
+                    <h2 class="section__title">Work <span class="text-gradient">Experience</span></h2>
+                    <p class="section__subtitle">Cybersecurity & IT internships and training programs</p>
+                </div>
+
+                <div class="experience-timeline">
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-shield-haltered"></i><h3>SOC & Detection Engineering OJT <span class="company">@ ZeroSploit MEA</span></h3></div>
+                            <div class="exp-date">Oct 2025 - Jan 2026</div>
+                        </div>
+                        <div class="exp-desc">Log ingestion pipelines (ELK Stack) · n8n SOAR automation · Sigma rules & MITRE ATT&CK · AD attack simulation</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-user-secret"></i><h3>Penetration Testing Bootcamp <span class="company">@ CyberTalents</span></h3></div>
+                            <div class="exp-date">Oct 2025 - Nov 2025</div>
+                        </div>
+                        <div class="exp-desc">Information gathering · Vulnerability assessment · Web security · Exploitation & CTF</div>
+                        <div class="exp-link"><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/iti-penetration-tester-track-2025" target="_blank" rel="noopener noreferrer">📄 Lab Write-ups</a></div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-chart-line"></i><h3>SOC Bootcamp <span class="company">@ WE INNOVATE</span></h3></div>
+                            <div class="exp-date">Sep 2025 - Oct 2025</div>
+                        </div>
+                        <div class="exp-desc">Built full SOC environment: ELK Stack SIEM + n8n SOAR · Threat hunting & incident response</div>
+                        <div class="exp-link"><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" rel="noopener noreferrer">📄 SIEM Lab</a></div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fab fa-windows"></i><h3>Windows Server Administration <span class="company">@ NTI</span></h3></div>
+                            <div class="exp-date">Aug 2025 - Sep 2025</div>
+                        </div>
+                        <div class="exp-desc">Active Directory · Group Policy · DHCP/DNS · Score: 92.5%</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-network-wired"></i><h3>Networks Infrastructure Bootcamp <span class="company">@ ITI</span></h3></div>
+                            <div class="exp-date">Jun 2025 - Jul 2025</div>
+                        </div>
+                        <div class="exp-desc">Routing & Switching · Network security fundamentals · Huawei Cloud (HCCDA)</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-code"></i><h3>.NET Developer Bootcamp <span class="company">@ EraaSoft</span></h3></div>
+                            <div class="exp-date">Nov 2024 - May 2025</div>
+                        </div>
+                        <div class="exp-desc">C# · OOP · SQL Server · Entity Framework · MVC · 3-Tier Architecture</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-laptop-code"></i><h3>Programming Basics <span class="company">@ Programming Advices</span></h3></div>
+                            <div class="exp-date">Aug 2024 - Jul 2025</div>
+                        </div>
+                        <div class="exp-desc">Problem-solving with C++ · Algorithms · SQL & database basics</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-shield-alt"></i><h3>SOC Bootcamp <span class="company">@ AMIT Learning</span></h3></div>
+                            <div class="exp-date">Jun 2023 - Sep 2023</div>
+                        </div>
+                        <div class="exp-desc">🏆 100% score · QRadar SIEM · Incident response · Malware analysis</div>
+                        <div class="exp-link"><a href="https://medium.com/@AAAS/cyberdefenders-qradar101-blue-team-challenge-cf2593f484d4" target="_blank" rel="noopener noreferrer">📄 QRadar101 Write-up</a></div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-lock"></i><h3>Network Security Bootcamp <span class="company">@ ITI</span></h3></div>
+                            <div class="exp-date">Aug 2023</div>
+                        </div>
+                        <div class="exp-desc">Training Leader · CCNA · CEH · Palo Alto (PCCET) · FortiGate NSE4</div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title"><i class="fas fa-graduation-cap"></i><h3>Ethical Hacker Bootcamp <span class="company">@ Raya Academy</span></h3></div>
+                            <div class="exp-date">Oct 2022 - Dec 2022</div>
+                        </div>
+                        <div class="exp-desc">Networking & Linux basics · Introduction to CEH</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
             <div class="container contact-container">
                 <div class="contact-card">
                     <h2 style="font-size: 2rem;">Let's Connect Securely</h2>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">Class of June 2026 | Seeking career opportunities in SOC & Network Security. Open for internships and technical collaborations.</p>
                     <div class="social-links">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" class="social-icon" title="Hashnode"><i class="fab fa-hashnode"></i></a>
-                        <a href="https://medium.com/@AAAS" target="_blank" class="social-icon" title="Medium"><i class="fab fa-medium"></i></a>
-                        <a href="https://wa.me/201017417103" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:abdelwahabshandy@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/abdelwahab-ahmed-shandy" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Hashnode" aria-label="Hashnode"><i class="fab fa-hashnode"></i></a>
+                        <a href="https://medium.com/@AAAS" target="_blank" rel="noopener noreferrer" class="social-icon" title="Medium" aria-label="Medium"><i class="fab fa-medium"></i></a>
+                        <a href="https://wa.me/201017417103" target="_blank" rel="noopener noreferrer" class="social-icon" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:abdelwahabshandy@gmail.com" class="social-icon" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -688,8 +650,10 @@
     </main>
 
     <footer class="footer">
-        <p>© 2026 Abdelwahab Ahmed Shandy</p>
+        <p>© 2026 Abdelwahab Ahmed Shandy. All rights reserved.</p>
     </footer>
+    
     <script src="assets/js/terminal.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
