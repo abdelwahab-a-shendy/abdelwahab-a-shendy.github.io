@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { cmd: "cat interests.txt", resp: "SOC Analysis | Digital Forensics | Threat Hunting | n8n SOAR | CTF" },
         { cmd: "git status", resp: "Open for hire. Seeking SOC Analyst or Security Engineer roles." },
         { cmd: "echo $status", resp: "Currently: Building Security Labs & Technical Blogging" },
-        { cmd: "ls certifications/", resp: "CC(ISC2) | Google Cybersecurity | Cisco Junior Cybersecurity Analyst | Google IT Support" },   
+        { cmd: "ls certifications/", resp: "CC(ISC2) | Google Cybersecurity | CCEP | Cisco Junior Cybersecurity Analyst | Google IT Support" },   
     ];
     
     const terminalContainer = document.getElementById('dynamicTerminal');
