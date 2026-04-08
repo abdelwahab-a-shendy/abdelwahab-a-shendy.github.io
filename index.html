@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -7,19 +7,13 @@
     <meta name="author" content="Abdelwahab Ahmed Shandy">
     <meta name="keywords" content="AAS, Abdelwahab Shandy, SOC Analyst, Digital Forensics, Network Security, Cybersecurity Portfolio, Information Systems, Security Engineer">
     <meta name="theme-color" content="#0a0c15">
-    <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Social Media -->
+    <!-- Open Graph -->
     <meta property="og:title" content="Abdelwahab A. Shandy | SOC Analyst & Security Engineer">
-    <meta property="og:description" content="Cybersecurity professional specializing in SOC operations, Network Security, and IT Infrastructure. Explore my security labs, CTF write-ups, and technical projects.">
+    <meta property="og:description" content="Cybersecurity professional specializing in SOC operations, Network Security, and IT Infrastructure.">
     <meta property="og:image" content="./assets/img/AbdelwahabShandyPhoto.jpeg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://abdelwahab-ahmed-shandy.github.io">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Abdelwahab A. Shandy | SOC Analyst">
-    <meta name="twitter:description" content="Cybersecurity Portfolio - SOC Analyst & Security Engineer">
-    <meta name="twitter:image" content="./assets/img/AbdelwahabShandyPhoto.jpeg">
 
     <title>Abdelwahab A. Shandy | SOC Analyst & Security Engineer</title>
     
@@ -29,33 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="./assets/css/style.css">
-    
     <link rel="icon" href="./assets/img/gemini-svg.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="./assets/img/AbdelwahabShandyPhoto.jpeg">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Abdelwahab Ahmed Shandy",
-        "alternateName": "AAS",
-        "jobTitle": "SOC Analyst & Security Engineer",
-        "description": "Cybersecurity professional specializing in SOC operations, network security, and IT infrastructure",
-        "url": "https://abdelwahab-ahmed-shandy.github.io",
-        "sameAs": [
-            "https://github.com/abdelwahab-ahmed-shandy",
-            "https://www.linkedin.com/in/abdelwahab-ahmed-shandy",
-            "https://abdelwahabshandy.hashnode.dev",
-            "https://medium.com/@AAAS"
-        ],
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Mansoura University"
-        },
-        "knowsAbout": ["SOC Analysis", "Network Security", "Digital Forensics", "SIEM", "SOAR", "Threat Hunting"]
-    }
-    </script>
 </head>
 <body>
     <!-- Reading Progress Bar -->
@@ -69,7 +37,8 @@
             <nav class="nav" aria-label="Main navigation">
                 <a href="#home" class="nav__link">About</a>
                 <a href="#projects" class="nav__link">Projects</a>
-                <a href="#experience" class="nav__link">Experience</a>
+                <a href="#journey" class="nav__link">Journey</a>
+                <a href="#writeups" class="nav__link">Write-ups</a>
             </nav>
             <div class="header__actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
@@ -83,7 +52,7 @@
     </header>
     
     <main>  
-        <!-- Hero Section -->
+        <!-- ==================== Hero Section ==================== -->
         <section id="home" class="section hero">
             <div class="container">
                 <div class="profile-wrapper">
@@ -96,7 +65,6 @@
                                  width="400"
                                  height="400"
                                  loading="eager"
-                                 decoding="async"
                                  onerror="this.src='https://placehold.co/400x400/1e293b/3b82f6?text=AAS'">
                             <div class="image-overlay">
                                 <div class="status-badge">
@@ -143,7 +111,7 @@
                         </p>
                         
                         <div class="hero-badges">
-                            <span class="badge"><i class="fas fa-shield-alt"></i> SOC Analyst</span>
+                            <span class="badge"><i class="fas fa-shield-alt"></i> SOC Analyst & Engineering</span>
                             <span class="badge"><i class="fas fa-microchip"></i> DFIR</span>
                             <span class="badge"><i class="fas fa-robot"></i> n8n Automations</span>
                             <span class="badge"><i class="fas fa-flag-checkered"></i> CTF Player</span>
@@ -169,7 +137,7 @@
                             <span class="dot yellow"></span>
                             <span class="dot green"></span>
                         </div>
-                        <div class="terminal-title">aas@security-lab:~/portfolio$</div>
+                        <div class="terminal-title">aas@security-lab:~/portfolio</div>
                     </div>
                     <div class="terminal-body" id="dynamicTerminal">
                         <div class="terminal-line">
@@ -180,7 +148,7 @@
             </div>
         </section>
         
-        <!-- Projects Section -->
+        <!-- ==================== Projects Section ==================== -->
         <section id="projects" class="section section-bg-alt">
             <div class="container">
                 <div class="section__head">
@@ -230,7 +198,7 @@
                     <!-- Graduation Project -->
                     <article class="project-card" data-category="programming" data-title="Smart BI Reporting System" data-tech="n8n,LLM,Chart.js,BI">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/SmartBI.png" alt="Smart BI Reporting System" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Smart+BI'">
+                            <img class="project-img" src="./assets/img/SmartBI.png" alt="Smart BI Reporting System" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Smart+BI'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Feb 2026 – Present</span>
                                 <span class="project-status status-active"><i class="fas fa-circle"></i> Graduation Project</span>
@@ -248,19 +216,18 @@
                                 <span class="pill"><i class="fas fa-robot"></i> n8n Workflows</span>
                                 <span class="pill"><i class="fas fa-brain"></i> LLMs (GPT-4o/Claude)</span>
                                 <span class="pill"><i class="fas fa-chart-pie"></i> Chart.js</span>
-                                <span class="pill"><i class="fas fa-envelope"></i> SMTP Automation</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/Smart-BI-Project" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
-                                <a href="https://abdelwahab-ahmed-shandy.github.io/Smart-BI-Project/Frontend/index.html" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Smart-BI-Project" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
+                                <a href="https://abdelwahab-ahmed-shandy.github.io/Smart-BI-Project/Frontend/index.html" target="_blank" class="btn btn--sm btn--ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                             </div>
                         </div>
                     </article>
                     
-                    <!-- Security Lab Project -->
+                    <!-- Enterprise Security Lab -->
                     <article class="project-card" data-category="security" data-title="Enterprise Security Simulation Lab" data-tech="pfSense,ELK,n8n,Kali,SIEM,SOAR">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/OffensiveandDefensive.png" alt="Enterprise Security Simulation Lab" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=Security+Lab'">
+                            <img class="project-img" src="./assets/img/OffensiveandDefensive.png" alt="Enterprise Security Simulation Lab" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=Security+Lab'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2025 – Present</span>
                                 <span class="project-status status-active"><i class="fas fa-circle"></i> Active</span>
@@ -273,15 +240,14 @@
                                 <span class="tag tag-security">SOAR</span>
                             </div>
                             <h3 class="project-card__title">Enterprise Offensive & Defensive Security Lab</h3>
-                            <p class="project-card__desc">Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, and vulnerable targets for realistic Red Team/Blue Team exercises.</p>
+                            <p class="project-card__desc">Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, and vulnerable targets.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-firewall"></i> pfSense</span>
                                 <span class="pill"><i class="fas fa-chart-line"></i> ELK Stack</span>
                                 <span class="pill"><i class="fas fa-robot"></i> n8n</span>
-                                <span class="pill"><i class="fas fa-shield-haltered"></i> Kali Linux</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/objective" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/objective" target="_blank" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
                                 <button class="btn btn--sm btn--ghost more-details-btn" data-project="security-lab-1"><i class="fas fa-ellipsis-h"></i> More Details</button>
                             </div>
                             <div class="project-details-dropdown" id="security-lab-1-details" style="display: none;">
@@ -298,7 +264,7 @@
                     <!-- Active Directory Attack Detection -->
                     <article class="project-card" data-category="security" data-title="Active Directory Attack Detection" data-tech="ELK,Sigma,MITRE,Sysmon,AD">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/MSADADES.png" alt="Active Directory Attack Detection" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=AD+Attack+Detection'">
+                            <img class="project-img" src="./assets/img/MSADADES.png" alt="Active Directory Attack Detection" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=AD+Attack+Detection'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2026</span>
                                 <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
@@ -315,11 +281,9 @@
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-search"></i> Sigma Rules</span>
                                 <span class="pill"><i class="fas fa-project-diagram"></i> MITRE ATT&CK</span>
-                                <span class="pill"><i class="fas fa-terminal"></i> Sysmon</span>
-                                <span class="pill"><i class="fas fa-user-shield"></i> Privilege Escalation</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://abdelwahab-ahmed-shandy.github.io/docs/MSADADES.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> View Document</a>
+                                <a href="https://abdelwahab-ahmed-shandy.github.io/docs/MSADADES.pdf" target="_blank" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> View Document</a>
                             </div>
                         </div>
                     </article>
@@ -327,7 +291,7 @@
                     <!-- SOC Home Lab -->
                     <article class="project-card" data-category="security" data-title="SOC Home Lab" data-tech="ELK,Elasticsearch,Kibana,n8n,SIEM,SOAR">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/SOCHome.png" alt="SOC Home Lab" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=SOC+Lab'">
+                            <img class="project-img" src="./assets/img/SOCHome.png" alt="SOC Home Lab" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=SOC+Lab'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Oct 2025 – Dec 2025</span>
                                 <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
@@ -337,26 +301,23 @@
                             <div class="project-tags">
                                 <span class="tag tag-security">SIEM</span>
                                 <span class="tag tag-security">SOC</span>
-                                <span class="tag tag-security">Automation</span>
                             </div>
                             <h3 class="project-card__title">SOC Home Lab</h3>
                             <p class="project-card__desc">Complete SOC environment with ELK Stack SIEM, Fluent Bit and Winlogbeat for log collection, plus n8n SOAR automation for automated incident response.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-database"></i> Elasticsearch</span>
                                 <span class="pill"><i class="fas fa-chart-bar"></i> Kibana</span>
-                                <span class="pill"><i class="fas fa-exchange-alt"></i> Logstash</span>
-                                <span class="pill"><i class="fas fa-bolt"></i> n8n</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Infrastructure Project -->
-                    <article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure Simulation" data-tech="Active Directory,Windows Server,TCP/IP,Virtualization">
+                    <article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure Simulation" data-tech="Active Directory,Windows Server,TCP/IP">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/IT.png" alt="Enterprise Infrastructure Simulation" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'">
+                            <img class="project-img" src="./assets/img/IT.png" alt="Enterprise Infrastructure Simulation" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Jun 2025 – Sep 2025</span>
                                 <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
@@ -366,18 +327,15 @@
                             <div class="project-tags">
                                 <span class="tag tag-infra">Active Directory</span>
                                 <span class="tag tag-infra">Windows Server</span>
-                                <span class="tag tag-infra">Networking</span>
                             </div>
                             <h3 class="project-card__title">Enterprise Infrastructure Simulation Labs</h3>
-                            <p class="project-card__desc">Comprehensive hands-on labs simulating real-world enterprise IT environment. Focus on Windows Server administration, Active Directory, Group Policy, and networking fundamentals.</p>
+                            <p class="project-card__desc">Comprehensive hands-on labs simulating real-world enterprise IT environment. Focus on Windows Server administration, Active Directory, and Group Policy.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fab fa-windows"></i> Windows Server</span>
                                 <span class="pill"><i class="fas fa-users"></i> Active Directory</span>
-                                <span class="pill"><i class="fas fa-network-wired"></i> TCP/IP</span>
-                                <span class="pill"><i class="fas fa-server"></i> Virtualization</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Lab Guide</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Lab Guide</a>
                             </div>
                         </div>
                     </article>
@@ -385,7 +343,7 @@
                     <!-- Movie Market -->
                     <article class="project-card" data-category="programming" data-title="Movie Market" data-tech="ASP.NET Core,MVC,SQL Server,3-Tier">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/MovieMarket.png" alt="Movie Market" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=Movie+Market'">
+                            <img class="project-img" src="./assets/img/MovieMarket.png" alt="Movie Market" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=Movie+Market'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025 – Jul 2025</span>
                                 <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
@@ -395,18 +353,15 @@
                             <div class="project-tags">
                                 <span class="tag tag-dev">ASP.NET Core</span>
                                 <span class="tag tag-dev">MVC</span>
-                                <span class="tag tag-dev">3-Tier Arch</span>
                             </div>
                             <h3 class="project-card__title">Movie Market</h3>
-                            <p class="project-card__desc">Full-featured cinema ticket booking platform built with ASP.NET Core MVC following clean 3-Tier Architecture. Complete movie experience with cinema management and flexible service-based logic.</p>
+                            <p class="project-card__desc">Full-featured cinema ticket booking platform built with ASP.NET Core MVC following clean 3-Tier Architecture.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-code"></i> ASP.NET Core</span>
                                 <span class="pill"><i class="fas fa-layer-group"></i> 3-Tier Arch</span>
-                                <span class="pill"><i class="fas fa-database"></i> SQL Server</span>
-                                <span class="pill"><i class="fas fa-ticket-alt"></i> Booking System</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/Movie-Market" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Movie-Market" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
                             </div>
                         </div>
                     </article>
@@ -414,7 +369,7 @@
                     <!-- Programming Challenges -->
                     <article class="project-card" data-category="programming" data-title="Programming Challenges" data-tech="C++,C#,Python,Algorithms">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/ProgrammingChallenges.png" alt="Programming Challenges" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/f59e0b?text=Programming+Challenges'">
+                            <img class="project-img" src="./assets/img/ProgrammingChallenges.png" alt="Programming Challenges" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/f59e0b?text=Programming+Challenges'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2024 – Jun 2025</span>
                                 <span class="project-status status-active"><i class="fas fa-circle"></i> Ongoing</span>
@@ -424,18 +379,16 @@
                             <div class="project-tags">
                                 <span class="tag tag-prog">Multi-Language</span>
                                 <span class="tag tag-prog">Problem Solving</span>
-                                <span class="tag tag-prog">Algorithms</span>
                             </div>
                             <h3 class="project-card__title">Programming Challenges Multi Language</h3>
-                            <p class="project-card__desc">Curated collection of programming challenges solved in multiple languages (C++, C#, Python). Demonstrates strong algorithmic thinking and cross-language proficiency.</p>
+                            <p class="project-card__desc">Curated collection of programming challenges solved in multiple languages (C++, C#, Python).</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fab fa-cuttlefish"></i> C++</span>
                                 <span class="pill"><i class="fas fa-code"></i> C#</span>
                                 <span class="pill"><i class="fab fa-python"></i> Python</span>
-                                <span class="pill"><i class="fas fa-brain"></i> Algorithms</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/Programming-Challenges-Multi-Language" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Programming-Challenges-Multi-Language" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
                             </div>
                         </div>
                     </article>
@@ -443,7 +396,7 @@
                     <!-- Arduino Calculator -->
                     <article class="project-card" data-category="programming" data-title="Arduino Calculator" data-tech="Arduino,Embedded C++,IoT">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/ArduinoCalculator.png" alt="Arduino Calculator" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/06b6d4?text=Arduino+Calculator'">
+                            <img class="project-img" src="./assets/img/ArduinoCalculator.png" alt="Arduino Calculator" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/06b6d4?text=Arduino+Calculator'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025</span>
                                 <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
@@ -453,17 +406,15 @@
                             <div class="project-tags">
                                 <span class="tag tag-iot">Arduino</span>
                                 <span class="tag tag-iot">Embedded Systems</span>
-                                <span class="tag tag-iot">IoT</span>
                             </div>
                             <h3 class="project-card__title">Arduino Calculator 4x4 Keypad LCD</h3>
-                            <p class="project-card__desc">Simple calculator built with Arduino Uno, 4x4 keypad, and I2C LCD screen. Users can input numbers, choose operations, and view results.</p>
+                            <p class="project-card__desc">Simple calculator built with Arduino Uno, 4x4 keypad, and I2C LCD screen.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-microchip"></i> Arduino Uno</span>
                                 <span class="pill"><i class="fas fa-keyboard"></i> 4x4 Keypad</span>
-                                <span class="pill"><i class="fas fa-tv"></i> LCD I2C</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/Arduino-Calculator-4x4-Keypad-LCD" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Code</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Arduino-Calculator-4x4-Keypad-LCD" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Code</a>
                             </div>
                         </div>
                     </article>
@@ -471,7 +422,7 @@
                     <!-- OOP Mini Projects -->
                     <article class="project-card" data-category="programming" data-title="OOP Mini Projects" data-tech="C++,C#,OOP,Design Patterns">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/OOPMiniProjects.png" alt="OOP Mini Projects" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/8b5cf6?text=OOP+Projects'">
+                            <img class="project-img" src="./assets/img/OOPMiniProjects.png" alt="OOP Mini Projects" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/8b5cf6?text=OOP+Projects'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Nov 2024 – Feb 2025</span>
                                 <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
@@ -481,25 +432,23 @@
                             <div class="project-tags">
                                 <span class="tag tag-prog">OOP</span>
                                 <span class="tag tag-prog">C#</span>
-                                <span class="tag tag-prog">C++</span>
                             </div>
                             <h3 class="project-card__title">OOP Mini Projects</h3>
-                            <p class="project-card__desc">Collection of small projects demonstrating Object-Oriented Programming concepts in C# and C++. Includes inheritance, polymorphism, and design patterns implementation.</p>
+                            <p class="project-card__desc">Collection of small projects demonstrating Object-Oriented Programming concepts in C# and C++.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fab fa-cuttlefish"></i> C++ OOP</span>
                                 <span class="pill"><i class="fas fa-code"></i> C# OOP</span>
-                                <span class="pill"><i class="fas fa-cubes"></i> Design Patterns</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/OOP-Mini-Projects" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/OOP-Mini-Projects" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- Database Design -->
-                    <article class="project-card" data-category="programming" data-title="Database Design" data-tech="SQL,ERD,Database Design,Normalization">
+                    <article class="project-card" data-category="programming" data-title="Database Design" data-tech="SQL,ERD,Database Design">
                         <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/DataBaseDesign.png" alt="Database Design" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x400/1e293b/a855f7?text=Database+Design'">
+                            <img class="project-img" src="./assets/img/DataBaseDesign.png" alt="Database Design" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/a855f7?text=Database+Design'">
                             <div class="project-overlay">
                                 <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2024 – Jan 2025</span>
                                 <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
@@ -509,17 +458,15 @@
                             <div class="project-tags">
                                 <span class="tag tag-db">Database Design</span>
                                 <span class="tag tag-db">SQL</span>
-                                <span class="tag tag-db">ERD</span>
                             </div>
                             <h3 class="project-card__title">Database Design with ERD, EERD & SQL</h3>
                             <p class="project-card__desc">Practical examples and detailed explanations on designing ERD and EERD diagrams, converting to Relational Schemas, and implementing with SQL code.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-project-diagram"></i> ERD/EERD</span>
-                                <span class="pill"><i class="fas fa-table"></i> Relational Schema</span>
                                 <span class="pill"><i class="fas fa-database"></i> SQL</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/Database-Design-with-ERD-EERD-Relational-Schemas-SQL-Implementation" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> SQL Scripts</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Database-Design-with-ERD-EERD-Relational-Schemas-SQL-Implementation" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> SQL Scripts</a>
                             </div>
                         </div>
                     </article>
@@ -534,488 +481,658 @@
             </div>
         </section>
 
+        <!-- ==================== PROFESSIONAL JOURNEY SECTION (TABS) ==================== -->
+        <section id="journey" class="section">
+            <div class="container">
+                <div class="section__head">
+                    <div class="section-badge"><i class="fas fa-road"></i> Career Path</div>
+                    <h2 class="section__title">Professional <span class="text-gradient">Journey</span></h2>
+                    <p class="section__subtitle">Work experience and continuous professional development</p>
+                </div>
+
+                <!-- Journey Tabs -->
+                <div class="journey-tabs">
+                    <button class="journey-tab active" data-tab="work">
+                        <i class="fas fa-briefcase"></i> Work Experience
+                    </button>
+                    <button class="journey-tab" data-tab="training">
+                        <i class="fas fa-certificate"></i> Training & Bootcamps
+                    </button>
+                </div>
+
+                <!-- Tab Content: Work Experience -->
+                <div class="journey-content active" id="work-content">
+                    <div class="work-timeline">
+                        <!-- ZeroSploit MEA -->
+                        <div class="work-card">
+                            <div class="work-icon">
+                                <i class="fas fa-shield-haltered"></i>
+                            </div>
+                            <div class="work-content">
+                                <div class="work-header">
+                                    <h3>SOC & Detection Engineering OJT</h3>
+                                    <span class="work-date">Oct 2025 - Jan 2026</span>
+                                </div>
+                                <div class="work-company">
+                                    <i class="fas fa-building"></i> ZeroSploit MEA
+                                    <span class="work-badge">Hybrid Training</span>
+                                </div>
+                                <p class="work-desc">
+                                    Log ingestion pipelines (ELK Stack) · n8n SOAR automation · Sigma rules & MITRE ATT&CK · AD attack simulation
+                                </p>
+                                <div class="work-skills">
+                                    <span>ELK Stack</span>
+                                    <span>n8n SOAR</span>
+                                    <span>Sigma Rules</span>
+                                    <span>MITRE ATT&CK</span>
+                                    <span>Active Directory</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Tab Content: Training -->
+                <div class="journey-content" id="training-content">
+                    <div class="training-stats">
+                        <div class="stat-badge">
+                            <i class="fas fa-calendar-alt"></i>
+                            <small>of continuous learning</small>
+                        </div>
+                        <div class="stat-badge">
+                            <i class="fas fa-certificate"></i>
+                            <small>Bootcamps & Programs</small>
+                        </div>
+                        <div class="stat-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <small>Security focused</small>
+                        </div>
+                    </div>
+
+                    <div class="training-grid">
+                        <!-- SOC Bootcamp @ WE INNOVATE -->
+                        <div class="training-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>SOC Bootcamp</h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> WE INNOVATE
+                                    <span class="date">Sep 2025 - Oct 2025</span>
+                                </div>
+                                <p>Built full SOC environment: ELK Stack SIEM + n8n SOAR · Threat hunting & incident response</p>
+                                <div class="skills">
+                                    <span>ELK Stack</span>
+                                    <span>n8n SOAR</span>
+                                    <span>Threat Hunting</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Penetration Testing @ CyberTalents -->
+                        <div class="training-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-user-secret"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>Penetration Testing Bootcamp</h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> CyberTalents
+                                    <span class="date">Oct 2025 - Nov 2025</span>
+                                </div>
+                                <p>Information gathering · Vulnerability assessment · Web security · Exploitation & CTF</p>
+                                <div class="skills">
+                                    <span>Web Security</span>
+                                    <span>Vulnerability Assessment</span>
+                                    <span>CTF</span>
+                                </div>
+                                <div class="writeup-link">
+                                    <a href="#" target="_blank"><i class="fas fa-book-open"></i> View Lab Write-ups</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Windows Server @ NTI -->
+                        <div class="training-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fab fa-windows"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>Windows Server Administration</h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> NTI
+                                    <span class="date">Aug 2025 - Sep 2025</span>
+                                </div>
+                                <p>Active Directory · Group Policy · DHCP/DNS</p>
+                                <div class="skills">
+                                    <span>Active Directory</span>
+                                    <span>Group Policy</span>
+                                    <span>DHCP/DNS</span>
+                                </div>
+                                <div class="score-badge">🏆 Score: 92.5%</div>
+                            </div>
+                        </div>
+
+                        <!-- Networks Infrastructure @ ITI -->
+                        <div class="training-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>Networks Infrastructure Bootcamp</h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> ITI
+                                    <span class="date">Jun 2025 - Jul 2025</span>
+                                </div>
+                                <p>Routing & Switching · Network security fundamentals · Huawei Cloud (HCCDA)</p>
+                                <div class="skills">
+                                    <span>Routing & Switching</span>
+                                    <span>Network Security</span>
+                                    <span>Huawei Cloud</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- .NET Developer @ EraaSoft -->
+                        <div class="training-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-code"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>.NET Developer Bootcamp</h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> EraaSoft
+                                    <span class="date">Nov 2024 - May 2025</span>
+                                </div>
+                                <p>C# · OOP · SQL Server · Entity Framework · MVC · 3-Tier Architecture</p>
+                                <div class="skills">
+                                    <span>C#</span>
+                                    <span>ASP.NET Core</span>
+                                    <span>SQL Server</span>
+                                    <span>MVC</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SOC Bootcamp @ AMIT - Featured -->
+                        <div class="training-card featured">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>SOC Bootcamp <span class="achievement">🏆 100% Score</span></h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> AMIT Learning
+                                    <span class="date">Jun 2023 - Sep 2023</span>
+                                </div>
+                                <p>QRadar SIEM · Incident response · Malware analysis</p>
+                                <div class="skills">
+                                    <span>QRadar SIEM</span>
+                                    <span>Incident Response</span>
+                                    <span>Malware Analysis</span>
+                                </div>
+                                <div class="writeup-link">
+                                    <a href="#" target="_blank"><i class="fas fa-book-open"></i> View Write-up</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Network Security @ ITI -->
+                        <div class="training-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>Network Security Bootcamp</h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> ITI
+                                    <span class="date">Aug 2023</span>
+                                </div>
+                                <p>CCNA · CEH · Palo Alto (PCCET) · FortiGate NSE4</p>
+                                <div class="skills">
+                                    <span>CCNA</span>
+                                    <span>CEH</span>
+                                    <span>Palo Alto</span>
+                                </div>
+                                <div class="leader-badge">👑 Training Leader</div>
+                            </div>
+                        </div>
+                        <!-- Penetration Testing @ CyberTalents -->
+                        <div class="training-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-user-secret"></i></div>
+                                <div class="card-type">Bootcamp</div>
+                            </div>
+                            <div class="card-body">
+                                <h3>Ethical hacker Boot Camp</h3>
+                                <div class="provider">
+                                    <i class="fas fa-university"></i> Raya Academy
+                                    <span class="date">Oct 2022 - Dec 2022</span>
+                                </div>
+                                <p>Introduction to CEH & CTF</p>
+                                <div class="skills">
+                                    <span>Networking basics</span>
+                                    <span>Linux basics</span>
+                                    <span>CTF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ==================== WRITE-UPS & SOLUTIONS SECTION ==================== -->
-<section id="writeups" class="section section-bg-alt">
-    <div class="container">
-        <div class="section__head">
-            <div class="section-badge">
-                <i class="fas fa-pen-fancy"></i> Technical Content
-            </div>
-            <h2 class="section__title">Write-ups & <span class="text-gradient">Solutions</span></h2>
-            <p class="section__subtitle">Official platform solutions, CTF walkthroughs, and hands-on cybersecurity labs</p>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="content-stats">
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-certificate"></i></div>
-                <div class="stat-number">5</div>
-                <div class="stat-label">Official Solutions</div>
-                <div class="stat-platform">CyberDefenders</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fab fa-medium"></i></div>
-                <div class="stat-number">49+</div>
-                <div class="stat-label">Articles</div>
-                <div class="stat-platform">Medium & Hashnode</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-flag-checkered"></i></div>
-                <div class="stat-number">40+</div>
-                <div class="stat-label">CTF Write-ups</div>
-                <div class="stat-platform">Multi-Platform</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon"><i class="fas fa-heart"></i></div>
-                <div class="stat-number">5500+</div>
-                <div class="stat-label">Total Views</div>
-                <div class="stat-platform">Across Platforms</div>
-            </div>
-        </div>
-
-        <!-- ==================== CYBERDEFENDERS OFFICIAL SOLUTIONS ==================== -->
-        <div class="platform-section">
-            <div class="platform-header">
-                <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1753221314215/6fcabbac-ffdc-4390-bb69-8964326bd7e3.png" alt="CyberDefenders" class="platform-icon" onerror="this.style.display='none'">
-                <h3>CyberDefenders <span class="official-badge">Official Solutions ✅</span></h3>
-                <a href="https://cyberdefenders.org/p/Abdelwahab_Shandy/?tab=writeups" target="_blank" class="profile-link">View Profile →</a>
-            </div>
-            <div class="writeup-grid">
-                <!-- Qradar101 - Most Popular -->
-                <div class="writeup-card featured">
-                    <div class="featured-badge">⭐ Most Popular (17 likes)</div>
-                    <div class="writeup-icon"><i class="fas fa-chart-line"></i></div>
-                    <h4>Qradar101</h4>
-                    <p>Threat Hunting - SIEM Investigation</p>
-                    <div class="writeup-meta">
-                        <span><i class="far fa-calendar"></i> Nov 2023</span>
-                        <span><i class="fas fa-heart"></i> 17 likes</span>
-                        <span><i class="fas fa-eye"></i> Popular</span>
+        <section id="writeups" class="section section-bg-alt">
+            <div class="container">
+                <div class="section__head">
+                    <div class="section-badge">
+                        <i class="fas fa-pen-fancy"></i> Technical Content
                     </div>
-                    <div class="writeup-links">
-                        <a href="https://medium.com/@AAAS/cyberdefenders-qradar101-blue-team-challenge-cf2593f484d4" target="_blank" class="btn-link">📖 Read on Medium</a>
-                        <a href="https://cyberdefenders.org/blueteam-ctf-challenges/qradar101" target="_blank" class="btn-link">🔗 CyberDefenders</a>
+                    <h2 class="section__title">Write-ups & <span class="text-gradient">Solutions</span></h2>
+                    <p class="section__subtitle">Official platform solutions, CTF walkthroughs, and hands-on cybersecurity labs</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="content-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Official Solutions</div>
+                        <div class="stat-platform">CyberDefenders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fab fa-medium"></i></div>
+                        <div class="stat-number">49+</div>
+                        <div class="stat-label">Articles</div>
+                        <div class="stat-platform">Medium & Hashnode</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-flag-checkered"></i></div>
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">CTF Write-ups</div>
+                        <div class="stat-platform">Multi-Platform</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-heart"></i></div>
+                        <div class="stat-number">5500+</div>
+                        <div class="stat-label">Total Views</div>
+                        <div class="stat-platform">Across Platforms</div>
                     </div>
                 </div>
 
-                <!-- HawkEye -->
-                <div class="writeup-card">
-                    <div class="writeup-icon"><i class="fas fa-eye"></i></div>
-                    <h4>HawkEye</h4>
-                    <p>Network Forensics - Keylogger Analysis</p>
-                    <div class="writeup-meta">
-                        <span><i class="far fa-calendar"></i> Nov 2023</span>
-                        <span><i class="fas fa-heart"></i> 2 likes</span>
+                <!-- ==================== CYBERDEFENDERS OFFICIAL SOLUTIONS ==================== -->
+                <div class="platform-section">
+                    <div class="platform-header">
+                        <h3>CyberDefenders <span class="official-badge">Official Solutions ✅</span></h3>
+                        <a href="https://cyberdefenders.org/p/Abdelwahab_Shandy/?tab=writeups" target="_blank" rel="noopener noreferrer" class="profile-link">View Profile →</a>
                     </div>
-                    <div class="writeup-links">
-                        <a href="https://medium.com/@AAAS/hawkeye-blue-team-challenge-bcdfb1db1c71" target="_blank" class="btn-link">📖 Read on Medium</a>
-                        <a href="https://cyberdefenders.org/blueteam-ctf-challenges/hawkeye/" target="_blank" class="btn-link">🔗 CyberDefenders</a>
+                    <div class="writeup-grid">
+                        <!-- Qradar101 - Most Popular -->
+                        <div class="writeup-card featured">
+                            <div class="featured-badge">⭐ Most Popular (17 likes)</div>
+                            <div class="writeup-icon"><i class="fas fa-chart-line"></i></div>
+                            <h4>Qradar101</h4>
+                            <p>Threat Hunting - SIEM Investigation</p>
+                            <div class="writeup-meta">
+                                <span><i class="far fa-calendar"></i> Nov 2023</span>
+                                <span><i class="fas fa-heart"></i> 17 likes</span>
+                                <span><i class="fas fa-eye"></i> Popular</span>
+                            </div>
+                            <div class="writeup-links">
+                                <a href="https://medium.com/@AAAS/cyberdefenders-qradar101-blue-team-challenge-cf2593f484d4" target="_blank" rel="noopener noreferrer" class="btn-link">📖 Read on Medium</a>
+                                <a href="https://cyberdefenders.org/blueteam-ctf-challenges/qradar101" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
+                            </div>
+                        </div>
+
+                        <!-- HawkEye -->
+                        <div class="writeup-card">
+                            <div class="writeup-icon"><i class="fas fa-eye"></i></div>
+                            <h4>HawkEye</h4>
+                            <p>Network Forensics - Keylogger Analysis</p>
+                            <div class="writeup-meta">
+                                <span><i class="far fa-calendar"></i> Nov 2023</span>
+                                <span><i class="fas fa-heart"></i> 2 likes</span>
+                            </div>
+                            <div class="writeup-links">
+                                <a href="https://medium.com/@AAAS/hawkeye-blue-team-challenge-bcdfb1db1c71" target="_blank" rel="noopener noreferrer" class="btn-link">📖 Read on Medium</a>
+                                <a href="https://cyberdefenders.org/blueteam-ctf-challenges/hawkeye/" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
+                            </div>
+                        </div>
+
+                        <!-- PsExec Hunt -->
+                        <div class="writeup-card">
+                            <div class="writeup-icon"><i class="fas fa-network-wired"></i></div>
+                            <h4>PsExec Hunt</h4>
+                            <p>Network Forensics - Lateral Movement</p>
+                            <div class="writeup-meta">
+                                <span><i class="far fa-calendar"></i> Sep 2025</span>
+                            </div>
+                            <div class="writeup-links">
+                                <a href="https://abdelwahabshandy.hashnode.dev/psexec-hunt-pcapng" target="_blank" rel="noopener noreferrer" class="btn-link">📖 Read on Hashnode</a>
+                                <a href="https://cyberdefenders.org/writeups/psexec-hunt" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
+                            </div>
+                        </div>
+
+                        <!-- Lespion -->
+                        <div class="writeup-card">
+                            <div class="writeup-icon"><i class="fas fa-search"></i></div>
+                            <h4>Lespion</h4>
+                            <p>Threat Intelligence - OSINT Investigation</p>
+                            <div class="writeup-meta">
+                                <span><i class="far fa-calendar"></i> Mar 2026</span>
+                                <span><i class="fas fa-newspaper"></i> Latest</span>
+                            </div>
+                            <div class="writeup-links">
+                                <a href="https://abdelwahabshandy.hashnode.dev/Lespion-Lab-Report" target="_blank" rel="noopener noreferrer" class="btn-link">📖 Read on Hashnode</a>
+                                <a href="https://cyberdefenders.org/blueteam-ctf-challenges/lespion/" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- PsExec Hunt -->
-                <div class="writeup-card">
-                    <div class="writeup-icon"><i class="fas fa-network-wired"></i></div>
-                    <h4>PsExec Hunt</h4>
-                    <p>Network Forensics - Lateral Movement</p>
-                    <div class="writeup-meta">
-                        <span><i class="far fa-calendar"></i> Sep 2025</span>
-                    </div>
-                    <div class="writeup-links">
-                        <a href="https://abdelwahabshandy.hashnode.dev/psexec-hunt-pcapng" target="_blank" class="btn-link">📖 Read on Hashnode</a>
-                        <a href="https://cyberdefenders.org/writeups/psexec-hunt" target="_blank" class="btn-link">🔗 CyberDefenders</a>
+                <!-- ==================== MEDIUM BLOG SERIES ==================== -->
+                <div class="platform-section">
+                    <div class="platform-header">
+                        <i class="fab fa-medium" style="font-size: 2rem; color: #000;"></i>
+                        <h3>Medium Blog <span class="count-badge">49+ Articles</span></h3>
+                        <a href="https://medium.com/@AAAS/lists" target="_blank" rel="noopener noreferrer" class="profile-link">Follow on Medium →</a>
                     </div>
                 </div>
-
-                <!-- Lespion -->
-                <div class="writeup-card">
-                    <div class="writeup-icon"><i class="fas fa-search"></i></div>
-                    <h4>Lespion</h4>
-                    <p>Threat Intelligence - OSINT Investigation</p>
-                    <div class="writeup-meta">
-                        <span><i class="far fa-calendar"></i> Mar 2026</span>
-                        <span><i class="fas fa-newspaper"></i> Latest</span>
-                    </div>
-                    <div class="writeup-links">
-                        <a href="https://abdelwahabshandy.hashnode.dev/Lespion-Lab-Report" target="_blank" class="btn-link">📖 Read on Hashnode</a>
-                        <a href="https://cyberdefenders.org/blueteam-ctf-challenges/lespion/" target="_blank" class="btn-link">🔗 CyberDefenders</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ==================== MEDIUM BLOG SERIES ==================== -->
-        <div class="platform-section">
-            <div class="platform-header">
-                <i class="fab fa-medium" style="font-size: 2rem; color: #000;"></i>
-                <h3>Medium Blog <span class="count-badge">49+ Articles</span></h3>
-                <a href="https://medium.com/@AAAS/lists" target="_blank" class="profile-link">Follow on Medium →</a>
-            </div>
-        </div>
 
         <!-- ==================== HASNODE DOCS / LABS NOTES ==================== -->
         <div class="platform-section">
             <div class="platform-header">
                 <i class="fab fa-hashnode" style="font-size: 2rem; color: #2962FF;"></i>
                 <h3>Hashnode Lab Notes <span class="count-badge">Documentation Hub</span></h3>
-                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/ctfs/ctfs-and-labs" target="_blank" class="profile-link">Explore Docs →</a>
+                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/ctfs/ctfs-and-labs" target="_blank" rel="noopener noreferrer" class="profile-link">Explore Docs →</a>
             </div>
 
-            <!-- Individual Lab Write-ups Grid -->
-            <div class="labs-grid">
-                <a href="https://abdelwahabshandy.hashnode.dev/when-ram-isnt-enough-how-swap-and-pagefile-keep-your-systems-stable" target="_blank" class="lab-link">
-                    <i class="fas fa-memory"></i> Swap & Pagefile Explained
+            <!-- Individual Lab Write-ups Grid - Enhanced Design -->
+            <div class="hashnode-featured-grid">
+                <a href="https://abdelwahabshandy.hashnode.dev/when-ram-isnt-enough-how-swap-and-pagefile-keep-your-systems-stable" target="_blank" rel="noopener noreferrer" class="hashnode-card">
+                    <div class="hashnode-card-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <div class="hashnode-card-content">
+                        <h4>Swap & Pagefile Explained</h4>
+                        <p>When RAM isn't enough: How swap and pagefile keep your systems stable</p>
+                        <span class="hashnode-card-meta">
+                            <i class="fas fa-eye"></i> Technical Deep Dive
+                        </span>
+                    </div>
+                    <div class="hashnode-card-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
                 </a>
-                <a href="https://abdelwahabshandy.hashnode.dev/connecting-github-with-obsidian" target="_blank" class="lab-link">
-                    <i class="fab fa-github"></i> GitHub + Obsidian Integration
-                </a>
-            </div>
-        </div>
 
-        <!-- ==================== ALL CTF CHALLENGES (Collapsible) ==================== -->
-        <div class="platform-section">
-            <div class="platform-header">
-                <i class="fas fa-folder-tree"></i>
-                <h4>Complete CTF Library</h4>
-                <button class="expand-all-btn" id="expandAllBtn">Expand All</button>
-            </div>
-            
-            <div class="ctf-accordion" id="ctfAccordion">
-                <!-- Steganography & Forensics -->
-                <div class="accordion-item">
-                    <div class="accordion-header" data-category="stego">
-                        <i class="fas fa-image"></i>
-                        <span>Steganography & Audio Forensics</span>
-                        <span class="count">(30+ challenges)</span>
-                        <i class="fas fa-chevron-down"></i>
+                <a href="https://abdelwahabshandy.hashnode.dev/connecting-github-with-obsidian" target="_blank" rel="noopener noreferrer" class="hashnode-card">
+                    <div class="hashnode-card-icon">
+                        <i class="fab fa-github"></i>
                     </div>
-                    <div class="accordion-body">
-                        <div class="challenge-grid">
-                            <div class="challenge-group">
-                                <h5>PicoCTF</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/disko-1-picoctf" target="_blank">DISKO 1</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/glory-of-the-garden-picoctf">Glory of the Garden</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/information-picoctf">Information</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/red-picoctf">RED</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/secret-of-the-polyglot-picoctf">Secret of the Polyglot</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/scan-surprise-picoctf">Scan Surprise</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/verify-picoctf">Verify</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/canyousee-picoctf">CanYouSee</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>CTFLEARN</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/wow-so-meta-ctflearn">WOW…. So Meta</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/taking-ls">Taking LS</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/forensics-101-ctflearn">Forensics 101</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/exif-ctflearn">Exif</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/binwalk-ctflearn">Binwalk</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/rubber-duck-ctflearn">Rubber Duck</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/git-is-good-ctflearn">Git Is Good</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/snowboard-ctflearn">Snowboard</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/im-a-dump-ctflearn">I'm a dump</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/minions-ctflearn">Minions</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pdf-by-fdpumyp-ctflearn">PDF by fdpumyp</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/simple-steganography-ctflearn">Simple Steganography</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pho-is-tasty-ctflearn">Pho Is Tasty!</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/tux-ctflearn">Tux!</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/chalkboard-ctflearn">Chalkboard</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pikespeak-ctflearn">PikesPeak</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>CyberTalents</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/disk-images/search-in-trash-cybertalents">Search in Trash</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/hidden-message-cyber-talents">Hidden Message</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/cypher-anxiety-cyber-talents">Cypher Anxiety</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/i-love-images-cyber-talents">I love images</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/file-found">File Found</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/gandp-list-cyber-talents">G&P List</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Blue Team Labs Online</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/meta-blue-team-labs-online">Meta</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="hashnode-card-content">
+                        <h4>GitHub + Obsidian Integration</h4>
+                        <p>Seamless workflow: Connect your second brain with version control</p>
+                        <span class="hashnode-card-meta">
+                            <i class="fas fa-code-branch"></i> Workflow Guide
+                        </span>
                     </div>
-                </div>
-
-                <!-- Network Forensics -->
-                <div class="accordion-item">
-                    <div class="accordion-header" data-category="network">
-                        <i class="fas fa-network-wired"></i>
-                        <span>Network Forensics Labs</span>
-                        <span class="count">(8 labs)</span>
-                        <i class="fas fa-chevron-down"></i>
+                    <div class="hashnode-card-arrow">
+                        <i class="fas fa-arrow-right"></i>
                     </div>
-                    <div class="accordion-body">
-                        <ul class="lab-list">
-                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/soc/network-security/detect-nmap-scan-using-snort" target="_blank">🔍 Detect NMAP Scan Using Snort</a></li>
-                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/soc/network-security/a-mock-lab-on-ubuntu-to-practice-setting-up-a-web-server-waf-nginx-modsecurity" target="_blank">🌐 Nginx + ModSecurity WAF Lab</a></li>
-                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics/suspicious-file-download-fake-google-authenticator">⚠️ Suspicious File Download (Fake Google Authenticator)</a></li>
-                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics/examining-pcaps-and-emails-to-identify-malware-infection">📧 Examining PCAPs & Emails for Malware</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Linux CTFs -->
-                <div class="accordion-item">
-                    <div class="accordion-header" data-category="linux">
-                        <i class="fab fa-linux"></i>
-                        <span>Windows, Linux CTFs & Machines</span>
-                        <span class="count">(15+ labs)</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="challenge-grid">
-                            <div class="challenge-group">
-                                <h5>Windows</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/windows-server-labs-and/thm-ad">AD Fundamentals</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/windows-server-labs-and/login-protocolsntlm-vs-kerberos#login-protocolsntlm-vs-kerberos">NTLM vs Kerberos</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Linux</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/linux-history">Linux History</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/linux-history/unix-vs-linux">Unix Vs Linux</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/kvm">KVM</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>OverTheWire - Bandit</h5>
-                                <ul>
-                                    <li><a href="https://medium.com/@AAAS/overthewire-bandit-level-0-tobandit-level-10-628935ceaee3">Level 0 → 10</a></li>
-                                    <li><a href="https://medium.com/@AAAS/overthewire-bandit-level-10-tobandit-level-20-2c2255ba16c1">Level 10 → 20</a></li>
-                                    <li><a href="https://medium.com/@AAAS/overthewire-bandit-level-20-tobandit-level-23-77d83472338d">Level 20 → 23</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Leviathan</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/linux-labs-review/leviathan-linux">Level 0 → 1</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Machines</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/metasploitable1">Metasploitable-1</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/metasploitable2">Metasploitable-2</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/kioptrix-level-1">Kioptrix Level-1</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Web Security -->
-                <div class="accordion-item">
-                    <div class="accordion-header" data-category="web">
-                        <i class="fas fa-globe"></i>
-                        <span>Web Security Labs</span>
-                        <span class="count">(20+ labs)</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <div class="challenge-grid">
-                            <div class="challenge-group">
-                                <h5>CyberTalents Labs</h5>
-                                <ul>
-                                    <li><a href="https://medium.com/@AAAS/general-information-cybertalents-cbc059980a00">General Information</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/cybersecurity-beginner-career-labs">Beginner Career</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/iti-penetration-tester-track-2025">ITI Penetration Tester Track</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Information Disclosure 5+ Labs</h5>
-                                <ul>
-                                    <li><a href="https://medium.com/@AAAS/list/information-disclosure-134407fe305c">View on Medium</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/web/information-disclosure">View on Hashnode</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Access Control 5+ Labs</h5>
-                                <ul>
-                                    <li><a href="https://medium.com/@AAAS/list/access-control-vulnerabilities-f3553255bb27">View on Medium</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/web/access-control">View on Hashnode</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Natas (OverTheWire)</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/web/natas-overthewire">Level 0 To 4</a></li>
-                                </ul>
-                            </div>
-                            <div class="challenge-group">
-                                <h5>Information Gathering & Scanning Labs</h5>
-                                <ul>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/information-gathering/passive-reconnaissance-try-hack-my">Passive Reconnaissance</a></li>
-                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/information-gathering/active-reconnaissance-try-hack-me">Active Reconnaissance</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Malware Analysis -->
-                <div class="accordion-item">
-                    <div class="accordion-header" data-category="malware">
-                        <i class="fas fa-bug"></i>
-                        <span>Malware Analysis</span>
-                        <span class="count">(1 lab)</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="accordion-body">
-                        <ul class="lab-list">
-                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/malware-analysis/labs/persistence-analysis-and-remediation-of-python-pop-up-malware-1762298363843">🐍 Python Pop-Up Malware - Persistence Analysis</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Section -->
-        <div class="blog-cta">
-            <p>📚 I regularly publish new write-ups, CTF solutions, and security research. Follow me for more content!</p>
-            <div class="cta-buttons">
-                <a href="https://medium.com/@AAAS" target="_blank" class="btn btn--primary">
-                    <i class="fab fa-medium"></i> Follow on Medium
-                </a>
-                <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" class="btn btn--primary">
-                    <i class="fab fa-hashnode"></i> Follow on Hashnode
-                </a>
-                <a href="https://cyberdefenders.org/profile/Abdelwahab_Shandy" target="_blank" class="btn btn--outline">
-                    <i class="fas fa-shield-alt"></i> CyberDefenders Profile
                 </a>
             </div>
         </div>
-    </div>
-</section>
 
+                <!-- ==================== ALL CTF CHALLENGES (Collapsible) ==================== -->
+                <div class="platform-section">
+                    <div class="platform-header">
+                        <i class="fas fa-folder-tree"></i>
+                        <h4>Complete CTF Library</h4>
+                        <button class="expand-all-btn" id="expandAllBtn">Expand All</button>
+                    </div>
+                    
+                    <div class="ctf-accordion" id="ctfAccordion">
+                        <!-- Steganography & Forensics -->
+                        <div class="accordion-item">
+                            <div class="accordion-header" data-category="stego">
+                                <i class="fas fa-image"></i>
+                                <span>Steganography & Audio Forensics</span>
+                                <span class="count">(30+ challenges)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="challenge-grid">
+                                    <div class="challenge-group">
+                                        <h5>PicoCTF</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/disko-1-picoctf" target="_blank" rel="noopener noreferrer">DISKO 1</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/glory-of-the-garden-picoctf" target="_blank" rel="noopener noreferrer">Glory of the Garden</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/information-picoctf" target="_blank" rel="noopener noreferrer">Information</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/red-picoctf" target="_blank" rel="noopener noreferrer">RED</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/secret-of-the-polyglot-picoctf" target="_blank" rel="noopener noreferrer">Secret of the Polyglot</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/scan-surprise-picoctf" target="_blank" rel="noopener noreferrer">Scan Surprise</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/verify-picoctf" target="_blank" rel="noopener noreferrer">Verify</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/canyousee-picoctf" target="_blank" rel="noopener noreferrer">CanYouSee</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>CTFLEARN</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/wow-so-meta-ctflearn" target="_blank" rel="noopener noreferrer">WOW…. So Meta</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/taking-ls" target="_blank" rel="noopener noreferrer">Taking LS</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/forensics-101-ctflearn" target="_blank" rel="noopener noreferrer">Forensics 101</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/exif-ctflearn" target="_blank" rel="noopener noreferrer">Exif</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/binwalk-ctflearn" target="_blank" rel="noopener noreferrer">Binwalk</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/rubber-duck-ctflearn" target="_blank" rel="noopener noreferrer">Rubber Duck</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/git-is-good-ctflearn" target="_blank" rel="noopener noreferrer">Git Is Good</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/snowboard-ctflearn" target="_blank" rel="noopener noreferrer">Snowboard</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/im-a-dump-ctflearn" target="_blank" rel="noopener noreferrer">I'm a dump</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/minions-ctflearn" target="_blank" rel="noopener noreferrer">Minions</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pdf-by-fdpumyp-ctflearn" target="_blank" rel="noopener noreferrer">PDF by fdpumyp</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/simple-steganography-ctflearn" target="_blank" rel="noopener noreferrer">Simple Steganography</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pho-is-tasty-ctflearn" target="_blank" rel="noopener noreferrer">Pho Is Tasty!</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/tux-ctflearn" target="_blank" rel="noopener noreferrer">Tux!</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/chalkboard-ctflearn" target="_blank" rel="noopener noreferrer">Chalkboard</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pikespeak-ctflearn" target="_blank" rel="noopener noreferrer">PikesPeak</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>CyberTalents</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/disk-images/search-in-trash-cybertalents" target="_blank" rel="noopener noreferrer">Search in Trash</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/hidden-message-cyber-talents" target="_blank" rel="noopener noreferrer">Hidden Message</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/cypher-anxiety-cyber-talents" target="_blank" rel="noopener noreferrer">Cypher Anxiety</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/i-love-images-cyber-talents" target="_blank" rel="noopener noreferrer">I love images</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/file-found" target="_blank" rel="noopener noreferrer">File Found</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/gandp-list-cyber-talents" target="_blank" rel="noopener noreferrer">G&P List</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Blue Team Labs Online</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/meta-blue-team-labs-online" target="_blank" rel="noopener noreferrer">Meta</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- Experience Section -->
-        <section id="experience" class="section section-bg-alt">
-            <div class="container">
-                <div class="section__head">
-                    <div class="section-badge"><i class="fas fa-briefcase"></i> Professional Journey</div>
-                    <h2 class="section__title">Work <span class="text-gradient">Experience</span></h2>
-                    <p class="section__subtitle">Cybersecurity & IT internships and training programs</p>
+                        <!-- Network Forensics -->
+                        <div class="accordion-item">
+                            <div class="accordion-header" data-category="network">
+                                <i class="fas fa-network-wired"></i>
+                                <span>Network Forensics Labs</span>
+                                <span class="count">(8 labs)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-body">
+                                <ul class="lab-list">
+                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/soc/network-security/detect-nmap-scan-using-snort" target="_blank" rel="noopener noreferrer">🔍 Detect NMAP Scan Using Snort</a></li>
+                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/soc/network-security/a-mock-lab-on-ubuntu-to-practice-setting-up-a-web-server-waf-nginx-modsecurity" target="_blank" rel="noopener noreferrer">🌐 Nginx + ModSecurity WAF Lab</a></li>
+                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics/suspicious-file-download-fake-google-authenticator" target="_blank" rel="noopener noreferrer">⚠️ Suspicious File Download (Fake Google Authenticator)</a></li>
+                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics/examining-pcaps-and-emails-to-identify-malware-infection" target="_blank" rel="noopener noreferrer">📧 Examining PCAPs & Emails for Malware</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Linux CTFs -->
+                        <div class="accordion-item">
+                            <div class="accordion-header" data-category="linux">
+                                <i class="fab fa-linux"></i>
+                                <span>Windows, Linux CTFs & Machines</span>
+                                <span class="count">(15+ labs)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="challenge-grid">
+                                    <div class="challenge-group">
+                                        <h5>Windows</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/windows-server-labs-and/thm-ad" target="_blank" rel="noopener noreferrer">AD Fundamentals</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/windows-server-labs-and/login-protocolsntlm-vs-kerberos#login-protocolsntlm-vs-kerberos" target="_blank" rel="noopener noreferrer">NTLM vs Kerberos</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Linux</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/linux-history" target="_blank" rel="noopener noreferrer">Linux History</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/linux-history/unix-vs-linux" target="_blank" rel="noopener noreferrer">Unix Vs Linux</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/kvm" target="_blank" rel="noopener noreferrer">KVM</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>OverTheWire - Bandit</h5>
+                                        <ul>
+                                            <li><a href="https://medium.com/@AAAS/overthewire-bandit-level-0-tobandit-level-10-628935ceaee3" target="_blank" rel="noopener noreferrer">Level 0 → 10</a></li>
+                                            <li><a href="https://medium.com/@AAAS/overthewire-bandit-level-10-tobandit-level-20-2c2255ba16c1" target="_blank" rel="noopener noreferrer">Level 10 → 20</a></li>
+                                            <li><a href="https://medium.com/@AAAS/overthewire-bandit-level-20-tobandit-level-23-77d83472338d" target="_blank" rel="noopener noreferrer">Level 20 → 23</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Leviathan</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/general-ctf/linux-labs-review/leviathan-linux" target="_blank" rel="noopener noreferrer">Level 0 → 1</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Machines</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/metasploitable1" target="_blank" rel="noopener noreferrer">Metasploitable-1</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/metasploitable2" target="_blank" rel="noopener noreferrer">Metasploitable-2</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/kioptrix-level-1" target="_blank" rel="noopener noreferrer">Kioptrix Level-1</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Web Security -->
+                        <div class="accordion-item">
+                            <div class="accordion-header" data-category="web">
+                                <i class="fas fa-globe"></i>
+                                <span>Web Security Labs</span>
+                                <span class="count">(20+ labs)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="challenge-grid">
+                                    <div class="challenge-group">
+                                        <h5>CyberTalents Labs</h5>
+                                        <ul>
+                                            <li><a href="https://medium.com/@AAAS/general-information-cybertalents-cbc059980a00" target="_blank" rel="noopener noreferrer">General Information</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/cybersecurity-beginner-career-labs" target="_blank" rel="noopener noreferrer">Beginner Career</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/labs/iti-penetration-tester-track-2025" target="_blank" rel="noopener noreferrer">ITI Penetration Tester Track</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Information Disclosure 5+ Labs</h5>
+                                        <ul>
+                                            <li><a href="https://medium.com/@AAAS/list/information-disclosure-134407fe305c" target="_blank" rel="noopener noreferrer">View on Medium</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/web/information-disclosure" target="_blank" rel="noopener noreferrer">View on Hashnode</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Access Control 5+ Labs</h5>
+                                        <ul>
+                                            <li><a href="https://medium.com/@AAAS/list/access-control-vulnerabilities-f3553255bb27" target="_blank" rel="noopener noreferrer">View on Medium</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/web/access-control" target="_blank" rel="noopener noreferrer">View on Hashnode</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Natas (OverTheWire)</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/web/natas-overthewire" target="_blank" rel="noopener noreferrer">Level 0 To 4</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="challenge-group">
+                                        <h5>Information Gathering & Scanning Labs</h5>
+                                        <ul>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/information-gathering/passive-reconnaissance-try-hack-my" target="_blank" rel="noopener noreferrer">Passive Reconnaissance</a></li>
+                                            <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/penetration-testing-trainee/information-gathering/active-reconnaissance-try-hack-me" target="_blank" rel="noopener noreferrer">Active Reconnaissance</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Malware Analysis -->
+                        <div class="accordion-item">
+                            <div class="accordion-header" data-category="malware">
+                                <i class="fas fa-bug"></i>
+                                <span>Malware Analysis</span>
+                                <span class="count">(1 lab)</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-body">
+                                <ul class="lab-list">
+                                    <li><a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/malware-analysis/labs/persistence-analysis-and-remediation-of-python-pop-up-malware-1762298363843" target="_blank" rel="noopener noreferrer">🐍 Python Pop-Up Malware - Persistence Analysis</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- ZeroSploit -->
-                <div class="experience-timeline">
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-heart"></i><h3>SOC & Detection Engineering OJT <span class="company">@ ZeroSploit MEA</span></h3></div>
-                            <div class="exp-date">Oct 2025 - Jan 2026</div>
-                        </div>
-                        <div class="exp-desc">Log ingestion pipelines (ELK Stack) · n8n SOAR automation · Sigma rules & MITRE ATT&CK · AD attack simulation</div>
-                    </div>
-
-                    <!-- CyberTalents -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-user-secret"></i><h3>Penetration Testing Bootcamp <span class="company">@ CyberTalents</span></h3></div>
-                            <div class="exp-date">Oct 2025 - Nov 2025</div>
-                        </div>
-                        <div class="exp-desc">Information gathering · Vulnerability assessment · Web security · Exploitation & CTF</div>
-                    </div>
-
-                    <!-- CyberTalents -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-chart-line"></i><h3>SOC Bootcamp <span class="company">@ WE INNOVATE</span></h3></div>
-                            <div class="exp-date">Sep 2025 - Oct 2025</div>
-                        </div>
-                        <div class="exp-desc">Built full SOC environment: ELK Stack SIEM + n8n SOAR · Threat hunting & incident response</div>
-                    </div>
-
-                    <!-- NTI -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fab fa-windows"></i><h3>Windows Server Administration <span class="company">@ NTI</span></h3></div>
-                            <div class="exp-date">Aug 2025 - Sep 2025</div>
-                        </div>
-                        <div class="exp-desc">Active Directory · Group Policy · DHCP/DNS · Score: 92.5%</div>
-                    </div>
-
-                    <!-- ITI -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-network-wired"></i><h3>Networks Infrastructure Bootcamp <span class="company">@ ITI</span></h3></div>
-                            <div class="exp-date">Jun 2025 - Jul 2025</div>
-                        </div>
-                        <div class="exp-desc">Routing & Switching · Network security fundamentals · Huawei Cloud (HCCDA)</div>
-                    </div>
-
-                    <!-- EraaSoft -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-code"></i><h3>.NET Developer Bootcamp <span class="company">@ EraaSoft</span></h3></div>
-                            <div class="exp-date">Nov 2024 - May 2025</div>
-                        </div>
-                        <div class="exp-desc">C# · OOP · SQL Server · Entity Framework · MVC · 3-Tier Architecture</div>
-                    </div>
-
-                    <!-- Programming Advices -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-laptop-code"></i><h3>Programming Basics <span class="company">@ Programming Advices</span></h3></div>
-                            <div class="exp-date">Aug 2024 - Jul 2025</div>
-                        </div>
-                        <div class="exp-desc">Problem-solving with C++ · Algorithms · SQL & database basics</div>
-                    </div>
-
-                    <!-- AMIT -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-shield-alt"></i><h3>SOC Bootcamp <span class="company">@ AMIT Learning</span></h3></div>
-                            <div class="exp-date">Jun 2023 - Sep 2023</div>
-                        </div>
-                        <div class="exp-desc">🏆 100% score · QRadar SIEM · Incident response · Malware analysis</div>
-                    </div>
-
-                    <!-- ITI -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-lock"></i><h3>Network Security Bootcamp <span class="company">@ ITI</span></h3></div>
-                            <div class="exp-date">Aug 2023</div>
-                        </div>
-                        <div class="exp-desc">Training Leader · CCNA · CEH · Palo Alto (PCCET) · FortiGate NSE4</div>
-                    </div>
-
-                    <!-- Raya Academy -->
-                    <div class="exp-item">
-                        <div class="exp-header">
-                            <div class="exp-title"><i class="fas fa-graduation-cap"></i><h3>Ethical Hacker Bootcamp <span class="company">@ Raya Academy</span></h3></div>
-                            <div class="exp-date">Oct 2022 - Dec 2022</div>
-                        </div>
-                        <div class="exp-desc">Networking & Linux basics · Introduction to CEH</div>
+                <!-- CTA Section -->
+                <div class="blog-cta">
+                    <p>📚 I regularly publish new write-ups, CTF solutions, and security research. Follow me for more content!</p>
+                    <div class="cta-buttons">
+                        <a href="https://medium.com/@AAAS" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+                            <i class="fab fa-medium"></i> Follow on Medium
+                        </a>
+                        <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+                            <i class="fab fa-hashnode"></i> Follow on Hashnode
+                        </a>
+                        <a href="https://cyberdefenders.org/profile/Abdelwahab_Shandy" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+                            <i class="fas fa-shield-alt"></i> CyberDefenders Profile
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- ==================== Contact Section ==================== -->
         <section id="contact" class="section">
             <div class="container contact-container">
                 <div class="contact-card">
                     <h2 style="font-size: 2rem;">Let's Connect Securely</h2>
                     <p style="color: var(--text-secondary); margin-top: 0.5rem;">Class of June 2026 | Seeking career opportunities in SOC & Network Security. Open for internships and technical collaborations.</p>
                     <div class="social-links">
-                        <a href="https://github.com/abdelwahab-ahmed-shandy" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Hashnode" aria-label="Hashnode"><i class="fab fa-hashnode"></i></a>
-                        <a href="https://medium.com/@AAAS" target="_blank" rel="noopener noreferrer" class="social-icon" title="Medium" aria-label="Medium"><i class="fab fa-medium"></i></a>
-                        <a href="https://wa.me/201017417103" target="_blank" rel="noopener noreferrer" class="social-icon" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:abdelwahabshandy@gmail.com" class="social-icon" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/abdelwahab-ahmed-shandy" target="_blank" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" class="social-icon" title="Hashnode"><i class="fab fa-hashnode"></i></a>
+                        <a href="https://medium.com/@AAAS" target="_blank" class="social-icon" title="Medium"><i class="fab fa-medium"></i></a>
+                        <a href="https://wa.me/201017417103" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:abdelwahabshandy@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
