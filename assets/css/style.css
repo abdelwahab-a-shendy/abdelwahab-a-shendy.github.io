@@ -1973,3 +1973,90 @@ body {
 [data-theme="light"] .dropdown-item-text {
     color: #475569;
 }
+
+/* ==================== COMPANY LOGO IN WORK CARD ==================== */
+.work-icon--image {
+    overflow: hidden;
+    padding: 0 !important;
+    background: white !important;
+    border: 2px solid var(--accent-primary);
+}
+
+.company-logo-img {
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Light mode adjustments */
+[data-theme="light"] .work-icon--image {
+    background: white !important;
+}
+
+/* ==================== COMPANY LOGO IN TRAINING CARDS ==================== */
+.card-icon--image {
+    overflow: hidden;
+    padding: 0 !important;
+    background: white !important;
+    border: 2px solid var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon--image .company-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.card-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.card-icon i {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+}
+
+/* Light mode adjustments */
+[data-theme="light"] .card-icon--image {
+    background: white !important;
+}
+
+/* ==================== TRAINING CARD LOGO IMAGES ==================== */
+.card-icon--image {
+    overflow: hidden;
+    padding: 0 !important;
+    background: white !important;
+    border: 2px solid var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.training-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Fallback if image fails to load */
+.card-icon--image i {
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+}
+
+/* Light mode adjustments */
+[data-theme="light"] .card-icon--image {
+    background: white !important;
+}
