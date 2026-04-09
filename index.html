@@ -229,8 +229,8 @@
                         <div class="project-card__media">
                             <img class="project-img" src="./assets/img/OffensiveandDefensive.png" alt="Enterprise Security Simulation Lab" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=Security+Lab'">
                             <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2025 – Present</span>
-                                <span class="project-status status-active"><i class="fas fa-circle"></i> Active</span>
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2025 – Mar 2026</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
                             </div>
                         </div>
                         <div class="project-card__body">
@@ -238,25 +238,95 @@
                                 <span class="tag tag-security">Red Team</span>
                                 <span class="tag tag-security">Blue Team</span>
                                 <span class="tag tag-security">SOAR</span>
+                                <span class="tag tag-security">SIEM</span>
                             </div>
                             <h3 class="project-card__title">Enterprise Offensive & Defensive Security Lab</h3>
-                            <p class="project-card__desc">Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, and vulnerable targets.</p>
+                            <p class="project-card__desc">Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, Metasploitable3, bWAPP, and full Windows domain environment.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-firewall"></i> pfSense</span>
                                 <span class="pill"><i class="fas fa-chart-line"></i> ELK Stack</span>
-                                <span class="pill"><i class="fas fa-robot"></i> n8n</span>
+                                <span class="pill"><i class="fas fa-robot"></i> n8n SOAR</span>
+                                <span class="pill"><i class="fas fa-skull"></i> Kali & Commando</span>
+                                <span class="pill"><i class="fas fa-server"></i> Metasploitable3</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/objective" target="_blank" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/objective" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
                                 <button class="btn btn--sm btn--ghost more-details-btn" data-project="security-lab-1"><i class="fas fa-ellipsis-h"></i> More Details</button>
                             </div>
                             <div class="project-details-dropdown" id="security-lab-1-details" style="display: none;">
-                                <div class="dropdown-content">
-                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk" target="_blank" rel="noopener noreferrer"><i class="fas fa-database"></i> Building SIEM</a>
-                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-network-wired"></i> Internal Zone</a>
-                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-cloud"></i> DMZ Zone</a>
-                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/external-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> External Zone</a>
+                                
+                                <!-- Overview Section -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-info-circle"></i> Overview</span>
+                                    <div class="dropdown-content">
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/objective" target="_blank" rel="noopener noreferrer"><i class="fas fa-bullseye"></i> Introduction</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/network-design" target="_blank" rel="noopener noreferrer"><i class="fas fa-project-diagram"></i> Network Design</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/architecture-and-design" target="_blank" rel="noopener noreferrer"><i class="fas fa-cubes"></i> Architecture & Virtualized</a>
+                                    </div>
                                 </div>
+
+                                <!-- SIEM & SOAR Section -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-shield-alt"></i> SIEM & SOAR</span>
+                                    <div class="dropdown-content">
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk" target="_blank" rel="noopener noreferrer"><i class="fas fa-database"></i> Building ELK (SIEM)</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk/to-activate-the-rules-age" target="_blank" rel="noopener noreferrer"><i class="fas fa-gavel"></i> Activate The Rules Page</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk/troubleshooting-network-connectivity-and-ip-conflicts" target="_blank" rel="noopener noreferrer"><i class="fas fa-wrench"></i> ⚠️ Troubleshooting</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/building-n8n" target="_blank" rel="noopener noreferrer"><i class="fas fa-robot"></i> Building n8n (SOAR)</a>
+                                    </div>
+                                </div>
+
+                                <!-- Internal Zone Section -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-building"></i> Internal Zone</span>
+                                    <div class="dropdown-content">
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-network-wired"></i> Internal Zone Overview</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-server" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i> Building Windows Server</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-server/windows-server-basic-configuration" target="_blank" rel="noopener noreferrer"><i class="fas fa-cog"></i> Windows Server Basic Config</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-server/building-domain-contro" target="_blank" rel="noopener noreferrer"><i class="fas fa-crown"></i> Building Domain Controller</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-clients" target="_blank" rel="noopener noreferrer"><i class="fas fa-laptop"></i> Building Win Clients</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-clients/join-domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> Join Domain</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-iis-server" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> Building IIS Server</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-iis-server/iis-and-sql" target="_blank" rel="noopener noreferrer"><i class="fas fa-database"></i> IIS And SQL</a>
+                                    </div>
+                                </div>
+
+                                <!-- DMZ Zone Section -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-cloud"></i> DMZ Zone</span>
+                                    <div class="dropdown-content">
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-cloud"></i> DMZ Zone Overview</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/install-metasploitable3" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i> Metasploitable3 Deployment</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/install-metasploitable3/configuration" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i> Config Windows Metasploitable3</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/install-metasploitable3/configuration-linux-metasploitable3" target="_blank" rel="noopener noreferrer"><i class="fab fa-linux"></i> Config Linux Metasploitable3</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/pfsense-firewall" target="_blank" rel="noopener noreferrer"><i class="fas fa-firewall"></i> pfSense Deployment</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/pfsense-firewall/configuration-pfsense" target="_blank" rel="noopener noreferrer"><i class="fas fa-sliders-h"></i> Configuration pfSense</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/vulnerable-webserver" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> bWAPP Deployment</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/vulnerable-webserver/configuration-webserver-bwapp" target="_blank" rel="noopener noreferrer"><i class="fas fa-server"></i> Configuration bWAPP</a>
+                                    </div>
+                                </div>
+
+                                <!-- External Zone Section -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-user-secret"></i> External Zone (Attacker)</span>
+                                    <div class="dropdown-content">
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/external-zone" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> External Zone Overview</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/external-zone/kali-linux-config" target="_blank" rel="noopener noreferrer"><i class="fab fa-linux"></i> Kali Linux Configuration</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/external-zone/commandovm-configuration" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i> CommandoVM Configuration</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/external-zone/commandovm-configuration/running-commandovm" target="_blank" rel="noopener noreferrer"><i class="fas fa-terminal"></i> Running CommandoVM</a>
+                                    </div>
+                                </div>
+
+                                <!-- Log Collection Section -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-stream"></i> Log Collection Strategies</span>
+                                    <div class="dropdown-content">
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/log-collection-strategies-and-architectures" target="_blank" rel="noopener noreferrer"><i class="fas fa-archive"></i> Log Collection Overview</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/log-collection-strategies-and-architectures" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i> Windows Log Collection</a>
+                                        <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/enterprise-offensive-defensive-security-simulation-lab/log-collection-strategies-and-architectures/windows-log-collection-scenarios/agent-based-per-host-collection" target="_blank" rel="noopener noreferrer"><i class="fas fa-microchip"></i> Scenario 1: Agent-based</a>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </article>
@@ -275,15 +345,58 @@
                                 <span class="tag tag-security">Detection Engineering</span>
                                 <span class="tag tag-security">Active Directory</span>
                                 <span class="tag tag-security">SIEM</span>
+                                <span class="tag tag-security">Red/Blue Team</span>
                             </div>
                             <h3 class="project-card__title">Multi-Stage Active Directory Attack Detection</h3>
-                            <p class="project-card__desc">A realistic AD lab simulating a full Windows attack chain: Initial Access, Privilege Escalation, Credential Dumping, and Lateral Movement. Includes custom Sigma rules mapped to MITRE ATT&CK.</p>
+                            <p class="project-card__desc">A realistic AD lab simulating a full Windows attack chain: Initial Access (Reverse Shell), Privilege Escalation (SeImpersonatePrivilege), Credential Dumping (LSASS), and Lateral Movement (Pass-the-Hash). Includes custom Sigma rules mapped to MITRE ATT&CK with full ELK implementation.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-search"></i> Sigma Rules</span>
                                 <span class="pill"><i class="fas fa-project-diagram"></i> MITRE ATT&CK</span>
+                                <span class="pill"><i class="fas fa-chart-line"></i> ELK Stack</span>
+                                <span class="pill"><i class="fas fa-shield-virus"></i> Sysmon</span>
+                                <span class="pill"><i class="fas fa-network-wired"></i> Pass-the-Hash</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://abdelwahab-ahmed-shandy.github.io/docs/MSADADES.pdf" target="_blank" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> View Document</a>
+                                <a href="./docs/MSADADES.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-file-pdf"></i> Full Report (PDF)</a>
+                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="ad-attack-lab"><i class="fas fa-ellipsis-h"></i> More Details</button>
+                            </div>
+                            <div class="project-details-dropdown" id="ad-attack-lab-details" style="display: none;">
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-network-wired"></i> Lab Architecture</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-server"></i> DC: Windows Server 2019/2022</span>
+                                        <span class="dropdown-item-text"><i class="fab fa-windows"></i> Client: Windows 10/11</span>
+                                        <span class="dropdown-item-text"><i class="fab fa-ubuntu"></i> SIEM: Ubuntu + ELK Stack</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-user-secret"></i> Attacker: Ubuntu + Metasploit/Impacket</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-bolt"></i> Attack Chain</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-plug"></i> 1. Initial Access - Reverse Shell (T1059)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-arrow-up"></i> 2. Privilege Escalation - SeImpersonate (T1134)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-database"></i> 3. Credential Dumping - LSASS (T1003.001)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-people-arrows"></i> 4. Lateral Movement - Pass-the-Hash (T1550.002)</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-shield-alt"></i> Detection Rules</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Reverse Shell Detection (Sysmon Event 3)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Privilege Escalation Detection (Sysmon Event 1)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> LSASS Dump Detection (Sysmon Event 1, 11)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Pass-the-Hash Detection (Security Event 4624)</span>
+                                    </div>
+                                </div>
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-chart-bar"></i> Key Outcomes</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-trophy" style="color: #f59e0b;"></i> All 4 attack stages successfully detected</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-file-code"></i> 4 Custom Sigma Rules Created</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-bullseye"></i> 100% MITRE ATT&CK Coverage</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-shield-virus"></i> Windows Defender remained enabled</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -301,21 +414,37 @@
                             <div class="project-tags">
                                 <span class="tag tag-security">SIEM</span>
                                 <span class="tag tag-security">SOC</span>
+                                <span class="tag tag-security">Automation</span>
                             </div>
                             <h3 class="project-card__title">SOC Home Lab</h3>
                             <p class="project-card__desc">Complete SOC environment with ELK Stack SIEM, Fluent Bit and Winlogbeat for log collection, plus n8n SOAR automation for automated incident response.</p>
                             <div class="project-card__meta">
                                 <span class="pill"><i class="fas fa-database"></i> Elasticsearch</span>
                                 <span class="pill"><i class="fas fa-chart-bar"></i> Kibana</span>
+                                <span class="pill"><i class="fas fa-robot"></i> n8n SOAR</span>
+                                <span class="pill"><i class="fab fa-windows"></i> Winlogbeat</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+                                <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="soc-home-lab"><i class="fas fa-ellipsis-h"></i> More Details</button>
+                            </div>
+                            <div class="project-details-dropdown" id="soc-home-lab-details" style="display: none;">
+                                <div class="dropdown-content">
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview" target="_blank" rel="noopener noreferrer"><i class="fas fa-clipboard-list"></i> Pre-Lab Overview</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview/install-lab-elk-siem-n8n" target="_blank" rel="noopener noreferrer"><i class="fas fa-server"></i> Install LAB-ELK-SIEM-N8N</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview/install-lab-win-server" target="_blank" rel="noopener noreferrer"><i class="fab fa-windows"></i> Install LAB-WIN-SERVER</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview/install-lab-fluentbit" target="_blank" rel="noopener noreferrer"><i class="fas fa-stream"></i> Install LAB-FLUENTBIT</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview/building-a-siem" target="_blank" rel="noopener noreferrer"><i class="fas fa-chart-line"></i> Building a SIEM</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview/building-a-siem/winlogbeat-configuration" target="_blank" rel="noopener noreferrer"><i class="fas fa-cog"></i> Winlogbeat Configuration</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview/building-a-siem/fluent-bit-configuration" target="_blank" rel="noopener noreferrer"><i class="fas fa-sliders-h"></i> Fluent Bit Configuration</a>
+                                    <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/soar" target="_blank" rel="noopener noreferrer"><i class="fas fa-robot"></i> SOAR Integration With N8N</a>
+                                </div>
                             </div>
                         </div>
                     </article>
 
                     <!-- Infrastructure Project -->
-                    <article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure Simulation" data-tech="Active Directory,Windows Server,TCP/IP">
+                    <article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure Simulation" data-tech="Active Directory,Windows Server,TCP/IP,Virtualization">
                         <div class="project-card__media">
                             <img class="project-img" src="./assets/img/IT.png" alt="Enterprise Infrastructure Simulation" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'">
                             <div class="project-overlay">
@@ -327,15 +456,29 @@
                             <div class="project-tags">
                                 <span class="tag tag-infra">Active Directory</span>
                                 <span class="tag tag-infra">Windows Server</span>
+                                <span class="tag tag-infra">Networking</span>
                             </div>
                             <h3 class="project-card__title">Enterprise Infrastructure Simulation Labs</h3>
-                            <p class="project-card__desc">Comprehensive hands-on labs simulating real-world enterprise IT environment. Focus on Windows Server administration, Active Directory, and Group Policy.</p>
+                            <p class="project-card__desc">A structured collection of hands-on labs covering Windows Server administration, Active Directory deployment, networking (Cisco), and security hardening in enterprise environments.</p>
                             <div class="project-card__meta">
-                                <span class="pill"><i class="fab fa-windows"></i> Windows Server</span>
-                                <span class="pill"><i class="fas fa-users"></i> Active Directory</span>
+                                <span class="pill"><i class="fab fa-windows"></i> Windows Server 2019/2022</span>
+                                <span class="pill"><i class="fas fa-users"></i> Active Directory & GPO</span>
+                                <span class="pill"><i class="fas fa-network-wired"></i> Cisco Packet Tracer</span>
                             </div>
                             <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Lab Guide</a>
+                                <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
+                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="infra-lab"><i class="fas fa-ellipsis-h"></i> More Details</button>
+                            </div>
+                            <div class="project-details-dropdown" id="infra-lab-details" style="display: none;">
+                                <div class="dropdown-content">
+                                    <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/tree/main/0.Enterprise%20Infrastructure%20(Windows%20Server%20Full%20Lab)" target="_blank" rel="noopener noreferrer"><i class="fas fa-server"></i> Full Enterprise Lab</a>
+                                    <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/tree/main/1.AD%20Hardening%20%26%20Compliance%20Simulation%20(Windows%20Server)" target="_blank" rel="noopener noreferrer"><i class="fas fa-shield-alt"></i> AD Hardening</a>
+                                    <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/tree/main/2.Printer%20GPO%20Distribution%20(Windows%20Server)" target="_blank" rel="noopener noreferrer"><i class="fas fa-print"></i> Printer GPO</a>
+                                    <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/tree/main/3.AD%20User%20Delegation%20(Windows%20Server)" target="_blank" rel="noopener noreferrer"><i class="fas fa-user-cog"></i> AD Delegation</a>
+                                    <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/tree/main/Lab%201%20Network.Basic%20Network%20Connectivity%20IPconfig%20%26%20Ping" target="_blank" rel="noopener noreferrer"><i class="fas fa-plug"></i> Basic Connectivity</a>
+                                    <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/tree/main/Lab%203%20Network.Router%20Basic%20Configuration%20(Network)" target="_blank" rel="noopener noreferrer"><i class="fas fa-router"></i> Router Config</a>
+                                    <a href="https://github.com/abdelwahab-ahmed-shandy/Enterprise-Infrastructure-Simulation/tree/main/Lab%205%20Network.Static%20Routing%20Configuration" target="_blank" rel="noopener noreferrer"><i class="fas fa-route"></i> Static Routing</a>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -362,6 +505,7 @@
                             </div>
                             <div class="project-card__actions">
                                 <a href="https://github.com/abdelwahab-ahmed-shandy/Movie-Market" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
+                                <a href="https://www.linkedin.com/posts/abdelwahab-ahmed-shandy_aspnetcore-entityframework-webdevelopment-activity-7347088295245312001-cwM5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9GDgYBA065TqN0qcT1JFeSRWxxbogH5ZE" target="_blank" class="btn btn--sm btn--ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                             </div>
                         </div>
                     </article>
