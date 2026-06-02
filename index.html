@@ -196,6 +196,121 @@
 
                 <div class="grid grid--projects" id="projectsGrid">
                     
+                    <!-- PhishOps - Email Security Automation -->
+                    <article class="project-card" data-category="security" data-title="PhishOps - Email Security Automation" data-tech="n8n,SOAR,VirusTotal,AbuseIPDB,SIEM,Email Security">
+                        <div class="project-card__media">
+                            <img class="project-img" src="./assets/img/PhishOps.png" alt="PhishOps Email Security Automation" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=PhishOps'">
+                            <div class="project-overlay">
+                                <span class="project-date"><i class="far fa-calendar-alt"></i> May 2026</span>
+                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <div class="project-tags">
+                                <span class="tag tag-security">SOAR</span>
+                                <span class="tag tag-security">Email Security</span>
+                                <span class="tag tag-security">Threat Intelligence</span>
+                                <span class="tag tag-security">Automation</span>
+                            </div>
+                            <h3 class="project-card__title">PhishOps: AI-Powered Email Security Pipeline</h3>
+                            <p class="project-card__desc">End-to-end automated email threat analysis system on n8n. Extracts email artifacts, enriches IPs (AbuseIPDB) & URLs (VirusTotal), detects social engineering via heuristics, and delivers verdicts (Deliver/Investigate/Quarantine) with shift-aware SOC alerting integrated with Google Sheets.</p>
+                            <div class="project-card__meta">
+                                <span class="pill"><i class="fas fa-robot"></i> n8n SOAR</span>
+                                <span class="pill"><i class="fas fa-shield-virus"></i> VirusTotal API</span>
+                                <span class="pill"><i class="fas fa-map-marker-alt"></i> AbuseIPDB</span>
+                                <span class="pill"><i class="fas fa-brain"></i> Heuristic Analysis</span>
+                                <span class="pill"><i class="fas fa-envelope"></i> IMAP/Email Parsing</span>
+                                <span class="pill"><i class="fas fa-chart-line"></i> Shift-Aware Routing</span>
+                            </div>
+                            <div class="project-card__actions">
+                                <a href="https://www.linkedin.com/posts/abdelwahab-ahmed-shandy_cybersecurity-soc-detectionengineering-ugcPost-7464896010826407936-IxCD/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9GDgYBA065TqN0qcT1JFeSRWxxbogH5ZE" target="_blank" class="btn btn--sm btn--ghost"><i class="fas fa-external-link-alt"></i> Show More</a>
+                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="phishops"><i class="fas fa-ellipsis-h"></i> More Details</button>
+                            </div>
+                            <div class="project-details-dropdown" id="phishops-details" style="display: none;">
+                                
+                                <!-- Architecture Overview -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-project-diagram"></i> Pipeline Architecture</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-cloud-upload-alt"></i> Ingestion: IMAP / Webhook (EML/MSG)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-code"></i> Parsing: Custom JS Normalization Engine</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-filter"></i> Pre-filtering: Whitelisting (Preserve API Quota)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-chart-line"></i> Enrichment: DNS (HackerTarget) + IP (AbuseIPDB) + URL (VirusTotal)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-language"></i> NLP: Social Engineering Keyword Detection</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-calculator"></i> Scoring: Heuristic Risk Engine (0-100)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-code-branch"></i> Routing: Switch Node (DELIVER / INVESTIGATE / QUARANTINE)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Security Features -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-shield-alt"></i> Detection Capabilities</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> SPF/DKIM/DMARC Authentication Analysis</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Domain Alignment & Spoofing Detection</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Malicious URL Detection (VirusTotal 70+ Engines)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> IP Reputation Scoring (AbuseIPDB)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Social Engineering Linguistic Analysis (5 Categories)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Urgency & Time-Pressure Pattern Detection</span>
+                                    </div>
+                                </div>
+
+                                <!-- Scoring Logic -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-chart-bar"></i> Decision Engine (Heuristic Scoring)</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> Malicious URLs → +50 points</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> Bad IP Reputation (Score > 40) → +30 points</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> Social Engineering Detected → +20 points</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> SPF/DKIM Authentication Failure → +20 points</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-trophy" style="color: #f59e0b;"></i> Score ≥ 70 → QUARANTINE</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-trophy" style="color: #f59e0b;"></i> Score ≥ 30 → INVESTIGATE</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-trophy" style="color: #f59e0b;"></i> Score &lt; 30 → DELIVER</span>
+                                    </div>
+                                </div>
+
+                                <!-- Integration Features -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-plug"></i> Integrations & Notifications</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fab fa-google"></i> Google Sheets (Shift Schedule Sync)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-users"></i> Shift-Aware SOC Alerting (Automatic Analyst Routing)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-envelope"></i> User Notifications (Deliver / Quarantine Alerts)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-chart-line"></i> SOC Report (HTML with IoCs & Full Forensics)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-tachometer-alt"></i> Rate Limiting & API Quota Optimization</span>
+                                    </div>
+                                </div>
+
+                                <!-- Technologies -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-microchip"></i> Technologies Used</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-robot"></i> n8n (Workflow Automation / SOAR)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-chart-line"></i> HackerTarget (DNS Lookup API)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-shield-virus"></i> VirusTotal (URL Reputation API)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-map-marker-alt"></i> AbuseIPDB (IP Reputation API)</span>
+                                        <span class="dropdown-item-text"><i class="fab fa-google"></i> Google Sheets API (Shift Management)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-envelope"></i> IMAP / SMTP (Email Ingestion & Notifications)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-code"></i> JavaScript (Custom Parsing & Heuristics)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Key Outcomes -->
+                                <div class="dropdown-section">
+                                    <span class="dropdown-section-title"><i class="fas fa-chart-line"></i> Key Outcomes</span>
+                                    <div class="dropdown-content">
+                                        <span class="dropdown-item-text"><i class="fas fa-tachometer-alt"></i> Automated end-to-end email analysis pipeline</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-dollar-sign"></i> Optimized API usage with whitelisting & rate limiting</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-clock"></i> Shift-aware alert routing (24/7 SOC coverage)</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-file-alt"></i> Comprehensive HTML reports with MITRE mapping</span>
+                                        <span class="dropdown-item-text"><i class="fas fa-crown"></i> 100% No-Code/Low-Code SOAR implementation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+
                     <!-- Graduation Project -->
                     <article class="project-card" data-category="programming" data-title="Smart BI Reporting System" data-tech="n8n,LLM,Chart.js,BI">
                         <div class="project-card__media">
