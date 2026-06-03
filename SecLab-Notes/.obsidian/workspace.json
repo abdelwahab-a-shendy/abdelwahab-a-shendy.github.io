@@ -11,10 +11,14 @@
             "id": "c9e10318757db009",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "soc-and-ir/05-phishing-response-playbook.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "05-phishing-response-playbook"
             }
           }
         ]
@@ -179,8 +183,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "f40198bfb4533b5a",
+  "active": "c9e10318757db009",
   "lastOpenFiles": [
+    "soc-and-ir/04-paypal-phishing-investigation-letsdefend.md",
+    "soc-and-ir/01-persistence-analysis-remediation-python-popup-malware.md",
     "index.md",
     "windows-server-labs-and/06-login-protocols-ntlm-vs-kerberos.md",
     "windows-server-labs-and/08-join-domain.md",
@@ -205,8 +211,6 @@
     "general-ctf/Untitled.md",
     "penetration-testing-trainee/introduction.md",
     "penetration-testing-trainee/27-natas-level-3.md",
-    "penetration-testing-trainee/26-natas-level-2.md",
-    "penetration-testing-trainee/25-natas-level-1.md",
     "soc-and-incident-response/siem",
     "soc-and-incident-response/phishing-labs",
     "soc-and-incident-response/network-security",
