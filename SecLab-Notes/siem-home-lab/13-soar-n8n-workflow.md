@@ -1,7 +1,7 @@
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1759704843924/c7bc6940-ea27-4091-a688-39e47fe6e84e.png" alt="" align="center" fullwidth="true" />
 
-> ### **Objective**
+### **Objective**
 >
 > This workflow will automatically:
 >
