@@ -5,7 +5,7 @@ theme:
   name: material
   language: en
   palette:
-    # جعل الـ Dark mode (slate) هو الأساس مع تكييف الهوية البصرية لـ AAS
+    
     - scheme: slate
       primary: black
       accent: blue
@@ -17,6 +17,6 @@ theme:
 docs_dir: 'SecLab-Notes'
 site_dir: 'SecLab-Hub'
 
-# ربط ملف الـ CSS المخصص لتغيير الألوان لدرجات النيون والأزرق الليلي الخاصة بك
+
 extra_css:
   - extra.css
