@@ -1,0 +1,6989 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/digital-forensics-labs/12-registry-hives-extraction-ftk/">
+      
+      
+        <link rel="prev" href="../11-linux-os-forensics-analysis/">
+      
+      
+        <link rel="next" href="../13-registry-analysis-phase-guide/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>12 registry hives extraction ftk - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#general-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              12 registry hives extraction ftk
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-software-write-blocker-concept/" class="md-tabs__link">
+          
+  
+  
+  Digital forensics labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise offensive defensive security simulation lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux-ctf/01-kvm-virtualization/" class="md-tabs__link">
+          
+  
+  
+  Linux ctf
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-tabs__link">
+          
+  
+  
+  Penetration testing trainee
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-tabs__link">
+          
+  
+  
+  Siem home lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-tabs__link">
+          
+  
+  
+  Soc and incident response
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../windows-server-labs-and/01-windows-command-line-fundamentals/" class="md-tabs__link">
+          
+  
+  
+  Windows server labs and
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital forensics labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital forensics labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-software-write-blocker-concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 software write blocker concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-verifying-evidence-integrity-hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-analyzing-file-properties-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-file-analysis-stat-command-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 file analysis stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-image-analysis-exiftool-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 image analysis exiftool linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-disk-acquisition-linux-dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 disk acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-disk-acquisition-ftk-imager-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 disk acquisition ftk imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-autopsy-case-creation-and-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-data-source-analysis-autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-firefox-artifacts-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-linux-os-forensics-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 registry hives extraction ftk
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 registry hives extraction ftk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 General Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 What is the Registry?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 What is the Registry?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#historical-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Historical Note:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-types-of-registry-hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ Main Types of Registry Hives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-registry-hive-files-are-stored-in-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💾 Where Registry Hive Files Are Stored in the System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issue-with-manually-copying-registry-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Issue with Manually Copying Registry Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-registry-hives-using-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Extracting Registry Hives Using FTK Imager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Extracting Registry Hives Using FTK Imager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-live-acquisition-from-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 Method 1: Live Acquisition from the System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Method 1: Live Acquisition from the System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-extract-all-hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        To extract all Hives:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-2-extracting-hives-from-an-image-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 Method 2: Extracting Hives from an Image File
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Method 2: Extracting Hives from an Image File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hive-file-types-you-should-extract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧲 Hive File Types You Should Extract:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importance-of-transaction-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 Importance of Transaction Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtain-protected-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtain Protected Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-way-to-fully-extract-hives-via-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Best Way to Fully Extract Hives via FTK Imager
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-hives-from-an-image-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracting Hives from an Image File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytical-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Analytical Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 مقدمة عامة
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 ما هي الـ Registry؟
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 ما هي الـ Registry؟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 ملاحظة تاريخية:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry-hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ أنواع الـ Registry Hives الأساسية
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry-hives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💾 أماكن تخزين ملفات الـ Registry Hives في النظام
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ مشكلة نسخ ملفات الريجستري يدويًا
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry-hives-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ استخراج Registry Hives باستخدام FTK Imager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ استخراج Registry Hives باستخدام FTK Imager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 الطريقة الأولى: Live Acquisition من النظام
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 الطريقة الأولى: Live Acquisition من النظام">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        علشان نستخراج Hives كلها :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hives-image-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 الطريقة الثانية: استخراج Hives من Image File
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 الطريقة الثانية: استخراج Hives من Image File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧲 أنواع ملفات الـ Hives التي يجب استخراجها :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transaction-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 أهمية ملفات Transaction Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtain-protected-files_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtain Protected Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hives-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ أفضل طريقة لاستخراج Hives كاملة من FTK Imager
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hives-image-file_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        استخراج Hives من Image File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 ملاحظات تحليلية
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 الخلاصة
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-registry-analysis-phase-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-registry-analysis-tools-explorer-regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-ntfs1-evidence-acquisition-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 ntfs1 evidence acquisition analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-search-in-trash-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 search in trash cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-examining-pcaps-emails-malware-infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 examining pcaps emails malware infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-arp-storm-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 arp storm cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-psexec-hunt-pcapng/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 psexec hunt pcapng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-suspicious-file-download-fake-authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 suspicious file download fake authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-hawkeye-blue-team-challenge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 hawkeye blue team challenge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-stego-binwalk-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 stego binwalk ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-stego-canyousee-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 stego canyousee picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-stego-chalkboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 stego chalkboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-stego-cypher-anxiety-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 stego cypher anxiety cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-stego-disko-1-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 stego disko 1 picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-stego-exif-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 stego exif ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-stego-file-found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28 stego file found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-stego-forensics-101-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 stego forensics 101 ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-stego-gandp-list-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 stego gandp list cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-stego-git-is-good-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31 stego git is good ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-stego-glory-of-the-garden-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-stego-hidden-message-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33 stego hidden message cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34-stego-i-love-images-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 stego i love images cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35-stego-im-a-dump-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 stego im a dump ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36-stego-information-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37-stego-meta-blue-team-labs-online/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 stego meta blue team labs online
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38-stego-minions-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38 stego minions ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39-stego-pdf-by-fdpumyp-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 stego pdf by fdpumyp ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40-stego-pho-is-tasty-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 stego pho is tasty ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../41-stego-pikespeak-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    41 stego pikespeak ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../42-stego-red-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    42 stego red picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../43-stego-rubber-duck-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    43 stego rubber duck ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../44-stego-scan-surprise-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    44 stego scan surprise picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../45-stego-secret-of-the-polyglot-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../46-stego-simple-steganography-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    46 stego simple steganography ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../47-stego-snowboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    47 stego snowboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../48-stego-taking-ls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    48 stego taking ls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../49-stego-tux-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    49 stego tux ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../50-stego-verify-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    50 stego verify picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../51-stego-wow-so-meta-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    51 stego wow so meta ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ctf
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux ctf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/01-kvm-virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 kvm virtualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/02-intro-to-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 intro to linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/03-unix-vs-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 unix vs linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/04-intro-to-linux-labs-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📂 If you don't know anything about Linux, start here with this course :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/05-overthewire-bandit-level-0-tobandit-level-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 overthewire bandit level 0 tobandit level 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/06-bandit-level-10-to-level-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 bandit level 10 to level 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/07-bandit-level-20-to-level-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 bandit level 20 to level 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/08-leviathan-linux-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 leviathan linux intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/09-leviathan-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 leviathan level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/10-leviathan-level-0-to-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 leviathan level 0 to level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penetration testing trainee
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Penetration testing trainee
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 beginnings of the internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/02-http-protocol-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 http protocol deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/03-dns-explanation-and-recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 dns explanation and recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/04-linux-commands-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/05-passive-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 passive reconnaissance thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/06-active-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/07-cybersecurity-beginner-career-labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 cybersecurity beginner career labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/08-iti-penetration-tester-track-2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/09-kioptrix-level-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 kioptrix level 1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/10-metasploitable1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 metasploitable1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/11-metasploitable2-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 metasploitable2 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/12-web-unprotected-admin-functionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 web unprotected admin functionality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/13-web-unprotected-admin-functionality-unpredictable-url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 web unprotected admin functionality unpredictable url
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/14-web-user-id-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 web user id controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/15-web-user-id-controlled-by-request-parameter-with-dynamic-id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 web user id controlled by request parameter with dynamic id
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/16-web-user-role-modification-in-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 web user role modification in profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/17-web-user-role-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 web user role controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/18-web-idor-corridor-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 web idor corridor thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/19-web-info-disclosure-error-messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 web info disclosure error messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/20-web-info-disclosure-debug-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 web info disclosure debug page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/21-web-source-code-disclosure-backup-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 web source code disclosure backup files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/22-web-auth-bypass-via-info-disclosure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 web auth bypass via info disclosure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/23-web-info-disclosure-version-control-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 web info disclosure version control git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/24-natas-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 natas level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/25-natas-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 natas level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/26-natas-level-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 natas level 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/27-natas-level-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 natas level 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Siem home lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Siem home lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 pre lab overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/02-install-lab-elk-siem-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 install lab elk siem n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/03-install-lab-win-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 install lab win server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/04-install-lab-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 install lab fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/05-building-a-siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 building a siem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/06-winlogbeat-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 winlogbeat configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/07-fluent-bit-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 fluent bit configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/08-detection-egnineering-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/09-pre-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/10-detection-of-powershell-based-windows-firewall-tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/11-registry-persistence-detection-with-sysmon-and-kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/12-privilege-escalation-and-information-gathering-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 privilege escalation and information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/13-soar-n8n-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 soar n8n workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Soc and incident response
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Soc and incident response
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 persistence analysis remediation python popup malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/02-ubuntu-web-server-waf-nginx-modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ubuntu web server waf nginx modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/03-detect-nmap-scan-using-snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 detect nmap scan using snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/04-paypal-phishing-investigation-letsdefend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 paypal phishing investigation letsdefend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/05-phishing-response-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 phishing response playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/06-boss-of-the-soc-botsv1-scenario1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 boss of the soc botsv1 scenario1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/07-qradar101-blue-team-cyberdefenders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 qradar101 blue team cyberdefenders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/08-building-siem-filebeat-winlogbeat-kibana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 building siem filebeat winlogbeat kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/09-collecting-visualizing-ssh-logs-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 collecting visualizing ssh logs fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows server labs and
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows server labs and
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/01-windows-command-line-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOP Command Line in Windows :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/02-windows-fundamentals-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 windows fundamentals 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/03-windows-fundamentals-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 windows fundamentals 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/04-windows-fundamentals-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 windows fundamentals 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/05-active-directory-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 active directory basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/06-login-protocols-ntlm-vs-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 login protocols ntlm vs kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/07-kerberos-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 kerberos deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/08-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/09-how-to-join-domain-in-background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 how to join domain in background
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/10-post-domain-join-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 post domain join steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 General Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 What is the Registry?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 What is the Registry?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#historical-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Historical Note:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-types-of-registry-hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ Main Types of Registry Hives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-registry-hive-files-are-stored-in-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💾 Where Registry Hive Files Are Stored in the System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issue-with-manually-copying-registry-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ Issue with Manually Copying Registry Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-registry-hives-using-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ Extracting Registry Hives Using FTK Imager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Extracting Registry Hives Using FTK Imager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-1-live-acquisition-from-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 Method 1: Live Acquisition from the System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Method 1: Live Acquisition from the System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-extract-all-hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        To extract all Hives:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-2-extracting-hives-from-an-image-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 Method 2: Extracting Hives from an Image File
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Method 2: Extracting Hives from an Image File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hive-file-types-you-should-extract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧲 Hive File Types You Should Extract:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importance-of-transaction-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 Importance of Transaction Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtain-protected-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtain Protected Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-way-to-fully-extract-hives-via-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Best Way to Fully Extract Hives via FTK Imager
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extracting-hives-from-an-image-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracting Hives from an Image File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analytical-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Analytical Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧭 مقدمة عامة
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 ما هي الـ Registry؟
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧩 ما هي الـ Registry؟">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 ملاحظة تاريخية:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry-hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏛️ أنواع الـ Registry Hives الأساسية
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry-hives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💾 أماكن تخزين ملفات الـ Registry Hives في النظام
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ مشكلة نسخ ملفات الريجستري يدويًا
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registry-hives-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🛠️ استخراج Registry Hives باستخدام FTK Imager
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ استخراج Registry Hives باستخدام FTK Imager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#live-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 الطريقة الأولى: Live Acquisition من النظام
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 الطريقة الأولى: Live Acquisition من النظام">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        علشان نستخراج Hives كلها :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hives-image-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 الطريقة الثانية: استخراج Hives من Image File
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 الطريقة الثانية: استخراج Hives من Image File">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hives_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧲 أنواع ملفات الـ Hives التي يجب استخراجها :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transaction-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 أهمية ملفات Transaction Logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#obtain-protected-files_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtain Protected Files
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hives-ftk-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ أفضل طريقة لاستخراج Hives كاملة من FTK Imager
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hives-image-file_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        استخراج Hives من Image File
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 ملاحظات تحليلية
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧾 الخلاصة
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>12 registry hives extraction ftk</h1>
+
+<h2 id="general-introduction">🧭 General Introduction</h2>
+<p>After learning about the concepts of <strong>Preservation</strong> and <strong>Acquisition</strong>, it's now time to start working hands-on with one of the most important components of <strong>Windows</strong> operating systems: the <strong>Registry</strong>.</p>
+<blockquote>
+<p>The <strong>Registry</strong> is a database that stores system, user, and application settings.</p>
+</blockquote>
+<hr />
+<h2 id="what-is-the-registry">🧩 What is the Registry?</h2>
+<p>The <strong>Registry</strong> is a central database that contains critical information related to:</p>
+<ul>
+<li>
+<p>System Configuration</p>
+</li>
+<li>
+<p>Users</p>
+</li>
+<li>
+<p>Applications</p>
+</li>
+<li>
+<p>Hardware</p>
+</li>
+</ul>
+<blockquote>
+<p>This data is stored inside files known as <strong>Hives</strong>.</p>
+</blockquote>
+<hr />
+<h3 id="historical-note">📌 Historical Note:</h3>
+<blockquote>
+<p>Before the release of Windows 95, system settings were stored in <code>.ini</code> files.\
+From Windows 95 onwards, Microsoft adopted the <strong>Registry</strong> to store system data in a more organized and secure way.</p>
+</blockquote>
+<hr />
+<h2 id="main-types-of-registry-hives">🏛️ Main Types of Registry Hives</h2>
+<p>When you open the <strong>Registry Editor</strong> by typing <code>regedit</code> in the Start menu, you'll see five main Hives:</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446770380/3b028562-b081-44f4-8495-453edee0c90c.png" alt="" align="center" fullwidth="true" /></p>
+<table>
+<thead>
+<tr>
+<th>Hive</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HKEY_CLASSES_ROOT</strong></td>
+<td>Information about file extensions and their program associations.</td>
+</tr>
+<tr>
+<td><strong>HKEY_CURRENT_USER</strong></td>
+<td>Settings for the current user only (e.g., desktop, themes…).</td>
+</tr>
+<tr>
+<td><strong>HKEY_LOCAL_MACHINE</strong></td>
+<td>System settings, installed software, and hardware configurations.</td>
+</tr>
+<tr>
+<td><strong>HKEY_USERS</strong></td>
+<td>Info about all users who have previously logged in.</td>
+</tr>
+<tr>
+<td><strong>HKEY_CURRENT_CONFIG</strong></td>
+<td>Information about currently used hardware.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The most commonly used Hives are: <code>HKEY_CURRENT_USER</code>, <code>HKEY_LOCAL_MACHINE</code>, and <code>HKEY_USERS</code></p>
+</blockquote>
+<p>📌 <strong>HKEY_CURRENT_USER</strong> is linked to the file <code>NTUSER.DAT</code></p>
+<hr />
+<h2 id="where-registry-hive-files-are-stored-in-the-system">💾 Where Registry Hive Files Are Stored in the System</h2>
+<p>The Hives are actual files stored in fixed locations on the system, such as:</p>
+<ul>
+<li><code>C:\Users\[Username]\NTUSER.DAT</code>\
+  ↳ represents <strong>HKEY_CURRENT_USER</strong></li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446782374/510009b3-8da4-486d-9f67-7c33e87c6842.png" alt="" align="center" fullwidth="true" /></p>
+<ul>
+<li>Files like: <code>SAM</code>, <code>SECURITY</code>, <code>SOFTWARE</code>, <code>SYSTEM</code>\
+  ↳ located in:</li>
+</ul>
+<pre><code class="language-bash">C:\Windows\System32\Config\
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446807880/2c3ee7d0-aeba-432d-bf92-43e51fb4ca20.png" alt="" align="center" fullwidth="true" /></p>
+<blockquote>
+<p>Each file represents a different Hive and must be collected along with its associated <code>.LOG1</code> and <code>.LOG2</code> files.</p>
+</blockquote>
+<hr />
+<h2 id="issue-with-manually-copying-registry-files">⚠️ Issue with Manually Copying Registry Files</h2>
+<p>When trying to manually copy registry files while the system is running (like <code>NTUSER.DAT</code>), several issues occur:</p>
+<ul>
+<li>
+<p>Files are <strong>protected</strong> by the system.</p>
+</li>
+<li>
+<p>They are constantly updated using <strong>Transaction Logs</strong> (temporary files that later merge into the original).</p>
+</li>
+</ul>
+<p>📌 So: direct copy = ❌ <strong>Dirty Hive</strong> = Incomplete file</p>
+<hr />
+<h2 id="extracting-registry-hives-using-ftk-imager">🛠️ Extracting Registry Hives Using FTK Imager</h2>
+<h3 id="method-1-live-acquisition-from-the-system">🔸 Method 1: Live Acquisition from the System</h3>
+<ol>
+<li>
+<p>Open <strong>FTK Imager</strong></p>
+</li>
+<li>
+<p>Choose <code>Add Evidence Item</code> or <code>Add All Attached Devices</code></p>
+</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446820122/ce96d14f-f48a-49d3-a31a-b1274c9b2ee8.png" alt="" align="center" fullwidth="true" /></p>
+<ol>
+<li>
+<p>Select <code>Physical Drive</code> → Choose the OS drive</p>
+</li>
+<li>
+<p>FTK shows all files, even protected ones</p>
+</li>
+<li>
+<p>Navigate to:</p>
+</li>
+<li>
+<p><code>C:\Users\[User]</code> to extract <code>NTUSER.DAT</code> and <code>LOG1/LOG2</code> files</p>
+</li>
+<li>
+<p><code>C:\Windows\System32\Config</code> to extract the remaining Hives</p>
+</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446828078/a5112466-3828-459b-ab95-d7fa407b233e.png" alt="" align="center" fullwidth="true" /></p>
+<blockquote>
+<p>📌 Orphan files: have no reference in the file system\
+📌Unallocated space: free disk space that might contain remnants of deleted files</p>
+</blockquote>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446861792/fc116afc-ada4-4dc2-9647-1ab15ff92fc3.png" alt="" align="center" fullwidth="true" /></p>
+<blockquote>
+<p>If you copy <code>NTUSER.DAT</code> without the LOG files, you'll get a <strong>Dirty Hive</strong>.</p>
+</blockquote>
+<h4 id="to-extract-all-hives">To extract all Hives:</h4>
+<ul>
+<li>
+<p>You can extract them one by one from the path: <code>\Windows\System32\Config\</code></p>
+</li>
+<li>
+<p>Or use the <strong>Obtain Protected Files</strong> feature</p>
+</li>
+</ul>
+<hr />
+<h3 id="method-2-extracting-hives-from-an-image-file">🔸 Method 2: Extracting Hives from an Image File</h3>
+<p>If you have a forensic image (like <code>.E01</code>, <code>.dd</code>):</p>
+<ol>
+<li>
+<p>Open <strong>FTK Imager</strong></p>
+</li>
+<li>
+<p>Choose <code>Add Evidence Item</code></p>
+</li>
+<li>
+<p>Select <code>Image File</code></p>
+</li>
+<li>
+<p>Load the disk image</p>
+</li>
+<li>
+<p>Browse the same paths and extract the required files:</p>
+</li>
+<li>
+<p><code>C:\Users\[Username]</code> → <code>NTUSER.DAT</code></p>
+</li>
+<li>
+<p><code>C:\Windows\System32\Config\</code> → <code>SAM</code>, <code>SYSTEM</code>, <code>SOFTWARE</code>, <code>SECURITY</code>, <code>DEFAULT</code></p>
+</li>
+</ol>
+<h5 id="hive-file-types-you-should-extract">🧲 Hive File Types You Should Extract:</h5>
+<table>
+<thead>
+<tr>
+<th>File Name</th>
+<th>Represents Which Hive?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NTUSER.DAT</code></td>
+<td>HKEY_CURRENT_USER</td>
+</tr>
+<tr>
+<td><code>SAM</code></td>
+<td>User account information</td>
+</tr>
+<tr>
+<td><code>SYSTEM</code></td>
+<td>System configuration</td>
+</tr>
+<tr>
+<td><code>SOFTWARE</code></td>
+<td>Installed software</td>
+</tr>
+<tr>
+<td><code>SECURITY</code></td>
+<td>Security settings</td>
+</tr>
+<tr>
+<td><code>DEFAULT</code></td>
+<td>Default User settings</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="importance-of-transaction-logs">🧾 Importance of Transaction Logs</h2>
+<ul>
+<li>
+<p>While the system is running, changes aren't written directly to the Hive files.</p>
+</li>
+<li>
+<p>They are temporarily stored in <code>.LOG1</code> and <code>.LOG2</code> files to protect the main files from corruption.</p>
+</li>
+<li>
+<p>They are later automatically merged.</p>
+</li>
+</ul>
+<blockquote>
+<p>Therefore, ignoring these files = Incomplete files = ❌ Dirty Hive</p>
+</blockquote>
+<hr />
+<h2 id="obtain-protected-files"><em>Obtain Protected Files</em></h2>
+<h2 id="best-way-to-fully-extract-hives-via-ftk-imager">✅ Best Way to Fully Extract Hives via FTK Imager</h2>
+<p>Instead of manually extracting files:</p>
+<ul>
+<li>
+<p>Use the ✅ <strong>Obtain Protected Files</strong> option</p>
+</li>
+<li>
+<p>Extracts all protected files at once</p>
+</li>
+<li>
+<p>Automatically includes Transaction Log files</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446889116/51790f68-dd60-4f1e-9eb1-c67aec0a2f52.png" alt="" align="center" fullwidth="true" /></p>
+</li>
+<li>
+<p><strong>You’ll need to specify where to save the extraction:</strong></p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446901963/19d12f0b-28f2-418b-93f4-f300a62f37f0.png" alt="" align="center" fullwidth="true" /></p>
+<ol>
+<li>Since we want everything that happened on Windows:</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446916580/f1943424-824b-402a-940a-fd843964efd8.png" alt="" align="center" fullwidth="true" /></p>
+<ol>
+<li>You’ll find it extracted: <code>SOFTWARE</code>, <code>SYSTEM</code>, <code>SAM</code>, <code>DEFAULT</code>, <code>SECURITY</code></li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446931937/282d5e49-9e20-408c-a400-db21703d9663.png" alt="" align="center" fullwidth="true" /></p>
+<blockquote>
+<p>All of them are located under Local Machine</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446954162/c6467bb2-3f63-4204-806f-591626b15968.png" alt="" align="center" fullwidth="true" /></p>
+<p>Since we selected "everything", it also gathers all users, including <code>NTUSER</code> and <code>UsrClass</code></p>
+</blockquote>
+<hr />
+<h2 id="extracting-hives-from-an-image-file">Extracting Hives from an <strong>Image File</strong></h2>
+<p>If you have a <code>.E01</code> or <code>.dd</code> image:</p>
+<p><code>Add Evidence Item</code> → <code>Image File</code></p>
+<ul>
+<li>Add it to FTK Imager as an Image File</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446972519/5721a315-adb7-449e-ad35-ddcdb40714d3.png" alt="" align="center" fullwidth="true" /></p>
+<ul>
+<li>
+<p>Browse it like a real drive</p>
+</li>
+<li>
+<p>Extract Registry files the same way</p>
+</li>
+</ul>
+<p><Image src="data:image/png;base64,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" alt="" align="center" fullwidth="true" /></p>
+<p>Browse the same paths:</p>
+<ul>
+<li>
+<p><code>C:\Users\[User]</code> → <code>NTUSER.DAT</code></p>
+</li>
+<li>
+<p><code>C:\Windows\System32\Config\</code> → remaining Hives</p>
+</li>
+</ul>
+<blockquote>
+<p>⛏️ Very useful for analyzing a system without booting it.</p>
+</blockquote>
+<hr />
+<h2 id="analytical-notes">🧠 Analytical Notes</h2>
+<ul>
+<li>
+<p>Registry files = a mini-database for every part of the system or user.</p>
+</li>
+<li>
+<p><strong>Transaction Logs</strong> = intermediary files to protect data.</p>
+</li>
+<li>
+<p>FTK Imager can display protected files not visible in Windows.</p>
+</li>
+<li>
+<p>After extraction, we use tools like:</p>
+</li>
+<li>
+<p><code>Registry Explorer</code></p>
+</li>
+<li>
+<p><code>RECmd</code></p>
+</li>
+<li>
+<p><code>Regripper</code></p>
+</li>
+</ul>
+<hr />
+<h2 id="summary">🧾 Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registry Definition</td>
+<td>A database storing system and user settings</td>
+</tr>
+<tr>
+<td>Main Hives</td>
+<td>CLASSES_ROOT, CURRENT_USER, LOCAL_MACHINE, USERS, CURRENT_CONFIG</td>
+</tr>
+<tr>
+<td>Storage Locations</td>
+<td><code>C:\Users\[User]\NTUSER.DAT</code> and <code>C:\Windows\System32\Config</code></td>
+</tr>
+<tr>
+<td>Extraction Method</td>
+<td>Using FTK Imager – from live system or forensic image</td>
+</tr>
+<tr>
+<td>Important Notes</td>
+<td>Cannot manually copy Hives while system is running – specialized tools are needed for completeness</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<hr />
+<h2 id="_1">🧭 مقدمة عامة</h2>
+<p>بعد ما تعلمنا عن مفهومي <strong>Preservation</strong> (الحفاظ على الدليل الرقمي) و<strong>Acquisition</strong> (جمع الأدلة)، دلوقتي الوقت إننا نبدأ نشتغل عمليًا على واحد من أهم مكونات أنظمة تشغيل <strong>Windows</strong>، وهو <strong>الريجستري (Registry)</strong>.</p>
+<blockquote>
+<p><strong>الريجستري</strong> هو قاعدة بيانات تُخزن فيها إعدادات النظام والمستخدمين والبرامج.</p>
+</blockquote>
+<hr />
+<h2 id="registry">🧩 ما هي الـ Registry؟</h2>
+<p>الـ <strong>Registry</strong> هو قاعدة بيانات مركزية تحتوي على معلومات حيوية تخص:</p>
+<ul>
+<li>
+<p>إعدادات النظام (System Configuration)</p>
+</li>
+<li>
+<p>المستخدمين (Users)</p>
+</li>
+<li>
+<p>إعدادات التطبيقات (Applications)</p>
+</li>
+<li>
+<p>إعدادات العتاد (Hardware)</p>
+</li>
+</ul>
+<blockquote>
+<p>وتُخزن هذه البيانات داخل ملفات تُعرف باسم <strong>Hives</strong>.</p>
+</blockquote>
+<hr />
+<h3 id="_2">📌 ملاحظة تاريخية:</h3>
+<blockquote>
+<p>قبل إصدار Windows 95، كانت إعدادات النظام تحفظ داخل ملفات <code>.ini</code>.\
+من Windows 95 فصاعدًا، اعتمدت مايكروسوفت <strong>الريجستري</strong> لتخزين بيانات النظام بشكل منظم وأكثر أمانًا.</p>
+</blockquote>
+<hr />
+<h2 id="registry-hives">🏛️ أنواع الـ Registry Hives الأساسية</h2>
+<p>عند فتح أداة <strong>Registry Editor</strong> بكتابة <code>regedit</code> من قائمة Start، ستجد 5 Hives رئيسية:</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446770380/3b028562-b081-44f4-8495-453edee0c90c.png" align="center" fullwidth="false" /></p>
+<table>
+<thead>
+<tr>
+<th>Hive</th>
+<th>الوصف</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HKEY_CLASSES_ROOT</strong></td>
+<td>معلومات عن امتدادات الملفات وارتباطها بالبرامج.</td>
+</tr>
+<tr>
+<td><strong>HKEY_CURRENT_USER</strong></td>
+<td>إعدادات المستخدم الحالي فقط (مثل: سطح المكتب، الثيمات...).</td>
+</tr>
+<tr>
+<td><strong>HKEY_LOCAL_MACHINE</strong></td>
+<td>إعدادات النظام، البرمجيات المثبتة، وأجهزة الهاردوير.</td>
+</tr>
+<tr>
+<td><strong>HKEY_USERS</strong></td>
+<td>معلومات جميع المستخدمين الذين سجلوا دخول مسبقًا.</td>
+</tr>
+<tr>
+<td><strong>HKEY_CURRENT_CONFIG</strong></td>
+<td>معلومات مرتبطة بالهاردوير المستخدم حاليًا.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>أكثر Hives نهتم بها عادة: <code>HKEY_CURRENT_USER</code> و <code>HKEY_LOCAL_MACHINE</code> و <code>HKEY_USERS</code></p>
+</blockquote>
+<p>📌 <strong>HKEY_CURRENT_USER</strong> مرتبط بالملف <code>NTUSER.DAT</code></p>
+<hr />
+<h2 id="registry-hives_1">💾 أماكن تخزين ملفات الـ Registry Hives في النظام</h2>
+<p>الـ Hives هي ملفات حقيقية تُخزن في أماكن ثابتة داخل النظام، مثل:</p>
+<ul>
+<li><code>C:\Users\[Username]\NTUSER.DAT</code>\
+  ↳ يمثل <strong>HKEY_CURRENT_USER</strong></li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446782374/510009b3-8da4-486d-9f67-7c33e87c6842.png" align="center" fullwidth="false" /></p>
+<ul>
+<li>ملفات مثل: <code>SAM</code>, <code>SECURITY</code>, <code>SOFTWARE</code>, <code>SYSTEM</code>\
+  ↳ توجد في:</li>
+</ul>
+<pre><code class="language-bash">C:\Windows\System32\Config\
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446807880/2c3ee7d0-aeba-432d-bf92-43e51fb4ca20.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>كل ملف يمثل Hive مختلف ويجب جمعه مع ملفات <code>.LOG1</code> و <code>.LOG2</code> المرتبطة به.</p>
+</blockquote>
+<hr />
+<h2 id="_3">⚠️ مشكلة نسخ ملفات الريجستري يدويًا</h2>
+<p>عند محاولة نسخ ملفات الريجستري يدويًا أثناء تشغيل النظام (مثل <code>NTUSER.DAT</code>)، تحدث مشكلات:</p>
+<ul>
+<li>
+<p>الملفات تكون <strong>محجوزة (Protected)</strong> من قبل النظام.</p>
+</li>
+<li>
+<p>يتم تحديثها باستمرار باستخدام <strong>Transaction Logs</strong> (ملفات مؤقتة تُدمج لاحقًا بالملف الأصلي).</p>
+</li>
+</ul>
+<p>📌 إذًا: النسخ المباشر = ❌ <strong>Dirty Hive</strong> = ملف غير مكتمل</p>
+<hr />
+<h2 id="registry-hives-ftk-imager">🛠️ استخراج Registry Hives باستخدام FTK Imager</h2>
+<h3 id="live-acquisition">🔸 الطريقة الأولى: Live Acquisition من النظام</h3>
+<ol>
+<li>
+<p>فتح <strong>FTK Imager</strong></p>
+</li>
+<li>
+<p>اختيار <code>Add Evidence Item</code> 0R <code>Add All Attached Devices</code></p>
+</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446820122/ce96d14f-f48a-49d3-a31a-b1274c9b2ee8.png" align="center" fullwidth="false" /></p>
+<ol>
+<li>
+<p>اختيار <code>Physical Drive</code> ← اختر قرص نظام التشغيل</p>
+</li>
+<li>
+<p>FTK يعرض كل الملفات، حتى المحمية منها</p>
+</li>
+<li>
+<p>التوجه إلى:</p>
+</li>
+<li>
+<p><code>C:\Users\[User]</code> لاستخراج <code>NTUSER.DAT</code> وملفات <code>LOG1/LOG2</code></p>
+</li>
+<li>
+<p><code>C:\Windows\System32\Config</code> لاستخراج باقي Hives</p>
+</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446828078/a5112466-3828-459b-ab95-d7fa407b233e.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>📌 ملفات Orphan : ليس لها مرجعية في نظام الملفات\
+📌ملفات Unallocated space : المساحات الفارغة في القرص والتي قد تحتوي على بقايا ملفات محذوفة</p>
+</blockquote>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446861792/fc116afc-ada4-4dc2-9647-1ab15ff92fc3.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>إذا نسخت <code>NTUSER.DAT</code> بدون ملفات الـ LOG، ستحصل على <strong>Dirty Hive</strong>.</p>
+</blockquote>
+<h4 id="hives">علشان نستخراج Hives كلها :</h4>
+<ul>
+<li>
+<p>تقدر تعمل استخراج ل ملف ملف و هتلاقيهم تحت المسار =&gt; <code>\Windows\System32\Config\</code></p>
+</li>
+<li>
+<p>او تقدر تستخدم <strong>Obtain Protected Files</strong></p>
+</li>
+</ul>
+<hr />
+<h3 id="hives-image-file">🔸 الطريقة الثانية: استخراج Hives من Image File</h3>
+<p>لو عندك صورة جنائية (مثل <code>.E01</code>, <code>.dd</code>):</p>
+<ol>
+<li>
+<p>فتح <strong>FTK Imager</strong></p>
+</li>
+<li>
+<p>اختيار <code>Add Evidence Item</code></p>
+</li>
+<li>
+<p>اختيار <code>Image File</code></p>
+</li>
+<li>
+<p>فتح صورة القرص</p>
+</li>
+<li>
+<p>تصفح نفس المسارات واستخراج الملفات المطلوبة:</p>
+</li>
+<li>
+<p><code>C:\Users\[اسم المستخدم]</code> → <code>NTUSER.DAT</code></p>
+</li>
+<li>
+<p><code>C:\Windows\System32\Config\</code> → <code>SAM</code>, <code>SYSTEM</code>, <code>SOFTWARE</code>, <code>SECURITY</code>, <code>DEFAULT</code></p>
+</li>
+</ol>
+<h5 id="hives_1">🧲 أنواع ملفات الـ Hives التي يجب استخراجها :</h5>
+<table>
+<thead>
+<tr>
+<th>File Name</th>
+<th>يمثل أي Hive؟</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NTUSER.DAT</code></td>
+<td>HKEY_CURRENT_USER</td>
+</tr>
+<tr>
+<td><code>SAM</code></td>
+<td>معلومات حسابات المستخدمين</td>
+</tr>
+<tr>
+<td><code>SYSTEM</code></td>
+<td>إعدادات النظام</td>
+</tr>
+<tr>
+<td><code>SOFTWARE</code></td>
+<td>البرمجيات المثبتة</td>
+</tr>
+<tr>
+<td><code>SECURITY</code></td>
+<td>إعدادات الأمان</td>
+</tr>
+<tr>
+<td><code>DEFAULT</code></td>
+<td>إعدادات Default User</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="transaction-logs">🧾 أهمية ملفات Transaction Logs</h2>
+<ul>
+<li>
+<p>أثناء تشغيل النظام، التعديلات لا تُكتب مباشرة إلى ملفات Hives.</p>
+</li>
+<li>
+<p>تُخزن مؤقتًا في ملفات <code>.LOG1</code> و <code>.LOG2</code> لحماية الملفات الأساسية من الفساد.</p>
+</li>
+<li>
+<p>يتم دمجها لاحقًا تلقائيًا.</p>
+</li>
+</ul>
+<blockquote>
+<p>بالتالي، تجاهل هذه الملفات = ملفات غير مكتملة = ❌ Dirty Hive</p>
+</blockquote>
+<hr />
+<h2 id="obtain-protected-files_1"><em>Obtain Protected Files</em></h2>
+<h2 id="hives-ftk-imager">✅ أفضل طريقة لاستخراج Hives كاملة من FTK Imager</h2>
+<p>بدلًا من استخراج الملفات يدويًا:</p>
+<ul>
+<li>
+<p>استخدم خيار ✅ <strong>Obtain Protected Files</strong></p>
+</li>
+<li>
+<p>يستخرج جميع الملفات المحمية دفعة واحدة</p>
+</li>
+<li>
+<p>ويضيف معها ملفات الـ Transaction Logs تلقائيًا</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446889116/51790f68-dd60-4f1e-9eb1-c67aec0a2f52.png" align="center" fullwidth="false" /></p>
+</li>
+<li>
+<p><strong>هتحتاج تقولو ال Extration هتوديه فين :</strong></p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446901963/19d12f0b-28f2-418b-93f4-f300a62f37f0.png" align="center" fullwidth="false" /></p>
+<ol>
+<li>بما اننا عايزين علي كل حاجه كانت بتحصل علي ال Windows :</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446916580/f1943424-824b-402a-940a-fd843964efd8.png" align="center" fullwidth="false" /></p>
+<ol>
+<li>هتلاقيه عمل Extration لكلا من =&gt; , <code>SOFTWARE</code> , <code>SYSTEM</code> , <code>SAM</code> . <code>DEFAULT</code> , <code>SECURITY</code> !</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446931937/282d5e49-9e20-408c-a400-db21703d9663.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>كلهم الموجودين تحت ال local Machine</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446954162/c6467bb2-3f63-4204-806f-591626b15968.png" align="center" fullwidth="false" /></p>
+<p>بما اني قولتله كل حاجه يبقا هو بيجمع كل ال users و جواهم حاجه اسمها =&gt; <code>NTUSER</code> , <code>UsrClass</code> .</p>
+</blockquote>
+<hr />
+<h2 id="hives-image-file_1">استخراج Hives من <strong>Image File</strong></h2>
+<p>لو عندك نسخة <code>.E01</code> أو <code>.dd</code> من جهاز: <code>Add Evidence Item</code> =&gt; `Image File</p>
+<ul>
+<li>أضفها إلى FTK Imager كـ Image File</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446972519/5721a315-adb7-449e-ad35-ddcdb40714d3.png" align="center" fullwidth="false" /></p>
+<ul>
+<li>
+<p>تصفحها كأنك داخل قرص حقيقي</p>
+</li>
+<li>
+<p>استخرج ملفات الريجستري بنفس الطريقة</p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446979876/548b4976-7412-4e69-8874-bf4e03c2fad3.png" align="center" fullwidth="false" /></p>
+<p>تصفح نفس المسارات:</p>
+<ul>
+<li>
+<p><code>C:\Users\[User]</code> → <code>NTUSER.DAT</code></p>
+</li>
+<li>
+<p><code>C:\Windows\System32\Config\</code> → باقي الـ Hives</p>
+</li>
+</ul>
+<blockquote>
+<p>⛏️ مفيد جدًا لتحليل نظام بدون الحاجة لتشغيله.</p>
+</blockquote>
+<hr />
+<h2 id="_4">🧠 ملاحظات تحليلية</h2>
+<ul>
+<li>
+<p>ملفات الريجستري = قاعدة بيانات مصغّرة لكل جزء من النظام أو المستخدم.</p>
+</li>
+<li>
+<p><strong>Transaction Logs</strong> = ملفات وسيطة لحماية البيانات.</p>
+</li>
+<li>
+<p>FTK Imager قادر على عرض ملفات محمية لا تراها في Windows.</p>
+</li>
+<li>
+<p>بعد الاستخراج، نستخدم أدوات مثل:</p>
+</li>
+<li>
+<p><code>Registry Explorer</code></p>
+</li>
+<li>
+<p><code>RECmd</code></p>
+</li>
+<li>
+<p><code>Regripper</code></p>
+</li>
+</ul>
+<hr />
+<h2 id="_5">🧾 الخلاصة</h2>
+<table>
+<thead>
+<tr>
+<th>القسم</th>
+<th>المحتوى</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>تعريف الريجستري</td>
+<td>قاعدة بيانات لتخزين إعدادات النظام والمستخدمين</td>
+</tr>
+<tr>
+<td>Hives الأساسية</td>
+<td>CLASSES_ROOT, CURRENT_USER, LOCAL_MACHINE, USERS, CURRENT_CONFIG</td>
+</tr>
+<tr>
+<td>أماكن التخزين</td>
+<td><code>C:\Users\[User]\NTUSER.DAT</code> و <code>C:\Windows\System32\Config</code></td>
+</tr>
+<tr>
+<td>طريقة الاستخراج</td>
+<td>باستخدام FTK Imager – من نظام مباشر أو صورة جنائية</td>
+</tr>
+<tr>
+<td>ملاحظات مهمة</td>
+<td>لا يمكن نسخ Hives يدويًا أثناء عمل النظام – تحتاج أدوات متخصصة لضمان اكتمالها</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

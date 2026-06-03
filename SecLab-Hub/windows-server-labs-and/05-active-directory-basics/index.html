@@ -1,0 +1,8072 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/windows-server-labs-and/05-active-directory-basics/">
+      
+      
+        <link rel="prev" href="../04-windows-fundamentals-3/">
+      
+      
+        <link rel="next" href="../06-login-protocols-ntlm-vs-kerberos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>05 active directory basics - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              05 active directory basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../digital-forensics-labs/01-software-write-blocker-concept/" class="md-tabs__link">
+          
+  
+  
+  Digital forensics labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise offensive defensive security simulation lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux-ctf/01-kvm-virtualization/" class="md-tabs__link">
+          
+  
+  
+  Linux ctf
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-tabs__link">
+          
+  
+  
+  Penetration testing trainee
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-tabs__link">
+          
+  
+  
+  Siem home lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-tabs__link">
+          
+  
+  
+  Soc and incident response
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-windows-command-line-fundamentals/" class="md-tabs__link">
+          
+  
+  
+  Windows server labs and
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital forensics labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital forensics labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/01-software-write-blocker-concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 software write blocker concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/02-verifying-evidence-integrity-hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/03-analyzing-file-properties-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/04-file-analysis-stat-command-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 file analysis stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/05-image-analysis-exiftool-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 image analysis exiftool linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/06-disk-acquisition-linux-dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 disk acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/07-disk-acquisition-ftk-imager-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 disk acquisition ftk imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/08-autopsy-case-creation-and-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/09-data-source-analysis-autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/10-firefox-artifacts-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/11-linux-os-forensics-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/12-registry-hives-extraction-ftk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 registry hives extraction ftk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/13-registry-analysis-phase-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/14-registry-analysis-tools-explorer-regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/15-ntfs1-evidence-acquisition-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 ntfs1 evidence acquisition analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/16-search-in-trash-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 search in trash cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/17-examining-pcaps-emails-malware-infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 examining pcaps emails malware infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/18-arp-storm-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 arp storm cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/19-psexec-hunt-pcapng/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 psexec hunt pcapng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/20-suspicious-file-download-fake-authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 suspicious file download fake authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/21-hawkeye-blue-team-challenge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 hawkeye blue team challenge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/22-stego-binwalk-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 stego binwalk ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/23-stego-canyousee-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 stego canyousee picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/24-stego-chalkboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 stego chalkboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/25-stego-cypher-anxiety-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 stego cypher anxiety cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/26-stego-disko-1-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 stego disko 1 picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/27-stego-exif-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 stego exif ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/28-stego-file-found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28 stego file found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/29-stego-forensics-101-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 stego forensics 101 ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/30-stego-gandp-list-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 stego gandp list cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/31-stego-git-is-good-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31 stego git is good ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/32-stego-glory-of-the-garden-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/33-stego-hidden-message-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33 stego hidden message cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/34-stego-i-love-images-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 stego i love images cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/35-stego-im-a-dump-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 stego im a dump ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/36-stego-information-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/37-stego-meta-blue-team-labs-online/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 stego meta blue team labs online
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/38-stego-minions-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38 stego minions ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/39-stego-pdf-by-fdpumyp-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 stego pdf by fdpumyp ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/40-stego-pho-is-tasty-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 stego pho is tasty ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/41-stego-pikespeak-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    41 stego pikespeak ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/42-stego-red-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    42 stego red picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/43-stego-rubber-duck-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    43 stego rubber duck ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/44-stego-scan-surprise-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    44 stego scan surprise picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/45-stego-secret-of-the-polyglot-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/46-stego-simple-steganography-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    46 stego simple steganography ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/47-stego-snowboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    47 stego snowboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/48-stego-taking-ls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    48 stego taking ls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/49-stego-tux-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    49 stego tux ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/50-stego-verify-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    50 stego verify picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/51-stego-wow-so-meta-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    51 stego wow so meta ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ctf
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux ctf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/01-kvm-virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 kvm virtualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/02-intro-to-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 intro to linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/03-unix-vs-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 unix vs linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/04-intro-to-linux-labs-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📂 If you don't know anything about Linux, start here with this course :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/05-overthewire-bandit-level-0-tobandit-level-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 overthewire bandit level 0 tobandit level 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/06-bandit-level-10-to-level-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 bandit level 10 to level 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/07-bandit-level-20-to-level-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 bandit level 20 to level 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/08-leviathan-linux-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 leviathan linux intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/09-leviathan-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 leviathan level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/10-leviathan-level-0-to-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 leviathan level 0 to level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penetration testing trainee
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Penetration testing trainee
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 beginnings of the internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/02-http-protocol-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 http protocol deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/03-dns-explanation-and-recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 dns explanation and recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/04-linux-commands-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/05-passive-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 passive reconnaissance thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/06-active-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/07-cybersecurity-beginner-career-labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 cybersecurity beginner career labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/08-iti-penetration-tester-track-2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/09-kioptrix-level-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 kioptrix level 1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/10-metasploitable1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 metasploitable1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/11-metasploitable2-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 metasploitable2 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/12-web-unprotected-admin-functionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 web unprotected admin functionality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/13-web-unprotected-admin-functionality-unpredictable-url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 web unprotected admin functionality unpredictable url
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/14-web-user-id-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 web user id controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/15-web-user-id-controlled-by-request-parameter-with-dynamic-id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 web user id controlled by request parameter with dynamic id
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/16-web-user-role-modification-in-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 web user role modification in profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/17-web-user-role-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 web user role controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/18-web-idor-corridor-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 web idor corridor thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/19-web-info-disclosure-error-messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 web info disclosure error messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/20-web-info-disclosure-debug-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 web info disclosure debug page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/21-web-source-code-disclosure-backup-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 web source code disclosure backup files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/22-web-auth-bypass-via-info-disclosure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 web auth bypass via info disclosure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/23-web-info-disclosure-version-control-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 web info disclosure version control git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/24-natas-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 natas level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/25-natas-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 natas level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/26-natas-level-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 natas level 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/27-natas-level-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 natas level 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Siem home lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Siem home lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 pre lab overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/02-install-lab-elk-siem-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 install lab elk siem n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/03-install-lab-win-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 install lab win server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/04-install-lab-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 install lab fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/05-building-a-siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 building a siem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/06-winlogbeat-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 winlogbeat configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/07-fluent-bit-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 fluent bit configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/08-detection-egnineering-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/09-pre-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/10-detection-of-powershell-based-windows-firewall-tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/11-registry-persistence-detection-with-sysmon-and-kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/12-privilege-escalation-and-information-gathering-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 privilege escalation and information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/13-soar-n8n-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 soar n8n workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Soc and incident response
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Soc and incident response
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 persistence analysis remediation python popup malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/02-ubuntu-web-server-waf-nginx-modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ubuntu web server waf nginx modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/03-detect-nmap-scan-using-snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 detect nmap scan using snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/04-paypal-phishing-investigation-letsdefend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 paypal phishing investigation letsdefend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/05-phishing-response-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 phishing response playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/06-boss-of-the-soc-botsv1-scenario1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 boss of the soc botsv1 scenario1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/07-qradar101-blue-team-cyberdefenders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 qradar101 blue team cyberdefenders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/08-building-siem-filebeat-winlogbeat-kibana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 building siem filebeat winlogbeat kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/09-collecting-visualizing-ssh-logs-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 collecting visualizing ssh logs fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows server labs and
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows server labs and
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-windows-command-line-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOP Command Line in Windows :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-windows-fundamentals-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 windows fundamentals 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-windows-fundamentals-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 windows fundamentals 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-windows-fundamentals-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 windows fundamentals 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 active directory basics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 active directory basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#room-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Room Objectives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#room-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Room Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Domains :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Domains :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-domains_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Windows Domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-windows-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Solution: Windows Domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits-of-a-windows-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Benefits of a Windows Domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-world-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Real-world example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#welcome-to-thm-inc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 Welcome to THM Inc.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Start Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active Directory :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Directory :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-directory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Active Directory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Security Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-domain-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Default Domain Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-directory-users-and-computers-aduc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Active Directory Users and Computers (ADUC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Default Containers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-between-security-groups-and-ous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Difference between Security Groups and OUs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-users-in-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Users in AD :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-users-in-ad_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Managing Users in AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Managing Users in AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-remove-extra-ous-and-extra-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 1: Remove extra OUs and extra users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 2: Delegation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-test-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 3: Test Delegation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-obtain-the-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 4: Obtain the flag
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-and-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-computers-in-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Computers in AD :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-computers-in-ad_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Managing Computers in AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Managing Computers in AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Default behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-organization-for-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Better organization for devices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lab-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Lab task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group Policies :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-policies_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Group Policies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Group Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 General idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 What is a GPO?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#management-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Management tool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpo-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 GPO components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-a-policy-password-policy-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Modify a policy (Password Policy Example)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpo-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 GPO distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lab-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Lab tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Lab tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-restrict-access-to-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Restrict Access to Control Panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-auto-lock-screen-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Auto Lock Screen GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication Methods :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Authentication Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Authentication Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-idea_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 General idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kerberos-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Kerberos Authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Kerberos Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kerberos-authentication-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Kerberos authentication steps:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netntlm-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 NetNTLM Authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 NetNTLM Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netntlm-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 NetNTLM steps:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-and-answers_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trees-forests-and-trusts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trees, Forests and Trusts :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trees-forests-and-trusts_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌳 Trees, Forests and Trusts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌳 Trees, Forests and Trusts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Single Domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌲 Trees
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌳 Forests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trust-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤝 Trust Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion 📝
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-login-protocols-ntlm-vs-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 login protocols ntlm vs kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-kerberos-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 kerberos deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-how-to-join-domain-in-background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 how to join domain in background
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-post-domain-join-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 post domain join steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#room-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Room Objectives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#room-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Room Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Domains :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Domains :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-domains_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Windows Domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution-windows-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Solution: Windows Domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benefits-of-a-windows-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Benefits of a Windows Domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-world-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Real-world example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#welcome-to-thm-inc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏢 Welcome to THM Inc.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Start Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active Directory :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Active Directory :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-directory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Active Directory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Machines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Security Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-domain-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Default Domain Groups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-directory-users-and-computers-aduc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Active Directory Users and Computers (ADUC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Default Containers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#difference-between-security-groups-and-ous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Difference between Security Groups and OUs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-users-in-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Users in AD :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-users-in-ad_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Managing Users in AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Managing Users in AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-remove-extra-ous-and-extra-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 1: Remove extra OUs and extra users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 2: Delegation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-test-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 3: Test Delegation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-obtain-the-flag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Step 4: Obtain the flag
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-and-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-computers-in-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing Computers in AD :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-computers-in-ad_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Managing Computers in AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Managing Computers in AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Default behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-organization-for-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Better organization for devices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lab-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Lab task
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Group Policies :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#group-policies_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Group Policies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Group Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 General idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 What is a GPO?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#management-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Management tool
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpo-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 GPO components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify-a-policy-password-policy-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Modify a policy (Password Policy Example)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpo-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 GPO distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lab-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Lab tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Lab tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-restrict-access-to-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Restrict Access to Control Panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-auto-lock-screen-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Auto Lock Screen GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication Methods :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🟢 Authentication Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🟢 Authentication Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-idea_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 General idea
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kerberos-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Kerberos Authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Kerberos Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kerberos-authentication-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Kerberos authentication steps:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#netntlm-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 NetNTLM Authentication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 NetNTLM Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#netntlm-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 NetNTLM steps:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#questions-and-answers_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trees-forests-and-trusts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trees, Forests and Trusts :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trees-forests-and-trusts_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌳 Trees, Forests and Trusts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌳 Trees, Forests and Trusts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Single Domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌲 Trees
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌳 Forests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trust-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤝 Trust Relationships
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-and-answers_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Questions and Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion 📝
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>05 active directory basics</h1>
+
+<h2 id="introduction">Introduction</h2>
+<h3 id="introduction_1">🟢 Introduction</h3>
+<p><strong>Active Directory</strong> from Microsoft is considered the <strong>backbone of the corporate world</strong>.\
+It simplifies managing devices and users inside a Corporate Environment.\
+In this room, we will do a <strong>deep dive</strong> into the core components of Active Directory.</p>
+<hr />
+<h3 id="room-objectives">🎯 Room Objectives</h3>
+<p>In this room, we will learn about <strong>Active Directory</strong> and cover the following topics:</p>
+<ol>
+<li>
+<p>What <strong>Active Directory</strong> is.</p>
+</li>
+<li>
+<p>What an <strong>Active Directory Domain</strong> is.</p>
+</li>
+<li>
+<p>What components make up an Active Directory Domain.</p>
+</li>
+<li>
+<p><strong>Forests</strong> and <strong>Domain Trusts</strong>.</p>
+</li>
+<li>
+<p>And many more!</p>
+</li>
+</ol>
+<hr />
+<h3 id="room-prerequisites">📌 Room Prerequisites</h3>
+<ul>
+<li>
+<p>You should have a general knowledge of <strong>Windows</strong>.</p>
+</li>
+<li>
+<p>You can refer back to the <strong>Windows Fundamentals</strong> module if you need more details.</p>
+</li>
+</ul>
+<hr />
+<h3 id="instructions">📝 Instructions</h3>
+<ul>
+<li>
+<p>Answer the questions below.</p>
+</li>
+<li>
+<p>Click <strong>Continue Learning</strong> to proceed.</p>
+</li>
+</ul>
+<p>✅ No answer is required in this section (No answer needed).</p>
+<hr />
+<h2 id="windows-domains">Windows Domains :</h2>
+<h3 id="windows-domains_1">🟢 Windows Domains</h3>
+<p>📌 Imagine you are responsible for a small network at a company with 5 devices and 5 employees.</p>
+<ul>
+<li>
+<p>In that case, you can easily set up each device individually.</p>
+</li>
+<li>
+<p>You will create local accounts on each device, configure settings for each account.</p>
+</li>
+<li>
+<p>If a device stops working, you fix it on-site for that user.</p>
+</li>
+</ul>
+<p>That seems easy and calm 😅 … but if the company grows and you have:</p>
+<ul>
+<li>
+<p>157 computers</p>
+</li>
+<li>
+<p>320 users</p>
+</li>
+<li>
+<p>distributed across 4 different offices</p>
+</li>
+</ul>
+<p>Can you manage each device individually, manually configure Policies for every user, and provide on-site support?\
+👉 The answer is likely: <strong>No</strong>.</p>
+<hr />
+<h3 id="solution-windows-domain">🔹 Solution: Windows Domain</h3>
+<p>To overcome these problems, we use something called a <strong>Windows Domain</strong>.</p>
+<ul>
+<li>
+<p>Simply: it is a <strong>collection of users and devices</strong> under the administration of a particular company.</p>
+</li>
+<li>
+<p>The core idea: you <strong>centralize management</strong> of all network components in one place called <strong>Active Directory (AD)</strong>.</p>
+</li>
+<li>
+<p>The server that runs Active Directory services is called a <strong>Domain Controller (DC)</strong>.</p>
+</li>
+</ul>
+<hr />
+<h3 id="benefits-of-a-windows-domain">🔹 Benefits of a Windows Domain</h3>
+<ol>
+<li>
+<p><strong>Centralized identity management:</strong>\
+   You can manage all network users from one place (Active Directory).</p>
+</li>
+<li>
+<p><strong>Security policy management:</strong>\
+   You can set Security Policies in Active Directory and apply them to all devices and users.</p>
+</li>
+</ol>
+<hr />
+<h3 id="real-world-example">🔹 Real-world example</h3>
+<p>It may seem complex, but you’ve probably used a Windows Domain before:</p>
+<ul>
+<li>
+<p>At school or university: they give you a <strong>Username + Password</strong> you can use on any campus device.</p>
+</li>
+<li>
+<p>Your credentials are checked against <strong>Active Directory</strong>, they are not stored on each device.</p>
+</li>
+<li>
+<p>Active Directory also lets the school prevent you from opening <strong>Control Panel</strong> or having admin privileges.</p>
+</li>
+</ul>
+<hr />
+<h3 id="welcome-to-thm-inc">🏢 Welcome to THM Inc.</h3>
+<ul>
+<li>
+<p>In this lab, you will be the <strong>new IT Admin</strong> at THM Inc.</p>
+</li>
+<li>
+<p>Your first task: review the current domain "THM.local" and perform some additional configurations.</p>
+</li>
+<li>
+<p>You have Admin privileges on the pre-provisioned <strong>Domain Controller (DC)</strong>.</p>
+</li>
+</ul>
+<hr />
+<h3 id="start-machine">🔹 Start Machine</h3>
+<ul>
+<li>
+<p>Click the <strong>Start Machine</strong> button to open the machine in the browser.</p>
+</li>
+<li>
+<p>If you want to connect via RDP, use these credentials:</p>
+</li>
+</ul>
+<p><strong>THM Key Credentials</strong></p>
+<ul>
+<li>
+<p>Username → <code>Administrator</code></p>
+</li>
+<li>
+<p>Password → <code>Password321</code></p>
+</li>
+<li>
+<p>IP (RDP) → <code>MACHINE_IP</code></p>
+</li>
+</ul>
+<p>📌 Note: When connecting via RDP, you must enter the Username like this:\
+<code>THM\Administrator</code>\
+so you specify that you are logging in as the Administrator on the THM domain.</p>
+<p>If you plan to use RDP from the AttackBox (or your own machine) now is a good time to start it.</p>
+<hr />
+<h3 id="questions-and-answers">✅ Questions and Answers:</h3>
+<ul>
+<li>
+<p>In a Windows domain, credentials are stored in a centralised repository called…\
+  👉 <strong>Active Directory</strong></p>
+</li>
+<li>
+<p>The server in charge of running the Active Directory services is called…\
+  👉 <strong>Domain Controller</strong></p>
+</li>
+</ul>
+<hr />
+<hr />
+<hr />
+<h2 id="active-directory">Active Directory :</h2>
+<h3 id="active-directory_1">🟢 Active Directory</h3>
+<p>The core of any <strong>Windows Domain</strong> is the <strong>Active Directory Domain Service (AD DS)</strong>.\
+This service is basically a <strong>catalog</strong> that contains all the <strong>Objects</strong> present in the network.</p>
+<p>Important AD-supported Objects include:</p>
+<ul>
+<li>
+<p>Users</p>
+</li>
+<li>
+<p>Groups</p>
+</li>
+<li>
+<p>Machines</p>
+</li>
+<li>
+<p>Printers</p>
+</li>
+<li>
+<p>Shares</p>
+</li>
+<li>
+<p>And many more…</p>
+</li>
+</ul>
+<hr />
+<h3 id="users">🔹 Users</h3>
+<ul>
+<li>
+<p>Users are the most common Object in Active Directory.</p>
+</li>
+<li>
+<p>They are also called <strong>Security Principals</strong> → meaning they can be authenticated and granted permissions to resources (like files or printers).</p>
+</li>
+<li>
+<p>Any <strong>Security Principal</strong> is an object that can interact with network resources.</p>
+</li>
+</ul>
+<p>Users can represent:</p>
+<ol>
+<li>
+<p><strong>People:</strong> employees who need to log in to the network.</p>
+</li>
+<li>
+<p><strong>Services:</strong> like IIS or MSSQL. These services run under dedicated service accounts, separate from normal user accounts.</p>
+</li>
+</ol>
+<hr />
+<h3 id="machines">🔹 Machines</h3>
+<ul>
+<li>
+<p>Every device joined to the domain gets a <strong>Machine Object</strong> in Active Directory.</p>
+</li>
+<li>
+<p>Machines are also <strong>Security Principals</strong> and have an account similar to user accounts but with limited privileges.</p>
+</li>
+<li>
+<p>The machine's local Administrator account exists on the device itself and should not be used by others.</p>
+</li>
+<li>
+<p><strong>The machine account password changes automatically</strong> and is long (around 120 characters).</p>
+</li>
+</ul>
+<p>📌 Machine account names have this format:\
+<code>machine_name$</code>\
+Example: if the machine is named <code>DC01</code> → the account is <code>DC01$</code>.</p>
+<hr />
+<h3 id="security-groups">🔹 Security Groups</h3>
+<ul>
+<li>
+<p>In Windows you create <strong>Groups</strong> and assign permissions once instead of assigning them to each user individually.</p>
+</li>
+<li>
+<p>Benefit: when you add a user to a group → they inherit the group’s permissions.</p>
+</li>
+<li>
+<p>Groups themselves are <strong>Security Principals</strong> and can be given permissions on network resources.</p>
+</li>
+<li>
+<p>Groups can contain:</p>
+</li>
+<li>
+<p>Users</p>
+</li>
+<li>
+<p>Machines</p>
+</li>
+<li>
+<p>Or even other Groups.</p>
+</li>
+</ul>
+<hr />
+<h3 id="default-domain-groups">🔹 Default Domain Groups</h3>
+<table>
+<thead>
+<tr>
+<th>Security Group</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Domain Admins</strong></td>
+<td>Administrative privileges over the entire domain. They can manage any device, including DCs.</td>
+</tr>
+<tr>
+<td><strong>Server Operators</strong></td>
+<td>Can manage Domain Controllers, but cannot change Admins membership.</td>
+</tr>
+<tr>
+<td><strong>Backup Operators</strong></td>
+<td>Can access any file regardless of permissions (for backup purposes).</td>
+</tr>
+<tr>
+<td><strong>Account Operators</strong></td>
+<td>Can create or modify accounts.</td>
+</tr>
+<tr>
+<td><strong>Domain Users</strong></td>
+<td>Contains all user accounts.</td>
+</tr>
+<tr>
+<td><strong>Domain Computers</strong></td>
+<td>Contains all computers.</td>
+</tr>
+<tr>
+<td><strong>Domain Controllers</strong></td>
+<td>Contains all DCs.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="active-directory-users-and-computers-aduc">🔹 Active Directory Users and Computers (ADUC)</h3>
+<ul>
+<li>
+<p>To manage users, groups, and machines:</p>
+</li>
+<li>
+<p>Go to the <strong>Domain Controller</strong>.</p>
+</li>
+<li>
+<p>Run <strong>Active Directory Users and Computers</strong> from the Start Menu.</p>
+</li>
+<li>
+<p>A window opens showing the hierarchy of Objects (Users, Computers, Groups).</p>
+</li>
+<li>
+<p>They are organized inside <strong>Organizational Units (OUs)</strong>.</p>
+</li>
+<li>
+<p>OUs are <strong>containers</strong> that classify users and machines.</p>
+</li>
+<li>
+<p>Example: Sales department vs IT department.</p>
+</li>
+<li>
+<p>A user can belong to <strong>only one OU</strong>.</p>
+</li>
+</ul>
+<p>📌 In the lab:</p>
+<ul>
+<li>
+<p>We have an OU named <strong>THM</strong>.</p>
+</li>
+<li>
+<p>Inside it are 5 OUs: IT, Management, Marketing, R\&amp;D, Sales.</p>
+</li>
+<li>
+<p>You can create a new OU (e.g., Students) for practice.</p>
+</li>
+</ul>
+<hr />
+<h3 id="default-containers">🔹 Default Containers</h3>
+<ul>
+<li>
+<p>Apart from the THM OU, there are default containers created automatically:</p>
+</li>
+<li>
+<p><strong>Builtin:</strong> contains default groups.</p>
+</li>
+<li>
+<p><strong>Computers:</strong> newly joined computers land here.</p>
+</li>
+<li>
+<p><strong>Domain Controllers:</strong> contains DCs.</p>
+</li>
+<li>
+<p><strong>Users:</strong> domain users and default groups.</p>
+</li>
+<li>
+<p><strong>Managed Service Accounts:</strong> service-specific accounts.</p>
+</li>
+</ul>
+<hr />
+<h3 id="difference-between-security-groups-and-ous">🔹 Difference between Security Groups and OUs</h3>
+<ul>
+<li>
+<p><strong>OUs:</strong></p>
+</li>
+<li>
+<p>Purpose: apply Policies.</p>
+</li>
+<li>
+<p>A user can belong to only one OU.</p>
+</li>
+<li>
+<p><strong>Security Groups:</strong></p>
+</li>
+<li>
+<p>Purpose: grant access permissions to resources.</p>
+</li>
+<li>
+<p>A user can be a member of <strong>multiple groups</strong>.</p>
+</li>
+</ul>
+<hr />
+<h3 id="questions-and-answers_1">✅ Questions and Answers:</h3>
+<ol>
+<li>
+<p><strong>Which group normally administrates all computers and resources in a domain?</strong>\
+   👉 <strong>Domain Admins</strong></p>
+</li>
+<li>
+<p><strong>What would be the name of the machine account associated with a machine named TOM-PC?</strong>\
+   👉 <strong>TOM-PC$</strong></p>
+</li>
+<li>
+<p><strong>Suppose our company creates a new department for Quality Assurance. What type of containers should we use to group all Quality Assurance users so that policies can be applied consistently to them?</strong>\
+   👉 <strong>Organizational Units</strong></p>
+</li>
+</ol>
+<hr />
+<hr />
+<hr />
+<h2 id="managing-users-in-ad">Managing Users in AD :</h2>
+<h2 id="managing-users-in-ad_1">🟢 Managing Users in AD</h2>
+<h3 id="step-1-remove-extra-ous-and-extra-users">🔹 Step 1: Remove extra OUs and extra users</h3>
+<ul>
+<li>
+<p>Initially you will notice there is an <strong>extra OU</strong> in AD that is not present in the Organisational Chart.</p>
+</li>
+<li>
+<p>Reason: that department was closed due to budget cuts → so it needs removal.</p>
+</li>
+<li>
+<p>If you try to Delete it directly → an error appears (because OUs are protected against accidental deletion).</p>
+</li>
+</ul>
+<p>📌 To delete the OU:</p>
+<ol>
+<li>
+<p>Enable <strong>Advanced Features</strong> from the View menu.</p>
+</li>
+<li>
+<p>You will then find a new tab called <strong>Object</strong> in the OU Properties.</p>
+</li>
+<li>
+<p>Uncheck <strong>Protect object from accidental deletion</strong>.</p>
+</li>
+<li>
+<p>Now you can Delete the OU.</p>
+</li>
+<li>
+<p>Be careful: any <strong>Users, Groups, or OUs</strong> inside it will also be deleted.</p>
+</li>
+</ol>
+<p>After deleting the extra OU, you may find some users in AD not matching the Organisational Chart → you must <strong>Create/Delete</strong> users to make them match.</p>
+<hr />
+<h3 id="step-2-delegation">🔹 Step 2: Delegation</h3>
+<ul>
+<li>
+<p>A powerful feature in AD is granting certain users <strong>specific privileges</strong> on particular OUs.</p>
+</li>
+<li>
+<p>This process is called <strong>Delegation</strong>.</p>
+</li>
+<li>
+<p>Practical example: the IT Support team often gets the right to <strong>reset passwords</strong> for regular users.</p>
+</li>
+</ul>
+<p>📌 In this scenario:</p>
+<ul>
+<li>
+<p>"Phillip" is the IT Support person.</p>
+</li>
+<li>
+<p>We should grant him the permission to <strong>Reset Passwords</strong> for users in Sales, Marketing, and Management.</p>
+</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p>Right-click the OU (e.g., Sales) → choose <strong>Delegate Control</strong>.</p>
+</li>
+<li>
+<p>Add user "phillip" (use <strong>Check Names</strong> to verify).</p>
+</li>
+<li>
+<p>In the next step: choose <strong>Reset user passwords and force password change at next logon</strong>.</p>
+</li>
+<li>
+<p>Finish the Wizard.</p>
+</li>
+</ol>
+<p>Now Phillip can reset any user password in Sales (repeat same steps for Marketing and Management if desired).</p>
+<hr />
+<h3 id="step-3-test-delegation">🔹 Step 3: Test Delegation</h3>
+<ul>
+<li>
+<p>We will test resetting the Password for user <strong>Sophie</strong> in Sales.</p>
+</li>
+<li>
+<p>Phillip’s credentials:</p>
+</li>
+<li>
+<p>Username → <code>THM\phillip</code></p>
+</li>
+<li>
+<p>Password → <code>Claire2008</code></p>
+</li>
+</ul>
+<p>⚡ Note:</p>
+<ul>
+<li>
+<p>Phillip cannot open <strong>Active Directory Users and Computers</strong> (he lacks the necessary privileges).</p>
+</li>
+<li>
+<p>We will use <strong>PowerShell</strong> instead:</p>
+</li>
+</ul>
+<pre><code class="language-bash">Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
+</code></pre>
+<p>And to force Sophie to change her password at next login:</p>
+<pre><code class="language-bash">Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose
+</code></pre>
+<hr />
+<h3 id="step-4-obtain-the-flag">🔹 Step 4: Obtain the flag</h3>
+<ul>
+<li>
+<p>Now log in as <strong>Sophie</strong> using the new password:</p>
+</li>
+<li>
+<p>Username → <code>THM\sophie</code></p>
+</li>
+<li>
+<p>You will find a <strong>Flag</strong> on her Desktop:</p>
+</li>
+</ul>
+<p>👉 <strong>THM{thanks_for_contacting_support}</strong></p>
+<hr />
+<h2 id="questions-and-answers_2">✅ Questions and Answers:</h2>
+<ol>
+<li>
+<p><strong>What was the flag found on Sophie's desktop?</strong>\
+   👉 <code>THM{thanks_for_contacting_support}</code></p>
+</li>
+<li>
+<p><strong>The process of granting privileges to a user over some OU or other AD Object is called…</strong>\
+   👉 <code>delegation</code></p>
+</li>
+</ol>
+<hr />
+<hr />
+<hr />
+<h2 id="managing-computers-in-ad">Managing Computers in AD :</h2>
+<h2 id="managing-computers-in-ad_1">🟢 Managing Computers in AD</h2>
+<h3 id="default-behaviour">🔹 Default behaviour</h3>
+<ul>
+<li>
+<p>Any computer joined to the Domain (except Domain Controllers) is placed automatically in the <strong>Computers</strong> Container.</p>
+</li>
+<li>
+<p>If you look on the DC you will find devices already listed there:</p>
+</li>
+<li>
+<p>Servers</p>
+</li>
+<li>
+<p>Laptops</p>
+</li>
+<li>
+<p>PCs for network users</p>
+</li>
+</ul>
+<p>But:</p>
+<ul>
+<li>
+<p>Having all devices in one place is not a good idea 👎.</p>
+</li>
+<li>
+<p>Reason: you may want to apply <strong>different policies</strong> to different types of devices.</p>
+</li>
+</ul>
+<hr />
+<h3 id="better-organization-for-devices">🔹 Better organization for devices</h3>
+<p>There is no single golden rule, but a great starting point is to separate devices by <strong>usage</strong>:</p>
+<ol>
+<li>
+<p><strong>Workstations:</strong></p>
+</li>
+<li>
+<p>Devices users log into daily.</p>
+</li>
+<li>
+<p>Used for work or browsing.</p>
+</li>
+<li>
+<p>🚫 Privileged Users should not log in to these.</p>
+</li>
+<li>
+<p><strong>Servers:</strong></p>
+</li>
+<li>
+<p>Provide services to users or other servers.</p>
+</li>
+<li>
+<p>Examples: File Server – Web Server – SQL Server, etc.</p>
+</li>
+<li>
+<p><strong>Domain Controllers (DCs):</strong></p>
+</li>
+<li>
+<p>Responsible for managing Active Directory.</p>
+</li>
+<li>
+<p>Considered the most sensitive machines.</p>
+</li>
+<li>
+<p>Contain hashed passwords for all users.</p>
+</li>
+<li>
+<p>(Windows places them automatically in a separate OU.)</p>
+</li>
+</ol>
+<hr />
+<h3 id="lab-task">🔹 Lab task</h3>
+<ul>
+<li>
+<p>Create new OUs under the <code>thm.local</code> domain as follows:</p>
+</li>
+<li>
+<p><code>Workstations</code></p>
+</li>
+<li>
+<p><code>Servers</code></p>
+</li>
+<li>
+<p>Then move:</p>
+</li>
+<li>
+<p>PCs and Laptops into the <strong>Workstations OU</strong>.</p>
+</li>
+<li>
+<p>Servers into the <strong>Servers OU</strong>.</p>
+</li>
+</ul>
+<p>📌 Goal: later you can apply different Group Policies per OU.</p>
+<hr />
+<h3 id="questions-and-answers_3">✅ Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>After organising the available computers, how many ended up in the Workstations OU?</strong>\
+   👉 <code>7</code> ✅</p>
+</li>
+<li>
+<p><strong>Is it recommendable to create separate OUs for Servers and Workstations? (yay/nay)</strong>\
+   👉 <code>yay</code> ✅</p>
+</li>
+</ol>
+<hr />
+<hr />
+<hr />
+<h2 id="group-policies">Group Policies :</h2>
+<h2 id="group-policies_1">🟢 Group Policies</h2>
+<h3 id="general-idea">🔹 General idea</h3>
+<p>So far we divided Users and Computers into <strong>OUs</strong>.\
+The main goal isn’t just organization, but to be able to apply <strong>different policies</strong> to each OU independently.\
+For example:</p>
+<ul>
+<li>
+<p>IT has specific settings.</p>
+</li>
+<li>
+<p>Marketing has different policies.</p>
+</li>
+<li>
+<p>Servers have special security settings.</p>
+</li>
+</ul>
+<p>This is achieved using <strong>Group Policy Objects (GPOs)</strong>.</p>
+<hr />
+<h3 id="what-is-a-gpo">🔹 What is a GPO?</h3>
+<ul>
+<li>
+<p>A <strong>GPO</strong> is a <strong>collection of settings</strong> that can be applied to an OU.</p>
+</li>
+<li>
+<p>It can contain <strong>user-specific</strong> or <strong>computer-specific</strong> policies.</p>
+</li>
+<li>
+<p>The purpose: create a unified baseline for certain devices or accounts.</p>
+</li>
+</ul>
+<hr />
+<h3 id="management-tool">🔹 Management tool</h3>
+<ul>
+<li>
+<p>From the <strong>Start Menu</strong> open <strong>Group Policy Management</strong>.</p>
+</li>
+<li>
+<p>You’ll see the OU structure as arranged earlier.</p>
+</li>
+<li>
+<p>To create a Policy:</p>
+</li>
+<li>
+<p>Create a new GPO under "Group Policy Objects".</p>
+</li>
+<li>
+<p>Link it to the OU you want it applied to.</p>
+</li>
+</ul>
+<p>📌 Example:</p>
+<ul>
+<li>
+<p><strong>Default Domain Policy</strong> and <strong>RDP Policy</strong> → applied to the entire domain <code>thm.local</code>.</p>
+</li>
+<li>
+<p><strong>Default Domain Controllers Policy</strong> → applied only to the Domain Controllers OU.</p>
+</li>
+</ul>
+<p>⚠️ Any GPO affects the OU it’s linked to <strong>and any Sub-OUs beneath it</strong>.</p>
+<hr />
+<h3 id="gpo-components">🔹 GPO components</h3>
+<ol>
+<li>
+<p><strong>Scope:</strong>\
+   Shows which OUs it is linked to.</p>
+</li>
+<li>
+<p><strong>Security Filtering:</strong>\
+   You can make the Policy apply only to certain Users/Computers.\
+   By default: applies to all Authenticated Users.</p>
+</li>
+<li>
+<p><strong>Settings:</strong>\
+   Contains the GPO content.\
+   Divided into:</p>
+</li>
+<li>
+<p><strong>Computer Configurations</strong></p>
+</li>
+<li>
+<p><strong>User Configurations</strong></p>
+</li>
+</ol>
+<p>📌 Example:</p>
+<ul>
+<li>In <strong>Default Domain Policy</strong> → settings affecting computers only (like Password Policy, Account Lockout, etc.).</li>
+</ul>
+<hr />
+<h3 id="modify-a-policy-password-policy-example">🔹 Modify a policy (Password Policy Example)</h3>
+<ul>
+<li>
+<p>Change Minimum Password Length to <strong>10 characters</strong>.</p>
+</li>
+<li>
+<p>Path:\
+  <code>Computer Configurations -&gt; Policies -&gt; Windows Settings -&gt; Security Settings -&gt; Account Policies -&gt; Password Policy</code></p>
+</li>
+</ul>
+<hr />
+<h3 id="gpo-distribution">🔹 GPO distribution</h3>
+<ul>
+<li>
+<p>GPOs are distributed via the SYSVOL Network Share on the DC.</p>
+</li>
+<li>
+<p>Default path:</p>
+</li>
+</ul>
+<pre><code class="language-bash">C:\Windows\SYSVOL\sysvol\
+</code></pre>
+<ul>
+<li>
+<p>Machines sync GPOs periodically.</p>
+</li>
+<li>
+<p>To force an immediate update:</p>
+</li>
+</ul>
+<pre><code class="language-bash">gpupdate /force
+</code></pre>
+<hr />
+<h3 id="lab-tasks">🔹 Lab tasks</h3>
+<h4 id="1-restrict-access-to-control-panel">1. Restrict Access to Control Panel</h4>
+<ul>
+<li>
+<p>Create a new GPO named: <strong>Restrict Control Panel Access</strong>.</p>
+</li>
+<li>
+<p>Policy:</p>
+</li>
+<li>
+<p>User Configurations → Prohibit Access to Control Panel and PC Settings.</p>
+</li>
+<li>
+<p>Link it to OUs: <strong>Marketing, Management, Sales</strong>.</p>
+</li>
+</ul>
+<h4 id="2-auto-lock-screen-gpo">2. Auto Lock Screen GPO</h4>
+<ul>
+<li>
+<p>Create a new GPO named: <strong>Auto Lock Screen</strong>.</p>
+</li>
+<li>
+<p>Policy:</p>
+</li>
+<li>
+<p>Computer Configurations → Windows Settings → Security Settings → Local Policies → Security Options (Inactivity limit = 5 min).</p>
+</li>
+<li>
+<p>Link it to the <strong>root domain</strong> so it applies to all machines.</p>
+</li>
+</ul>
+<hr />
+<h3 id="questions-and-answers_4">✅ Questions and Answers</h3>
+<ol>
+<li>
+<p><strong>What is the name of the network share used to distribute GPOs to domain machines?</strong>\
+   👉 <code>sysvol</code> ✅</p>
+</li>
+<li>
+<p><strong>Can a GPO be used to apply settings to users and computers? (yay/nay)</strong>\
+   👉 <code>yay</code> ✅</p>
+</li>
+</ol>
+<hr />
+<hr />
+<hr />
+<h2 id="authentication-methods">Authentication Methods :</h2>
+<h2 id="authentication-methods_1">🟢 Authentication Methods</h2>
+<h3 id="general-idea_1">🔹 General idea</h3>
+<ul>
+<li>
+<p>In a <strong>Windows Domains</strong> environment, all Credentials (login data) are stored in the <strong>Domain Controllers (DCs)</strong>.</p>
+</li>
+<li>
+<p>Any service requiring user verification must ask the DC.</p>
+</li>
+<li>
+<p>There are two main protocols:</p>
+</li>
+<li>
+<p><strong>Kerberos</strong> → the default protocol in modern Windows.</p>
+</li>
+<li>
+<p><strong>NetNTLM</strong> → an older protocol (kept for legacy compatibility).</p>
+</li>
+</ul>
+<p>⚠️ Most networks still run both, but <strong>Kerberos is the primary</strong>.</p>
+<hr />
+<h2 id="kerberos-authentication">🔹 Kerberos Authentication</h2>
+<p>Kerberos works using <strong>Tickets</strong>.\
+A ticket = proof that you have been authenticated.</p>
+<h3 id="kerberos-authentication-steps">📌 Kerberos authentication steps:</h3>
+<ol>
+<li>
+<p><strong>Step One:</strong></p>
+</li>
+<li>
+<p>The user sends Username + Timestamp (encrypted with a key derived from the password) → to the <strong>KDC</strong> (service on the DC).</p>
+</li>
+<li>
+<p>The KDC returns:</p>
+<ul>
+<li>
+<p><strong>TGT (Ticket Granting Ticket)</strong> → a main ticket allowing requests for service tickets (TGS).</p>
+</li>
+<li>
+<p><strong>Session Key</strong> → used in subsequent requests.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The TGT is not usable by the user directly because it is encrypted with the krbtgt account password.</p>
+</li>
+<li>
+<p><strong>Step Two:</strong></p>
+</li>
+<li>
+<p>The user wants access to a specific service (Share, Website, Database…).</p>
+</li>
+<li>
+<p>Sends:</p>
+<ul>
+<li>
+<p>Username + Timestamp (encrypted with the Session Key).</p>
+</li>
+<li>
+<p>The TGT.</p>
+</li>
+<li>
+<p>The service name (SPN).</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The KDC replies with:</p>
+<ul>
+<li>
+<p><strong>TGS (Ticket Granting Service)</strong> → a ticket specific to that service.</p>
+</li>
+<li>
+<p><strong>Service Session Key</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The TGS is encrypted with the password of the account that runs the service (Service Owner).</p>
+</li>
+<li>
+<p><strong>Step Three:</strong></p>
+</li>
+<li>
+<p>The user sends the TGS to the target service.</p>
+</li>
+<li>
+<p>The service decrypts it with its account password and verifies the Service Session Key.</p>
+</li>
+<li>
+<p>The connection succeeds. ✅</p>
+</li>
+</ol>
+<hr />
+<h2 id="netntlm-authentication">🔹 NetNTLM Authentication</h2>
+<p>Operates using a <strong>Challenge–Response</strong> mechanism.</p>
+<h3 id="netntlm-steps">📌 NetNTLM steps:</h3>
+<ol>
+<li>
+<p>The client requests login from the server.</p>
+</li>
+<li>
+<p>The server generates a random number and returns it (Challenge) (16-digit random number).</p>
+</li>
+<li>
+<p>The client combines its NTLM Hash with the Challenge → produces a Response.</p>
+</li>
+<li>
+<p>The server sends the Response to the DC to verify.</p>
+</li>
+<li>
+<p>The DC recalculates the Response and compares.</p>
+</li>
+<li>
+<p>If they match → authentication is successful.</p>
+</li>
+</ol>
+<p>⚠️ Note:</p>
+<ul>
+<li>
+<p>The password (or its hash) <strong>is not sent over the network</strong>.</p>
+</li>
+<li>
+<p>If the account is local (Local Account) → the server can verify itself because it has the password hash in SAM.</p>
+</li>
+</ul>
+<hr />
+<h2 id="questions-and-answers_5">✅ Questions and Answers</h2>
+<ol>
+<li>
+<p><strong>Will a current version of Windows use NetNTLM as the preferred authentication protocol by default? (yay/nay)</strong>\
+   👉 <code>nay</code> ✅</p>
+</li>
+<li>
+<p><strong>When referring to Kerberos, what type of ticket allows us to request further tickets known as TGS?</strong>\
+   👉 <code>Ticket Granting Ticket</code> ✅</p>
+</li>
+<li>
+<p><strong>When using NetNTLM, is a user's password transmitted over the network at any point? (yay/nay)</strong>\
+   👉 <code>nay</code> ✅</p>
+</li>
+</ol>
+<hr />
+<hr />
+<hr />
+<h2 id="trees-forests-and-trusts">Trees, Forests and Trusts :</h2>
+<h2 id="trees-forests-and-trusts_1">🌳 Trees, Forests and Trusts</h2>
+<h3 id="single-domain">📌 Single Domain</h3>
+<p>So far we discussed managing a single domain and the role of the Domain Controller in housing computers, servers, and users. A single domain is sufficient at first, but as companies grow, needs change.</p>
+<hr />
+<h3 id="trees">🌲 Trees</h3>
+<p>Imagine your company expands to a new country with different laws and regulations. You may need to adjust GPOs and have an IT team per country managing local resources without interfering with others. You could build a complex OU structure, but that’s error-prone.</p>
+<p>Active Directory supports multiple domains so you can divide the network into independently managed units. If domains share the same namespace (e.g., <code>thm.local</code>), they can form a <strong>Tree</strong>.</p>
+<p>Example:</p>
+<ul>
+<li>
+<p>Root Domain: <code>thm.local</code></p>
+</li>
+<li>
+<p>Subdomains: <code>uk.thm.local</code> and <code>us.thm.local</code></p>
+</li>
+</ul>
+<p>Each branch has its own DC managing only that branch’s resources. Admins in UK won’t manage US resources and vice versa.</p>
+<p>👉 Note:</p>
+<ul>
+<li>
+<p>Each domain has its own Domain Admins.</p>
+</li>
+<li>
+<p>There are <strong>Enterprise Admins</strong> with privileges across all domains in the organization.</p>
+</li>
+</ul>
+<hr />
+<h3 id="forests">🌳 Forests</h3>
+<p>You can manage domains in <strong>different namespaces</strong>.\
+Example: your company bought another company called MHT.</p>
+<ul>
+<li>
+<p>The original company has its own Tree.</p>
+</li>
+<li>
+<p>The acquired company has its own Tree.</p>
+</li>
+</ul>
+<p>Joining multiple Trees with different namespaces into one network is called a <strong>Forest</strong>.</p>
+<hr />
+<h3 id="trust-relationships">🤝 Trust Relationships</h3>
+<p>Multiple domains, trees, or forests allow better organization. But at some point a user in UK may need access to a file on a server in MHT.</p>
+<p>Solution: <strong>Establish a Trust Relationship</strong>.</p>
+<ul>
+<li>Trust = allowing users in one domain to access resources in another domain.</li>
+</ul>
+<p>📌 Types of Trust:</p>
+<ol>
+<li>
+<p><strong>One-way trust:</strong></p>
+</li>
+<li>
+<p>AAA trusts BBB → a user from BBB can access resources in AAA.</p>
+</li>
+<li>
+<p>Direction matters for access.</p>
+</li>
+<li>
+<p><strong>Two-way trust:</strong></p>
+</li>
+<li>
+<p>Domain A and Domain B trust each other.</p>
+</li>
+<li>
+<p>Users from both sides can access each other’s resources.</p>
+</li>
+<li>
+<p>This is the default type when domains are joined under a Tree or Forest.</p>
+</li>
+</ol>
+<p>⚠️ Important: a Trust Relationship does not automatically grant permissions on resources. It just allows you, as an Admin, to grant cross-domain permissions—the actual access decision remains yours.</p>
+<hr />
+<h3 id="questions-and-answers_6">✅ Questions and Answers</h3>
+<ul>
+<li>
+<p>What is the name for the group of domains that share the same namespace?\
+  <strong>Tree</strong></p>
+</li>
+<li>
+<p>What must be configured between two domains so a user from Domain A can access a resource in Domain B?\
+  <strong>Trust Relationship</strong></p>
+</li>
+</ul>
+<hr />
+<hr />
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion_1">Conclusion 📝</h2>
+<p>In this Room, we presented the core components and concepts related to <strong>Active Directory</strong> and <strong>Windows Domains</strong>.</p>
+<p>📌 Remember: this Room is only an <strong>introduction to basic concepts</strong>; there are many more details required to build a production-ready Active Directory environment.</p>
+<p>🔐 If you are interested in learning how to <strong>harden your Active Directory</strong>, go to:\
+➡️ <strong>Active Directory Hardening Room</strong></p>
+<p>💻 If you want to learn how <strong>attackers abuse AD misconfigurations and what techniques they use</strong>, go to:\
+➡️ <strong>Compromising Active Directory module</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

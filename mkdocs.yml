@@ -1,0 +1,22 @@
+site_name: AAS Security Labs Docs
+site_url: https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/
+
+theme:
+  name: material
+  language: en
+  palette:
+    # جعل الـ Dark mode (slate) هو الأساس مع تكييف الهوية البصرية لـ AAS
+    - scheme: slate
+      primary: black
+      accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.share
+
+docs_dir: 'SecLab-Notes'
+site_dir: 'SecLab-Hub'
+
+# ربط ملف الـ CSS المخصص لتغيير الألوان لدرجات النيون والأزرق الليلي الخاصة بك
+extra_css:
+  - extra.css

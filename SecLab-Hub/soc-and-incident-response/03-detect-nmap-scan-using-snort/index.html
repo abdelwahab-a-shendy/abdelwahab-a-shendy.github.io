@@ -1,0 +1,6461 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/soc-and-incident-response/03-detect-nmap-scan-using-snort/">
+      
+      
+        <link rel="prev" href="../02-ubuntu-web-server-waf-nginx-modsecurity/">
+      
+      
+        <link rel="next" href="../04-paypal-phishing-investigation-letsdefend/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>03 detect nmap scan using snort - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              03 detect nmap scan using snort
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../digital-forensics-labs/01-software-write-blocker-concept/" class="md-tabs__link">
+          
+  
+  
+  Digital forensics labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise offensive defensive security simulation lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux-ctf/01-kvm-virtualization/" class="md-tabs__link">
+          
+  
+  
+  Linux ctf
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-tabs__link">
+          
+  
+  
+  Penetration testing trainee
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-tabs__link">
+          
+  
+  
+  Siem home lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-persistence-analysis-remediation-python-popup-malware/" class="md-tabs__link">
+          
+  
+  
+  Soc and incident response
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../windows-server-labs-and/01-windows-command-line-fundamentals/" class="md-tabs__link">
+          
+  
+  
+  Windows server labs and
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital forensics labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital forensics labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/01-software-write-blocker-concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 software write blocker concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/02-verifying-evidence-integrity-hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/03-analyzing-file-properties-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/04-file-analysis-stat-command-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 file analysis stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/05-image-analysis-exiftool-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 image analysis exiftool linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/06-disk-acquisition-linux-dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 disk acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/07-disk-acquisition-ftk-imager-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 disk acquisition ftk imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/08-autopsy-case-creation-and-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/09-data-source-analysis-autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/10-firefox-artifacts-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/11-linux-os-forensics-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/12-registry-hives-extraction-ftk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 registry hives extraction ftk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/13-registry-analysis-phase-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/14-registry-analysis-tools-explorer-regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/15-ntfs1-evidence-acquisition-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 ntfs1 evidence acquisition analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/16-search-in-trash-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 search in trash cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/17-examining-pcaps-emails-malware-infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 examining pcaps emails malware infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/18-arp-storm-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 arp storm cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/19-psexec-hunt-pcapng/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 psexec hunt pcapng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/20-suspicious-file-download-fake-authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 suspicious file download fake authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/21-hawkeye-blue-team-challenge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 hawkeye blue team challenge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/22-stego-binwalk-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 stego binwalk ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/23-stego-canyousee-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 stego canyousee picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/24-stego-chalkboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 stego chalkboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/25-stego-cypher-anxiety-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 stego cypher anxiety cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/26-stego-disko-1-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 stego disko 1 picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/27-stego-exif-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 stego exif ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/28-stego-file-found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28 stego file found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/29-stego-forensics-101-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 stego forensics 101 ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/30-stego-gandp-list-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 stego gandp list cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/31-stego-git-is-good-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31 stego git is good ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/32-stego-glory-of-the-garden-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/33-stego-hidden-message-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33 stego hidden message cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/34-stego-i-love-images-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 stego i love images cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/35-stego-im-a-dump-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 stego im a dump ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/36-stego-information-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/37-stego-meta-blue-team-labs-online/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 stego meta blue team labs online
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/38-stego-minions-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38 stego minions ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/39-stego-pdf-by-fdpumyp-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 stego pdf by fdpumyp ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/40-stego-pho-is-tasty-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 stego pho is tasty ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/41-stego-pikespeak-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    41 stego pikespeak ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/42-stego-red-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    42 stego red picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/43-stego-rubber-duck-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    43 stego rubber duck ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/44-stego-scan-surprise-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    44 stego scan surprise picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/45-stego-secret-of-the-polyglot-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/46-stego-simple-steganography-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    46 stego simple steganography ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/47-stego-snowboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    47 stego snowboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/48-stego-taking-ls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    48 stego taking ls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/49-stego-tux-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    49 stego tux ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/50-stego-verify-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    50 stego verify picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/51-stego-wow-so-meta-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    51 stego wow so meta ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ctf
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux ctf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/01-kvm-virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 kvm virtualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/02-intro-to-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 intro to linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/03-unix-vs-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 unix vs linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/04-intro-to-linux-labs-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📂 If you don't know anything about Linux, start here with this course :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/05-overthewire-bandit-level-0-tobandit-level-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 overthewire bandit level 0 tobandit level 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/06-bandit-level-10-to-level-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 bandit level 10 to level 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/07-bandit-level-20-to-level-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 bandit level 20 to level 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/08-leviathan-linux-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 leviathan linux intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/09-leviathan-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 leviathan level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/10-leviathan-level-0-to-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 leviathan level 0 to level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penetration testing trainee
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Penetration testing trainee
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 beginnings of the internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/02-http-protocol-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 http protocol deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/03-dns-explanation-and-recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 dns explanation and recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/04-linux-commands-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/05-passive-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 passive reconnaissance thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/06-active-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/07-cybersecurity-beginner-career-labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 cybersecurity beginner career labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/08-iti-penetration-tester-track-2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/09-kioptrix-level-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 kioptrix level 1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/10-metasploitable1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 metasploitable1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/11-metasploitable2-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 metasploitable2 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/12-web-unprotected-admin-functionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 web unprotected admin functionality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/13-web-unprotected-admin-functionality-unpredictable-url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 web unprotected admin functionality unpredictable url
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/14-web-user-id-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 web user id controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/15-web-user-id-controlled-by-request-parameter-with-dynamic-id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 web user id controlled by request parameter with dynamic id
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/16-web-user-role-modification-in-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 web user role modification in profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/17-web-user-role-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 web user role controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/18-web-idor-corridor-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 web idor corridor thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/19-web-info-disclosure-error-messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 web info disclosure error messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/20-web-info-disclosure-debug-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 web info disclosure debug page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/21-web-source-code-disclosure-backup-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 web source code disclosure backup files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/22-web-auth-bypass-via-info-disclosure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 web auth bypass via info disclosure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/23-web-info-disclosure-version-control-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 web info disclosure version control git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/24-natas-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 natas level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/25-natas-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 natas level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/26-natas-level-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 natas level 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/27-natas-level-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 natas level 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Siem home lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Siem home lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 pre lab overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/02-install-lab-elk-siem-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 install lab elk siem n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/03-install-lab-win-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 install lab win server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/04-install-lab-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 install lab fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/05-building-a-siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 building a siem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/06-winlogbeat-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 winlogbeat configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/07-fluent-bit-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 fluent bit configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/08-detection-egnineering-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/09-pre-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/10-detection-of-powershell-based-windows-firewall-tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/11-registry-persistence-detection-with-sysmon-and-kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/12-privilege-escalation-and-information-gathering-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 privilege escalation and information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/13-soar-n8n-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 soar n8n workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Soc and incident response
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Soc and incident response
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-persistence-analysis-remediation-python-popup-malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 persistence analysis remediation python popup malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-ubuntu-web-server-waf-nginx-modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ubuntu web server waf nginx modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 detect nmap scan using snort
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 detect nmap scan using snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First, I’ll install some tools like Wireshark to monitor traffic, etc :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secondly-installing-and-configuring-snort-as-an-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secondly : Installing and configuring Snort as an IDS :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secondly : Installing and configuring Snort as an IDS :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-encountered-during-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #### Problem encountered during installation :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-fix-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Steps to fix the issue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Steps to fix the issue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verify-if-snortconf-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Verify if snort.conf exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-a-new-snortconf-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Create a new snort.conf file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-basic-settings-to-run-snort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Add basic settings to run Snort
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-the-local-rules-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Create the local rules file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-test-the-configuration-to-verify-if-the-issue-is-resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Test the configuration to verify if the issue is resolved:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-live-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing live alerts:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-and-testing-nmap-scan-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing and testing Nmap scan detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing and testing Nmap scan detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-add-nmap-rules-to-localrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Add Nmap rules to local.rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-open-the-local-rules-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Open the local rules file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-of-each-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explanation of each rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-ill-test-from-the-same-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now I’ll test from the same machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-ill-test-from-the-attacker-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now I’ll test from the Attacker VM:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Now I’ll test from the Attacker VM:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temporarily-open-ssh-port-on-the-target-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporarily open SSH port on the Target (Ubuntu) :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary / Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-paypal-phishing-investigation-letsdefend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 paypal phishing investigation letsdefend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-phishing-response-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 phishing response playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-boss-of-the-soc-botsv1-scenario1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 boss of the soc botsv1 scenario1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-qradar101-blue-team-cyberdefenders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 qradar101 blue team cyberdefenders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-building-siem-filebeat-winlogbeat-kibana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 building siem filebeat winlogbeat kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-collecting-visualizing-ssh-logs-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 collecting visualizing ssh logs fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows server labs and
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows server labs and
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/01-windows-command-line-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOP Command Line in Windows :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/02-windows-fundamentals-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 windows fundamentals 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/03-windows-fundamentals-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 windows fundamentals 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/04-windows-fundamentals-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 windows fundamentals 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/05-active-directory-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 active directory basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/06-login-protocols-ntlm-vs-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 login protocols ntlm vs kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/07-kerberos-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 kerberos deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/08-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/09-how-to-join-domain-in-background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 how to join domain in background
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/10-post-domain-join-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 post domain join steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First, I’ll install some tools like Wireshark to monitor traffic, etc :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secondly-installing-and-configuring-snort-as-an-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secondly : Installing and configuring Snort as an IDS :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secondly : Installing and configuring Snort as an IDS :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-encountered-during-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #### Problem encountered during installation :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-fix-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Steps to fix the issue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Steps to fix the issue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verify-if-snortconf-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Verify if snort.conf exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-a-new-snortconf-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Create a new snort.conf file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-basic-settings-to-run-snort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Add basic settings to run Snort
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-the-local-rules-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Create the local rules file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-test-the-configuration-to-verify-if-the-issue-is-resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Test the configuration to verify if the issue is resolved:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-live-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing live alerts:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-and-testing-nmap-scan-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing and testing Nmap scan detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing and testing Nmap scan detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-add-nmap-rules-to-localrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Add Nmap rules to local.rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-open-the-local-rules-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Open the local rules file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-of-each-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explanation of each rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-ill-test-from-the-same-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now I’ll test from the same machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-ill-test-from-the-attacker-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now I’ll test from the Attacker VM:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Now I’ll test from the Attacker VM:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temporarily-open-ssh-port-on-the-target-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporarily open SSH port on the Target (Ubuntu) :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary / Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760135357859/9017af2c-d744-47e5-83f1-032a95402671.png" alt="" align="center" fullwidth="true" /></p>
+<ul>
+<li>
+<p>Attacker: Kali Linux (nmap).</p>
+</li>
+<li>
+<p>Target: Ubuntu (Snort as IDS).</p>
+</li>
+<li>
+<p>Or run the Target and let it perform attacks on itself normally.</p>
+</li>
+<li>
+<p>Monitoring and verification: Wireshark/tcpdump for PCAP capture and analysis.</p>
+</li>
+</ul>
+<hr />
+<h3 id="first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc">First, I’ll install some tools like Wireshark to monitor traffic, etc :</h3>
+<ul>
+<li>On the Target machine :</li>
+</ul>
+<pre><code class="language-bash">sudo apt update
+
+sudo apt upgrade -y
+
+sudo apt install wireshark
+</code></pre>
+<h2 id="secondly-installing-and-configuring-snort-as-an-ids"><strong>Secondly : Installing and configuring Snort as an IDS :</strong></h2>
+<pre><code class="language-bash">sudo -i
+
+sudo apt install -y snort
+</code></pre>
+<ul>
+<li>During installation, I encountered this prompt:</li>
+</ul>
+<pre><code class="language-bash">Package configuration
+
+ ┌───────────┤ Configuring snort ├────────────┐
+ │                                            │ 
+ │ Please use the CIDR form - for example,      
+ │ 192.168.1.0/24 for a block of 256            
+ │ addresses or 192.168.1.42/32 for just        
+ │ one. Multiple values should be               
+ │ comma-separated (without spaces).            
+ │                                              
+ │ You can leave this value empty and           
+ │ configure HOME_NET in                        
+ │ /etc/snort/snort.conf instead. This is       
+ │ useful if you are using Snort in a system    
+ │ which frequently changes network and does    
+ │                                              
+ │                   &lt;Ok&gt;
+</code></pre>
+<ul>
+<li>This line asks you to define the <strong>HOME_NET</strong> in CIDR format :</li>
+</ul>
+<pre><code class="language-bash">Package configuration
+
+    ┌─────────┤ Configuring snort ├─────────┐
+    │ Address range for the local network:  │ 
+    │                                       │ 
+    │ 192.168.0.0/16_______________________ │ 
+    │                                       │ 
+    │                &lt;Ok&gt;
+</code></pre>
+<ul>
+<li>Before continuing, I checked the machine’s IP:</li>
+</ul>
+<pre><code class="language-bash">aas@aas:~$ ifconfig 
+enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::6a6a:bfa1:f934:1ee0  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 08:00:27:f5:0f:ed  txqueuelen 1000  (Ethernet)
+        RX packets 210978  bytes 303130933 (303.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 31543  bytes 1966166 (1.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 316  bytes 27977 (27.9 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 316  bytes 27977 (27.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre>
+<ul>
+<li>The network interface connected to the network is:</li>
+</ul>
+<pre><code class="language-bash">enp0s3
+</code></pre>
+<ul>
+<li>The Target’s IP address is :</li>
+</ul>
+<pre><code class="language-bash">10.0.2.15
+</code></pre>
+<ul>
+<li>The subnet is :</li>
+</ul>
+<pre><code class="language-bash">10.0.2.0/24
+</code></pre>
+<blockquote>
+<p>because the Netmask = 255.255.255.0.</p>
+</blockquote>
+<p>Since my Target’s actual network is <code>10.0.2.0/24</code>, I corrected the default value (<code>192.168.0.0/16</code>) to:</p>
+<pre><code class="language-bash">10.0.2.0/24
+</code></pre>
+<ul>
+<li>
+<p>Or leave it empty and modify later in <code>/etc/snort/snort.conf</code>.</p>
+</li>
+<li>
+<p>After entering it, press <strong>Ok</strong> to confirm.</p>
+</li>
+</ul>
+<hr />
+<h4 id="problem-encountered-during-installation">#### Problem encountered during installation :</h4>
+<pre><code class="language-bash">FATAL ERROR: /etc/snort/snort.conf(0) Unable to open rules file &quot;/etc/snort/snort.conf&quot;: No such file or directory.
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p>This means either the file is missing or the path is incorrect.</p>
+</li>
+<li>
+<p>The issue isn’t with the installation itself—it’s with the <strong>system service (systemd / init.d)</strong> not being able to find the <code>snort.conf</code> configuration file.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="steps-to-fix-the-issue">🔹 Steps to fix the issue</h3>
+<h5 id="1-verify-if-snortconf-exists">1️⃣ Verify if <code>snort.conf</code> exists</h5>
+<pre><code class="language-bash">root@aas:~# ls -l /etc/snort/
+total 8
+drwxr-xr-x 2 root root 4096 سبت 12 17:42 rules
+-rw------- 1 root root  803 سبت 12 17:42 snort.debian.conf
+</code></pre>
+<ul>
+<li>
+<p><strong>The main snort.conf file is missing</strong>.</p>
+</li>
+<li>
+<p>Only <code>snort.debian.conf</code> exists. This is the default Debian/Ubuntu configuration file, not the standard Snort.</p>
+</li>
+<li>
+<p>The <code>rules</code> folder exists, but the main rules file <code>snort.conf</code> is missing. ⇒ The systemd/init.d service can't start Snort.</p>
+</li>
+</ul>
+<h5 id="2-create-a-new-snortconf-file">2️⃣ Create a new <code>snort.conf</code> file :</h5>
+<pre><code class="language-bash">root@aas:~# cd /etc/snort/
+root@aas:/etc/snort# ls
+rules  snort.debian.conf
+root@aas:/etc/snort# sudo nano snort.conf
+</code></pre>
+<h5 id="3-add-basic-settings-to-run-snort">3️⃣ Add basic settings to run Snort</h5>
+<ul>
+<li>After research, I used the following configuration:</li>
+</ul>
+<pre><code class="language-bash">######################################################
+# Snort Configuration File
+# Version: 2.9.15.1
+# Author: Abdelwahab Shandy - Config for IDS Testing
+######################################################
+
+#-------------------
+# Network Variables
+#------------------
+
+# Internal network that Snort will monitor
+ipvar HOME_NET 10.0.2.0/24
+
+# All other networks are considered external
+ipvar EXTERNAL_NET any
+
+#------------
+# Rule Paths
+#------------
+
+# Path for Snort rule files
+var RULE_PATH /etc/snort/rules
+var SO_RULE_PATH /etc/snort/so_rules
+var PREPROC_RULE_PATH /etc/snort/preproc_rules
+
+#---------------
+# Include Rules
+#---------------
+
+# Include your local rules (local.rules)
+include $RULE_PATH/local.rules
+
+#-----------------
+# Output Settings
+#-----------------
+
+# Output alerts directly to the console
+output alert_fast: stdout
+
+#---------------
+# Preprocessors
+#---------------
+
+# Frag3 preprocessor settings
+preprocessor frag3_global: max_frags 65536
+
+# Stream5 preprocessor settings
+preprocessor stream5_global: track_tcp yes, track_udp yes, track_icmp yes
+preprocessor stream5_tcp: policy linux, detect_anomalies
+preprocessor stream5_udp:
+preprocessor stream5_icmp:
+
+#############################
+# End of Snort Configuration
+#############################
+</code></pre>
+<ul>
+<li>
+<p>Frag3 is responsible for IP fragmentation so Snort can understand them as a single unit and detect attacks.</p>
+</li>
+<li>
+<p>Stream5 is responsible for session tracking and reassemblingTCP/UDP/ICMP streams so Snort can apply rules to the correct data in the correct order.</p>
+</li>
+</ul>
+<h5 id="3-create-the-local-rules-file">3️⃣ Create the local rules file :</h5>
+<pre><code class="language-bash">root@aas:/etc/snort# sudo nano rules/local.rules
+</code></pre>
+<ul>
+<li>Add a simple test rule, for example:</li>
+</ul>
+<pre><code class="language-bash">alert icmp any any -&gt; any any (msg:&quot;ICMP test detected&quot;; sid:1000001; rev:1;)
+</code></pre>
+<h5 id="4-test-the-configuration-to-verify-if-the-issue-is-resolved">4️⃣ Test the configuration to verify if the issue is resolved:</h5>
+<pre><code class="language-bash">root@aas:/etc/snort# snort -T -c /etc/snort/snort.conf
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">Rule application order: pass-&gt;drop-&gt;sdrop-&gt;reject-&gt;alert-&gt;log
+Verifying Preprocessor Configurations!
+
+[ Port Based Pattern Matching Memory ]
+
+--== Initialization Complete ==--
+
+,,_     -*&gt; Snort! &lt;*-
+o&quot;  )~   Version 2.9.15.1 GRE (Build 15125) 
+''''    By Martin Roesch &amp; The Snort Team
+Using libpcap version 1.10.1
+Using PCRE version: 8.39
+Using ZLIB version: 1.2.11
+
+Snort successfully validated the configuration!
+Snort exiting
+</code></pre>
+<ul>
+<li>
+<p>This means <strong>Snort configuration is now successfully validated</strong>.</p>
+</li>
+<li>
+<p><code>snort.conf</code> is valid: all paths and rules exist and are correct.</p>
+</li>
+<li>
+<p><strong>Preprocessors are working</strong>: protocol analysis and other settings are ready.</p>
+</li>
+<li>
+<p>Snort is <strong>not running yet</strong>: the <code>-T</code> option only tests the configuration, so Snort exits after the test.</p>
+</li>
+</ul>
+<h5 id="testing-live-alerts">Testing live alerts:</h5>
+<ul>
+<li>Run Snort to see alerts directly:</li>
+</ul>
+<pre><code class="language-bash">sudo snort -i lo -c /etc/snort/snort.conf -A console
+</code></pre>
+<ul>
+<li>
+<p>Monitoring the loopback interface (<code>lo</code>)</p>
+</li>
+<li>
+<p>I’ll ping from the same machine for simplicity instead of using another VM.</p>
+</li>
+</ul>
+<p>From another terminal:</p>
+<pre><code class="language-bash">aas@aas:~$ ping 10.0.2.15
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">WARNING: No preprocessors configured for policy 0.
+09/12-18:28:23.648061  [**] [1:1000001:1] ICMP test detected [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+</code></pre>
+<ul>
+<li>
+<p>This confirms the rule is working: Snort captures any ICMP traffic on the monitored interface (<code>lo</code>).</p>
+</li>
+<li>
+<p>Running on the <code>enp0s3</code> interface did not trigger alerts because internal pings go through <code>lo</code>, not <code>enp0s3</code>.</p>
+</li>
+<li>
+<p>Pinging from another device on the <code>10.0.2.0/24</code> network will trigger an alert immediately.</p>
+</li>
+</ul>
+<blockquote>
+<p>This was just a test. Everything is now set, so we can proceed to the main task.</p>
+</blockquote>
+<hr />
+<h1 id="preparing-and-testing-nmap-scan-detection">Preparing and testing Nmap scan detection</h1>
+<h3 id="1-add-nmap-rules-to-localrules">1️⃣ Add Nmap rules to <code>local.rules</code></h3>
+<ul>
+<li>We start with some of the most common Nmap scan types.</li>
+</ul>
+<h3 id="1-open-the-local-rules-file">1️⃣ Open the local rules file</h3>
+<pre><code class="language-bash">nano /etc/snort/rules/local.rules
+</code></pre>
+<ul>
+<li>Here is the snort rule structure:</li>
+</ul>
+<pre><code class="language-bash">action protocol sourceIP sourceport -&gt; destinationIP destinationport ([Rule options])
+</code></pre>
+<ul>
+<li>
+<p>EX :</p>
+</li>
+<li>
+<p>A. Ping Sweep detection</p>
+</li>
+</ul>
+<pre><code class="language-bash"># Ping Sweep Detector
+
+alert icmp any any -&gt; 10.0.2.15 any (msg:&quot;NMAP Ping Sweep Scan&quot;; dsize:0; sid:1000002; rev:1;)
+</code></pre>
+<ul>
+<li>B.NULL Scan detection</li>
+</ul>
+<pre><code class="language-bash">action protocol sourceIP sourceport -&gt; destinationIP destinationport ([Rule options])
+</code></pre>
+<ul>
+<li>C.TCP Scan detection on port 22 :</li>
+</ul>
+<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP TCP Scan&quot;; sid:1000003; rev:1;)
+</code></pre>
+<ul>
+<li>D.XMAS Scan detection :</li>
+</ul>
+<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP XMAS Scan&quot;; flags:FPU; sid:1000004; rev:1;)
+</code></pre>
+<ul>
+<li>E.FIN Scan detection</li>
+</ul>
+<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP FIN Scan&quot;; flags:F; sid:1000005; rev:1;)
+</code></pre>
+<ul>
+<li>F.UDP Scan detection on port 68:</li>
+</ul>
+<pre><code class="language-bash">alert udp any any -&gt; 10.0.2.15 68 (msg:&quot;NMAP UDP Scan&quot;; sid:1000007; rev:1;)
+</code></pre>
+<ul>
+<li>Final combined file will look like:</li>
+</ul>
+<pre><code class="language-bash"># --------------------------------
+# Nmap Detection Rules for Snort :
+# --------------------------------
+
+# ICMP Test Detection
+alert icmp any any -&gt; any any (msg:&quot;ICMP test Detected!!!&quot;; sid:10000010; rev:1;)
+
+# NMAP Ping Sweep
+alert icmp any any -&gt; any any (msg:&quot;NMAP Ping Sweep Scan!!!&quot;; dsize:0; sid:10000020; rev:1;)
+
+# NMAP TCP Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP TCP Scan!!!&quot;; flags:S; sid:10000030; rev:1;)
+
+# NMAP XMAS Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP XMAS Scan!!!&quot;; flags:FPU; sid:10000040; rev:1;)
+
+# NMAP FIN Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP FIN Scan!!!&quot;; flags:F; sid:10000050; rev:1;)
+
+# NMAP NULL Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP NULL Scan!!!&quot;; flags:0; sid:10000060; rev:1;)
+
+# NMAP UDP Scan
+alert udp any any -&gt; any any (msg:&quot;NMAP UDP Scan!!!&quot;; sid:10000070; rev:1;)
+</code></pre>
+<h3 id="explanation-of-each-rule">Explanation of each rule</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What it detects</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICMP Test</td>
+<td>any simple ping</td>
+<td>any ICMP packet sent to the host</td>
+</tr>
+<tr>
+<td>NMAP Ping Sweep</td>
+<td>host discovery attempts</td>
+<td>ICMP echo with <code>dsize:0</code> often used by Nmap Ping Sweep</td>
+</tr>
+<tr>
+<td>NMAP TCP Scan</td>
+<td>TCP SYN scan across ports</td>
+<td>any TCP SYN packet from Nmap or other TCP scanners</td>
+</tr>
+<tr>
+<td>NMAP XMAS Scan</td>
+<td>TCP XMAS scan</td>
+<td>any TCP packet with FIN+PSH+URG flags — a common Nmap scan type</td>
+</tr>
+<tr>
+<td>NMAP FIN Scan</td>
+<td>TCP FIN scan</td>
+<td>any TCP packet with only FIN flag — used to probe ports without establishing a full connection</td>
+</tr>
+<tr>
+<td>NMAP NULL Scan</td>
+<td>TCP NULL scan</td>
+<td>any TCP packet with no flags — attempt to bypass some firewalls</td>
+</tr>
+<tr>
+<td>NMAP UDP Scan</td>
+<td>UDP scan</td>
+<td>any UDP packet to any port; Nmap uses this to discover services</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<ul>
+<li>After saving the file, test the configuration:</li>
+</ul>
+<pre><code class="language-bash">sudo snort -T -c /etc/snort/snort.conf
+</code></pre>
+<ul>
+<li>You should see:</li>
+</ul>
+<pre><code class="language-bash">Snort successfully validated the configuration! Snort exiting
+</code></pre>
+<ul>
+<li>If that appears, everything is fine.</li>
+</ul>
+<hr />
+<h2 id="now-ill-test-from-the-same-machine">Now I’ll test from the same machine</h2>
+<blockquote>
+<p>Because I will run the scans from the same machine (Target), I need to use the loopback interface (<code>lo</code>) or the target’s internal IP <code>10.0.2.15</code> when running Snort, since scans from the same host won’t traverse <code>enp0s3</code> directly.</p>
+</blockquote>
+<p>1️⃣ Start Snort on loopback (<code>lo</code>):</p>
+<pre><code class="language-bash">sudo snort -A console -q -c /etc/snort/snort.conf -i lo
+</code></pre>
+<p><code>-A console</code> : show alerts on the terminal\
+<code>-q</code> : quiet mode to reduce noise</p>
+<p>2️⃣ In another terminal, start scanning from the same host:</p>
+<ul>
+<li><strong>First — Ping Sweep / ICMP Test</strong>:</li>
+</ul>
+<pre><code class="language-bash">ping 10.0.2.15
+</code></pre>
+<ul>
+<li>Snort produced the alert: <code>ICMP test detected</code>:</li>
+</ul>
+<pre><code class="language-bash">09/12-22:16:36.831126  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807603198/a25ecf01-4b94-4119-9e43-2e9c049c5a0a.png" alt="" align="left" fullwidth="true" /></p>
+<h2 id="now-ill-test-from-the-attacker-vm">Now I’ll test from the Attacker VM:</h2>
+<ul>
+<li>
+<p><strong>Target / Snort (Ubuntu) IP:</strong> <code>10.0.2.15</code> on interface <code>enp0s3</code></p>
+</li>
+<li>
+<p>Start Snort on <code>enp0s3</code>:</p>
+</li>
+</ul>
+<pre><code class="language-bash">sudo snort -A console -q -c /etc/snort/snort.conf -i enp0s3
+</code></pre>
+<h4 id="temporarily-open-ssh-port-on-the-target-ubuntu">Temporarily open SSH port on the Target (Ubuntu) :</h4>
+<pre><code class="language-bash">sudo systemctl start ssh
+sudo systemctl enable ssh   # if you want it persistent after reboot
+sudo ufw allow 22/tcp       # if UFW is active
+</code></pre>
+<ul>
+<li>Now port 22 is open on the Target.</li>
+</ul>
+<p><strong>Second — TCP SYN Scan from the Attacker</strong>:</p>
+<pre><code class="language-bash"># To detect open ports quickly and less obviously than a regular scan.
+sudo nmap -sS 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP TCP Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:17:28.232537  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:80
+09/12-22:17:28.232541  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:139
+09/12-22:17:28.232545  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:25
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807588399/78ed49c8-c617-47e0-a01f-fcd9ef1c3f13.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>Third — XMAS Scan from the Attacker</strong>:</p>
+<pre><code class="language-bash"># To detect open ports in stealth mode (using packets containing FIN, PSH and URG flags together).
+sudo nmap -sX 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP XMAS Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:21:59.585254  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42309 -&gt; 10.0.2.15:5952
+09/12-22:21:59.585259  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42309 -&gt; 10.0.2.15:5510
+09/12-22:22:00.602432  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42310 -&gt; 10.0.2.15:22
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807573829/1d258de7-8ae9-4627-acc3-9ce0230e7c75.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>FIN Scan from the Attacker</strong></p>
+<pre><code class="language-bash"># To detect open ports in stealth mode (using FIN packets instead of SYN).
+sudo nmap -sF 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP FIN Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:22:51.010337  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:1148
+09/12-22:22:51.010342  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:787
+09/12-22:22:51.010346  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:7001
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807561720/9b759443-a948-4479-a984-93b43ca417fb.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>NULL Scan from the Attacker</strong></p>
+<pre><code class="language-bash"># To identify open or closed ports in stealth mode (without any flags in the TCP header).
+sudo nmap -sN 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP NULL Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:23:40.987444  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:6129
+09/12-22:23:40.987448  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:27356
+09/12-22:23:40.987452  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:10566
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807542141/947d3d54-2db8-4457-8092-80a6690f4826.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>UDP Scan from the Attacker</strong></p>
+<pre><code class="language-bash"># To detect open UDP ports and the services running on them.
+sudo nmap -sU 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP UDP Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:24:41.947120  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+09/12-22:24:41.947123  [**] [1:10000070:1] NMAP UDP Scan!!! [**] [Priority: 0] {UDP} 10.0.2.15:56847 -&gt; 10.0.2.15:112
+09/12-22:24:41.947124  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+09/12-22:24:43.006069  [**] [1:10000070:1] NMAP UDP Scan!!! [**] [Priority: 0] {UDP} 10.0.2.15:56848 -&gt; 10.0.2.15:5353
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807522639/d5a1fc47-4ffa-4919-b236-98fa284892d9.png" alt="" align="left" fullwidth="true" /></p>
+<ul>
+<li>The ICMP messages you see are not from a normal <code>ping</code> — they are the ICMP responses that occur when a UDP scan probes closed ports.</li>
+</ul>
+<blockquote>
+<p>The host was noisy (responding) but everything behaved as expected.</p>
+</blockquote>
+<hr />
+<h3 id="summary-conclusion">Summary / Conclusion</h3>
+<ul>
+<li>
+<p>Snort is successfully configured as an IDS on Ubuntu.</p>
+</li>
+<li>
+<p>All tested Nmap scan types were detected accurately.</p>
+</li>
+<li>
+<p>The environment is ready for further monitoring and packet analysis (PCAP/Wireshark).</p>
+</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong><em>💬 "Control</em></strong> <strong><em>the code, and you control the world." 🔐 From wiping metadata to gaining root access — every step is documented and my goal is to deeply understand the system, not just hack!</em></strong></p>
+<p><a href="https://abdelwahabshandy.hashnode.dev/"><strong><em>Abdelwahab Shandy</em></strong></a></p>
+<p><a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/"><strong><em>Linkedin</em></strong></a></p>
+<p><a href="https://github.com/abdelwahab-ahmed-shandy"><strong><em>GitHub</em></strong></a></p>
+<p><strong><em>See You Soon</em></strong></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,7221 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/digital-forensics-labs/15-ntfs1-evidence-acquisition-analysis/">
+      
+      
+        <link rel="prev" href="../14-registry-analysis-tools-explorer-regripper/">
+      
+      
+        <link rel="next" href="../16-search-in-trash-cybertalents/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>15 ntfs1 evidence acquisition analysis - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#digital-forensics-investigation-report-ntfs1-image" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              15 ntfs1 evidence acquisition analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-software-write-blocker-concept/" class="md-tabs__link">
+          
+  
+  
+  Digital forensics labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise offensive defensive security simulation lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux-ctf/01-kvm-virtualization/" class="md-tabs__link">
+          
+  
+  
+  Linux ctf
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-tabs__link">
+          
+  
+  
+  Penetration testing trainee
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-tabs__link">
+          
+  
+  
+  Siem home lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-tabs__link">
+          
+  
+  
+  Soc and incident response
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../windows-server-labs-and/01-windows-command-line-fundamentals/" class="md-tabs__link">
+          
+  
+  
+  Windows server labs and
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital forensics labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital forensics labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-software-write-blocker-concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 software write blocker concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-verifying-evidence-integrity-hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-analyzing-file-properties-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-file-analysis-stat-command-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 file analysis stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-image-analysis-exiftool-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 image analysis exiftool linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-disk-acquisition-linux-dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 disk acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-disk-acquisition-ftk-imager-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 disk acquisition ftk imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-autopsy-case-creation-and-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-data-source-analysis-autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-firefox-artifacts-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-linux-os-forensics-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-registry-hives-extraction-ftk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 registry hives extraction ftk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-registry-analysis-phase-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-registry-analysis-tools-explorer-regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 ntfs1 evidence acquisition analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 ntfs1 evidence acquisition analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#digital-forensics-investigation-report-ntfs1-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Digital Forensics Investigation Report – NTFS1 Image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 1. Identification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📥 2. Acquisition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📥 2. Acquisition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identify-file-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identify file type :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 3. Preservation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 3. Preservation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ensure-that-the-copy-is-exactly-the-same-as-the-original" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensure that the copy is exactly the same as the original :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 4. Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 4. Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-file-type-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 1. File Type Identification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-metadata-examination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 2. Metadata Examination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ewf-metadata-examination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 3. EWF Metadata Examination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-function-ewfinfo-displays-the-internal-metadata-of-the-e01-file-such" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Its function ewfinfo displays the internal metadata of the .E01 file, such :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#very-important-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Very important information:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mounting-conversion-to-raw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 4. Mounting / Conversion to Raw
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-next-step-is-to-use-mmls-to-find-out-the-partition-table-and-see-the-offset-that-you-will-use-in-the-analysis-or-the-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 5. The next step is to use MMLS to find out the partition table and see the offset that you will use in the analysis or the mount :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-instead-of-relying-on-mmls-you-can-check-the-first-sectors-with-fsstat-to-make-sure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 6. Instead of relying on mmls, you can check the first sectors with fsstat to make sure :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-the-mount-will-be-like-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 So the mount will be like this :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youre-now-ready-to-open-it-and-work-directly-on-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You're now ready to open it and work directly on it :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify data access :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-that-we-have-ntfs1raw-mounted-and-have-seen-the-volumes-the-logical-steps-for-analysis-would-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now that we have ntfs1.raw mounted and have seen the volumes, the logical steps for analysis would be :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youve-finally-reached-your-goal-of-acquiring-and-preserving-light-youve-successfully-mounted-the-raw-image-created-a-file-index-and-even-started-creating-a-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You've finally reached your goal of acquiring and preserving light. You've successfully mounted the RAW image, created a file index, and even started creating a Timeline.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-next-logical-step-is-to-browse-the-contents-of-these-directories-by-the-inode-number-that-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 The next logical step is to browse the contents of these directories by the inode number that appears .
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretation:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attempted-file-extraction-with-icat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attempted File Extraction with icat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-next-step-after-we-extracted-the-empty-files-with-icat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The next step after we extracted the empty files with icat:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#photorec-because-it-is-a-powerful-carving-tool-that-handles-many-file-types-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Photorec, because it is a powerful carving tool that handles many file types in depth.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-report-ntfs1-image-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Report - NTFS1 Image Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#researchers-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Researcher's Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Conclusion:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-search-in-trash-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 search in trash cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-examining-pcaps-emails-malware-infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 examining pcaps emails malware infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-arp-storm-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 arp storm cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-psexec-hunt-pcapng/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 psexec hunt pcapng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-suspicious-file-download-fake-authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 suspicious file download fake authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-hawkeye-blue-team-challenge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 hawkeye blue team challenge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-stego-binwalk-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 stego binwalk ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-stego-canyousee-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 stego canyousee picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-stego-chalkboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 stego chalkboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-stego-cypher-anxiety-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 stego cypher anxiety cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-stego-disko-1-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 stego disko 1 picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-stego-exif-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 stego exif ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-stego-file-found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28 stego file found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-stego-forensics-101-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 stego forensics 101 ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-stego-gandp-list-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 stego gandp list cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-stego-git-is-good-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31 stego git is good ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-stego-glory-of-the-garden-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-stego-hidden-message-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33 stego hidden message cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34-stego-i-love-images-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 stego i love images cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35-stego-im-a-dump-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 stego im a dump ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36-stego-information-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37-stego-meta-blue-team-labs-online/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 stego meta blue team labs online
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38-stego-minions-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38 stego minions ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../39-stego-pdf-by-fdpumyp-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 stego pdf by fdpumyp ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40-stego-pho-is-tasty-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 stego pho is tasty ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../41-stego-pikespeak-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    41 stego pikespeak ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../42-stego-red-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    42 stego red picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../43-stego-rubber-duck-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    43 stego rubber duck ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../44-stego-scan-surprise-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    44 stego scan surprise picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../45-stego-secret-of-the-polyglot-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../46-stego-simple-steganography-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    46 stego simple steganography ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../47-stego-snowboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    47 stego snowboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../48-stego-taking-ls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    48 stego taking ls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../49-stego-tux-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    49 stego tux ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../50-stego-verify-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    50 stego verify picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../51-stego-wow-so-meta-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    51 stego wow so meta ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ctf
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux ctf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/01-kvm-virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 kvm virtualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/02-intro-to-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 intro to linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/03-unix-vs-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 unix vs linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/04-intro-to-linux-labs-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📂 If you don't know anything about Linux, start here with this course :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/05-overthewire-bandit-level-0-tobandit-level-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 overthewire bandit level 0 tobandit level 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/06-bandit-level-10-to-level-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 bandit level 10 to level 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/07-bandit-level-20-to-level-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 bandit level 20 to level 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/08-leviathan-linux-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 leviathan linux intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/09-leviathan-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 leviathan level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/10-leviathan-level-0-to-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 leviathan level 0 to level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penetration testing trainee
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Penetration testing trainee
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 beginnings of the internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/02-http-protocol-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 http protocol deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/03-dns-explanation-and-recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 dns explanation and recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/04-linux-commands-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/05-passive-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 passive reconnaissance thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/06-active-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/07-cybersecurity-beginner-career-labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 cybersecurity beginner career labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/08-iti-penetration-tester-track-2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/09-kioptrix-level-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 kioptrix level 1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/10-metasploitable1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 metasploitable1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/11-metasploitable2-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 metasploitable2 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/12-web-unprotected-admin-functionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 web unprotected admin functionality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/13-web-unprotected-admin-functionality-unpredictable-url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 web unprotected admin functionality unpredictable url
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/14-web-user-id-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 web user id controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/15-web-user-id-controlled-by-request-parameter-with-dynamic-id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 web user id controlled by request parameter with dynamic id
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/16-web-user-role-modification-in-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 web user role modification in profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/17-web-user-role-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 web user role controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/18-web-idor-corridor-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 web idor corridor thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/19-web-info-disclosure-error-messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 web info disclosure error messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/20-web-info-disclosure-debug-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 web info disclosure debug page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/21-web-source-code-disclosure-backup-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 web source code disclosure backup files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/22-web-auth-bypass-via-info-disclosure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 web auth bypass via info disclosure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/23-web-info-disclosure-version-control-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 web info disclosure version control git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/24-natas-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 natas level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/25-natas-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 natas level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/26-natas-level-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 natas level 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/27-natas-level-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 natas level 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Siem home lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Siem home lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 pre lab overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/02-install-lab-elk-siem-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 install lab elk siem n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/03-install-lab-win-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 install lab win server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/04-install-lab-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 install lab fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/05-building-a-siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 building a siem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/06-winlogbeat-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 winlogbeat configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/07-fluent-bit-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 fluent bit configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/08-detection-egnineering-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/09-pre-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/10-detection-of-powershell-based-windows-firewall-tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/11-registry-persistence-detection-with-sysmon-and-kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/12-privilege-escalation-and-information-gathering-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 privilege escalation and information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/13-soar-n8n-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 soar n8n workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Soc and incident response
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Soc and incident response
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 persistence analysis remediation python popup malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/02-ubuntu-web-server-waf-nginx-modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ubuntu web server waf nginx modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/03-detect-nmap-scan-using-snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 detect nmap scan using snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/04-paypal-phishing-investigation-letsdefend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 paypal phishing investigation letsdefend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/05-phishing-response-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 phishing response playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/06-boss-of-the-soc-botsv1-scenario1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 boss of the soc botsv1 scenario1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/07-qradar101-blue-team-cyberdefenders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 qradar101 blue team cyberdefenders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/08-building-siem-filebeat-winlogbeat-kibana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 building siem filebeat winlogbeat kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/09-collecting-visualizing-ssh-logs-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 collecting visualizing ssh logs fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows server labs and
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows server labs and
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/01-windows-command-line-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOP Command Line in Windows :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/02-windows-fundamentals-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 windows fundamentals 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/03-windows-fundamentals-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 windows fundamentals 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/04-windows-fundamentals-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 windows fundamentals 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/05-active-directory-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 active directory basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/06-login-protocols-ntlm-vs-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 login protocols ntlm vs kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/07-kerberos-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 kerberos deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/08-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/09-how-to-join-domain-in-background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 how to join domain in background
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows-server-labs-and/10-post-domain-join-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 post domain join steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#digital-forensics-investigation-report-ntfs1-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Digital Forensics Investigation Report – NTFS1 Image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧩 1. Identification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📥 2. Acquisition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📥 2. Acquisition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identify-file-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identify file type :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔐 3. Preservation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔐 3. Preservation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ensure-that-the-copy-is-exactly-the-same-as-the-original" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensure that the copy is exactly the same as the original :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 4. Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 4. Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-file-type-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 1. File Type Identification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-metadata-examination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 2. Metadata Examination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ewf-metadata-examination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 3. EWF Metadata Examination
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#its-function-ewfinfo-displays-the-internal-metadata-of-the-e01-file-such" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Its function ewfinfo displays the internal metadata of the .E01 file, such :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#very-important-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Very important information:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mounting-conversion-to-raw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 4. Mounting / Conversion to Raw
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-next-step-is-to-use-mmls-to-find-out-the-partition-table-and-see-the-offset-that-you-will-use-in-the-analysis-or-the-mount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 5. The next step is to use MMLS to find out the partition table and see the offset that you will use in the analysis or the mount :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-instead-of-relying-on-mmls-you-can-check-the-first-sectors-with-fsstat-to-make-sure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔸 6. Instead of relying on mmls, you can check the first sectors with fsstat to make sure :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#so-the-mount-will-be-like-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 So the mount will be like this :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youre-now-ready-to-open-it-and-work-directly-on-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You're now ready to open it and work directly on it :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-data-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify data access :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-that-we-have-ntfs1raw-mounted-and-have-seen-the-volumes-the-logical-steps-for-analysis-would-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now that we have ntfs1.raw mounted and have seen the volumes, the logical steps for analysis would be :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youve-finally-reached-your-goal-of-acquiring-and-preserving-light-youve-successfully-mounted-the-raw-image-created-a-file-index-and-even-started-creating-a-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        You've finally reached your goal of acquiring and preserving light. You've successfully mounted the RAW image, created a file index, and even started creating a Timeline.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-next-logical-step-is-to-browse-the-contents-of-these-directories-by-the-inode-number-that-appears" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 The next logical step is to browse the contents of these directories by the inode number that appears .
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretation:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attempted-file-extraction-with-icat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attempted File Extraction with icat
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-next-step-after-we-extracted-the-empty-files-with-icat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The next step after we extracted the empty files with icat:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#photorec-because-it-is-a-powerful-carving-tool-that-handles-many-file-types-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Photorec, because it is a powerful carving tool that handles many file types in depth.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-report-ntfs1-image-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Report - NTFS1 Image Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#researchers-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Researcher's Signature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Conclusion:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>15 ntfs1 evidence acquisition analysis</h1>
+
+<h2 id="digital-forensics-investigation-report-ntfs1-image"><strong>Digital Forensics Investigation Report – NTFS1 Image</strong></h2>
+<p><strong>Case Title:</strong> NTFS1 – Evidence Acquisition &amp; Analysis Lab\
+<strong>Source:</strong> <a href="http://DigitalCorpora.org">DigitalCorpora.org</a> – <a href="https://digitalcorpora.s3.amazonaws.com/s3_browser.html#corpora/drives/nps-2009-ntfs1/">nps-2009-ntfs1\
+<strong>Investigator:</strong></a> Abdelwahab Shandy\
+<strong>Date (UTC):</strong> 2025-08-10\
+<strong>Syst</strong><a href="https://digitalcorpora.s3.amazonaws.com/s3_browser.html#corpora/drives/nps-2009-ntfs1/"><strong>em Used for An</strong></a><strong>alysis:</strong></p>
+<ul>
+<li>
+<p><strong>OS:</strong> <code>Ubuntu 20.04.6 LTS</code></p>
+</li>
+<li>
+<p><strong>Hostname:</strong> <code>as</code></p>
+</li>
+<li>
+<p><strong>Tools:</strong> <code>file</code>, <code>sha256sum</code>, <code>cp</code>, <code>ewfmount</code> (EWF Tools v2025.1)</p>
+</li>
+</ul>
+<hr />
+<h2 id="1-identification"><strong>🧩 1. Identification</strong></h2>
+<blockquote>
+<p><strong><em>Scenario:\
+-</em></strong> A te<a href="https://digitalcorpora.s3.amazonaws.com/s3_browser.html#corpora/drives/nps-2009-ntfs1/">st image of an</a> NTFS file <a href="https://digitalcorpora.s3.amazonaws.com/s3_browser.html#corpora/drives/nps-2009-ntfs1/">system includi</a>ng unfragment<a href="https://digitalcorpora.s3.amazonaws.com/s3_browser.html#corpora/drives/nps-2009-ntfs1/">ed and highly</a> fragmented files stored in raw, compressed, and encrypted directories. The decryption key is provided.</p>
+<p><strong>Evidence Type:</strong> Disk image (.E01) – EnCase EWF format.\
+<strong>Source URL:</strong> <a href="https://digitalcorpora.org/corpora/disk-images/">Digital Corpora – nps-2009-ntfs1</a></p>
+</blockquote>
+<hr />
+<h2 id="2-acquisition"><strong>📥 2. Acquisition</strong></h2>
+<blockquote>
+<p><a href="https://digitalcorpora.s3.amazonaws.com/s3_browser.html#corpora/drives/nps-2009-ntfs1/"><strong><em>Goal: Obt</em></strong></a><strong><em>ain and preserve a copy of the evidence file for analysis.</em></strong></p>
+<p>Download the file with the extension <code>.E01</code></p>
+</blockquote>
+<ol>
+<li><strong>Download the image file:</strong></li>
+</ol>
+<pre><code class="language-bash">$ wget https://digitalcorpora.s3.amazonaws.com/corpora/drives/nps-2009-ntfs1/ntfs1-gen0.E01
+</code></pre>
+<ol>
+<li>
+<h3 id="identify-file-type">Identify file type :</h3>
+</li>
+</ol>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ file ntfs1-gen0.E01 
+ntfs1-gen0.E01: EWF/Expert Witness/EnCase image file format
+</code></pre>
+<ol>
+<li><strong>Generate cryptographic hash for integrity verification :</strong></li>
+</ol>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ sha256sum ntfs1-gen0.E01 
+96e525f53d50f986461151f8e9c07588633215477a6b8a3f744b2eeebe512460  ntfs1-gen0.E01
+</code></pre>
+<hr />
+<h2 id="3-preservation"><strong>🔐 3. Preservation</strong></h2>
+<blockquote>
+<p><strong><em>Goal: Ensure data integrity and avoid altering the original file.</em></strong></p>
+</blockquote>
+<ol>
+<li><strong>Copy the original image for analysis:</strong></li>
+</ol>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ cp ntfs1-gen0.E01 CopyNtfs1Gen0.E01
+</code></pre>
+<blockquote>
+<p>📌 Objective:</p>
+<ul>
+<li>
+<p>Preserve the original copy without any modifications (so you can return to it or verify its integrity).</p>
+</li>
+<li>
+<p>Any analysis or modifications will be made to the second copy only.</p>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li>
+<h3 id="ensure-that-the-copy-is-exactly-the-same-as-the-original">Ensure that the copy is exactly the same as the original :</h3>
+</li>
+</ol>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ sha256sum ntfs1-gen0.E01 
+96e525f53d50f986461151f8e9c07588633215477a6b8a3f744b2eeebe512460  ntfs1-gen0.E01
+sansforensics@as: ~/DF-LAB
+$ sha256sum CopyNtfs1Gen0.E01 
+96e525f53d50f986461151f8e9c07588633215477a6b8a3f744b2eeebe512460  CopyNtfs1Gen0.E01
+</code></pre>
+<blockquote>
+<p>✅ The hashes match – evidence integrity preserved.</p>
+<ul>
+<li><strong>Note:</strong> In a real-world scenario, a <strong>write-blocker</strong> would be used during acquisition to prevent any modifications.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="4-analysis"><strong>🔍 4. Analysis</strong></h2>
+<h3 id="1-file-type-identification"><strong>🔸 1. File Type Identification</strong></h3>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ file CopyNtfs1Gen0.E01 
+CopyNtfs1Gen0.E01: EWF/Expert Witness/EnCase image file format
+</code></pre>
+<h3 id="2-metadata-examination"><strong>🔸 2. Metadata Examination</strong></h3>
+<p><strong>The</strong> <code>stat</code> And <code>exiftool</code> <strong>command is used to display detailed information about a file :</strong></p>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ stat CopyNtfs1Gen0.E01 
+  File: CopyNtfs1Gen0.E01
+  Size: 1089252     Blocks: 2128       IO Block: 4096   regular file
+Device: 802h/2050d  Inode: 3145918     Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/sansforensics)   Gid: ( 1000/sansforensics)
+Access: 2025-08-10 01:32:58.510661806 +0000
+Modify: 2025-08-10 01:30:02.194796141 +0000
+Change: 2025-08-10 01:30:02.194796141 +0000
+ Birth: -
+
+# using exiftool 
+sansforensics@as: ~/DF-LAB
+$ exiftool CopyNtfs1Gen0.E01 
+ExifTool Version Number         : 11.88
+File Name                       : CopyNtfs1Gen0.E01
+Directory                       : .
+File Size                       : 1064 kB
+File Modification Date/Time     : 2025:08:10 01:30:02+00:00
+File Access Date/Time           : 2025:08:10 01:32:58+00:00
+File Inode Change Date/Time     : 2025:08:10 01:30:02+00:00
+File Permissions                : rw-rw-r--
+Error                           : Unknown file type
+</code></pre>
+<h3 id="3-ewf-metadata-examination"><strong>🔸</strong> 3. EWF Metadata Examination</h3>
+<p><strong>Since the regular tulle did not do anything because it is not considered special, come on, let's use</strong> <code>ewfinfo</code> <strong>:</strong></p>
+<blockquote>
+<h3 id="its-function-ewfinfo-displays-the-internal-metadata-of-the-e01-file-such">📌 Its function ewfinfo displays the internal metadata of the .E01 file, such :</h3>
+<ul>
+<li>
+<p>Date and time the original image was created.</p>
+</li>
+<li>
+<p>Name of the device or evidence source.</p>
+</li>
+<li>
+<p>Actual data size.</p>
+</li>
+<li>
+<p>Number of sectors and the size of each sector.</p>
+</li>
+<li>
+<p>Name of the user or tool that performed the acquisition.</p>
+</li>
+<li>
+<p>Comments (if added at creation time).</p>
+</li>
+</ul>
+</blockquote>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ ewfinfo CopyNtfs1Gen0.E01 
+ewfinfo 20140812
+
+Acquiry information
+    Description:        converted from /corp/nps/drives/nps-2009-ntfs1/ntfs1-gen0.aff
+    Acquisition date:   Fri Feb 22 10:53:50 2013
+    System date:        Fri Feb 22 10:53:50 2013
+    Operating system used:  Linux
+    Software version used:  20130120
+    Password:       N/A
+
+EWF information
+    File format:        EnCase 6
+    Sectors per chunk:  64
+    Error granularity:  64
+    Compression method: deflate
+    Compression level:  best compression
+
+Media information
+    Media type:     fixed disk
+    Is physical:        yes
+    Bytes per sector:   512
+    Number of sectors:  1008896
+    Media size:     492 MiB (516554752 bytes)
+
+Digest hash information
+    MD5:            56abc8bc1c01f9ceb262c50a64c134c5
+</code></pre>
+<blockquote>
+<p>🔍 Analysis of the results:</p>
+<ul>
+<li>
+<p>Description → The image was originally converted from AFF (ntfs1-gen0.aff) to E01.</p>
+</li>
+<li>
+<p>Acquisition date / System date → Time the directory was acquired: February 22, 2013, 10:53:50 UTC.</p>
+</li>
+<li>
+<p>Operating system used → Acquired on Linux.</p>
+</li>
+<li>
+<p>Software version used → Version 20130120 of the creation tool.</p>
+</li>
+<li>
+<p>Password → No password (N/A), meaning the image is not protected.</p>
+</li>
+<li>
+<p>File format → EnCase 6 EWF format.</p>
+</li>
+<li>
+<p>Compression → Using deflate and the highest compression level (best compression).</p>
+</li>
+<li>
+<p>Media information:</p>
+</li>
+<li>
+<p>Media type: Fixed disk.</p>
+</li>
+<li>
+<p>Size: 492 MiB.</p>
+</li>
+<li>
+<p>Number of sectors: 1,008,896 (512 bytes per sector).</p>
+</li>
+<li>
+<p>Digest hash → Original MD5: 56abc8bc1c01f9ceb262c50a64c134c5 (important for later file integrity comparison).</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="very-important-information">Very important information:</h3>
+<p>1️⃣ MD5 from ewfinfo :</p>
+<ul>
+<li>
+<p>This is the hash of the "original contents" of the acquired disk.</p>
+</li>
+<li>
+<p>This means that the tool calculates the hash on the data inside the image (the sectors on the disk), not on the E01 file itself.</p>
+</li>
+<li>
+<p>The E01 file contains directory data, metadata, and compression, but the MD5 inside the metadata is calculated before compression or any other processing.</p>
+</li>
+</ul>
+<p>2️⃣ MD5 from md5sum :</p>
+<ul>
+<li>CopyNtfs1Gen0.E01 This is the hash of the E01 file itself as a container, including the metadata and compression method.</li>
+</ul>
+<p>Of course, it's different because you're hashing all the bytes in the file after the conversion and compression process, not the raw disk data.</p>
+<p>💡 Summary:</p>
+<p>MD5sum on the file = integrity check for the E01 file as a container.</p>
+<p>MD5 inside ewfinfo = integrity check for the original disk contents inside the image (uncompressed, raw sectors),</p>
+<h3 id="4-mounting-conversion-to-raw"><strong>🔸 4. Mounting / Conversion to Raw</strong></h3>
+<blockquote>
+<p>Objective: Access and analyze the contents of the disk inside the .E01.</p>
+<p>You have two methods:</p>
+<ul>
+<li>
+<p>Convert it to a RAW (.dd) file using ewfexport or ewfmount.</p>
+</li>
+<li>
+<p>Make a direct mount using ewfmount and then treat it as a block device.</p>
+</li>
+</ul>
+</blockquote>
+<p><strong>For live mount :</strong></p>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ mkdir EWF
+sansforensics@as: ~/DF-LAB
+$ ewfmount CopyNtfs1Gen0.E01 EWF/
+ewfmount 20140812
+</code></pre>
+<p>You will see a file inside the EWF/ folder, probably named ewf1 :</p>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ ls -l EWF/
+total 0
+-r--r--r-- 1 sansforensics sansforensics 516554752 Aug 10 02:26 ewf1
+</code></pre>
+<blockquote>
+<p>This ewf1 file is the raw image (similar to the .dd version) that you can use with analysis tools.</p>
+</blockquote>
+<h3 id="5-the-next-step-is-to-use-mmls-to-find-out-the-partition-table-and-see-the-offset-that-you-will-use-in-the-analysis-or-the-mount"><strong>🔸 5.</strong> The next step is to use <code>MMLS</code> to find out the partition table and see the offset that you will use in the analysis or the mount :</h3>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB/EWF
+$ mmls ewf1 
+Cannot determine partition type
+</code></pre>
+<blockquote>
+<p>Sometimes with small images or images created for training purposes, such as NTFS1, because mmls expects a full partition table (MBR or GPT), but the file may be just a single NTFS disk without any partition table.</p>
+<p>📌 This means that the contents of ewf1 often start directly from the first sector as an NTFS volume, without a partition table.</p>
+</blockquote>
+<h3 id="6-instead-of-relying-on-mmls-you-can-check-the-first-sectors-with-fsstat-to-make-sure"><strong>🔸 6.</strong> Instead of relying on mmls, you can check the first sectors with fsstat to make sure :</h3>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB/EWF
+$ fsstat ewf1 
+FILE SYSTEM INFORMATION
+--------------------------------------------
+File System Type: NTFS
+Volume Serial Number: DA5048E85048CCC7
+OEM Name: NTFS    
+Volume Name: NTFS1
+Version: Windows XP
+
+METADATA INFORMATION
+--------------------------------------------
+First Cluster of MFT: 336298
+First Cluster of MFT Mirror: 504447
+Size of MFT Entries: 1024 bytes
+Size of Index Records: 4096 bytes
+Range: 0 - 32
+Root Directory: 5
+
+CONTENT INFORMATION
+--------------------------------------------
+Sector Size: 512
+Cluster Size: 512
+Total Cluster Range: 0 - 1008894
+Total Sector Range: 0 - 1008894
+
+$AttrDef Attribute Values:
+$STANDARD_INFORMATION (16)   Size: 48-72   Flags: Resident
+$ATTRIBUTE_LIST (32)   Size: No Limit   Flags: Non-resident
+$FILE_NAME (48)   Size: 68-578   Flags: Resident,Index
+$OBJECT_ID (64)   Size: 0-256   Flags: Resident
+$SECURITY_DESCRIPTOR (80)   Size: No Limit   Flags: Non-resident
+$VOLUME_NAME (96)   Size: 2-256   Flags: Resident
+$VOLUME_INFORMATION (112)   Size: 12-12   Flags: Resident
+$DATA (128)   Size: No Limit   Flags: 
+$INDEX_ROOT (144)   Size: No Limit   Flags: Resident
+$INDEX_ALLOCATION (160)   Size: No Limit   Flags: Non-resident
+$BITMAP (176)   Size: No Limit   Flags: Non-resident
+$REPARSE_POINT (192)   Size: 0-16384   Flags: Non-resident
+$EA_INFORMATION (208)   Size: 8-8   Flags: Resident
+$EA (224)   Size: 0-65536   Flags: 
+$LOGGED_UTILITY_STREAM (256)   Size: 0-65536   Flags: Non-resident
+</code></pre>
+<blockquote>
+<p>It's very clear that the image (ewf1) is an NTFS volume directly from the first byte, without any partition table.</p>
+<p>📌 Based on fsstat:</p>
+<ul>
+<li>
+<p>Sector Size = 512 bytes</p>
+</li>
+<li>
+<p>Filesystem starts at offset = 0</p>
+</li>
+<li>
+<p>Volume Name = NTFS1</p>
+</li>
+<li>
+<p>Works on Windows XP</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="so-the-mount-will-be-like-this"><strong>💡 So the mount will be like this :</strong></h3>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB/EWF
+$ mkdir -p ~/mnt/ntfs1
+sansforensics@as: ~/DF-LAB/EWF
+$ sudo mount -o ro,loop,offset=0 ewf1 ~/mnt/ntfs1/
+mount: /home/sansforensics/mnt/ntfs1/: failed to setup loop device for ewf1.
+</code></pre>
+<blockquote>
+<p>The reason is that mount tries to treat ewf1 as a regular raw file, but it's actually a virtual FUSE file created by ewfmount, and not all mount versions can work with it directly in the loop.</p>
+<p>📌 The solution in this scenario: Use xmount or mount with a fuse driver, or convert ewf1 to a temporary raw file before mounting.</p>
+</blockquote>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ ewfexport CopyNtfs1Gen0.E01 
+ewfexport 20140812
+
+Information for export required, please provide the necessary input
+Export to format (raw, files, ewf, smart, ftk, encase1, encase2, encase3, encase4, encase5, encase6, encase7, encase7-v2, linen5, linen6, linen7, ewfx) [raw]: raw
+Target path and filename without extension or - for stdout: ntfs1
+Evidence segment file size in bytes (0 is unlimited) (0 B &lt;= value &lt;= 7.9 EiB) [0 B]: 
+Start export at offset (0 &lt;= value &lt;= 516554752) [0]: 
+Number of bytes to export (0 &lt;= value &lt;= 516554752) [516554752]: 
+
+Export started at: Aug 10, 2025 02:49:15
+This could take a while.
+
+Export completed at: Aug 10, 2025 02:49:17
+
+Written: 492 MiB (516554752 bytes) in 2 second(s) with 246 MiB/s (258277376 bytes/second).
+MD5 hash calculated over data:      56abc8bc1c01f9ceb262c50a64c134c5
+ewfexport: SUCCESS
+</code></pre>
+<blockquote>
+<p>What happened:</p>
+<p>I did a full export of the .E01 RAW file (ntfs1.raw).</p>
+<p>The MD5 that came out (56abc8bc1c01f9ceb262c50a64c134c5) is the same as the one in the ewfinfo file, which indicates that the data itself is intact and identical to the original.</p>
+</blockquote>
+<h3 id="youre-now-ready-to-open-it-and-work-directly-on-it">You're now ready to open it and work directly on it :</h3>
+<blockquote>
+<p>Mounting a RAW disk in read-only mode Since fsstat says NTFS starts from the first byte, offset = 0:</p>
+</blockquote>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ sudo mount -o ro,loop,offset=0 ntfs1.raw ~/mnt/ntfs1
+</code></pre>
+<blockquote>
+<p>It actually appeared on the screen that there was something like a hard drive that had been cleaned up.</p>
+</blockquote>
+<h3 id="verify-data-access">Verify data access :</h3>
+<p>Enter the folder:</p>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ ls -lah ~/mnt/ntfs1/
+total 8.0K
+drwxrwxrwx 1 root          root          4.0K Dec 31  2008  .
+drwxrwxr-x 3 sansforensics sansforensics 4.0K Aug 10 02:41  ..
+drwxrwxrwx 1 root          root             0 Dec 31  2008  Compressed
+drwxrwxrwx 1 root          root             0 Dec 31  2008  Encrypted
+drwxrwxrwx 1 root          root             0 Dec 31  2008  RAW
+drwxrwxrwx 1 root          root             0 Dec 31  2008 'System Volume Information'
+</code></pre>
+<blockquote>
+<p>I mounted ntfs1.raw successfully, which indicates that the contents were recovered as folders:</p>
+<ul>
+<li>
+<p>Compressed → Most likely contains files compressed using NTFS compression.</p>
+</li>
+<li>
+<p>Encrypted → Most likely contains files encrypted using EFS.</p>
+</li>
+<li>
+<p>RAW → Folder name that may contain raw or unformatted data.</p>
+</li>
+<li>
+<p>System Volume Information → Windows system folder (Restore Points, Indexing).</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="now-that-we-have-ntfs1raw-mounted-and-have-seen-the-volumes-the-logical-steps-for-analysis-would-be">Now that we have <code>ntfs1.raw</code> mounted and have seen the volumes, the logical steps for analysis would be :</h3>
+<ul>
+<li>
+<p><strong>Browse and index files :</strong></p>
+</li>
+<li>
+<p>We create a list of all files and folders on the disk, including their size and creation/modification date.</p>
+</li>
+</ul>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ ls -lR ~/mnt/ntfs1 &gt; FileListing.txt
+sansforensics@as: ~/DF-LAB
+$ cat FileListing.txt 
+/home/sansforensics/mnt/ntfs1:
+total 0
+drwxrwxrwx 1 root root 0 Dec 31  2008 Compressed
+drwxrwxrwx 1 root root 0 Dec 31  2008 Encrypted
+drwxrwxrwx 1 root root 0 Dec 31  2008 RAW
+drwxrwxrwx 1 root root 0 Dec 31  2008 System Volume Information
+
+/home/sansforensics/mnt/ntfs1/Compressed:
+total 0
+
+/home/sansforensics/mnt/ntfs1/Encrypted:
+total 0
+
+/home/sansforensics/mnt/ntfs1/RAW:
+total 0
+
+/home/sansforensics/mnt/ntfs1/System Volume Information:
+total 0
+</code></pre>
+<ul>
+<li><strong>We use</strong> <code>fls</code> <strong>to index files (including deleted ones):</strong></li>
+</ul>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ fls -r -m / ntfs1.raw &gt; AllFile.txt
+sansforensics@as: ~/DF-LAB
+$ cat AllFile.txt 
+0|/$AttrDef ($FILE_NAME)|4-48-2|r/rr-xr-xr-x|48|0|82|1230763442|1230763442|1230763442|1230763442
+0|/$AttrDef|4-128-4|r/rr-xr-xr-x|48|0|2560|1230763442|1230763442|1230763442|1230763442
+0|/$BadClus ($FILE_NAME)|8-48-3|r/rr-xr-xr-x|0|0|82|1230763442|1230763442|1230763442|1230763442
+0|/$BadClus|8-128-2|r/rr-xr-xr-x|0|0|0|1230763442|1230763442|1230763442|1230763442
+0|/$BadClus:$Bad|8-128-1|r/rr-xr-xr-x|0|0|516554240|1230763442|1230763442|1230763442|1230763442
+0|/$Bitmap ($FILE_NAME)|6-48-2|r/rr-xr-xr-x|0|0|80|1230763442|1230763442|1230763442|1230763442
+0|/$Bitmap|6-128-1|r/rr-xr-xr-x|0|0|126112|1230763442|1230763442|1230763442|1230763442
+0|/$Boot ($FILE_NAME)|7-48-2|r/rr-xr-xr-x|48|0|76|1230763442|1230763442|1230763442|1230763442
+0|/$Boot|7-128-1|r/rr-xr-xr-x|48|0|8192|1230763442|1230763442|1230763442|1230763442
+0|/$Extend ($FILE_NAME)|11-48-3|d/dr-xr-xr-x|0|0|80|1230763442|1230763442|1230763442|1230763442
+0|/$Extend|11-144-4|d/dr-xr-xr-x|0|0|344|1230763442|1230763442|1230763442|1230763442
+0|/$Extend/$ObjId ($FILE_NAME)|25-48-1|r/rr-xr-xr-x|0|0|78|1230763445|1230763445|1230763445|1230763445
+0|/$Extend/$ObjId:$O|25-144-2|r/rr-xr-xr-x|0|0|48|1230763445|1230763445|1230763445|1230763445
+0|/$Extend/$Quota ($FILE_NAME)|24-48-1|r/rr-xr-xr-x|0|0|78|1230763445|1230763445|1230763445|1230763445
+0|/$Extend/$Quota:$O|24-144-3|r/rr-xr-xr-x|0|0|88|1230763445|1230763445|1230763445|1230763445
+0|/$Extend/$Quota:$Q|24-144-2|r/rr-xr-xr-x|0|0|208|1230763445|1230763445|1230763445|1230763445
+0|/$Extend/$Reparse ($FILE_NAME)|26-48-1|r/rr-xr-xr-x|0|0|82|1230763445|1230763445|1230763445|1230763445
+0|/$Extend/$Reparse:$R|26-144-2|r/rr-xr-xr-x|0|0|48|1230763445|1230763445|1230763445|1230763445
+0|/$LogFile ($FILE_NAME)|2-48-2|r/rr-xr-xr-x|0|0|82|1230763442|1230763442|1230763442|1230763442
+0|/$LogFile|2-128-1|r/rr-xr-xr-x|0|0|4685824|1230763442|1230763442|1230763442|1230763442
+0|/$MFT ($FILE_NAME)|0-48-3|r/rr-xr-xr-x|0|0|74|1230763442|1230763442|1230763442|1230763442
+0|/$MFT|0-128-1|r/rr-xr-xr-x|0|0|32768|1230763442|1230763442|1230763442|1230763442
+0|/$MFTMirr ($FILE_NAME)|1-48-2|r/rr-xr-xr-x|0|0|82|1230763442|1230763442|1230763442|1230763442
+0|/$MFTMirr|1-128-1|r/rr-xr-xr-x|0|0|4096|1230763442|1230763442|1230763442|1230763442
+0|/$Secure ($FILE_NAME)|9-48-7|r/rr-xr-xr-x|0|0|80|1230763442|1230763442|1230763442|1230763442
+0|/$Secure:$SDS|9-128-8|r/rr-xr-xr-x|0|0|262816|1230763442|1230763442|1230763442|1230763442
+0|/$Secure:$SDH|9-144-6|r/rr-xr-xr-x|0|0|240|1230763442|1230763442|1230763442|1230763442
+0|/$Secure:$SII|9-144-5|r/rr-xr-xr-x|0|0|208|1230763442|1230763442|1230763442|1230763442
+0|/$UpCase ($FILE_NAME)|10-48-2|r/rr-xr-xr-x|0|0|80|1230763442|1230763442|1230763442|1230763442
+0|/$UpCase|10-128-1|r/rr-xr-xr-x|0|0|131072|1230763442|1230763442|1230763442|1230763442
+0|/$Volume ($FILE_NAME)|3-48-1|r/rr-xr-xr-x|48|0|80|1230763442|1230763442|1230763442|1230763442
+0|/$Volume|3-128-3|r/rr-xr-xr-x|48|0|0|1230763442|1230763442|1230763442|1230763442
+0|/Compressed ($FILE_NAME)|28-48-4|d/drwxrwxrwx|0|0|86|1230763473|1230763473|1230763473|1230763473
+0|/Compressed|28-144-1|d/drwxrwxrwx|0|0|48|1230763503|1230763473|1230763476|1230763473
+0|/Encrypted ($FILE_NAME)|29-48-4|d/drwxrwxrwx|0|0|84|1230763483|1230763483|1230763483|1230763483
+0|/Encrypted|29-144-1|d/drwxrwxrwx|0|0|48|1230763514|1230763483|1230763515|1230763483
+0|/RAW ($FILE_NAME)|27-48-4|d/drwxrwxrwx|0|0|72|1230763457|1230763457|1230763457|1230763457
+0|/RAW|27-144-1|d/drwxrwxrwx|0|0|48|1230763550|1230763457|1230763468|1230763457
+0|/System Volume Information ($FILE_NAME)|30-48-2|d/dr-xr-xr-x|0|0|116|1230763515|1230763515|1230763515|1230763515
+0|/System Volume Information|30-144-1|d/dr-xr-xr-x|0|0|48|1230763515|1230763515|1230763515|1230763515
+0|/Compressed and Encrypted ($FILE_NAME) (deleted)|31-48-4|-/drwxrwxrwx|0|0|114|1230763524|1230763524|1230763524|1230763524
+0|/Compressed and Encrypted (deleted)|31-144-1|-/drwxrwxrwx|0|0|48|1230763524|1230763524|1230763528|1230763524
+0|/$OrphanFiles|32|V/V---------|0|0|0|0|0|0|0
+</code></pre>
+<blockquote>
+<p><strong>The result you see from fls is a complete index of the files on the system, including system files (MFT, $LogFile, $Bitmap...) and also the folders we saw .</strong></p>
+</blockquote>
+<ul>
+<li><strong>Then we can create a timeline :</strong></li>
+</ul>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ mactime -b AllFile.txt &gt; TimeLine.txt
+sansforensics@as: ~/DF-LAB
+$ cat TimeLine.txt 
+Wed Dec 31 2008 22:44:02    32768 macb r/rr-xr-xr-x 0        0        0-128-1  /$MFT
+                               74 macb r/rr-xr-xr-x 0        0        0-48-3   /$MFT ($FILE_NAME)
+                             4096 macb r/rr-xr-xr-x 0        0        1-128-1  /$MFTMirr
+                               82 macb r/rr-xr-xr-x 0        0        1-48-2   /$MFTMirr ($FILE_NAME)
+                           131072 macb r/rr-xr-xr-x 0        0        10-128-1 /$UpCase
+                               80 macb r/rr-xr-xr-x 0        0        10-48-2  /$UpCase ($FILE_NAME)
+                              344 macb d/dr-xr-xr-x 0        0        11-144-4 /$Extend
+                               80 macb d/dr-xr-xr-x 0        0        11-48-3  /$Extend ($FILE_NAME)
+                          4685824 macb r/rr-xr-xr-x 0        0        2-128-1  /$LogFile
+                               82 macb r/rr-xr-xr-x 0        0        2-48-2   /$LogFile ($FILE_NAME)
+                                0 macb r/rr-xr-xr-x 48       0        3-128-3  /$Volume
+                               80 macb r/rr-xr-xr-x 48       0        3-48-1   /$Volume ($FILE_NAME)
+                             2560 macb r/rr-xr-xr-x 48       0        4-128-4  /$AttrDef
+                               82 macb r/rr-xr-xr-x 48       0        4-48-2   /$AttrDef ($FILE_NAME)
+                           126112 macb r/rr-xr-xr-x 0        0        6-128-1  /$Bitmap
+                               80 macb r/rr-xr-xr-x 0        0        6-48-2   /$Bitmap ($FILE_NAME)
+                             8192 macb r/rr-xr-xr-x 48       0        7-128-1  /$Boot
+                               76 macb r/rr-xr-xr-x 48       0        7-48-2   /$Boot ($FILE_NAME)
+                         516554240 macb r/rr-xr-xr-x 0        0        8-128-1  /$BadClus:$Bad
+                                0 macb r/rr-xr-xr-x 0        0        8-128-2  /$BadClus
+                               82 macb r/rr-xr-xr-x 0        0        8-48-3   /$BadClus ($FILE_NAME)
+                           262816 macb r/rr-xr-xr-x 0        0        9-128-8  /$Secure:$SDS
+                              208 macb r/rr-xr-xr-x 0        0        9-144-5  /$Secure:$SII
+                              240 macb r/rr-xr-xr-x 0        0        9-144-6  /$Secure:$SDH
+                               80 macb r/rr-xr-xr-x 0        0        9-48-7   /$Secure ($FILE_NAME)
+Wed Dec 31 2008 22:44:05      208 macb r/rr-xr-xr-x 0        0        24-144-2 /$Extend/$Quota:$Q
+                               88 macb r/rr-xr-xr-x 0        0        24-144-3 /$Extend/$Quota:$O
+                               78 macb r/rr-xr-xr-x 0        0        24-48-1  /$Extend/$Quota ($FILE_NAME)
+                               48 macb r/rr-xr-xr-x 0        0        25-144-2 /$Extend/$ObjId:$O
+                               78 macb r/rr-xr-xr-x 0        0        25-48-1  /$Extend/$ObjId ($FILE_NAME)
+                               48 macb r/rr-xr-xr-x 0        0        26-144-2 /$Extend/$Reparse:$R
+                               82 macb r/rr-xr-xr-x 0        0        26-48-1  /$Extend/$Reparse ($FILE_NAME)
+Wed Dec 31 2008 22:44:17       48 m..b d/drwxrwxrwx 0        0        27-144-1 /RAW
+                               72 macb d/drwxrwxrwx 0        0        27-48-4  /RAW ($FILE_NAME)
+Wed Dec 31 2008 22:44:28       48 ..c. d/drwxrwxrwx 0        0        27-144-1 /RAW
+Wed Dec 31 2008 22:44:33       48 m..b d/drwxrwxrwx 0        0        28-144-1 /Compressed
+                               86 macb d/drwxrwxrwx 0        0        28-48-4  /Compressed ($FILE_NAME)
+Wed Dec 31 2008 22:44:36       48 ..c. d/drwxrwxrwx 0        0        28-144-1 /Compressed
+Wed Dec 31 2008 22:44:43       48 m..b d/drwxrwxrwx 0        0        29-144-1 /Encrypted
+                               84 macb d/drwxrwxrwx 0        0        29-48-4  /Encrypted ($FILE_NAME)
+Wed Dec 31 2008 22:45:03       48 .a.. d/drwxrwxrwx 0        0        28-144-1 /Compressed
+Wed Dec 31 2008 22:45:14       48 .a.. d/drwxrwxrwx 0        0        29-144-1 /Encrypted
+Wed Dec 31 2008 22:45:15       48 ..c. d/drwxrwxrwx 0        0        29-144-1 /Encrypted
+                               48 macb d/dr-xr-xr-x 0        0        30-144-1 /System Volume Information
+                              116 macb d/dr-xr-xr-x 0        0        30-48-2  /System Volume Information ($FILE_NAME)
+Wed Dec 31 2008 22:45:24       48 ma.b -/drwxrwxrwx 0        0        31-144-1 /Compressed and Encrypted (deleted)
+                              114 macb -/drwxrwxrwx 0        0        31-48-4  /Compressed and Encrypted ($FILE_NAME) (deleted)
+Wed Dec 31 2008 22:45:28       48 ..c. -/drwxrwxrwx 0        0        31-144-1 /Compressed and Encrypted (deleted)
+Wed Dec 31 2008 22:45:50       48 .a.. d/drwxrwxrwx 0        0        27-144-1 /RAW
+</code></pre>
+<blockquote>
+<p>This timeline tells you the sequence of events that created, modified, and deleted folders, all at approximately the same minute on December 31, 2008. This indicates that the device was either new or formatted/rebooted at the same time.</p>
+</blockquote>
+<p><strong>Important Notes:</strong></p>
+<ol>
+<li>
+<p>System File Creation</p>
+</li>
+<li>
+<p>The primary NTFS files (MFT, $LogFile, $Bitmap, etc.) were initially created at approximately 22:44:02.</p>
+</li>
+<li>
+<p>This is normal during partition formatting.</p>
+</li>
+<li>
+<p>Volume Creation</p>
+</li>
+<li>
+<p><code>/RAW</code> was created at 22:44:17.</p>
+</li>
+<li>
+<p><code>/Compressed</code> at 22:44:33.</p>
+</li>
+<li>
+<p><code>/Encrypted</code> at 22:44:43.</p>
+</li>
+<li>
+<p>Unusual Activity</p>
+</li>
+<li>
+<p>At 22:45:24, a folder named "Compressed and Encrypted" was created, but it was listed as "deleted," meaning it was created and then deleted within a very short time.</p>
+</li>
+<li>
+<p>At 22:45:50, an access update was performed on the <code>/RAW</code> folder.</p>
+</li>
+</ol>
+<hr />
+<h3 id="youve-finally-reached-your-goal-of-acquiring-and-preserving-light-youve-successfully-mounted-the-raw-image-created-a-file-index-and-even-started-creating-a-timeline">You've finally reached your goal of acquiring and preserving light. You've successfully mounted the RAW image, created a file index, and even started creating a Timeline.</h3>
+<p><strong>The next step in analyzing NTFS1 is essential:</strong></p>
+<pre><code class="language-bash">sansforensics@as: ~/mnt/ntfs1
+$ ls -la Encrypted/
+total 4
+drwxrwxrwx 1 root root    0 Dec 31  2008 .
+drwxrwxrwx 1 root root 4096 Dec 31  2008 ..
+sansforensics@as: ~/mnt/ntfs1
+$ ls -la RAW/
+total 4
+drwxrwxrwx 1 root root    0 Dec 31  2008 .
+drwxrwxrwx 1 root root 4096 Dec 31  2008 ..
+sansforensics@as: ~/mnt/ntfs1
+$ ls -la System\ Volume\ Information/
+total 4
+drwxrwxrwx 1 root root    0 Dec 31  2008 .
+drwxrwxrwx 1 root root 4096 Dec 31  2008 ..
+sansforensics@as: ~/mnt/ntfs1
+$ ls -la Compressed/
+total 4
+drwxrwxrwx 1 root root    0 Dec 31  2008 .
+drwxrwxrwx 1 root root 4096 Dec 31  2008 ..
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p>The Compressed folder (and other folders) are empty during normal browsing. This usually means that the files are either:</p>
+</li>
+<li>
+<p>Deleted from the MFT, but the data is still present in unallocated space.</p>
+</li>
+<li>
+<p>Or they are hidden/orphaned and not linked to a file directory.</p>
+</li>
+<li>
+<p>To analyze Compressed in this case, we'll work on two levels:</p>
+</li>
+</ul>
+</blockquote>
+<ol>
+<li>Search for files in the folder via the MFT :</li>
+</ol>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ fls -rp ntfs1.raw
+r/r 4-128-4:    $AttrDef
+r/r 8-128-2:    $BadClus
+r/r 8-128-1:    $BadClus:$Bad
+r/r 6-128-1:    $Bitmap
+r/r 7-128-1:    $Boot
+d/d 11-144-4:   $Extend
+r/r 25-144-2:   $Extend/$ObjId:$O
+r/r 24-144-3:   $Extend/$Quota:$O
+r/r 24-144-2:   $Extend/$Quota:$Q
+r/r 26-144-2:   $Extend/$Reparse:$R
+r/r 2-128-1:    $LogFile
+r/r 0-128-1:    $MFT
+r/r 1-128-1:    $MFTMirr
+r/r 9-128-8:    $Secure:$SDS
+r/r 9-144-6:    $Secure:$SDH
+r/r 9-144-5:    $Secure:$SII
+r/r 10-128-1:   $UpCase
+r/r 3-128-3:    $Volume
+d/d 28-144-1:   Compressed
+d/d 29-144-1:   Encrypted
+d/d 27-144-1:   RAW
+d/d 30-144-1:   System Volume Information
+-/d * sansforensics@as: ~/DF-LAB
+$ fls -rpa ntfs1.raw 28-144-1
+d/d 28-144-1:   .
+d/d 5-144-6:    ..
+sansforensics@as: ~/DF-LAB
+$ fls -rpa ntfs1.raw 29-144-1
+d/d 29-144-1:   .
+d/d 5-144-6:    ..
+sansforensics@as: ~/DF-LAB
+$ fls -rpa ntfs1.raw 30-144-1
+d/d 30-144-1:   .
+d/d 5-144-6:    ..
+sansforensics@as: ~/DF-LAB
+$ fls -rpa ntfs1.raw 31-144-1
+d/d * 31-144-1: .
+d/d * 5-144-6(realloc): ..
+sansforensics@as: ~/DF-LAB
+$ fls -rpa ntfs1.raw 27-144-1
+d/d 27-144-1:   .
+d/d 5-144-6:    ..
+:   Compressed and Encrypted
+V/V 32: $OrphanFiles
+</code></pre>
+<blockquote>
+<p>What you're seeing here is the entire MFT listing from fls. This shows that the compressed and encrypted files/folders are actually present in the NTFS metadata, even if they don't appear when you run ls in the mount.</p>
+<p>📌 The important results:</p>
+<ul>
+<li>
+<p>d/d 28-144-1: Compressed → Compressed volume.</p>
+</li>
+<li>
+<p>d/d 29-144-1: Encrypted → Encrypted volume.</p>
+</li>
+<li>
+<p>d/d 27-144-1: RAW → A regular volume named RAW.</p>
+</li>
+<li>
+<p>d/d 30-144-1: System Volume Information → System volume.</p>
+</li>
+<li>
+<p>-/d <em>31-144-1: Compressed and Encrypted → Compressed and encrypted volume (marked with a</em> , indicating that it was deleted).</p>
+</li>
+<li>
+<p>V/V 32: $OrphanFiles → Orphan files (files located unlinked in any directory).</p>
+</li>
+</ul>
+<p>💡 Why were these directories empty when I ran ls? Because the files inside them could be:</p>
+<ol>
+<li>
+<p>Deleted (but their data is in unallocated space).</p>
+</li>
+<li>
+<p>Or hidden (Hidden/System) and not visible in a normal mount.</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="the-next-logical-step-is-to-browse-the-contents-of-these-directories-by-the-inode-number-that-appears"><strong>🔹 The next logical step is to browse the contents of these directories by the inode number that appears .</strong></h3>
+<ul>
+<li>For Compressed folder:</li>
+</ul>
+<p><code>bash
+  sansforensics@as: ~/DF-LAB
+  $ fls -rpa ntfs1.raw 28-144-1
+  d/d 28-144-1: .
+  d/d 5-144-6:  ..
+  sansforensics@as: ~/DF-LAB
+  $ fls -rpa ntfs1.raw 29-144-1
+  d/d 29-144-1: .
+  d/d 5-144-6:  ..
+  sansforensics@as: ~/DF-LAB
+  $ fls -rpa ntfs1.raw 30-144-1
+  d/d 30-144-1: .
+  d/d 5-144-6:  ..
+  sansforensics@as: ~/DF-LAB
+  $ fls -rpa ntfs1.raw 31-144-1
+  d/d * 31-144-1:   .
+  d/d * 5-144-6(realloc):   ..
+  sansforensics@as: ~/DF-LAB
+  $ fls -rpa ntfs1.raw 27-144-1
+  d/d 27-144-1: .
+  d/d 5-144-6:  ..
+  sansforensics@as: ~/DF-LAB
+  $ fls -rpa ntfs1.raw
+  r/r 4-128-4:  $AttrDef
+  r/r 8-128-2:  $BadClus
+  r/r 8-128-1:  $BadClus:$Bad
+  r/r 6-128-1:  $Bitmap
+  r/r 7-128-1:  $Boot
+  d/d 11-144-4: $Extend
+  d/d 11-144-4: $Extend/.
+  d/d 5-144-6:  $Extend/..
+  r/r 25-144-2: $Extend/$ObjId:$O
+  r/r 24-144-3: $Extend/$Quota:$O
+  r/r 24-144-2: $Extend/$Quota:$Q
+  r/r 26-144-2: $Extend/$Reparse:$R
+  r/r 2-128-1:  $LogFile
+  r/r 0-128-1:  $MFT
+  r/r 1-128-1:  $MFTMirr
+  r/r 9-128-8:  $Secure:$SDS
+  r/r 9-144-6:  $Secure:$SDH
+  r/r 9-144-5:  $Secure:$SII
+  r/r 10-128-1: $UpCase
+  r/r 3-128-3:  $Volume
+  d/d 5-144-6:  .
+  d/d 28-144-1: Compressed
+  d/d 28-144-1: Compressed/.
+  d/d 5-144-6:  Compressed/..
+  d/d 29-144-1: Encrypted
+  d/d 29-144-1: Encrypted/.
+  d/d 5-144-6:  Encrypted/..
+  d/d 27-144-1: RAW
+  d/d 27-144-1: RAW/.
+  d/d 5-144-6:  RAW/..
+  d/d 30-144-1: System Volume Information
+  d/d 30-144-1: System Volume Information/.
+  d/d 5-144-6:  System Volume Information/..
+  -/d * 31-144-1:   Compressed and Encrypted
+  d/d * 31-144-1:   Compressed and Encrypted/.
+  d/d * 5-144-6(realloc):   Compressed and Encrypted/..
+  V/V 32:   $OrphanFiles</code></p>
+<p>### Continued Analysis: Browsing Directory Contents by Inode</p>
+<p>After identifying the directory inode numbers for the different folders (<code>Compressed</code>, <code>Encrypted</code>, <code>RAW</code>, <code>System Volume Information</code>, and <code>Compressed and Encrypted</code>), I attempted to list their contents using the <code>fls</code> tool with the recursive and full path options:</p>
+<p>```bash
+  $ fls -rpa ntfs1.raw 28-144-1
+  d/d 28-144-1: .
+  d/d 5-144-6:  ..</p>
+<p>$ fls -rpa ntfs1.raw 29-144-1
+  d/d 29-144-1: .
+  d/d 5-144-6:  ..</p>
+<p>$ fls -rpa ntfs1.raw 30-144-1
+  d/d 30-144-1: .
+  d/d 5-144-6:  ..</p>
+<p>$ fls -rpa ntfs1.raw 31-144-1
+  d/d * 31-144-1:   .
+  d/d * 5-144-6(realloc):   ..</p>
+<p>$ fls -rpa ntfs1.raw 27-144-1
+  d/d 27-144-1: .
+  d/d 5-144-6:  ..
+  ```</p>
+<blockquote>
+<p>The output shows that these directories contain only the standard <code>.</code> and <code>..</code> entries, indicating they appear empty when browsed through their inode numbers.</p>
+<p>Performing a full recursive listing on the image again confirms the presence of these folders and their metadata entries:</p>
+</blockquote>
+<pre><code class="language-bash">$ fls -rpa ntfs1.raw
+...
+d/d 28-144-1:   Compressed
+d/d 29-144-1:   Encrypted
+d/d 27-144-1:   RAW
+d/d 30-144-1:   System Volume Information
+-/d * 31-144-1: Compressed and Encrypted
+V/V 32: $OrphanFiles
+</code></pre>
+<blockquote>
+<h3 id="interpretation">Interpretation:</h3>
+<ul>
+<li>
+<p>The <code>Compressed</code> and <code>Encrypted</code> directories are present in the Master File Table (MFT) but contain no visible files or folders.</p>
+</li>
+<li>
+<p>The <code>Compressed and Encrypted</code> folder is marked as deleted (indicated by the <code>*</code> and <code>(realloc)</code> flags).</p>
+</li>
+<li>
+<p><code>$OrphanFiles</code> (inode 32) exists but contains no visible entries.</p>
+</li>
+<li>
+<p>This suggests that files in these directories may have been deleted, moved, or hidden, making direct recovery challenging.</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="attempted-file-extraction-with-icat">Attempted File Extraction with <code>icat</code></h3>
+<p>After listing directory contents showed no visible files, I attempted to extract files directly from the directory inodes using the <code>icat</code> tool:</p>
+<pre><code class="language-bash">$ icat -r ntfs1.raw 28-144-1
+$ icat -r ntfs1.raw 29-144-1
+$ icat -r ntfs1.raw 30-144-1
+$ icat -r ntfs1.raw 31-144-1
+$ icat -r ntfs1.raw 27-144-1
+</code></pre>
+<blockquote>
+<p>All commands returned empty outputs, indicating that no recoverable files were extracted from these inodes.</p>
+<p>This confirms that either:</p>
+<ul>
+<li>
+<p>The files in these directories have been deleted and their metadata cleared.</p>
+</li>
+<li>
+<p>Or the files are encrypted or compressed in a way that prevents direct extraction without proper handling.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="the-next-step-after-we-extracted-the-empty-files-with-icat">The next step after we extracted the empty files with icat:</h3>
+<p>File Carving for Lost Files Use tools like Foremost or Scalpel to scan the raw image and search for file data based on their file signatures.</p>
+<p>This will help you recover files even if the metadata is deleted.</p>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ foremost -i ntfs1.raw -o carved_files/
+Processing: ntfs1.raw
+|*****|
+</code></pre>
+<blockquote>
+<p>This means that <code>foremost</code> has started working and is trying to extract files.</p>
+</blockquote>
+<p>View the contents of the carved_files folder:</p>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB/carved_files
+$ ls
+audit.txt
+</code></pre>
+<blockquote>
+<p>The result is that foremost was able to produce only one file, audit.txt, which is usually a report file containing details of the carving process itself.</p>
+</blockquote>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB/carved_files
+$ cat audit.txt 
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Sun Aug 10 04:48:31 2025
+Invocation: foremost -i ntfs1.raw -o carved_files/ 
+Output directory: /home/sansforensics/DF-LAB/carved_files
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: ntfs1.raw
+Start: Sun Aug 10 04:48:31 2025
+Length: 492 MB (516554752 bytes)
+
+Num  Name (bs=512)         Size  File Offset     Comment 
+
+Finish: Sun Aug 10 04:48:36 2025
+
+0 FILES EXTRACTED
+
+------------------------------------------------------------------
+
+Foremost finished at Sun Aug 10 04:48:36 2025
+</code></pre>
+<blockquote>
+<p>The audit.txt confirms that foremost was unable to extract any files from the NTFS1.raw image.</p>
+<p>This means:</p>
+<p>There are no files directly extractable through carving using foremost.</p>
+<p>The files that are present may not have been deleted or may have been hidden in a special way (such as compressed or encrypted files).</p>
+<p>Or the files may be fragmented or incoherent.</p>
+</blockquote>
+<hr />
+<h3 id="photorec-because-it-is-a-powerful-carving-tool-that-handles-many-file-types-in-depth">Photorec, because it is a powerful carving tool that handles many file types in depth.</h3>
+<pre><code class="language-bash">sudo photorec ntfs1.raw
+</code></pre>
+<blockquote>
+<p>You see "0 files saved" with a "Recovery completed" message, meaning it couldn't find any recoverable files in the image (ntfs1.raw) under the settings you selected.</p>
+<p>This could be due to:</p>
+<ul>
+<li>
+<p>The files are permanently deleted or completely missing.</p>
+</li>
+<li>
+<p>The files are not in the locations PhotoRec searches (such as unallocated space if you chose to scan only the designated area).</p>
+</li>
+<li>
+<p>The files are not in a known format or are corrupted.</p>
+</li>
+<li>
+<p>The image itself contains compressed or encrypted files, and therefore requires additional steps to decrypt or unzip them before extracting them.</p>
+</li>
+</ul>
+</blockquote>
+<pre><code class="language-bash">sansforensics@as: ~/DF-LAB
+$ ls -la recup_dir.*
+recup_dir.1:
+total 16
+drwxr-xr-x 2 root          root          4096 Aug 10 05:00 .
+drwxrwxr-x 8 sansforensics sansforensics 4096 Aug 10 05:18 ..
+-rw-r--r-- 1 root          root          6890 Aug 10 05:00 report.xml
+
+recup_dir.2:
+total 16
+drwxr-xr-x 2 root          root          4096 Aug 10 05:00 .
+drwxrwxr-x 8 sansforensics sansforensics 4096 Aug 10 05:18 ..
+-rw-r--r-- 1 root          root          6075 Aug 10 05:01 report.xml
+
+recup_dir.3:
+total 12
+drwxr-xr-x 2 root          root          4096 Aug 10 05:01 .
+drwxrwxr-x 8 sansforensics sansforensics 4096 Aug 10 05:18 ..
+-rw-r--r-- 1 root          root          1430 Aug 10 05:18 report.xml
+sansforensics@as: ~/DF-LAB
+$ cat recup_dir.1/report.xml | less
+</code></pre>
+<blockquote>
+<p>📌 Interpretation of Results: No Recovered Files:</p>
+<ul>
+<li>
+<p>If there were recovered files, they would have names like f1234567.jpg or f0000001.doc.</p>
+</li>
+<li>
+<p>The presence of only reports supports your previous conclusion that the disk image (ntfs1.raw) contains no recoverable deleted files.</p>
+</li>
+<li>
+<p>Why PhotoRec creates report files:</p>
+</li>
+<li>
+<p>Some versions of PhotoRec automatically generate these reports even if no files have been recovered.</p>
+</li>
+<li>
+<p>The tool may have found fragments of data but did not match known file signatures.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<hr />
+<h3 id="final-report-ntfs1-image-analysis">Final Report - NTFS1 Image Analysis</h3>
+<ol>
+<li>
+<p><strong>Basic Information File Name: ntfs1-gen0.E01</strong></p>
+</li>
+<li>
+<p>Data Source: DigitalCorpora - nps-2009-ntfs1</p>
+</li>
+<li>
+<p>Image Type: EnCase EWF (.E01)</p>
+</li>
+<li>
+<p>File System: NTFS (Windows XP)</p>
+</li>
+<li>
+<p>Researcher: Abdelwahab Shandy</p>
+</li>
+<li>
+<p>Analysis Date: August 10, 2025</p>
+</li>
+<li>
+<p><strong>Data Integrity Verification The image was downloaded and analyzed with integrity maintained via hash verification:</strong></p>
+</li>
+<li>
+<p>SHA-256: 96e525f53d50f986461151f8e9c07588633215477a6b8a3f744b2eeebe512460</p>
+</li>
+<li>
+<p>MD5 (inside image): 56abc8bc1c01f9ceb262c50a64c134c5</p>
+</li>
+<li>
+<p>✅ Result: There are no changes to the original data.</p>
+</li>
+<li>
+<p><strong>File System Analysis A. General Structure Root Volume Name: NTFS1</strong></p>
+</li>
+</ol>
+<p>Main Folders:</p>
+<ul>
+<li>
+<p>Compressed (compressed volume)</p>
+</li>
+<li>
+<p>Encrypted (encrypted volume)</p>
+</li>
+<li>
+<p>RAW (unprocessed data)</p>
+</li>
+<li>
+<p>System Volume Information (Windows system data)</p>
+</li>
+<li>
+<p>Compressed and Encrypted (deleted volume)</p>
+</li>
+</ul>
+<p>B. Files and Folders fls -rpa ntfs1.raw showed:</p>
+<ul>
+<li>
+<p>There are no user files in any of the folders.</p>
+</li>
+<li>
+<p>The folders appear empty even with advanced tools like fls and icat.</p>
+</li>
+<li>
+<p>The "Compressed and Encrypted" folder has been deleted.</p>
+</li>
+</ul>
+<p>C. Activity Timeline Image created on: December 31, 2008 \~22:44 UTC</p>
+<p>Folders created in sequence:</p>
+<ul>
+<li>
+<p>/RAW (22:44:17)</p>
+</li>
+<li>
+<p>/Compressed (22:44:33)</p>
+</li>
+<li>
+<p>/Encrypted (22:44:43)</p>
+</li>
+<li>
+<p>/Compressed and Encrypted (created and deleted at 22:45:24)</p>
+</li>
+<li>
+<p>Attempts to recover deleted files a. Using PhotoRec Created folders recup_dir.1 to recup_dir.3 containing:</p>
+</li>
+<li>
+<p>report.xml: PhotoRec scan logs (no recovered files).</p>
+</li>
+<li>
+<p>Result: No files recovered from unallocated space.</p>
+</li>
+</ul>
+<p>b. Using Foremost Scanned the entire image, but the result was:</p>
+<ul>
+<li>0 recovered files.</li>
+</ul>
+<p>c. Analyzing Unallocated Space (unallocated.dd) Strings unallocated.dd did not reveal any readable user data.</p>
+<ol>
+<li>
+<p>Final Conclusions ✅ What We Found: The image contains a clean NTFS structure with no actual user files.</p>
+</li>
+<li>
+<p>The Compressed and Encrypted folders are empty, even with advanced tools.</p>
+</li>
+<li>
+<p>No evidence of recoverable deleted files.</p>
+</li>
+<li>
+<p>❌ What We Didn't Find: No compressed files in /Compressed.</p>
+</li>
+<li>
+<p>No encrypted files in /Encrypted.</p>
+</li>
+<li>
+<p>No traces of user files in the unallocated space.</p>
+</li>
+<li>
+<p>Recommendations If the goal is training:</p>
+</li>
+<li>
+<p>This image is suitable for analyzing the basic NTFS structure, but it does not contain actual files for data recovery practice.</p>
+</li>
+</ol>
+<p>If the goal is research:</p>
+<ul>
+<li>It is preferable to use other disk images containing compressed/encrypted files, such as nps-2010-emails.</li>
+</ul>
+<p>For further analysis:</p>
+<ul>
+<li>
+<p>Specialized EFS decryption tools can be tried if there is any suspicion that encrypted files are present.</p>
+</li>
+<li>
+<h3 id="researchers-signature">Researcher's Signature</h3>
+</li>
+</ul>
+<p>- The analysis was completed on August 10, 2025, with confirmation that all procedures followed digital forensics best practices.</p>
+<p>- Researcher: Abdelwahab Shandy</p>
+<hr />
+<h3 id="conclusion">🎯 Conclusion:</h3>
+<p><strong>The ntfs1-gen0.E01 image is a clean test disk showing an NTFS structure without actual user data. There is no evidence of recoverable compressed or encrypted files.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

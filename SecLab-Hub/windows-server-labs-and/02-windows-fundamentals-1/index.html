@@ -1,0 +1,7240 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/windows-server-labs-and/02-windows-fundamentals-1/">
+      
+      
+        <link rel="prev" href="../01-windows-command-line-fundamentals/">
+      
+      
+        <link rel="next" href="../03-windows-fundamentals-2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>02 windows fundamentals 1 - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-windows" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              02 windows fundamentals 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../digital-forensics-labs/01-software-write-blocker-concept/" class="md-tabs__link">
+          
+  
+  
+  Digital forensics labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise offensive defensive security simulation lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../linux-ctf/01-kvm-virtualization/" class="md-tabs__link">
+          
+  
+  
+  Linux ctf
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-tabs__link">
+          
+  
+  
+  Penetration testing trainee
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-tabs__link">
+          
+  
+  
+  Siem home lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-tabs__link">
+          
+  
+  
+  Soc and incident response
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-windows-command-line-fundamentals/" class="md-tabs__link">
+          
+  
+  
+  Windows server labs and
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital forensics labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Digital forensics labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/01-software-write-blocker-concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 software write blocker concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/02-verifying-evidence-integrity-hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/03-analyzing-file-properties-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/04-file-analysis-stat-command-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 file analysis stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/05-image-analysis-exiftool-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 image analysis exiftool linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/06-disk-acquisition-linux-dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 disk acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/07-disk-acquisition-ftk-imager-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 disk acquisition ftk imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/08-autopsy-case-creation-and-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/09-data-source-analysis-autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/10-firefox-artifacts-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/11-linux-os-forensics-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/12-registry-hives-extraction-ftk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 registry hives extraction ftk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/13-registry-analysis-phase-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/14-registry-analysis-tools-explorer-regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/15-ntfs1-evidence-acquisition-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 ntfs1 evidence acquisition analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/16-search-in-trash-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 search in trash cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/17-examining-pcaps-emails-malware-infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 examining pcaps emails malware infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/18-arp-storm-cybertalents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 arp storm cybertalents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/19-psexec-hunt-pcapng/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 psexec hunt pcapng
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/20-suspicious-file-download-fake-authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 suspicious file download fake authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/21-hawkeye-blue-team-challenge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 hawkeye blue team challenge
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/22-stego-binwalk-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 stego binwalk ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/23-stego-canyousee-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 stego canyousee picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/24-stego-chalkboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 stego chalkboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/25-stego-cypher-anxiety-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 stego cypher anxiety cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/26-stego-disko-1-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 stego disko 1 picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/27-stego-exif-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 stego exif ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/28-stego-file-found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    28 stego file found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/29-stego-forensics-101-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 stego forensics 101 ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/30-stego-gandp-list-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 stego gandp list cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/31-stego-git-is-good-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    31 stego git is good ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/32-stego-glory-of-the-garden-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/33-stego-hidden-message-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    33 stego hidden message cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/34-stego-i-love-images-cyber-talents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 stego i love images cyber talents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/35-stego-im-a-dump-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 stego im a dump ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/36-stego-information-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/37-stego-meta-blue-team-labs-online/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 stego meta blue team labs online
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/38-stego-minions-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    38 stego minions ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/39-stego-pdf-by-fdpumyp-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 stego pdf by fdpumyp ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/40-stego-pho-is-tasty-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 stego pho is tasty ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/41-stego-pikespeak-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    41 stego pikespeak ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/42-stego-red-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    42 stego red picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/43-stego-rubber-duck-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    43 stego rubber duck ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/44-stego-scan-surprise-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    44 stego scan surprise picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/45-stego-secret-of-the-polyglot-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/46-stego-simple-steganography-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    46 stego simple steganography ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/47-stego-snowboard-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    47 stego snowboard ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/48-stego-taking-ls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    48 stego taking ls
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/49-stego-tux-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    49 stego tux ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/50-stego-verify-picoctf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    50 stego verify picoctf
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../digital-forensics-labs/51-stego-wow-so-meta-ctflearn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    51 stego wow so meta ctflearn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise offensive defensive security simulation lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../enterprise-offensive-defensive-security-simulation-lab/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux ctf
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux ctf
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/01-kvm-virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 kvm virtualization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/02-intro-to-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 intro to linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/03-unix-vs-linux-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 unix vs linux history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/04-intro-to-linux-labs-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📂 If you don't know anything about Linux, start here with this course :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/05-overthewire-bandit-level-0-tobandit-level-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 overthewire bandit level 0 tobandit level 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/06-bandit-level-10-to-level-20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 bandit level 10 to level 20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/07-bandit-level-20-to-level-23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 bandit level 20 to level 23
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/08-leviathan-linux-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 leviathan linux intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/09-leviathan-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 leviathan level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux-ctf/10-leviathan-level-0-to-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 leviathan level 0 to level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Penetration testing trainee
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Penetration testing trainee
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/01-beginnings-of-the-internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 beginnings of the internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/02-http-protocol-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 http protocol deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/03-dns-explanation-and-recon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 dns explanation and recon
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/04-linux-commands-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/05-passive-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 passive reconnaissance thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/06-active-reconnaissance-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/07-cybersecurity-beginner-career-labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 cybersecurity beginner career labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/08-iti-penetration-tester-track-2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/09-kioptrix-level-1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 kioptrix level 1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/10-metasploitable1-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 metasploitable1 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/11-metasploitable2-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 metasploitable2 walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/12-web-unprotected-admin-functionality/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 web unprotected admin functionality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/13-web-unprotected-admin-functionality-unpredictable-url/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 web unprotected admin functionality unpredictable url
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/14-web-user-id-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 web user id controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/15-web-user-id-controlled-by-request-parameter-with-dynamic-id/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 web user id controlled by request parameter with dynamic id
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/16-web-user-role-modification-in-profile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 web user role modification in profile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/17-web-user-role-controlled-by-request-parameter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 web user role controlled by request parameter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/18-web-idor-corridor-thm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 web idor corridor thm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/19-web-info-disclosure-error-messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 web info disclosure error messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/20-web-info-disclosure-debug-page/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 web info disclosure debug page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/21-web-source-code-disclosure-backup-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 web source code disclosure backup files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/22-web-auth-bypass-via-info-disclosure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 web auth bypass via info disclosure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/23-web-info-disclosure-version-control-git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23 web info disclosure version control git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/24-natas-level-0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 natas level 0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/25-natas-level-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 natas level 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/26-natas-level-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 natas level 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../penetration-testing-trainee/27-natas-level-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 natas level 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Siem home lab
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Siem home lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/01-pre-lab-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 pre lab overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/02-install-lab-elk-siem-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 install lab elk siem n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/03-install-lab-win-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 install lab win server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/04-install-lab-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 install lab fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/05-building-a-siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 building a siem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/06-winlogbeat-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 winlogbeat configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/07-fluent-bit-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 fluent bit configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/08-detection-egnineering-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/09-pre-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/10-detection-of-powershell-based-windows-firewall-tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/11-registry-persistence-detection-with-sysmon-and-kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/12-privilege-escalation-and-information-gathering-detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 privilege escalation and information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../siem-home-lab/13-soar-n8n-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 soar n8n workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Soc and incident response
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Soc and incident response
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/01-persistence-analysis-remediation-python-popup-malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 persistence analysis remediation python popup malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/02-ubuntu-web-server-waf-nginx-modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ubuntu web server waf nginx modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/03-detect-nmap-scan-using-snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 detect nmap scan using snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/04-paypal-phishing-investigation-letsdefend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 paypal phishing investigation letsdefend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/05-phishing-response-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 phishing response playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/06-boss-of-the-soc-botsv1-scenario1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 boss of the soc botsv1 scenario1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/07-qradar101-blue-team-cyberdefenders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 qradar101 blue team cyberdefenders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/08-building-siem-filebeat-winlogbeat-kibana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 building siem filebeat winlogbeat kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../soc-and-incident-response/09-collecting-visualizing-ssh-logs-fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 collecting visualizing ssh logs fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows server labs and
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows server labs and
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-windows-command-line-fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOP Command Line in Windows :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 windows fundamentals 1
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 windows fundamentals 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction to Windows :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Windows :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation-and-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Translation and Explanation:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-the-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Extracting the Answer:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-editions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Editions :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Editions :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Question:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Solution:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-verify-yourself-that-bitlocker-exists-and-can-be-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to verify yourself that BitLocker exists and can be used:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-via-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Method via Control Panel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-via-cmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Method via CMD:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-desktop-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Desktop (GUI) :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Desktop (GUI) :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#questions-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Questions + Answers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The File System :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The File System :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Question:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-windowssystem32-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Windows\System32 Folders :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-accounts-profiles-and-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Accounts, Profiles, and Permissions :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-account-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Account Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-and-the-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings and the Control Panel :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task Manager :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction to Windows :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Windows :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 الترجمة والشرح:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 استخراج الحل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-editions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Editions :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Editions :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 السؤال:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 الحل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitlocker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        إزاي تتأكد بنفسك إن BitLocker موجود وممكن تستخدمه:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 الطريقة من Control Panel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 الطريقة من CMD:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-desktop-gui_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Desktop (GUI) :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Desktop (GUI) :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 الأسئلة + الحلول:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-file-system_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The File System :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The File System :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 السؤال:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-windowssystem32-folders_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Windows\System32 Folders :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-accounts-profiles-and-permissions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Accounts, Profiles, and Permissions :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-account-control_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Account Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-and-the-control-panel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings and the Control Panel :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-manager_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task Manager :
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-windows-fundamentals-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 windows fundamentals 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-windows-fundamentals-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 windows fundamentals 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-active-directory-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 active directory basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-login-protocols-ntlm-vs-kerberos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 login protocols ntlm vs kerberos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-kerberos-deep-dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 kerberos deep dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-how-to-join-domain-in-background/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 how to join domain in background
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-post-domain-join-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 post domain join steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction to Windows :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Windows :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#translation-and-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Translation and Explanation:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-the-answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Extracting the Answer:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-editions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Editions :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Editions :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Question:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Solution:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-verify-yourself-that-bitlocker-exists-and-can-be-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to verify yourself that BitLocker exists and can be used:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-via-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Method via Control Panel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-via-cmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Method via CMD:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-desktop-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Desktop (GUI) :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Desktop (GUI) :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#questions-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Questions + Answers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The File System :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The File System :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 Question:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-windowssystem32-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Windows\System32 Folders :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-accounts-profiles-and-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Accounts, Profiles, and Permissions :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-account-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Account Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-and-the-control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings and the Control Panel :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task Manager :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction to Windows :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to Windows :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 الترجمة والشرح:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 استخراج الحل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-editions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows Editions :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Editions :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 السؤال:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 الحل:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitlocker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        إزاي تتأكد بنفسك إن BitLocker موجود وممكن تستخدمه:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 الطريقة من Control Panel:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 الطريقة من CMD:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-desktop-gui_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Desktop (GUI) :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Desktop (GUI) :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 الأسئلة + الحلول:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-file-system_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The File System :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The File System :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 السؤال:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-windowssystem32-folders_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Windows\System32 Folders :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-accounts-profiles-and-permissions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Accounts, Profiles, and Permissions :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-account-control_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Account Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-and-the-control-panel_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Settings and the Control Panel :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-manager_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task Manager :
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>02 windows fundamentals 1</h1>
+
+<h2 id="introduction-to-windows">Introduction to Windows :</h2>
+<h3 id="translation-and-explanation">📌 Translation and Explanation:</h3>
+<ul>
+<li>
+<p><strong>Windows OS</strong>: A complex operating system that includes many files, settings, tools, and features.</p>
+</li>
+<li>
+<p>The goal of this <strong>Module</strong>: to give you an overview of some basic concepts in Windows → how to interact with the interface and change simple settings.</p>
+</li>
+<li>
+<p>To start the practical part: click the <strong>Start Machine</strong> button.</p>
+</li>
+<li>
+<p>The virtual machine (VM) will appear in the browser.</p>
+</li>
+<li>
+<p>You can also access it via <strong>Remote Desktop (RDP)</strong> using the following credentials:</p>
+</li>
+<li>
+<p><strong>IP</strong>: MACHINE_IP</p>
+</li>
+<li>
+<p><strong>User</strong>: administrator</p>
+</li>
+<li>
+<p><strong>Password</strong>: letmein123!</p>
+</li>
+<li>
+<p>If a Certificate warning appears → click <strong>Accept</strong>.</p>
+</li>
+<li>
+<p>Note: The VM may take about 3 minutes to boot.</p>
+</li>
+</ul>
+<h3 id="extracting-the-answer">📌 Extracting the Answer:</h3>
+<ul>
+<li>
+<p>The question says: <em>"Read above and start the virtual machine."</em></p>
+</li>
+<li>
+<p>It simply means you need to start the virtual machine and be ready for the next questions.</p>
+</li>
+<li>
+<p>There’s no written answer here → just <strong>start the VM</strong>. ✅</p>
+</li>
+</ul>
+<hr />
+<h2 id="windows-editions">Windows Editions :</h2>
+<ul>
+<li>
+<p>Windows started in 1985 and is still the dominant system in both homes and companies.</p>
+</li>
+<li>
+<p>That’s why it has always been a main target for hackers and malware.</p>
+</li>
+<li>
+<p><strong>XP</strong> was very popular, followed by <strong>Vista</strong>, which quickly failed.</p>
+</li>
+<li>
+<p>After the end of support for XP, companies were forced to move to <strong>Windows 7</strong> quickly.</p>
+</li>
+<li>
+<p>Then came <strong>Windows 8</strong>, which also didn’t last long.</p>
+</li>
+<li>
+<p>Later came <strong>Windows 10</strong>, and now <strong>Windows 11</strong> (the current version).</p>
+</li>
+<li>
+<p>Windows 11 has two editions: <strong>Home</strong> and <strong>Pro</strong>.</p>
+</li>
+<li>
+<p>The current server used in the lab is <strong>Windows Server 2019 Standard</strong>.</p>
+</li>
+<li>
+<p>For Windows 10 → support continues until <strong>October 14, 2025</strong>.</p>
+</li>
+</ul>
+<h3 id="question">📌 Question:</h3>
+<blockquote>
+<p><strong>What encryption can you enable on Pro that you can't enable in Home?</strong>\
+Meaning:\
+<em>What type of encryption can you enable in</em> <strong><em>Windows Pro</em></strong> <em>but not in</em> <strong><em>Windows Home</em></strong><em>?</em></p>
+</blockquote>
+<h3 id="solution">📌 Solution:</h3>
+<p>The main difference between <strong>Home</strong> and <strong>Pro</strong> is:</p>
+<ul>
+<li>
+<p><strong>Pro</strong> supports <strong>BitLocker</strong> (for drive encryption).</p>
+</li>
+<li>
+<p><strong>Home</strong> does not have this feature.</p>
+</li>
+</ul>
+<p>✅ <strong>Answer:</strong> <code>BitLocker</code></p>
+<hr />
+<h3 id="how-to-verify-yourself-that-bitlocker-exists-and-can-be-used">How to verify yourself that <strong>BitLocker</strong> exists and can be used:</h3>
+<h3 id="method-via-control-panel">🔹 Method via <strong>Control Panel</strong>:</h3>
+<ol>
+<li>
+<p>Open <strong>Control Panel</strong>.</p>
+</li>
+<li>
+<p>Go to <strong>System and Security</strong>.</p>
+</li>
+<li>
+<p>If you see an option called <strong>BitLocker Drive Encryption</strong> → then your system supports BitLocker.</p>
+</li>
+<li>
+<p>In the <strong>Home</strong> edition, you won’t find this option.</p>
+</li>
+</ol>
+<h3 id="method-via-cmd">🔹 Method via <strong>CMD</strong>:</h3>
+<ol>
+<li>
+<p>Open <strong>Command Prompt</strong> as Administrator.</p>
+</li>
+<li>
+<p>Type:</p>
+</li>
+</ol>
+<p><code>manage-bde -status</code></p>
+<ol>
+<li>
+<p>If you see details about the drives and BitLocker status → it’s supported.</p>
+</li>
+<li>
+<p>In the Home edition, it will usually say the tool isn’t supported.</p>
+</li>
+</ol>
+<hr />
+<h2 id="the-desktop-gui">The Desktop (GUI) :</h2>
+<ul>
+<li>
+<p>The <strong>Desktop (Graphical User Interface)</strong> is the screen that appears after logging in (Username + Password).</p>
+</li>
+<li>
+<p>You can change its appearance (icons, wallpaper, themes, colors, etc.) from:</p>
+</li>
+<li>
+<p><strong>Right Click → Display Settings</strong> (to change resolution and multiple screens).</p>
+</li>
+<li>
+<p><strong>Right Click → Personalize</strong> (to change background, colors, fonts, etc.).</p>
+</li>
+<li>
+<p><strong>Start Menu</strong>:</p>
+</li>
+<li>
+<p>Now appears as the <strong>Windows Logo</strong>, not the word "Start."</p>
+</li>
+<li>
+<p>Divided into sections:</p>
+<ol>
+<li>
+<p>Account settings (Documents, Pictures, Settings, Power…)</p>
+</li>
+<li>
+<p>Program list (Recently Added + Installed Apps)</p>
+</li>
+<li>
+<p>Tiles (application squares that can be added or removed)</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Taskbar</strong>:</p>
+</li>
+<li>
+<p>Shows open or pinned programs.</p>
+</li>
+<li>
+<p>You can change its settings via Right Click.</p>
+</li>
+<li>
+<p><strong>Notification Area</strong>:</p>
+</li>
+<li>
+<p>Bottom right → contains the clock, network, sound, and other icons like the <strong>Action Center</strong>.</p>
+</li>
+<li>
+<p>Controlled through Taskbar settings.</p>
+</li>
+</ul>
+<h3 id="questions-answers">📌 Questions + Answers:</h3>
+<ol>
+<li>
+<p><strong>Which selection will hide/disable the Search box?</strong>\
+   ✅ <strong>Hidden</strong></p>
+</li>
+<li>
+<p><strong>Which selection will hide/disable the Task View button?</strong>\
+   ✅ <strong>Show Task View button</strong> (disabling it removes it from the taskbar).</p>
+</li>
+<li>
+<p><strong>Besides Clock and Network, what other icon is visible in the Notification Area?</strong>\
+   ✅ <strong>Action Center</strong></p>
+</li>
+</ol>
+<hr />
+<h2 id="the-file-system">The File System :</h2>
+<ul>
+<li>
+<p>Modern <strong>Windows</strong> uses the <strong>NTFS = New Technology File System</strong>.</p>
+</li>
+<li>
+<p>Previously, there were <strong>FAT16/FAT32</strong> and <strong>HPFS</strong>, and you can still see FAT in USB drives or MicroSD cards.</p>
+</li>
+<li>
+<p><strong>NTFS</strong> features:</p>
+</li>
+<li>
+<p>Supports files larger than <strong>4GB</strong>.</p>
+</li>
+<li>
+<p><strong>Permissions</strong> (access control for files and folders).</p>
+</li>
+<li>
+<p>File/folder compression.</p>
+</li>
+<li>
+<p>Encryption using <strong>EFS (Encrypting File System)</strong>.</p>
+</li>
+<li>
+<p>More <strong>NTFS</strong> advantages:</p>
+</li>
+<li>
+<p><strong>Journaling</strong>: can repair itself after an issue using logs.</p>
+</li>
+<li>
+<p><strong>Permissions</strong> (Full control, Modify, Read &amp; Execute, etc.).</p>
+</li>
+<li>
+<p><strong>Alternate Data Streams (ADS):</strong> every file has a primary stream, and ADS adds extra ones. Sometimes malware hides there, but Windows also uses them (e.g., when you download a file, it stores its source in ADS).</p>
+</li>
+</ul>
+<h3 id="question_1">📌 Question:</h3>
+<blockquote>
+<p><strong>What is the meaning of NTFS?</strong></p>
+</blockquote>
+<p>✅ <strong>Answer:</strong> <code>New Technology File System</code></p>
+<hr />
+<h2 id="the-windowssystem32-folders">The Windows\System32 Folders :</h2>
+<p>The <strong>Windows</strong> folder (‎<code>C:\Windows</code>‎) is traditionally the directory that contains the Windows operating system.</p>
+<p>It’s not necessarily located on the <strong>C</strong> drive; it can be on any drive or even within a different folder.</p>
+<p>Here comes the role of <strong>environment variables</strong>, specifically <strong>system environment variables</strong>.\
+Even if we haven’t covered them yet, the <strong>system environment variable</strong> for the Windows folder is <strong>%windir%</strong>.</p>
+<p>According to Microsoft:</p>
+<blockquote>
+<p>“Environment variables store information about the operating system environment. This information includes details like the OS path, the number of processors used, and the location of temporary folders.”</p>
+</blockquote>
+<p>Inside the <strong>Windows</strong> directory, there are many subfolders, including:</p>
+<p>🔹 <strong>System32</strong></p>
+<p>The <strong>System32</strong> folder contains essential files required for the operating system to function.\
+It must be handled with extreme care, as deleting any file or folder inside it by mistake can make Windows unbootable.</p>
+<p>📌 Note: Many of the tools covered in the <strong>Windows Fundamentals</strong> series are located in the <strong>System32</strong> folder.</p>
+<p><strong>Answer the questions below</strong>\
+<strong>What is the system variable for the Windows folder?</strong>\
+✅ %windir%</p>
+<hr />
+<h2 id="user-accounts-profiles-and-permissions">User Accounts, Profiles, and Permissions :</h2>
+<p><strong>User Accounts, Profiles, and Permissions:</strong></p>
+<p>A user account on Windows can be one of two local types:</p>
+<ol>
+<li>
+<p><strong>Administrator</strong></p>
+</li>
+<li>
+<p><strong>Standard User</strong></p>
+</li>
+</ol>
+<p>🔹 The account type determines what the user can do on the system:</p>
+<ul>
+<li>
+<p><strong>Administrator</strong>: can make system-wide changes like adding/deleting users, modifying groups, or changing system settings.</p>
+</li>
+<li>
+<p><strong>Standard User</strong>: can only modify their own files/folders and cannot make system-level changes like installing software.</p>
+</li>
+</ul>
+<p>Since you are <strong>logged in as Administrator</strong>, there are several ways to view existing accounts.</p>
+<p>One way: open the <strong>Start Menu</strong>, type <strong>Other User</strong>, and select:\
+<strong>System Settings &gt; Other users</strong></p>
+<p>Clicking that will show a window with the option:\
+<strong>Add someone else to this PC</strong> (not visible to Standard Users).</p>
+<p>Clicking a local account displays additional options like <strong>Change account type</strong> and <strong>Remove</strong>.</p>
+<p>📌 When a new account is created, a <strong>Profile</strong> is automatically created for it in:\
+<code>C:\Users</code></p>
+<p>Example: an account named <strong>Max</strong> → its profile path is:\
+<code>C:\Users\Max</code></p>
+<p>The profile is created upon the first login, showing the <strong>User Profile Service</strong> screen while files are being prepared.\
+Then, a dialog box appears confirming that the profile is being set up.</p>
+<p>Each profile includes default folders like:</p>
+<ul>
+<li>
+<p>Desktop</p>
+</li>
+<li>
+<p>Documents</p>
+</li>
+<li>
+<p>Downloads</p>
+</li>
+<li>
+<p>Music</p>
+</li>
+<li>
+<p>Pictures</p>
+</li>
+</ul>
+<p>🔹 Another way to view this information: <strong>Local User and Group Management</strong></p>
+<ul>
+<li>
+<p>Right-click on Start Menu → choose <strong>Run</strong></p>
+</li>
+<li>
+<p>Type: <code>lusrmgr.msc</code></p>
+</li>
+</ul>
+<p>You’ll see two folders:</p>
+<ul>
+<li>
+<p><strong>Users</strong></p>
+</li>
+<li>
+<p><strong>Groups</strong></p>
+</li>
+</ul>
+<p>Inside <strong>Groups</strong>, you’ll find local group names with short descriptions.\
+Each group has specific permissions, and a user can belong to one or more groups.\
+Once added to a group, the user inherits its permissions.</p>
+<p>📌 Note: Choosing <strong>Add someone else to this PC</strong> from <strong>Other Users</strong> opens the same <strong>Local Users and Groups Management</strong> tool.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>What is the name of the other user account?</strong>\
+👉 tryhackmebilly</p>
+<p><strong>Correct Answer</strong></p>
+<p><strong>What groups is this user a member of?</strong>\
+👉 Remote Desktop Users, Users</p>
+<p><strong>Correct Answer</strong></p>
+<p><strong>What built-in account is for guest access to the computer?</strong>\
+👉 Guest</p>
+<p><strong>Correct Answer</strong></p>
+<p><strong>What is the account description?</strong>\
+👉 window$Fun1!</p>
+<p><strong>Correct Answer</strong> ✅</p>
+<hr />
+<h2 id="user-account-control">User Account Control</h2>
+<p><strong>User Account Control (UAC):</strong></p>
+<p>Most home users log into their Windows systems using <strong>local administrator accounts</strong>.\
+Remember from the previous section that an <strong>Administrator</strong> can make system-level changes.</p>
+<p>However, users don’t need <strong>elevated privileges</strong> for regular activities like browsing or editing documents.\
+These high privileges increase the risk of system compromise, as any <strong>malware</strong> will run with the same privileges as the user who can change system settings.</p>
+<p>To protect local users, Microsoft introduced <strong>User Account Control (UAC)</strong>.\
+It was first introduced in <strong>Windows Vista</strong> (short-lived) and has existed in all later versions.</p>
+<p>📌 Note: <strong>UAC</strong> (by default) does not apply to the <strong>built-in local administrator account</strong>.</p>
+<hr />
+<p>🔹 <strong>How UAC Works:</strong></p>
+<ul>
+<li>
+<p>When a user with <strong>Administrator</strong> privileges logs in, the session does not start with full privileges.</p>
+</li>
+<li>
+<p>When performing an action that requires higher privileges, a <strong>prompt</strong> appears asking for confirmation to continue.</p>
+</li>
+</ul>
+<p>For example:</p>
+<ul>
+<li>
+<p>Viewing a program’s <strong>Properties</strong> as the built-in <strong>Administrator</strong>, under the <strong>Security</strong> tab, shows users/groups with permissions — <strong>Standard Users</strong> are not listed.</p>
+</li>
+<li>
+<p>If you log in as a <strong>Standard User</strong> and try to install a program (e.g., via <strong>Remote Desktop</strong>), you’ll see a <strong>Shield Icon</strong> on the program.</p>
+</li>
+<li>
+<p>This shield means <strong>UAC</strong> will request elevated privileges (like opening Wireshark).</p>
+</li>
+<li>
+<p>Double-clicking it triggers a <strong>UAC prompt</strong> showing the built-in <strong>Administrator</strong> name, asking for its password.</p>
+</li>
+<li>
+<p>If the password isn’t entered within a certain time, the prompt disappears, and installation is canceled.</p>
+</li>
+</ul>
+<p>This feature greatly reduces the likelihood of successful malware attacks.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>What does UAC mean?</strong>\
+👉 User Account Control</p>
+<p><strong>Correct Answer</strong></p>
+<hr />
+<h2 id="settings-and-the-control-panel">Settings and the Control Panel :</h2>
+<p><strong>Settings and the Control Panel</strong></p>
+<p>In Windows systems, the main places for making changes are:</p>
+<ol>
+<li>
+<p><strong>Settings menu</strong></p>
+</li>
+<li>
+<p><strong>Control Panel</strong></p>
+</li>
+</ol>
+<p>🔹 For a long time, <strong>Control Panel</strong> was the main hub for system changes like adding printers or uninstalling programs.</p>
+<p>With <strong>Windows 8</strong> (the first tablet-oriented version), <strong>Settings</strong> was introduced and still exists in Windows 10.\
+Now, <strong>Settings</strong> has become the primary interface for most user-level changes.</p>
+<p>Both (Settings &amp; Control Panel) can be accessed via the <strong>Start Menu</strong>.</p>
+<p>📌 Differences:</p>
+<ul>
+<li>
+<p><strong>Control Panel</strong>: contains more advanced and detailed system settings.</p>
+</li>
+<li>
+<p><strong>Settings</strong>: covers daily-use settings but sometimes redirects you to <strong>Control Panel</strong>.</p>
+</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>
+<p>From <strong>Settings</strong> → <strong>Network &amp; Internet</strong> → <strong>Change adapter options</strong></p>
+</li>
+<li>
+<p>The next window that opens is from <strong>Control Panel</strong>.</p>
+</li>
+</ul>
+<p>If unsure which one to open, you can use <strong>Start Menu</strong> search.\
+Example: searching for <strong>wallpaper</strong> → shows limited results, and the best one opens the <strong>Settings</strong> window for changing the background.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>In the Control Panel, change the view to Small icons. What is the last setting in the Control Panel view?</strong>\
+👉 Windows Defender Firewall</p>
+<p><strong>Correct Answer</strong></p>
+<hr />
+<h2 id="task-manager">Task Manager :</h2>
+<p>The last topic in this section is <strong>Task Manager</strong>.</p>
+<p><strong>Task Manager</strong> displays information about the currently running applications and processes.\
+It also shows performance metrics such as <strong>CPU</strong> and <strong>RAM</strong> usage under the <strong>Performance</strong> tab.</p>
+<p>🔹 To open <strong>Task Manager</strong>:</p>
+<ul>
+<li>Right-click on the <strong>taskbar</strong> and select <strong>Task Manager</strong></li>
+</ul>
+<p>By default, <strong>Task Manager</strong> opens in <strong>Simple View</strong>, showing limited information.\
+For more details, click <strong>More details</strong>, and the interface will expand with full information.</p>
+<p>You can learn more about <strong>Task Manager</strong> from specialized blogs, and study each process in detail from the <strong>Core Windows Processes</strong> room.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>What is the keyboard shortcut to open Task Manager?</strong>\
+👉 Ctrl + Shift + Esc</p>
+<p><strong>Correct Answer</strong></p>
+<hr />
+<hr />
+<hr />
+<h2 id="introduction-to-windows_1">Introduction to Windows :</h2>
+<h3 id="_1">📌 الترجمة والشرح:</h3>
+<ul>
+<li>
+<p>ال <strong>Windows OS</strong>: نظام تشغيل معقد فيه ملفات، إعدادات، أدوات، ومزايا كتير.</p>
+</li>
+<li>
+<p>الهدف من الـ <strong>Module</strong> ده: يديك نظرة عامة على بعض الحاجات الأساسية في ويندوز → إزاي تتعامل مع الواجهة، وتغير إعدادات بسيطة.</p>
+</li>
+<li>
+<p>عشان تبدأ العملي: دوس على زر <strong>Start Machine</strong>.</p>
+</li>
+<li>
+<p>الجهاز الافتراضي (VM) هيظهر في المتصفح.</p>
+</li>
+<li>
+<p>ممكن كمان تدخل عليه عن طريق <strong>Remote Desktop (RDP)</strong> بالبيانات دي:</p>
+</li>
+<li>
+<p><strong>IP</strong>: MACHINE_IP</p>
+</li>
+<li>
+<p><strong>User</strong>: administrator</p>
+</li>
+<li>
+<p><strong>Password</strong>: letmein123!</p>
+</li>
+<li>
+<p>لو جالك Certificate → اعمل <strong>Accept</strong>.</p>
+</li>
+<li>
+<p>خد بالك: الـ VM ممكن ياخد حوالي 3 دقايق لحد ما يشتغل.</p>
+</li>
+</ul>
+<h3 id="_2">📌 استخراج الحل:</h3>
+<ul>
+<li>
+<p>السؤال بيقول: <em>"Read above and start the virtual machine."</em></p>
+</li>
+<li>
+<p>يعني المطلوب منك بس إنك تشغل الجهاز الافتراضي وتكون جاهز للأسئلة اللي بعده.</p>
+</li>
+<li>
+<p>مفيش إجابة تكتبها هنا → مجرد <strong>تشغيل الـ VM</strong>. ✅</p>
+</li>
+</ul>
+<hr />
+<h2 id="windows-editions_1">Windows Editions :</h2>
+<ul>
+<li>
+<p>ويندوز بدأ من 1985 وهو لحد دلوقتي النظام المسيطر سواء في البيت أو في الشركات.</p>
+</li>
+<li>
+<p>عشان كده دايمًا كان مستهدف من الهاكرز والمالوير.</p>
+</li>
+<li>
+<p><strong>XP</strong> كان مشهور، وبعده نزل <strong>Vista</strong> اللي فشل بسرعة.</p>
+</li>
+<li>
+<p>بعد إعلان نهاية دعم XP، الشركات اضطرت تتحول لـ <strong>Windows 7</strong> بسرعة.</p>
+</li>
+<li>
+<p>بعد كده نزل <strong>Windows 8</strong> اللي برضو ماكملش.</p>
+</li>
+<li>
+<p>ثم نزل <strong>Windows 10</strong> وبعده <strong>Windows 11</strong> (الإصدار الحالي).</p>
+</li>
+<li>
+<p>ويندوز 11 موجود منه نسختين: <strong>Home</strong> و <strong>Pro</strong>.</p>
+</li>
+<li>
+<p>السيرفر الحالي في اللاب هو <strong>Windows Server 2019 Standard</strong>.</p>
+</li>
+<li>
+<p>بالنسبة لـ Windows 10 → الدعم مستمر لحد <strong>14 أكتوبر 2025</strong>.</p>
+</li>
+</ul>
+<h3 id="_3">📌 السؤال:</h3>
+<blockquote>
+<p><strong>What encryption can you enable on Pro that you can't enable in Home?</strong>\
+يعني:\
+<em>إيه نوع التشفير اللي ممكن تفعلّه في نسخة</em> <strong><em>Windows Pro</em></strong> <em>ومش موجود في</em> <strong><em>Windows Home</em></strong><em>؟</em></p>
+</blockquote>
+<h3 id="_4">📌 الحل:</h3>
+<p>الفرق الأساسي بين <strong>Home</strong> و <strong>Pro</strong> هو إن:</p>
+<ul>
+<li>
+<p>نسخة <strong>Pro</strong> بتدعم <strong>BitLocker</strong> (لتشفير الأقراص).</p>
+</li>
+<li>
+<p>نسخة <strong>Home</strong> مش فيها الخاصية دي.</p>
+</li>
+</ul>
+<p>✅ <strong>الإجابة:</strong> <code>BitLocker</code></p>
+<hr />
+<h3 id="bitlocker">إزاي تتأكد بنفسك إن <strong>BitLocker</strong> موجود وممكن تستخدمه:</h3>
+<h3 id="control-panel">🔹 الطريقة من <strong>Control Panel</strong>:</h3>
+<ol>
+<li>
+<p>افتح <strong>Control Panel</strong>.</p>
+</li>
+<li>
+<p>روح على <strong>System and Security</strong>.</p>
+</li>
+<li>
+<p>لو لقيت خيار اسمه <strong>BitLocker Drive Encryption</strong> → يبقى النظام بيدعم BitLocker.</p>
+</li>
+<li>
+<p>في نسخة <strong>Home</strong> مش هتلاقي الاختيار ده.</p>
+</li>
+</ol>
+<h3 id="cmd">🔹 الطريقة من <strong>CMD</strong>:</h3>
+<ol>
+<li>
+<p>افتح <strong>Command Prompt</strong> كـ Administrator.</p>
+</li>
+<li>
+<p>اكتب:</p>
+</li>
+</ol>
+<p><code>manage-bde -status</code></p>
+<ol>
+<li>
+<p>لو جالك تفاصيل عن الـ drives وحالة الـ BitLocker → يبقى مدعوم.</p>
+</li>
+<li>
+<p>في نسخة Home غالبًا هيقولك إن الأداة غير مدعومة.</p>
+</li>
+</ol>
+<hr />
+<h2 id="the-desktop-gui_1">The Desktop (GUI) :</h2>
+<ul>
+<li>
+<p><strong>الـ Desktop (سطح المكتب)</strong>: هو الشاشة اللي بتظهرلك بعد تسجيل الدخول (Username + Password).</p>
+</li>
+<li>
+<p>تقدر تغيّر شكله (الأيقونات، الخلفية، الـ Themes، الألوان… إلخ) من:</p>
+</li>
+<li>
+<p><strong>Right Click → Display Settings</strong> (لتغيير الدقة والشاشات المتعددة).</p>
+</li>
+<li>
+<p><strong>Right Click → Personalize</strong> (لتغيير الخلفية، الألوان، الخطوط…).</p>
+</li>
+<li>
+<p><strong>Start Menu (قائمة ابدأ)</strong>:</p>
+</li>
+<li>
+<p>موجودة دلوقتي كـ <strong>Windows Logo</strong> مش كلمة Start.</p>
+</li>
+<li>
+<p>مقسمة لأجزاء:</p>
+<ol>
+<li>
+<p>إعدادات الحساب (Documents, Pictures, Settings, Power…).</p>
+</li>
+<li>
+<p>قائمة البرامج (Recently Added + Installed Apps).</p>
+</li>
+<li>
+<p>Tiles (مربعات التطبيقات اللي ممكن تضيف/تشيل منها برامج).</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Taskbar (شريط المهام)</strong>:</p>
+</li>
+<li>
+<p>بيعرض البرامج المفتوحة أو الـ pinned.</p>
+</li>
+<li>
+<p>ممكن تغير إعداداته بالـ Right Click.</p>
+</li>
+<li>
+<p><strong>Notification Area (منطقة الإشعارات)</strong>:</p>
+</li>
+<li>
+<p>يمين تحت → فيها الساعة، الشبكة، الصوت، وأيقونات تانية زي <strong>Action Center</strong>.</p>
+</li>
+<li>
+<p>تقدر تتحكم من Taskbar settings.</p>
+</li>
+</ul>
+<h3 id="_5">📌 الأسئلة + الحلول:</h3>
+<ol>
+<li>
+<p><strong>Which selection will hide/disable the Search box?</strong>\
+   ✅ <strong>Hidden</strong></p>
+</li>
+<li>
+<p><strong>Which selection will hide/disable the Task View button?</strong>\
+   ✅ <strong>Show Task View button</strong> (إلغاء التفعيل يشيلها من التاسك بار).</p>
+</li>
+<li>
+<p><strong>Besides Clock and Network, what other icon is visible in the Notification Area?</strong>\
+   ✅ <strong>Action Center</strong></p>
+</li>
+</ol>
+<hr />
+<h2 id="the-file-system_1">The File System :</h2>
+<ul>
+<li>
+<p>النظام اللي بيستخدمه <strong>Windows الحديث</strong> هو <strong>NTFS = New Technology File System</strong>.</p>
+</li>
+<li>
+<p>قبل كده كان فيه <strong>FAT16/FAT32</strong> و <strong>HPFS</strong>. ولسه بتشوف FAT في الفلاشة أو الـ MicroSD.</p>
+</li>
+<li>
+<p>مميزات <strong>NTFS</strong>:</p>
+</li>
+<li>
+<p>دعم ملفات أكبر من <strong>4GB</strong>.</p>
+</li>
+<li>
+<p><strong>Permissions</strong> (تحديد صلاحيات على الملفات والمجلدات).</p>
+</li>
+<li>
+<p>ضغط الملفات والمجلدات.</p>
+</li>
+<li>
+<p>التشفير باستخدام <strong>EFS (Encrypting File System)</strong>.</p>
+</li>
+<li>
+<p>من مميزات NTFS كمان:</p>
+</li>
+<li>
+<p><strong>ال Journaling</strong>: يقدر يصلح نفسه بعد مشكلة بالاعتماد على Log.</p>
+</li>
+<li>
+<p><strong>ال Permissions</strong> (Full control, Modify, Read &amp; Execute… إلخ).</p>
+</li>
+<li>
+<p><strong>ال Alternate Data Streams (ADS):</strong> كل ملف له Stream أساسي، و ADS يضيف Streams إضافية. أحيانًا المالوير بيخبي نفسه فيها، لكن كمان Windows بيستخدمها (مثلاً لو نزلت ملف من النت بيتسجل في ADS إنه جاي من الإنترنت).</p>
+</li>
+</ul>
+<h3 id="_6">📌 السؤال:</h3>
+<blockquote>
+<p><strong>What is the meaning of NTFS?</strong></p>
+</blockquote>
+<p>✅ <strong>الإجابة:</strong> <code>New Technology File System</code></p>
+<hr />
+<h2 id="the-windowssystem32-folders_1">The Windows\System32 Folders :</h2>
+<p>مجلد <strong>Windows</strong> (‎<code>C:\Windows</code>‎) يُعرف تقليديًا بأنه المجلد الذي يحتوي على نظام التشغيل Windows.</p>
+<p>هذا المجلد ليس شرطًا أن يكون موجودًا على قرص <strong>C</strong> تحديدًا، بل يمكن أن يكون على أي قرص آخر، أو حتى داخل مجلد مختلف.</p>
+<p>هنا يظهر دور <strong>environment variables</strong>، وتحديدًا <strong>system environment variables</strong>. حتى وإن لم نتحدث عنها بعد، فإن <strong>system environment variable</strong> الخاص بمجلد Windows هو <strong>%windir%</strong>.</p>
+<p>حسب مايكروسوفت:</p>
+<blockquote>
+<p>ال "Environment variables تخزّن معلومات عن بيئة نظام التشغيل. هذه المعلومات تتضمن تفاصيل مثل: مسار نظام التشغيل، عدد المعالجات التي يستخدمها النظام، ومكان المجلدات المؤقتة."</p>
+</blockquote>
+<p>يوجد داخل مجلد <strong>Windows</strong> العديد من المجلدات، ومن بينها:</p>
+<p>🔹 <strong>System32</strong></p>
+<p>مجلد <strong>System32</strong> يحتوي على ملفات مهمة وحيوية لعمل نظام التشغيل.\
+يجب التعامل معه بحذر شديد، لأن حذف أي ملف أو مجلد بداخله بالخطأ قد يجعل نظام Windows غير قابل للتشغيل.</p>
+<p>📌 ملاحظة: العديد من الأدوات التي سيتم تغطيتها في سلسلة <strong>Windows Fundamentals</strong> موجودة داخل مجلد <strong>System32</strong>.</p>
+<p><strong>Answer the questions below</strong>\
+<strong>What is the system variable for the Windows folder?</strong>\
+✅ %windir%</p>
+<hr />
+<h2 id="user-accounts-profiles-and-permissions_1">User Accounts, Profiles, and Permissions :</h2>
+<p>الحسابات، الملفات الشخصية، والصلاحيات (<strong>User Accounts, Profiles, and Permissions</strong>):</p>
+<p>يمكن أن يكون حساب المستخدم على نظام Windows محلي من نوعين:</p>
+<ol>
+<li>
+<p><strong>Administrator</strong></p>
+</li>
+<li>
+<p><strong>Standard User</strong></p>
+</li>
+</ol>
+<p>🔹 نوع الحساب يحدد ما يمكن للمستخدم فعله على النظام:</p>
+<ul>
+<li>
+<p><strong>Administrator</strong>: يمكنه إجراء تغييرات على النظام مثل: إضافة مستخدمين، حذف مستخدمين، تعديل المجموعات، تغيير إعدادات النظام، إلخ.</p>
+</li>
+<li>
+<p><strong>Standard User</strong>: يمكنه فقط تعديل الملفات/المجلدات الخاصة به، ولا يمكنه تنفيذ تغييرات على مستوى النظام مثل تثبيت البرامج.</p>
+</li>
+</ul>
+<p>بما أنك <strong>مسجّل الدخول كـ Administrator</strong>، توجد عدة طرق لمعرفة الحسابات الموجودة على النظام.</p>
+<p>إحدى الطرق: فتح <strong>Start Menu</strong> وكتابة <strong>Other User</strong> → سيظهر اختصار إلى:\
+<strong>System Settings &gt; Other users</strong></p>
+<p>لو ضغطت عليه، ستظهر نافذة إعدادات تعرض خيار:\
+<strong>Add someone else to this PC</strong> (هذا الخيار لا يظهر عند المستخدم العادي).</p>
+<p>بالضغط على الحساب المحلي، ستظهر خيارات إضافية مثل: <strong>Change account type</strong> و <strong>Remove</strong>.</p>
+<p>📌 عند إنشاء حساب جديد، يتم إنشاء <strong>Profile</strong> له.\
+مكان ملفات البروفايل يكون في:\
+<code>C:\Users</code></p>
+<p>مثال: حساب باسم <strong>Max</strong> → بروفايله في:\
+<code>C:\Users\Max</code></p>
+<p>إنشاء البروفايل يتم عند تسجيل الدخول لأول مرة، حيث يظهر على الشاشة <strong>User Profile Service</strong> أثناء تجهيز الملفات.\
+بعدها، يظهر صندوق حوار يؤكد أن البروفايل قيد الإنشاء.</p>
+<p>كل بروفايل يتضمن مجلدات أساسية مثل:</p>
+<ul>
+<li>
+<p>Desktop</p>
+</li>
+<li>
+<p>Documents</p>
+</li>
+<li>
+<p>Downloads</p>
+</li>
+<li>
+<p>Music</p>
+</li>
+<li>
+<p>Pictures</p>
+</li>
+</ul>
+<p>🔹 طريقة أخرى لمعرفة هذه المعلومات: <strong>Local User and Group Management</strong></p>
+<ul>
+<li>
+<p>اضغط يمين على Start Menu → اختر <strong>Run</strong></p>
+</li>
+<li>
+<p>اكتب: <code>lusrmgr.msc</code></p>
+</li>
+</ul>
+<p>ستجد مجلدين:</p>
+<ul>
+<li>
+<p><strong>Users</strong></p>
+</li>
+<li>
+<p><strong>Groups</strong></p>
+</li>
+</ul>
+<p>داخل <strong>Groups</strong> ستجد أسماء المجموعات المحلية مع وصف قصير لكل مجموعة.\
+كل مجموعة لها صلاحيات محددة، والمستخدم يمكن إضافته لمجموعة واحدة أو أكثر.\
+بمجرد إضافته لمجموعة، يرث صلاحياتها.</p>
+<p>📌 ملاحظة: اختيار <strong>Add someone else to this PC</strong> من <strong>Other Users</strong> يفتح نفس أداة <strong>Local Users and Groups Management</strong>.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>What is the name of the other user account?</strong>\
+👉 tryhackmebilly</p>
+<p><strong>Correct Answer</strong></p>
+<p><strong>What groups is this user a member of?</strong>\
+👉 Remote Desktop Users, Users</p>
+<p><strong>Correct Answer</strong></p>
+<p><strong>What built-in account is for guest access to the computer?</strong>\
+👉 Guest</p>
+<p><strong>Correct Answer</strong></p>
+<p><strong>What is the account description?</strong>\
+👉 window$Fun1!</p>
+<p><strong>Correct Answer</strong> ✅</p>
+<hr />
+<h2 id="user-account-control_1">User Account Control</h2>
+<p><strong>User Account Control (UAC):</strong></p>
+<p>معظم مستخدمي الأجهزة المنزلية يقومون بتسجيل الدخول إلى أنظمة Windows الخاصة بهم باستخدام حسابات <strong>local administrators</strong>.\
+تذكَّر من الجزء السابق أن أي مستخدم نوع حسابه <strong>Administrator</strong> يمكنه إجراء تغييرات على النظام.</p>
+<p>لكن المستخدم لا يحتاج إلى تشغيل مهام بامتيازات عالية (<strong>elevated privileges</strong>) لتنفيذ مهام عادية مثل: تصفح الإنترنت، أو العمل على ملف Word، إلخ.\
+هذه الامتيازات العالية تزيد من خطر اختراق النظام، لأنها تسهّل إصابة النظام بالبرمجيات الخبيثة. ففي هذه الحالة، أي <strong>malware</strong> سيعمل ضمن سياق المستخدم الذي يمتلك صلاحيات التغيير على النظام.</p>
+<p>لحماية المستخدم المحلي من هذا الخطر، قدمت مايكروسوفت ميزة <strong>User Account Control (UAC)</strong>.\
+تم تقديم هذه الميزة لأول مرة في نظام <strong>Windows Vista</strong> (قصير العمر) واستمرت في جميع إصدارات Windows التي تلت ذلك.</p>
+<p>📌 ملاحظة: <strong>UAC</strong> (افتراضيًا) لا ينطبق على الحساب المحلي المدمج <strong>built-in local administrator account</strong>.</p>
+<hr />
+<p>🔹 <strong>كيف يعمل UAC؟</strong></p>
+<ul>
+<li>
+<p>عندما يقوم مستخدم نوع حسابه <strong>Administrator</strong> بتسجيل الدخول للنظام، فإن الجلسة لا تعمل مباشرة بامتيازات عالية.</p>
+</li>
+<li>
+<p>عند تنفيذ عملية تتطلب صلاحيات أعلى، يظهر للمستخدم <strong>Prompt</strong> يطلب التأكيد للسماح للعملية بالمتابعة.</p>
+</li>
+</ul>
+<p>على سبيل المثال:</p>
+<ul>
+<li>
+<p>عند عرض <strong>Properties</strong> للبرنامج من خلال الحساب المدمج <strong>Administrator</strong>، وفي تبويب <strong>Security</strong>، سترى المستخدمين/المجموعات وصلاحياتهم. ستلاحظ أن <strong>Standard User</strong> غير مذكور.</p>
+</li>
+<li>
+<p>لو قمت بتسجيل الدخول كـ <strong>Standard User</strong> وحاولت تثبيت البرنامج (باستخدام <strong>Remote Desktop</strong> مثلًا)، ستلاحظ ظهور <strong>Shield Icon</strong> على أيقونة البرنامج.</p>
+</li>
+<li>
+<p>هذا الدرع يشير إلى أن <strong>UAC</strong> سيطلب إذنًا لامتيازات أعلى(زي فتح Wireshark مثلا )</p>
+</li>
+<li>
+<p>عند الضغط المزدوج لتشغيل البرنامج، يظهر <strong>UAC prompt</strong> مع اسم الحساب <strong>Administrator</strong> المدمج ويطلب إدخال كلمة مروره.</p>
+</li>
+<li>
+<p>إذا لم يتم إدخال كلمة المرور خلال فترة زمنية، يختفي الـ Prompt ولا يتم تثبيت البرنامج.</p>
+</li>
+</ul>
+<p>هذه الميزة تقلل بشكل كبير من احتمالية نجاح البرمجيات الخبيثة في اختراق النظام.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>What does UAC mean?</strong>\
+👉 User Account Control</p>
+<p><strong>Correct Answer</strong></p>
+<hr />
+<h2 id="settings-and-the-control-panel_1">Settings and the Control Panel :</h2>
+<p><strong>Settings and the Control Panel</strong></p>
+<p>في أنظمة Windows، الأماكن الأساسية لإجراء التغييرات هي:</p>
+<ol>
+<li>
+<p><strong>Settings menu</strong></p>
+</li>
+<li>
+<p><strong>Control Panel</strong></p>
+</li>
+</ol>
+<p>🔹 لفترة طويلة، كان <strong>Control Panel</strong> هو المكان الرئيسي لإجراء تغييرات على النظام مثل: إضافة طابعة، إلغاء تثبيت برنامج، إلخ.</p>
+<p>مع <strong>Windows 8</strong> (أول نظام Windows مُوجّه لأجهزة التابلت التي تعمل باللمس)، تم تقديم <strong>Settings menu</strong>، ولا يزال متاحًا في Windows 10.\
+في الحقيقة، أصبح <strong>Settings</strong> الآن هو المكان الأساسي الذي يتجه له المستخدم لإجراء تغييرات على النظام.</p>
+<p>كلاهما (Settings &amp; Control Panel) يمكن الوصول إليهما من <strong>Start Menu</strong>.</p>
+<p>📌 الفرق:</p>
+<ul>
+<li>
+<p><strong>Control Panel</strong>: يحتوي على إعدادات أكثر تعقيدًا وإجراءات متقدمة.</p>
+</li>
+<li>
+<p><strong>Settings</strong>: يغطي معظم الإعدادات اليومية للمستخدم، لكنه أحيانًا يحيلك إلى <strong>Control Panel</strong>.</p>
+</li>
+</ul>
+<p>مثال:</p>
+<ul>
+<li>
+<p>من <strong>Settings</strong> → <strong>Network &amp; Internet</strong> → <strong>Change adapter options</strong></p>
+</li>
+<li>
+<p>ستلاحظ أن النافذة التالية التي تفتح هي من <strong>Control Panel</strong>.</p>
+</li>
+</ul>
+<p>لو لم تكن متأكدًا أيهما تفتح، يمكنك استخدام البحث في <strong>Start Menu</strong>.\
+مثال: البحث عن <strong>wallpaper</strong> → تظهر نتائج قليلة، وأفضل نتيجة تفتح نافذة من <strong>Settings</strong> لتغيير الخلفية.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>In the Control Panel, change the view to Small icons. What is the last setting in the Control Panel view?</strong>\
+👉 Windows Defender Firewall</p>
+<p><strong>Correct Answer</strong></p>
+<hr />
+<h2 id="task-manager_1">Task Manager :</h2>
+<p>آخر موضوع في هذا الجزء هو <strong>Task Manager</strong>.</p>
+<p>ال <strong>Task Manager</strong> يعرض معلومات عن التطبيقات والعمليات (<strong>processes</strong>) التي تعمل حاليًا على النظام.\
+كما يعرض معلومات أخرى مثل استخدام المعالج (<strong>CPU</strong>) والذاكرة (<strong>RAM</strong>) ضمن تبويب <strong>Performance</strong>.</p>
+<p>🔹 للوصول إلى <strong>Task Manager</strong>:</p>
+<ul>
+<li>اضغط يمين على <strong>taskbar</strong> واختر <strong>Task Manager</strong></li>
+</ul>
+<p>بشكل افتراضي، يفتح <strong>Task Manager</strong> في <strong>Simple View</strong> ويعرض معلومات محدودة.\
+للحصول على مزيد من التفاصيل، اضغط على <strong>More details</strong> لتتغير الواجهة وتظهر جميع المعلومات المتاحة.</p>
+<p>يمكنك الاطلاع على مزيد من المعلومات حول <strong>Task Manager</strong> من خلال مدونات متخصصة، كما يمكن تعلم دور كل عملية في النظام من غرفة <strong>Core Windows Processes</strong>.</p>
+<p>✅ <strong>Answer the questions below</strong></p>
+<p><strong>What is the keyboard shortcut to open Task Manager?</strong>\
+👉 Ctrl + Shift + Esc</p>
+<p><strong>Correct Answer</strong></p>
+<hr />
+<hr />
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

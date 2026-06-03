@@ -1,0 +1,37 @@
+/* تخصيص الهوية البصرية والألوان السيبرانية لـ AAS.Sec */
+:root [data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #0a0c15 !important; /* لون الـ Deep Indigo الخلفية الليلية لموقعك */
+  --md-primary-fg-color--dark:  #080a10 !important;
+  
+  /* درجة الأزرق النيون الفخم الحاضر في البورتفوليو والأزرار عندك */
+  --md-accent-fg-color:         #3b82f6 !important; 
+  --md-accent-fg-color--transparent: rgba(59, 130, 246, 0.1) !important;
+  
+  /* ألوان النصوص والروابط النشطة */
+  --md-typeset-a-color:         #6366f1 !important; /* درجة الموف المزرق الرايق للنصوص */
+}
+
+/* تنسيق الـ Header العلوي ليطابق موقعك تماماً */
+.md-header {
+  background-color: #0a0c15 !important;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* شريط الـ Tabs العلوي والأقسام */
+.md-tabs {
+  background-color: #0d111c !important;
+}
+
+/* تعديل لون الخلفية العامة للـ Sidebar والمحتوى لتكون مريحة وعميقة */
+.md-main {
+  background-color: #0b0d17 !important;
+}
+
+/* لون البحث والـ Hover التفاعلي */
+.md-search__input {
+  background-color: #131722 !important;
+}
+.md-nav__link--active, .md-nav__link:focus, .md-nav__link:hover {
+  color: #3b82f6 !important;
+}
