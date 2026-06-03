@@ -1,17 +1,3 @@
----
-id: "696beb5f31eb65b1d6e8fa35"
-title: "Building External Zone"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/external-zone"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T20:04:47.803Z"
-updatedAt: "2026-01-25T15:35:46.782Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768752650611/ea8ed37f-cb91-46d1-a94f-93c089240721.png" alt="" align="center" fullwidth="true" />
 

@@ -1,18 +1,3 @@
----
-id: "696f9e3826fd80e04f1bf628"
-title: "Configuration pfSense"
-description: "DMZ Zone"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/pfsense-firewall/configuration-pfsense"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-20T15:24:40.273Z"
-updatedAt: "2026-01-25T15:35:46.779Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768813534477/f8744d45-24af-4597-a948-4de7ee9abddb.png" alt="" align="center" fullwidth="true" />
 

@@ -1,18 +1,3 @@
----
-id: "68ee7ea7a91e94c8b28b987e"
-title: "Hidden Message : Cyber Talents "
-description: "A cyber Criminal is hiding information in the below file . capture the flag ? submit Flag in MD5 Format "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/hidden-message-cyber-talents"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:47:35.757Z"
-updatedAt: "2026-01-25T15:35:46.971Z"
----
 
 ## 🕵️‍♂️ 1. Identification :
 

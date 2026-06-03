@@ -1,18 +1,3 @@
----
-id: "68ee634734b9b7534e9d470a"
-title: "Leviathan Level 0 → Level 1"
-description: "OverTheWire\nThere is no information for this level, intentionally."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/linux-labs-review/leviathan-linux/leviathan-level-0-level-1"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:50:47.177Z"
-updatedAt: "2026-01-25T15:35:47.042Z"
----
 
 > *ssh -p 2223 leviathan1\@leviathan.labs.overthewire.org\
 > Password:* PPIfmI1qsA

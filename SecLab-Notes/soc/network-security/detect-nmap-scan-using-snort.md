@@ -1,18 +1,3 @@
----
-id: "68e989396ff6a5ce9b73a6f8"
-title: "Detect NMAP Scan Using Snort"
-description: "Building a Lab: Snort IDS on Ubuntu with Nmap Attacks from Kali and Traffic Monitoring via Wireshark"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/network-security/detect-nmap-scan-using-snort"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T22:31:21.566Z"
-updatedAt: "2026-01-25T15:35:46.795Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760135357859/9017af2c-d744-47e5-83f1-032a95402671.png" alt="" align="center" fullwidth="true" />
 

@@ -1,17 +1,3 @@
----
-id: "68ee70919f268f3f84ea7d72"
-title: "Network Security"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/network-security"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:47:29.560Z"
-updatedAt: "2026-01-25T15:35:46.799Z"
----
 
 ## Building a Lab: Snort IDS on Ubuntu with Nmap Attacks from Kali and Traffic Monitoring via Wireshark :
 

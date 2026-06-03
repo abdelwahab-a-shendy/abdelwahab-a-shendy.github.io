@@ -1,17 +1,3 @@
----
-id: "68ee6c29979b7e49f7fb6e1a"
-title: "PikesPeak : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pikespeak-ctflearn"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:28:41.039Z"
-updatedAt: "2026-01-25T15:35:46.965Z"
----
 
 <Image src="https://miro.medium.com/v2/resize:fit:875/1*H6P5qN5CmICX178TM6XZLA.png" align="left" fullwidth="false" />
 

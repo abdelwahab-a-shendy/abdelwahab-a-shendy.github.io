@@ -1,17 +1,3 @@
----
-id: "6929193741833b71cd6d5b25"
-title: "Unix Vs Linux"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/linux-history/unix-vs-linux"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:38:31.252Z"
-updatedAt: "2026-01-25T15:35:47.032Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764301126645/15f2e195-427b-46f7-a95c-ea93d7e721e4.png" alt="" align="center" fullwidth="true" />
 

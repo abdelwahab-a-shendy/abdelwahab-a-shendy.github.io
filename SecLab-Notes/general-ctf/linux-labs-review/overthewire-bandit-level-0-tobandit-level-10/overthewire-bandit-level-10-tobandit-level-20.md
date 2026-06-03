@@ -1,18 +1,3 @@
----
-id: "68e98bab2fb15bfc72ae4eb4"
-title: "Bandit Level 10 To Level 20"
-description: "Today we will complete the old report boxes to continue playing : Bandit Level 0 ToBandit Level 10"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10/overthewire-bandit-level-10-tobandit-level-20"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T22:41:47.083Z"
-updatedAt: "2026-01-25T15:35:47.037Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455350099/f939859e-dbfe-4f5c-ad5a-4c499c275c6f.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp" alt="" align="left" fullwidth="true" />
 

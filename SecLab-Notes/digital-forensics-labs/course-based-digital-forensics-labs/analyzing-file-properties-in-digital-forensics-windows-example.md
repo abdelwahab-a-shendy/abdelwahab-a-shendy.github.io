@@ -1,18 +1,3 @@
----
-id: "68ee42e4eab21a496995963d"
-title: "📁 Analyzing File Properties in Digital Forensics – Windows Example"
-description: "File properties using in analysis"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/analyzing-file-properties-in-digital-forensics-windows-example"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:32:36.820Z"
-updatedAt: "2026-01-25T15:35:46.830Z"
----
 
 # 📁 **Analyzing File Properties in Digital Forensics – Windows Example**
 

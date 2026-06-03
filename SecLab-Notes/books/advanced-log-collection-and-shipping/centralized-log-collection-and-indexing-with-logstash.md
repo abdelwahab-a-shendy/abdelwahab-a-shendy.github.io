@@ -1,17 +1,3 @@
----
-id: "68f664fd65493f91cc680fcb"
-title: "Centralized Log Collection & Indexing with Logstash"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/advanced-log-collection-and-shipping/centralized-log-collection-and-indexing-with-logstash"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-20T16:36:13.580Z"
-updatedAt: "2026-01-25T15:35:47.121Z"
----
 
 # **1️⃣ ELK/ SIEM Machine Setup**
 

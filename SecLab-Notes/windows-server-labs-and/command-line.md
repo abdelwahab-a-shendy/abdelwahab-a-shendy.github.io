@@ -1,17 +1,3 @@
----
-id: "69291662a88af8ce981f1a6a"
-title: "Command Line"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/command-line"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:26:26.499Z"
-updatedAt: "2026-01-25T15:35:47.057Z"
----
 
 # TOP Command Line in Windows :
 

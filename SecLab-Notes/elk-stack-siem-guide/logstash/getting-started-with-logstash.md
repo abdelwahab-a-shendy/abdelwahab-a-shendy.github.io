@@ -1,18 +1,3 @@
----
-id: "68f452a7bd630241efc687e2"
-title: "Getting started with Logstash"
-description: "This part explains how to install Logstash, verify that it is working properly, and then create your first simple pipeline to process the data (like Apache logs) and send it to Elasticsearch."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/getting-started-with-logstash"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T02:53:27.635Z"
-updatedAt: "2026-01-25T15:35:47.100Z"
----
 
 ### 🧩 Components of This Section:
 

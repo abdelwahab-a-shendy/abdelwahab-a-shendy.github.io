@@ -1,17 +1,3 @@
----
-id: "68f44e73aa5e99ed14cfd1e4"
-title: "Elastic Agent integration with Logstash"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/elastic-agent-integration-with-logstash"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T02:35:31.186Z"
-updatedAt: "2026-01-25T15:35:47.098Z"
----
 
 ## 🧩 **First: What is Elastic Agent?**
 

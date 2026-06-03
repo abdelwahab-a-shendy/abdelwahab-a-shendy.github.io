@@ -1,17 +1,3 @@
----
-id: "68f1315f09f18a43af66b882"
-title: "3. Fleet Configuration"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/1-elastic-stack-components/3-fleet-configuration"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-16T17:54:39.973Z"
-updatedAt: "2026-01-25T15:35:47.064Z"
----
 
 ## 🧱 **1. Fleet UI: Policy Builder**
 

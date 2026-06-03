@@ -1,17 +1,3 @@
----
-id: "68ee813d8f5da0c9f0653b8e"
-title: "User role can be modified in user profile"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/access-control/user-role-can-be-modified-in-user-profile"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:58:37.466Z"
-updatedAt: "2026-01-25T15:35:47.016Z"
----
 
 rs who are logged in using Role ID 2 , Therefore, we need to know what our permissions are on the site .
 

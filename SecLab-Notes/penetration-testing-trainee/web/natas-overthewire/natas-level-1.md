@@ -1,17 +1,3 @@
----
-id: "68ee6e358c00d7522fb1681c"
-title: "Natas : Level 1"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/natas-overthewire/natas-level-1"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:37:25.686Z"
-updatedAt: "2026-01-25T15:35:46.999Z"
----
 
 Username: natas1\
 URL: http\://natas1.natas.labs.overthewire.org\

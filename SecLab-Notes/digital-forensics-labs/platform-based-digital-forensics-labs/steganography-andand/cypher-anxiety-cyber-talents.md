@@ -1,18 +1,3 @@
----
-id: "68ee7ed776227566b2f627fc"
-title: "Cypher Anxiety : Cyber Talents  "
-description: "An image was leaked from a babies store."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/cypher-anxiety-cyber-talents"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:48:23.492Z"
-updatedAt: "2026-01-25T15:35:46.997Z"
----
 
 #### *An image was leaked from a babies store. the manager is so annoyed because he needs to identify the image to fire charges against the responsible employee. the key is the md5 of the image*
 

@@ -1,18 +1,3 @@
----
-id: "68ee5e77a0797ba66241e41c"
-title: "Verify : picoCTF"
-description: "Description\n\nPeople keep trying to trick my players with imitation flags. I want to make sure they get the real thing! I'm going to provide the SHA-256 hash and a decrypt script to help you know that my flags are legitimate.\n\nAdditional details will be available after launching your challenge instance."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/verify-picoctf"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:30:15.159Z"
-updatedAt: "2026-01-25T15:35:46.950Z"
----
 
 ***
 

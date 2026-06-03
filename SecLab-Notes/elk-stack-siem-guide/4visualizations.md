@@ -1,17 +1,3 @@
----
-id: "68fc5054d5bc6d37cb1aaa34"
-title: "4.Visualizations"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/4visualizations"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-25T04:21:40.442Z"
-updatedAt: "2026-01-25T15:35:47.105Z"
----
 
 # **Aggregation-Based Visualizations :**
 

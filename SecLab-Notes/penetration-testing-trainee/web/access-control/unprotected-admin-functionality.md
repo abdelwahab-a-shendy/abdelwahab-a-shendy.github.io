@@ -1,17 +1,3 @@
----
-id: "68ee81a209810160782c28b5"
-title: "Unprotected admin functionality"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/access-control/unprotected-admin-functionality"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T17:00:18.232Z"
-updatedAt: "2026-01-25T15:35:47.018Z"
----
 
 [Web Security Academy](https://portswigger.net/web-security) >> [Access control](https://portswigger.net/web-security/access-control) >> [Lab](https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality)
 

@@ -1,18 +1,3 @@
----
-id: "68fc5b01ae9077354a4adb11"
-title: "🧩 Logstash with Filebeat Integration"
-description: "Set up Filebeat on a Linux machine to collect Nginx logs and send them to Logstash, to be parsed and stored in Elasticsearch, and then viewed in Kibana"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/advanced-log-collection-and-shipping/centralized-log-collection-and-indexing-with-logstash/logstash-with-filebeat-integration"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-25T05:07:13.647Z"
-updatedAt: "2026-01-25T15:35:47.139Z"
----
 
 ## ⚙️ **1️⃣ Install Filebeat on the Linux Machine**
 

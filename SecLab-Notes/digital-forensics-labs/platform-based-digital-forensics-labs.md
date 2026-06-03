@@ -1,18 +1,3 @@
----
-id: "68802089f154d930bbf65afc"
-title: "🧪 Real-Life Digital Forensics Labs from CTF Platforms"
-description: "Real-life forensics labs from CTF platforms like TryHackMe, CyberDefenders | CyberTalents, CTFlearn, and BTLO, covering multiple scenarios applying what you've learned from beginner to expert "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-07-22T23:36:41.948Z"
-updatedAt: "2026-01-25T15:35:46.899Z"
----
 
 ***
 

@@ -1,18 +1,3 @@
----
-id: "690285935c26b4c9335b592b"
-title: "Collection of CTF challenges, hands-on and cybersecurity articles "
-description: "Abdelwahab A. Shandy"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/ctfs/ctfs-and-labs"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-29T21:22:27.028Z"
-updatedAt: "2026-01-25T15:35:46.717Z"
----
 
 ***
 

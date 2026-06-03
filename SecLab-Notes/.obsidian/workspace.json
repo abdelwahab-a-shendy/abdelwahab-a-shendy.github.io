@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "digital-forensics-labs/course-based-digital-forensics-labs/analysis-of-data-source-using-autopsy-autopsy-forensic-tool.md",
+                "file": "siem-home-lab/pre-lab-overview.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "analysis-of-data-source-using-autopsy-autopsy-forensic-tool"
+              "title": "pre-lab-overview"
             }
           }
         ]
@@ -185,11 +185,13 @@
   },
   "active": "4159ac7d4193f6e2",
   "lastOpenFiles": [
+    "books/advanced-log-collection-and-shipping/centralized-log-collection-and-indexing-with-logstash.md",
     "ctfs/ctfs-and-labs.md",
+    "enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk/to-activate-the-rules-age.md",
+    "digital-forensics-labs/course-based-digital-forensics-labs/analysis-of-data-source-using-autopsy-autopsy-forensic-tool.md",
     "siem-home-lab/soar.md",
     "books/automations-for-siem-and-edr/implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch.md",
     "enterprise-offensive-defensive-security-simulation-lab/architecture-and-design.md",
-    "enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk/to-activate-the-rules-age.md",
     "malware-analysis/labs/persistence-analysis-and-remediation-of-python-pop-up-malware-1762298363843.md",
     "siem-home-lab/pre-lab-overview.md",
     "malware-analysis/labs.md",
@@ -209,8 +211,6 @@
     "general-ctf/linux-history/unix-vs-linux.md",
     "general-ctf/linux-labs-review/leviathan-linux.md",
     "general-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10/bandit-level-20-to-level-23.md",
-    "general-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10/overthewire-bandit-level-10-tobandit-level-20.md",
-    "general-ctf/linux-labs-review/leviathan-linux/leviathan-level-0.md",
     "windows-server-labs-and/thm-ad/active-directory-basics.mdx",
     "windows-server-labs-and/thm-ad/3windows-fundamentals-3.mdx",
     "windows-server-labs-and/thm-ad/1windows-fundamentals-1.mdx",

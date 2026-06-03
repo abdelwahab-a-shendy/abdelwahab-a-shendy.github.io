@@ -1,18 +1,3 @@
----
-id: "68ee5909fae535a10bd22ba3"
-title: "NTFS1 – Evidence Acquisition & Analysis Lab (DigitalCorpora.org Disk Images)"
-description: "nps-2009-ntfs1 A test image of an NTFS file system including unfragmented and highly fragmented files stored in raw, compressed, encrypted directories"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/disk-images/ntfs1-evidence-acquisition-and-analysis-lab-digitalcorporaorg-disk-images"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:07:05.806Z"
-updatedAt: "2026-01-25T15:35:46.902Z"
----
 
 ## **Digital Forensics Investigation Report – NTFS1 Image**
 

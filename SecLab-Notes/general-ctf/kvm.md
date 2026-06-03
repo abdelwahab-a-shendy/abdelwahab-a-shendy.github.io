@@ -1,17 +1,3 @@
----
-id: "69291ab420ffa84249245f55"
-title: "KVM"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/kvm"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:44:52.491Z"
-updatedAt: "2026-01-25T15:35:47.033Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764301533286/40432a8e-d124-4c5e-8342-dbd3c9cb207e.png" alt="" align="center" fullwidth="true" />
 

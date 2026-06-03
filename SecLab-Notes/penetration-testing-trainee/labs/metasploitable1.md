@@ -1,18 +1,3 @@
----
-id: "68e983aca9b723389c51c4df"
-title: "Metasploitable-1"
-description: "Full Penetration Test & Root Access Report on Metasploitable 1 (Ubuntu8.04)\n"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/labs/metasploitable1"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T22:07:40.214Z"
-updatedAt: "2026-01-25T15:35:47.024Z"
----
 
 ## 🎯 Report Objective
 

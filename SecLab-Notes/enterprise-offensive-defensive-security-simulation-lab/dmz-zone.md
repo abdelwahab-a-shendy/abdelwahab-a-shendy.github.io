@@ -1,17 +1,3 @@
----
-id: "696bdb9b75df70dcf2db0b1d"
-title: "Building DMZ Zone"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/dmz-zone"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T18:57:31.081Z"
-updatedAt: "2026-01-25T15:35:46.755Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768752732887/653cba55-a1c0-450e-849c-e937231fba63.png" align="center" fullwidth="false" />
 

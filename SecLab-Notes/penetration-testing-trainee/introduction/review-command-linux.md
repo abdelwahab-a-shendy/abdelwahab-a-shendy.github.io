@@ -1,17 +1,3 @@
----
-id: "68ef05d251bed8420d2bbe09"
-title: "🧾Review Command linux"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/introduction/review-command-linux"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-15T02:24:18.640Z"
-updatedAt: "2026-01-25T15:35:46.994Z"
----
 
 # 🧾 Linux Basic Commands Reference
 

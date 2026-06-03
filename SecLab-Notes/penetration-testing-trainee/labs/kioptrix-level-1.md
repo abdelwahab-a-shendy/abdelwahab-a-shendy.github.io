@@ -1,18 +1,3 @@
----
-id: "68e984636178b1b4c9631b26"
-title: "Kioptrix Level 1"
-description: "Get root shell via Apache mod_ssl and Samba misconfigurations (Without Metasploit)"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/labs/kioptrix-level-1"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T22:10:43.074Z"
-updatedAt: "2026-01-25T15:35:47.030Z"
----
 
 ## 🎯 Objective
 

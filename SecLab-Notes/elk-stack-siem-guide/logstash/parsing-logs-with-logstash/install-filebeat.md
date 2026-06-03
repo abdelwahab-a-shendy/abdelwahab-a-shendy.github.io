@@ -1,18 +1,3 @@
----
-id: "68f4f1970aa2f05fdc5c8067"
-title: "Install Filebeat"
-description: "Step-by-step guide to installing Filebeat from scratch on Linux using a .deb (Ubuntu/Debian) or .rpm (RedHat/CentOS) file"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/parsing-logs-with-logstash/install-filebeat"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T14:11:35.842Z"
-updatedAt: "2026-01-25T15:35:47.114Z"
----
 
 ## 1️⃣ Prerequisites
 

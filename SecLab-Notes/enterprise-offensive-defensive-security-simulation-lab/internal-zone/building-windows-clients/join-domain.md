@@ -1,17 +1,3 @@
----
-id: "696e4085d8ba20dd65b19309"
-title: "Join Domain "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-clients/join-domain"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-19T14:32:37.882Z"
-updatedAt: "2026-01-25T15:35:46.734Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768833431162/52e404c8-8442-4c57-b238-03fbbb9acb40.png" alt="" align="center" fullwidth="true" />
 

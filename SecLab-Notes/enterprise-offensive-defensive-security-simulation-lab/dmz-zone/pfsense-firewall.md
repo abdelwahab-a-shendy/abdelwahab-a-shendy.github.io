@@ -1,18 +1,3 @@
----
-id: "696bf6d4c30b7ca905d6966d"
-title: "pfSense Firewall"
-description: "DMZ Zone"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/pfsense-firewall"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T20:53:40.151Z"
-updatedAt: "2026-01-25T15:35:46.758Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768813534477/f8744d45-24af-4597-a948-4de7ee9abddb.png" align="center" fullwidth="false" />
 

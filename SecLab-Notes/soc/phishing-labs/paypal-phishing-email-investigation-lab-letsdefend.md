@@ -1,18 +1,3 @@
----
-id: "68ee6fd8659f2542c6594b41"
-title: "PayPal Phishing Email Investigation Lab @LetsDefend"
-description: "LetsDefend => Phishing Email Lab =>  https://app.letsdefend.io/challenge/phishing-email"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/phishing-labs/paypal-phishing-email-investigation-lab-letsdefend"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:44:24.434Z"
-updatedAt: "2026-01-25T15:35:46.798Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764430493041/abeebbcf-25c9-4bde-86b7-469f37ad3ab5.png" align="center" fullwidth="false" />
 

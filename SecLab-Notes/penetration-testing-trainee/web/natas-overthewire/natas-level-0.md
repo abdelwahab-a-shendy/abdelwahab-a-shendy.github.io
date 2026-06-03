@@ -1,17 +1,3 @@
----
-id: "68ee6e0c3e9f5f7ea3985ab6"
-title: "Natas : Level 0 :"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/natas-overthewire/natas-level-0"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:36:44.503Z"
-updatedAt: "2026-01-25T15:35:47.008Z"
----
 
 Natas teaches the basics of serverside web-security.
 

@@ -1,17 +1,3 @@
----
-id: "68fe72d929d8cf9263167659"
-title: "Enrichment and Analytics"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/enrichment-and-analytics"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-26T19:13:29.028Z"
-updatedAt: "2026-01-25T15:35:47.128Z"
----
 
 ## The general idea:
 

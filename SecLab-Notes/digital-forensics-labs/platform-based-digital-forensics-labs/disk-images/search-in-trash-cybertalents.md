@@ -1,18 +1,3 @@
----
-id: "68ee661163b49ae29059a0fc"
-title: "Search in Trash : CyberTalents "
-description: "My HDD was destroyed in an accident. However, I was able to recover my recycle bin file . Can you know the flag ?"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/disk-images/search-in-trash-cybertalents"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:02:41.452Z"
-updatedAt: "2026-01-25T15:35:46.904Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760454200626/6c0190c9-7d25-49fa-b32b-06aa31f46acd.png" align="center" fullwidth="false" />
 

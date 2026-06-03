@@ -1,18 +1,3 @@
----
-id: "68fc53b81484bfe94764363a"
-title: "Linux Log Collection & Analysis with Fluent Bit and Elasticsearch"
-description: "Send linux auth logs via syslog to fluentbit syslog listener and parse all of them\nConfigure auditd on linux and send admin activities logs to fluentbit Parsethem\nThen outptut parsed auth logs and admin activites parsed logs to elasticsearch using fluentbit"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/advanced-log-collection-and-shipping/linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-25T04:36:08.104Z"
-updatedAt: "2026-01-25T15:35:47.127Z"
----
 
 ***
 

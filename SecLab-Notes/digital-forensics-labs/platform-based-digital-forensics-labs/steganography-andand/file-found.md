@@ -1,17 +1,3 @@
----
-id: "68ee7f52869fe163c26cf567"
-title: "File Found : Cyber Talents"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/file-found"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:50:26.836Z"
-updatedAt: "2026-01-25T15:35:46.974Z"
----
 
 ## 📍 First, Identification - Definition Goal: Determine the type and location of digital evidence.
 

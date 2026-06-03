@@ -1,18 +1,3 @@
----
-id: "68fc51199d7784de6951346c"
-title: "Windows Event Forwarding & ELK Integration"
-description: "Windows Logs Pipeline: WEF → Logstash → Elasticsearch"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/advanced-log-collection-and-shipping/windows-event-forwarding-and-elk-integration"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-25T04:24:57.383Z"
-updatedAt: "2026-01-25T15:35:47.126Z"
----
 
 ***
 

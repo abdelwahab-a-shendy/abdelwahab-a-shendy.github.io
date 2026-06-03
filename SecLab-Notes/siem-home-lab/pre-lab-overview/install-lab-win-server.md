@@ -1,18 +1,3 @@
----
-id: "68de8ff814f66c30f44c6f2c"
-title: "Install LAB-WIN-SERVER"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/pre-lab-overview/install-lab-win-server"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "SIEM Home LAB"
-createdAt: "2025-10-02T14:45:12.569Z"
-updatedAt: "2026-01-25T15:35:46.806Z"
----
 
 1. ### **Installing Guest Additions Tools on a Windows VM**
 

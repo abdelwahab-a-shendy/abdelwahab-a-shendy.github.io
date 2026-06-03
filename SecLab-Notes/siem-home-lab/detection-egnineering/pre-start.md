@@ -1,20 +1,3 @@
----
-id: "68e683fd23b12b20f334e515"
-title: "🧩 Pre-Start — Preparing the Lab Environment"
-description: "Before starting the lab or running detection and alert rules in the SIEM/SOAR environment, the goal is to avoid common operational issues (such as connectivity problems, encryption key errors, permission issues, or configuration mistakes). \nThis step also provides a checklist to ensure the environment is set up securely and in a repeatable manner."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/detection-egnineering/pre-start"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "🧩 Pre-Start — Preparing the Lab Environment"
-seoDescription: "Detection Engineering Labs"
-createdAt: "2025-10-08T15:32:13.453Z"
-updatedAt: "2026-01-25T15:35:46.825Z"
----
 
 # 🧾 **Quick Verification Commands**
 

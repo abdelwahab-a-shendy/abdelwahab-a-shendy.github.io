@@ -1,19 +1,3 @@
----
-id: "68e1c227dc0f2328382c5ba4"
-title: "Building a SIEM"
-description: "In this section, we’ll begin building our SIEM (Security Information and Event Management) system using the ELK Stack — which stands for Elasticsearch, Logstash, and Kibana."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/pre-lab-overview/building-a-siem"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "SIEM Home LAB"
-createdAt: "2025-10-05T00:56:07.073Z"
-updatedAt: "2026-01-25T15:35:46.809Z"
----
 
 ***
 

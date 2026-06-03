@@ -1,17 +1,3 @@
----
-id: "68ee817394cc3894479a9a90"
-title: "Unprotected admin functionality with unpredictable…"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/access-control/unprotected-admin-functionality-with-unpredictable"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:59:31.686Z"
-updatedAt: "2026-01-25T15:35:47.017Z"
----
 
 [Web Security Academy](https://portswigger.net/web-security) [>> Access control](https://portswigger.net/web-security/access-control) >> [Lab](https://portswigger.net/web-security/access-control/lab-unprotected-admin-functionality-with-unpredictable-url)
 

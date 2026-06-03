@@ -1,18 +1,3 @@
----
-id: "68eac789ff7f9d305d12f5dd"
-title: "🌐 The Beginnings of the Internet"
-description: "Base"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/introduction/the-beginnings-of-the-internet"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-11T21:09:29.823Z"
-updatedAt: "2026-01-25T15:35:46.976Z"
----
 
 ## 🕰️ **The Beginning:**
 

@@ -1,19 +1,3 @@
----
-id: "68e1b9ec94c8e25f0a16941f"
-title: "Install LAB-FLUENTBIT"
-description: "In this section, we prepare the LAB-FLUENTBIT virtual machine, which will be responsible for log collection and forwarding within our SIEM environment.\n"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/pre-lab-overview/install-lab-fluentbit"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "SIEM Home LAB"
-createdAt: "2025-10-05T00:21:00.459Z"
-updatedAt: "2026-01-25T15:35:46.820Z"
----
 
 ### **We begin by setting up the environment inside VirtualBox, enabling Guest Additions, Shared Clipboard, and Drag & Drop to streamline interaction between the host and the virtual machine :**
 

@@ -1,18 +1,3 @@
----
-id: "68e670e6f528e1b9b98a19cf"
-title: "The Implementation Of Privilege Escalation Tools And Information Gathering Techniques Was Revealed"
-description: "In this scenario, we simulated attacker activity using privilege escalation and system discovery tools, such as `whoami.exe` and `net.exe`. These tools are commonly used to determine the current privileges of an attacker, helping them plan the next steps of an attack."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/detection-egnineering/the-implementation-of-privilege-escalation-tools-and-information-gathering-techniques-was-revealed"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-08T14:10:46.598Z"
-updatedAt: "2026-01-25T15:35:46.834Z"
----
 
 Our goal was **to configure a system that captures these processes in Windows Event Logs, sends them to Elasticsearch, and then create a Detection rule using KQL in Kibana to trigger alerts when these tools are executed.**
 

@@ -1,18 +1,3 @@
----
-id: "690561d12da4ebe7c6ad5a79"
-title: "Implement a Manual Data Retention Policy with n8n and Elasticsearch"
-description: "Abdelwahab Ahmed Shandy 27-10-2025"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/automations-for-siem-and-edr/implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T01:26:41.849Z"
-updatedAt: "2026-01-25T15:35:47.130Z"
----
 
 > * **Objective:**
 >

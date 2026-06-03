@@ -1,17 +1,3 @@
----
-id: "68ee697be827313b0d620930"
-title: "Taking LS : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/taking-ls"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:17:15.432Z"
-updatedAt: "2026-01-25T15:35:46.952Z"
----
 
 Forensics
 

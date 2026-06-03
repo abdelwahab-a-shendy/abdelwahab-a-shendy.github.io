@@ -1,18 +1,3 @@
----
-id: "68ee5b9912c0e279c1348a33"
-title: "Information : picoCTF"
-description: "Files can always be changed in a secret way. Can you find the flag? cat.jpg"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/information-picoctf"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:18:01.994Z"
-updatedAt: "2026-01-25T15:35:46.921Z"
----
 
 # 🧪 **cat.jpg Challenge Report – picoCTF**
 

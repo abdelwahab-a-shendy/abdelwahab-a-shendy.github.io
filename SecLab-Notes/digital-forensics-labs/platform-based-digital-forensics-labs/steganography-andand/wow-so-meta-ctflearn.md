@@ -1,17 +1,3 @@
----
-id: "68ee6901a8aee966049646d2"
-title: "WOW…. So Meta : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/wow-so-meta-ctflearn"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:15:13.958Z"
-updatedAt: "2026-01-25T15:35:46.951Z"
----
 
 <Image src="https://miro.medium.com/v2/resize:fit:875/1*LuycYsa1V5qQFtqh_l34Eg.png" align="left" fullwidth="false" />
 

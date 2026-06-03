@@ -1,17 +1,3 @@
----
-id: "68f6bdfa3f3fc2676c2736ff"
-title: "Pipeline"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/pipeline"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-20T22:55:54.225Z"
-updatedAt: "2026-01-25T15:35:47.110Z"
----
 
 ## ⚙️ إنشاء Logstash Pipeline (Creating a Logstash Pipeline)
 

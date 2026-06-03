@@ -1,17 +1,3 @@
----
-id: "68f30f8376477f95cbc34589"
-title: "0.Access Your Kibana Instance"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/1-elastic-stack-components/4/0access-your-kibana-instance"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-18T03:54:43.835Z"
-updatedAt: "2026-01-25T15:35:47.068Z"
----
 
 Before starting the hands-on lab, you’ll need to access your **Kibana instance** for the lab environment.\
 This is done using the login credentials stored in a special file on your lab machine.

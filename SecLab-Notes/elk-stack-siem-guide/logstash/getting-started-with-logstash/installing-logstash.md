@@ -1,18 +1,3 @@
----
-id: "68f45485a3ebb489b50a1408"
-title: "Installing Logstash"
-description: "There are several different ways to install Logstash, whether manually or via a package manager or Docker."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/getting-started-with-logstash/installing-logstash"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T03:01:25.654Z"
-updatedAt: "2026-01-25T15:35:47.102Z"
----
 
 # 🧩 **Installing Logstash**
 

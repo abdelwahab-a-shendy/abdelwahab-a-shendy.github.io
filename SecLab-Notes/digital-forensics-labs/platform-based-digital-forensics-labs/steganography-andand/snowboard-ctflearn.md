@@ -1,17 +1,3 @@
----
-id: "68ee6a7af4cf6fe4b8f1fde8"
-title: "Snowboard : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/snowboard-ctflearn"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:21:30.900Z"
-updatedAt: "2026-01-25T15:35:46.972Z"
----
 
 **Forensics**
 

@@ -1,18 +1,3 @@
----
-id: "68ee5f1284635ce7eae60a37"
-title: "CanYouSee : picoCTF"
-description: "How about some hide and seek?"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/canyousee-picoctf"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:32:50.360Z"
-updatedAt: "2026-01-25T15:35:46.951Z"
----
 
 <Image src="https://miro.medium.com/v2/resize:fit:875/1*0L1UaVfknyeMxPmK4PbrQA.png" align="left" fullwidth="false" />
 

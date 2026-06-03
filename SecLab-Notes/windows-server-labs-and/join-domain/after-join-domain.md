@@ -1,17 +1,3 @@
----
-id: "69291548d8c8c3238c9ce448"
-title: "After Join Domain"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/join-domain/after-join-domain"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:21:44.665Z"
-updatedAt: "2026-01-25T15:35:47.054Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764300125671/b686815c-6d2e-4f72-8c48-5c73eae145c5.png" alt="" align="center" fullwidth="true" />
 

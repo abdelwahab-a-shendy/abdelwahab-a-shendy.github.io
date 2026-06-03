@@ -1,17 +1,3 @@
----
-id: "68f51c3f047a35ab1091d1c1"
-title: "Configuration Files"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/logstash-configuration-files"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T17:13:35.268Z"
-updatedAt: "2026-01-25T15:35:47.104Z"
----
 
 ***
 

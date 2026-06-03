@@ -1,17 +1,3 @@
----
-id: "68ee4b64fbff0dde6ad4b114"
-title: "🧪 Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/registry-analysis-using-registry-explorer-shellbags-explorer-and-regripper"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:08:52.291Z"
-updatedAt: "2026-01-25T15:35:46.891Z"
----
 
 # **Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper**
 

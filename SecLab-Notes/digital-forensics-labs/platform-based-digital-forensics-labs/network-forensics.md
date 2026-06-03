@@ -1,17 +1,3 @@
----
-id: "68ee531d7bbe9a6c60cb4299"
-title: "🔍 Network Forensics"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:41:49.012Z"
-updatedAt: "2026-01-25T15:35:46.858Z"
----
 
 ## **🛡️ CyberDefenders**
 

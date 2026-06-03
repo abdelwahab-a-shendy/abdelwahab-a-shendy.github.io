@@ -1,18 +1,3 @@
----
-id: "68ee553048423a7ee7232680"
-title: "Psexec-Hunt Pcapng"
-description: "Analyze SMB traffic in a PCAP file using Wireshark to identify PsExec lateral movement, compromised systems, user credentials, and administrative shar"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics/psexec-hunt-pcapng"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:50:40.963Z"
-updatedAt: "2026-01-25T15:35:46.878Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030374746/3402d759-c5e1-4c23-a4cf-b633be3c8a93.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp" alt="" align="left" fullwidth="true" />
 

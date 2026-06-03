@@ -1,17 +1,3 @@
----
-id: "68f6e72db66214e132c82f7f"
-title: "2.Discover Fundamentals"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/3discover/2discover-fundamentals"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-21T01:51:41.264Z"
-updatedAt: "2026-01-25T15:35:47.295Z"
----
 
 ***
 

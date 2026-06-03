@@ -1,17 +1,3 @@
----
-id: "68ee8014123781a54bf3c204"
-title: "Information disclosure on debug page"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/information-disclosure/information-disclosure-on-debug-page"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:53:40.112Z"
-updatedAt: "2026-01-25T15:35:47.004Z"
----
 
 * [Web Security Academy](https://portswigger.net/web-security) >> [Information disclosure](https://portswigger.net/web-security/information-disclosure) >>[Exploiting](https://portswigger.net/web-security/information-disclosure/exploiting) >>[Lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-on-debug-page)
 

@@ -1,17 +1,3 @@
----
-id: "692913416522f4e3c9fb9f65"
-title: "Join Domain"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/join-domain"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:13:05.211Z"
-updatedAt: "2026-01-25T15:35:47.052Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764299621687/bb921f2f-e196-40b5-afba-940b4c63e6a9.png" align="center" fullwidth="false" />
 

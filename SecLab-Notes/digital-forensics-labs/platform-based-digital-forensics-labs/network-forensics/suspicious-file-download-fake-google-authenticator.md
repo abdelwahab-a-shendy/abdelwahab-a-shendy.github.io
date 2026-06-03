@@ -1,18 +1,3 @@
----
-id: "68ee5587e66ed6a3343040f0"
-title: "Suspicious File Download (Fake Google Authenticator)"
-description: "2025-01-22 - TRAFFIC ANALYSIS EXERCISE: DOWNLOAD FROM FAKE SOFTWARE SITE"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics/suspicious-file-download-fake-google-authenticator"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:52:07.634Z"
-updatedAt: "2026-01-25T15:35:47.101Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757001863051/e87b9d24-8e80-4816-9be8-18d7fbc635f3.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp" alt="" align="left" fullwidth="true" />
 

@@ -1,18 +1,3 @@
----
-id: "688013925b9fa47e5ca9abaa"
-title: "Course-Based DF-Labs"
-description: "Course-Based Digital Forensics Labs , this section documents the hands-on labs I completed as part of structured digital forensics training courses.  "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-07-22T22:41:22.371Z"
-updatedAt: "2026-01-25T15:35:46.835Z"
----
 
 ***
 

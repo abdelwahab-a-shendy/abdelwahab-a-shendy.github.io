@@ -1,17 +1,3 @@
----
-id: "68efcdc0443d57302704eca0"
-title: "2. Fleet and Elastic Agent "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/1-elastic-stack-components/2-fleet-and-elastic-agent"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-15T16:37:20.950Z"
-updatedAt: "2026-01-25T15:35:47.063Z"
----
 
 ## 🎯 **Introduction to Fleet**
 

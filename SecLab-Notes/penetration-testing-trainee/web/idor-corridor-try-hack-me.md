@@ -1,18 +1,3 @@
----
-id: "68ee5fab15040bc57cdbc4be"
-title: "IDOR : Corridor : Try Hack Me"
-description: "Escape the Corridor :You have found yourself in a strange corridor. Can you find your way back to whereyou came?\nIn this challenge, you will explore potential IDOR vulnerabilities. Examine the URL endpoints you access as you navigate the website and note the hexadecimal values you find (they look an awful lot like a\nhash, don’t they?). This could help you uncover website locations you were not expected to access"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/idor-corridor-try-hack-me"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:35:23.878Z"
-updatedAt: "2026-01-25T15:35:46.995Z"
----
 
 ***
 

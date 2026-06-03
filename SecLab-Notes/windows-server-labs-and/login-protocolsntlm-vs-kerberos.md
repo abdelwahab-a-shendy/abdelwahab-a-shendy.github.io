@@ -1,18 +1,3 @@
----
-id: "69056a058b8b4fb780b17ffb"
-title: "Login Protocols(NTLM vs Kerberos)"
-description: "NTLM vs Kerberos"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/login-protocolsntlm-vs-kerberos"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T02:01:41.326Z"
-updatedAt: "2026-01-25T15:35:47.051Z"
----
 
 #### الإنترنت مبني على مبدأ **Client / Server**:
 

@@ -1,17 +1,3 @@
----
-id: "68ee6b5170d192a110413f22"
-title: "PDF by fdpumyp : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/pdf-by-fdpumyp-ctflearn"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:25:05.752Z"
-updatedAt: "2026-01-25T15:35:46.961Z"
----
 
 **Forensics**
 

@@ -1,18 +1,3 @@
----
-id: "696bdbd575df70dcf2db0b1e"
-title: "How to Running Metasploitable3 (Windows + Linux) on VirtualBox"
-description: "First and foremost, install what is required"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/install-metasploitable3"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T18:58:29.311Z"
-updatedAt: "2026-01-25T15:35:46.762Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768813631126/f1c0d019-b342-4281-b67a-7367566e06bb.png" alt="" align="center" fullwidth="true" />
 

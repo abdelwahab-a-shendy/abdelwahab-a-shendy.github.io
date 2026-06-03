@@ -1,17 +1,3 @@
----
-id: "69728772dc015e74e81ca855"
-title: "IIS And SQL"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-iis-server/iis-and-sql"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-22T20:24:18.244Z"
-updatedAt: "2026-01-25T15:35:46.773Z"
----
 
 # IIS
 

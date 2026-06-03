@@ -1,17 +1,3 @@
----
-id: "696bd7e97709922a918e3514"
-title: "Building Internal Zone"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/internal-zone"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T18:41:45.574Z"
-updatedAt: "2026-01-25T15:35:46.801Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768752600007/cb5795bc-01b4-40f9-aca6-4c4b9a19fe48.png" align="center" fullwidth="false" />
 

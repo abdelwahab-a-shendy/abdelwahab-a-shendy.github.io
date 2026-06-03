@@ -1,18 +1,3 @@
----
-id: "68fc575df4e4e305610124d4"
-title: "🧩 Logstash with Winlogbeat Integration"
-description: "Set up Winlogbeat on Windows to send event logs to Logstash, then store them in Elasticsearch and display them in Kibana."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/advanced-log-collection-and-shipping/centralized-log-collection-and-indexing-with-logstash/logstash-with"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-25T04:51:41.199Z"
-updatedAt: "2026-01-25T15:35:47.122Z"
----
 
 # ⚙️ **First: Install Logstash on the Server that hosts Elasticsearch and Kibana**
 

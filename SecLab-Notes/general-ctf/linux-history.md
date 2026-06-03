@@ -1,17 +1,3 @@
----
-id: "692918ab1ca9ecdb4a91539f"
-title: "Linux History"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/linux-history"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:36:11.941Z"
-updatedAt: "2026-01-25T15:35:47.043Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764300988760/64c0e247-e875-4a48-bc7d-9735e638eea8.png" alt="" align="center" fullwidth="true" />
 

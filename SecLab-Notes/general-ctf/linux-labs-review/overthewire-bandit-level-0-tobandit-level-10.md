@@ -1,18 +1,3 @@
----
-id: "68e98adf74308dda1f0cab19"
-title: "OverTheWire : Bandit Level 0 ToBandit Level 10"
-description: "Bandit Level 1 → Level 10"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T22:38:23.998Z"
-updatedAt: "2026-01-25T15:35:47.038Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455288433/c10e7cff-c1ed-4cb7-992f-75f139d19b06.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp" align="left" fullwidth="false" />
 

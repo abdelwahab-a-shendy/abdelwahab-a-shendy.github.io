@@ -1,17 +1,3 @@
----
-id: "690567d6cf335f48cba6f837"
-title: "2.Windows Fundamentals 2"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/thm-ad/2windows-fundamentals-2"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T01:52:22.283Z"
-updatedAt: "2026-01-25T15:35:47.048Z"
----
 
 ## **Introduction :**
 

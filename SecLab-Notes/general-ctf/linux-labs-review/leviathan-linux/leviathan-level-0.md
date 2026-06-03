@@ -1,18 +1,3 @@
----
-id: "68ee629917b2e4102dfb169e"
-title: "Leviathan : level 0"
-description: "OverTheWire"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/linux-labs-review/leviathan-linux/leviathan-level-0"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:47:53.231Z"
-updatedAt: "2026-01-25T15:35:47.041Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455001016/6b4fc36d-da57-4e7d-9e1b-80821cef9438.png" alt="" align="left" fullwidth="false" />
 

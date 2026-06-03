@@ -1,18 +1,3 @@
----
-id: "68ee45d5b7376082b8469969"
-title: "🧰 Disk Acquisition Using AccessData FTK Imager on Windows"
-description: "Disk Acquisition Using AccessData FTK Imager in Windows"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/disk-acquisition-using-accessdata-ftk-imager-on-windows"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:45:09.542Z"
-updatedAt: "2026-01-25T15:35:46.837Z"
----
 
 ## 📌 **Quick Introduction**
 

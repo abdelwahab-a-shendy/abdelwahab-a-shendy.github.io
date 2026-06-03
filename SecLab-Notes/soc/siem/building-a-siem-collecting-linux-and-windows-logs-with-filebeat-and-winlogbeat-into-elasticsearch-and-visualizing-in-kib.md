@@ -1,17 +1,3 @@
----
-id: "68ee64a3d933cebf01767bda"
-title: "Building a SIEM Collecting Linux and Windows Logs with Filebeat & Winlogbeat into Elasticsearch and Visualizing in Kibana"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/siem/building-a-siem-collecting-linux-and-windows-logs-with-filebeat-and-winlogbeat-into-elasticsearch-and-visualizing-in-kibana"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:56:35.951Z"
-updatedAt: "2026-01-25T15:35:46.827Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760453823707/405a760b-0770-465a-a569-a4be389726da.webp" align="center" fullwidth="false" />
 

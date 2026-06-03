@@ -1,18 +1,3 @@
----
-id: "68e9815c3334fb637ce8a66f"
-title: "Passive Reconnaissance : TRY HACK MY"
-description: "Learn about the essential tools for passive reconnaissance, such as whois, nslookup, and dig."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/information-gathering/passive-reconnaissance-try-hack-my"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T21:57:48.952Z"
-updatedAt: "2026-01-25T15:35:47.021Z"
----
 
 ### Task 1 — Introduction
 

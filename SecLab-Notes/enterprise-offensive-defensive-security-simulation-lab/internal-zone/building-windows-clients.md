@@ -1,17 +1,3 @@
----
-id: "696e4061b984877cf6ac6c26"
-title: "Building Windows Clients"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-clients"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-19T14:32:01.296Z"
-updatedAt: "2026-01-25T15:35:46.729Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768833431162/52e404c8-8442-4c57-b238-03fbbb9acb40.png" alt="" align="center" fullwidth="true" />
 

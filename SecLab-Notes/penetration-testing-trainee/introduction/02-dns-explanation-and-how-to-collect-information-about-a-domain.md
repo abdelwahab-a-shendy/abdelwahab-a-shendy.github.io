@@ -1,18 +1,3 @@
----
-id: "68eac8a1236140899081421e"
-title: "🌐 DNS Explanation and How to Collect Information About a Domain"
-description: "Base"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/introduction/02-dns-explanation-and-how-to-collect-information-about-a-domain"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-11T21:14:09.156Z"
-updatedAt: "2026-01-25T15:35:46.991Z"
----
 
 ## 🧩 **Introduction**
 

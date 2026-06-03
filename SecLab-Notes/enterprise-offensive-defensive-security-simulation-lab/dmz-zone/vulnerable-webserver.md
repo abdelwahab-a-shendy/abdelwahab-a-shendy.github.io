@@ -1,18 +1,3 @@
----
-id: "696ca62d067534b8a570be5e"
-title: "Running Vulnerable WebServer (bWAPP)"
-description: "DMZ Zone"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/vulnerable-webserver"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T09:21:49.693Z"
-updatedAt: "2026-01-25T15:35:46.781Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768814848370/2926b62f-2715-4fe0-aa2d-979bb14e1c5b.png" alt="" align="center" fullwidth="true" />
 

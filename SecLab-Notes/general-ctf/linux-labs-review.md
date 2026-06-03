@@ -1,19 +1,3 @@
----
-id: "689fdd7b5391a0a3023e17bf"
-title: "Linux LABs And Review"
-description: "General review on Linux with a solution for laptops ."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/general-ctf/linux-labs-review"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "linux CyberSecurity"
-createdAt: "2025-08-16T01:23:07.803Z"
-updatedAt: "2026-01-25T15:35:47.030Z"
----
 
 # 📂 If you don't know anything about Linux, start here with this course :
 

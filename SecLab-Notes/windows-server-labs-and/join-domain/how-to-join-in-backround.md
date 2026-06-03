@@ -1,17 +1,3 @@
----
-id: "6929145eb1f374ce36ee4297"
-title: "How to Join in Backround"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/join-domain/how-to-join-in-backround"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:17:50.558Z"
-updatedAt: "2026-01-25T15:35:47.053Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764299892483/44fb1eb2-7315-4001-973a-bd7a5a3edb2b.png" alt="" align="center" fullwidth="true" />
 

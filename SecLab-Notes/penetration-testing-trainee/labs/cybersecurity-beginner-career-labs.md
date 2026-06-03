@@ -1,18 +1,3 @@
----
-id: "68e9aafd9f17229574d4b1cd"
-title: "Cybersecurity Beginner Career | Labs"
-description: "By CyberTalents"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/labs/cybersecurity-beginner-career-labs"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-11T00:55:25.765Z"
-updatedAt: "2026-01-25T15:35:47.026Z"
----
 
 ***
 

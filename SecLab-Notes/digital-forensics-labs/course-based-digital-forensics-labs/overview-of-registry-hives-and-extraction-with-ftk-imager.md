@@ -1,17 +1,3 @@
----
-id: "68ee48ffc3ef0bae31ed37ad"
-title: "Overview of Registry Hives & Extraction with FTK Imager"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/overview-of-registry-hives-and-extraction-with-ftk-imager"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:58:39.908Z"
-updatedAt: "2026-01-25T15:35:46.840Z"
----
 
 ## 🧭 General Introduction
 

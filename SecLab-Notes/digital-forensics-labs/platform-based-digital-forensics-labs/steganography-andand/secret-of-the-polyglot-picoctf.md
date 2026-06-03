@@ -1,18 +1,3 @@
----
-id: "68ee5d208cd4c12711cc009f"
-title: "Secret of the Polyglot : picoCtf"
-description: "Can you extract all the information"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/secret-of-the-polyglot-picoctf"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:24:32.978Z"
-updatedAt: "2026-01-25T15:35:46.958Z"
----
 
 # Digital Forensics Report (DFIR)
 

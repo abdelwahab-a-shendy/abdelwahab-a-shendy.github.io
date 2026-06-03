@@ -1,18 +1,3 @@
----
-id: "68e2f4a7734c01cada0f633c"
-title: "SOAR Integration With N8N"
-description: "In this phase, I will integrate the SIEM (ELK Stack) with SOAR (n8n) to automate part of the incident response process.\nThe goal is to create an automated workflow that extracts suspicious IP addresses, checks their reputation, and notifies the analyst via email."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/soar"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-05T22:43:51.076Z"
-updatedAt: "2026-01-25T15:35:46.816Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1759704843924/c7bc6940-ea27-4091-a688-39e47fe6e84e.png" alt="" align="center" fullwidth="true" />
 

@@ -1,18 +1,3 @@
----
-id: "696d07e265fc9cbfc39a3c68"
-title: "CommandoVM Configuration"
-description: "External Zone install Windows10/11 and free space 120G  "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/external-zone/commandovm-configuration"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T16:18:42.329Z"
-updatedAt: "2026-01-25T15:35:46.796Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768812944397/12c4f830-4086-4a09-ae95-bc71324c149a.png" align="center" fullwidth="false" />
 

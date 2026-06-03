@@ -1,18 +1,3 @@
----
-id: "68e9810d7121a989aa2afc1b"
-title: "Intro To Penetration Testing"
-description: "The goal here is to build a lab that we will work on together to cover the fundamentals of penetration testing."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/introduction"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T21:56:29.101Z"
-updatedAt: "2026-01-25T15:35:46.975Z"
----
 
 1. # Setting up a Test VM
 

@@ -1,18 +1,3 @@
----
-id: "68f45878627d9b3f1b7a5a4e"
-title: "Stashing Your First Event"
-description: "First, let’s test your Logstash installation by running the most basic Logstash pipeline."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/getting-started-with-logstash/stashing-your-first-event"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T03:18:16.475Z"
-updatedAt: "2026-01-25T15:35:47.103Z"
----
 
 # 🚀 **Stashing Your First Event — Your First Logstash Experience**
 

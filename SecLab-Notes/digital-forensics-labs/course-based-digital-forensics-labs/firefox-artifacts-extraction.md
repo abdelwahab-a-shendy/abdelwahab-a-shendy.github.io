@@ -1,17 +1,3 @@
----
-id: "68ee4ede994a016a5afa0d7c"
-title: "🦊 Firefox Artifacts Extraction"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/firefox-artifacts-extraction"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:23:42.855Z"
-updatedAt: "2026-01-25T15:35:46.847Z"
----
 
 # 🦊 **Firefox Artifacts Extraction**
 

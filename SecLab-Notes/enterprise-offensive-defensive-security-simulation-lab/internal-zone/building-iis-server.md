@@ -1,18 +1,3 @@
----
-id: "696e40dfa0752d2e9fdec513"
-title: "Building IIS Server"
-description: "Instead of creating a copy from scratch, I created a full clone for the DC copy"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-iis-server"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-19T14:34:07.419Z"
-updatedAt: "2026-01-25T15:35:46.763Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768833396819/f51f9be3-ae82-4c9d-821f-16a293a72b14.png" alt="" align="center" fullwidth="true" />
 

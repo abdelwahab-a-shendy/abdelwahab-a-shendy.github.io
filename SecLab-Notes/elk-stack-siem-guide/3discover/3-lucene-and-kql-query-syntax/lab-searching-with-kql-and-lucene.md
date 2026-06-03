@@ -1,17 +1,3 @@
----
-id: "68f70d247c9c91350395d7a0"
-title: "Lab-Searching with KQL and Lucene"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/3discover/3-lucene-and-kql-query-syntax/lab-searching-with-kql-and-lucene"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-21T04:33:40.237Z"
-updatedAt: "2026-01-25T15:35:47.093Z"
----
 
 ***
 

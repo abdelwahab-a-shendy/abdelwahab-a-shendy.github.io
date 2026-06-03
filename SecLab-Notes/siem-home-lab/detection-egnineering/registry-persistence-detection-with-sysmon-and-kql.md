@@ -1,18 +1,3 @@
----
-id: "68e7bb6f05bf81377d7b15e5"
-title: "Registry Persistence Detection with Sysmon and KQL"
-description: "This lab focuses on detecting Registry-based persistence techniques used by attackers to maintain access on a compromised system.\nWe simulate an attacker creating or modifying Run and RunOnce registry keys, which allow malicious programs to automatically execute when Windows starts , By using Sysmon to log detailed Registry events (Event ID 13) and forwarding them to Elasticsearch via Winlogbeat "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/detection-egnineering/registry-persistence-detection-with-sysmon-and-kql"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-09T13:41:03.790Z"
-updatedAt: "2026-01-25T15:35:46.817Z"
----
 
 # **Step 1: Preparing Windows for Registry Monitoring**
 

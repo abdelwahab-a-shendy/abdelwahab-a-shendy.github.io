@@ -1,17 +1,3 @@
----
-id: "68ee483dd72cc51a7566d31a"
-title: "Verifying the integrity of digital evidence using hashing + a practical application on Windows and Linux"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/verifying-the-integrity-of-digital-evidence-using-hashing-a-practical-application-on-windows-and-linux"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:55:25.603Z"
-updatedAt: "2026-01-25T15:35:46.876Z"
----
 
 # 📌 **General Introduction**
 

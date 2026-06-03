@@ -1,17 +1,3 @@
----
-id: "690566aa3a6d502efbc28abc"
-title: "1.Windows Fundamentals 1"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/thm-ad/1windows-fundamentals-1"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T01:47:22.170Z"
-updatedAt: "2026-01-25T15:35:47.046Z"
----
 
 ## Introduction to Windows :
 

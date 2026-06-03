@@ -1,17 +1,3 @@
----
-id: "696bd653f0cfe5e927abfcd2"
-title: "Activate The Rules Page"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk/to-activate-the-rules-age"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T18:34:59.619Z"
-updatedAt: "2026-01-25T15:35:46.738Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1759938941561/5e53240d-3f0b-49bc-a61e-7b19b4636f27.png" alt="" align="center" fullwidth="true" />
 

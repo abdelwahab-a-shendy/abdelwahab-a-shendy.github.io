@@ -1,17 +1,3 @@
----
-id: "68ee506fdb79fa2dc247175f"
-title: "🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/analysis-of-data-source-using-autopsy-autopsy-forensic-tool"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:30:23.185Z"
-updatedAt: "2026-01-25T15:35:46.853Z"
----
 
 # 🧪 **Analysis of Data Source Using Autopsy – Autopsy Forensic Tool**
 

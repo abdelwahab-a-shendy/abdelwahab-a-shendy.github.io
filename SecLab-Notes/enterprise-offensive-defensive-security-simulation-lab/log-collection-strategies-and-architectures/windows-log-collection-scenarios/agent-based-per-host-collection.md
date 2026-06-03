@@ -1,18 +1,3 @@
----
-id: "69753cd7c5072f08750e0121"
-title: "Agent-based (Per-Host Collection)"
-description: "Windows Log Collection Scenarios"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/log-collection-strategies-and-architectures/windows-log-collection-scenarios/agent-based-per-host-collection"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-24T21:42:47.230Z"
-updatedAt: "2026-01-25T15:35:46.915Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1769291509144/cab3e32f-7df2-412d-9179-ae1de2b195b4.png" alt="" align="center" fullwidth="true" />
 

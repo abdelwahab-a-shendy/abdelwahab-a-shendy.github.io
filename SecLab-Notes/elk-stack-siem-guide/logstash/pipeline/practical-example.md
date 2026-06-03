@@ -1,17 +1,3 @@
----
-id: "68f6db9ca23f6b9266ed4e49"
-title: "Practical example"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/pipeline/practical-example"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-21T01:02:20.432Z"
-updatedAt: "2026-01-25T15:35:47.112Z"
----
 
 ***
 

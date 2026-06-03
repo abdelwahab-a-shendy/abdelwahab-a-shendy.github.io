@@ -1,17 +1,3 @@
----
-id: "690561239c04d5a9863168fa"
-title: "Automations for SIEM and EDR"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/automations-for-siem-and-edr"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T01:23:47.180Z"
-updatedAt: "2026-01-25T15:35:47.129Z"
----
 
 # **SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :**
 

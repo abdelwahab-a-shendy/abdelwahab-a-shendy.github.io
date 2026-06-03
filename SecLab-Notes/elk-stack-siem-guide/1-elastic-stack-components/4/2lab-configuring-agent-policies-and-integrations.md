@@ -1,17 +1,3 @@
----
-id: "68f39f3bb6e7ca93c8f9baec"
-title: "2.LAB-Configuring Agent Policies and Integrations"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/1-elastic-stack-components/4/2lab-configuring-agent-policies-and-integrations"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-18T14:07:55.182Z"
-updatedAt: "2026-01-25T15:35:47.070Z"
----
 
 ### 🎯 **Lab Objective (Objective)**
 

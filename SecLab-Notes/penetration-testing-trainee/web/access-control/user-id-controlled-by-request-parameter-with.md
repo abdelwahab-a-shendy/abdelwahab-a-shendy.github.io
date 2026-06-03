@@ -1,17 +1,3 @@
----
-id: "68ee80fc8f5da0c9f0653b8d"
-title: "User ID controlled by request parameter, with…"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/access-control/user-id-controlled-by-request-parameter-with"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:57:32.529Z"
-updatedAt: "2026-01-25T15:35:47.013Z"
----
 
 [Web Security Academy](https://portswigger.net/web-security) >>[Access control](https://portswigger.net/web-security/access-control) [>> Lab](https://portswigger.net/web-security/access-control/lab-user-id-controlled-by-request-parameter-with-unpredictable-user-ids)
 

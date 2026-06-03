@@ -1,17 +1,3 @@
----
-id: "68ee6c0233831b928dce568a"
-title: "Chalkboard : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/chalkboard-ctflearn"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:28:02.778Z"
-updatedAt: "2026-01-25T15:35:46.964Z"
----
 
 **Forensics**
 

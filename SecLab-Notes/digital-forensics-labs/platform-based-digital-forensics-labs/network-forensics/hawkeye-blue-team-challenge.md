@@ -1,18 +1,3 @@
----
-id: "68ee567d94ce1453860d7969"
-title: "HawkEye Blue Team Challenge"
-description: "Category : Network Forensics\n\nScenario:\n\nAn accountant at your organization received an email regarding an invoice with a download link. Suspicious network traffic was observed shortly after opening the email. As a SOC analyst, investigate the network trace and analyze exfiltration attempts."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/network-forensics/hawkeye-blue-team-challenge"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:56:13.619Z"
-updatedAt: "2026-01-25T15:35:46.894Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760450211706/a3168193-e1e4-4bc5-a9f5-4a685040c1f3.png" align="center" fullwidth="false" />
 

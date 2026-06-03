@@ -1,18 +1,3 @@
----
-id: "68ee5a79edf9226b324ace4d"
-title: "DISKO 1 : PicoCtf"
-description: "Can you find the flag in this disk image ?"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/disko-1-picoctf"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:13:13.264Z"
-updatedAt: "2026-01-25T15:35:46.919Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760451344995/bfd7999a-cfb3-42d2-9730-306d3543e91f.png" align="center" fullwidth="false" />
 

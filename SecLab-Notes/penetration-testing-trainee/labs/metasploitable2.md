@@ -1,18 +1,3 @@
----
-id: "68e9841518ee8f76be37924a"
-title: "Metasploitable-2"
-description: "- This is Metasploitable2 (Linux)\n- Metasploitable is an intentionally vulnerable Linux virtual machine. This VM can be used to conduct security training, test security tools, and practice common penetration testing techniques.\n- Never expose this VM to an untrusted network (use NAT or Host-only mode if you have any questions what that means)."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/labs/metasploitable2"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T22:09:25.131Z"
-updatedAt: "2026-01-25T15:35:47.028Z"
----
 
 ## **Stage 1: Discovery of live devices on the network (Active Hosts Discovery) :**
 

@@ -1,19 +1,3 @@
----
-id: "68e1e6cace4bd20b5b8063e2"
-title: "Fluent Bit Configuration"
-description: "Fluent Bit acts as a lightweight and high-performance log processor and forwarder, designed to collect, parse, and ship logs from multiple sources to various destinations such as Elasticsearch, Logstash, or cloud-based monitoring platforms."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/pre-lab-overview/building-a-siem/fluent-bit-configuration"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "SIEM Home LAB"
-createdAt: "2025-10-05T03:32:26.788Z"
-updatedAt: "2026-01-25T15:35:46.832Z"
----
 
 In this step, we will configure Fluent Bit to:
 

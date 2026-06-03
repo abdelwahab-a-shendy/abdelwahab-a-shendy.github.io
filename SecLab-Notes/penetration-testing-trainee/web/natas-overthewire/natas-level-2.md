@@ -1,17 +1,3 @@
----
-id: "68ee6e4df8c033ed077eab36"
-title: "Natas : Level 2..“)"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/natas-overthewire/natas-level-2"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:37:49.295Z"
-updatedAt: "2026-01-25T15:35:46.999Z"
----
 
 Let’s Begin , Actually, I couldn’t find anything on this page :
 

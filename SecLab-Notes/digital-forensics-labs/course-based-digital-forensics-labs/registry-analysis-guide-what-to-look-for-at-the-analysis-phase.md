@@ -1,17 +1,3 @@
----
-id: "68ee4e5daab509ade1166b25"
-title: "🧠 Registry Analysis Guide – What to Look for at the Analysis Phase"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/registry-analysis-guide-what-to-look-for-at-the-analysis-phase"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T13:21:33.040Z"
-updatedAt: "2026-01-25T15:35:46.843Z"
----
 
 # 🧠 **Registry Analysis Guide – What to Look for at the Analysis Phase**
 

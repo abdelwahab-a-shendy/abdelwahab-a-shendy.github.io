@@ -1,18 +1,3 @@
----
-id: "696ba32ccb3a24366d5c082a"
-title: "Building ELK (SIEM)"
-description: "Building the Elastic Stack (ELK):\nI will set up the Siem and prepare it to receive logs from the devices. "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T14:56:44.825Z"
-updatedAt: "2026-01-25T15:35:46.720Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768813207543/f53080df-270a-4efc-844d-d73161975c52.png" alt="" align="center" fullwidth="true" />
 

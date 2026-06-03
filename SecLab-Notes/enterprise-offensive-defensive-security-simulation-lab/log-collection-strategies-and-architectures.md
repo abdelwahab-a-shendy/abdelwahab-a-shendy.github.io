@@ -1,18 +1,3 @@
----
-id: "697383658068afcc6018082b"
-title: "📊 Log Collection Strategies & Architectures (SIEM-Centric Scenarios)"
-description: "- Windows Log Collection Scenarios\n- Linux Log Collection Scenarios\nNetwork & Perimeter Devices\nSIEM Ingestion Architecture\nValidation & Observability Scenarios"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/log-collection-strategies-and-architectures"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-23T14:19:17.200Z"
-updatedAt: "2026-01-25T15:35:46.892Z"
----
 
 # 1️⃣ Windows Log Collection Scenarios
 

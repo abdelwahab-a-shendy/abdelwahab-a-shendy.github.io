@@ -1,18 +1,3 @@
----
-id: "68f410d1e6a792d9d23310b9"
-title: "Logstash"
-description: "Introduction Logstash"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-18T22:12:33.058Z"
-updatedAt: "2026-01-25T15:35:47.348Z"
----
 
 # 🧠 **Introduction: What is Logstash?**
 

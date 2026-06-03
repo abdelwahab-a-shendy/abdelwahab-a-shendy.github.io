@@ -1,18 +1,3 @@
----
-id: "68e989866178b1b4c9631b32"
-title: "A Mock Lab on Ubuntu to Practice Setting Up a Web Server + WAF (Nginx + ModSecurity)"
-description: "(Nginx + ModSecurity) = WAF"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/network-security/a-mock-lab-on-ubuntu-to-practice-setting-up-a-web-server-waf-nginx-modsecurity"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T22:32:38.031Z"
-updatedAt: "2026-01-25T15:35:46.793Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760134590203/b7a636f5-70d7-49ff-9147-5707e72a3946.png" alt="" align="center" fullwidth="true" />
 

@@ -1,18 +1,3 @@
----
-id: "696b84f0b2234e92b5de1ee4"
-title: "Introduction"
-description: "Introduction & Project Overview"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/objective"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T12:47:44.768Z"
-updatedAt: "2026-01-25T15:35:46.757Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768746412314/abd395ac-3196-4a68-9ed1-886763866c69.png" alt="" align="center" fullwidth="true" />
 

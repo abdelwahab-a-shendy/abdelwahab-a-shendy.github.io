@@ -1,17 +1,3 @@
----
-id: "696e3ff9f13afcf0b96d8c63"
-title: "Building Windows Server"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/internal-zone/building-windows-server"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-19T14:30:17.710Z"
-updatedAt: "2026-01-25T15:35:46.786Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768833410701/0c8e7d62-8ed9-4286-8e4f-55bdc7f151ba.png" alt="" align="center" fullwidth="true" />
 

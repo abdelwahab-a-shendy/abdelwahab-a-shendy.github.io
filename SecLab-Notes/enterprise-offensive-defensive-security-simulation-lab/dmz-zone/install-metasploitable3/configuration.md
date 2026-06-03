@@ -1,17 +1,3 @@
----
-id: "696bdd217d035f84ff1d2cdc"
-title: "Configuration Windows Metasploitable3 "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/dmz-zone/install-metasploitable3/configuration"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-17T19:04:01.181Z"
-updatedAt: "2026-01-25T15:35:46.761Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768813750281/ff264110-b47c-45ee-9b3f-42ae59d74863.png" alt="" align="center" fullwidth="true" />
 

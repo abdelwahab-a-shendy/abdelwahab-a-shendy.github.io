@@ -1,17 +1,3 @@
----
-id: "68ee76b419a8a0c23e530c27"
-title: "Phishing Response Playbook"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/siem/phishing-response-playbook"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:13:40.016Z"
-updatedAt: "2026-01-25T15:35:46.800Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458909720/6a157479-d039-484d-aff4-94f6299744a3.png" align="center" fullwidth="false" />
 

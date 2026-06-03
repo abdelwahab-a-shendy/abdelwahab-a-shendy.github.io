@@ -1,18 +1,3 @@
----
-id: "68ee419ccaadcf3dbe7bbf67"
-title: "🖼️ Image Analysis Using exiftool and exif in Linux"
-description: "File analysis using exif command"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/image-analysis-using-exiftool-and-exif-in-linux"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:27:08.578Z"
-updatedAt: "2026-01-25T15:35:46.845Z"
----
 
 ## 🎯 **Lesson Objective**
 

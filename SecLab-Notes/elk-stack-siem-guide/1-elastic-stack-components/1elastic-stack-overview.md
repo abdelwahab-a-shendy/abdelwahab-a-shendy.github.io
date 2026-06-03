@@ -1,17 +1,3 @@
----
-id: "68efc76b7bec01ef47728b8c"
-title: "1.Elastic Stack Overview"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/1-elastic-stack-components/1elastic-stack-overview"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-15T16:10:19.925Z"
-updatedAt: "2026-01-25T15:35:47.088Z"
----
 
 ## 🎯 Topics Covered in This Lesson
 

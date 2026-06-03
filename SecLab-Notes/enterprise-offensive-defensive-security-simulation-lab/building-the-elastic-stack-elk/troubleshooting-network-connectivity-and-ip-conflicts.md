@@ -1,18 +1,3 @@
----
-id: "696cff982d0bfd0484025720"
-title: "⚠️ Troubleshooting: Network Connectivity & IP Conflicts"
-description: "Troubleshooting"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk/troubleshooting-network-connectivity-and-ip-conflicts"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T15:43:20.151Z"
-updatedAt: "2026-01-25T15:35:46.721Z"
----
 
 ## 1. The “NAT IP” Trap (The Problem)
 

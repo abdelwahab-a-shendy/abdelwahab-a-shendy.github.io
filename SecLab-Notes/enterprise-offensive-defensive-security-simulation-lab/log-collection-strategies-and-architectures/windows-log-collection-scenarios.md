@@ -1,17 +1,3 @@
----
-id: "69738a81142ebfb1e40aff6c"
-title: "Windows Log Collection Scenarios"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/log-collection-strategies-and-architectures/windows-log-collection-scenarios"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-23T14:49:37.659Z"
-updatedAt: "2026-01-25T15:35:46.783Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1769180377556/72d0f8f1-617c-491a-b9a1-4129d3b260e8.png" alt="" align="center" fullwidth="true" />
 

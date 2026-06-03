@@ -1,18 +1,3 @@
----
-id: "696cdd2b5b70ea449e5a090c"
-title: "Architecture & Virtualized"
-description: "Offensive & Defensive (Blue/Red Team) Training Environment"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/architecture-and-design"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T13:16:27.764Z"
-updatedAt: "2026-01-25T15:35:46.722Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768746412314/abd395ac-3196-4a68-9ed1-886763866c69.png" alt="" align="center" fullwidth="true" />
 

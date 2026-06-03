@@ -1,18 +1,3 @@
----
-id: "696d1b06465c047f681510e8"
-title: "Running CommandoVM"
-description: "External Zone | in github | Link  "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/external-zone/commandovm-configuration/running-commandovm"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T17:40:22.630Z"
-updatedAt: "2026-01-25T15:35:46.778Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768812944397/12c4f830-4086-4a09-ae95-bc71324c149a.png" alt="" align="center" fullwidth="true" />
 

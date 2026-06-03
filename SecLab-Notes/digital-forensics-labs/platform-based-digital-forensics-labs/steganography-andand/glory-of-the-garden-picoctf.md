@@ -1,18 +1,3 @@
----
-id: "68ee5aeaebb2e159a4168e45"
-title: "Glory of the Garden : PicoCTF"
-description: "This garden contains more than it seems."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/glory-of-the-garden-picoctf"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:15:06.767Z"
-updatedAt: "2026-01-25T15:35:46.920Z"
----
 
 # 🧪 Glory of the Garden – PicoCTF
 

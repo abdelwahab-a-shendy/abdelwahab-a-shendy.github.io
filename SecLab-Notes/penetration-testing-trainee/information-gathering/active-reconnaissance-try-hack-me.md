@@ -1,18 +1,3 @@
----
-id: "68e981ce5ee38e5572d96b6e"
-title: "Active Reconnaissance : Try Hack Me"
-description: "Learn how to use simple tools such as traceroute, ping, telnet, and a web browser to gather information."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/information-gathering/active-reconnaissance-try-hack-me"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-10T21:59:42.288Z"
-updatedAt: "2026-01-25T15:35:47.022Z"
----
 
 # Task 1 — Introduction
 

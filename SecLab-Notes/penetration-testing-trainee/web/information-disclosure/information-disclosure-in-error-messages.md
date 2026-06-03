@@ -1,17 +1,3 @@
----
-id: "68ee7fd633831b928dce5746"
-title: "Information disclosure in error messages"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/information-disclosure/information-disclosure-in-error-messages"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:52:38.077Z"
-updatedAt: "2026-01-25T15:35:47.002Z"
----
 
 [**Web Security Academy**](https://portswigger.net/web-security) **>>** [**Information disclosure**](https://portswigger.net/web-security/information-disclosure) **>>** [**Exploiting**](https://portswigger.net/web-security/information-disclosure/exploiting) **>>** [**Lab**](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-in-error-messages)
 

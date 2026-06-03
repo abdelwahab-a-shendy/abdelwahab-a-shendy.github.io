@@ -1,18 +1,3 @@
----
-id: "68ee455840a9ac50c0dd4194"
-title: "🧰 Lab: Disk Acquisition Using Linux dd Command"
-description: "🧰 Disk Acquisition Using Linux `dd` Command"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/lab-disk-acquisition-using-linux-dd-command"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:43:04.774Z"
-updatedAt: "2026-01-25T15:35:46.898Z"
----
 
 ## 🎯 **Lab Objective:**
 

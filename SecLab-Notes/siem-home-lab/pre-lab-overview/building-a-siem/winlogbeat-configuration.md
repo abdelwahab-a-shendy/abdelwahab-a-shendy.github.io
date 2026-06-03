@@ -1,19 +1,3 @@
----
-id: "68e1cdffb6bc77debe947aff"
-title: " Winlogbeat Configuration"
-description: "In this section, we will configure Winlogbeat on the Windows Server machine to forward Windows Event Logs to our SIEM (ELK Stack)."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/pre-lab-overview/building-a-siem/winlogbeat-configuration"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "SIEM Home LAB"
-createdAt: "2025-10-05T01:46:39.348Z"
-updatedAt: "2026-01-25T15:35:46.812Z"
----
 
 > Winlogbeat acts as a lightweight log shipper developed by Elastic, designed specifically to collect and send Windows event logs to Elasticsearch or Logstash for centralized monitoring and analysis.
 >

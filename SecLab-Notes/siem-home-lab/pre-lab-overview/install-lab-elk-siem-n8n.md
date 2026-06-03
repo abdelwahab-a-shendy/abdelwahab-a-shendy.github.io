@@ -1,19 +1,3 @@
----
-id: "68de87528397f2ab2bc9539d"
-title: "Install LAB-ELK-N8N"
-description: "In this step, we will install and configure the ELK Stack on an Ubuntu server, along with installing n8n for managing SOAR workflows. This server will serve as the core of our lab, handling log collection and analysis, creating dashboards, and executing security automation processes."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/pre-lab-overview/install-lab-elk-siem-n8n"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-seoTitle: "SIEM Home LAB"
-createdAt: "2025-10-02T14:08:18.994Z"
-updatedAt: "2026-01-25T15:35:46.811Z"
----
 
 **VM Name:** `LAB-ELK-N8N`
 

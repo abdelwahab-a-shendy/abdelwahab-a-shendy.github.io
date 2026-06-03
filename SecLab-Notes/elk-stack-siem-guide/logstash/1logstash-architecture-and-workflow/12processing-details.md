@@ -1,17 +1,3 @@
----
-id: "68f4482e93c19250589d3eed"
-title: "1.2.Processing Details"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/1logstash-architecture-and-workflow/12processing-details"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T02:08:46.134Z"
-updatedAt: "2026-01-25T15:35:47.097Z"
----
 
 ## 🧩 **Processing Details in Logstash**
 

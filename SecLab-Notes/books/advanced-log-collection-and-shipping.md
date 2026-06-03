@@ -1,17 +1,3 @@
----
-id: "68f5b15dd010eb20d977c6ca"
-title: "Advanced SIEM HOME LAB"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/advanced-log-collection-and-shipping"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-20T03:49:49.697Z"
-updatedAt: "2026-01-25T15:35:47.119Z"
----
 
 # **Advanced Log Collection and Shipping :**
 

@@ -1,17 +1,3 @@
----
-id: "68ee6b7fce2bb39cb9af2809"
-title: "Simple Steganography : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/simple-steganography-ctflearn"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:25:51.524Z"
-updatedAt: "2026-01-25T15:35:46.962Z"
----
 
 **Forensics**
 

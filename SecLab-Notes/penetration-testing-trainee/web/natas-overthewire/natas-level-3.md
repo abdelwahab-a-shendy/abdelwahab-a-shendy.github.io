@@ -1,17 +1,3 @@
----
-id: "68ee6e933e9f5f7ea3985abb"
-title: "Natas : Level 3..“)"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/natas-overthewire/natas-level-3"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:38:59.867Z"
-updatedAt: "2026-01-25T15:35:47.000Z"
----
 
 ### Natas Level 2 → Level 3
 

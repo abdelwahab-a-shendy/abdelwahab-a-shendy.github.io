@@ -1,17 +1,3 @@
----
-id: "68ee80abd27df768aa27cac2"
-title: "Authentication bypass via information disclosure"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/information-disclosure/authentication-bypass-via-information-disclosure"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:56:11.833Z"
-updatedAt: "2026-01-25T15:35:47.007Z"
----
 
 [Web Security Academy](https://portswigger.net/web-security) >> [Information disclosure](https://portswigger.net/web-security/information-disclosure) >> [Exploiting](https://portswigger.net/web-security/information-disclosure/exploiting) >> [Lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-authentication-bypass)
 

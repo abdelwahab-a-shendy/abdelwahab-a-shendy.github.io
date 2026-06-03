@@ -1,18 +1,3 @@
----
-id: "68ee59f5bbdaa10ef20f393f"
-title: "Meta : Blue Team Labs Online"
-description: "The attached images were posted by a criminal on the run, with the caption \"I'm roaming free. You will never catch me\""
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/meta-blue-team-labs-online"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:11:01.949Z"
-updatedAt: "2026-01-25T15:35:46.918Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760451173484/aa52317a-05c6-47fb-8100-58a81cd51b65.png" align="center" fullwidth="false" />
 

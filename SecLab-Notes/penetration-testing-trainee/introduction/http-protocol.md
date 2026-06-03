@@ -1,18 +1,3 @@
----
-id: "68eadfeefea38ff5f333362a"
-title: "🌐HTTP Protocol"
-description: "base"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/introduction/http-protocol"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-11T22:53:34.493Z"
-updatedAt: "2026-01-25T15:35:47.003Z"
----
 
 ### ⚙️ **What Is HTTP?**
 

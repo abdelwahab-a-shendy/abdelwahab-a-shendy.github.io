@@ -1,17 +1,3 @@
----
-id: "6905688f13ac8fc85bfbc213"
-title: "3.Windows Fundamentals 3"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/thm-ad/3windows-fundamentals-3"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T01:55:27.830Z"
-updatedAt: "2026-01-25T15:35:47.049Z"
----
 
 ## Introduction:
 

@@ -1,17 +1,3 @@
----
-id: "68ee6b25b3e39ce1a93b61e8"
-title: "Minions : CTFLEARN"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/minions-ctflearn"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:24:21.757Z"
-updatedAt: "2026-01-25T15:35:46.960Z"
----
 
 **Forensics**
 

@@ -1,17 +1,3 @@
----
-id: "68ee641dd65ef07a95724065"
-title: "Collecting and Visualizing SSH Logs with Fluent Bit & Elasticsearch"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/siem/collecting-and-visualizing-ssh-logs-with-fluent-bit-and-elasticsearch"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T14:54:21.492Z"
-updatedAt: "2026-01-25T15:35:46.813Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760453718418/8bee09db-0fef-4cfe-b275-d69ea48fc222.webp" align="center" fullwidth="false" />
 

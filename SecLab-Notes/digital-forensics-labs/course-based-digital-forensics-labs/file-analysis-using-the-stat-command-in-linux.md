@@ -1,18 +1,3 @@
----
-id: "68ee413aeab21a4969959620"
-title: "🔍File Analysis Using the stat Command in Linux"
-description: "File Analysis Using stat Command"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/file-analysis-using-the-stat-command-in-linux"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:25:30.936Z"
-updatedAt: "2026-01-25T15:35:46.855Z"
----
 
 ## 🔍 **File Analysis Using the** `stat` Command in Linux
 

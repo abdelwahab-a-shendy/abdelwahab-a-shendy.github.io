@@ -1,18 +1,3 @@
----
-id: "6905694e13ac8fc85bfbc21b"
-title: "Active Directory Basics"
-description: "This room will introduce the basic concepts and functionality provided by Active Directory."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/thm-ad/active-directory-basics"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T01:58:38.129Z"
-updatedAt: "2026-01-25T15:35:47.060Z"
----
 
 ## Introduction
 

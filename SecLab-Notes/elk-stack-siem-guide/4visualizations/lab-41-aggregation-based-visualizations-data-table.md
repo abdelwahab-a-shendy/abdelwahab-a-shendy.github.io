@@ -1,17 +1,3 @@
----
-id: "68fc506cd5bc6d37cb1aaa36"
-title: "Lab 4.1 Aggregation Based Visualizations - Data Table"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/4visualizations/lab-41-aggregation-based-visualizations-data-table"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-25T04:22:04.050Z"
-updatedAt: "2026-01-25T15:35:47.107Z"
----
 
 # 🧩 **Lab 4.1 – إنشاء Data Table Visualization مع Aggregations**
 

@@ -1,18 +1,3 @@
----
-id: "6905642742eaa84d8edc40e0"
-title: "Security Awareness Email Automation Workflow"
-description: "Abdelwahab Ahmed Shandy 30-10-2025"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/books/automations-for-siem-and-edr/security-awareness-email-automation-workflow"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-01T01:36:39.083Z"
-updatedAt: "2026-01-25T15:35:47.132Z"
----
 
 ***
 

@@ -1,18 +1,3 @@
----
-id: "68ee716caeca63fd37af8da6"
-title: "Boss of the SOC Version 1 (2015) Scenario-1"
-description: "- Web site defacement"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/siem/boss-of-the-soc-version-1-2015-scenario-1"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:51:08.471Z"
-updatedAt: "2026-01-25T15:35:46.829Z"
----
 
 ***
 

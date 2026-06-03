@@ -1,18 +1,3 @@
----
-id: "68e7c2fe9780504702854f0f"
-title: "Detection of PowerShell-Based Windows Firewall Tampering"
-description: "An attacker executes PowerShell commands (direct or Base64-encoded) to disable Windows Firewall.\nObjective : Detect the execution of these commands (direct or hidden) by collecting PowerShell, Sysmon, and Winlogbeat data, and create a KQL rule in Kibana that automatically raises an alert "
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/siem-home-lab/detection-egnineering/detection-of-powershell-based-windows-firewall-tampering"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-09T14:13:18.596Z"
-updatedAt: "2026-01-25T15:35:46.819Z"
----
 
 ***
 

@@ -1,18 +1,3 @@
----
-id: "696cc49b668cdd2aa04b028a"
-title: "Network Design & Adapter Configuration"
-description: "We will detail the technical aspects of connecting the devices. The goal here is to explain \"how to connect virtual wires\" to ensure that each zone is isolated but able to communicate with other zones."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/network-design"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T11:31:39.436Z"
-updatedAt: "2026-01-25T15:35:46.723Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768746412314/abd395ac-3196-4a68-9ed1-886763866c69.png" alt="" align="center" fullwidth="true" />
 

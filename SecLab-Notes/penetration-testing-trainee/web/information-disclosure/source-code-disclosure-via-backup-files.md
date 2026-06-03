@@ -1,17 +1,3 @@
----
-id: "68ee805c3bf605bfc74d0a87"
-title: "Source code disclosure via backup files"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/penetration-testing-trainee/web/information-disclosure/source-code-disclosure-via-backup-files"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:54:52.377Z"
-updatedAt: "2026-01-25T15:35:47.005Z"
----
 
 [Web Security Academy](https://portswigger.net/web-security) >>[Information disclosure](https://portswigger.net/web-security/information-disclosure) >> [Exploiting](https://portswigger.net/web-security/information-disclosure/exploiting) >> [Lab](https://portswigger.net/web-security/information-disclosure/exploiting/lab-infoleak-via-backup-files)
 

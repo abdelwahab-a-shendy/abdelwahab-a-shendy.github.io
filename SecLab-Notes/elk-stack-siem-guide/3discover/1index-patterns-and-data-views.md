@@ -1,17 +1,3 @@
----
-id: "68f6e27f25c9d6de3f467901"
-title: "1.Index Patterns and Data Views"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/3discover/1index-patterns-and-data-views"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-21T01:31:43.605Z"
-updatedAt: "2026-01-25T15:35:47.090Z"
----
 
 ***
 

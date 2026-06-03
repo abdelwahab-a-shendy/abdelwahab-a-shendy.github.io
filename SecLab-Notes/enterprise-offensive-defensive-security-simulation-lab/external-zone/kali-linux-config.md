@@ -1,18 +1,3 @@
----
-id: "696c9e7b3d48c23dae880327"
-title: "Kali Linux configuration"
-description: "External Zone"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/external-zone/kali-linux-config"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T08:48:59.458Z"
-updatedAt: "2026-01-25T15:35:46.780Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768812922234/4e4d643b-7aba-400b-afd0-6fc213adb6c5.png" alt="" align="center" fullwidth="true" />
 

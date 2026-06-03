@@ -1,17 +1,3 @@
----
-id: "692915d506d68e0e867e2ab4"
-title: "Kerberos"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/windows-server-labs-and/join-domain/kerberos"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-11-28T03:24:05.330Z"
-updatedAt: "2026-01-25T15:35:47.056Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1764300257388/965237f5-8646-430d-870f-1a19349d16e8.png" alt="" align="center" fullwidth="true" />
 

@@ -1,17 +1,3 @@
----
-id: "68f3d4c3e180673d9c904ab9"
-title: "2.Logs and Data Structures"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/2elastic-common-schema/2logs-and-data-structures"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-18T17:56:19.232Z"
-updatedAt: "2026-01-25T15:35:47.085Z"
----
 
 # 🧠 **Chapter 2 – Part 2: Logs and Data Structures**
 

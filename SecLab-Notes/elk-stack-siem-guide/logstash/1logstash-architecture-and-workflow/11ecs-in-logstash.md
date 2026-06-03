@@ -1,17 +1,3 @@
----
-id: "68f4470e2b874bd32e919fdd"
-title: "1.1.ECS in Logstash"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/elk-stack-siem-guide/logstash/1logstash-architecture-and-workflow/11ecs-in-logstash"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-19T02:03:58.599Z"
-updatedAt: "2026-01-25T15:35:47.096Z"
----
 
 ## 📘 **ECS in Logstash**
 

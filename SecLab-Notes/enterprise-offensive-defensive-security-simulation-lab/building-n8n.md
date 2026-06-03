@@ -1,18 +1,3 @@
----
-id: "696c96df3d5c21d78c15e4a3"
-title: "Building N8N"
-description: "Installing Docker and Running n8n"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/enterprise-offensive-defensive-security-simulation-lab/building-n8n"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2026-01-18T08:16:31.202Z"
-updatedAt: "2026-01-25T15:35:46.718Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1768813136989/3769f2e6-77a4-4a71-b2f2-9136bb90c43c.png" align="center" fullwidth="false" />
 

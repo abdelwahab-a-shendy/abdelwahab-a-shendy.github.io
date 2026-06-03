@@ -1,18 +1,3 @@
----
-id: "68ee6c6dcf6a737c66d3316c"
-title: "Qradar101 Blue Team Challenge : CyberDefenders"
-description: "This challenge is designed to work with VirtualBox. Download challenge VM and uncompress it using the password ‘cyberdefenders.org’"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/soc/siem/qradar101-blue-team-challenge-cyberdefenders"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T15:29:49.465Z"
-updatedAt: "2026-01-25T15:35:46.790Z"
----
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760456023066/fd4a8a70-a352-4f32-93f8-130e65f857d6.webp" align="center" fullwidth="false" />
 

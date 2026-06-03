@@ -1,18 +1,3 @@
----
-id: "68ee7f2309810160782c28a7"
-title: "I love images : Cyber Talents "
-description: "A hacker left us something that allows us to track him in this image, can you find it?"
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/platform-based-digital-forensics-labs/steganography-andand/i-love-images-cyber-talents"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T16:49:39.746Z"
-updatedAt: "2026-01-25T15:35:46.973Z"
----
 
 ## First, Identification - Definition Goal: To identify the type of digital evidence and its location.
 

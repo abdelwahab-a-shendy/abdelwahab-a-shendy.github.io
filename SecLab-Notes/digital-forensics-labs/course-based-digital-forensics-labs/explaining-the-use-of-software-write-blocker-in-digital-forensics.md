@@ -1,18 +1,3 @@
----
-id: "68ee434d9437cc96eb14e947"
-title: "🛡️ Explaining the Use of Software Write Blocker in Digital Forensics"
-description: "❗ The goal of a Write Blocker is to protect digital evidence from any modifications during analysis—whether accidental or caused by malware."
-projectId: "687e32493aa4a0e5086a2992"
-guideSlug: "abdelwahabshandy-notes"
-versionSlug: "v1.0"
-path: "/digital-forensics-labs/course-based-digital-forensics-labs/explaining-the-use-of-software-write-blocker-in-digital-forensics"
-status: "PUBLISHED"
-visibility: "PUBLIC"
-format: "MDX"
-contentSource: "published"
-createdAt: "2025-10-14T12:34:21.489Z"
-updatedAt: "2026-01-25T15:35:46.945Z"
----
 
 ## 🔹 What is a **Write Blocker**?
 
