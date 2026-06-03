@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/soc-and-incident-response/08-building-siem-filebeat-winlogbeat-kibana/">
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/soc-and-ir/03-detect-nmap-scan-using-snort/">
       
       
-        <link rel="prev" href="../07-qradar101-blue-team-cyberdefenders/">
+        <link rel="prev" href="../02-ubuntu-web-server-waf-nginx-modsecurity/">
       
       
-        <link rel="next" href="../09-collecting-visualizing-ssh-logs-fluentbit/">
+        <link rel="next" href="../04-paypal-phishing-investigation-letsdefend/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>08 building siem filebeat winlogbeat kibana - AAS Security Labs Docs</title>
+        <title>03 detect nmap scan using snort - AAS Security Labs Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#part-1-ubuntu-setup-elasticsearch-installation" class="md-skip">
+        <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              08 building siem filebeat winlogbeat kibana
+              03 detect nmap scan using snort
             
           </span>
         </div>
@@ -329,7 +329,7 @@
           
   
   
-  Soc and incident response
+  Soc and ir
 
         </a>
       </li>
@@ -4695,7 +4695,7 @@
   <span class="md-ellipsis">
     
   
-    Soc and incident response
+    Soc and ir
   
 
     
@@ -4711,7 +4711,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Soc and incident response
+    Soc and ir
   
 
           </label>
@@ -4777,10 +4777,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../03-detect-nmap-scan-using-snort/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 detect nmap scan using snort
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4796,6 +4821,246 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First, I’ll install some tools like Wireshark to monitor traffic, etc :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secondly-installing-and-configuring-snort-as-an-ids" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secondly : Installing and configuring Snort as an IDS :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secondly : Installing and configuring Snort as an IDS :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-encountered-during-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #### Problem encountered during installation :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-fix-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Steps to fix the issue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Steps to fix the issue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verify-if-snortconf-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Verify if snort.conf exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-a-new-snortconf-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Create a new snort.conf file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-basic-settings-to-run-snort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Add basic settings to run Snort
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-the-local-rules-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Create the local rules file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-test-the-configuration-to-verify-if-the-issue-is-resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Test the configuration to verify if the issue is resolved:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-live-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing live alerts:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-and-testing-nmap-scan-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preparing and testing Nmap scan detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preparing and testing Nmap scan detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-add-nmap-rules-to-localrules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Add Nmap rules to local.rules
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-open-the-local-rules-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Open the local rules file
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explanation-of-each-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explanation of each rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-ill-test-from-the-same-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now I’ll test from the same machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-ill-test-from-the-attacker-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now I’ll test from the Attacker VM:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Now I’ll test from the Attacker VM:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temporarily-open-ssh-port-on-the-target-ubuntu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporarily open SSH port on the Target (Ubuntu) :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary / Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4917,37 +5182,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 building siem filebeat winlogbeat kibana
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../08-building-siem-filebeat-winlogbeat-kibana/" class="md-nav__link">
         
   
   
@@ -4963,165 +5201,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-setting-a-static-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ Setting a Static IP
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1️⃣ Setting a Static IP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gui-user-interface-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GUI (User Interface) Method :
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-elasticsearch-with-a-debian-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install Elasticsearch with a Debian Package
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Install Elasticsearch with a Debian Package">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#first-we-import-the-pgp-key-to-ensure-that-the-package-is-authentic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        First, we import the PGP Key to ensure that the package is authentic:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-add-the-elastic-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2️⃣ Add the Elastic Repository :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-update-apt-and-install-elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ Update apt and install Elasticsearch :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-configure-network-to-access-the-node-from-other-machines" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4️⃣ Configure Network (to access the node from other machines)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4️⃣ Configure Network (to access the node from other machines)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#5-run-elasticsearch-as-a-systemd-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5️⃣ Run Elasticsearch as a systemd service
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-set-the-elastic-user-password-first-time-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6️⃣ Set the elastic user password (first time only)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-verify-elasticsearch-is-running" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7️⃣ Verify Elasticsearch is running
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#now-we-are-done" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Now we are done ✅
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5518,8 +5597,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5528,25 +5605,119 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-setting-a-static-ip" class="md-nav__link">
+  <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1️⃣ Setting a Static IP
+        First, I’ll install some tools like Wireshark to monitor traffic, etc :
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1️⃣ Setting a Static IP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gui-user-interface-method" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secondly-installing-and-configuring-snort-as-an-ids" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GUI (User Interface) Method :
+        Secondly : Installing and configuring Snort as an IDS :
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Secondly : Installing and configuring Snort as an IDS :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-encountered-during-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #### Problem encountered during installation :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-fix-the-issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔹 Steps to fix the issue
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Steps to fix the issue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-verify-if-snortconf-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Verify if snort.conf exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-a-new-snortconf-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Create a new snort.conf file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-basic-settings-to-run-snort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Add basic settings to run Snort
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-the-local-rules-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Create the local rules file :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-test-the-configuration-to-verify-if-the-issue-is-resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Test the configuration to verify if the issue is resolved:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-live-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing live alerts:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5556,22 +5727,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-elasticsearch-with-a-debian-package" class="md-nav__link">
+  <a href="#preparing-and-testing-nmap-scan-detection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install Elasticsearch with a Debian Package
+        Preparing and testing Nmap scan detection
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Install Elasticsearch with a Debian Package">
+    <nav class="md-nav" aria-label="Preparing and testing Nmap scan detection">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#first-we-import-the-pgp-key-to-ensure-that-the-package-is-authentic" class="md-nav__link">
+  <a href="#1-add-nmap-rules-to-localrules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        First, we import the PGP Key to ensure that the package is authentic:
+        1️⃣ Add Nmap rules to local.rules
       
     </span>
   </a>
@@ -5579,10 +5750,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-add-the-elastic-repository" class="md-nav__link">
+  <a href="#1-open-the-local-rules-file" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2️⃣ Add the Elastic Repository :
+        1️⃣ Open the local rules file
       
     </span>
   </a>
@@ -5590,10 +5761,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-update-apt-and-install-elasticsearch" class="md-nav__link">
+  <a href="#explanation-of-each-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3️⃣ Update apt and install Elasticsearch :
+        Explanation of each rule
       
     </span>
   </a>
@@ -5601,22 +5772,33 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-configure-network-to-access-the-node-from-other-machines" class="md-nav__link">
+  <a href="#now-ill-test-from-the-same-machine" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4️⃣ Configure Network (to access the node from other machines)
+        Now I’ll test from the same machine
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4️⃣ Configure Network (to access the node from other machines)">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-ill-test-from-the-attacker-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now I’ll test from the Attacker VM:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Now I’ll test from the Attacker VM:">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#5-run-elasticsearch-as-a-systemd-service" class="md-nav__link">
+  <a href="#temporarily-open-ssh-port-on-the-target-ubuntu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5️⃣ Run Elasticsearch as a systemd service
+        Temporarily open SSH port on the Target (Ubuntu) :
       
     </span>
   </a>
@@ -5624,21 +5806,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-set-the-elastic-user-password-first-time-only" class="md-nav__link">
+  <a href="#summary-conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6️⃣ Set the elastic user password (first time only)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-verify-elasticsearch-is-running" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7️⃣ Verify Elasticsearch is running
+        Summary / Conclusion
       
     </span>
   </a>
@@ -5647,17 +5818,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#now-we-are-done" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Now we are done ✅
-      
-    </span>
-  </a>
   
 </li>
         
@@ -5683,989 +5843,559 @@
 
 
 
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760453823707/405a760b-0770-465a-a569-a4be389726da.webp" align="center" fullwidth="false" /></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760135357859/9017af2c-d744-47e5-83f1-032a95402671.png" alt="" align="center" fullwidth="true" /></p>
+<ul>
+<li>
+<p>Attacker: Kali Linux (nmap).</p>
+</li>
+<li>
+<p>Target: Ubuntu (Snort as IDS).</p>
+</li>
+<li>
+<p>Or run the Target and let it perform attacks on itself normally.</p>
+</li>
+<li>
+<p>Monitoring and verification: Wireshark/tcpdump for PCAP capture and analysis.</p>
+</li>
+</ul>
+<hr />
+<h3 id="first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc">First, I’ll install some tools like Wireshark to monitor traffic, etc :</h3>
+<ul>
+<li>On the Target machine :</li>
+</ul>
+<pre><code class="language-bash">sudo apt update
+
+sudo apt upgrade -y
+
+sudo apt install wireshark
+</code></pre>
+<h2 id="secondly-installing-and-configuring-snort-as-an-ids"><strong>Secondly : Installing and configuring Snort as an IDS :</strong></h2>
+<pre><code class="language-bash">sudo -i
+
+sudo apt install -y snort
+</code></pre>
+<ul>
+<li>During installation, I encountered this prompt:</li>
+</ul>
+<pre><code class="language-bash">Package configuration
+
+ ┌───────────┤ Configuring snort ├────────────┐
+ │                                            │ 
+ │ Please use the CIDR form - for example,      
+ │ 192.168.1.0/24 for a block of 256            
+ │ addresses or 192.168.1.42/32 for just        
+ │ one. Multiple values should be               
+ │ comma-separated (without spaces).            
+ │                                              
+ │ You can leave this value empty and           
+ │ configure HOME_NET in                        
+ │ /etc/snort/snort.conf instead. This is       
+ │ useful if you are using Snort in a system    
+ │ which frequently changes network and does    
+ │                                              
+ │                   &lt;Ok&gt;
+</code></pre>
+<ul>
+<li>This line asks you to define the <strong>HOME_NET</strong> in CIDR format :</li>
+</ul>
+<pre><code class="language-bash">Package configuration
+
+    ┌─────────┤ Configuring snort ├─────────┐
+    │ Address range for the local network:  │ 
+    │                                       │ 
+    │ 192.168.0.0/16_______________________ │ 
+    │                                       │ 
+    │                &lt;Ok&gt;
+</code></pre>
+<ul>
+<li>Before continuing, I checked the machine’s IP:</li>
+</ul>
+<pre><code class="language-bash">aas@aas:~$ ifconfig 
+enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::6a6a:bfa1:f934:1ee0  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 08:00:27:f5:0f:ed  txqueuelen 1000  (Ethernet)
+        RX packets 210978  bytes 303130933 (303.1 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 31543  bytes 1966166 (1.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 316  bytes 27977 (27.9 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 316  bytes 27977 (27.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre>
+<ul>
+<li>The network interface connected to the network is:</li>
+</ul>
+<pre><code class="language-bash">enp0s3
+</code></pre>
+<ul>
+<li>The Target’s IP address is :</li>
+</ul>
+<pre><code class="language-bash">10.0.2.15
+</code></pre>
+<ul>
+<li>The subnet is :</li>
+</ul>
+<pre><code class="language-bash">10.0.2.0/24
+</code></pre>
 <blockquote>
-<p>Part 1: Ubuntu Setup and Elasticsearch Installation :</p>
+<p>because the Netmask = 255.255.255.0.</p>
+</blockquote>
+<p>Since my Target’s actual network is <code>10.0.2.0/24</code>, I corrected the default value (<code>192.168.0.0/16</code>) to:</p>
+<pre><code class="language-bash">10.0.2.0/24
+</code></pre>
 <ul>
 <li>
-<p>Setting a Static IP on Ubuntu VM</p>
+<p>Or leave it empty and modify later in <code>/etc/snort/snort.conf</code>.</p>
 </li>
 <li>
-<p>Installing Elasticsearch via Debian Package</p>
-</li>
-<li>
-<p>Configuring Elasticsearch (elasticsearch.yml)</p>
-</li>
-<li>
-<p>Running Elasticsearch as a systemd service</p>
-</li>
-<li>
-<p>Setting the elastic user password</p>
-</li>
-<li>
-<p>Verifying Elasticsearch functionality</p>
+<p>After entering it, press <strong>Ok</strong> to confirm.</p>
 </li>
 </ul>
-<p>Part 2: Kibana Installation :</p>
+<hr />
+<h4 id="problem-encountered-during-installation">#### Problem encountered during installation :</h4>
+<pre><code class="language-bash">FATAL ERROR: /etc/snort/snort.conf(0) Unable to open rules file &quot;/etc/snort/snort.conf&quot;: No such file or directory.
+</code></pre>
+<blockquote>
 <ul>
 <li>
-<p>Installing Kibana via Debian Package</p>
+<p>This means either the file is missing or the path is incorrect.</p>
 </li>
 <li>
-<p>Importing the PGP Signing Key</p>
-</li>
-<li>
-<p>Adding Elastic Repository and Installing Kibana</p>
-</li>
-</ul>
-<p>Part 3: Registering Kibana with Elasticsearch :</p>
-<ul>
-<li>
-<p>Creating an Enrollment Token on Elasticsearch</p>
-</li>
-<li>
-<p>Making Kibana Accessible Externally (Optional)</p>
-</li>
-<li>
-<p>Running Kibana as a systemd service</p>
-</li>
-<li>
-<p>Completing Kibana Registration with Elasticsearch Part 4: Windows Device and Winlogbeat</p>
-</li>
-<li>
-<p>Enabling Audit Policy on Windows :</p>
-</li>
-<li>
-<p>Login is correct and incorrect</p>
-</li>
-<li>
-<p>Creating/Deleting Users</p>
-</li>
-<li>
-<p>Creating Groups</p>
-</li>
-<li>
-<p>Adding Users to Groups</p>
-</li>
-<li>
-<p>Installing Winlogbeat on Windows</p>
-</li>
-<li>
-<p>Configuring <code>winlogbeat.yml</code></p>
-</li>
-<li>
-<p>Connecting Winlogbeat to Elasticsearch and Kibana</p>
-</li>
-<li>
-<p>Verifying Logs in Kibana Dashboards</p>
+<p>The issue isn’t with the installation itself—it’s with the <strong>system service (systemd / init.d)</strong> not being able to find the <code>snort.conf</code> configuration file.</p>
 </li>
 </ul>
 </blockquote>
 <hr />
-<h1 id="part-1-ubuntu-setup-elasticsearch-installation"><strong>Part 1: Ubuntu Setup &amp; Elasticsearch Installation</strong></h1>
-<blockquote>
+<h3 id="steps-to-fix-the-issue">🔹 Steps to fix the issue</h3>
+<h5 id="1-verify-if-snortconf-exists">1️⃣ Verify if <code>snort.conf</code> exists</h5>
+<pre><code class="language-bash">root@aas:~# ls -l /etc/snort/
+total 8
+drwxr-xr-x 2 root root 4096 سبت 12 17:42 rules
+-rw------- 1 root root  803 سبت 12 17:42 snort.debian.conf
+</code></pre>
 <ul>
 <li>
-<p>There are a few things we need to ensure before downloading or installing anything:</p>
+<p><strong>The main snort.conf file is missing</strong>.</p>
 </li>
 <li>
-<p>We prefer that the VMs be Ubuntu, and we avoid Kali for security.</p>
+<p>Only <code>snort.debian.conf</code> exists. This is the default Debian/Ubuntu configuration file, not the standard Snort.</p>
 </li>
 <li>
-<p>We'll set up a static IP on the machines we'll be running SIEM on.</p>
+<p>The <code>rules</code> folder exists, but the main rules file <code>snort.conf</code> is missing. ⇒ The systemd/init.d service can't start Snort.</p>
 </li>
 </ul>
+<h5 id="2-create-a-new-snortconf-file">2️⃣ Create a new <code>snort.conf</code> file :</h5>
+<pre><code class="language-bash">root@aas:~# cd /etc/snort/
+root@aas:/etc/snort# ls
+rules  snort.debian.conf
+root@aas:/etc/snort# sudo nano snort.conf
+</code></pre>
+<h5 id="3-add-basic-settings-to-run-snort">3️⃣ Add basic settings to run Snort</h5>
+<ul>
+<li>After research, I used the following configuration:</li>
+</ul>
+<pre><code class="language-bash">######################################################
+# Snort Configuration File
+# Version: 2.9.15.1
+# Author: Abdelwahab Shandy - Config for IDS Testing
+######################################################
+
+#-------------------
+# Network Variables
+#------------------
+
+# Internal network that Snort will monitor
+ipvar HOME_NET 10.0.2.0/24
+
+# All other networks are considered external
+ipvar EXTERNAL_NET any
+
+#------------
+# Rule Paths
+#------------
+
+# Path for Snort rule files
+var RULE_PATH /etc/snort/rules
+var SO_RULE_PATH /etc/snort/so_rules
+var PREPROC_RULE_PATH /etc/snort/preproc_rules
+
+#---------------
+# Include Rules
+#---------------
+
+# Include your local rules (local.rules)
+include $RULE_PATH/local.rules
+
+#-----------------
+# Output Settings
+#-----------------
+
+# Output alerts directly to the console
+output alert_fast: stdout
+
+#---------------
+# Preprocessors
+#---------------
+
+# Frag3 preprocessor settings
+preprocessor frag3_global: max_frags 65536
+
+# Stream5 preprocessor settings
+preprocessor stream5_global: track_tcp yes, track_udp yes, track_icmp yes
+preprocessor stream5_tcp: policy linux, detect_anomalies
+preprocessor stream5_udp:
+preprocessor stream5_icmp:
+
+#############################
+# End of Snort Configuration
+#############################
+</code></pre>
+<ul>
+<li>
+<p>Frag3 is responsible for IP fragmentation so Snort can understand them as a single unit and detect attacks.</p>
+</li>
+<li>
+<p>Stream5 is responsible for session tracking and reassemblingTCP/UDP/ICMP streams so Snort can apply rules to the correct data in the correct order.</p>
+</li>
+</ul>
+<h5 id="3-create-the-local-rules-file">3️⃣ Create the local rules file :</h5>
+<pre><code class="language-bash">root@aas:/etc/snort# sudo nano rules/local.rules
+</code></pre>
+<ul>
+<li>Add a simple test rule, for example:</li>
+</ul>
+<pre><code class="language-bash">alert icmp any any -&gt; any any (msg:&quot;ICMP test detected&quot;; sid:1000001; rev:1;)
+</code></pre>
+<h5 id="4-test-the-configuration-to-verify-if-the-issue-is-resolved">4️⃣ Test the configuration to verify if the issue is resolved:</h5>
+<pre><code class="language-bash">root@aas:/etc/snort# snort -T -c /etc/snort/snort.conf
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">Rule application order: pass-&gt;drop-&gt;sdrop-&gt;reject-&gt;alert-&gt;log
+Verifying Preprocessor Configurations!
+
+[ Port Based Pattern Matching Memory ]
+
+--== Initialization Complete ==--
+
+,,_     -*&gt; Snort! &lt;*-
+o&quot;  )~   Version 2.9.15.1 GRE (Build 15125) 
+''''    By Martin Roesch &amp; The Snort Team
+Using libpcap version 1.10.1
+Using PCRE version: 8.39
+Using ZLIB version: 1.2.11
+
+Snort successfully validated the configuration!
+Snort exiting
+</code></pre>
+<ul>
+<li>
+<p>This means <strong>Snort configuration is now successfully validated</strong>.</p>
+</li>
+<li>
+<p><code>snort.conf</code> is valid: all paths and rules exist and are correct.</p>
+</li>
+<li>
+<p><strong>Preprocessors are working</strong>: protocol analysis and other settings are ready.</p>
+</li>
+<li>
+<p>Snort is <strong>not running yet</strong>: the <code>-T</code> option only tests the configuration, so Snort exits after the test.</p>
+</li>
+</ul>
+<h5 id="testing-live-alerts">Testing live alerts:</h5>
+<ul>
+<li>Run Snort to see alerts directly:</li>
+</ul>
+<pre><code class="language-bash">sudo snort -i lo -c /etc/snort/snort.conf -A console
+</code></pre>
+<ul>
+<li>
+<p>Monitoring the loopback interface (<code>lo</code>)</p>
+</li>
+<li>
+<p>I’ll ping from the same machine for simplicity instead of using another VM.</p>
+</li>
+</ul>
+<p>From another terminal:</p>
+<pre><code class="language-bash">aas@aas:~$ ping 10.0.2.15
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-bash">WARNING: No preprocessors configured for policy 0.
+09/12-18:28:23.648061  [**] [1:1000001:1] ICMP test detected [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+</code></pre>
+<ul>
+<li>
+<p>This confirms the rule is working: Snort captures any ICMP traffic on the monitored interface (<code>lo</code>).</p>
+</li>
+<li>
+<p>Running on the <code>enp0s3</code> interface did not trigger alerts because internal pings go through <code>lo</code>, not <code>enp0s3</code>.</p>
+</li>
+<li>
+<p>Pinging from another device on the <code>10.0.2.0/24</code> network will trigger an alert immediately.</p>
+</li>
+</ul>
+<blockquote>
+<p>This was just a test. Everything is now set, so we can proceed to the main task.</p>
 </blockquote>
 <hr />
-<h2 id="1-setting-a-static-ip">1️⃣ Setting a Static IP</h2>
+<h1 id="preparing-and-testing-nmap-scan-detection">Preparing and testing Nmap scan detection</h1>
+<h3 id="1-add-nmap-rules-to-localrules">1️⃣ Add Nmap rules to <code>local.rules</code></h3>
+<ul>
+<li>We start with some of the most common Nmap scan types.</li>
+</ul>
+<h3 id="1-open-the-local-rules-file">1️⃣ Open the local rules file</h3>
+<pre><code class="language-bash">nano /etc/snort/rules/local.rules
+</code></pre>
+<ul>
+<li>Here is the snort rule structure:</li>
+</ul>
+<pre><code class="language-bash">action protocol sourceIP sourceport -&gt; destinationIP destinationport ([Rule options])
+</code></pre>
 <ul>
 <li>
-<p>Understanding the Current NAT Configuration</p>
+<p>EX :</p>
 </li>
 <li>
-<p>NAT means that the machine will obtain a dynamic IP (DHCP) from VirtualBox, and internet connectivity will pass through the primary machine.</p>
-</li>
-<li>
-<p>We'll change it to a static IP within Ubuntu. We need to know the gateway and DNS.</p>
+<p>A. Ping Sweep detection</p>
 </li>
 </ul>
-<pre><code class="language-bash">ip a   # current IP
-#OR
-ifconfig                  
-192.168.1.4/24
+<pre><code class="language-bash"># Ping Sweep Detector
 
-ip route                 # Gateway
-192.168.1.1
-</code></pre>
-<h4 id="gui-user-interface-method"><strong>GUI (User Interface) Method :</strong></h4>
-<ol>
-<li>
-<p>Open Settings in Ubuntu.</p>
-</li>
-<li>
-<p>Go to Wired &gt; Wired Settings (or Wi-Fi).</p>
-</li>
-<li>
-<p>Click ⚙️ next to the connected network.</p>
-</li>
-<li>
-<p>Change the IPv4 Method from Automatic (DHCP) to Manual.</p>
-</li>
-<li>
-<p>Enter the following information:</p>
-</li>
-<li>
-<p>Address: Static IP, such as 192.168.1.100</p>
-</li>
-<li>
-<p>Netmask / Prefix: 255.255.255.0 or /24</p>
-</li>
-<li>
-<p>Gateway: such as 192.168.1.1</p>
-</li>
-<li>
-<p>DNS: 8.8.8.8, 8.8.4.4</p>
-</li>
-<li>
-<p>Click Apply, and restart the network or machine.</p>
-</li>
-</ol>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087537209/dd4a4c32-941d-42cd-9058-2fa8a8854a20.png" alt="" align="left" fullwidth="false" /></p>
-<hr />
-<h2 id="install-elasticsearch-with-a-debian-package">Install Elasticsearch with a Debian Package</h2>
-<blockquote>
-<p><a href="https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package">https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package</a></p>
-</blockquote>
-<h4 id="first-we-import-the-pgp-key-to-ensure-that-the-package-is-authentic"><strong>First, we import the PGP Key to ensure that the package is authentic:</strong></h4>
-<pre><code class="language-sh">wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+alert icmp any any -&gt; 10.0.2.15 any (msg:&quot;NMAP Ping Sweep Scan&quot;; dsize:0; sid:1000002; rev:1;)
 </code></pre>
 <ul>
-<li>Our goal: to verify Elastic packages before installation.</li>
+<li>B.NULL Scan detection</li>
 </ul>
-<h4 id="2-add-the-elastic-repository">2️⃣ <strong>Add the Elastic Repository :</strong></h4>
-<pre><code class="language-sh">sudo apt-get install apt-transport-https
-|
-|
-|
-(Reading database ... 169650 files and directories currently installed.)
-Preparing to unpack .../apt-transport-https_2.4.14_all.deb ...
-Unpacking apt-transport-https (2.4.14) ...
-Setting up apt-transport-https (2.4.14) ...
+<pre><code class="language-bash">action protocol sourceIP sourceport -&gt; destinationIP destinationport ([Rule options])
 </code></pre>
 <ul>
-<li>We save the repository definition in <code>/etc/apt/sources.list.d/elastic-9.x.list</code>:</li>
+<li>C.TCP Scan detection on port 22 :</li>
 </ul>
-<pre><code class="language-sh">echo &quot;deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main&quot; | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP TCP Scan&quot;; sid:1000003; rev:1;)
 </code></pre>
 <ul>
-<li><strong>Our goal</strong>: to allow apt to use HTTPS and add an official repo without modifying the main sources.</li>
+<li>D.XMAS Scan detection :</li>
 </ul>
-<h4 id="3-update-apt-and-install-elasticsearch">3️⃣ <strong>Update apt and install Elasticsearch :</strong></h4>
-<pre><code class="language-sh">sudo apt-get update &amp;&amp; sudo apt-get install elasticsearch
-</code></pre>
-<hr />
-<h4 id="4-configure-network-to-access-the-node-from-other-machines">4️⃣ Configure Network (to access the node from other machines)</h4>
-<ul>
-<li>
-<p>For a <strong>Single-node cluster</strong>:</p>
-</li>
-<li>
-<p>We open the configuration file <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
-</li>
-</ul>
-<pre><code class="language-sh">sudo nano /etc/elasticsearch/elasticsearch.yml
+<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP XMAS Scan&quot;; flags:FPU; sid:1000004; rev:1;)
 </code></pre>
 <ul>
-<li>Be careful — YAML is case sensitive and space sensitive.</li>
+<li>E.FIN Scan detection</li>
 </ul>
-<p>Key settings:</p>
-<pre><code class="language-yaml">cluster.name: elasticsearch-demo     # Cluster name
-network.host: 0.0.0.0                # Allow connection from all networks
-transport.host: 0.0.0.0              # Same for transport layer
+<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP FIN Scan&quot;; flags:F; sid:1000005; rev:1;)
 </code></pre>
-<p>Save and exit nano with <code>Ctrl+O</code> then <code>Ctrl+X</code>.</p>
-<p>🔹 <strong>Goal:</strong></p>
 <ul>
-<li>
-<p><a href="http://cluster.name"><code>cluster.name</code></a> → must be the same for all nodes in the cluster.</p>
-</li>
-<li>
-<p><a href="http://network.host"><code>network.host</code></a> → makes the node accessible to other machines.</p>
-</li>
-<li>
-<p><a href="http://transport.host"><code>transport.host</code></a> → enables communication between nodes.</p>
-</li>
+<li>F.UDP Scan detection on port 68:</li>
 </ul>
-<p>For <a href="http://network.host"><code>network.host</code></a>, we can also use the VM’s specific IP.</p>
-<hr />
-<h5 id="5-run-elasticsearch-as-a-systemd-service">5️⃣ Run Elasticsearch as a systemd service</h5>
-<pre><code class="language-sh"># Reload systemd to recognize new service
-sudo /bin/systemctl daemon-reload
+<pre><code class="language-bash">alert udp any any -&gt; 10.0.2.15 68 (msg:&quot;NMAP UDP Scan&quot;; sid:1000007; rev:1;)
+</code></pre>
+<ul>
+<li>Final combined file will look like:</li>
+</ul>
+<pre><code class="language-bash"># --------------------------------
+# Nmap Detection Rules for Snort :
+# --------------------------------
 
-# Enable Elasticsearch service at boot
-sudo /bin/systemctl enable elasticsearch.service
+# ICMP Test Detection
+alert icmp any any -&gt; any any (msg:&quot;ICMP test Detected!!!&quot;; sid:10000010; rev:1;)
 
-# Start the service
-sudo systemctl start elasticsearch.service
-</code></pre>
-<ul>
-<li>
-<p><code>daemon-reload</code> → updates systemd so it knows about the new service.</p>
-</li>
-<li>
-<p><code>enable</code> → runs the service automatically at boot.</p>
-</li>
-<li>
-<p><code>start</code> → runs the service now.</p>
-</li>
-</ul>
-<blockquote>
-<p><strong>Our goal:</strong> The service works now and automatically upon startup.</p>
-</blockquote>
-<hr />
-<h5 id="6-set-the-elastic-user-password-first-time-only">6️⃣ Set the <code>elastic</code> user password (first time only)</h5>
-<p>At first run, security is configured automatically, but the <code>elastic</code> superuser password is not shown. We set it using:</p>
-<p><strong>We should save this password in a safe place!</strong> Recommended to store it as an environment variable:</p>
-<pre><code class="language-bash">aas@aas:~$ sudo /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
-This tool will reset the password of the [elastic] user to an autogenerated value.
-The password will be printed in the console.
-Please confirm that you would like to continue [y/N]y
+# NMAP Ping Sweep
+alert icmp any any -&gt; any any (msg:&quot;NMAP Ping Sweep Scan!!!&quot;; dsize:0; sid:10000020; rev:1;)
 
+# NMAP TCP Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP TCP Scan!!!&quot;; flags:S; sid:10000030; rev:1;)
 
-Password for the [elastic] user successfully reset.
-New value: hel+6ncXHaUKps*RU-k5
-aas@aas:~$ export ELASTIC_PASS=&quot;hel+6ncXHaUKps*RU-k5&quot;
-</code></pre>
-<blockquote>
-<p>Our goal: Set the superuser password to protect the cluster.</p>
-</blockquote>
-<hr />
-<h5 id="7-verify-elasticsearch-is-running">7️⃣ Verify Elasticsearch is running</h5>
-<p>Test the connection using <code>curl</code> with the auto-generated CA certificate:</p>
-<pre><code class="language-bash">sudo apt install curl # Install it if it is not available
+# NMAP XMAS Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP XMAS Scan!!!&quot;; flags:FPU; sid:10000040; rev:1;)
 
-aas@aas:~$ sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASS https://localhost:9200
-{
-  &quot;name&quot; : &quot;aas&quot;,
-  &quot;cluster_name&quot; : &quot;elasticsearch-demo&quot;,
-  &quot;cluster_uuid&quot; : &quot;rjyFV29wSxCvhUX3bhSdCw&quot;,
-  &quot;version&quot; : {
-    &quot;number&quot; : &quot;9.1.3&quot;,
-    &quot;build_flavor&quot; : &quot;default&quot;,
-    &quot;build_type&quot; : &quot;deb&quot;,
-    &quot;build_hash&quot; : &quot;0c781091a2f57de895a73a1391ff8426c0153c8d&quot;,
-    &quot;build_date&quot; : &quot;2025-08-24T22:05:04.526302670Z&quot;,
-    &quot;build_snapshot&quot; : false,
-    &quot;lucene_version&quot; : &quot;10.2.2&quot;,
-    &quot;minimum_wire_compatibility_version&quot; : &quot;8.19.0&quot;,
-    &quot;minimum_index_compatibility_version&quot; : &quot;8.0.0&quot;
-  },
-  &quot;tagline&quot; : &quot;You Know, for Search&quot;
-}
-</code></pre>
-<p>If a JSON appears containing <code>cluster_name</code> and <code>version</code>, Elasticsearch is running successfully.</p>
-<blockquote>
-<p>We stored the password in the variable <code>ELASTIC_PASS</code> so we can use it easily.</p>
-</blockquote>
-<hr />
-<h3 id="now-we-are-done">Now we are done ✅</h3>
-<ul>
-<li>
-<p>When opening Elasticsearch in a browser (usually at <a href="https://localhost:9200">https://localhost:9200</a>), <strong>security is enabled by default</strong>, so it will ask for:</p>
-</li>
-<li>
-<p><strong>User</strong>: <code>elastic</code></p>
-</li>
-<li>
-<p><strong>Password</strong>: the one we set using <code>elasticsearch-reset-password</code></p>
-</li>
-<li>
-<p><strong>If we forget the password, we can reset it again or just check :</strong></p>
-</li>
-</ul>
-<pre><code class="language-sh">aas@aas:~$ echo $ELASTIC_PASS
-hel+6ncXHaUKps*RU-k5
-aas@aas:~$
-</code></pre>
-<blockquote>
-<p>That's why we made it a variable.</p>
-</blockquote>
-<ul>
-<li>This completes Part 1 :</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087592464/c5b479d8-058d-4682-b82d-6311e485c20a.png" alt="" align="left" fullwidth="false" /></p>
-<hr />
-<hr />
-<hr />
-<h1 id="part-2-installing-kibana-and-connecting-it-to-elasticsearch"><strong>Part 2: Installing Kibana and Connecting It to Elasticsearch :</strong></h1>
-<blockquote>
-<p><a href="https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-kibana-with-debian-package">https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-kibana-with-debian-package</a></p>
-</blockquote>
-<ul>
-<li>
-<p>Kibana is the graphical interface for Elasticsearch. Without it, we would have to use curl or other API tools to manipulate data.</p>
-</li>
-<li>
-<p>With Kibana, we can:</p>
-</li>
-<li>
-<p>Display data in the form of graphics and reports.</p>
-</li>
-<li>
-<p>Manage Elasticsearch indices and settings through a graphical interface.</p>
-</li>
-<li>
-<p>Monitor cluster performance and health.</p>
-</li>
-<li>
-<p>Create interactive dashboards.</p>
-</li>
-</ul>
-<hr />
-<h3 id="1-import-the-pgp-signing-key"><strong>1️⃣ Import the PGP Signing Key</strong></h3>
-<pre><code class="language-bash">wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
-</code></pre>
-<blockquote>
-<p><strong>Our goal:</strong> to ensure that the packages we install are original and safe.</p>
-</blockquote>
-<hr />
-<h3 id="2-install-kibana-from-the-apt-repository"><strong>2️⃣ Install Kibana from the APT Repository</strong></h3>
-<ul>
-<li><strong>Add Elastic repository to sources list :</strong></li>
-</ul>
-<pre><code class="language-bash">echo &quot;deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main&quot; | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
-</code></pre>
-<ul>
-<li>
-<p>Here, we tell Ubuntu/Debian (“hey <code>apt</code>”) where the official repository containing Kibana is.</p>
-</li>
-<li>
-<p>The option <code>[signed-by=...]</code> tells <code>apt</code> to use the key we added in the previous step to verify the authenticity of packages from this repository.</p>
-</li>
-</ul>
-<p><strong>Update package list and install Kibana:</strong></p>
-<pre><code class="language-bash">sudo apt-get install apt-transport-https
+# NMAP FIN Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP FIN Scan!!!&quot;; flags:F; sid:10000050; rev:1;)
 
-sudo apt-get update
+# NMAP NULL Scan
+alert tcp any any -&gt; any any (msg:&quot;NMAP NULL Scan!!!&quot;; flags:0; sid:10000060; rev:1;)
 
-sudo apt-get install kibana
+# NMAP UDP Scan
+alert udp any any -&gt; any any (msg:&quot;NMAP UDP Scan!!!&quot;; sid:10000070; rev:1;)
 </code></pre>
-<blockquote>
-<p>Our goal: to locate the official repository and ensure that apt can validate packages before installing them.</p>
-</blockquote>
+<h3 id="explanation-of-each-rule">Explanation of each rule</h3>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What it detects</th>
+<th>How it works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICMP Test</td>
+<td>any simple ping</td>
+<td>any ICMP packet sent to the host</td>
+</tr>
+<tr>
+<td>NMAP Ping Sweep</td>
+<td>host discovery attempts</td>
+<td>ICMP echo with <code>dsize:0</code> often used by Nmap Ping Sweep</td>
+</tr>
+<tr>
+<td>NMAP TCP Scan</td>
+<td>TCP SYN scan across ports</td>
+<td>any TCP SYN packet from Nmap or other TCP scanners</td>
+</tr>
+<tr>
+<td>NMAP XMAS Scan</td>
+<td>TCP XMAS scan</td>
+<td>any TCP packet with FIN+PSH+URG flags — a common Nmap scan type</td>
+</tr>
+<tr>
+<td>NMAP FIN Scan</td>
+<td>TCP FIN scan</td>
+<td>any TCP packet with only FIN flag — used to probe ports without establishing a full connection</td>
+</tr>
+<tr>
+<td>NMAP NULL Scan</td>
+<td>TCP NULL scan</td>
+<td>any TCP packet with no flags — attempt to bypass some firewalls</td>
+</tr>
+<tr>
+<td>NMAP UDP Scan</td>
+<td>UDP scan</td>
+<td>any UDP packet to any port; Nmap uses this to discover services</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h3 id="3create-an-enrollment-token-for-kibana"><strong>3️⃣Create an Enrollment Token for Kibana</strong></h3>
-<p><strong>Step (we do this on the Elasticsearch server):</strong></p>
-<pre><code class="language-bash">sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+<ul>
+<li>After saving the file, test the configuration:</li>
+</ul>
+<pre><code class="language-bash">sudo snort -T -c /etc/snort/snort.conf
 </code></pre>
 <ul>
+<li>You should see:</li>
+</ul>
+<pre><code class="language-bash">Snort successfully validated the configuration! Snort exiting
+</code></pre>
+<ul>
+<li>If that appears, everything is fine.</li>
+</ul>
+<hr />
+<h2 id="now-ill-test-from-the-same-machine">Now I’ll test from the same machine</h2>
+<blockquote>
+<p>Because I will run the scans from the same machine (Target), I need to use the loopback interface (<code>lo</code>) or the target’s internal IP <code>10.0.2.15</code> when running Snort, since scans from the same host won’t traverse <code>enp0s3</code> directly.</p>
+</blockquote>
+<p>1️⃣ Start Snort on loopback (<code>lo</code>):</p>
+<pre><code class="language-bash">sudo snort -A console -q -c /etc/snort/snort.conf -i lo
+</code></pre>
+<p><code>-A console</code> : show alerts on the terminal\
+<code>-q</code> : quiet mode to reduce noise</p>
+<p>2️⃣ In another terminal, start scanning from the same host:</p>
+<ul>
+<li><strong>First — Ping Sweep / ICMP Test</strong>:</li>
+</ul>
+<pre><code class="language-bash">ping 10.0.2.15
+</code></pre>
+<ul>
+<li>Snort produced the alert: <code>ICMP test detected</code>:</li>
+</ul>
+<pre><code class="language-bash">09/12-22:16:36.831126  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807603198/a25ecf01-4b94-4119-9e43-2e9c049c5a0a.png" alt="" align="left" fullwidth="true" /></p>
+<h2 id="now-ill-test-from-the-attacker-vm">Now I’ll test from the Attacker VM:</h2>
+<ul>
 <li>
-<p>This will generate an <strong>Enrollment Token</strong>.</p>
+<p><strong>Target / Snort (Ubuntu) IP:</strong> <code>10.0.2.15</code> on interface <code>enp0s3</code></p>
 </li>
 <li>
-<p>We will do the following:</p>
-</li>
-<li>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087636660/ea30a40b-0c10-48e2-a7a9-558a41835b86.png" alt="" align="left" fullwidth="false" /></p>
+<p>Start Snort on <code>enp0s3</code>:</p>
 </li>
 </ul>
-<pre><code class="language-bash">aas@aas:~$ echo $KIBANA_ENROLL_TOKEN
-eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTkyLjE2OC4xLjEwMDo5MjAwIl0sImZnciI6ImJhNjY4ZjVlNjhkZjk1ODM4ZmE4ZjI5ZmUzOWQ1Mjg5YmU3MGViNTU3OTJiMDlmN2VkYTllMjk2MjM3NTMyMjMiLCJrZXkiOiJhMHY0VFprQnlfWEd5Z3BzVmRDUDpIbWpUZHhYZzNNVEhGdGRwcTZfMnpRIn0=
+<pre><code class="language-bash">sudo snort -A console -q -c /etc/snort/snort.conf -i enp0s3
 </code></pre>
+<h4 id="temporarily-open-ssh-port-on-the-target-ubuntu">Temporarily open SSH port on the Target (Ubuntu) :</h4>
+<pre><code class="language-bash">sudo systemctl start ssh
+sudo systemctl enable ssh   # if you want it persistent after reboot
+sudo ufw allow 22/tcp       # if UFW is active
+</code></pre>
+<ul>
+<li>Now port 22 is open on the Target.</li>
+</ul>
+<p><strong>Second — TCP SYN Scan from the Attacker</strong>:</p>
+<pre><code class="language-bash"># To detect open ports quickly and less obviously than a regular scan.
+sudo nmap -sS 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP TCP Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:17:28.232537  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:80
+09/12-22:17:28.232541  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:139
+09/12-22:17:28.232545  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:25
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807588399/78ed49c8-c617-47e0-a01f-fcd9ef1c3f13.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>Third — XMAS Scan from the Attacker</strong>:</p>
+<pre><code class="language-bash"># To detect open ports in stealth mode (using packets containing FIN, PSH and URG flags together).
+sudo nmap -sX 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP XMAS Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:21:59.585254  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42309 -&gt; 10.0.2.15:5952
+09/12-22:21:59.585259  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42309 -&gt; 10.0.2.15:5510
+09/12-22:22:00.602432  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42310 -&gt; 10.0.2.15:22
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807573829/1d258de7-8ae9-4627-acc3-9ce0230e7c75.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>FIN Scan from the Attacker</strong></p>
+<pre><code class="language-bash"># To detect open ports in stealth mode (using FIN packets instead of SYN).
+sudo nmap -sF 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP FIN Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:22:51.010337  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:1148
+09/12-22:22:51.010342  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:787
+09/12-22:22:51.010346  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:7001
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807561720/9b759443-a948-4479-a984-93b43ca417fb.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>NULL Scan from the Attacker</strong></p>
+<pre><code class="language-bash"># To identify open or closed ports in stealth mode (without any flags in the TCP header).
+sudo nmap -sN 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP NULL Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:23:40.987444  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:6129
+09/12-22:23:40.987448  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:27356
+09/12-22:23:40.987452  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:10566
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807542141/947d3d54-2db8-4457-8092-80a6690f4826.png" alt="" align="left" fullwidth="true" /></p>
+<p><strong>UDP Scan from the Attacker</strong></p>
+<pre><code class="language-bash"># To detect open UDP ports and the services running on them.
+sudo nmap -sU 10.0.2.15
+</code></pre>
+<p>Alert: <code>NMAP UDP Scan</code>:</p>
+<pre><code class="language-bash">09/12-22:24:41.947120  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+09/12-22:24:41.947123  [**] [1:10000070:1] NMAP UDP Scan!!! [**] [Priority: 0] {UDP} 10.0.2.15:56847 -&gt; 10.0.2.15:112
+09/12-22:24:41.947124  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
+09/12-22:24:43.006069  [**] [1:10000070:1] NMAP UDP Scan!!! [**] [Priority: 0] {UDP} 10.0.2.15:56848 -&gt; 10.0.2.15:5353
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807522639/d5a1fc47-4ffa-4919-b236-98fa284892d9.png" alt="" align="left" fullwidth="true" /></p>
+<ul>
+<li>The ICMP messages you see are not from a normal <code>ping</code> — they are the ICMP responses that occur when a UDP scan probes closed ports.</li>
+</ul>
 <blockquote>
-<p>If the token appears correctly, everything is fine.</p>
+<p>The host was noisy (responding) but everything behaved as expected.</p>
 </blockquote>
+<hr />
+<h3 id="summary-conclusion">Summary / Conclusion</h3>
 <ul>
 <li>
-<p><strong>Why this step is important:</strong></p>
+<p>Snort is successfully configured as an IDS on Ubuntu.</p>
 </li>
 <li>
-<p>This token serves as a "secure invitation" for Kibana to connect to the cluster.</p>
+<p>All tested Nmap scan types were detected accurately.</p>
 </li>
 <li>
-<p>It contains security settings (TLS certificates) and grants user privileges to the kibana_system user.</p>
-</li>
-<li>
-<p>It expires after 30 minutes to maintain security.</p>
+<p>The environment is ready for further monitoring and packet analysis (PCAP/Wireshark).</p>
 </li>
 </ul>
 <hr />
-<h3 id="4make-kibana-accessible-externally"><strong>4️⃣Make Kibana Accessible Externally</strong></h3>
-<p>Open the configuration file:</p>
-<pre><code class="language-bash">sudo nano /etc/kibana/kibana.yml
-</code></pre>
-<ul>
-<li>
-<p>Search for the line <code>#</code><a href="http://server.host"><code>server.host</code></a><code>: "</code><a href="http://localhost"><code>localhost</code></a><code>"</code> and other lines other than:</p>
-</li>
-<li>
-<p>Perform a search using Cntrl + W</p>
-</li>
-</ul>
-<pre><code class="language-bash">server.host: &quot;0.0.0.0&quot;
-</code></pre>
 <blockquote>
-<p>Save file.</p>
-</blockquote>
-<ul>
-<li>
-<p><strong>Default:</strong> <a href="http://localhost"><code>localhost</code></a> means Kibana only listens for connections from the same machine — secure but not accessible from other devices.</p>
-</li>
-<li>
-<p><strong>Change:</strong> <code>0.0.0.0</code> means “listen on all available IP addresses on this server.” This allows any device on the network to access Kibana (authentication is still required).</p>
-</li>
-</ul>
-<blockquote>
-<p>Our goal: to allow access to Kibana from any device on the network (authentication is still required).</p>
-</blockquote>
-<hr />
-<h3 id="5-run-kibana-as-a-systemd-service"><strong>5️⃣ Run Kibana as a systemd Service</strong></h3>
-<ol>
-<li><strong>Enable automatic startup at boot:</strong></li>
-</ol>
-<pre><code class="language-bash">sudo systemctl daemon-reload
-OR 
-sudo /bin/systemctl daemon-reload
-
-sudo systemctl enable kibana.service
-OR
-sudo /bin/systemctl enable kibana.service
-</code></pre>
-<ul>
-<li>
-<p><strong>Explanation:</strong> <code>enable</code> creates a symbolic link so the service <strong>starts automatically</strong> on system boot; no need to start it manually each time.</p>
-</li>
-<li>
-<p><strong>Start the Kibana service:</strong></p>
-</li>
-</ul>
-<pre><code class="language-bash">sudo systemctl start kibana.service
-</code></pre>
-<blockquote>
-<p>Our goal: Kibana starts right away and automatically when your device starts up. ✅</p>
-</blockquote>
-<hr />
-<hr />
-<hr />
-<h1 id="part-three-register-kibana-with-elasticsearch"><strong>Part Three: Register Kibana with Elasticsearch</strong></h1>
-<blockquote>
-<p>This step is the most important; in it we will connect Kibana with Elasticsearch .</p>
-</blockquote>
-<h3 id="1-obtain-the-verification-code"><strong>1️⃣ Obtain the Verification Code:</strong></h3>
-<ul>
-<li>Let's see the status of Kibana service with this command:</li>
-</ul>
-<pre><code class="language-sh">sudo systemctl status kibana
-</code></pre>
-<ul>
-<li>If it appears to you like this :</li>
-</ul>
-<pre><code class="language-sh">● kibana.service - Kibana
-     Loaded: loaded (/lib/systemd/system/kibana.service; enabled; vendor preset: enabled)
-     Active: active (running) since Mon 2025-09-15 18:49:09 EEST; 1min 43s ago
-</code></pre>
-<ul>
-<li>Kibana is still running but you haven't registered with Elasticsearch yet.</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087670623/144b577d-7c3a-4c99-9af7-5be2c5a037e8.png" alt="" align="left" fullwidth="false" /></p>
-<p>2️⃣ We will open the link that contains the code:</p>
-<pre><code class="language-ruby">http://&lt;host-IP&gt;:5601/?code=&lt;6-digit-code&gt;
-
-EX :
-http://192.168.1.100:5601/?code=823251
-</code></pre>
-<blockquote>
-<p>Open it in the browser and complete the steps that appear.</p>
-</blockquote>
-<ul>
-<li>After that :</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087688441/ae5e52ef-20d2-4631-bf68-e998952f6293.png" alt="" align="left" fullwidth="false" /></p>
-<ul>
-<li>
-<p>This is the token we stored in a variable.</p>
-</li>
-<li>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087739846/6c8f00ad-31ea-4d91-89fd-bf576fe3653a.png" alt="" align="left" fullwidth="false" /></p>
-</li>
-<li>
-<p>There is a problem, we told you above that it closes every half hour:</p>
-</li>
-<li>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087767962/5efd8923-06ef-434e-88bf-4f26a072081d.png" alt="" align="left" fullwidth="false" /></p>
-</li>
-</ul>
-<h4 id="3-if-the-code-or-token-expires">3️⃣ If the code or token expires:</h4>
-<ul>
-<li>The enrollment token will expire after half an hour. If it expires, we'll create a new one:</li>
-</ul>
-<pre><code class="language-sh">sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
-</code></pre>
-<blockquote>
-<p>You'll receive a new token valid for 30 minutes.</p>
-</blockquote>
-<ul>
-<li>Return to the Kibana registration page, enter the new token in the required field, and click Configure Elastic again :</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087789659/9f14870e-0656-4a71-b6b6-e44ab8613659.png" alt="" align="left" fullwidth="false" /></p>
-<h3 id="4-login-credentials"><strong>4️⃣ Login Credentials:</strong></h3>
-<ul>
-<li>We will use the username and password that we stored before:</li>
-</ul>
-<pre><code class="language-sh">aas@aas:~$ echo $ELASTIC_PASS
-hel+6ncXHaUKps*RU-k5
-</code></pre>
-<blockquote>
-<ul>
-<li>
-<p>The username will be: elastic</p>
-</li>
-<li>
-<p>The password will be the value in $ELASTIC_PASS</p>
-</li>
-</ul>
-</blockquote>
-<ul>
-<li>We enter them, and now we've registered Kibana with Elasticsearch.</li>
-</ul>
-<hr />
-<hr />
-<hr />
-<h1 id="part-4">Part 4</h1>
-<blockquote>
-<ul>
-<li>
-<p>Windows Device</p>
-</li>
-<li>
-<p>In this section, we'll work on a Windows device to:</p>
-</li>
-<li>
-<p>Enable Audit Policy to record all important events (logon, user creation, user deletion, group creation, user addition to group).</p>
-</li>
-<li>
-<p>Send the logs to a SIEM using Winlogbeat.</p>
-</li>
-<li>
-<p>Let's divide this into two parts:</p>
-</li>
-<li>
-<p>First, we enable the <strong>Audit Policy</strong>.</p>
-</li>
-<li>
-<p>Second, we send the logs to the SIEM.</p>
-</li>
-</ul>
-</blockquote>
-<hr />
-<h2 id="step-1-activate-audit-policy"><strong>Step 1: Activate Audit Policy</strong></h2>
-<h5 id="1-open-local-security-policy"><strong>1️⃣ Open Local Security Policy</strong></h5>
-<ul>
-<li>
-<p>Press Win + R</p>
-</li>
-<li>
-<p>Type secpol.msc and press Enter</p>
-</li>
-<li>
-<p>Local Security Policy will open (you can also search for it in Windows as Local Security Policy)</p>
-</li>
-</ul>
-<h5 id="2-navigate-to-audit-policy"><strong>2️⃣ Navigate to Audit Policy</strong></h5>
-<ol>
-<li>
-<p>On the left panel, choose:\
-   <strong>Security Settings → Local Policies → Audit Policy</strong></p>
-</li>
-<li>
-<p>On the right panel, you will see the policies you can enable</p>
-</li>
-</ol>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087821509/6fad09ea-16f7-4497-8ce1-27792bed1629.png" alt="" align="left" fullwidth="false" /></p>
-<h5 id="3-enable-policies-for-the-required-actions"><strong>3️⃣ Enable Policies for the Required Actions</strong></h5>
-<ul>
-<li>
-<p>Logging in → <strong>Audit logon events</strong> + <strong>Audit account logon events</strong></p>
-</li>
-<li>
-<p>Creating/Deleting a user or group → <strong>Audit account management</strong></p>
-</li>
-<li>
-<p>Adding a user to a group → <strong>Audit account management</strong></p>
-</li>
-<li>
-<p>For each policy:</p>
-</li>
-<li>
-<p>Select Success and Failure to record success and failure.</p>
-</li>
-<li>
-<p>Click OK.</p>
-</li>
-</ul>
-<h5 id="4-well-apply-the-settings-immediately"><strong>4️⃣ We'll apply the settings immediately:</strong></h5>
-<ul>
-<li>Open CMD as Administrator and type:</li>
-</ul>
-<pre><code class="language-sh">gpupdate /force
-|
-|
-C:\Windows\system32&gt;gpupdate /force
-Updating policy...
-
-Computer Policy update has completed successfully.
-User Policy update has completed successfully.
-</code></pre>
-<ul>
-<li>Run this command to apply the policies immediately</li>
-</ul>
-<h4 id="5-lets-test-in-event-viewer"><strong>5️⃣ Let's test in Event Viewer:</strong></h4>
-<ul>
-<li>
-<p>Log out and log back in to make sure.</p>
-</li>
-<li>
-<p>From the left: Windows Logs → Security</p>
-</li>
-<li>
-<p>Here you'll find all the events that were logged.</p>
-</li>
-</ul>
-<p><strong><em>Here, all events related to the enabled Audit Policy will be recorded</em></strong></p>
-<h5 id="example-event-ids-for-login"><strong>Example Event IDs for Login:</strong></h5>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087848073/0321e0e1-645d-41eb-ab68-022ef46551a2.png" alt="" align="left" fullwidth="false" /></p>
-<ul>
-<li>
-<p>Event ID 4624 → successful logon</p>
-</li>
-<li>
-<p>Event ID 4625 → failed logon</p>
-</li>
-<li>
-<p>I tested both a correct and incorrect login:</p>
-</li>
-<li>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087867976/f091a944-9d23-4945-a367-f071e82a499d.png" alt="" align="left" fullwidth="false" /></p>
-</li>
-</ul>
-<blockquote>
-<p>Now everything is working correctly.</p>
-</blockquote>
-<hr />
-<h2 id="step-2-send-logs-to-the-siem-using-winlogbeat"><strong>Step 2: Send logs to the SIEM using Winlogbeat</strong></h2>
-<blockquote>
-<p>(After completing the steps above)</p>
-</blockquote>
-<h5 id="-you-will-ping-the-server-to-make-sure-of-the-connection"><strong>- You will ping the server to make sure of the connection :</strong></h5>
-<pre><code class="language-bash">C:\Users\aas&gt;ping 192.168.1.100
-
-Pinging 192.168.1.100 with 32 bytes of data:
-Reply from 192.168.1.100: bytes=32 time=2ms TTL=64
-Reply from 192.168.1.100: bytes=32 time=1ms TTL=64
-Reply from 192.168.1.100: bytes=32 time=2ms TTL=64
-Reply from 192.168.1.100: bytes=32 time=1ms TTL=64
-
-Ping statistics for 192.168.1.100:
-    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
-Approximate round trip times in milli-seconds:
-    Minimum = 1ms, Maximum = 2ms, Average = 1ms
-</code></pre>
-<blockquote>
-<p>I initially faced a network issue because the device couldn’t see the network, which I solved by setting a static IP and pointing it to the DHCP from the NAT in the Virtual Machine.</p>
-</blockquote>
-<ul>
-<li>We need a little bit ahead</li>
-</ul>
-<pre><code class="language-powershell">PS C:\Users\aas&gt; hostname
-WIN-AS
-</code></pre>
-<blockquote>
-<p>To verify connectivity</p>
-</blockquote>
-<h5 id="-you-can-download-winlogbeat-from-the-official-website"><strong>- You can download Winlogbeat from the official website :</strong></h5>
-<ol>
-<li>
-<p>Go to the <a href="https://www.elastic.co/downloads/beats/winlogbeat">official Elastic download page</a></p>
-</li>
-<li>
-<p>Select the appropriate version for your system (usually 64-bit) → download the <code>.zip</code> file</p>
-</li>
-<li>
-<p>Follow the steps on the website in order:</p>
-<ol>
-<li>
-<p>Edit the <code>winlogbeat.yml</code> configuration file</p>
-</li>
-<li>
-<p>Run in PowerShell</p>
-</li>
-<li>
-<p>Reference: <a href="https://www.elastic.co/docs/reference/beats/winlogbeat/winlogbeat-installation-configuration">Winlogbeat quick start</a></p>
-</li>
-</ol>
-</li>
-<li>
-<p>Extract the files to a folder such as:</p>
-</li>
-</ol>
-<pre><code class="language-bash">C:\Program Files\Winlogbeat
-</code></pre>
-<h5 id="modify-the-winlogbeatyml-configuration-file"><strong>Modify the</strong> <code>winlogbeat.yml</code> Configuration File</h5>
-<blockquote>
-<p>Open the file with <strong>Notepad</strong> as Administrator</p>
-</blockquote>
-<h5 id="winlogbeat-setup">Winlogbeat Setup:</h5>
-<ol>
-<li>
-<p><strong>Install Winlogbeat on the Windows device</strong></p>
-</li>
-<li>
-<p><strong>Configure</strong> <code>winlogbeat.yml</code> to read Security logs (or all logs if needed):</p>
-</li>
-</ol>
-<pre><code class="language-bash"># ============= Winlogbeat specific options ==========
-winlogbeat.event_logs:
-  - name: Security
-    ignore_older: 72h
-
-  - name: System
-
-  - name: Application
-
-  - name: Microsoft-Windows-Sysmon/Operational
-
-  - name: Windows PowerShell
-    event_id: 400, 403, 600, 800
-
-  - name: Microsoft-Windows-PowerShell/Operational
-    event_id: 4103, 4104, 4105, 4106
-
-  - name: ForwardedEvents
-    tags: [forwarded]
-</code></pre>
-<ol>
-<li><strong>Specify the Elasticsearch endpoint to send the logs to:</strong></li>
-</ol>
-<pre><code class="language-bash"># ------------------- Elasticsearch Output ----------------
-output.elasticsearch:
-  # Array of hosts to connect to.
-  hosts: [&quot;https://192.168.1.100:9200&quot;]
-
-  # Protocol - either `http` (default) or `https`.
-  protocol: &quot;https&quot;
-  ssl:
-      enabled: true
-  ssl.verification_mode: none
-
-  # Authentication credentials - either API key or username/password.
-  #api_key: &quot;id:api_key&quot;
-  username: &quot;elastic&quot;
-  password: &quot;hel+6ncXHaUKps*RU-k5&quot;
-
-  # Pipeline to route events to security, sysmon, or powershell pipelines.
-  pipeline: &quot;winlogbeat-%{[agent.version]}-routing&quot;
-</code></pre>
-<ol>
-<li><strong>Specify Kibana to monitor the data:</strong></li>
-</ol>
-<pre><code class="language-bash"># =================== Kibana =====================
-
-# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
-# This requires a Kibana endpoint configuration.
-setup.kibana:
-
-  # Kibana Host
-  # Scheme and port can be left out and will be set to the default (http and 5601)
-  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
-  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-  host: &quot;https://192.168.1.100:5601&quot;
-  ssl.verification_mode: none
-
-  # Kibana Space ID
-  # ID of the Kibana Space into which the dashboards should be loaded. By default,
-  # the Default Space will be used.
-  #space.id:
-</code></pre>
-<h5 id="run-the-service">Run the Service:</h5>
-<ul>
-<li>Open PowerShell as Administrator:</li>
-</ul>
-<pre><code class="language-bash">PS C:\Windows\system32&gt; cd ..
-PS C:\Windows&gt; cd 'C:\Program Files\Winlogbeat\'
-PS C:\Program Files\Winlogbeat&gt; .\install-service-winlogbeat.ps1
-.\install-service-winlogbeat.ps1 : File C:\Program Files\Winlogbeat\install-service-winlogbeat.ps1 cannot be loaded
-because running scripts is disabled on this system. For more information, see about_Execution_Policies at
-https:/go.microsoft.com/fwlink/?LinkID=135170.
-At line:1 char:1
-+ .\install-service-winlogbeat.ps1
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
-    + FullyQualifiedErrorId : UnauthorizedAccess
-</code></pre>
-<blockquote>
-<p>If you get a policy error, scripts are blocked due to PowerShell Execution Policy</p>
-</blockquote>
-<ul>
-<li><strong>Check current Execution Policy:</strong></li>
-</ul>
-<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Get-ExecutionPolicy
-Restricted
-</code></pre>
-<ul>
-<li><strong>Change Execution Policy:</strong></li>
-</ul>
-<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Set-ExecutionPolicy Bypass -Scope Process
-
-Execution Policy Change
-The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
-you to the security risks described in the about_Execution_Policies help topic at
-https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;N&quot;): y
-</code></pre>
-<ul>
-<li><strong>Run the installation script again:</strong></li>
-</ul>
-<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; .\install-service-winlogbeat.ps1
-
-Status   Name               DisplayName
-------   ----               -----------
-Stopped  winlogbeat         winlogbeat
-
-
-PS C:\Program Files\Winlogbeat&gt;
-</code></pre>
-<ul>
-<li>
-<p><strong>The winlogbeat service is now created (initially Stopped)</strong></p>
-</li>
-<li>
-<p><strong>Start the service:</strong></p>
-</li>
-</ul>
-<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Start-Service winlogbeat
-</code></pre>
-<ul>
-<li><strong>Verify it is running:</strong></li>
-</ul>
-<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Get-Service winlogbeat
-
-Status   Name               DisplayName
-------   ----               -----------
-Running  winlogbeat         winlogbeat
-
-
-PS C:\Program Files\Winlogbeat&gt;
-</code></pre>
-<blockquote>
-<p><code>Status: Running</code> means the service ran successfully.</p>
-</blockquote>
-<ul>
-<li>OR</li>
-</ul>
-<pre><code class="language-powershell">.\winlogbeat.exe test config -c .\winlogbeat.yml -e
-</code></pre>
-<blockquote>
-<p>If you get a Kibana HTTPS error, change the host in <code>winlogbeat.yml</code> to <a href="http://192.168.1.100:5601"><code>http://192.168.1.100:5601</code></a></p>
-</blockquote>
-<pre><code class="language-powershell">.\winlogbeat.exe setup -e
-</code></pre>
-<ul>
-<li>It will show something like this:</li>
-</ul>
-<pre><code class="language-bash">{&quot;log.level&quot;:&quot;error&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:27:56.151-0700&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/cmd/instance.handleError&quot;,&quot;file.name&quot;:&quot;instance/beat.go&quot;,&quot;file.line&quot;:1355},&quot;message&quot;:&quot;Exiting: error connecting to Kibana: fail to get the Kibana version: HTTP GET request to https://192.168.1.100:5601/api/status fails: fail to execute the HTTP GET request: Get \&quot;https://192.168.1.100:5601/api/status\&quot;: http: server gave HTTP response to HTTPS client (status=0). Response: &quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-Exiting: error connecting to Kibana: fail to get the Kibana version: HTTP GET request to https://192.168.1.100:5601/api/status fails: fail to execute the HTTP GET request: Get &quot;https://192.168.1.100:5601/api/status&quot;: http: server gave HTTP response to HTTPS client (status=0). Response:
-</code></pre>
-<ul>
-<li><strong>To solve the problem here :</strong></li>
-</ul>
-<pre><code class="language-powershell"># ======================= Kibana =========================
-
-# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
-# This requires a Kibana endpoint configuration.
-setup.kibana:
-
-  # Kibana Host
-  # Scheme and port can be left out and will be set to the default (http and 5601)
-  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
-  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
-  host: &quot;http://192.168.1.100:5601&quot;
-  #ssl.verification_mode: none
-</code></pre>
-<ul>
-<li>And then :</li>
-</ul>
-<pre><code class="language-powershell">.\winlogbeat.exe setup -e
-|
-|
-|
-line&quot;:299},&quot;message&quot;:&quot;Loaded index template.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-Index setup finished.
-Loading dashboards (Kibana must be running and reachable)
-{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:12.567-0700&quot;,&quot;log.logger&quot;:&quot;kibana&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/kibana.NewClientWithConfigDefault&quot;,&quot;file.name&quot;:&quot;kibana/client.go&quot;,&quot;file.line&quot;:181},&quot;message&quot;:&quot;Kibana url: http://192.168.1.100:5601&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:12.762-0700&quot;,&quot;log.logger&quot;:&quot;kibana&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/kibana.NewClientWithConfigDefault&quot;,&quot;file.name&quot;:&quot;kibana/client.go&quot;,&quot;file.line&quot;:181},&quot;message&quot;:&quot;Kibana url: http://192.168.1.100:5601&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:15.325-0700&quot;,&quot;log.logger&quot;:&quot;processors.add_cloud_metadata&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/processors/add_cloud_metadata.(*addCloudMetadata).init.func1&quot;,&quot;file.name&quot;:&quot;add_cloud_metadata/add_cloud_metadata.go&quot;,&quot;file.line&quot;:100},&quot;message&quot;:&quot;add_cloud_metadata: hosting provider type not detected.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.033-0700&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/cmd/instance.(*Beat).loadDashboards&quot;,&quot;file.name&quot;:&quot;instance/beat.go&quot;,&quot;file.line&quot;:1070},&quot;message&quot;:&quot;Kibana dashboards successfully loaded.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-Loaded dashboards
-{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.044-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/esleg/eslegclient.NewConnection&quot;,&quot;file.name&quot;:&quot;eslegclient/connection.go&quot;,&quot;file.line&quot;:132},&quot;message&quot;:&quot;elasticsearch url: https://192.168.1.100:9200&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-{&quot;log.level&quot;:&quot;warn&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.046-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg.tls&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/transport/tlscommon.(*TLSConfig).ToConfig&quot;,&quot;file.name&quot;:&quot;tlscommon/tls_config.go&quot;,&quot;file.line&quot;:109},&quot;message&quot;:&quot;SSL/TLS verifications disabled.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-{&quot;log.level&quot;:&quot;warn&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.047-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg.tls&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/transport/tlscommon.(*TLSConfig).ToConfig&quot;,&quot;file.name&quot;:&quot;tlscommon/tls_config.go&quot;,&quot;file.line&quot;:109},&quot;message&quot;:&quot;SSL/TLS verifications disabled.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.120-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/esleg/eslegclient.(*Connection).Ping&quot;,&quot;file.name&quot;:&quot;eslegclient/connection.go&quot;,&quot;file.line&quot;:324},&quot;message&quot;:&quot;Attempting to connect to Elasticsearch version 9.1.3 (default)&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
-Loaded Ingest pipelines
-</code></pre>
-<blockquote>
-<p>After setup, Winlogbeat will connect to Elasticsearch successfully and dashboards will load.</p>
-</blockquote>
-<ul>
-<li>To make sure again :</li>
-</ul>
-<pre><code class="language-bash">PS C:\Program Files\Winlogbeat&gt; .\winlogbeat.exe test config
-Config OK
-PS C:\Program Files\Winlogbeat&gt; .\winlogbeat.exe test output
-elasticsearch: https://192.168.1.100:9200...
-  parse url... OK
-  connection...
-    parse host... OK
-    dns lookup... OK
-    addresses: 192.168.1.100
-    dial up... OK
-  TLS...
-    security... WARN server's certificate chain verification is disabled
-    handshake... OK
-    TLS version: TLSv1.3
-    dial up... OK
-  talk to server... OK
-  version: 9.1.3
-</code></pre>
-<pre><code class="language-powershell">Restart-Service winlogbeat
-</code></pre>
-<h4 id="verify-logs-in-kibana">Verify Logs in Kibana:</h4>
-<ol>
-<li>
-<p>Open Kibana in browser (<code>https://&lt;kibana-server&gt;:5601</code>)</p>
-</li>
-<li>
-<p>Navigate to <strong>Analytics &gt; Dashboard</strong></p>
-</li>
-<li>
-<p>Search for <strong>"[Winlogbeat] Security"</strong></p>
-</li>
-<li>
-<p>Select any dashboard, e.g., <strong>"Failed Logon and Account Lockout Winlogbeat Security"</strong></p>
-</li>
-<li>
-<p>Test failed logons 3 times to see the events appear on the dashboard</p>
-</li>
-<li>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087918501/06cbd1ff-36db-4038-84ba-5c84fc2999fc.png" alt="" align="left" fullwidth="false" /></p>
-</li>
-<li>
-<p>So we almost did what was required of us in this task.</p>
-</li>
-</ol>
-<hr />
-<blockquote>
-<p><strong>Abdelwahab Ahmed Abdelwahab Mohamed</strong></p>
-<p><strong>15-09-2025</strong></p>
 <p><strong><em>💬 "Control</em></strong> <strong><em>the code, and you control the world." 🔐 From wiping metadata to gaining root access — every step is documented and my goal is to deeply understand the system, not just hack!</em></strong></p>
 <p><a href="https://abdelwahabshandy.hashnode.dev/"><strong><em>Abdelwahab Shandy</em></strong></a></p>
 <p><a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/"><strong><em>Linkedin</em></strong></a></p>

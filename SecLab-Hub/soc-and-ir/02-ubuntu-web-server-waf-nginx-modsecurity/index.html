@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/soc-and-incident-response/09-collecting-visualizing-ssh-logs-fluentbit/">
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/soc-and-ir/02-ubuntu-web-server-waf-nginx-modsecurity/">
       
       
-        <link rel="prev" href="../08-building-siem-filebeat-winlogbeat-kibana/">
+        <link rel="prev" href="../01-persistence-analysis-remediation-python-popup-malware/">
       
       
-        <link rel="next" href="../../windows-server-labs-and/01-windows-command-line-fundamentals/">
+        <link rel="next" href="../03-detect-nmap-scan-using-snort/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>09 collecting visualizing ssh logs fluentbit - AAS Security Labs Docs</title>
+        <title>02 ubuntu web server waf nginx modsecurity - AAS Security Labs Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#before-anything-make-sure-of-the-following" class="md-skip">
+        <a href="#1first-preparing-the-lab-environment" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              09 collecting visualizing ssh logs fluentbit
+              02 ubuntu web server waf nginx modsecurity
             
           </span>
         </div>
@@ -329,7 +329,7 @@
           
   
   
-  Soc and incident response
+  Soc and ir
 
         </a>
       </li>
@@ -4695,7 +4695,7 @@
   <span class="md-ellipsis">
     
   
-    Soc and incident response
+    Soc and ir
   
 
     
@@ -4711,7 +4711,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Soc and incident response
+    Soc and ir
   
 
           </label>
@@ -4749,10 +4749,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../02-ubuntu-web-server-waf-nginx-modsecurity/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 ubuntu web server waf nginx modsecurity
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4768,6 +4793,346 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1first-preparing-the-lab-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.First: Preparing the Lab Environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.First: Preparing the Lab Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2installing-the-web-server-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.Installing the Web Server (Nginx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3creating-a-simple-html-page-for-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.Creating a Simple HTML Page for Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4preparing-the-libraries-needed-to-build-modsecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.Preparing the Libraries Needed to Build ModSecurity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.Preparing the Libraries Needed to Build ModSecurity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5installing-modsecurity-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.Installing ModSecurity from Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6downloading-modsecurity-nginx-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.Downloading ModSecurity-Nginx Connector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7downloading-the-same-nginx-version-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.Downloading the Same Nginx Version Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8building-nginx-with-the-modsecurity-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.Building Nginx with the ModSecurity Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9copying-module-and-modsecurity-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.Copying Module and ModSecurity Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10activating-the-module-in-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.Activating the Module in Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.Activating the Module in Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-i-faced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem I Faced:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-enabling-modsecurity-inside-the-server-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Enabling ModSecurity inside the Server Block
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-setting-modsecurity-to-detectiononly-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Setting ModSecurity to DetectionOnly Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-running-and-monitoring-the-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Running and Monitoring the Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-performing-simple-test-attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Performing Simple Test Attacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16-next-enabling-blocking-mode-in-modsecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Next, enabling Blocking Mode in ModSecurity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Idea:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Idea:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-change-modsecurityconf-to-blocking-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Change ModSecurity.conf to Blocking Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-owasp-core-rule-set-crs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Download OWASP Core Rule Set (CRS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-rules-to-modsecurityconf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Add Rules to modsecurity.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reload-nginx-to-apply-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Reload Nginx to Apply Changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4️⃣ Reload Nginx to Apply Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#another-problem-appeared" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Another problem appeared:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-step-testing-blocking-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Next Step: Testing Blocking Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4945,35 +5310,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 collecting visualizing ssh logs fluentbit
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../09-collecting-visualizing-ssh-logs-fluentbit/" class="md-nav__link">
         
   
   
@@ -4989,162 +5329,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#before-anything-make-sure-of-the-following" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Before anything: make sure of the following:
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-started-with-fluent-bit-ssh-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Getting Started with Fluent Bit + SSH Logs
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started with Fluent Bit + SSH Logs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-install-fluent-bit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ Install Fluent Bit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-navigate-to-the-configuration-folder" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2️⃣ Navigate to the Configuration Folder
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-create-new-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ Create New Files
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-configure-ssh-parser" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4️⃣ Configure SSH Parser
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-modify-fluent-bitconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5️⃣ Modify fluent-bit.conf
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-navigate-to-the-executable-folder-and-run-fluent-bit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6️⃣ Navigate to the Executable Folder and Run Fluent Bit
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-add-a-test-log" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7️⃣ Add a Test Log
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-verify-logs-in-elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8️⃣ Verify Logs in Elasticsearch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9-in-kibana" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9️⃣ In Kibana
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#expected-outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Expected Outputs
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5521,10 +5705,160 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#before-anything-make-sure-of-the-following" class="md-nav__link">
+  <a href="#1first-preparing-the-lab-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Before anything: make sure of the following:
+        1.First: Preparing the Lab Environment
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.First: Preparing the Lab Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2installing-the-web-server-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.Installing the Web Server (Nginx)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3creating-a-simple-html-page-for-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.Creating a Simple HTML Page for Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4preparing-the-libraries-needed-to-build-modsecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.Preparing the Libraries Needed to Build ModSecurity
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.Preparing the Libraries Needed to Build ModSecurity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5installing-modsecurity-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.Installing ModSecurity from Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6downloading-modsecurity-nginx-connector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.Downloading ModSecurity-Nginx Connector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7downloading-the-same-nginx-version-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.Downloading the Same Nginx Version Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8building-nginx-with-the-modsecurity-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.Building Nginx with the ModSecurity Module
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9copying-module-and-modsecurity-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.Copying Module and ModSecurity Files
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10activating-the-module-in-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.Activating the Module in Nginx
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10.Activating the Module in Nginx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-i-faced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem I Faced:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-enabling-modsecurity-inside-the-server-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Enabling ModSecurity inside the Server Block
       
     </span>
   </a>
@@ -5532,22 +5866,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#getting-started-with-fluent-bit-ssh-logs" class="md-nav__link">
+  <a href="#12-setting-modsecurity-to-detectiononly-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Getting Started with Fluent Bit + SSH Logs
+        12. Setting ModSecurity to DetectionOnly Mode
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Getting Started with Fluent Bit + SSH Logs">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-running-and-monitoring-the-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Running and Monitoring the Service
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-performing-simple-test-attacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Performing Simple Test Attacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Results">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-install-fluent-bit" class="md-nav__link">
+  <a href="#16-next-enabling-blocking-mode-in-modsecurity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1️⃣ Install Fluent Bit
+        16. Next, enabling Blocking Mode in ModSecurity
       
     </span>
   </a>
@@ -5555,10 +5922,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-navigate-to-the-configuration-folder" class="md-nav__link">
+  <a href="#idea" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2️⃣ Navigate to the Configuration Folder
+        📝 Idea:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Idea:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-change-modsecurityconf-to-blocking-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Change ModSecurity.conf to Blocking Mode
       
     </span>
   </a>
@@ -5566,10 +5945,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-create-new-files" class="md-nav__link">
+  <a href="#2-download-owasp-core-rule-set-crs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3️⃣ Create New Files
+        2️⃣ Download OWASP Core Rule Set (CRS)
       
     </span>
   </a>
@@ -5577,10 +5956,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-configure-ssh-parser" class="md-nav__link">
+  <a href="#3-add-rules-to-modsecurityconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4️⃣ Configure SSH Parser
+        3️⃣ Add Rules to modsecurity.conf
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-reload-nginx-to-apply-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Reload Nginx to Apply Changes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4️⃣ Reload Nginx to Apply Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#another-problem-appeared" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Another problem appeared:
       
     </span>
   </a>
@@ -5588,65 +5995,26 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-modify-fluent-bitconf" class="md-nav__link">
+  <a href="#solution_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5️⃣ Modify fluent-bit.conf
+        Solution:
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#6-navigate-to-the-executable-folder-and-run-fluent-bit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6️⃣ Navigate to the Executable Folder and Run Fluent Bit
-      
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-add-a-test-log" class="md-nav__link">
+  <a href="#next-step-testing-blocking-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7️⃣ Add a Test Log
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-verify-logs-in-elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8️⃣ Verify Logs in Elasticsearch
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9-in-kibana" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9️⃣ In Kibana
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#expected-outputs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Expected Outputs
+        ✅ Next Step: Testing Blocking Mode
       
     </span>
   </a>
@@ -5675,254 +6043,548 @@
 
 
 
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760453718418/8bee09db-0fef-4cfe-b275-d69ea48fc222.webp" align="center" fullwidth="false" /></p>
-<ol>
-<li>
-<p>Install Fluent-bit</p>
-</li>
-<li>
-<p>Navigate to /etc/fluent-bit</p>
-</li>
-<li>
-<p>Modify fluent-bit.conf</p>
-</li>
-<li>
-<p>Create a new file called ssh.conf</p>
-</li>
-<li>
-<p>Navigate to /opt/fluent-bit/bin</p>
-</li>
-<li>
-<p>Run the Fluent Bit script =&gt; <code>./fluent-bit -c "full Path"</code></p>
-</li>
-<li>
-<p>Append a log to the log file that Fluent Bit watches</p>
-</li>
-</ol>
+  <h1>02 ubuntu web server waf nginx modsecurity</h1>
+
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760134590203/b7a636f5-70d7-49ff-9147-5707e72a3946.png" alt="" align="center" fullwidth="true" /></p>
+<p>In this lab, I prepared a complete environment on Ubuntu to practice running a <strong>Web Server</strong> with <strong>WAF (ModSecurity)</strong> and see the difference between Allowed and Blocked Requests.</p>
 <hr />
-<h4 id="before-anything-make-sure-of-the-following">Before anything: make sure of the following:</h4>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760134639050/79fb3d35-57a4-45ef-9190-a8caf80bd704.png" alt="" align="center" fullwidth="true" /></p>
+<h2 id="1first-preparing-the-lab-environment"><strong>1.First: Preparing the Lab Environment</strong></h2>
 <ul>
-<li>To check the status of the Elasticsearch service on your machine :</li>
+<li>I installed Ubuntu 22.04.3 LTS to work on:</li>
 </ul>
-<pre><code class="language-sh">sudo systemctl status elasticsearch.service
+<pre><code class="language-bash">Distributor ID: Ubuntu
+Description:    Ubuntu 22.04.3 LTS
+Release:        22.04
+Codename:       jammy
 </code></pre>
 <ul>
-<li>To check the Kibana service :</li>
+<li>
+<p>I installed essential tools to interact faster with the system:</p>
+</li>
+<li>
+<p>Because we will need git and something like ipconfig</p>
+</li>
 </ul>
-<pre><code class="language-sh">sudo systemctl status kibana
+<pre><code class="language-bash">sudo apt install git net-tools -y
 </code></pre>
 <hr />
-<h1 id="getting-started-with-fluent-bit-ssh-logs">Getting Started with Fluent Bit + SSH Logs</h1>
-<h3 id="1-install-fluent-bit"><strong>1️⃣ Install Fluent Bit</strong></h3>
-<pre><code class="language-sh">sudo curl https://raw.githubusercontent.com/fluent/fluent-bit/master/install.sh | sh
-|
-|
-Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
-
-Installation completed. Happy Logging!
-</code></pre>
+<h3 id="2installing-the-web-server-nginx"><strong>2.Installing the Web Server (Nginx)</strong></h3>
 <ul>
-<li>
-<p>We download the installation script from GitHub and run it directly.</p>
-</li>
-<li>
-<p>Fluent Bit will be installed on the system. It is a tool for collecting, transforming, and sending logs to Elasticsearch or other destinations.</p>
-</li>
+<li><strong>Nginx (pronounced Engine-X)</strong> is a <strong>high-performance open-source Web Server</strong>.\
+  It is used to serve web pages, and it also works as a <strong>Reverse Proxy</strong>, <strong>Load Balancer</strong>, and <strong>HTTP Cache</strong>.</li>
 </ul>
-<h3 id="2-navigate-to-the-configuration-folder"><strong>2️⃣ Navigate to the Configuration Folder</strong></h3>
-<pre><code class="language-bash">cd /etc/fluent-bit/
-</code></pre>
-<ul>
-<li>This is where Fluent Bit’s configuration files are located.</li>
-</ul>
-<h3 id="3-create-new-files"><strong>3️⃣ Create New Files</strong></h3>
-<pre><code class="language-sh">sudo touch ssh.conf
+<pre><code class="language-bash">sudo apt update
 
-sudo touch ssh_logs.log
+sudo apt install nginx -y
 
-aas@aas:/etc/fluent-bit$ ls
-fluent-bit.conf  parsers.conf  plugins.conf  ssh.conf  ssh_logs.log
-</code></pre>
-<ul>
-<li>
-<p><code>ssh.conf</code> → file to define a parser for SSH logs</p>
-</li>
-<li>
-<p><code>ssh_logs.log</code> → file to write and monitor SSH logs that Fluent Bit will read</p>
-</li>
-<li>
-<p><code>ls</code> → verify that the files were created</p>
-</li>
-</ul>
-<h3 id="4-configure-ssh-parser"><strong>4️⃣ Configure SSH Parser</strong></h3>
-<pre><code class="language-sh">sudo nano ssh.conf 
-|
-|
-[PARSER]
-    Name ssh
-    Format regex
-    Regex (?&lt;time&gt;\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\s+(?&lt;Type&gt;\w+)\s+(?&lt;Protocol&gt;\w+)\s+(?&lt;Source_IP&gt;\d{1,3}(?:\.\d{1,3}){3})\s+(?&lt;Destination_IP&gt;\d{1,3}(?:\.\d{1,3}){3})\s+(?&lt;Source_Port&gt;\d+)\s+(?&lt;Destination_Port&gt;\d+)\s+(?&lt;User&gt;\S+)\s+(?&lt;Location&gt;\S+)$
-    Time_Key time
-    Time_Format %Y-%m-%d %H:%M:%S
-</code></pre>
-<ul>
-<li>
-<p>The Regex splits each log line into fields: Time, Type, Protocol, Source_IP, Destination_IP, Source_Port, Destination_Port, User, Location.</p>
-</li>
-<li>
-<p><code>Time_Key</code> and <code>Time_Format</code> specify which field to use as the event time and its format.</p>
-</li>
-</ul>
-<h3 id="5-modify-fluent-bitconf"><strong>5️⃣ Modify fluent-bit.conf</strong></h3>
-<pre><code class="language-bash">    # Plugins File
-    # ============
-    # specify an optional 'Plugins' configuration file to load external plugins.
-    plugins_file plugins.conf
+sudo systemctl enable nginx
 
-[INPUT]
-    name tail
-    path /etc/fluent-bit/ssh_logs.log
-    tag ssh_logs
-    parser ssh
+sudo systemctl start nginx
 
-    # Read interval (sec) Default: 1
-    #interval_sec 1
-
-[OUTPUT]
-    name es
-    host 127.0.0.1
-    port 9200
-    match ssh_logs
-    index ssh_logs
-    HTTP_User elastic
-    HTTP_Passwd hel+6ncXHaUKps*RU-k5
-    tls on 
-    tls.verify off
-    Suppress_Type_Name on
-</code></pre>
-<ul>
-<li>
-<p>INPUT → the source file (<code>ssh_logs.log</code>)</p>
-</li>
-<li>
-<p>parser → <code>ssh</code> parser we created</p>
-</li>
-<li>
-<p>OUTPUT → Elasticsearch as the destination:</p>
-</li>
-<li>
-<p><code>host</code> and <code>port</code> → location of Elasticsearch</p>
-</li>
-<li>
-<p><code>index</code> → name of the index in Elasticsearch(<code>ssh_logs</code>)</p>
-</li>
-<li>
-<p><code>HTTP_User</code> and <code>HTTP_Passwd</code> → login credentials</p>
-</li>
-<li>
-<p><code>tls</code> → encrypt connection (<code>tls.verify off</code> if certificate is self-signed)</p>
-</li>
-</ul>
-<p><strong>Note :</strong></p>
-<pre><code class="language-sh">index ssh_logs
+sudo nginx -v
 </code></pre>
 <blockquote>
-<p>Means all logs will be stored in an Elasticsearch index called <code>ssh_logs</code>.</p>
+<p>(It showed nginx/1.18.0 version)</p>
 </blockquote>
-<h3 id="6-navigate-to-the-executable-folder-and-run-fluent-bit"><strong>6️⃣ Navigate to the Executable Folder and Run Fluent Bit</strong></h3>
-<pre><code class="language-sh"> cd /opt/fluent-bit/bin/
-</code></pre>
 <ul>
-<li>Run:</li>
+<li>To make sure everything is working correctly:</li>
 </ul>
-<pre><code class="language-sh">./fluent-bit -c /etc/fluent-bit/fluent-bit.conf
-Fluent Bit v4.0.9
-* Copyright (C) 2015-2025 The Fluent Bit Authors
-* Fluent Bit is a CNCF sub-project under the umbrella of Fluentd
-* https://fluentbit.io
-
-______ _                  _    ______ _ _             ___  _____ 
-|  ___| |                | |   | ___ (_) |           /   ||  _  |
-| |_  | |_   _  ___ _ __ | |_  | |_/ /_| |_  __   __/ /| || |/' |
-|  _| | | | | |/ _ \ '_ \| __| | ___ \ | __| \ \ / / /_| ||  /| |
-| |   | | |_| |  __/ | | | |_  | |_/ / | |_   \ V /\___  |\ |_/ /
-\_|   |_|\__,_|\___|_| |_|\__| \____/|_|\__|   \_/     |_(_)___/ 
-
-
-[2025/09/16 16:12:29] [ info] [fluent bit] version=4.0.9, commit=, pid=5105
-[2025/09/16 16:12:29] [ info] [storage] ver=1.5.3, type=memory, sync=normal, checksum=off, max_chunks_up=128
-[2025/09/16 16:12:29] [ info] [simd    ] SSE2
-[2025/09/16 16:12:29] [ info] [cmetrics] version=1.0.5
-[2025/09/16 16:12:29] [ info] [ctraces ] version=0.6.6
-[2025/09/16 16:12:29] [ info] [input:tail:tail.0] initializing
-[2025/09/16 16:12:29] [ info] [input:tail:tail.0] storage_strategy='memory' (memory only)
-[2025/09/16 16:12:29] [ info] [sp] stream processor started
-[2025/09/16 16:12:29] [ info] [engine] Shutdown Grace Period=5, Shutdown Input Grace Period=2
-[2025/09/16 16:12:29] [ info] [input:tail:tail.0] inotify_fs_add(): inode=2624218 watch_fd=1 name=/etc/fluent-bit/ssh_logs.log
-[2025/09/16 16:12:29] [ info] [output:es:es.0] worker #1 started
-[2025/09/16 16:12:29] [ info] [output:es:es.0] worker #0 started
-</code></pre>
-<ul>
-<li>
-<p>This launches Fluent Bit using the configuration file.</p>
-</li>
-<li>
-<p>Fluent Bit starts monitoring <code>/etc/fluent-bit/ssh_logs.log</code> and sends new log lines to Elasticsearch.</p>
-</li>
-<li>
-<p>The messages confirm it is running and waiting for new log entries.</p>
-</li>
-</ul>
-<h3 id="7-add-a-test-log"><strong>7️⃣ Add a Test Log</strong></h3>
-<pre><code class="language-sh">echo &quot;2025-09-16 18:55:00 DROP TCP 192.168.1.5 10.0.0.8 12345 22 root Cairo&quot; | sudo tee -a /etc/fluent-bit/ssh_logs.log
-</code></pre>
-<ul>
-<li>Adds a test line so Fluent Bit can capture it and send it to Elasticsearch.</li>
-</ul>
-<h3 id="8-verify-logs-in-elasticsearch"><strong>8️⃣ Verify Logs in Elasticsearch</strong></h3>
-<pre><code class="language-sh">curl -u elastic:hel+6ncXHaUKps*RU-k5 -k &quot;https://127.0.0.1:9200/ssh_logs/_search?pretty&quot;
-</code></pre>
-<ul>
-<li>
-<p>Search in the <code>ssh_logs</code> index.</p>
-</li>
-<li>
-<p><code>-u</code> → username and password</p>
-</li>
-<li>
-<p><code>-k</code> → ignore certificate issues</p>
-</li>
-<li>
-<p>If the added log appears → Fluent Bit is working correctly.</p>
-</li>
-</ul>
-<h3 id="9-in-kibana"><strong>9️⃣ In Kibana</strong></h3>
-<ul>
-<li>Open in browser:</li>
-</ul>
-<pre><code class="language-bash">http://192.168.1.100:5601/
-</code></pre>
-<ul>
-<li>Go to: Management → Stack Management → Index Management → you should see the <code>ssh_logs</code> index created with logs inside.</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758088467949/35600e8e-ba96-4ae2-89f2-24f977aa58d8.png" alt="" align="left" fullwidth="false" /></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757798769997/53b2f3f7-0c9c-49e6-9d26-108e6ffc1920.png" alt="" align="left" fullwidth="true" /></p>
+<blockquote>
+<p>I confirmed everything works by opening the page in the browser or using curl.</p>
+</blockquote>
 <hr />
-<h3 id="expected-outputs"><strong>Expected Outputs</strong></h3>
-<p><strong>Screenshot from the Fluent Bit configuration file:</strong></p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758088482305/c348f2af-3d6b-48f4-a8d2-d46cc80e8f87.png" alt="" align="left" fullwidth="false" /></p>
-<p><strong>Screenshot from the terminal after executing the command:</strong></p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758088495724/a58d5563-1f60-493d-bf61-0720d47d75db.png" alt="" align="left" fullwidth="false" /></p>
-<p><strong>Screenshot from the created index in Elasticsearch Stack Management:</strong></p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758088530270/e9fa1398-2b6f-43e5-bfb4-7bc182088eec.png" alt="" align="left" fullwidth="false" /></p>
+<h3 id="3creating-a-simple-html-page-for-practice"><strong>3.Creating a Simple HTML Page for Practice</strong></h3>
+<p>Created an HTML file in the default Nginx web folder:</p>
+<pre><code class="language-shell">cd /var/www/html/
+
+sudo nano NetworkSecurityTask.html
+</code></pre>
+<p>It will appear:</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757798794166/01b19246-1d17-4668-b357-5facd13a4bb7.png" alt="" align="left" fullwidth="true" /></p>
+<blockquote>
+<p>I wrote simple content to test on it.</p>
+</blockquote>
+<hr />
+<h2 id="4preparing-the-libraries-needed-to-build-modsecurity"><strong>4.Preparing the Libraries Needed to Build ModSecurity</strong></h2>
+<pre><code class="language-bash">sudo apt install gcc make build-essential autoconf automake libtool libcurl4-openssl-dev liblua5.3-dev libfuzzy-dev ssdeep gettext pkg-config libgeoip-dev libyajl-dev doxygen libpcre++-dev libpcre2-16-0 libpcre2-dev libpcre2-posix3 zlib1g zlib1g-dev wget -y
+</code></pre>
+<blockquote>
+<p>To build ModSecurity from source.</p>
+</blockquote>
+<hr />
+<h3 id="5installing-modsecurity-from-source"><strong>5.Installing ModSecurity from Source</strong></h3>
+<pre><code class="language-bash">cd /opt
+# Go to the /opt directory (commonly used to install software from source)
+
+sudo git clone https://github.com/owasp-modsecurity/ModSecurity.git
+# Download (clone) the ModSecurity source code from GitHub into /opt
+
+cd ModSecurity
+# Enter the ModSecurity folder we just downloaded
+
+sudo git submodule init
+# Initialize the submodules (linked libraries inside the project)
+
+sudo git submodule update
+# Download/update the contents of the submodules (pulls all required sub-libraries)
+
+sudo ./build.sh
+# Run the build.sh script to prepare the project for building (creates initial configuration files)
+
+sudo ./configure
+# Configure the build (checks for required libraries and sets installation options)
+
+sudo make
+# Compile the source code (turn it into executable binaries)
+
+sudo make install
+# Install the program into the system after compilation (copies files to the correct paths)
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p><strong>ModSecurity</strong> is an <strong>open-source Web Application Firewall (WAF)</strong>.</p>
+</li>
+<li>
+<p>It works as a <strong>Module</strong> for Web Servers (Apache, Nginx, IIS) to protect applications from common web attacks.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="6downloading-modsecurity-nginx-connector"><strong>6.Downloading ModSecurity-Nginx Connector</strong></h3>
+<pre><code class="language-shell">cd /opt
+# Go to the /opt directory (commonly used to store or build software from source)
+
+sudo git clone https://github.com/owasp-modsecurity/ModSecurity-nginx.git
+# Download (clone) the ModSecurity-nginx connector source code from GitHub into /opt
+# (This connector links Nginx to the ModSecurity engine)
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p>The <strong>ModSecurity-Nginx Connector</strong> is a <strong>module</strong> that acts as an interface between Nginx and the ModSecurity Engine.</p>
+</li>
+<li>
+<p>It allows Nginx to use the WAF (ModSecurity) and apply rules to incoming traffic.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="7downloading-the-same-nginx-version-source"><strong>7.Downloading the Same Nginx Version Source</strong></h3>
+<ul>
+<li>Initially, I downloaded nginx-1.25.4:</li>
+</ul>
+<pre><code class="language-bash">cd /opt
+
+sudo wget https://nginx.org/download/nginx-1.25.4.tar.gz
+# Download the Nginx source code (version 1.25.4) as a .tar.gz archive from the official site
+
+sudo tar -xzvf nginx-1.25.4.tar.gz
+# Extract (unzip) the downloaded archive file into a folder named nginx-1.25.4
+
+cd nginx-1.25.4
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p>The <strong>Source Code</strong> is the original program code (Nginx here) before it becomes a ready binary.</p>
+</li>
+<li>
+<p>When someone tells you to <strong>download the source of the same version you have</strong>, it means :</p>
+</li>
+<li>
+<p>Check which version of Nginx you are running (e.g., 1.24.0).</p>
+</li>
+<li>
+<p>Download the exact same version from the official site as <strong>tar.gz</strong> (source).</p>
+</li>
+<li>
+<p>Do not build from a newer or older version — same as the installed version.</p>
+</li>
+<li>
+<p>Reason: If you will build <strong>Modules</strong> or <strong>Compile with additions</strong>, the source must match the installed version to avoid conflicts.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="8building-nginx-with-the-modsecurity-module"><strong>8.Building Nginx with the ModSecurity Module</strong></h3>
+<pre><code class="language-bash">sudo ./configure --with-compat --add-dynamic-module=/opt/ModSecurity-nginx
+# Configure the Nginx source build:
+# --with-compat → allows dynamic modules to be compatible with the running Nginx version
+# --add-dynamic-module=/opt/ModSecurity-nginx → tells Nginx to compile in the ModSecurity-nginx connector as a dynamic module
+
+sudo make
+
+sudo make modules
+</code></pre>
+<blockquote>
+<ul>
+<li><strong>Building Nginx with ModSecurity Module</strong> means <strong>compiling Nginx and the ModSecurity Nginx Connector together from source</strong> so Nginx can work as a Web Application Firewall (WAF) and apply protection rules to traffic.</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="9copying-module-and-modsecurity-files"><strong>9.Copying Module and ModSecurity Files</strong></h3>
+<ul>
+<li><strong>You copy the Module files and ModSecurity configuration files to the correct paths so Nginx can use them</strong>:</li>
+</ul>
+<pre><code class="language-bash">sudo cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules-enabled/
+# Copy the module file (ngx_http_modsecurity_module.so) that was adopted from the Nginx source code
+# to the /etc/nginx/modules-enabled/ directory so that Nginx can load and run it at startup
+
+sudo cp /opt/ModSecurity/modsecurity.conf-recommended /etc/nginx/modsecurity.conf
+# Copy the default configuration file (modsecurity.conf-recommended)
+# from the ModSecurity project to /etc/nginx/modsecurity.conf
+# (This is the main config file for ModSecurity inside Nginx)
+
+sudo cp /opt/ModSecurity/unicode.mapping /etc/nginx/unicode.mapping
+# Copy the file unicode.mapping (responsible for Unicode support)
+# From the ModSecurity project to /etc/nginx/unicode.mapping
+# So that ModSecurity handles different encodings correctly
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p><strong>Step 1</strong> → Makes Nginx load the ModSecurity Module.</p>
+</li>
+<li>
+<p><strong>Step 2</strong> → Adds default ModSecurity configuration to Nginx.</p>
+</li>
+<li>
+<p><strong>Step 3</strong> → Ensures Unicode works correctly with ModSecurity.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="10activating-the-module-in-nginx"><strong>10.Activating the Module in Nginx</strong></h2>
+<ul>
+<li>Added this line at the top of <strong>/etc/nginx/nginx.conf</strong> :</li>
+</ul>
+<pre><code class="language-shell">sudo nano /etc/nginx/nginx.conf
+
+load_module /etc/nginx/modules-enabled/ngx_http_modsecurity_module.so;
+# Add this line at the top of the nginx.conf file
+# (before the events or http block) so that Nginx loads the ModSecurity module when running
+</code></pre>
+<blockquote>
+<p>This line tells <strong>Nginx</strong> to load the external <strong>ModSecurity Module</strong> located at <code>/etc/nginx/modules-enabled/</code> during startup.</p>
+</blockquote>
+<ul>
+<li>Place it at the top <strong>before any events or http block</strong>. Example:</li>
+</ul>
+<pre><code class="language-bash"># Download the ModSecurity module
+load_module /etc/nginx/modules-enabled/ngx_http_modsecurity_module.so;
+
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+    worker_connections 768;
+    # multi_accept on;
+}
+
+http {
+    ##
+    # Basic Settings
+    ##
+    sendfile on;
+    tcp_nopush on;
+    types_hash_max_size 2048;
+    ...
+    include /etc/nginx/sites-enabled/*;
+}
+</code></pre>
+<hr />
+<h3 id="problem-i-faced"><strong>Problem I Faced:</strong></h3>
+<ul>
+<li>Error appeared:</li>
+</ul>
+<pre><code class="language-cs">module &quot;...ngx_http_modsecurity_module.so&quot; version 1025004 instead of 1018000
+</code></pre>
+<blockquote>
+<p>This means the module was built for a different Nginx version.</p>
+</blockquote>
+<h3 id="solution"><strong>Solution:</strong></h3>
+<blockquote>
+<p>Removed the default Nginx and installed the latest version (1.28.0):</p>
+</blockquote>
+<pre><code class="language-bash">sudo apt remove nginx nginx-common nginx-core -y
+
+sudo add-apt-repository ppa:ondrej/nginx -y
+
+sudo apt update
+
+sudo apt install nginx -y
+
+sudo nginx -v  # nginx/1.28.0
+</code></pre>
+<ul>
+<li>Then rebuilt the module with the new version <strong>1.28.0</strong>:</li>
+</ul>
+<pre><code class="language-bash">cd /opt
+
+sudo wget https://nginx.org/download/nginx-1.28.0.tar.gz
+
+sudo tar -xzvf nginx-1.28.0.tar.gz
+
+cd nginx-1.28.0
+
+sudo ./configure --with-compat --add-dynamic-module=/opt/ModSecurity-nginx
+
+sudo make
+
+sudo make modules
+
+sudo cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules-enabled/
+</code></pre>
+<ul>
+<li>Tested the configuration :</li>
+</ul>
+<pre><code class="language-bash">sudo nginx -t
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+</code></pre>
+<hr />
+<h2 id="11-enabling-modsecurity-inside-the-server-block"><strong>11. Enabling ModSecurity inside the Server Block</strong></h2>
+<pre><code class="language-bash">server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html index.htm;
+
+    server_name _;
+
+    # 🔹 Activate ModSecurity
+    modsecurity on;
+    modsecurity_rules_file /etc/nginx/modsecurity.conf;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+</code></pre>
+<hr />
+<h2 id="12-setting-modsecurity-to-detectiononly-mode"><strong>12. Setting ModSecurity to DetectionOnly Mode</strong></h2>
+<pre><code class="language-bash">sudo nano /etc/nginx/modsecurity.conf
+
+SecRuleEngine DetectionOnly
+# This line is located inside the configuration file:
+# Specifies ModSecurity's operating mode to be &quot;DetectionOnly&quot;
+# This means it will only detect attacks and write them to the log without blocking them (it will not block them).
+</code></pre>
+<ul>
+<li>This makes ModSecurity log attacks without blocking them.</li>
+</ul>
+<hr />
+<h2 id="13-running-and-monitoring-the-service"><strong>13. Running and Monitoring the Service</strong></h2>
+<pre><code class="language-bash">sudo systemctl enable nginx
+# Enable the Nginx service to start automatically on every system reboot (Auto Start on Boot)
+
+sudo systemctl start nginx
+# Start the Nginx service immediately
+
+sudo tail -f /var/log/modsec_audit.log
+# Live monitoring of the ModSecurity log file
+# - tail -f means displaying the last lines of the file with immediate updates when new logs are added
+# - Here you will see any attack attempts or requests logged in ModSecurity
+</code></pre>
+<hr />
+<h2 id="14-performing-simple-test-attacks"><strong>14. Performing Simple Test Attacks</strong></h2>
+<ul>
+<li>XSS Attack:</li>
+</ul>
+<pre><code class="language-bash">curl &quot;http://localhost/NetworkSecurityTask.html?q=&lt;script&gt;alert(1)&lt;/script&gt;&quot;
+</code></pre>
+<ul>
+<li>Simple SQLi Attack:</li>
+</ul>
+<pre><code class="language-bash">curl -X POST -d &quot;username=' OR '1'='1&quot; http://localhost/NetworkSecurityTask.html
+</code></pre>
+<ul>
+<li>
+<p>Example:</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757804179828/e83e804a-a10d-407c-b976-125a5e0b83a1.png" alt="" align="center" fullwidth="true" /></p>
+</li>
+</ul>
+<hr />
+<h2 id="15-results"><strong>15. Results</strong></h2>
+<ul>
+<li>
+<p>All requests appeared in <code>/var/log/modsec_audit.log</code> with all details (A/B/D/E/F).</p>
+</li>
+<li>
+<p>ModSecurity logged everything but did not block (DetectionOnly).</p>
+</li>
+<li>
+<p>To actually block, rules with <code>deny</code> must be added.</p>
+</li>
+<li>
+<p>What I did so far is the <strong>Attack Detection phase</strong> (or DetectionOnly Mode).</p>
+</li>
+</ul>
+<hr />
+<h3 id="16-next-enabling-blocking-mode-in-modsecurity"><strong>16. Next, enabling Blocking Mode in ModSecurity</strong></h3>
+<ul>
+<li>
+<h3 id="idea">📝 Idea:</h3>
+</li>
+<li>
+<p>We were in <strong>DetectionOnly</strong> (attacks logged but not blocked).</p>
+</li>
+<li>
+<p>Now we will switch ModSecurity to <strong>Blocking Mode</strong> (attacks blocked + log shows “Access denied with code 403”).</p>
+</li>
+<li>
+<p>We will do this step by step:</p>
+</li>
+</ul>
+<h4 id="1-change-modsecurityconf-to-blocking-mode">1️⃣ Change ModSecurity.conf to Blocking Mode</h4>
+<p>Opened the config file:</p>
+<pre><code class="language-bash">sudo nano /etc/nginx/modsecurity.conf
+</code></pre>
+<p>Changed the line:</p>
+<pre><code class="language-bash">SecRuleEngine DetectionOnly
+</code></pre>
+<p>to:</p>
+<pre><code class="language-bash">SecRuleEngine On
+</code></pre>
+<p>💡 Now ModSecurity will block, not just log.</p>
+<hr />
+<h4 id="2-download-owasp-core-rule-set-crs">2️⃣ Download OWASP Core Rule Set (CRS)</h4>
+<p>To detect and block attacks, ModSecurity needs Rules:</p>
+<pre><code class="language-bash">cd /etc/nginx/
+
+sudo git clone https://github.com/coreruleset/coreruleset.git
+</code></pre>
+<ul>
+<li><strong>Explanation:</strong> CRS is a ready-made set of rules that detects and blocks most common attacks (XSS, SQLi, LFI…).</li>
+</ul>
+<hr />
+<h4 id="3-add-rules-to-modsecurityconf">3️⃣ Add Rules to modsecurity.conf</h4>
+<p>Opened the file again:</p>
+<pre><code class="language-bash">sudo nano /etc/nginx/modsecurity.conf
+</code></pre>
+<p>Added at the end:</p>
+<pre><code class="language-bash"># Include the Core Rule Set (CRS) configuration file
+# This file configures the global settings for security rules (such as global variables)
+Include /etc/nginx/coreruleset/crs-setup.conf
+Include /etc/nginx/coreruleset/rules/*.conf
+# Include all rules files located in the rules/ folder
+# These files contain the actual rules for detecting and preventing attacks (XSS, SQLi, LFI, etc.)
+</code></pre>
+<p>💡 <strong>Explanation:</strong> This links ModSecurity to the new CRS.</p>
+<hr />
+<h3 id="4-reload-nginx-to-apply-changes">4️⃣ Reload Nginx to Apply Changes</h3>
+<pre><code class="language-bash">sudo nginx -t &amp;&amp; sudo systemctl reload nginx
+</code></pre>
+<p>💡 <strong>Explanation:</strong> <code>nginx -t</code> tests the configuration. If it says <code>syntax is ok</code>, everything is fine. Then reload applies changes without stopping the service.</p>
+<h5 id="another-problem-appeared">Another problem appeared:</h5>
+<pre><code class="language-bash">aas@aas:/etc/nginx$ sudo nginx -t &amp;&amp; sudo systemctl reload nginx
+2025/09/11 03:50:20 [emerg] 6906#6906: &quot;modsecurity_rules_file&quot; directive Rules error. File: /etc/nginx/modsecurity.conf. Line: 276. Column: 45. /etc/nginx/coreruleset/crs-setup.conf: Not able to open file. Looking at: '/etc/nginx/coreruleset/crs-setup.conf', '/etc/nginx/coreruleset/crs-setup.conf', '/etc/nginx//etc/nginx/coreruleset/crs-setup.conf', '/etc/nginx//etc/nginx/coreruleset/crs-setup.conf'. in /etc/nginx/sites-enabled/default:49
+nginx: configuration file /etc/nginx/nginx.conf test failed
+</code></pre>
+<blockquote>
+<p>Cannot find <code>crs-setup.conf</code> in the path used in <code>modsecurity_rules_file</code>.</p>
+</blockquote>
+<p>The file might be elsewhere:</p>
+<pre><code class="language-bash">aas@aas:/etc/nginx$ ls /etc/nginx/coreruleset
+CHANGES.md              docs           plugins         rules        util
+CONTRIBUTING.md         INSTALL.md     README.md       SECURITY.md
+CONTRIBUTORS.md         KNOWN_BUGS.md  regex-assembly  SPONSORS.md
+crs-setup.conf.example  LICENSE        renovate.json   tests
+</code></pre>
+<p>The filename is different, meaning the default CRS file is not copied yet.</p>
+<h4 id="solution_1">Solution:</h4>
+<ul>
+<li><strong>Create a copy from the example file</strong>:</li>
+</ul>
+<pre><code class="language-bash">sudo cp /etc/nginx/coreruleset/crs-setup.conf.example /etc/nginx/coreruleset/crs-setup.conf
+</code></pre>
+<ul>
+<li><strong>Ensure the path in modsecurity.conf is correct</strong></li>
+</ul>
+<pre><code class="language-bash">sudo nano /etc/nginx/modsecurity.conf
+</code></pre>
+<ul>
+<li>Make sure the line reads:</li>
+</ul>
+<pre><code class="language-bash">Include /etc/nginx/coreruleset/crs-setup.conf
+</code></pre>
+<ul>
+<li>After the modification:</li>
+</ul>
+<pre><code class="language-bash">sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+<hr />
+<h3 id="next-step-testing-blocking-mode">✅ Next Step: <strong>Testing Blocking Mode</strong></h3>
+<ul>
+<li>
+<p>To confirm everything works:</p>
+</li>
+<li>
+<p>1️⃣ <strong>Send a malicious request</strong> — like a simple SQL Injection or XSS.</p>
+</li>
+<li>
+<p>Example:</p>
+</li>
+</ul>
+<pre><code class="language-bash">curl -i http://localhost/NetworkSecurityTask.html?id='or+1=1--
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757799056407/69bfaaf3-177a-4d78-899d-27a399ef562e.png" alt="" align="left" fullwidth="true" /></p>
+<p>OR:</p>
+<pre><code class="language-bash">curl &quot;http://localhost/NetworkSecurityTask.html?q=&lt;script&gt;alert(1)&lt;/script&gt;&quot;
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757799360271/b13b106b-5080-4151-aac4-6afb64fc55e0.png" alt="" align="left" fullwidth="true" /></p>
+<ul>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757801785061/5a602104-79d1-4f11-b611-35e6d8f342bd.png" alt="" align="center" fullwidth="true" /></p>
+</li>
+<li>
+<p>If Blocking Mode works:</p>
+</li>
+<li>
+<p>The server returns <strong>403 Forbidden</strong> (Access Denied).</p>
+</li>
+<li>
+<p>In <code>/var/log/modsec_audit.log</code> it shows:</p>
+<ul>
+<li><code>Access denied with code 403</code> + Rule ID that blocked the request.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>2️⃣ <strong>Check ModSecurity Log:</strong></p>
+<pre><code class="language-bash">sudo tail -f /var/log/modsec_audit.log
+</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757799379363/e769e722-d22b-4c37-9647-d2227bcfdc02.png" alt="" align="left" fullwidth="true" /></p>
+<p>You will see the request sent and the Rule that blocked it.</p>
+<hr />
+<p>✅ <strong>Final Result:</strong></p>
+<ul>
+<li>
+<p>Prepared a full environment: Nginx + ModSecurity.</p>
+</li>
+<li>
+<p>Logged attacks (DetectionOnly) then enabled blocking attacks (Blocking Mode).</p>
+</li>
+<li>
+<p>Documented every stage with images.</p>
+</li>
+</ul>
 <hr />
 <blockquote>
-<p><strong>Abdelwahab A. Shandy</strong>\
-📅 <strong>Date:16-09-2025</strong></p>
 <p><strong><em>💬 "Control</em></strong> <strong><em>the code, and you control the world." 🔐 From wiping metadata to gaining root access — every step is documented and my goal is to deeply understand the system, not just hack!</em></strong></p>
 <p><a href="https://abdelwahabshandy.hashnode.dev/"><strong><em>Abdelwahab Shandy</em></strong></a></p>
 <p><a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/"><strong><em>Linkedin</em></strong></a></p>
 <p><a href="https://github.com/abdelwahab-ahmed-shandy"><strong><em>GitHub</em></strong></a></p>
 <p><strong><em>See You Soon</em></strong></p>
+<p><strong><em>AS Cyber “)).</em></strong></p>
 </blockquote>
 
 

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/soc-and-incident-response/03-detect-nmap-scan-using-snort/">
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/soc-and-ir/07-qradar101-blue-team-cyberdefenders/">
       
       
-        <link rel="prev" href="../02-ubuntu-web-server-waf-nginx-modsecurity/">
+        <link rel="prev" href="../06-boss-of-the-soc-botsv1-scenario1/">
       
       
-        <link rel="next" href="../04-paypal-phishing-investigation-letsdefend/">
+        <link rel="next" href="../08-building-siem-filebeat-winlogbeat-kibana/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>03 detect nmap scan using snort - AAS Security Labs Docs</title>
+        <title>07 qradar101 blue team cyberdefenders - AAS Security Labs Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-skip">
+        <a href="#category-threat-hunting" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              03 detect nmap scan using snort
+              07 qradar101 blue team cyberdefenders
             
           </span>
         </div>
@@ -329,7 +329,7 @@
           
   
   
-  Soc and incident response
+  Soc and ir
 
         </a>
       </li>
@@ -4695,7 +4695,7 @@
   <span class="md-ellipsis">
     
   
-    Soc and incident response
+    Soc and ir
   
 
     
@@ -4711,7 +4711,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Soc and incident response
+    Soc and ir
   
 
           </label>
@@ -4777,35 +4777,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 detect nmap scan using snort
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../03-detect-nmap-scan-using-snort/" class="md-nav__link">
         
   
   
@@ -4821,246 +4796,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        First, I’ll install some tools like Wireshark to monitor traffic, etc :
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secondly-installing-and-configuring-snort-as-an-ids" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Secondly : Installing and configuring Snort as an IDS :
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Secondly : Installing and configuring Snort as an IDS :">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#problem-encountered-during-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        #### Problem encountered during installation :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#steps-to-fix-the-issue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔹 Steps to fix the issue
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 Steps to fix the issue">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-verify-if-snortconf-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ Verify if snort.conf exists
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-create-a-new-snortconf-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2️⃣ Create a new snort.conf file :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-add-basic-settings-to-run-snort" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ Add basic settings to run Snort
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-create-the-local-rules-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ Create the local rules file :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-test-the-configuration-to-verify-if-the-issue-is-resolved" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4️⃣ Test the configuration to verify if the issue is resolved:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#testing-live-alerts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Testing live alerts:
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preparing-and-testing-nmap-scan-detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Preparing and testing Nmap scan detection
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Preparing and testing Nmap scan detection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-add-nmap-rules-to-localrules" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ Add Nmap rules to local.rules
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1-open-the-local-rules-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ Open the local rules file
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#explanation-of-each-rule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Explanation of each rule
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#now-ill-test-from-the-same-machine" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Now I’ll test from the same machine
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#now-ill-test-from-the-attacker-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Now I’ll test from the Attacker VM:
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Now I’ll test from the Attacker VM:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#temporarily-open-ssh-port-on-the-target-ubuntu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Temporarily open SSH port on the Target (Ubuntu) :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#summary-conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Summary / Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5154,10 +4889,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../07-qradar101-blue-team-cyberdefenders/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 qradar101 blue team cyberdefenders
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -5173,6 +4933,422 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#category-threat-hunting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category : Threat Hunting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category : Threat Hunting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cyberdefenders-write-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CyberDefenders : Write up
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#siem-threathunting-ibm-qradar-cyberdefenders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIEM ThreatHunting IBM QRadar CyberDefenders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyberdefenders-qradar101-blue-team-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CyberDefenders : Qradar101 Blue Team Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Details :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-we-will-prepare-the-network-for-the-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First we will prepare the network for the machines:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let’s get started :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Let’s get started :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1how-many-log-sources-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (1)How many log sources available?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2what-is-the-ids-software-used-to-monitor-the-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (2)What is the IDS software used to monitor the network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-is-the-domain-name-used-in-the-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (3) What is the domain name used in the network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-multiple-ips-were-communicating-with-the-malicious-server-one-of-them-ends-with-20-provide-the-full-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (4) Multiple IPs were communicating with the malicious server. One of them ends with “20”. Provide the full IP ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-what-is-the-sid-of-the-most-frequent-alert-rule-in-the-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (5) What is the SID of the most frequent alert rule in the dataset?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-what-is-the-attackers-ip-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (6) What is the attacker’s IP address?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-the-attacker-was-searching-for-data-belonging-to-one-of-the-companys-projects-can-you-find-the-name-of-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (7) The attacker was searching for data belonging to one of the company’s projects, can you find the name of the project ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-what-is-the-ip-address-of-the-first-infected-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (8) What is the IP address of the first infected machine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-what-is-the-username-of-the-infected-employee-using-1921681015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (9) What is the username of the infected employee using 192.168.10.15 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-hackers-do-not-like-logging-what-logging-was-the-attacker-checking-to-see-if-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (10) Hackers do not like logging, what logging was the attacker checking to see if enabled ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-name-of-the-second-system-the-attacker-targeted-to-cover-up-the-employee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (11) Name of the second system the attacker targeted to cover up the employee ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-when-was-the-first-malicious-connection-to-the-domain-controller-log-start-time-hhmmss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (12) When was the first malicious connection to the domain controller (log start time — hh:mm:ss)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-is-the-md5-hash-of-the-malicious-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (13) What is the md5 hash of the malicious file?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-what-is-the-mitre-persistence-technique-id-used-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (14) What is the MITRE persistence technique ID used by the attacker?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-what-protocol-is-used-to-perform-host-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (15) What protocol is used to perform host discovery?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-what-is-the-email-service-used-by-the-companyone-word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (16) What is the email service used by the company?(one word)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-what-is-the-name-of-the-malicious-file-used-for-the-initial-infection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (17) What is the name of the malicious file used for the initial infection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-what-is-the-name-of-the-new-account-added-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (18) What is the name of the new account added by the attacker ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-what-is-the-pid-of-the-process-that-performed-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (19) What is the PID of the process that performed injection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-what-is-the-name-of-the-tool-used-for-lateral-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (20) What is the name of the tool used for lateral movement ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-attacker-exfiltrated-one-file-what-is-the-name-of-the-tool-used-for-exfiltration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (21) Attacker exfiltrated one file, what is the name of the tool used for exfiltration ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-who-is-the-other-legitimate-domain-admin-other-than-the-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (22) Who is the other legitimate domain admin other than the administrator ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23the-attacker-used-the-host-discovery-technique-to-know-how-many-hosts-available-in-a-certain-network-what-is-the-network-the-hacker-scanned-from-the-host-ip-1-to-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (23)The attacker used the host discovery technique to know how many hosts available in a certain network, what is the network the hacker scanned from the host IP 1 to 30 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24what-is-the-name-of-the-employee-who-hired-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (24)What is the name of the employee who hired the attacker ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(24)What is the name of the employee who hired the attacker ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abdelwahab_shandy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abdelwahab_Shandy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#as_cyber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AS_Cyber
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5605,33 +5781,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc" class="md-nav__link">
+  <a href="#category-threat-hunting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        First, I’ll install some tools like Wireshark to monitor traffic, etc :
+        Category : Threat Hunting
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secondly-installing-and-configuring-snort-as-an-ids" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Secondly : Installing and configuring Snort as an IDS :
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Secondly : Installing and configuring Snort as an IDS :">
+    <nav class="md-nav" aria-label="Category : Threat Hunting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-encountered-during-installation" class="md-nav__link">
+  <a href="#cyberdefenders-write-up" class="md-nav__link">
     <span class="md-ellipsis">
       
-        #### Problem encountered during installation :
+        CyberDefenders : Write up
       
     </span>
   </a>
@@ -5639,22 +5804,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#steps-to-fix-the-issue" class="md-nav__link">
+  <a href="#siem-threathunting-ibm-qradar-cyberdefenders" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔹 Steps to fix the issue
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔹 Steps to fix the issue">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-verify-if-snortconf-exists" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1️⃣ Verify if snort.conf exists
+        SIEM ThreatHunting IBM QRadar CyberDefenders
       
     </span>
   </a>
@@ -5662,54 +5815,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-create-a-new-snortconf-file" class="md-nav__link">
+  <a href="#cyberdefenders-qradar101-blue-team-challenge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2️⃣ Create a new snort.conf file :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-add-basic-settings-to-run-snort" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ Add basic settings to run Snort
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-create-the-local-rules-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3️⃣ Create the local rules file :
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-test-the-configuration-to-verify-if-the-issue-is-resolved" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4️⃣ Test the configuration to verify if the issue is resolved:
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#testing-live-alerts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Testing live alerts:
+        CyberDefenders : Qradar101 Blue Team Challenge
       
     </span>
   </a>
@@ -5720,6 +5829,40 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Details :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-we-will-prepare-the-network-for-the-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First we will prepare the network for the machines:
+      
+    </span>
+  </a>
+  
+</li>
         
       </ul>
     </nav>
@@ -5727,22 +5870,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#preparing-and-testing-nmap-scan-detection" class="md-nav__link">
+  <a href="#lets-get-started" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Preparing and testing Nmap scan detection
+        Let’s get started :
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Preparing and testing Nmap scan detection">
+    <nav class="md-nav" aria-label="Let’s get started :">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-add-nmap-rules-to-localrules" class="md-nav__link">
+  <a href="#1how-many-log-sources-available" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1️⃣ Add Nmap rules to local.rules
+        (1)How many log sources available?
       
     </span>
   </a>
@@ -5750,10 +5893,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1-open-the-local-rules-file" class="md-nav__link">
+  <a href="#2what-is-the-ids-software-used-to-monitor-the-network" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1️⃣ Open the local rules file
+        (2)What is the IDS software used to monitor the network?
       
     </span>
   </a>
@@ -5761,10 +5904,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#explanation-of-each-rule" class="md-nav__link">
+  <a href="#3-what-is-the-domain-name-used-in-the-network" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Explanation of each rule
+        (3) What is the domain name used in the network?
       
     </span>
   </a>
@@ -5772,10 +5915,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#now-ill-test-from-the-same-machine" class="md-nav__link">
+  <a href="#4-multiple-ips-were-communicating-with-the-malicious-server-one-of-them-ends-with-20-provide-the-full-ip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Now I’ll test from the same machine
+        (4) Multiple IPs were communicating with the malicious server. One of them ends with “20”. Provide the full IP ?
       
     </span>
   </a>
@@ -5783,22 +5926,231 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#now-ill-test-from-the-attacker-vm" class="md-nav__link">
+  <a href="#5-what-is-the-sid-of-the-most-frequent-alert-rule-in-the-dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Now I’ll test from the Attacker VM:
+        (5) What is the SID of the most frequent alert rule in the dataset?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Now I’ll test from the Attacker VM:">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-what-is-the-attackers-ip-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (6) What is the attacker’s IP address?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-the-attacker-was-searching-for-data-belonging-to-one-of-the-companys-projects-can-you-find-the-name-of-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (7) The attacker was searching for data belonging to one of the company’s projects, can you find the name of the project ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-what-is-the-ip-address-of-the-first-infected-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (8) What is the IP address of the first infected machine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-what-is-the-username-of-the-infected-employee-using-1921681015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (9) What is the username of the infected employee using 192.168.10.15 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-hackers-do-not-like-logging-what-logging-was-the-attacker-checking-to-see-if-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (10) Hackers do not like logging, what logging was the attacker checking to see if enabled ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-name-of-the-second-system-the-attacker-targeted-to-cover-up-the-employee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (11) Name of the second system the attacker targeted to cover up the employee ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-when-was-the-first-malicious-connection-to-the-domain-controller-log-start-time-hhmmss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (12) When was the first malicious connection to the domain controller (log start time — hh:mm:ss)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-is-the-md5-hash-of-the-malicious-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (13) What is the md5 hash of the malicious file?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-what-is-the-mitre-persistence-technique-id-used-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (14) What is the MITRE persistence technique ID used by the attacker?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-what-protocol-is-used-to-perform-host-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (15) What protocol is used to perform host discovery?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-what-is-the-email-service-used-by-the-companyone-word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (16) What is the email service used by the company?(one word)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-what-is-the-name-of-the-malicious-file-used-for-the-initial-infection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (17) What is the name of the malicious file used for the initial infection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-what-is-the-name-of-the-new-account-added-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (18) What is the name of the new account added by the attacker ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-what-is-the-pid-of-the-process-that-performed-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (19) What is the PID of the process that performed injection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-what-is-the-name-of-the-tool-used-for-lateral-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (20) What is the name of the tool used for lateral movement ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-attacker-exfiltrated-one-file-what-is-the-name-of-the-tool-used-for-exfiltration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (21) Attacker exfiltrated one file, what is the name of the tool used for exfiltration ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-who-is-the-other-legitimate-domain-admin-other-than-the-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (22) Who is the other legitimate domain admin other than the administrator ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23the-attacker-used-the-host-discovery-technique-to-know-how-many-hosts-available-in-a-certain-network-what-is-the-network-the-hacker-scanned-from-the-host-ip-1-to-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (23)The attacker used the host discovery technique to know how many hosts available in a certain network, what is the network the hacker scanned from the host IP 1 to 30 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24what-is-the-name-of-the-employee-who-hired-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (24)What is the name of the employee who hired the attacker ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(24)What is the name of the employee who hired the attacker ?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#temporarily-open-ssh-port-on-the-target-ubuntu" class="md-nav__link">
+  <a href="#abdelwahab_shandy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Temporarily open SSH port on the Target (Ubuntu) :
+        Abdelwahab_Shandy
       
     </span>
   </a>
@@ -5806,10 +6158,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#summary-conclusion" class="md-nav__link">
+  <a href="#as_cyber" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Summary / Conclusion
+        AS_Cyber
       
     </span>
   </a>
@@ -5843,565 +6195,246 @@
 
 
 
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760135357859/9017af2c-d744-47e5-83f1-032a95402671.png" alt="" align="center" fullwidth="true" /></p>
-<ul>
-<li>
-<p>Attacker: Kali Linux (nmap).</p>
-</li>
-<li>
-<p>Target: Ubuntu (Snort as IDS).</p>
-</li>
-<li>
-<p>Or run the Target and let it perform attacks on itself normally.</p>
-</li>
-<li>
-<p>Monitoring and verification: Wireshark/tcpdump for PCAP capture and analysis.</p>
-</li>
-</ul>
-<hr />
-<h3 id="first-ill-install-some-tools-like-wireshark-to-monitor-traffic-etc">First, I’ll install some tools like Wireshark to monitor traffic, etc :</h3>
-<ul>
-<li>On the Target machine :</li>
-</ul>
-<pre><code class="language-bash">sudo apt update
-
-sudo apt upgrade -y
-
-sudo apt install wireshark
-</code></pre>
-<h2 id="secondly-installing-and-configuring-snort-as-an-ids"><strong>Secondly : Installing and configuring Snort as an IDS :</strong></h2>
-<pre><code class="language-bash">sudo -i
-
-sudo apt install -y snort
-</code></pre>
-<ul>
-<li>During installation, I encountered this prompt:</li>
-</ul>
-<pre><code class="language-bash">Package configuration
-
- ┌───────────┤ Configuring snort ├────────────┐
- │                                            │ 
- │ Please use the CIDR form - for example,      
- │ 192.168.1.0/24 for a block of 256            
- │ addresses or 192.168.1.42/32 for just        
- │ one. Multiple values should be               
- │ comma-separated (without spaces).            
- │                                              
- │ You can leave this value empty and           
- │ configure HOME_NET in                        
- │ /etc/snort/snort.conf instead. This is       
- │ useful if you are using Snort in a system    
- │ which frequently changes network and does    
- │                                              
- │                   &lt;Ok&gt;
-</code></pre>
-<ul>
-<li>This line asks you to define the <strong>HOME_NET</strong> in CIDR format :</li>
-</ul>
-<pre><code class="language-bash">Package configuration
-
-    ┌─────────┤ Configuring snort ├─────────┐
-    │ Address range for the local network:  │ 
-    │                                       │ 
-    │ 192.168.0.0/16_______________________ │ 
-    │                                       │ 
-    │                &lt;Ok&gt;
-</code></pre>
-<ul>
-<li>Before continuing, I checked the machine’s IP:</li>
-</ul>
-<pre><code class="language-bash">aas@aas:~$ ifconfig 
-enp0s3: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
-        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
-        inet6 fe80::6a6a:bfa1:f934:1ee0  prefixlen 64  scopeid 0x20&lt;link&gt;
-        ether 08:00:27:f5:0f:ed  txqueuelen 1000  (Ethernet)
-        RX packets 210978  bytes 303130933 (303.1 MB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 31543  bytes 1966166 (1.9 MB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-
-lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
-        inet 127.0.0.1  netmask 255.0.0.0
-        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
-        loop  txqueuelen 1000  (Local Loopback)
-        RX packets 316  bytes 27977 (27.9 KB)
-        RX errors 0  dropped 0  overruns 0  frame 0
-        TX packets 316  bytes 27977 (27.9 KB)
-        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
-</code></pre>
-<ul>
-<li>The network interface connected to the network is:</li>
-</ul>
-<pre><code class="language-bash">enp0s3
-</code></pre>
-<ul>
-<li>The Target’s IP address is :</li>
-</ul>
-<pre><code class="language-bash">10.0.2.15
-</code></pre>
-<ul>
-<li>The subnet is :</li>
-</ul>
-<pre><code class="language-bash">10.0.2.0/24
-</code></pre>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760456023066/fd4a8a70-a352-4f32-93f8-130e65f857d6.webp" align="center" fullwidth="false" /></p>
+<h3 id="category-threat-hunting">Category : Threat Hunting</h3>
+<h4 id="cyberdefenders-write-up">CyberDefenders : Write up</h4>
+<h4 id="siem-threathunting-ibm-qradar-cyberdefenders">SIEM ThreatHunting IBM QRadar CyberDefenders</h4>
+<h4 id="cyberdefenders-qradar101-blue-team-challenge">CyberDefenders : <a href="https://cyberdefenders.org/blueteam-ctf-challenges/39#nav-questions">Qradar101</a> Blue Team Challenge</h4>
 <blockquote>
-<p>because the Netmask = 255.255.255.0.</p>
-</blockquote>
-<p>Since my Target’s actual network is <code>10.0.2.0/24</code>, I corrected the default value (<code>192.168.0.0/16</code>) to:</p>
-<pre><code class="language-bash">10.0.2.0/24
-</code></pre>
+<h3 id="details">Details :</h3>
+<p>Instructions:</p>
 <ul>
 <li>
-<p>Or leave it empty and modify later in <code>/etc/snort/snort.conf</code>.</p>
+<p>This challenge is designed to work with <strong>VirtualBox</strong>. Download challenge VM and uncompress it using the password ‘cyberdefenders.org’</p>
 </li>
 <li>
-<p>After entering it, press <strong>Ok</strong> to confirm.</p>
-</li>
-</ul>
-<hr />
-<h4 id="problem-encountered-during-installation">#### Problem encountered during installation :</h4>
-<pre><code class="language-bash">FATAL ERROR: /etc/snort/snort.conf(0) Unable to open rules file &quot;/etc/snort/snort.conf&quot;: No such file or directory.
-</code></pre>
-<blockquote>
-<ul>
-<li>
-<p>This means either the file is missing or the path is incorrect.</p>
+<p>Please make sure to watch the instructional video under the <strong>Walkthroughs</strong> section.</p>
 </li>
 <li>
-<p>The issue isn’t with the installation itself—it’s with the <strong>system service (systemd / init.d)</strong> not being able to find the <code>snort.conf</code> configuration file.</p>
+<p>Make sure you have a host-only subnet within the following IP range <strong>192.168.20.0/24</strong>.</p>
+</li>
+<li>
+<p>Assign the proper network adapter (192.168.20.0/24) to the VM before starting it.</p>
+</li>
+<li>
+<p>Wait for some minutes after the import completes then visit: https\://192.168.20.21/.</p>
+</li>
+<li>
+<p>Challenge credentials: <strong>QRadar Dashboard</strong>: admin:Admin\@123 — <strong>SSH</strong>: root:cyberdefenders</p>
+</li>
+<li>
+<p>In case you face a license issue, please go to &gt; License Pool Management. Edit and set eps &gt; 0 and edit the FPM and set it to 0. This will ensure you will not have a license problem.</p>
+</li>
+<li>
+<p><strong>Hardware Requirements</strong>: 8GB of memory and 65GB of disk space.</p>
 </li>
 </ul>
 </blockquote>
-<hr />
-<h3 id="steps-to-fix-the-issue">🔹 Steps to fix the issue</h3>
-<h5 id="1-verify-if-snortconf-exists">1️⃣ Verify if <code>snort.conf</code> exists</h5>
-<pre><code class="language-bash">root@aas:~# ls -l /etc/snort/
-total 8
-drwxr-xr-x 2 root root 4096 سبت 12 17:42 rules
--rw------- 1 root root  803 سبت 12 17:42 snort.debian.conf
-</code></pre>
-<ul>
-<li>
-<p><strong>The main snort.conf file is missing</strong>.</p>
-</li>
-<li>
-<p>Only <code>snort.debian.conf</code> exists. This is the default Debian/Ubuntu configuration file, not the standard Snort.</p>
-</li>
-<li>
-<p>The <code>rules</code> folder exists, but the main rules file <code>snort.conf</code> is missing. ⇒ The systemd/init.d service can't start Snort.</p>
-</li>
-</ul>
-<h5 id="2-create-a-new-snortconf-file">2️⃣ Create a new <code>snort.conf</code> file :</h5>
-<pre><code class="language-bash">root@aas:~# cd /etc/snort/
-root@aas:/etc/snort# ls
-rules  snort.debian.conf
-root@aas:/etc/snort# sudo nano snort.conf
-</code></pre>
-<h5 id="3-add-basic-settings-to-run-snort">3️⃣ Add basic settings to run Snort</h5>
-<ul>
-<li>After research, I used the following configuration:</li>
-</ul>
-<pre><code class="language-bash">######################################################
-# Snort Configuration File
-# Version: 2.9.15.1
-# Author: Abdelwahab Shandy - Config for IDS Testing
-######################################################
-
-#-------------------
-# Network Variables
-#------------------
-
-# Internal network that Snort will monitor
-ipvar HOME_NET 10.0.2.0/24
-
-# All other networks are considered external
-ipvar EXTERNAL_NET any
-
-#------------
-# Rule Paths
-#------------
-
-# Path for Snort rule files
-var RULE_PATH /etc/snort/rules
-var SO_RULE_PATH /etc/snort/so_rules
-var PREPROC_RULE_PATH /etc/snort/preproc_rules
-
-#---------------
-# Include Rules
-#---------------
-
-# Include your local rules (local.rules)
-include $RULE_PATH/local.rules
-
-#-----------------
-# Output Settings
-#-----------------
-
-# Output alerts directly to the console
-output alert_fast: stdout
-
-#---------------
-# Preprocessors
-#---------------
-
-# Frag3 preprocessor settings
-preprocessor frag3_global: max_frags 65536
-
-# Stream5 preprocessor settings
-preprocessor stream5_global: track_tcp yes, track_udp yes, track_icmp yes
-preprocessor stream5_tcp: policy linux, detect_anomalies
-preprocessor stream5_udp:
-preprocessor stream5_icmp:
-
-#############################
-# End of Snort Configuration
-#############################
-</code></pre>
-<ul>
-<li>
-<p>Frag3 is responsible for IP fragmentation so Snort can understand them as a single unit and detect attacks.</p>
-</li>
-<li>
-<p>Stream5 is responsible for session tracking and reassemblingTCP/UDP/ICMP streams so Snort can apply rules to the correct data in the correct order.</p>
-</li>
-</ul>
-<h5 id="3-create-the-local-rules-file">3️⃣ Create the local rules file :</h5>
-<pre><code class="language-bash">root@aas:/etc/snort# sudo nano rules/local.rules
-</code></pre>
-<ul>
-<li>Add a simple test rule, for example:</li>
-</ul>
-<pre><code class="language-bash">alert icmp any any -&gt; any any (msg:&quot;ICMP test detected&quot;; sid:1000001; rev:1;)
-</code></pre>
-<h5 id="4-test-the-configuration-to-verify-if-the-issue-is-resolved">4️⃣ Test the configuration to verify if the issue is resolved:</h5>
-<pre><code class="language-bash">root@aas:/etc/snort# snort -T -c /etc/snort/snort.conf
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">Rule application order: pass-&gt;drop-&gt;sdrop-&gt;reject-&gt;alert-&gt;log
-Verifying Preprocessor Configurations!
-
-[ Port Based Pattern Matching Memory ]
-
---== Initialization Complete ==--
-
-,,_     -*&gt; Snort! &lt;*-
-o&quot;  )~   Version 2.9.15.1 GRE (Build 15125) 
-''''    By Martin Roesch &amp; The Snort Team
-Using libpcap version 1.10.1
-Using PCRE version: 8.39
-Using ZLIB version: 1.2.11
-
-Snort successfully validated the configuration!
-Snort exiting
-</code></pre>
-<ul>
-<li>
-<p>This means <strong>Snort configuration is now successfully validated</strong>.</p>
-</li>
-<li>
-<p><code>snort.conf</code> is valid: all paths and rules exist and are correct.</p>
-</li>
-<li>
-<p><strong>Preprocessors are working</strong>: protocol analysis and other settings are ready.</p>
-</li>
-<li>
-<p>Snort is <strong>not running yet</strong>: the <code>-T</code> option only tests the configuration, so Snort exits after the test.</p>
-</li>
-</ul>
-<h5 id="testing-live-alerts">Testing live alerts:</h5>
-<ul>
-<li>Run Snort to see alerts directly:</li>
-</ul>
-<pre><code class="language-bash">sudo snort -i lo -c /etc/snort/snort.conf -A console
-</code></pre>
-<ul>
-<li>
-<p>Monitoring the loopback interface (<code>lo</code>)</p>
-</li>
-<li>
-<p>I’ll ping from the same machine for simplicity instead of using another VM.</p>
-</li>
-</ul>
-<p>From another terminal:</p>
-<pre><code class="language-bash">aas@aas:~$ ping 10.0.2.15
-</code></pre>
-<p>Output:</p>
-<pre><code class="language-bash">WARNING: No preprocessors configured for policy 0.
-09/12-18:28:23.648061  [**] [1:1000001:1] ICMP test detected [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
-</code></pre>
-<ul>
-<li>
-<p>This confirms the rule is working: Snort captures any ICMP traffic on the monitored interface (<code>lo</code>).</p>
-</li>
-<li>
-<p>Running on the <code>enp0s3</code> interface did not trigger alerts because internal pings go through <code>lo</code>, not <code>enp0s3</code>.</p>
-</li>
-<li>
-<p>Pinging from another device on the <code>10.0.2.0/24</code> network will trigger an alert immediately.</p>
-</li>
-</ul>
-<blockquote>
-<p>This was just a test. Everything is now set, so we can proceed to the main task.</p>
-</blockquote>
-<hr />
-<h1 id="preparing-and-testing-nmap-scan-detection">Preparing and testing Nmap scan detection</h1>
-<h3 id="1-add-nmap-rules-to-localrules">1️⃣ Add Nmap rules to <code>local.rules</code></h3>
-<ul>
-<li>We start with some of the most common Nmap scan types.</li>
-</ul>
-<h3 id="1-open-the-local-rules-file">1️⃣ Open the local rules file</h3>
-<pre><code class="language-bash">nano /etc/snort/rules/local.rules
-</code></pre>
-<ul>
-<li>Here is the snort rule structure:</li>
-</ul>
-<pre><code class="language-bash">action protocol sourceIP sourceport -&gt; destinationIP destinationport ([Rule options])
-</code></pre>
-<ul>
-<li>
-<p>EX :</p>
-</li>
-<li>
-<p>A. Ping Sweep detection</p>
-</li>
-</ul>
-<pre><code class="language-bash"># Ping Sweep Detector
-
-alert icmp any any -&gt; 10.0.2.15 any (msg:&quot;NMAP Ping Sweep Scan&quot;; dsize:0; sid:1000002; rev:1;)
-</code></pre>
-<ul>
-<li>B.NULL Scan detection</li>
-</ul>
-<pre><code class="language-bash">action protocol sourceIP sourceport -&gt; destinationIP destinationport ([Rule options])
-</code></pre>
-<ul>
-<li>C.TCP Scan detection on port 22 :</li>
-</ul>
-<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP TCP Scan&quot;; sid:1000003; rev:1;)
-</code></pre>
-<ul>
-<li>D.XMAS Scan detection :</li>
-</ul>
-<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP XMAS Scan&quot;; flags:FPU; sid:1000004; rev:1;)
-</code></pre>
-<ul>
-<li>E.FIN Scan detection</li>
-</ul>
-<pre><code class="language-bash">alert tcp any any -&gt; 10.0.2.15 22 (msg:&quot;NMAP FIN Scan&quot;; flags:F; sid:1000005; rev:1;)
-</code></pre>
-<ul>
-<li>F.UDP Scan detection on port 68:</li>
-</ul>
-<pre><code class="language-bash">alert udp any any -&gt; 10.0.2.15 68 (msg:&quot;NMAP UDP Scan&quot;; sid:1000007; rev:1;)
-</code></pre>
-<ul>
-<li>Final combined file will look like:</li>
-</ul>
-<pre><code class="language-bash"># --------------------------------
-# Nmap Detection Rules for Snort :
-# --------------------------------
-
-# ICMP Test Detection
-alert icmp any any -&gt; any any (msg:&quot;ICMP test Detected!!!&quot;; sid:10000010; rev:1;)
-
-# NMAP Ping Sweep
-alert icmp any any -&gt; any any (msg:&quot;NMAP Ping Sweep Scan!!!&quot;; dsize:0; sid:10000020; rev:1;)
-
-# NMAP TCP Scan
-alert tcp any any -&gt; any any (msg:&quot;NMAP TCP Scan!!!&quot;; flags:S; sid:10000030; rev:1;)
-
-# NMAP XMAS Scan
-alert tcp any any -&gt; any any (msg:&quot;NMAP XMAS Scan!!!&quot;; flags:FPU; sid:10000040; rev:1;)
-
-# NMAP FIN Scan
-alert tcp any any -&gt; any any (msg:&quot;NMAP FIN Scan!!!&quot;; flags:F; sid:10000050; rev:1;)
-
-# NMAP NULL Scan
-alert tcp any any -&gt; any any (msg:&quot;NMAP NULL Scan!!!&quot;; flags:0; sid:10000060; rev:1;)
-
-# NMAP UDP Scan
-alert udp any any -&gt; any any (msg:&quot;NMAP UDP Scan!!!&quot;; sid:10000070; rev:1;)
-</code></pre>
-<h3 id="explanation-of-each-rule">Explanation of each rule</h3>
-<table>
-<thead>
-<tr>
-<th>Rule</th>
-<th>What it detects</th>
-<th>How it works</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ICMP Test</td>
-<td>any simple ping</td>
-<td>any ICMP packet sent to the host</td>
-</tr>
-<tr>
-<td>NMAP Ping Sweep</td>
-<td>host discovery attempts</td>
-<td>ICMP echo with <code>dsize:0</code> often used by Nmap Ping Sweep</td>
-</tr>
-<tr>
-<td>NMAP TCP Scan</td>
-<td>TCP SYN scan across ports</td>
-<td>any TCP SYN packet from Nmap or other TCP scanners</td>
-</tr>
-<tr>
-<td>NMAP XMAS Scan</td>
-<td>TCP XMAS scan</td>
-<td>any TCP packet with FIN+PSH+URG flags — a common Nmap scan type</td>
-</tr>
-<tr>
-<td>NMAP FIN Scan</td>
-<td>TCP FIN scan</td>
-<td>any TCP packet with only FIN flag — used to probe ports without establishing a full connection</td>
-</tr>
-<tr>
-<td>NMAP NULL Scan</td>
-<td>TCP NULL scan</td>
-<td>any TCP packet with no flags — attempt to bypass some firewalls</td>
-</tr>
-<tr>
-<td>NMAP UDP Scan</td>
-<td>UDP scan</td>
-<td>any UDP packet to any port; Nmap uses this to discover services</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<ul>
-<li>After saving the file, test the configuration:</li>
-</ul>
-<pre><code class="language-bash">sudo snort -T -c /etc/snort/snort.conf
-</code></pre>
-<ul>
-<li>You should see:</li>
-</ul>
-<pre><code class="language-bash">Snort successfully validated the configuration! Snort exiting
-</code></pre>
-<ul>
-<li>If that appears, everything is fine.</li>
-</ul>
-<hr />
-<h2 id="now-ill-test-from-the-same-machine">Now I’ll test from the same machine</h2>
-<blockquote>
-<p>Because I will run the scans from the same machine (Target), I need to use the loopback interface (<code>lo</code>) or the target’s internal IP <code>10.0.2.15</code> when running Snort, since scans from the same host won’t traverse <code>enp0s3</code> directly.</p>
-</blockquote>
-<p>1️⃣ Start Snort on loopback (<code>lo</code>):</p>
-<pre><code class="language-bash">sudo snort -A console -q -c /etc/snort/snort.conf -i lo
-</code></pre>
-<p><code>-A console</code> : show alerts on the terminal\
-<code>-q</code> : quiet mode to reduce noise</p>
-<p>2️⃣ In another terminal, start scanning from the same host:</p>
-<ul>
-<li><strong>First — Ping Sweep / ICMP Test</strong>:</li>
-</ul>
-<pre><code class="language-bash">ping 10.0.2.15
-</code></pre>
-<ul>
-<li>Snort produced the alert: <code>ICMP test detected</code>:</li>
-</ul>
-<pre><code class="language-bash">09/12-22:16:36.831126  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807603198/a25ecf01-4b94-4119-9e43-2e9c049c5a0a.png" alt="" align="left" fullwidth="true" /></p>
-<h2 id="now-ill-test-from-the-attacker-vm">Now I’ll test from the Attacker VM:</h2>
-<ul>
-<li>
-<p><strong>Target / Snort (Ubuntu) IP:</strong> <code>10.0.2.15</code> on interface <code>enp0s3</code></p>
-</li>
-<li>
-<p>Start Snort on <code>enp0s3</code>:</p>
-</li>
-</ul>
-<pre><code class="language-bash">sudo snort -A console -q -c /etc/snort/snort.conf -i enp0s3
-</code></pre>
-<h4 id="temporarily-open-ssh-port-on-the-target-ubuntu">Temporarily open SSH port on the Target (Ubuntu) :</h4>
-<pre><code class="language-bash">sudo systemctl start ssh
-sudo systemctl enable ssh   # if you want it persistent after reboot
-sudo ufw allow 22/tcp       # if UFW is active
-</code></pre>
-<ul>
-<li>Now port 22 is open on the Target.</li>
-</ul>
-<p><strong>Second — TCP SYN Scan from the Attacker</strong>:</p>
-<pre><code class="language-bash"># To detect open ports quickly and less obviously than a regular scan.
-sudo nmap -sS 10.0.2.15
-</code></pre>
-<p>Alert: <code>NMAP TCP Scan</code>:</p>
-<pre><code class="language-bash">09/12-22:17:28.232537  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:80
-09/12-22:17:28.232541  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:139
-09/12-22:17:28.232545  [**] [1:10000030:1] NMAP TCP Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:59006 -&gt; 10.0.2.15:25
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807588399/78ed49c8-c617-47e0-a01f-fcd9ef1c3f13.png" alt="" align="left" fullwidth="true" /></p>
-<p><strong>Third — XMAS Scan from the Attacker</strong>:</p>
-<pre><code class="language-bash"># To detect open ports in stealth mode (using packets containing FIN, PSH and URG flags together).
-sudo nmap -sX 10.0.2.15
-</code></pre>
-<p>Alert: <code>NMAP XMAS Scan</code>:</p>
-<pre><code class="language-bash">09/12-22:21:59.585254  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42309 -&gt; 10.0.2.15:5952
-09/12-22:21:59.585259  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42309 -&gt; 10.0.2.15:5510
-09/12-22:22:00.602432  [**] [1:10000040:1] NMAP XMAS Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:42310 -&gt; 10.0.2.15:22
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807573829/1d258de7-8ae9-4627-acc3-9ce0230e7c75.png" alt="" align="left" fullwidth="true" /></p>
-<p><strong>FIN Scan from the Attacker</strong></p>
-<pre><code class="language-bash"># To detect open ports in stealth mode (using FIN packets instead of SYN).
-sudo nmap -sF 10.0.2.15
-</code></pre>
-<p>Alert: <code>NMAP FIN Scan</code>:</p>
-<pre><code class="language-bash">09/12-22:22:51.010337  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:1148
-09/12-22:22:51.010342  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:787
-09/12-22:22:51.010346  [**] [1:10000050:1] NMAP FIN Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37063 -&gt; 10.0.2.15:7001
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807561720/9b759443-a948-4479-a984-93b43ca417fb.png" alt="" align="left" fullwidth="true" /></p>
-<p><strong>NULL Scan from the Attacker</strong></p>
-<pre><code class="language-bash"># To identify open or closed ports in stealth mode (without any flags in the TCP header).
-sudo nmap -sN 10.0.2.15
-</code></pre>
-<p>Alert: <code>NMAP NULL Scan</code>:</p>
-<pre><code class="language-bash">09/12-22:23:40.987444  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:6129
-09/12-22:23:40.987448  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:27356
-09/12-22:23:40.987452  [**] [1:10000060:1] NMAP NULL Scan!!! [**] [Priority: 0] {TCP} 10.0.2.15:37800 -&gt; 10.0.2.15:10566
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807542141/947d3d54-2db8-4457-8092-80a6690f4826.png" alt="" align="left" fullwidth="true" /></p>
-<p><strong>UDP Scan from the Attacker</strong></p>
-<pre><code class="language-bash"># To detect open UDP ports and the services running on them.
-sudo nmap -sU 10.0.2.15
-</code></pre>
-<p>Alert: <code>NMAP UDP Scan</code>:</p>
-<pre><code class="language-bash">09/12-22:24:41.947120  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
-09/12-22:24:41.947123  [**] [1:10000070:1] NMAP UDP Scan!!! [**] [Priority: 0] {UDP} 10.0.2.15:56847 -&gt; 10.0.2.15:112
-09/12-22:24:41.947124  [**] [1:10000010:1] ICMP test Detected!!! [**] [Priority: 0] {ICMP} 10.0.2.15 -&gt; 10.0.2.15
-09/12-22:24:43.006069  [**] [1:10000070:1] NMAP UDP Scan!!! [**] [Priority: 0] {UDP} 10.0.2.15:56848 -&gt; 10.0.2.15:5353
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757807522639/d5a1fc47-4ffa-4919-b236-98fa284892d9.png" alt="" align="left" fullwidth="true" /></p>
-<ul>
-<li>The ICMP messages you see are not from a normal <code>ping</code> — they are the ICMP responses that occur when a UDP scan probes closed ports.</li>
-</ul>
-<blockquote>
-<p>The host was noisy (responding) but everything behaved as expected.</p>
-</blockquote>
-<hr />
-<h3 id="summary-conclusion">Summary / Conclusion</h3>
-<ul>
-<li>
-<p>Snort is successfully configured as an IDS on Ubuntu.</p>
-</li>
-<li>
-<p>All tested Nmap scan types were detected accurately.</p>
-</li>
-<li>
-<p>The environment is ready for further monitoring and packet analysis (PCAP/Wireshark).</p>
-</li>
-</ul>
-<hr />
-<blockquote>
-<p><strong><em>💬 "Control</em></strong> <strong><em>the code, and you control the world." 🔐 From wiping metadata to gaining root access — every step is documented and my goal is to deeply understand the system, not just hack!</em></strong></p>
-<p><a href="https://abdelwahabshandy.hashnode.dev/"><strong><em>Abdelwahab Shandy</em></strong></a></p>
-<p><a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/"><strong><em>Linkedin</em></strong></a></p>
-<p><a href="https://github.com/abdelwahab-ahmed-shandy"><strong><em>GitHub</em></strong></a></p>
-<p><strong><em>See You Soon</em></strong></p>
-</blockquote>
+<h2 id="challenge-overview">Challenge Overview</h2>
+<p><strong>A financial company was compromised, and they are looking for a security analyst to help them investigate the incident, This Challenge consists of 24 questions, we will solve them and make things easier for those who have problems in solving them, let’s start.</strong></p>
+<p><strong>Dataset:</strong></p>
+<p><strong>-Sysmon — swift on security configuration</strong></p>
+<p><strong>-PowerShell logging</strong></p>
+<p><strong>-Windows Eventlog</strong></p>
+<p><strong>-Suricata IDS</strong></p>
+<p><strong>-Zeek logs (conn, HTTP)</strong></p>
+<h3 id="first-we-will-prepare-the-network-for-the-machines"><strong><em>First we will prepare the network for the machines:</em></strong></h3>
+<p><strong>Open oracle vm virtulbox &gt; file &gt; tools &gt; network manager &gt; host only Ethernet adapter</strong></p>
+<p><strong>Then we will do the following:</strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455354824/bf49d7ba-fdd0-4d0b-8065-590fff191f43.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Adapter should be set like this ….</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455356123/b17da9da-bfeb-46bc-b028-5a3a52a095d5.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>The DHCP Server must be set up like this ….</em></strong></p>
+<p><strong>-Make sure you have a host-only subnet within the following IP range 192.168.20.0/24.</strong></p>
+<p><strong>-Assign the proper network adapter (192.168.20.0/24) to the VM before starting it.</strong></p>
+<p><strong>-Wait for some minutes after the import completes then visit:</strong> <a href="https://192.168.20.21/"><strong>https://192.168.20.21/</strong></a><strong>.</strong></p>
+<p><strong>-Challenge credentials: QRadar Dashboard: admin:Admin\@123 — SSH: root:cyberdefenders.</strong></p>
+<p><strong>-Hardware Requirements: 8GB of memory and 65GB of disk space.</strong></p>
+<h1 id="lets-get-started"><strong>Let’s get started :</strong></h1>
+<h2 id="1how-many-log-sources-available"><strong>(1)How many log sources available?</strong></h2>
+<p><strong><em>Log in to QRadar SIEM and select the Admin tap&gt;&gt; and then click Log sources :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455357484/3626465b-a7c5-411d-bd97-99b298afbe81.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer: 1# Log sources .</em></strong></p>
+<h2 id="2what-is-the-ids-software-used-to-monitor-the-network"><strong>(2)What is the IDS software used to monitor the network?</strong></h2>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455358996/63e476b9-4fdc-427f-9d42-b825938da303.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Looking at the sources of the logs above, you can find out what IDS is:</em></strong></p>
+<p><strong><em>Answer: ####cata .</em></strong></p>
+<h2 id="3-what-is-the-domain-name-used-in-the-network"><strong>(3) What is the domain name used in the network?</strong></h2>
+<p><strong><em>The Event ID 4624 in the Windows Event Log indicates a successful logon event.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455360379/6368ac29-e17b-4aa0-ad9e-3262d05e842a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We examine the first event.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455362342/3d911673-6081-4644-a344-a747d6daa84a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found the Domain here.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455363642/ace962ca-a437-4e19-993a-5a3773314709.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer:</em></strong> ##########<strong><em>.local .</em></strong></p>
+<h2 id="4-multiple-ips-were-communicating-with-the-malicious-server-one-of-them-ends-with-20-provide-the-full-ip"><strong>(4) Multiple IPs were communicating with the malicious server. One of them ends with “20”. Provide the full IP ?</strong></h2>
+<p><strong><em>We went to Dashboard and looked at top sources. We found 192.168.##.## have a greatest offenses 7 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455365151/532805b6-d9d7-48d1-9640-a7a25cb57008.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We can display a log of activity by source IP to see which IPs generated the most communication :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455366693/186bd710-be7a-47e2-ae5f-920712e5e363.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found that the IP 192.168.##.## generated the most communication :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455367940/fe67fcfb-d186-4032-af93-e87d15a9cdf9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer: 192.168.##.## .</em></strong></p>
+<h2 id="5-what-is-the-sid-of-the-most-frequent-alert-rule-in-the-dataset"><strong>(5) What is the SID of the most frequent alert rule in the dataset?</strong></h2>
+<p>We went to search edit, then we went to column definition, then we added the RULE SID :</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455369555/e6db25f9-7fc7-44cf-8cb3-77d27f9bf7b5.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong>Then we know that “<em>#####65</em>” is the correct answer, because it is the highest in the count column with a number of 72 :</strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455370814/1a91e9a1-0f83-4506-b021-768a51ebbb7a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong>Now that we are here we can see that the highest SID for the base is :</strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455372226/5423af1e-c131-4f8f-9eb3-7662f76ded89.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer: #####65 .</em></strong></p>
+<h2 id="6-what-is-the-attackers-ip-address"><strong>(6) What is the attacker’s IP address?</strong></h2>
+<p><strong><em>In closed offenses, we can see a suspicious public IP .</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455373584/b84f538d-a845-4ae6-b3d0-9714e42f8801.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 192.##.##.## .</em></strong></p>
+<h2 id="7-the-attacker-was-searching-for-data-belonging-to-one-of-the-companys-projects-can-you-find-the-name-of-the-project"><strong>(7) The attacker was searching for data belonging to one of the company’s projects, can you find the name of the project ?</strong></h2>
+<p><strong><em>We can search for the project with regular expression then :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455374648/908e159d-b950-4398-bca2-be82fdf43031.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We can see 4 events :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455375967/d28120a9-5f70-4cd1-b8c2-85a9be66b841.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>then read payload information :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455377112/36f29b0b-1443-45c6-9b74-d06c557d1e19.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #######48 .</em></strong></p>
+<h2 id="8-what-is-the-ip-address-of-the-first-infected-machine"><strong>(8) What is the IP address of the first infected machine ?</strong></h2>
+<p><strong><em>We have added a filter for the attacker’s IP address with the source IP :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455378154/69c05d0f-6828-4745-a5ed-904a7a48433f.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found that the attacker’s IP was sending malware to IP 192.168.10.15 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455379456/3f9baef0-3c83-445b-970d-eb8ead596c89.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>I found the serukata alert, like this :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455381048/da9d285e-c9e1-4bc9-ab50-1f2c9fbbd2cc.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 192.168.##.## .</em></strong></p>
+<h2 id="9-what-is-the-username-of-the-infected-employee-using-1921681015"><strong>(9) What is the username of the infected employee using 192.168.10.15 ?</strong></h2>
+<p><strong><em>We searched for successful logon event id on Google :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455382410/fa0be86d-ab7d-4477-a38e-a18b70d4aba2.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we added the filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455383967/0d000a07-a88d-43f7-9dfb-42b714bd3148.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then I found that the username for 192.168.10.15 is Nour :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455385315/0c04f690-b696-4c9c-8dca-8ae49b97aca9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We also looked at the payload information :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455386913/d6bb5457-2b2a-4fc5-8131-d23fbfda1a9b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ###r .</em></strong></p>
+<h2 id="10-hackers-do-not-like-logging-what-logging-was-the-attacker-checking-to-see-if-enabled"><strong>(10) Hackers do not like logging, what logging was the attacker checking to see if enabled ?</strong></h2>
+<p><strong><em>We can apply a new filter for log source is HD-FIN-03 , and the username “nour” :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455388038/3752135e-27bb-4920-b2b9-02dd0b51157b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>You’ll find that the attacker tried using PowerShell :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455389461/45639567-9c9f-4295-8c31-c4d2cd0b30fa.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : p######### .</em></strong></p>
+<h2 id="11-name-of-the-second-system-the-attacker-targeted-to-cover-up-the-employee"><strong>(11) Name of the second system the attacker targeted to cover up the employee ?</strong></h2>
+<p><strong><em>We added a process commandline filter with del :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455391178/d3729663-bfc1-402d-bb87-56ed7e152a4c.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we entered :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455392382/58369143-5780-4344-8922-1d3977e1e08e.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found a second system :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455393828/d69a2832-7fca-4594-b1e8-93f2a4b64fb9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>This is the command line :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455395581/c152fbc4-e15e-48cc-868e-b2f4aaf43b0b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ####-01 .</em></strong></p>
+<h2 id="12-when-was-the-first-malicious-connection-to-the-domain-controller-log-start-time-hhmmss"><strong>(12) When was the first malicious connection to the domain controller (log start time — hh:mm:ss)?</strong></h2>
+<p><strong><em>We have searched for :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455396937/250b7479-ed27-40ad-8a89-5cf6dbd1a6b7.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>So we added id :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455398507/8c40e1b5-3c80-4ca0-9e4b-7d7957b87ecc.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found a file that the attacker is uploading at the same time :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455400024/cddfb164-d5d5-422d-a1ac-61a3e5a190a6.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 11:##:## .</em></strong></p>
+<h2 id="13-what-is-the-md5-hash-of-the-malicious-file"><strong>(13) What is the md5 hash of the malicious file?</strong></h2>
+<p><strong><em>We will add a new filter by hash, we can find the .docx file that contains the malicious hash or add filter with event number 15 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455401335/9c49dd17-a6a3-4ff2-8668-90d8bb4375e0.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We can look at the payload information to access the hash of the file:</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455402679/9f88e541-465b-4190-b795-1a7842928dc1.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer :</em></strong> ###########CD9D35###############<strong><em>.</em></strong></p>
+<h2 id="14-what-is-the-mitre-persistence-technique-id-used-by-the-attacker">(14) <strong>What is the MITRE persistence technique ID used by the attacker?</strong></h2>
+<p><strong><em>we searched on google and found out that the most common techniques for establishing persistence by malware and threat actors is the usage of registry Run keys &amp; Start up folders in a windows system.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455404307/fe80e482-e80b-4987-8946-d068c7e58b1b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Add filter Event id with number 13 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455405680/ba112d4d-d32d-4dd5-86cc-a49c7b340531.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>we applied a filter for Sysmon Event ID 13: RegistryEvent (Value Set) and added a column for “Target Object”</em></strong><em>.</em></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455407316/7f7db6fb-dbe0-4a7a-9028-24943c7b9c89.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We will go to MITER ATT\&amp;CK® , Then we will search for \windows\current\version :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455408991/c4e250fa-016f-4a9f-b976-02db2a31e0bc.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>The expected result will appear :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455410788/f87eabda-486f-43e8-9c20-512c89bfb3b2.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #####.001 .</em></strong></p>
+<h2 id="15-what-protocol-is-used-to-perform-host-discovery"><strong>(15) What protocol is used to perform host discovery?</strong></h2>
+<p><strong><em>We have added a filter , We can discover this information by analyzing outgoing traffic from “192.168.10.15”, with Log source is Zeek_conn</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455412312/4d7f4fe0-aef6-457b-b238-024594ee4c7a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we block udp , tcp connections :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455414045/04780bdc-8663-4f60-af03-9b2cdab9cb10.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : i### .</em></strong></p>
+<h2 id="16-what-is-the-email-service-used-by-the-companyone-word"><strong>(16) What is the email service used by the company?(one word)</strong></h2>
+<p><strong><em>We added these filters, to find all the companies that speak from outside the network, to find the service that the company relies on :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455415664/1e328eee-d65c-4951-ad37-0913ded0796f.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we searched the website</em></strong> <a href="http://www.iplocation.net"><strong><em>www.iplocation.net</em></strong></a> <strong><em>to find out the IP address of any service :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455417431/34777b6d-0e27-4803-9fe6-bb3c77974e49.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Hijab The search result showed #########365 and ######365</em></strong></p>
+<p><strong><em>Answer : ######365 .</em></strong></p>
+<h2 id="17-what-is-the-name-of-the-malicious-file-used-for-the-initial-infection"><strong>(17) What is the name of the malicious file used for the initial infection ?</strong></h2>
+<p><strong><em>Referring to Question No 13, We found the file with the md5 hash :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455418822/ab0def64-3edb-4e21-9221-24130829ffd2.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer :</em></strong> #########_############.docx***.***</p>
+<h2 id="18-what-is-the-name-of-the-new-account-added-by-the-attacker"><strong>(18) What is the name of the new account added by the attacker ?</strong></h2>
+<p><strong><em>We will search for the event id of A user account was created :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455420194/b79f5871-8ea5-4e1e-83db-83dd28b12de9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>So I took the ID 4720 and added a filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455421633/dd38b5b7-1264-4ab2-ba21-4f4855365142.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we will look at the payload information :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455423160/63e24fab-52e8-4ffc-b147-dd0a4e1c0609.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ####o .</em></strong></p>
+<h2 id="19-what-is-the-pid-of-the-process-that-performed-injection"><strong>(19) What is the PID of the process that performed injection ?</strong></h2>
+<p><strong><em>We will search for what is event id of the process that performed injection in Google :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455424493/c9a9d94a-6c32-43f5-8fd4-f80fb2113171.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We added this filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455426127/0d9639d8-e67f-4083-9080-bfad303b6da9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we found, an alarm for the notepad file being uploaded :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455427691/c70c8ed1-c606-4288-a03f-030b013eabd7.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found the PID :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455429212/9fd351af-b25f-4754-a61f-81fb090e7fc9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #### .</em></strong></p>
+<h2 id="20-what-is-the-name-of-the-tool-used-for-lateral-movement"><strong>(20) What is the name of the tool used for lateral movement ?</strong></h2>
+<p><strong><em>We have added a filter to find out what technique the attacker used :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455430765/cfb7d22e-afeb-4d26-b9bc-c1e12ef7cb38.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>The result was some commands that the attacker typed into the command lines :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455432700/5c20e089-2503-46d6-a24c-4b32265ab789.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We used</em></strong> <a href="https://attack.mitre.org/"><em>MITRE ATT\&amp;CK®</em></a> <strong><em>Software\policies\microsoft\windows\powershell</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455434449/743cd465-4f93-429e-b2cd-b750e64bb2f0.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Here we found Impacket and searched it :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455435889/ef9c25e9-a2bd-4f2e-9f0c-7678fa69b84e.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We even found the tool used for lateral movement, which the attacker used :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455437132/2592df89-b41f-4c52-b478-356664f7b5bf.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we headed to</em></strong> <a href="https://github.com/"><strong><em>https://github.com/</em></strong></a> <strong><em>To look at it :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455438499/a1535df0-590b-4b7e-a110-e7257022df27.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer :</em></strong> #######.py <strong><em>.</em></strong></p>
+<h2 id="21-attacker-exfiltrated-one-file-what-is-the-name-of-the-tool-used-for-exfiltration"><strong>(21) Attacker exfiltrated one file, what is the name of the tool used for exfiltration ?</strong></h2>
+<p><strong><em>We used this filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455439651/d1f83a06-0235-4444-8537-5c9219044b04.png" alt="" align="left" fullwidth="false" /></p>
+<p><em>The result was :</em></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455440976/bf2b8666-75cb-49ef-b21a-f8109a56f588.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ###l.</em></strong></p>
+<h2 id="22-who-is-the-other-legitimate-domain-admin-other-than-the-administrator"><strong>(22) Who is the other legitimate domain admin other than the administrator ?</strong></h2>
+<p><strong><em>To find the other domain admin, I applied a filter for event ID 4672 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455442075/adfda984-aacd-4475-b116-50dc33f93a0d.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we added a filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455443377/136c9765-8651-4039-ac1f-204bd2d5a833.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found the two devices logging into Administrator Adam’s account :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455444711/dd676715-a07a-43bf-911c-abe60f7f7c8f.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ###m .</em></strong></p>
+<h2 id="23the-attacker-used-the-host-discovery-technique-to-know-how-many-hosts-available-in-a-certain-network-what-is-the-network-the-hacker-scanned-from-the-host-ip-1-to-30"><strong>(23)The attacker used the host discovery technique to know how many hosts available in a certain network, what is the network the hacker scanned from the host IP 1 to 30 ?</strong></h2>
+<p><strong><em>We used this filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455446224/1bd116d8-e510-4728-9631-11b058ae8a28.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>You will find that the IP 192.168.10.15 has started scanning the IP addresses from 192.168.20.1 to 192.168.20.30 .</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455447900/e03bbb00-277e-4002-934c-996b56a3567c.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 192.168.##.# .</em></strong></p>
+<h2 id="24what-is-the-name-of-the-employee-who-hired-the-attacker"><strong>(24)What is the name of the employee who hired the attacker ?</strong></h2>
+<p><strong><em>Looking at the answers to the previous questions, we may know that the file is called Sami :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455449538/94daa58e-f94b-4578-ab3b-b5474ab8951e.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>but we added the answers for confirmation :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455450680/fe6f1556-cf18-402a-9569-6b83920fddc6.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #a## .</em></strong></p>
+<p><strong><em>in the end :\
+ I hope you start solving the challenge before looking at where the solutions are. At the end of this wonderful challenge, I hope that we have succeeded in writing the report well. If you find any problem understanding part of the solution, please contact me. Thank you for reading the report.</em></strong></p>
+<p><strong><em>See you soon in other reports….!!</em></strong></p>
+<h4 id="abdelwahab_shandy"><strong>Abdelwahab_Shandy</strong></h4>
+<h4 id="as_cyber"><strong>AS_Cyber</strong></h4>
 
 
 
