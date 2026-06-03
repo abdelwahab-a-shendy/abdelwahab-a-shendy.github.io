@@ -1,0 +1,14 @@
+{
+  "userIgnoreFilters": [
+    "Photos/"
+  ],
+  "attachmentFolderPath": "Photos",
+  "useMarkdownLinks": true,
+  "newLinkFormat": "absolute",
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}
