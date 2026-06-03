@@ -1,0 +1,523 @@
+---
+id: "68ee48ffc3ef0bae31ed37ad"
+title: "Overview of Registry Hives & Extraction with FTK Imager"
+projectId: "687e32493aa4a0e5086a2992"
+guideSlug: "abdelwahabshandy-notes"
+versionSlug: "v1.0"
+path: "/digital-forensics-labs/course-based-digital-forensics-labs/overview-of-registry-hives-and-extraction-with-ftk-imager"
+status: "PUBLISHED"
+visibility: "PUBLIC"
+format: "MDX"
+contentSource: "published"
+createdAt: "2025-10-14T12:58:39.908Z"
+updatedAt: "2026-01-25T15:35:46.840Z"
+---
+
+## 🧭 General Introduction
+
+After learning about the concepts of **Preservation** and **Acquisition**, it's now time to start working hands-on with one of the most important components of **Windows** operating systems: the **Registry**.
+
+> The **Registry** is a database that stores system, user, and application settings.
+
+***
+
+## 🧩 What is the Registry?
+
+The **Registry** is a central database that contains critical information related to:
+
+* System Configuration
+
+* Users
+
+* Applications
+
+* Hardware
+
+> This data is stored inside files known as **Hives**.
+
+***
+
+### 📌 Historical Note:
+
+> Before the release of Windows 95, system settings were stored in `.ini` files.\
+> From Windows 95 onwards, Microsoft adopted the **Registry** to store system data in a more organized and secure way.
+
+***
+
+## 🏛️ Main Types of Registry Hives
+
+When you open the **Registry Editor** by typing `regedit` in the Start menu, you'll see five main Hives:
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446770380/3b028562-b081-44f4-8495-453edee0c90c.png" alt="" align="center" fullwidth="true" />
+
+| Hive                      | Description                                                       |
+| ------------------------- | ----------------------------------------------------------------- |
+| **HKEY\_CLASSES\_ROOT**   | Information about file extensions and their program associations. |
+| **HKEY\_CURRENT\_USER**   | Settings for the current user only (e.g., desktop, themes…).      |
+| **HKEY\_LOCAL\_MACHINE**  | System settings, installed software, and hardware configurations. |
+| **HKEY\_USERS**           | Info about all users who have previously logged in.               |
+| **HKEY\_CURRENT\_CONFIG** | Information about currently used hardware.                        |
+
+> The most commonly used Hives are: `HKEY_CURRENT_USER`, `HKEY_LOCAL_MACHINE`, and `HKEY_USERS`
+
+📌 **HKEY\_CURRENT\_USER** is linked to the file `NTUSER.DAT`
+
+***
+
+## 💾 Where Registry Hive Files Are Stored in the System
+
+The Hives are actual files stored in fixed locations on the system, such as:
+
+* `C:\Users\[Username]\NTUSER.DAT`\
+  ↳ represents **HKEY\_CURRENT\_USER**
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446782374/510009b3-8da4-486d-9f67-7c33e87c6842.png" alt="" align="center" fullwidth="true" />
+
+* Files like: `SAM`, `SECURITY`, `SOFTWARE`, `SYSTEM`\
+  ↳ located in:
+
+```bash
+C:\Windows\System32\Config\
+```
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446807880/2c3ee7d0-aeba-432d-bf92-43e51fb4ca20.png" alt="" align="center" fullwidth="true" />
+
+> Each file represents a different Hive and must be collected along with its associated `.LOG1` and `.LOG2` files.
+
+***
+
+## ⚠️ Issue with Manually Copying Registry Files
+
+When trying to manually copy registry files while the system is running (like `NTUSER.DAT`), several issues occur:
+
+* Files are **protected** by the system.
+
+* They are constantly updated using **Transaction Logs** (temporary files that later merge into the original).
+
+📌 So: direct copy = ❌ **Dirty Hive** = Incomplete file
+
+***
+
+## 🛠️ Extracting Registry Hives Using FTK Imager
+
+### 🔸 Method 1: Live Acquisition from the System
+
+1. Open **FTK Imager**
+
+2. Choose `Add Evidence Item` or `Add All Attached Devices`
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446820122/ce96d14f-f48a-49d3-a31a-b1274c9b2ee8.png" alt="" align="center" fullwidth="true" />
+
+3. Select `Physical Drive` → Choose the OS drive
+
+4. FTK shows all files, even protected ones
+
+5. Navigate to:
+
+   * `C:\Users\[User]` to extract `NTUSER.DAT` and `LOG1/LOG2` files
+
+   * `C:\Windows\System32\Config` to extract the remaining Hives
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446828078/a5112466-3828-459b-ab95-d7fa407b233e.png" alt="" align="center" fullwidth="true" />
+
+> 📌 Orphan files: have no reference in the file system\
+> 📌Unallocated space: free disk space that might contain remnants of deleted files
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446861792/fc116afc-ada4-4dc2-9647-1ab15ff92fc3.png" alt="" align="center" fullwidth="true" />
+
+> If you copy `NTUSER.DAT` without the LOG files, you'll get a **Dirty Hive**.
+
+#### To extract all Hives:
+
+* You can extract them one by one from the path: `\Windows\System32\Config\`
+
+* Or use the **Obtain Protected Files** feature
+
+***
+
+### 🔸 Method 2: Extracting Hives from an Image File
+
+If you have a forensic image (like `.E01`, `.dd`):
+
+1. Open **FTK Imager**
+
+2. Choose `Add Evidence Item`
+
+3. Select `Image File`
+
+4. Load the disk image
+
+5. Browse the same paths and extract the required files:
+
+   * `C:\Users\[Username]` → `NTUSER.DAT`
+
+   * `C:\Windows\System32\Config\` → `SAM`, `SYSTEM`, `SOFTWARE`, `SECURITY`, `DEFAULT`
+
+##### 🧲 Hive File Types You Should Extract:
+
+| File Name    | Represents Which Hive?   |
+| ------------ | ------------------------ |
+| `NTUSER.DAT` | HKEY\_CURRENT\_USER      |
+| `SAM`        | User account information |
+| `SYSTEM`     | System configuration     |
+| `SOFTWARE`   | Installed software       |
+| `SECURITY`   | Security settings        |
+| `DEFAULT`    | Default User settings    |
+
+***
+
+## 🧾 Importance of Transaction Logs
+
+* While the system is running, changes aren't written directly to the Hive files.
+
+* They are temporarily stored in `.LOG1` and `.LOG2` files to protect the main files from corruption.
+
+* They are later automatically merged.
+
+> Therefore, ignoring these files = Incomplete files = ❌ Dirty Hive
+
+***
+
+## *Obtain Protected Files*
+
+## ✅ Best Way to Fully Extract Hives via FTK Imager
+
+Instead of manually extracting files:
+
+* Use the ✅ **Obtain Protected Files** option
+
+  * Extracts all protected files at once
+
+  * Automatically includes Transaction Log files
+
+    <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446889116/51790f68-dd60-4f1e-9eb1-c67aec0a2f52.png" alt="" align="center" fullwidth="true" />
+
+1. **You’ll need to specify where to save the extraction:**
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446901963/19d12f0b-28f2-418b-93f4-f300a62f37f0.png" alt="" align="center" fullwidth="true" />
+
+2. Since we want everything that happened on Windows:
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446916580/f1943424-824b-402a-940a-fd843964efd8.png" alt="" align="center" fullwidth="true" />
+
+3. You’ll find it extracted: `SOFTWARE`, `SYSTEM`, `SAM`, `DEFAULT`, `SECURITY`
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446931937/282d5e49-9e20-408c-a400-db21703d9663.png" alt="" align="center" fullwidth="true" />
+
+> All of them are located under Local Machine
+>
+> <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446954162/c6467bb2-3f63-4204-806f-591626b15968.png" alt="" align="center" fullwidth="true" />
+>
+> Since we selected "everything", it also gathers all users, including `NTUSER` and `UsrClass`
+
+***
+
+## Extracting Hives from an **Image File**
+
+If you have a `.E01` or `.dd` image:
+
+`Add Evidence Item` → `Image File`
+
+* Add it to FTK Imager as an Image File
+
+  <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446972519/5721a315-adb7-449e-ad35-ddcdb40714d3.png" alt="" align="center" fullwidth="true" />
+
+* Browse it like a real drive
+
+* Extract Registry files the same way
+
+<Image src="data:image/png;base64,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" alt="" align="center" fullwidth="true" />
+
+Browse the same paths:
+
+* `C:\Users\[User]` → `NTUSER.DAT`
+
+* `C:\Windows\System32\Config\` → remaining Hives
+
+> ⛏️ Very useful for analyzing a system without booting it.
+
+***
+
+## 🧠 Analytical Notes
+
+* Registry files = a mini-database for every part of the system or user.
+
+* **Transaction Logs** = intermediary files to protect data.
+
+* FTK Imager can display protected files not visible in Windows.
+
+* After extraction, we use tools like:
+
+  * `Registry Explorer`
+
+  * `RECmd`
+
+  * `Regripper`
+
+***
+
+## 🧾 Summary
+
+| Section             | Content                                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Registry Definition | A database storing system and user settings                                                        |
+| Main Hives          | CLASSES\_ROOT, CURRENT\_USER, LOCAL\_MACHINE, USERS, CURRENT\_CONFIG                               |
+| Storage Locations   | `C:\Users\[User]\NTUSER.DAT` and `C:\Windows\System32\Config`                                      |
+| Extraction Method   | Using FTK Imager – from live system or forensic image                                              |
+| Important Notes     | Cannot manually copy Hives while system is running – specialized tools are needed for completeness |
+
+***
+
+***
+
+## 🧭 مقدمة عامة
+
+بعد ما تعلمنا عن مفهومي **Preservation** (الحفاظ على الدليل الرقمي) و**Acquisition** (جمع الأدلة)، دلوقتي الوقت إننا نبدأ نشتغل عمليًا على واحد من أهم مكونات أنظمة تشغيل **Windows**، وهو **الريجستري (Registry)**.
+
+> **الريجستري** هو قاعدة بيانات تُخزن فيها إعدادات النظام والمستخدمين والبرامج.
+
+***
+
+## 🧩 ما هي الـ Registry؟
+
+الـ **Registry** هو قاعدة بيانات مركزية تحتوي على معلومات حيوية تخص:
+
+* إعدادات النظام (System Configuration)
+
+* المستخدمين (Users)
+
+* إعدادات التطبيقات (Applications)
+
+* إعدادات العتاد (Hardware)
+
+> وتُخزن هذه البيانات داخل ملفات تُعرف باسم **Hives**.
+
+***
+
+### 📌 ملاحظة تاريخية:
+
+> قبل إصدار Windows 95، كانت إعدادات النظام تحفظ داخل ملفات `.ini`.\
+> من Windows 95 فصاعدًا، اعتمدت مايكروسوفت **الريجستري** لتخزين بيانات النظام بشكل منظم وأكثر أمانًا.
+
+***
+
+## 🏛️ أنواع الـ Registry Hives الأساسية
+
+عند فتح أداة **Registry Editor** بكتابة `regedit` من قائمة Start، ستجد 5 Hives رئيسية:
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446770380/3b028562-b081-44f4-8495-453edee0c90c.png" align="center" fullwidth="false" />
+
+| Hive                      | الوصف                                                      |
+| ------------------------- | ---------------------------------------------------------- |
+| **HKEY\_CLASSES\_ROOT**   | معلومات عن امتدادات الملفات وارتباطها بالبرامج.            |
+| **HKEY\_CURRENT\_USER**   | إعدادات المستخدم الحالي فقط (مثل: سطح المكتب، الثيمات...). |
+| **HKEY\_LOCAL\_MACHINE**  | إعدادات النظام، البرمجيات المثبتة، وأجهزة الهاردوير.       |
+| **HKEY\_USERS**           | معلومات جميع المستخدمين الذين سجلوا دخول مسبقًا.           |
+| **HKEY\_CURRENT\_CONFIG** | معلومات مرتبطة بالهاردوير المستخدم حاليًا.                 |
+
+> أكثر Hives نهتم بها عادة: `HKEY_CURRENT_USER` و `HKEY_LOCAL_MACHINE` و `HKEY_USERS`
+
+📌 **HKEY\_CURRENT\_USER** مرتبط بالملف `NTUSER.DAT`
+
+***
+
+## 💾 أماكن تخزين ملفات الـ Registry Hives في النظام
+
+الـ Hives هي ملفات حقيقية تُخزن في أماكن ثابتة داخل النظام، مثل:
+
+* `C:\Users\[Username]\NTUSER.DAT`\
+  ↳ يمثل **HKEY\_CURRENT\_USER**
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446782374/510009b3-8da4-486d-9f67-7c33e87c6842.png" align="center" fullwidth="false" />
+
+* ملفات مثل: `SAM`, `SECURITY`, `SOFTWARE`, `SYSTEM`\
+  ↳ توجد في:
+
+```bash
+C:\Windows\System32\Config\
+```
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446807880/2c3ee7d0-aeba-432d-bf92-43e51fb4ca20.png" align="center" fullwidth="false" />
+
+> كل ملف يمثل Hive مختلف ويجب جمعه مع ملفات `.LOG1` و `.LOG2` المرتبطة به.
+
+***
+
+## ⚠️ مشكلة نسخ ملفات الريجستري يدويًا
+
+عند محاولة نسخ ملفات الريجستري يدويًا أثناء تشغيل النظام (مثل `NTUSER.DAT`)، تحدث مشكلات:
+
+* الملفات تكون **محجوزة (Protected)** من قبل النظام.
+
+* يتم تحديثها باستمرار باستخدام **Transaction Logs** (ملفات مؤقتة تُدمج لاحقًا بالملف الأصلي).
+
+📌 إذًا: النسخ المباشر = ❌ **Dirty Hive** = ملف غير مكتمل
+
+***
+
+## 🛠️ استخراج Registry Hives باستخدام FTK Imager
+
+### 🔸 الطريقة الأولى: Live Acquisition من النظام
+
+1. فتح **FTK Imager**
+
+2. اختيار `Add Evidence Item` 0R `Add All Attached Devices`
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446820122/ce96d14f-f48a-49d3-a31a-b1274c9b2ee8.png" align="center" fullwidth="false" />
+
+3. اختيار `Physical Drive` ← اختر قرص نظام التشغيل
+
+4. FTK يعرض كل الملفات، حتى المحمية منها
+
+5. التوجه إلى:
+
+   * `C:\Users\[User]` لاستخراج `NTUSER.DAT` وملفات `LOG1/LOG2`
+
+   * `C:\Windows\System32\Config` لاستخراج باقي Hives
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446828078/a5112466-3828-459b-ab95-d7fa407b233e.png" align="center" fullwidth="false" />
+
+> 📌 ملفات Orphan : ليس لها مرجعية في نظام الملفات\
+> 📌ملفات Unallocated space : المساحات الفارغة في القرص والتي قد تحتوي على بقايا ملفات محذوفة
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446861792/fc116afc-ada4-4dc2-9647-1ab15ff92fc3.png" align="center" fullwidth="false" />
+
+> إذا نسخت `NTUSER.DAT` بدون ملفات الـ LOG، ستحصل على **Dirty Hive**.
+
+#### علشان نستخراج Hives كلها :
+
+* تقدر تعمل استخراج ل ملف ملف و هتلاقيهم تحت المسار => `\Windows\System32\Config\`
+
+* او تقدر تستخدم **Obtain Protected Files**
+
+***
+
+### 🔸 الطريقة الثانية: استخراج Hives من Image File
+
+لو عندك صورة جنائية (مثل `.E01`, `.dd`):
+
+1. فتح **FTK Imager**
+
+2. اختيار `Add Evidence Item`
+
+3. اختيار `Image File`
+
+4. فتح صورة القرص
+
+5. تصفح نفس المسارات واستخراج الملفات المطلوبة:
+
+* `C:\Users\[اسم المستخدم]` → `NTUSER.DAT`
+
+* `C:\Windows\System32\Config\` → `SAM`, `SYSTEM`, `SOFTWARE`, `SECURITY`, `DEFAULT`
+
+##### 🧲 أنواع ملفات الـ Hives التي يجب استخراجها :
+
+| File Name    | يمثل أي Hive؟             |
+| ------------ | ------------------------- |
+| `NTUSER.DAT` | HKEY\_CURRENT\_USER       |
+| `SAM`        | معلومات حسابات المستخدمين |
+| `SYSTEM`     | إعدادات النظام            |
+| `SOFTWARE`   | البرمجيات المثبتة         |
+| `SECURITY`   | إعدادات الأمان            |
+| `DEFAULT`    | إعدادات Default User      |
+
+***
+
+## 🧾 أهمية ملفات Transaction Logs
+
+* أثناء تشغيل النظام، التعديلات لا تُكتب مباشرة إلى ملفات Hives.
+
+* تُخزن مؤقتًا في ملفات `.LOG1` و `.LOG2` لحماية الملفات الأساسية من الفساد.
+
+* يتم دمجها لاحقًا تلقائيًا.
+
+> بالتالي، تجاهل هذه الملفات = ملفات غير مكتملة = ❌ Dirty Hive
+
+***
+
+## *Obtain Protected Files*
+
+## ✅ أفضل طريقة لاستخراج Hives كاملة من FTK Imager
+
+بدلًا من استخراج الملفات يدويًا:
+
+* استخدم خيار ✅ **Obtain Protected Files**
+
+  * يستخرج جميع الملفات المحمية دفعة واحدة
+
+  * ويضيف معها ملفات الـ Transaction Logs تلقائيًا
+
+    <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446889116/51790f68-dd60-4f1e-9eb1-c67aec0a2f52.png" align="center" fullwidth="false" />
+
+1. **هتحتاج تقولو ال Extration هتوديه فين :**
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446901963/19d12f0b-28f2-418b-93f4-f300a62f37f0.png" align="center" fullwidth="false" />
+
+2. بما اننا عايزين علي كل حاجه كانت بتحصل علي ال Windows :
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446916580/f1943424-824b-402a-940a-fd843964efd8.png" align="center" fullwidth="false" />
+
+3. هتلاقيه عمل Extration لكلا من => , `SOFTWARE` , `SYSTEM` , `SAM` . `DEFAULT` , `SECURITY` !
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446931937/282d5e49-9e20-408c-a400-db21703d9663.png" align="center" fullwidth="false" />
+
+> كلهم الموجودين تحت ال local Machine
+>
+> <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446954162/c6467bb2-3f63-4204-806f-591626b15968.png" align="center" fullwidth="false" />
+>
+> بما اني قولتله كل حاجه يبقا هو بيجمع كل ال users و جواهم حاجه اسمها => `NTUSER` , `UsrClass` .
+
+***
+
+## استخراج Hives من **Image File**
+
+لو عندك نسخة `.E01` أو `.dd` من جهاز: `Add Evidence Item` => \`Image File
+
+* أضفها إلى FTK Imager كـ Image File
+
+  <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446972519/5721a315-adb7-449e-ad35-ddcdb40714d3.png" align="center" fullwidth="false" />
+
+* تصفحها كأنك داخل قرص حقيقي
+
+* استخرج ملفات الريجستري بنفس الطريقة
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760446979876/548b4976-7412-4e69-8874-bf4e03c2fad3.png" align="center" fullwidth="false" />
+
+تصفح نفس المسارات:
+
+* `C:\Users\[User]` → `NTUSER.DAT`
+
+* `C:\Windows\System32\Config\` → باقي الـ Hives
+
+> ⛏️ مفيد جدًا لتحليل نظام بدون الحاجة لتشغيله.
+
+***
+
+## 🧠 ملاحظات تحليلية
+
+* ملفات الريجستري = قاعدة بيانات مصغّرة لكل جزء من النظام أو المستخدم.
+
+* **Transaction Logs** = ملفات وسيطة لحماية البيانات.
+
+* FTK Imager قادر على عرض ملفات محمية لا تراها في Windows.
+
+* بعد الاستخراج، نستخدم أدوات مثل:
+
+  * `Registry Explorer`
+
+  * `RECmd`
+
+  * `Regripper`
+
+***
+
+## 🧾 الخلاصة
+
+| القسم           | المحتوى                                                                       |
+| --------------- | ----------------------------------------------------------------------------- |
+| تعريف الريجستري | قاعدة بيانات لتخزين إعدادات النظام والمستخدمين                                |
+| Hives الأساسية  | CLASSES\_ROOT, CURRENT\_USER, LOCAL\_MACHINE, USERS, CURRENT\_CONFIG          |
+| أماكن التخزين   | `C:\Users\[User]\NTUSER.DAT` و `C:\Windows\System32\Config`                   |
+| طريقة الاستخراج | باستخدام FTK Imager – من نظام مباشر أو صورة جنائية                            |
+| ملاحظات مهمة    | لا يمكن نسخ Hives يدويًا أثناء عمل النظام – تحتاج أدوات متخصصة لضمان اكتمالها |
+

@@ -1,0 +1,184 @@
+---
+id: "68e7bb6f05bf81377d7b15e5"
+title: "Registry Persistence Detection with Sysmon and KQL"
+description: "This lab focuses on detecting Registry-based persistence techniques used by attackers to maintain access on a compromised system.\nWe simulate an attacker creating or modifying Run and RunOnce registry keys, which allow malicious programs to automatically execute when Windows starts , By using Sysmon to log detailed Registry events (Event ID 13) and forwarding them to Elasticsearch via Winlogbeat "
+projectId: "687e32493aa4a0e5086a2992"
+guideSlug: "abdelwahabshandy-notes"
+versionSlug: "v1.0"
+path: "/siem-home-lab/detection-egnineering/registry-persistence-detection-with-sysmon-and-kql"
+status: "PUBLISHED"
+visibility: "PUBLIC"
+format: "MDX"
+contentSource: "published"
+createdAt: "2025-10-09T13:41:03.790Z"
+updatedAt: "2026-01-25T15:35:46.817Z"
+---
+
+# **Step 1: Preparing Windows for Registry Monitoring**
+
+1. Open **Local Group Policy Editor** (`Win + R` → type `gpedit.msc` → Enter).
+
+2. Navigate to:\
+   `Computer Configuration → Windows Settings → Security Settings → Advanced Audit Policy Configuration → Object Access → Audit Registry`.
+
+3. Enable **Success + Failure** for Audit Registry.
+
+4. Run `gpupdate /force` to apply changes immediately.
+
+   <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760017669898/21584fea-1a08-4a5c-97e3-9ac946fa9c28.png" align="center" fullwidth="false" />
+
+> ✅ Windows now logs all Registry modifications.
+
+***
+
+# **Step 2: Installing Sysmon for Detailed Registry Monitoring**
+
+1. Download [**Sysmon64.zip**](http://Sysmon64.zip) and extract it to `C:\Program Files\Sysmon`.
+
+2. Download Sysmon configuration XML from [SwiftOnSecurity Sysmon config](https://github.com/SwiftOnSecurity/sysmon-config).
+
+3. Modify the configuration to focus on Run/RunOnce keys:
+
+```xml
+<RegistryEvent onmatch="include">
+    <TargetObject name="RunKey" condition="contains">CurrentVersion\Run</TargetObject>
+    <TargetObject name="RunOnceKey" condition="contains">CurrentVersion\RunOnce</TargetObject>
+    <TargetObject name="RunPolicy" condition="contains">Policies\Explorer\Run</TargetObject>
+</RegistryEvent>
+```
+
+4. Installed Sysmon with the configuration:
+
+```powershell
+PS C:\Program Files\Sysmon> .\Sysmon64.exe -accepteula -i sysmonconfig.xml
+```
+
+5. Verified Sysmon is running:
+
+```powershell
+PS C:\Program Files\Sysmon> Get-Service Sysmon64
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  Sysmon64           Sysmon64
+```
+
+> Sysmon is now actively monitoring Registry changes (Event ID 13).
+
+***
+
+# **Step 3: Testing Registry Modification**
+
+1. Open **Registry Editor** (`regedit.exe`).
+
+2. Navigate to:\
+   `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run`
+
+3. Create a new **String Value** named `TestPersistence` with value: `C:\Windows\notepad.exe`.
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760017700431/4c8a6e72-cfe5-4976-8828-a2e12ac5939e.png" align="center" fullwidth="false" />
+
+> ✅ This represents a simulated persistence attempt for testing purposes.
+
+***
+
+# **Step 4: Monitoring Sysmon Logs in Event Viewer**
+
+1. Opened **Event Viewer** (`eventvwr.msc`).
+
+2. Navigated to:\
+   `Applications and Services Logs → Microsoft → Windows → Sysmon → Operational`
+
+3. Observed **Event ID 13** for the test value creation:
+
+* `TargetObject: HKCU\Software\Microsoft\Windows\CurrentVersion\Run\TestPersistence`
+
+* `Image: regedit.exe`
+
+* `Details: C:\Windows\notepad.exe`
+
+  <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760018887621/9abffd45-20b6-4e29-8719-6e243de43dfe.png" align="center" fullwidth="false" />
+
+  > ✅ Event ID 13 confirms Sysmon successfully logged the Registry change.
+
+* IN SIEM :
+
+  <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760018959257/324920ec-4a2b-49fe-9ce1-29cc36e6a507.png" align="center" fullwidth="false" />
+
+> ✅ Logs now flow to your SIEM (via Winlogbeat/Agent).
+
+***
+
+# **Step 5: Creating KQL Rule for Run/RunOnce Persistence**
+
+### **1️⃣ Index Pattern**
+
+* Used `winlogbeat-*` as the index pattern.
+
+### **2️⃣ KQL Query**
+
+```bash
+event.provider:"Microsoft-Windows-Sysmon" and event.code:"13" and (registry.path.keyword:*\\CurrentVersion\\Run* or registry.path.keyword:*\\CurrentVersion\\RunOnce*)
+```
+
+**Explanation:**
+
+* `event.provider: "Microsoft-Windows-Sysmon"` → Filters Sysmon logs.
+
+* `event.code: 13` → Registry SetValue events.
+
+* `registry.path.keyword: "*\\CurrentVersion\\Run*"` → Focus on Run/RunOnce keys.
+
+* `project` → Extract essential fields for alert context.
+
+***
+
+### **3️⃣ Rule Trigger Explanation**
+
+Triggers whenever any process attempts to create or modify a value in any **Run** or **RunOnce** Registry key.
+
+Example Event:
+
+* `TargetObject: HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Run\TESTTTTTTTTT`
+
+* `Image: C:\Windows\regedit.exe`
+
+* `Details: C:\Windows\TEST.exe`
+
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760018994522/f007693c-03b5-4404-9a9e-27f58c5e9a1c.png" align="center" fullwidth="false" />
+
+> ✅ Matches Event ID 13, triggering the KQL rule.
+
+***
+
+# **Step 6: Mapping to MITRE ATT\&CK**
+
+* Open the "Mapping to MITRE ATT\&CK" interface within the rule settings.
+
+* Search for the technique T1547.001 – Registry Run Keys / Startup Folder.
+
+* Add this technique to the rule.
+
+* Assign the tactic: Persistence.
+
+  <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760019023965/e65db5de-fd5b-4267-8db9-d0254c4f612b.png" align="center" fullwidth="false" />
+
+> This ensures that the rule is linked to the MITRE ATT\&CK framework, facilitating consistent threat tracking and analysis.
+
+***
+
+# **Step 7: Summary**
+
+| Field           | Details                                                      |
+| --------------- | ------------------------------------------------------------ |
+| Scenario        | Persistence via Registry Run/RunOnce Keys                    |
+| Behavior        | New registry value created under Run/RunOnce by process      |
+| Lab Environment | Windows 10 Pro N + Sysmon + Winlogbeat + Kibana              |
+| Detection Query | KQL as above                                                 |
+| Rule Frequency  | Every 1 minute                                               |
+| MITRE ATT\&CK   | T1547.001 – Registry Run Keys / Startup Folder (Persistence) |
+
+***
+
+**Abdelwahab Ahmed Abdelwahab** **20-09-2025**
+

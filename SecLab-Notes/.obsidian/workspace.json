@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Welcome.md",
+                "file": "digital-forensics-labs/course-based-digital-forensics-labs/analysis-of-data-source-using-autopsy-autopsy-forensic-tool.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Welcome"
+              "title": "analysis-of-data-source-using-autopsy-autopsy-forensic-tool"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 406.5
   },
   "right": {
     "id": "47e6593b75a87b7f",
@@ -185,8 +185,42 @@
   },
   "active": "4159ac7d4193f6e2",
   "lastOpenFiles": [
-    "Photos/Pasted image 20260603164526.png",
-    "Photos",
-    "Welcome.md"
+    "ctfs/ctfs-and-labs.md",
+    "siem-home-lab/soar.md",
+    "books/automations-for-siem-and-edr/implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch.md",
+    "enterprise-offensive-defensive-security-simulation-lab/architecture-and-design.md",
+    "enterprise-offensive-defensive-security-simulation-lab/building-the-elastic-stack-elk/to-activate-the-rules-age.md",
+    "malware-analysis/labs/persistence-analysis-and-remediation-of-python-pop-up-malware-1762298363843.md",
+    "siem-home-lab/pre-lab-overview.md",
+    "malware-analysis/labs.md",
+    "Welcome.md",
+    "soc/network-security.md",
+    "soc/siem/boss-of-the-soc-version-1-2015-scenario-1.md",
+    "soc/siem/building-a-siem-collecting-linux-and-windows-logs-with-filebeat-and-winlogbeat-into-elasticsearch-and-visualizing-in-kib.md",
+    "soc/siem/phishing-response-playbook.md",
+    "soc/siem/collecting-and-visualizing-ssh-logs-with-fluent-bit-and-elasticsearch.md",
+    "soc/siem/qradar101-blue-team-challenge-cyberdefenders.md",
+    "soc/network-security/detect-nmap-scan-using-snort.md",
+    "soc/network-security/a-mock-lab-on-ubuntu-to-practice-setting-up-a-web-server-waf-nginx-modsecurity.md",
+    "soc/phishing-labs/paypal-phishing-email-investigation-lab-letsdefend.md",
+    "general-ctf/linux-labs-review.md",
+    "general-ctf/kvm.md",
+    "general-ctf/linux-history.md",
+    "general-ctf/linux-history/unix-vs-linux.md",
+    "general-ctf/linux-labs-review/leviathan-linux.md",
+    "general-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10/bandit-level-20-to-level-23.md",
+    "general-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10/overthewire-bandit-level-10-tobandit-level-20.md",
+    "general-ctf/linux-labs-review/leviathan-linux/leviathan-level-0.md",
+    "windows-server-labs-and/thm-ad/active-directory-basics.mdx",
+    "windows-server-labs-and/thm-ad/3windows-fundamentals-3.mdx",
+    "windows-server-labs-and/thm-ad/1windows-fundamentals-1.mdx",
+    "windows-server-labs-and/thm-ad/2windows-fundamentals-2.mdx",
+    "windows-server-labs-and/join-domain/kerberos.mdx",
+    "windows-server-labs-and/join-domain/how-to-join-in-backround.mdx",
+    "windows-server-labs-and/join-domain/after-join-domain.mdx",
+    "windows-server-labs-and/thm-ad.mdx",
+    "windows-server-labs-and/thm-ad",
+    "windows-server-labs-and/login-protocolsntlm-vs-kerberos.mdx",
+    "Photos/Pasted image 20260603164526.png"
   ]
 }
