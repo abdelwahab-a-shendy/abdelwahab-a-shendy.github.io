@@ -3,7 +3,7 @@
 
 ## Install the IIS (Internet Information Services) role on a Windows Server :
 
-1. ### Determine the installation type The “Add Roles and Features Wizard” window appears where you have selected:
+1.  ###  Determine the installation type The “Add Roles and Features Wizard” window appears where you have selected:
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1769113891608/6b328bd7-c955-49c9-aea1-ed3417d3a305.png" alt="" align="center" fullwidth="true" />
 
