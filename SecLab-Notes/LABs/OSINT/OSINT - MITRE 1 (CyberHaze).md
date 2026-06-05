@@ -42,7 +42,7 @@ As the investigation continued, further indications emerged that the attacker ha
 |SMB / Admin Shares|T1021.002|
 |Application Layer Protocol|T1071|
 |Indicator Removal|T1070.001|
-![](../../Photos/OSINT_MITRE_1-CYBERHAZE.svg)
+![](Photos/OSINT_MITRE_1-CYBERHAZE.svg)
 
 ---
 ---

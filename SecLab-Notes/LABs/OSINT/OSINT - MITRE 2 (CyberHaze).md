@@ -28,7 +28,7 @@ An internal system exhibited signs of compromise after user interaction with ext
 |Collection|Archive Collected Data|T1560|
 |Exfiltration|Exfiltration Over C2 Channel|T1041|
 |Defense Evasion|Indicator Removal on Host|T1070|
-![](../../Photos/OSINT_MITRE_2_CYBERHAZE.svg)
+![](Photos/OSINT_MITRE_2_CYBERHAZE.svg)
 
 ---
 # Attack Chain Analysis
