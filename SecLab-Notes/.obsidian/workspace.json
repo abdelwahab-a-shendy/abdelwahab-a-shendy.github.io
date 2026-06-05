@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "c0591fee0b5377ea",
+        "id": "aa0427603f8d083a",
         "type": "tabs",
         "children": [
           {
-            "id": "10ec626bbcf40a0a",
+            "id": "0324fb2c155c81c2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "index"
+              "title": "New tab"
             }
           }
         ]
@@ -78,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 448.5
+    "width": 361.5004348754883
   },
   "right": {
     "id": "47e6593b75a87b7f",
@@ -183,44 +179,46 @@
       "bases:Create new base": false
     }
   },
-  "active": "10ec626bbcf40a0a",
+  "active": "f40198bfb4533b5a",
   "lastOpenFiles": [
-    "soc-and-ir/05-phishing-response-playbook.md",
-    "soc-and-ir/04-paypal-phishing-investigation-letsdefend.md",
-    "soc-and-ir/01-persistence-analysis-remediation-python-popup-malware.md",
-    "index.md",
-    "windows-server-labs-and/06-login-protocols-ntlm-vs-kerberos.md",
-    "windows-server-labs-and/08-join-domain.md",
-    "linux-ctf/linux-labs-review/leviathan-linux.md",
-    "linux-ctf/05-overthewire-bandit-level-0-tobandit-level-10.md",
-    "linux-ctf/linux-history/unix-vs-linux.md",
-    "linux-ctf/linux-labs-review/Untitled.md",
-    "linux-ctf/linux-labs-review/leviathan-linux/leviathan-level-0.md",
-    "linux-ctf/linux-labs-review/leviathan-linux/leviathan-level-0-level-1.md",
-    "linux-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10/overthewire-bandit-level-10-tobandit-level-20.md",
-    "linux-ctf/linux-labs-review/overthewire-bandit-level-0-tobandit-level-10/bandit-level-20-to-level-23.md",
-    "linux-ctf/06-bandit-level-10-to-level-20.md",
-    "linux-ctf/03-unix-vs-linux-history.md",
-    "linux-ctf/04-intro-to-linux-labs-review.md",
-    "windows-server-labs-and/10-post-domain-join-steps.md",
-    "linux-ctf/10-leviathan-level-0-to-level-1.md",
-    "linux-ctf/09-leviathan-level-0.md",
-    "linux-ctf/08-leviathan-linux-intro.md",
-    "linux-ctf/07-bandit-level-20-to-level-23.md",
-    "linux-ctf/02-intro-to-linux-history.md",
-    "linux-ctf/01-kvm-virtualization.md",
-    "general-ctf/Untitled.md",
-    "penetration-testing-trainee/introduction.md",
-    "soc-and-incident-response/siem",
-    "soc-and-incident-response/phishing-labs",
-    "soc-and-incident-response/network-security",
-    "soc-and-ir",
-    "soc/siem",
-    "soc/phishing-labs",
-    "soc/network-security",
-    "siem-home-lab/02-pre-lab-overview/05-building-a-siem",
-    "siem-home-lab/detection-egnineering",
-    "penetration-testing-trainee/web/natas-overthewire",
+    "LABs/OSINT/OSINT - MITRE (2).md",
+    "LABs/OSINT/Shadow Rat.md",
+    "LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze).md",
+    "LABs/OSINT/OSINT - MITRE (1).md",
+    "LABs/OSINT/OSINT - MITRE (3).md",
+    "Photos/OSINT_MITRE_2_CYBERHAZE.svg",
+    "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
+    "LABs/OSINT/0.Some info in MITRE.md",
+    "LABs/Phishing Investigation/Phishing Response Playbook.md",
+    "LABs/Phishing Investigation/Paypal Phishing Investigation (LetsDefend).md",
+    "LABs/WIN Server/10-post-domain-join-steps.md",
+    "LABs/WIN Server/08-join-domain.md",
+    "LABs/WIN Server/07-kerberos-deep-dive.md",
+    "LABs/WIN Server/06-login-protocols-ntlm-vs-kerberos.md",
+    "LABs/WIN Server/05-active-directory-basics.md",
+    "LABs/WIN Server/04-windows-fundamentals-3.md",
+    "LABs/WIN Server/03-windows-fundamentals-2.md",
+    "LABs/WIN Server/02-windows-fundamentals-1.md",
+    "LABs/WIN Server/01-windows-command-line-fundamentals.md",
+    "LABs/OSINT",
+    "LABs/Threat Hunting/Boss Of The Soc BOTsV1 Scenario1 (SPLUNK).md",
+    "LABs/Threat Hunting/Qradar101 (SIEM).md",
+    "LABs/Network Forensics/Suspicious File Download Fake Authenticator.md",
+    "LABs/Phishing Investigation/Untitled.md",
+    "LABs/Network Forensics/Psexec Hunt.md",
+    "LABs/Network Forensics/Examining Pcaps Emails Malware Infection.md",
+    "LABs/Network Forensics/Hawkeye.md",
+    "LABs/Network Forensics/Arp Storm (Cyber Talents).md",
+    "LABs/Engineering/Collecting Visualizing ssh logs Fluentbit.md",
+    "LABs/WIN Server",
+    "LABs/Threat Hunting",
+    "LABs/Phishing Investigation",
+    "LABs/Engineering",
+    "LABs/Malware",
+    "LABs/Disk Forensics",
+    "LABs/Network Forensics",
+    "LABs/Stego Forensics",
+    "LABs/PENTEST",
     "Photos/ab6226ef-792c-40a5-9764-0c43fc941764.jpeg",
     "Photos/3402d759-c5e1-4c23-a4cf-b633be3c8a93.png",
     "Photos/e87b9d24-8e80-4816-9be8-18d7fbc635f3.png",
@@ -228,8 +226,6 @@
     "Photos/c10e7cff-c1ed-4cb7-992f-75f139d19b06.png",
     "Photos/bffdbcce-4c88-4e2d-977d-69fe44e4d1fa.png",
     "Photos/6fcabbac-ffdc-4390-bb69-8964326bd7e3.png",
-    "Photos/fe8b6e3b-8ea4-40c7-810d-6471556cce20.png",
-    "Photos/5c3092e9-d7c4-4f41-be4c-386f11be7fbc.png",
-    "Photos/3a11431a-05e3-45f3-9bb0-c2011700a520.png"
+    "Photos/fe8b6e3b-8ea4-40c7-810d-6471556cce20.png"
   ]
 }

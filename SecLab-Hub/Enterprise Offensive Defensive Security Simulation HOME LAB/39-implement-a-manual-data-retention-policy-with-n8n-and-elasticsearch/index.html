@@ -1,0 +1,6098 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/">
+      
+      
+        <link rel="prev" href="../38-automations-for-siem-and-edr/">
+      
+      
+        <link rel="next" href="../40-security-awareness-email-automation-workflow/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>39 implement a manual data retention policy with n8n and elasticsearch - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setting-up-the-work-environment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              39 implement a manual data retention policy with n8n and elasticsearch
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🛡️ Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise Offensive Defensive Security Simulation HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../LABs/Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-tabs__link">
+          
+  
+  
+  LABs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.Pre%20Lab%20Overview/" class="md-tabs__link">
+          
+  
+  
+  SIEM & SOAR Integration HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ensure-n8n-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensure n8n is Installed:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ensure n8n is Installed:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-n8n-temporarily-in-the-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run n8n Temporarily in the Terminal:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-requisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-requisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-elasticsearch-api-credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Elasticsearch API Credential
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-email-app-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Email App Password
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-indices-before-applying-the-retention-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyzing Indices Before Applying the Retention Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LABs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Disk Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.Software Write Blocker Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/01.Verifying%20Evidence%20Integrity%20Hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/03.Analyzing%20file%20properties%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/04.File%20Analysis%20Stat%20command%20linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.File Analysis Stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/05.Image%20Analysis%20Exiftool%20Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05.Image Analysis Exiftool Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/06.Disk%20Acquisition%20linux%20dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06.Disk Acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/07.Disk%20Acquisition%20FTK%20imager%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07.Disk Acquisition FTK imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/08.Autopsy%20case%20creation%20and%20setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/09.Data%20Source%20Analysis%20Autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/10.Firefox%20Artifacts%20Extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/11.Linux%20os%20forensics%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/12.Registry%20Hives%20Extraction%20FTK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.Registry Hives Extraction FTK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/13.Registry%20Analysis%20Phase%20Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/14.Registry%20Analysis%20Tools%20Explorer%20Regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/15.Ntfs1%20Evidence%20Acquisition%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.Ntfs1 Evidence Acquisition Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Disk%20Forensics/Search%20in%20trash%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search in trash (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Engineering/Building%20SIEM%20Filebeat%20Winlogbeat%20Kibana%20%28SIEM%20LAB%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Engineering/Collecting%20Visualizing%20ssh%20logs%20Fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecting Visualizing ssh logs Fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Engineering/Detect%20Nmap%20Scan%20Using%20Snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detect Nmap Scan Using Snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Engineering/Ubuntu%20Web%20Server%20WAF%20Nginx%20Modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu Web Server WAF Nginx Modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINUX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LINUX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/LINUX/0.Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/LINUX/1.1.Unix%20vs%20Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Unix vs Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/LINUX/1.2.Linux%20Commands%20Review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/LINUX/2.1.Bandit%20level%200%20to%2010%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Bandit level 0 to 10 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/LINUX/2.2.Bandit%20level%2010%20to%2020%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.Bandit level 10 to 20 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/LINUX/2.3.Bandit%20level%2020%20to%2023%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.Bandit level 20 to 23 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/LINUX/3.Leviathan%200-1%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Leviathan 0 1 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Malware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Malware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Malware/Persistence%20Analysis%20Remediation%20Python%20PopUp%20Malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence Analysis Remediation Python PopUp Malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Network%20Forensics/Arp%20Storm%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arp Storm (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Network%20Forensics/Examining%20Pcaps%20Emails%20Malware%20Infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examining Pcaps Emails Malware Infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Network%20Forensics/Hawkeye/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hawkeye
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Network%20Forensics/Psexec%20Hunt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Psexec Hunt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Network%20Forensics/Suspicious%20File%20Download%20Fake%20Authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suspicious File Download Fake Authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSINT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/OSINT/0.Some%20info%20in%20MITRE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Professional Use of MITRE ATT&amp;CK (SOC &amp; Detection Engineering Guide)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (3)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/OSINT/Shadow%20Rat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shadow Rat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PENTEST
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PENTEST
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/0.1.Beginnings%20of%20the%20Internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.Beginnings of the Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/0.1.HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.HTTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/0.2.Dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2.Dns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/1.1.Passive%20Reconnaissance%20%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Passive Reconnaissance (THM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/1.2.Active%20Rreconnaissance%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/2.1.Cybersecurity%20beginner%20labs%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Cybersecurity beginner labs (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/2.2.ITI%20Penetration%20Tester%20Track%202025%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/24.Natas%200%20to%203%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Natas 0:
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/3.1.Kioptrix%20level1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.Kioptrix level1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/3.2.Metasploitable1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.Metasploitable1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/3.3.Metasploitable2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.Metasploitable2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.1.web-unprotected-admin-functionality%20%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.web unprotected admin functionality (Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.10.web-source-code-disclosure-backup-files%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10.web source code disclosure backup files(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.11.web-auth-bypass-via-info-disclosure%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11.web auth bypass via info disclosure(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.12.web-info-disclosure-version-control-git%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.12.web info disclosure version control git(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.2.web-unprotected-admin-functionality-unpredictable-url%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.web unprotected admin functionality unpredictable url(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.3.web-user-id-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.web user id controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.4.15-web-user-id-controlled-by-request-parameter-with-dynamic-id%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.15 web user id controlled by request parameter with dynamic id(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.5.web-user-role-modification-in-profile%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5.web user role modification in profile(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.6.web-user-role-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6.web user role controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.7.web-idor-corridor-thm%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7.web idor corridor thm(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.8.web-info-disclosure-error-messages%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8.web info disclosure error messages(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/PENTEST/4.9.web-info-disclosure-debug-page%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9.web info disclosure debug page(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phishing Investigation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Phishing%20Investigation/Paypal%20Phishing%20Investigation%20%28LetsDefend%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paypal Phishing Investigation (LetsDefend)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Phishing%20Investigation/Phishing%20Response%20Playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Response Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Phishing%20Investigation/Wallet%20Verification%20Scam%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation: Wallet Verification Scam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stego Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Stego Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Binwalk%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binwalk (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Canyousee%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canyousee (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Chalkboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chalkboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Cypher%20Anxiety%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cypher Anxiety (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Disko%201%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disko 1(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Exif%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exif (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/File%20Found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Forensics%20101%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forensics 101 (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Gandp%20List%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gandp List (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Git%20IS%20Good%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git IS Good (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Glory-of-the-garden%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Hidden%20Message%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hidden Message (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/I%20love%20images%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I love images (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Im%20a%20Dump%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Im a Dump(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Information%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Meta%20%28BTLO%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta (BTLO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Minions%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minions (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/PDF%20by%20fdpumyp%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF by fdpumyp (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Pho%20is%20Tasty%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pho is Tasty (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Pikespeak%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pikespeak (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Red%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Red (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Rubber%20Duck%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rubber Duck(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Scan%20Surprise%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scan Surprise (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Secret%20of%20the%20polyglot%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Simple%20Steganography%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Steganography (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Snowboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/TUX%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TUX (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Taking%20ls%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taking ls (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/Verify%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Stego%20Forensics/WOW%20SO%20META%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WOW SO META (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Threat Hunting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Threat Hunting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Threat%20Hunting/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boss Of The Soc BOTsV1 Scenario1 (SPLUNK)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LABs/Threat%20Hunting/Qradar101%20%28SIEM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qradar101 (SIEM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.Pre%20Lab%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.Pre Lab Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/01.Install%20Lab%20ELK%20Siem%20%26%20N8N/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.Install Lab ELK Siem & N8N
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/02.Install%20Lab%20Win%20Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.Install Lab Win Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/03.Install%20Lab%20Fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03.Install Lab Fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/04.Building%20a%20SIEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.Building a SIEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/05.Winlogbeat%20Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05.Winlogbeat Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/06.Fluent%20Bit%20Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06.Fluent Bit Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/07.Detection%20Egnineering%20Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.1.Pre%20Start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.2.Detection%20of%20powershell%20based%20windows%20firewall%20tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08.2.Detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.3.registry%20persistence%20detection%20with%20sysmon%20and%20kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.4.Privilege%20Escalation%20and%20Information%20gathering%20detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08.4.Privilege Escalation and Information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/09.SOAR%20N8N%20Workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09.SOAR N8N Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ensure-n8n-is-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ensure n8n is Installed:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ensure n8n is Installed:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-n8n-temporarily-in-the-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run n8n Temporarily in the Terminal:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-requisites
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-requisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-elasticsearch-api-credential" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Elasticsearch API Credential
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-email-app-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Email App Password
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-indices-before-applying-the-retention-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyzing Indices Before Applying the Retention Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<blockquote>
+<ul>
+<li><strong>Objective:</strong></li>
+</ul>
+<p>Create an automated workflow using <strong>n8n</strong> to monitor and manage the size of indices in an <strong>Elasticsearch</strong> cluster. The workflow should automatically delete old data from indices that exceed a defined size threshold, helping to maintain disk space and ensure system efficiency.</p>
+<ul>
+<li>
+<p><strong>Key Steps:</strong></p>
+</li>
+<li>
+<p><strong>Scheduled Trigger:</strong> Run the workflow automatically on a fixed schedule (e.g., every 5 minutes for testing).</p>
+</li>
+<li>
+<p><strong>Get Index Statistics:</strong> Connect to Elasticsearch and fetch statistics for all indices, ignoring system indices (names starting with <code>.</code>)</p>
+</li>
+<li>
+<p><strong>Check Size Threshold:</strong> Compare each index’s primary store size against a defined threshold (e.g., 10MB for testing).</p>
+</li>
+<li>
+<p><strong>Delete Old Data:</strong> If an index exceeds the threshold, delete documents older than a defined period (e.g., 7 days).</p>
+</li>
+<li>
+<p><strong>Optional Enhancements:</strong></p>
+</li>
+<li>
+<p>Send an <strong>email report</strong> summarizing index names and current sizes.</p>
+</li>
+<li>
+<p>Perform <strong>hard deletes</strong> to immediately reclaim disk space (resource-intensive, optional for large indices).</p>
+</li>
+<li>
+<p><strong>Outcome:</strong></p>
+</li>
+<li>
+<p>A fully automated workflow that monitors Elasticsearch indices, deletes old data when needed, and optionally reports the results, ensuring efficient disk usage and easier data management.</p>
+</li>
+</ul>
+</blockquote>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960493918/12f443e3-7296-4682-b128-b5e5858f5bb4.png" align="center" fullwidth="false" /></p>
+<hr />
+<h1 id="setting-up-the-work-environment"><strong>Setting Up the Work Environment</strong></h1>
+<h2 id="ensure-n8n-is-installed"><strong>Ensure n8n is Installed:</strong></h2>
+<ul>
+<li>I already documented all the steps, so I won’t repeat them here. I’ll start n8n directly, but here’s the <a href="https://sec-lab-notes.hashnode.space/abdelwahabshandy-notes/siem-home-lab/pre-lab-overview/install-lab-elk-siem-n8n#-secondly-installing-docker-and-running-n8n-on-wsl">LINK Here</a></li>
+</ul>
+<h3 id="run-n8n-temporarily-in-the-terminal"><strong>Run n8n Temporarily in the Terminal:</strong></h3>
+<pre><code class="language-sh">sudo service docker start
+
+docker run -it --rm --name n8n --network host -v n8n_data:/home/node/.n8n n8nio/n8n
+</code></pre>
+<blockquote>
+<p>in Browser : <a href="http://localhost:5678/">http://localhost:5678/</a></p>
+</blockquote>
+<hr />
+<h2 id="pre-requisites"><strong>Pre-requisites</strong></h2>
+<p>Before building the workflow, we configured the following:</p>
+<h4 id="1-elasticsearch-api-credential"><strong>1️⃣ Elasticsearch API Credential</strong></h4>
+<ul>
+<li>
+<p>Created a new <strong>Credential</strong> in n8n:</p>
+</li>
+<li>
+<p><strong>Type:</strong> <code>Elasticsearch API</code></p>
+</li>
+<li>
+<p><strong>Auth Method:</strong> <code>Elasticsearch Account</code></p>
+</li>
+<li>
+<p><strong>Username:</strong> <code>elastic</code></p>
+</li>
+<li>
+<p><strong>Password:</strong> YourPass</p>
+</li>
+<li>
+<p><strong>Host URL:</strong> <a href="https://192.168.1.16:9200"><code>https://192.168.1.16:9200</code></a></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960557613/244cb86b-23b9-4bae-8422-1047df47ca46.png" align="center" fullwidth="false" /></p>
+</li>
+</ul>
+<blockquote>
+<p>This allows n8n to securely fetch logs directly from our ELK SIEM index.</p>
+</blockquote>
+<h4 id="2-email-app-password"><strong>2️⃣ Email App Password</strong></h4>
+<ul>
+<li>
+<p>Since Gmail no longer allows direct login with username &amp; password, we:</p>
+</li>
+<li>
+<p>Enabled <strong>2-Step Verification</strong> on the Gmail account.</p>
+</li>
+<li>
+<p>Generated an <strong>App Password</strong> via:\
+     <code>Google Account → Security → App Passwords → Select App: Mail → Select Device: Other (Custom name: n8n)</code></p>
+</li>
+<li>
+<p>Copied the 16-character password generated by Google.</p>
+</li>
+<li>
+<p>Added it in n8n’s <strong>Email Credential</strong> settings (type: “Gmail SMTP”).</p>
+</li>
+</ul>
+<blockquote>
+<p>This allows the workflow to send automated reports securely via Gmail.</p>
+</blockquote>
+<hr />
+<h2 id="analyzing-indices-before-applying-the-retention-policy"><strong>Analyzing Indices Before Applying the Retention Policy</strong></h2>
+<p>From <strong>Stack Management → Index Management → Indices</strong>`</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960599071/7710ddb5-8f6a-41b4-a5d2-39aa93c12fe7.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>The indices marked with ✅ in the image are the ones where I can generate large logs quickly, so I can test on them. They are also the machines that are currently running and still available.</p>
+</blockquote>
+<ul>
+<li>
+<p>Since most of the indices are under 5 MB:</p>
+</li>
+<li>
+<p>We will use an n8n workflow every 5 minutes to fetch their size data.</p>
+</li>
+<li>
+<p>If any index exceeds 10 MB → we add it to the “Review or Delete” list.</p>
+</li>
+</ul>
+<p>Since my indices are <code>*-nginx-logs-*</code> and <code>wef-win-logs</code>, only these exceeded 5 MB, so I will continue working with them.</p>
+<blockquote>
+<p>In other words, <strong>only 3 indices</strong> actually exceed the test threshold (<strong>Y = 5 MB</strong>) required for this task.</p>
+</blockquote>
+<hr />
+<h1 id="executing-the-workflow-on-n8n"><strong>Executing the Workflow on n8n</strong></h1>
+<ul>
+<li>In Browser: <a href="http://localhost:5678/">http://localhost:5678/</a></li>
+</ul>
+<h2 id="1-create-a-schedule-trigger"><strong>1️⃣ Create a Schedule Trigger</strong></h2>
+<ul>
+<li>This sets how frequently the workflow will run.</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960616613/215b1fb5-e33f-4f8c-b29f-c60c3213bb78.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>The first step is to have the workflow run periodically every 5 minutes.</p>
+</blockquote>
+<hr />
+<h2 id="2-add-an-http-request-node"><strong>2️⃣ Add an HTTP Request Node</strong></h2>
+<ul>
+<li>
+<p><strong>Clicked the + under the Schedule Trigger node.</strong></p>
+</li>
+<li>
+<p><strong>From the menu, selected:</strong> <code>Nodes → HTTP Request</code></p>
+</li>
+<li>
+<p><strong>Method:</strong> GET</p>
+</li>
+<li>
+<p><strong>URL:</strong></p>
+</li>
+</ul>
+<pre><code class="language-perl">https://192.168.1.16:9200/_cat/indices?h=index,store.size&amp;format=json
+</code></pre>
+<ul>
+<li>
+<p>Add the Elasticsearch credentials.</p>
+</li>
+<li>
+<p>Options:</p>
+</li>
+<li>
+<p>Enable <strong>Ignore SSL Issues (Insecure)</strong></p>
+</li>
+</ul>
+<p><strong>Test the Node</strong> :</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960634087/eb069109-a4ad-4d8d-b738-5ff71061f759.png" align="center" fullwidth="false" /></p>
+<hr />
+<h2 id="3-using-a-function-node">3️⃣ Using a <strong>Function Node</strong></h2>
+<ul>
+<li>
+<p><strong>Purpose:</strong> Filter large indices (greater than 5 MB) and ignore system indices that start with <code>.</code>.</p>
+</li>
+<li>
+<p><strong>Input:</strong> <strong>JSON</strong> from the <strong>Elasticsearch API Node</strong></p>
+</li>
+<li>
+<p><strong>JavaScript:</strong></p>
+</li>
+<li>
+<p><strong>Code Function:</strong></p>
+<ul>
+<li>
+<p><strong>Goal:</strong> Filter Elasticsearch indices to keep only those:</p>
+</li>
+<li>
+<p><strong>Names that do not start with</strong> <code>.</code> (ignore system indices)</p>
+</li>
+<li>
+<p><strong>Size greater than 5 MB</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">return items
+.map(item =&gt; {
+const sizeStr = item.json['pri.store.size'];
+let sizeMB = 0;
+
+if (typeof sizeStr === 'string') {
+const lower = sizeStr.toLowerCase();
+
+if (lower.endsWith('mb')) {
+sizeMB = parseFloat(sizeStr);
+} else if (lower.endsWith('kb')) {
+sizeMB = parseFloat(sizeStr) / 1024;
+} else if (lower.endsWith('b')) {
+sizeMB = parseFloat(sizeStr) / (1024 * 1024);
+}
+}
+
+// Exclude indexes that start with a dot and filter those larger than 5MB
+if (item.json.index &amp;&amp; !item.json.index.startsWith('.') &amp;&amp; sizeMB &gt; 5) {
+return { json: item.json };
+}
+
+if (item.json.index &amp;&amp; !item.json.index.startsWith('.') &amp;&amp; sizeMB &gt; 5) {
+// Store the index name in the item's data
+return { json: { index: item.json.index } };
+}
+return null; // Ignore non-matching items
+})
+.filter(item =&gt; item !== null); // Remove empty items
+</code></pre>
+<h3 id="code-steps"><strong>Code Steps:</strong></h3>
+<ol>
+<li>
+<p><strong>Calculate size in MB (</strong><code>sizeMB</code>):</p>
+</li>
+<li>
+<p>Reads <a href="http://pri.store"><code>pri.store</code></a><code>.size</code> for each index.</p>
+</li>
+<li>
+<p>Converts it to MB regardless of unit (<code>B</code>, <code>KB</code>, <code>MB</code>).</p>
+</li>
+<li>
+<p><strong>Ignore system indices:</strong></p>
+</li>
+<li>
+<p>Any index starting with <code>.</code> is skipped.</p>
+</li>
+<li>
+<p><strong>Filter large indices:</strong></p>
+</li>
+<li>
+<p>Keep only indices larger than 5 MB.</p>
+</li>
+<li>
+<p><strong>Return the required items:</strong></p>
+</li>
+<li>
+<p>Returns each matching index as JSON, or sometimes only the name.</p>
+</li>
+<li>
+<p><strong>Remove empty items:</strong></p>
+</li>
+<li>
+<p><code>.filter(item =&gt; item !== null)</code> → removes non-matching items.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>In short:</strong> This code <strong>filters and outputs only the indices that need to be handled</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="4-delete-old-data"><strong>4️⃣ Delete Old Data</strong></h2>
+<ul>
+<li>
+<p><strong>Method:</strong> <code>POST</code></p>
+</li>
+<li>
+<p><strong>URL:</strong> <a href="https://192.168.1.16:9200/"><code>https://192.168.1.16:9200/</code></a><code>{{ $json.index }}/_delete_by_query</code></p>
+</li>
+<li>
+<p>The <code>{{ $json.index }}</code> ensures that the operation is applied to each index that exceeded the threshold defined in the Function Node.</p>
+</li>
+<li>
+<p><strong>Authentication:</strong> Elasticsearch API</p>
+</li>
+<li>
+<p><strong>Body:</strong></p>
+</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;query&quot;: {
+    &quot;range&quot;: {
+      &quot;@timestamp&quot;: {
+        &quot;lt&quot;: &quot;now-7d/d&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<blockquote>
+<p>Delete documents older than 7 days for each index that exceeded the threshold.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Options:</strong> Ignore SSL Issues</p>
+</li>
+<li>
+<p><strong>Results after execution:</strong></p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960663311/17c3336e-8d82-416e-8d2a-774eafc6ec5b.png" align="center" fullwidth="false" /></p>
+<ul>
+<li>output :</li>
+</ul>
+<pre><code class="language-json">[
+  { &quot;total&quot;: 0, &quot;deleted&quot;: 0 },  // First index: no documents older than 7 days → nothing deleted
+  { &quot;total&quot;: 100171, &quot;deleted&quot;: 100171 }, // Second index: 100,171 documents deleted ✅
+  { &quot;total&quot;: 0, &quot;deleted&quot;: 0 } // Third index: no documents → nothing deleted
+]
+</code></pre>
+<blockquote>
+<p>Documents older than 7 days in <code>nginx-logs-2025.10.20</code> were successfully deleted.</p>
+</blockquote>
+<p>From <strong>Stack Management → Index Management → Indices</strong>:</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960690901/5737175f-95c8-4366-9538-c00f2a717b7d.png" align="center" fullwidth="false" /></p>
+<ul>
+<li>
+<p>The <code>nginx-logs-2025.10.20</code> index, which contained documents older than 7 days, was deleted successfully <code>"deleted": 100171</code>.</p>
+</li>
+<li>
+<p>The indices <code>nginx-logs-2025.10.25</code> and <code>wef-win-logs-2025.10.22</code> contain data but not older than 7 days, so nothing was deleted.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Everything is working perfectly so far.</strong> <strong>The main task is now complete, and I will start the Bonus part next.</strong></p>
+</blockquote>
+<hr />
+<h1 id="bonus-stage-several-issues-were-solved-and-each-step-was-documented-initially"><strong>Bonus Stage – Several Issues Were Solved, and Each Step Was Documented Initially</strong></h1>
+<h2 id="5-email-reporting">5️⃣ <strong>Email Reporting</strong></h2>
+<ul>
+<li>Already completed:</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960715543/d9ba1213-1078-4a83-b462-5012483c36a7.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>An email report was sent containing the indices’ names, their sizes, and the number of deleted documents.</p>
+</blockquote>
+<hr />
+<h2 id="hard-delete-bonus"><strong>Hard Delete (Bonus)</strong></h2>
+<ul>
+<li><strong>Goal:</strong> Merge segments and immediately reclaim disk space.</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960718373/c05ae6b6-7ed4-4251-85ff-40d48d702e29.png" align="center" fullwidth="false" /></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960727090/5d53b135-ad4a-4f3e-8474-0028885b7ac0.png" align="center" fullwidth="false" /></p>
+<p><strong>Results:</strong></p>
+<ul>
+<li>
+<p><code>num_committed_segments: 1</code> → each index now has a single segment</p>
+</li>
+<li>
+<p><code>deleted_docs: 0</code> → expected after merge</p>
+</li>
+<li>
+<p><code>compound: true</code> → new segment is compressed and merged</p>
+</li>
+</ul>
+<blockquote>
+<p>✅ The operation was successfully completed.</p>
+</blockquote>
+<hr />
+<hr />
+<hr />
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960751818/aac04b5c-c7b8-4eba-a345-11f1935117e6.png" align="center" fullwidth="false" /></p>
+<h1 id="now-i-will-test-the-workflow-on-a-larger-scale"><strong>Now I Will Test the Workflow on a Larger Scale</strong></h1>
+<blockquote>
+<p>I will set it to run every five minutes, delete any index larger than 1 MB and older than one day, send an email with these events, and complete the workflow end-to-end.</p>
+</blockquote>
+<ul>
+<li><strong>Before:</strong></li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960765911/4381fd3e-2457-4f27-8185-98be429365d5.png" align="center" fullwidth="false" /></p>
+<hr />
+<h1 id="core-requirements">⚙️ <strong>Core Requirements</strong></h1>
+<h2 id="1-scheduled-trigger-period-x"><strong>1️⃣ Scheduled Trigger (Period X)</strong></h2>
+<ul>
+<li>
+<p>The workflow runs <strong>automatically at a fixed interval</strong>.</p>
+</li>
+<li>
+<p>For testing: set it to <strong>every 5 minutes</strong> (or any small value).</p>
+</li>
+</ul>
+<hr />
+<h2 id="2-get-index-statistics"><strong>2️⃣ Get Index Statistics</strong></h2>
+<ul>
+<li>
+<p>Connects to the <strong>Elasticsearch cluster</strong>.</p>
+</li>
+<li>
+<p>Retrieves <strong>statistics for all indices</strong> (especially their size).</p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960781993/1f188ead-cbc7-4e0c-bf91-af75bf0ef852.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p><strong>Do not</strong> attempt to delete or interact with <strong>indices that start with a dot</strong> (system indices like <code>.security-*</code>).</p>
+</blockquote>
+<hr />
+<h2 id="3-check-size-threshold-threshold-y"><strong>3️⃣ Check Size Threshold (Threshold Y)</strong></h2>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960797510/d3989af9-de9d-433c-a6b9-71fe85f8e8ce.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<ul>
+<li>
+<p>Iterate through each index and check if its size exceeds the allowed threshold (e.g., 1 MB).</p>
+</li>
+<li>
+<p>For testing: a <strong>small threshold like 1 MB</strong> was used.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="4-delete-old-data-period-z"><strong>4️⃣ Delete Old Data (Period Z)</strong></h2>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960806950/4b1d926c-6ade-433a-8277-9546ca83feb6.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<ul>
+<li>
+<p>If the index size exceeds threshold Y → delete <strong>documents older than period Z</strong>.</p>
+</li>
+<li>
+<p>For testing: used <strong>1 day</strong> (<code>now-1d/d</code> in query).</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<hr />
+<h1 id="bonus-tasks"><strong>Bonus Tasks</strong></h1>
+<h2 id="1-hard-deletes-advanced"><strong>🔸 1. Hard Deletes (Advanced)</strong></h2>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960812893/d81ee5ea-de0e-42cc-bd82-9c039bebfd1e.png" align="center" fullwidth="false" /></p>
+<ul>
+<li>
+<p>Normally in Elasticsearch, deleting data performs a “soft delete” (still consumes disk space temporarily).</p>
+</li>
+<li>
+<p>The task adds a <strong>Force Merge</strong> step after deletion to immediately reclaim disk space.</p>
+</li>
+<li>
+<p>(Not mandatory in production, but useful for practical understanding).</p>
+</li>
+</ul>
+<hr />
+<h2 id="2-email-reporting"><strong>🔸 2. Email Reporting</strong></h2>
+<ul>
+<li><strong>First, created code to generate the report</strong>, formatting multiple indices neatly:</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960829339/099fca25-9645-4cbb-99d6-dc3a7836b6a1.png" align="center" fullwidth="false" /></p>
+<ul>
+<li><strong>Then sent the email:</strong></li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960919847/5f64a28e-2290-4306-a550-0047c56155b9.png" align="center" fullwidth="false" /></p>
+<ul>
+<li><strong>Final email appearance:</strong></li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960855624/e0133b72-408f-4153-867e-d6c6d1e42a7a.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>After checking or deleting, the workflow sends a <strong>simple email report</strong> containing a table with:</p>
+<ul>
+<li>
+<p>Index Name</p>
+</li>
+<li>
+<p>Current Size</p>
+</li>
+<li>
+<p>Number of Deleted Documents</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="final-verification-of-indices-on-kibana"><strong>Final Verification of Indices on Kibana:</strong></h2>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1761960875932/84207e94-6148-447a-94b6-4cafc00d47fd.png" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>Almost everything was successfully completed.</p>
+</blockquote>
+<hr />
+<h3 id="resources"><strong>Resources :</strong></h3>
+<ul>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html">Elasticsearch Indices APIs</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html">Delete by Query API</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html">Force Merge API</a></p>
+</li>
+<li>
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html">Cat Indices API</a></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

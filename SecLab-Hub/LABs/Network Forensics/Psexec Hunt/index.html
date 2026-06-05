@@ -1,0 +1,6447 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/LABs/Network%20Forensics/Psexec%20Hunt/">
+      
+      
+        <link rel="prev" href="../Hawkeye/">
+      
+      
+        <link rel="next" href="../Suspicious%20File%20Download%20Fake%20Authenticator/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Psexec Hunt - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#identification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Psexec Hunt
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🛡️ Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise Offensive Defensive Security Simulation HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-tabs__link">
+          
+  
+  
+  LABs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.Pre%20Lab%20Overview/" class="md-tabs__link">
+          
+  
+  
+  SIEM & SOAR Integration HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LABs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Disk Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.Software Write Blocker Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/01.Verifying%20Evidence%20Integrity%20Hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/03.Analyzing%20file%20properties%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/04.File%20Analysis%20Stat%20command%20linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.File Analysis Stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/05.Image%20Analysis%20Exiftool%20Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05.Image Analysis Exiftool Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/06.Disk%20Acquisition%20linux%20dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06.Disk Acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/07.Disk%20Acquisition%20FTK%20imager%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07.Disk Acquisition FTK imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/08.Autopsy%20case%20creation%20and%20setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/09.Data%20Source%20Analysis%20Autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/10.Firefox%20Artifacts%20Extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/11.Linux%20os%20forensics%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/12.Registry%20Hives%20Extraction%20FTK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.Registry Hives Extraction FTK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/13.Registry%20Analysis%20Phase%20Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/14.Registry%20Analysis%20Tools%20Explorer%20Regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/15.Ntfs1%20Evidence%20Acquisition%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.Ntfs1 Evidence Acquisition Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/Search%20in%20trash%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search in trash (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Engineering/Building%20SIEM%20Filebeat%20Winlogbeat%20Kibana%20%28SIEM%20LAB%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Engineering/Collecting%20Visualizing%20ssh%20logs%20Fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecting Visualizing ssh logs Fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Engineering/Detect%20Nmap%20Scan%20Using%20Snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detect Nmap Scan Using Snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Engineering/Ubuntu%20Web%20Server%20WAF%20Nginx%20Modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu Web Server WAF Nginx Modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINUX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LINUX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/0.Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/1.1.Unix%20vs%20Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Unix vs Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/1.2.Linux%20Commands%20Review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/2.1.Bandit%20level%200%20to%2010%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Bandit level 0 to 10 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/2.2.Bandit%20level%2010%20to%2020%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.Bandit level 10 to 20 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/2.3.Bandit%20level%2020%20to%2023%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.Bandit level 20 to 23 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/3.Leviathan%200-1%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Leviathan 0 1 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Malware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Malware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Malware/Persistence%20Analysis%20Remediation%20Python%20PopUp%20Malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence Analysis Remediation Python PopUp Malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Arp%20Storm%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arp Storm (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Examining%20Pcaps%20Emails%20Malware%20Infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examining Pcaps Emails Malware Infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hawkeye/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hawkeye
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Psexec Hunt
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Psexec Hunt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acquisition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preservation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-statistics-protocol-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Statistics &gt; Protocol Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-statistics-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Statistics &gt; Conversations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-statistics-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Statistics &gt; Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-to-effectively-trace-the-attackers-activities-within-our-network-can-you-identify-the-ip-address-of-the-machine-from-which-the-attacker-initially-gained-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First : To effectively trace the attacker's activities within our network, can you identify the IP address of the machine from which the attacker initially gained access?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-ask-a-few-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I ask a few questions:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-can-you-identify-the-ip-address-of-the-machine-from-which-the-attacker-initially-gained-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) can you identify the IP address of the machine from which the attacker initially gained access?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#second-to-fully-understand-the-extent-of-the-breach-can-you-determine-the-machines-hostname-to-which-the-attacker-first-pivoted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Second : To fully understand the extent of the breach, can you determine the machine's hostname to which the attacker first pivoted? :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-can-you-determine-the-machines-hostname-to-which-the-attacker-first-pivoted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) can you determine the machine's hostname to which the attacker first pivoted?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#third-knowing-the-username-of-the-account-the-attacker-used-for-authentication-will-give-us-insights-into-the-extent-of-the-breach-what-is-the-username-utilized-by-the-attacker-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third : Knowing the username of the account the attacker used for authentication will give us insights into the extent of the breach. What is the username utilized by the attacker for authentication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-is-the-username-utilized-by-the-attacker-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) What is the username utilized by the attacker for authentication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fourth-after-figuring-out-how-the-attacker-moved-within-our-network-we-need-to-know-what-they-did-on-the-target-machine-whats-the-name-of-the-service-executable-the-attacker-set-up-on-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fourth: After figuring out how the attacker moved within our network, we need to know what they did on the target machine. What's the name of the service executable the attacker set up on the target? :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-after-figuring-out-how-the-attacker-moved-within-our-network-we-need-to-know-what-they-did-on-the-target-machine-whats-the-name-of-the-service-executable-the-attacker-set-up-on-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) After figuring out how the attacker moved within our network, we need to know what they did on the target machine. What's the name of the service executable the attacker set up on the target?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifth-we-need-to-know-how-the-attacker-installed-the-service-on-the-compromised-machine-to-understand-the-attackers-lateral-movement-tactics-this-can-help-identify-other-affected-systems-which-network-share-was-used-by-psexec-to-install-the-service-on-the-target-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fifth : We need to know how the attacker installed the service on the compromised machine to understand the attacker's lateral movement tactics. This can help identify other affected systems. Which network share was used by PsExec to install the service on the target machine?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5which-network-share-was-used-by-psexec-to-install-the-service-on-the-target-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5)Which network share was used by PsExec to install the service on the target machine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sixth-6-we-must-identify-the-network-share-used-to-communicate-between-the-two-machines-which-network-share-did-psexec-use-for-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sixth: 6) We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-we-must-identify-the-network-share-used-to-communicate-between-the-two-machines-which-network-share-did-psexec-use-for-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seventh-now-that-we-have-a-clearer-picture-of-the-attackers-activities-on-the-compromised-machine-its-important-to-identify-any-further-lateral-movement-what-is-the-hostname-of-the-second-machine-the-attacker-targeted-to-pivot-within-our-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seventh: Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-can-open-in-tap-statistics-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        i can open in tap : Statistics &gt; Endpoints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="i can open in tap : Statistics &gt; Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#now-that-we-have-a-clearer-picture-of-the-attackers-activities-on-the-compromised-machine-its-important-to-identify-any-further-lateral-movement-what-is-the-hostname-of-the-second-machine-the-attacker-targeted-to-pivot-within-our-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indicators-of-compromise-iocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Indicators of Compromise (IOCs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Suspicious%20File%20Download%20Fake%20Authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suspicious File Download Fake Authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSINT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/0.Some%20info%20in%20MITRE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Professional Use of MITRE ATT&amp;CK (SOC &amp; Detection Engineering Guide)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (3)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shadow Rat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PENTEST
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PENTEST
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/0.1.Beginnings%20of%20the%20Internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.Beginnings of the Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/0.1.HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.HTTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/0.2.Dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2.Dns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/1.1.Passive%20Reconnaissance%20%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Passive Reconnaissance (THM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/1.2.Active%20Rreconnaissance%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/2.1.Cybersecurity%20beginner%20labs%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Cybersecurity beginner labs (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/2.2.ITI%20Penetration%20Tester%20Track%202025%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/24.Natas%200%20to%203%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Natas 0:
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/3.1.Kioptrix%20level1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.Kioptrix level1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/3.2.Metasploitable1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.Metasploitable1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/3.3.Metasploitable2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.Metasploitable2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.1.web-unprotected-admin-functionality%20%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.web unprotected admin functionality (Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.10.web-source-code-disclosure-backup-files%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10.web source code disclosure backup files(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.11.web-auth-bypass-via-info-disclosure%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11.web auth bypass via info disclosure(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.12.web-info-disclosure-version-control-git%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.12.web info disclosure version control git(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.2.web-unprotected-admin-functionality-unpredictable-url%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.web unprotected admin functionality unpredictable url(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.3.web-user-id-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.web user id controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.4.15-web-user-id-controlled-by-request-parameter-with-dynamic-id%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.15 web user id controlled by request parameter with dynamic id(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.5.web-user-role-modification-in-profile%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5.web user role modification in profile(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.6.web-user-role-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6.web user role controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.7.web-idor-corridor-thm%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7.web idor corridor thm(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.8.web-info-disclosure-error-messages%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8.web info disclosure error messages(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.9.web-info-disclosure-debug-page%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9.web info disclosure debug page(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phishing Investigation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Phishing%20Investigation/Paypal%20Phishing%20Investigation%20%28LetsDefend%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paypal Phishing Investigation (LetsDefend)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Phishing%20Investigation/Phishing%20Response%20Playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Response Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Phishing%20Investigation/Wallet%20Verification%20Scam%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation: Wallet Verification Scam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stego Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Stego Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Binwalk%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binwalk (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Canyousee%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canyousee (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Chalkboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chalkboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Cypher%20Anxiety%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cypher Anxiety (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Disko%201%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disko 1(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Exif%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exif (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/File%20Found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Forensics%20101%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forensics 101 (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Gandp%20List%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gandp List (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Git%20IS%20Good%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git IS Good (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Glory-of-the-garden%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Hidden%20Message%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hidden Message (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/I%20love%20images%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I love images (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Im%20a%20Dump%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Im a Dump(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Information%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Meta%20%28BTLO%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta (BTLO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Minions%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minions (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/PDF%20by%20fdpumyp%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF by fdpumyp (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Pho%20is%20Tasty%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pho is Tasty (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Pikespeak%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pikespeak (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Red%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Red (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Rubber%20Duck%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rubber Duck(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Scan%20Surprise%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scan Surprise (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Secret%20of%20the%20polyglot%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Simple%20Steganography%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Steganography (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Snowboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/TUX%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TUX (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Taking%20ls%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taking ls (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Verify%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/WOW%20SO%20META%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WOW SO META (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Threat Hunting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Threat Hunting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Threat%20Hunting/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boss Of The Soc BOTsV1 Scenario1 (SPLUNK)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Threat%20Hunting/Qradar101%20%28SIEM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qradar101 (SIEM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.Pre%20Lab%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.Pre Lab Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/01.Install%20Lab%20ELK%20Siem%20%26%20N8N/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.Install Lab ELK Siem & N8N
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/02.Install%20Lab%20Win%20Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.Install Lab Win Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/03.Install%20Lab%20Fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03.Install Lab Fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/04.Building%20a%20SIEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.Building a SIEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/05.Winlogbeat%20Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05.Winlogbeat Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/06.Fluent%20Bit%20Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06.Fluent Bit Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/07.Detection%20Egnineering%20Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.1.Pre%20Start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.2.Detection%20of%20powershell%20based%20windows%20firewall%20tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08.2.Detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.3.registry%20persistence%20detection%20with%20sysmon%20and%20kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.4.Privilege%20Escalation%20and%20Information%20gathering%20detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08.4.Privilege Escalation and Information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/09.SOAR%20N8N%20Workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09.SOAR N8N Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acquisition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preservation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preservation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analysis :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analysis :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-statistics-protocol-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Statistics &gt; Protocol Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-statistics-conversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Statistics &gt; Conversations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-statistics-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Statistics &gt; Endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-to-effectively-trace-the-attackers-activities-within-our-network-can-you-identify-the-ip-address-of-the-machine-from-which-the-attacker-initially-gained-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First : To effectively trace the attacker's activities within our network, can you identify the IP address of the machine from which the attacker initially gained access?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-i-ask-a-few-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can I ask a few questions:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-can-you-identify-the-ip-address-of-the-machine-from-which-the-attacker-initially-gained-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1) can you identify the IP address of the machine from which the attacker initially gained access?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#second-to-fully-understand-the-extent-of-the-breach-can-you-determine-the-machines-hostname-to-which-the-attacker-first-pivoted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Second : To fully understand the extent of the breach, can you determine the machine's hostname to which the attacker first pivoted? :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-can-you-determine-the-machines-hostname-to-which-the-attacker-first-pivoted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2) can you determine the machine's hostname to which the attacker first pivoted?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#third-knowing-the-username-of-the-account-the-attacker-used-for-authentication-will-give-us-insights-into-the-extent-of-the-breach-what-is-the-username-utilized-by-the-attacker-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Third : Knowing the username of the account the attacker used for authentication will give us insights into the extent of the breach. What is the username utilized by the attacker for authentication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-is-the-username-utilized-by-the-attacker-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) What is the username utilized by the attacker for authentication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fourth-after-figuring-out-how-the-attacker-moved-within-our-network-we-need-to-know-what-they-did-on-the-target-machine-whats-the-name-of-the-service-executable-the-attacker-set-up-on-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fourth: After figuring out how the attacker moved within our network, we need to know what they did on the target machine. What's the name of the service executable the attacker set up on the target? :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-after-figuring-out-how-the-attacker-moved-within-our-network-we-need-to-know-what-they-did-on-the-target-machine-whats-the-name-of-the-service-executable-the-attacker-set-up-on-the-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) After figuring out how the attacker moved within our network, we need to know what they did on the target machine. What's the name of the service executable the attacker set up on the target?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fifth-we-need-to-know-how-the-attacker-installed-the-service-on-the-compromised-machine-to-understand-the-attackers-lateral-movement-tactics-this-can-help-identify-other-affected-systems-which-network-share-was-used-by-psexec-to-install-the-service-on-the-target-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fifth : We need to know how the attacker installed the service on the compromised machine to understand the attacker's lateral movement tactics. This can help identify other affected systems. Which network share was used by PsExec to install the service on the target machine?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5which-network-share-was-used-by-psexec-to-install-the-service-on-the-target-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5)Which network share was used by PsExec to install the service on the target machine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sixth-6-we-must-identify-the-network-share-used-to-communicate-between-the-two-machines-which-network-share-did-psexec-use-for-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sixth: 6) We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-we-must-identify-the-network-share-used-to-communicate-between-the-two-machines-which-network-share-did-psexec-use-for-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seventh-now-that-we-have-a-clearer-picture-of-the-attackers-activities-on-the-compromised-machine-its-important-to-identify-any-further-lateral-movement-what-is-the-hostname-of-the-second-machine-the-attacker-targeted-to-pivot-within-our-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seventh: Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-can-open-in-tap-statistics-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        i can open in tap : Statistics &gt; Endpoints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="i can open in tap : Statistics &gt; Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#now-that-we-have-a-clearer-picture-of-the-attackers-activities-on-the-compromised-machine-its-important-to-identify-any-further-lateral-movement-what-is-the-hostname-of-the-second-machine-the-attacker-targeted-to-pivot-within-our-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indicators-of-compromise-iocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 Indicators of Compromise (IOCs)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p>CyberDefenders
+<Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030374746/3402d759-c5e1-4c23-a4cf-b633be3c8a93.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp" alt="" align="left" fullwidth="true" /></p>
+<p>An alert from the Intrusion Detection System (IDS) flagged suspicious lateral movement activity involving PsExec. This indicates potential unauthorized access and movement across the network. As a SOC Analyst, your task is to investigate the provided PCAP file to trace the attacker’s activities. Identify their entry point, the machines targeted, the extent of the breach, and any critical indicators that reveal their tactics and objectives within the compromised environment.</p>
+<p>You Can Try : <a href="https://cyberdefenders.org/blueteam-ctf-challenges/psexec-hunt/">https://cyberdefenders.org/blueteam-ctf-challenges/psexec-hunt/</a></p>
+<hr />
+<h2 id="identification">Identification</h2>
+<ul>
+<li>
+<p><strong>Incident Title</strong> : PsExec Hunt Lab</p>
+</li>
+<li>
+<p><strong>Date/Reported</strong> : 03-09-2025</p>
+</li>
+<li>
+<p><strong>Reported by</strong>  : Task Trainee WE INNOVATE</p>
+</li>
+<li>
+<p><strong>Description</strong>  : - During my training at <strong>WE INNOVATE</strong>, I was assigned a forensic analysis task involving the file <code>psexec-hunt.pcapng</code>. An alert generated by the Intrusion Detection System (IDS) flagged suspicious <strong>lateral movement activity</strong> associated with the use of <strong>PsExec</strong>. This suggested potential <strong>unauthorized access</strong> across multiple hosts within the network.</p>
+</li>
+<li>
+<p><strong>Investigator</strong> : Abdelwahab Ahmed Shandy</p>
+</li>
+</ul>
+<hr />
+<h2 id="acquisition">Acquisition</h2>
+<ul>
+<li>
+<p><strong>Evidence Collected:</strong> Packet Capture File (<code>psexec-hunt.pcapng</code>)</p>
+</li>
+<li>
+<p><strong>Tool Used:</strong> Wireshark</p>
+</li>
+</ul>
+<hr />
+<h2 id="preservation">Preservation</h2>
+<ul>
+<li>I made a copy of the original file to maintain integrity :</li>
+</ul>
+<pre><code class="language-bash">sansforensics@as: ~/Downloads
+$ cp psexec-hunt.pcapng Task-Day2.pcapng
+sansforensics@as: ~/Downloads
+$ md5sum psexec-hunt.pcapng 
+3b009a00b288eb0558f8e91879aeb4f6  psexec-hunt.pcapng
+sansforensics@as: ~/Downloads
+$ md5sum Task-Day2.pcapng 
+3b009a00b288eb0558f8e91879aeb4f6  Task-Day2.pcapng
+</code></pre>
+<ul>
+<li>
+<p>Hash (MD5): 3b009a00b288eb0558f8e91879aeb4f6</p>
+</li>
+<li>
+<p>Preservation: A verified copy of the original PCAP file was maintained to ensure forensic integrity.</p>
+</li>
+</ul>
+<hr />
+<h2 id="analysis"><strong>Analysis :</strong></h2>
+<ul>
+<li>
+<p>Simply put, we're required to check if an attack occurred using a tool called PsExec.</p>
+</li>
+<li>
+<p>First, we need to understand what PsExec is:</p>
+</li>
+<li>
+<p><strong>PsExec</strong> is a tool from the Sysinternals suite (owned by Microsoft).</p>
+</li>
+<li>
+<p>Its function: It allows you to run commands or programs remotely on other devices on the network without opening an RDP session or logging into the device directly.</p>
+</li>
+</ul>
+<p>The first thing we can start with when we do an analysis in <strong>Wireshark</strong> :</p>
+<h3 id="1-statistics-protocol-hierarchy">1️⃣ Statistics &gt; Protocol Hierarchy</h3>
+<ul>
+<li>
+<p>Here, you'll see all the protocols present in the PCAP and the percentage of each.</p>
+</li>
+<li>
+<p>Reason: To see if there are any abnormal protocols or a high percentage of a specific protocol (such as SMB) - this could indicate that the attack was carried out through it</p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030531015/8230692b-fb82-4a8e-a081-a47acf957501.png" alt="" align="left" fullwidth="true" /></p>
+<ul>
+<li>
+<h3 id="2-statistics-conversations">2️⃣ Statistics &gt; Conversations</h3>
+</li>
+<li>
+<p>Here, you'll see the conversations (connections) between devices: who talked to whom, the size of the data, and the number of packets.</p>
+</li>
+<li>
+<p>Reason: To help you identify which two devices are showing suspicious activity (such as an attacker communicating with multiple devices via SMB).</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030555361/8501cef2-651a-4144-b584-c14f754e2599.png" alt="" align="left" fullwidth="true" /></p>
+</li>
+</ul>
+<h3 id="3-statistics-endpoints">3️⃣ Statistics &gt; Endpoints</h3>
+<ul>
+<li>
+<p>Here, you'll see all the devices (IP addresses or MACs) that appeared in the capture.</p>
+</li>
+<li>
+<p>Reason: To identify the primary devices in the attack - the device that initiated the communication (the attacker) and the affected devices (the victims).</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030574408/e6be0237-58e2-4d04-aa83-ae2f2f4de238.png" alt="" align="left" fullwidth="true" /></p>
+</li>
+<li>
+<p>The highest traffic is on IP: 10.0.0.130 and it may be the device that was initially hacked by the attacker , But I want to make sure or why it is really him ؟</p>
+</li>
+</ul>
+<h3 id="first-to-effectively-trace-the-attackers-activities-within-our-network-can-you-identify-the-ip-address-of-the-machine-from-which-the-attacker-initially-gained-access">First : To effectively trace the attacker's activities within our network, can you identify the IP address of the machine from which the attacker initially gained access?</h3>
+<h3 id="can-i-ask-a-few-questions">Can I ask a few questions:</h3>
+<ul>
+<li>
+<p>Who initiated the communications? (Initiation) :</p>
+</li>
+<li>
+<p><code>tcp.flags.syn == 1 &amp;&amp; tcp.flags.ack == 0 &amp;&amp; (ip.src == 10.0.0.130)</code></p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030590110/26ec2416-a017-47f4-bd2d-6716b8022459.png" alt="" align="left" fullwidth="true" /></p>
+</li>
+<li>
+<p>The filter shows you all the connections that the device 10.0.0.130 initiated (sent a SYN the first time to open a connection), and this is so that: you can prove that 10.0.0.130 is the attacker → because it is the one that initiates SMB sessions with the other devices (10.0.0.133, 10.0.0.131).</p>
+</li>
+</ul>
+<h3 id="1-can-you-identify-the-ip-address-of-the-machine-from-which-the-attacker-initially-gained-access">1) can you identify the IP address of the machine from which the attacker initially gained access?</h3>
+<ul>
+<li><strong>10.0.0.130</strong></li>
+</ul>
+<blockquote>
+<p>📝 Why is 10.0.0.130 the attacker (the point from which the intrusion began)? <strong>Conversations</strong> : -The largest connection was between 10.0.0.130 ↔ 10.0.0.133 (over 38,000 packets) , The next connection was with 10.0.0.131. -This means that 10.0.0.130 is communicating with the other devices. <strong>Endpoints</strong> : -The highest traffic volume was at 10.0.0.130 → This indicates that it is the active device (performing operations on more than one target). -<strong>TCP SYN Filter</strong> : -Using the filter: tcp.flags.syn == 1 &amp;&amp; tcp.flags.ack == 0 &amp;&amp; ip.src == 10.0.0.130 -We find that 130 is the one initiating connections to other devices → evidence that it is the attacker, not the victim.</p>
+</blockquote>
+<h3 id="second-to-fully-understand-the-extent-of-the-breach-can-you-determine-the-machines-hostname-to-which-the-attacker-first-pivoted">Second : To fully understand the extent of the breach, can you determine the machine's hostname to which the attacker first pivoted? :</h3>
+<ul>
+<li>
+<p>📝 From the analysis:</p>
+</li>
+<li>
+<p>We saw that the attacker 10.0.0.130 first contacted device 10.0.0.133 (this was the first victim it moved to).</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030626104/303b3cf7-efab-495a-be83-540093292b5d.png" alt="" align="left" fullwidth="true" /></p>
+</li>
+<li>
+<p><code>tcp.flags.syn == 1</code> =&gt; This means the packet contains the SYN flag (the first step in the TCP connection establishment process – the Handshake).</p>
+</li>
+<li>
+<p><code>tcp.flags.ack == 0</code> =&gt; This means that this packet does not contain an ACK, and therefore, it is only the SYN that initiates the session.</p>
+</li>
+<li>
+<p><code>ip.src == 10.0.0.130</code> =&gt; This packet originates from device 10.0.0.130.</p>
+</li>
+<li>
+<p>Now we need to find out the hostname of device 10.0.0.133 :</p>
+</li>
+<li>
+<p>The first IP was 10.0.0.133 :</p>
+</li>
+<li>
+<p>I can get <code>hostname</code> :</p>
+<ul>
+<li>
+<p>i used filter : <code>ip.addr== 10.0.0.133 || nbns || dns</code> , Nothing important appeared</p>
+</li>
+<li>
+<p>i used filter : <code>(ip.src == 10.0.0.130) &amp;&amp; ntlmssp</code> :</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030640032/0d72c1bb-5028-4792-836a-939216933363.png" alt="" align="left" fullwidth="true" /></p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>NTLM Security Support Provider (NTLMSP) :It is part of the NTLM Authentication protocol.</p>
+<p>It is used in the negotiation and authentication process between the client and the server.</p>
+<p>You can think of it as the messages or packets that transmit the authentication steps.</p>
+</blockquote>
+<p>📌 The relationship between SMB and NTLMSSP:</p>
+<ul>
+<li>
+<p>SMB (Server Message Block) is the protocol that allows file, printer, and IPC sharing between devices.</p>
+</li>
+<li>
+<p>When an attacker uses a tool like PsExec or attempts to make a lateral move, they need to authenticate to access Admin$ or IPC$.</p>
+</li>
+<li>
+<p>Then, the hostname of the device the attacker has moved to will be displayed.</p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030655150/696f6e5d-240e-48d9-a965-7753f7cc9a49.png" alt="" align="left" fullwidth="true" /></p>
+<p>In SMB2 → Session Setup Response, we found <strong>NTLMSSP_CHALLENGE</strong> :</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030671436/cedb1fce-7cab-490e-93a8-68f4371b6b5a.png" alt="" align="left" fullwidth="true" /></p>
+<ul>
+<li>This is the hostname of the device the attacker attempted to pivot on.</li>
+</ul>
+<h3 id="2-can-you-determine-the-machines-hostname-to-which-the-attacker-first-pivoted">2) can you determine the machine's hostname to which the attacker first pivoted?</h3>
+<ul>
+<li>Sales-PC</li>
+</ul>
+<h3 id="third-knowing-the-username-of-the-account-the-attacker-used-for-authentication-will-give-us-insights-into-the-extent-of-the-breach-what-is-the-username-utilized-by-the-attacker-for-authentication">Third : Knowing the username of the account the attacker used for authentication will give us insights into the extent of the breach. What is the username utilized by the attacker for authentication?</h3>
+<blockquote>
+<p>The username appears in the NTLMSSP_AUTHENTICATE phase of the SMB Session Setup.</p>
+<p>That is, after (10.0.0.133 = SALES-PC) responds with the NTLMSSP_CHALLENGE message, the attacking machine (10.0.0.130) sends the NTLMSSP_AUTHENTICATE message.</p>
+</blockquote>
+<ul>
+<li><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030689053/9fd9ec3f-1113-453f-b3b3-afb398168ac6.png" alt="" align="left" fullwidth="true" /></li>
+</ul>
+<p>The attacker's goal was to gain higher powers, and this is what he actually obtained :</p>
+<ul>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030797057/428c9b95-5331-476e-9782-11089732ff74.png" alt="" align="left" fullwidth="true" /></p>
+</li>
+<li>
+<p>Its presence with the target hostname (SALES-PC) confirms that it is Local Admin.</p>
+</li>
+<li>
+<p>Also, the PsExec tool only runs with Admin rights.</p>
+</li>
+</ul>
+<h3 id="3-what-is-the-username-utilized-by-the-attacker-for-authentication">3) What is the username utilized by the attacker for authentication?</h3>
+<ul>
+<li>ssales</li>
+</ul>
+<h3 id="fourth-after-figuring-out-how-the-attacker-moved-within-our-network-we-need-to-know-what-they-did-on-the-target-machine-whats-the-name-of-the-service-executable-the-attacker-set-up-on-the-target">Fourth: After figuring out how the attacker moved within our network, we need to know what they did on the target machine. What's the name of the service executable the attacker set up on the target? :</h3>
+<p>I Can Get This : <strong>File &gt; Export Object &gt; SMB</strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757031283128/1a73dead-d0eb-42df-8748-cd592c885471.png" alt="" align="center" fullwidth="true" /></p>
+<p>Or Filter on SMB Trafiic with Executable Files :</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030917617/e34ab588-fce8-4627-b08c-e33f6ff77f0a.png" alt="" align="left" fullwidth="true" /></p>
+<p>Role on Packets on type :</p>
+<pre><code class="language-bash">SMB2 CREATE Request
+SMB2 WRITE Request
+SMB2 CLOSE Request
+</code></pre>
+<h3 id="4-after-figuring-out-how-the-attacker-moved-within-our-network-we-need-to-know-what-they-did-on-the-target-machine-whats-the-name-of-the-service-executable-the-attacker-set-up-on-the-target">4) After figuring out how the attacker moved within our network, we need to know what they did on the target machine. What's the name of the service executable the attacker set up on the target?</h3>
+<ul>
+<li><strong>psexesvc</strong></li>
+</ul>
+<h3 id="fifth-we-need-to-know-how-the-attacker-installed-the-service-on-the-compromised-machine-to-understand-the-attackers-lateral-movement-tactics-this-can-help-identify-other-affected-systems-which-network-share-was-used-by-psexec-to-install-the-service-on-the-target-machine">Fifth : We need to know how the attacker installed the service on the compromised machine to understand the attacker's lateral movement tactics. This can help identify other affected systems. Which network share was used by PsExec to install the service on the target machine?</h3>
+<ul>
+<li>Before we answer a question like this, we need to understand:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Share Name</th>
+<th>Share Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C$</strong></td>
+<td>Hidden Share</td>
+<td>The full copy of the C: Drive on the device. (Access Administrator)</td>
+</tr>
+<tr>
+<td><strong>D$</strong></td>
+<td>Hidden Share</td>
+<td>The full copy of the D: Drive.</td>
+</tr>
+<tr>
+<td><strong>Admin$</strong></td>
+<td>Hidden Share</td>
+<td>Essential system files, such as the <code>Windows</code> folder.</td>
+</tr>
+<tr>
+<td><strong>IPC$</strong></td>
+<td>Hidden Share</td>
+<td>Inter-Process Communication (IPC), used for communication between processes and remote control without accessing files.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The <code>$</code> in the name means that the share is <strong>hidden</strong>, it will not be visible to the regular user when browsing the network, but it is available to administrators (Admins).</p>
+</blockquote>
+<ul>
+<li>i use filter : <code>smb2.tree</code></li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030948084/d82b6cfc-c554-4ffe-a097-61f3dd700a8f.png" alt="" align="left" fullwidth="true" /></p>
+<blockquote>
+<p>\10.0.0.133\IPC$ appears = Initial connection + authentication phase. \10.0.0.133\ADMIN$ appears = Actual service cloning and installation phase</p>
+</blockquote>
+<h3 id="5which-network-share-was-used-by-psexec-to-install-the-service-on-the-target-machine">5)Which network share was used by PsExec to install the service on the target machine ?</h3>
+<ul>
+<li>ADMIN$</li>
+</ul>
+<h3 id="sixth-6-we-must-identify-the-network-share-used-to-communicate-between-the-two-machines-which-network-share-did-psexec-use-for-communication">Sixth: 6) We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?</h3>
+<ul>
+<li>
+<p>If we look at the SMB traffic after activating the service, you will find connections such as:</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030970334/a00fbbb4-864c-400a-a89b-a9deda801a67.png" alt="" align="left" fullwidth="true" /></p>
+</li>
+<li>
+<p>PsExec used the IPC$ share to communicate between the attacker machine (10.0.0.130) and the target machine (10.0.0.133).</p>
+</li>
+<li>
+<p>In the PCAP, we saw:</p>
+</li>
+<li>
+<p>Frame 134 → Tree Connect Request \10.0.0.133\IPC$</p>
+</li>
+<li>
+<p>Frame 135 → Tree Connect Response (the server accepted the connection).</p>
+</li>
+<li>
+<p>\=&gt; This proves that the attacker opened a communication channel on the IPC$ share.</p>
+</li>
+</ul>
+<h3 id="6-we-must-identify-the-network-share-used-to-communicate-between-the-two-machines-which-network-share-did-psexec-use-for-communication">6) We must identify the network share used to communicate between the two machines. Which network share did PsExec use for communication?</h3>
+<ul>
+<li><strong>IPC$</strong></li>
+</ul>
+<h3 id="seventh-now-that-we-have-a-clearer-picture-of-the-attackers-activities-on-the-compromised-machine-its-important-to-identify-any-further-lateral-movement-what-is-the-hostname-of-the-second-machine-the-attacker-targeted-to-pivot-within-our-network">Seventh: Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?</h3>
+<h2 id="i-can-open-in-tap-statistics-endpoints">i can open in tap : <strong>Statistics &gt; Endpoints</strong></h2>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757030998137/282ca7c6-5021-4510-958a-dae83f6cce1e.png" alt="" align="left" fullwidth="true" /></p>
+<ul>
+<li>
+<p>Actually we can doubt <strong>10.0.0.131</strong> or <strong>10.0.0.132</strong></p>
+</li>
+<li>
+<p>In PCAP (Wireshark), review SMB traffic:</p>
+</li>
+<li>
+<p>If you find a Tree Connect Request (in the SMB protocol),</p>
+</li>
+<li>
+<p>you will find that PsExec is likely using ADMIN$ to download the PSEXESVC.exe file to the victim's machine and run it.</p>
+</li>
+<li>
+<p>Actually, let what happened in this device :</p>
+</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757031013030/e6968a60-7d3e-49d9-bd5f-e7a283db029e.png" alt="" align="left" fullwidth="true" /></p>
+<ul>
+<li>We want to get the hostname , using filter : <code>smb2 || ntlmssp &amp;&amp; (ip.addr == 10.0.0.131)</code></li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1757031026094/6eff8af2-cbd8-4824-88f1-e00beabba361.png" alt="" align="left" fullwidth="true" /></p>
+<p>🔎 Why does this point to the second hostname?</p>
+<ul>
+<li>
+<p>The IP address 10.0.0.131 is the new device the attacker is trying to pivot to from 10.0.0.130.</p>
+</li>
+<li>
+<p>If you open the SMB2 Session Setup Response or NTLMSSP_CHALLENGE in the same packet or the next one, you will find:</p>
+</li>
+<li>
+<p>Target Name = MARKETING-PC</p>
+</li>
+<li>
+<p>Or in the Target Info section under NTLM challenge.</p>
+</li>
+</ul>
+<h3 id="now-that-we-have-a-clearer-picture-of-the-attackers-activities-on-the-compromised-machine-its-important-to-identify-any-further-lateral-movement-what-is-the-hostname-of-the-second-machine-the-attacker-targeted-to-pivot-within-our-network">Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?</h3>
+<ul>
+<li>Marketing-PC</li>
+</ul>
+<hr />
+<h1 id="indicators-of-compromise-iocs">📝 <strong>Indicators of Compromise (IOCs)</strong></h1>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Indicator Type</th>
+<th>Value / Details</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Attacker IP</strong></td>
+<td><code>10.0.0.130</code></td>
+<td>The machine from which the attacker initially gained access.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>First Pivot Hostname</strong></td>
+<td><code>SALES-PC (10.0.0.133)</code></td>
+<td>The first host the attacker pivoted to.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Username Used</strong></td>
+<td><code>ssales</code></td>
+<td>The account used by the attacker for authentication over SMB.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Service Executable</strong></td>
+<td><code>psexesvc.exe</code></td>
+<td>The malicious service executable set up on the target by PsExec.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Share (Service Install)</strong></td>
+<td><code>ADMIN$</code></td>
+<td>The administrative share PsExec used to install the service.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Share (Communication)</strong></td>
+<td><code>IPC$</code></td>
+<td>The network share PsExec used for communication between machines.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Second Pivot Hostname</strong></td>
+<td><code>MARKETING-PC (10.0.0.131)</code></td>
+<td>The second machine the attacker targeted for lateral movement.</td>
+</tr>
+</tbody>
+</table>
+<p>✍️ <strong>Prepared by:</strong> Abdelwahab A. Shandy</p>
+<p>📅 <strong>Date:</strong> 03-09-2025</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,6751 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/LABs/Engineering/Building%20SIEM%20Filebeat%20Winlogbeat%20Kibana%20%28SIEM%20LAB%29/">
+      
+      
+        <link rel="prev" href="../../Disk%20Forensics/Search%20in%20trash%20%28Cyber%20Talents%29/">
+      
+      
+        <link rel="next" href="../Collecting%20Visualizing%20ssh%20logs%20Fluentbit/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB) - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-1-ubuntu-setup-elasticsearch-installation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🛡️ Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise Offensive Defensive Security Simulation HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-tabs__link">
+          
+  
+  
+  LABs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.Pre%20Lab%20Overview/" class="md-tabs__link">
+          
+  
+  
+  SIEM & SOAR Integration HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LABs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Disk Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.Software Write Blocker Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/01.Verifying%20Evidence%20Integrity%20Hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌 General Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/03.Analyzing%20file%20properties%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁 Analyzing File Properties in Digital Forensics – Windows Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/04.File%20Analysis%20Stat%20command%20linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.File Analysis Stat command linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/05.Image%20Analysis%20Exiftool%20Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05.Image Analysis Exiftool Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/06.Disk%20Acquisition%20linux%20dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06.Disk Acquisition linux dd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/07.Disk%20Acquisition%20FTK%20imager%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07.Disk Acquisition FTK imager windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/08.Autopsy%20case%20creation%20and%20setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛠️ Creating a New Case and Adding a Data Source in Autopsy – Step-by-Step with Full Explanation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/09.Data%20Source%20Analysis%20Autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Analysis of Data Source Using Autopsy – Autopsy Forensic Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/10.Firefox%20Artifacts%20Extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/11.Linux%20os%20forensics%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/12.Registry%20Hives%20Extraction%20FTK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12.Registry Hives Extraction FTK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/13.Registry%20Analysis%20Phase%20Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/14.Registry%20Analysis%20Tools%20Explorer%20Regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/15.Ntfs1%20Evidence%20Acquisition%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.Ntfs1 Evidence Acquisition Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Disk%20Forensics/Search%20in%20trash%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search in trash (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setting-a-static-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Setting a Static IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1️⃣ Setting a Static IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui-user-interface-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUI (User Interface) Method :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-elasticsearch-with-a-debian-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Elasticsearch with a Debian Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Install Elasticsearch with a Debian Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-we-import-the-pgp-key-to-ensure-that-the-package-is-authentic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First, we import the PGP Key to ensure that the package is authentic:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-the-elastic-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Add the Elastic Repository :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update-apt-and-install-elasticsearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Update apt and install Elasticsearch :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-network-to-access-the-node-from-other-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Configure Network (to access the node from other machines)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4️⃣ Configure Network (to access the node from other machines)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-run-elasticsearch-as-a-systemd-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5️⃣ Run Elasticsearch as a systemd service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-set-the-elastic-user-password-first-time-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6️⃣ Set the elastic user password (first time only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-verify-elasticsearch-is-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7️⃣ Verify Elasticsearch is running
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-we-are-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now we are done ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Collecting%20Visualizing%20ssh%20logs%20Fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecting Visualizing ssh logs Fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Detect%20Nmap%20Scan%20Using%20Snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detect Nmap Scan Using Snort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ubuntu%20Web%20Server%20WAF%20Nginx%20Modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu Web Server WAF Nginx Modsecurity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINUX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LINUX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/0.Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/1.1.Unix%20vs%20Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Unix vs Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/1.2.Linux%20Commands%20Review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/2.1.Bandit%20level%200%20to%2010%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Bandit level 0 to 10 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/2.2.Bandit%20level%2010%20to%2020%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.Bandit level 10 to 20 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/2.3.Bandit%20level%2020%20to%2023%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.Bandit level 20 to 23 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LINUX/3.Leviathan%200-1%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Leviathan 0 1 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Malware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Malware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Malware/Persistence%20Analysis%20Remediation%20Python%20PopUp%20Malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence Analysis Remediation Python PopUp Malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network%20Forensics/Arp%20Storm%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arp Storm (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network%20Forensics/Examining%20Pcaps%20Emails%20Malware%20Infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examining Pcaps Emails Malware Infection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network%20Forensics/Hawkeye/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hawkeye
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network%20Forensics/Psexec%20Hunt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Psexec Hunt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Network%20Forensics/Suspicious%20File%20Download%20Fake%20Authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suspicious File Download Fake Authenticator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSINT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/0.Some%20info%20in%20MITRE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Professional Use of MITRE ATT&amp;CK (SOC &amp; Detection Engineering Guide)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT   MITRE (3)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shadow Rat
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PENTEST
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PENTEST
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/0.1.Beginnings%20of%20the%20Internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.Beginnings of the Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/0.1.HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.HTTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/0.2.Dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2.Dns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/1.1.Passive%20Reconnaissance%20%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Passive Reconnaissance (THM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/1.2.Active%20Rreconnaissance%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/2.1.Cybersecurity%20beginner%20labs%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Cybersecurity beginner labs (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/2.2.ITI%20Penetration%20Tester%20Track%202025%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/24.Natas%200%20to%203%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Natas 0:
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/3.1.Kioptrix%20level1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.Kioptrix level1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/3.2.Metasploitable1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.Metasploitable1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/3.3.Metasploitable2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.Metasploitable2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.1.web-unprotected-admin-functionality%20%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.web unprotected admin functionality (Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.10.web-source-code-disclosure-backup-files%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10.web source code disclosure backup files(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.11.web-auth-bypass-via-info-disclosure%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11.web auth bypass via info disclosure(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.12.web-info-disclosure-version-control-git%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.12.web info disclosure version control git(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.2.web-unprotected-admin-functionality-unpredictable-url%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.web unprotected admin functionality unpredictable url(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.3.web-user-id-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.web user id controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.4.15-web-user-id-controlled-by-request-parameter-with-dynamic-id%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.15 web user id controlled by request parameter with dynamic id(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.5.web-user-role-modification-in-profile%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5.web user role modification in profile(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.6.web-user-role-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6.web user role controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.7.web-idor-corridor-thm%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7.web idor corridor thm(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.8.web-info-disclosure-error-messages%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8.web info disclosure error messages(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PENTEST/4.9.web-info-disclosure-debug-page%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9.web info disclosure debug page(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phishing Investigation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Phishing%20Investigation/Paypal%20Phishing%20Investigation%20%28LetsDefend%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paypal Phishing Investigation (LetsDefend)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Phishing%20Investigation/Phishing%20Response%20Playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Response Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Phishing%20Investigation/Wallet%20Verification%20Scam%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation: Wallet Verification Scam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stego Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Stego Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Binwalk%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binwalk (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Canyousee%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canyousee (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Chalkboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chalkboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Cypher%20Anxiety%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cypher Anxiety (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Disko%201%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disko 1(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Exif%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exif (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/File%20Found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Forensics%20101%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forensics 101 (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Gandp%20List%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gandp List (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Git%20IS%20Good%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git IS Good (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Glory-of-the-garden%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Hidden%20Message%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hidden Message (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/I%20love%20images%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I love images (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Im%20a%20Dump%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Im a Dump(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Information%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Meta%20%28BTLO%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta (BTLO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Minions%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minions (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/PDF%20by%20fdpumyp%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF by fdpumyp (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Pho%20is%20Tasty%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pho is Tasty (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Pikespeak%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pikespeak (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Red%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Red (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Rubber%20Duck%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rubber Duck(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Scan%20Surprise%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scan Surprise (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Secret%20of%20the%20polyglot%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Simple%20Steganography%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Steganography (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Snowboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/TUX%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TUX (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Taking%20ls%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taking ls (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/Verify%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Stego%20Forensics/WOW%20SO%20META%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WOW SO META (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Threat Hunting
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Threat Hunting
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Threat%20Hunting/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boss Of The Soc BOTsV1 Scenario1 (SPLUNK)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Threat%20Hunting/Qradar101%20%28SIEM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qradar101 (SIEM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.Pre%20Lab%20Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.Pre Lab Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/01.Install%20Lab%20ELK%20Siem%20%26%20N8N/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.Install Lab ELK Siem & N8N
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/02.Install%20Lab%20Win%20Server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.Install Lab Win Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/03.Install%20Lab%20Fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03.Install Lab Fluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/04.Building%20a%20SIEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.Building a SIEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/05.Winlogbeat%20Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05.Winlogbeat Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/06.Fluent%20Bit%20Configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06.Fluent Bit Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/07.Detection%20Egnineering%20Intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.1.Pre%20Start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.2.Detection%20of%20powershell%20based%20windows%20firewall%20tampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08.2.Detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.3.registry%20persistence%20detection%20with%20sysmon%20and%20kql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Step 1: Preparing Windows for Registry Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.4.Privilege%20Escalation%20and%20Information%20gathering%20detection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08.4.Privilege Escalation and Information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/09.SOAR%20N8N%20Workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09.SOAR N8N Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-setting-a-static-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Setting a Static IP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1️⃣ Setting a Static IP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gui-user-interface-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GUI (User Interface) Method :
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-elasticsearch-with-a-debian-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install Elasticsearch with a Debian Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Install Elasticsearch with a Debian Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-we-import-the-pgp-key-to-ensure-that-the-package-is-authentic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First, we import the PGP Key to ensure that the package is authentic:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-add-the-elastic-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Add the Elastic Repository :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-update-apt-and-install-elasticsearch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Update apt and install Elasticsearch :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-network-to-access-the-node-from-other-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4️⃣ Configure Network (to access the node from other machines)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4️⃣ Configure Network (to access the node from other machines)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-run-elasticsearch-as-a-systemd-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5️⃣ Run Elasticsearch as a systemd service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-set-the-elastic-user-password-first-time-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6️⃣ Set the elastic user password (first time only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-verify-elasticsearch-is-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7️⃣ Verify Elasticsearch is running
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#now-we-are-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Now we are done ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760453823707/405a760b-0770-465a-a569-a4be389726da.webp" align="center" fullwidth="false" /></p>
+<blockquote>
+<p>Part 1: Ubuntu Setup and Elasticsearch Installation :</p>
+<ul>
+<li>
+<p>Setting a Static IP on Ubuntu VM</p>
+</li>
+<li>
+<p>Installing Elasticsearch via Debian Package</p>
+</li>
+<li>
+<p>Configuring Elasticsearch (elasticsearch.yml)</p>
+</li>
+<li>
+<p>Running Elasticsearch as a systemd service</p>
+</li>
+<li>
+<p>Setting the elastic user password</p>
+</li>
+<li>
+<p>Verifying Elasticsearch functionality</p>
+</li>
+</ul>
+<p>Part 2: Kibana Installation :</p>
+<ul>
+<li>
+<p>Installing Kibana via Debian Package</p>
+</li>
+<li>
+<p>Importing the PGP Signing Key</p>
+</li>
+<li>
+<p>Adding Elastic Repository and Installing Kibana</p>
+</li>
+</ul>
+<p>Part 3: Registering Kibana with Elasticsearch :</p>
+<ul>
+<li>
+<p>Creating an Enrollment Token on Elasticsearch</p>
+</li>
+<li>
+<p>Making Kibana Accessible Externally (Optional)</p>
+</li>
+<li>
+<p>Running Kibana as a systemd service</p>
+</li>
+<li>
+<p>Completing Kibana Registration with Elasticsearch Part 4: Windows Device and Winlogbeat</p>
+</li>
+<li>
+<p>Enabling Audit Policy on Windows :</p>
+</li>
+<li>
+<p>Login is correct and incorrect</p>
+</li>
+<li>
+<p>Creating/Deleting Users</p>
+</li>
+<li>
+<p>Creating Groups</p>
+</li>
+<li>
+<p>Adding Users to Groups</p>
+</li>
+<li>
+<p>Installing Winlogbeat on Windows</p>
+</li>
+<li>
+<p>Configuring <code>winlogbeat.yml</code></p>
+</li>
+<li>
+<p>Connecting Winlogbeat to Elasticsearch and Kibana</p>
+</li>
+<li>
+<p>Verifying Logs in Kibana Dashboards</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h1 id="part-1-ubuntu-setup-elasticsearch-installation"><strong>Part 1: Ubuntu Setup &amp; Elasticsearch Installation</strong></h1>
+<blockquote>
+<ul>
+<li>
+<p>There are a few things we need to ensure before downloading or installing anything:</p>
+</li>
+<li>
+<p>We prefer that the VMs be Ubuntu, and we avoid Kali for security.</p>
+</li>
+<li>
+<p>We'll set up a static IP on the machines we'll be running SIEM on.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="1-setting-a-static-ip">1️⃣ Setting a Static IP</h2>
+<ul>
+<li>
+<p>Understanding the Current NAT Configuration</p>
+</li>
+<li>
+<p>NAT means that the machine will obtain a dynamic IP (DHCP) from VirtualBox, and internet connectivity will pass through the primary machine.</p>
+</li>
+<li>
+<p>We'll change it to a static IP within Ubuntu. We need to know the gateway and DNS.</p>
+</li>
+</ul>
+<pre><code class="language-bash">ip a   # current IP
+#OR
+ifconfig                  
+192.168.1.4/24
+
+ip route                 # Gateway
+192.168.1.1
+</code></pre>
+<h4 id="gui-user-interface-method"><strong>GUI (User Interface) Method :</strong></h4>
+<ol>
+<li>
+<p>Open Settings in Ubuntu.</p>
+</li>
+<li>
+<p>Go to Wired &gt; Wired Settings (or Wi-Fi).</p>
+</li>
+<li>
+<p>Click ⚙️ next to the connected network.</p>
+</li>
+<li>
+<p>Change the IPv4 Method from Automatic (DHCP) to Manual.</p>
+</li>
+<li>
+<p>Enter the following information:</p>
+</li>
+<li>
+<p>Address: Static IP, such as 192.168.1.100</p>
+</li>
+<li>
+<p>Netmask / Prefix: 255.255.255.0 or /24</p>
+</li>
+<li>
+<p>Gateway: such as 192.168.1.1</p>
+</li>
+<li>
+<p>DNS: 8.8.8.8, 8.8.4.4</p>
+</li>
+<li>
+<p>Click Apply, and restart the network or machine.</p>
+</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087537209/dd4a4c32-941d-42cd-9058-2fa8a8854a20.png" alt="" align="left" fullwidth="false" /></p>
+<hr />
+<h2 id="install-elasticsearch-with-a-debian-package">Install Elasticsearch with a Debian Package</h2>
+<blockquote>
+<p><a href="https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package">https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-elasticsearch-with-debian-package</a></p>
+</blockquote>
+<h4 id="first-we-import-the-pgp-key-to-ensure-that-the-package-is-authentic"><strong>First, we import the PGP Key to ensure that the package is authentic:</strong></h4>
+<pre><code class="language-sh">wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+</code></pre>
+<ul>
+<li>Our goal: to verify Elastic packages before installation.</li>
+</ul>
+<h4 id="2-add-the-elastic-repository">2️⃣ <strong>Add the Elastic Repository :</strong></h4>
+<pre><code class="language-sh">sudo apt-get install apt-transport-https
+|
+|
+|
+(Reading database ... 169650 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.4.14_all.deb ...
+Unpacking apt-transport-https (2.4.14) ...
+Setting up apt-transport-https (2.4.14) ...
+</code></pre>
+<ul>
+<li>We save the repository definition in <code>/etc/apt/sources.list.d/elastic-9.x.list</code>:</li>
+</ul>
+<pre><code class="language-sh">echo &quot;deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main&quot; | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+</code></pre>
+<ul>
+<li><strong>Our goal</strong>: to allow apt to use HTTPS and add an official repo without modifying the main sources.</li>
+</ul>
+<h4 id="3-update-apt-and-install-elasticsearch">3️⃣ <strong>Update apt and install Elasticsearch :</strong></h4>
+<pre><code class="language-sh">sudo apt-get update &amp;&amp; sudo apt-get install elasticsearch
+</code></pre>
+<hr />
+<h4 id="4-configure-network-to-access-the-node-from-other-machines">4️⃣ Configure Network (to access the node from other machines)</h4>
+<ul>
+<li>
+<p>For a <strong>Single-node cluster</strong>:</p>
+</li>
+<li>
+<p>We open the configuration file <code>/etc/elasticsearch/elasticsearch.yml</code>:</p>
+</li>
+</ul>
+<pre><code class="language-sh">sudo nano /etc/elasticsearch/elasticsearch.yml
+</code></pre>
+<ul>
+<li>Be careful — YAML is case sensitive and space sensitive.</li>
+</ul>
+<p>Key settings:</p>
+<pre><code class="language-yaml">cluster.name: elasticsearch-demo     # Cluster name
+network.host: 0.0.0.0                # Allow connection from all networks
+transport.host: 0.0.0.0              # Same for transport layer
+</code></pre>
+<p>Save and exit nano with <code>Ctrl+O</code> then <code>Ctrl+X</code>.</p>
+<p>🔹 <strong>Goal:</strong></p>
+<ul>
+<li>
+<p><a href="http://cluster.name"><code>cluster.name</code></a> → must be the same for all nodes in the cluster.</p>
+</li>
+<li>
+<p><a href="http://network.host"><code>network.host</code></a> → makes the node accessible to other machines.</p>
+</li>
+<li>
+<p><a href="http://transport.host"><code>transport.host</code></a> → enables communication between nodes.</p>
+</li>
+</ul>
+<p>For <a href="http://network.host"><code>network.host</code></a>, we can also use the VM’s specific IP.</p>
+<hr />
+<h5 id="5-run-elasticsearch-as-a-systemd-service">5️⃣ Run Elasticsearch as a systemd service</h5>
+<pre><code class="language-sh"># Reload systemd to recognize new service
+sudo /bin/systemctl daemon-reload
+
+# Enable Elasticsearch service at boot
+sudo /bin/systemctl enable elasticsearch.service
+
+# Start the service
+sudo systemctl start elasticsearch.service
+</code></pre>
+<ul>
+<li>
+<p><code>daemon-reload</code> → updates systemd so it knows about the new service.</p>
+</li>
+<li>
+<p><code>enable</code> → runs the service automatically at boot.</p>
+</li>
+<li>
+<p><code>start</code> → runs the service now.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Our goal:</strong> The service works now and automatically upon startup.</p>
+</blockquote>
+<hr />
+<h5 id="6-set-the-elastic-user-password-first-time-only">6️⃣ Set the <code>elastic</code> user password (first time only)</h5>
+<p>At first run, security is configured automatically, but the <code>elastic</code> superuser password is not shown. We set it using:</p>
+<p><strong>We should save this password in a safe place!</strong> Recommended to store it as an environment variable:</p>
+<pre><code class="language-bash">aas@aas:~$ sudo /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+This tool will reset the password of the [elastic] user to an autogenerated value.
+The password will be printed in the console.
+Please confirm that you would like to continue [y/N]y
+
+
+Password for the [elastic] user successfully reset.
+New value: hel+6ncXHaUKps*RU-k5
+aas@aas:~$ export ELASTIC_PASS=&quot;hel+6ncXHaUKps*RU-k5&quot;
+</code></pre>
+<blockquote>
+<p>Our goal: Set the superuser password to protect the cluster.</p>
+</blockquote>
+<hr />
+<h5 id="7-verify-elasticsearch-is-running">7️⃣ Verify Elasticsearch is running</h5>
+<p>Test the connection using <code>curl</code> with the auto-generated CA certificate:</p>
+<pre><code class="language-bash">sudo apt install curl # Install it if it is not available
+
+aas@aas:~$ sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic:$ELASTIC_PASS https://localhost:9200
+{
+  &quot;name&quot; : &quot;aas&quot;,
+  &quot;cluster_name&quot; : &quot;elasticsearch-demo&quot;,
+  &quot;cluster_uuid&quot; : &quot;rjyFV29wSxCvhUX3bhSdCw&quot;,
+  &quot;version&quot; : {
+    &quot;number&quot; : &quot;9.1.3&quot;,
+    &quot;build_flavor&quot; : &quot;default&quot;,
+    &quot;build_type&quot; : &quot;deb&quot;,
+    &quot;build_hash&quot; : &quot;0c781091a2f57de895a73a1391ff8426c0153c8d&quot;,
+    &quot;build_date&quot; : &quot;2025-08-24T22:05:04.526302670Z&quot;,
+    &quot;build_snapshot&quot; : false,
+    &quot;lucene_version&quot; : &quot;10.2.2&quot;,
+    &quot;minimum_wire_compatibility_version&quot; : &quot;8.19.0&quot;,
+    &quot;minimum_index_compatibility_version&quot; : &quot;8.0.0&quot;
+  },
+  &quot;tagline&quot; : &quot;You Know, for Search&quot;
+}
+</code></pre>
+<p>If a JSON appears containing <code>cluster_name</code> and <code>version</code>, Elasticsearch is running successfully.</p>
+<blockquote>
+<p>We stored the password in the variable <code>ELASTIC_PASS</code> so we can use it easily.</p>
+</blockquote>
+<hr />
+<h3 id="now-we-are-done">Now we are done ✅</h3>
+<ul>
+<li>
+<p>When opening Elasticsearch in a browser (usually at <a href="https://localhost:9200">https://localhost:9200</a>), <strong>security is enabled by default</strong>, so it will ask for:</p>
+</li>
+<li>
+<p><strong>User</strong>: <code>elastic</code></p>
+</li>
+<li>
+<p><strong>Password</strong>: the one we set using <code>elasticsearch-reset-password</code></p>
+</li>
+<li>
+<p><strong>If we forget the password, we can reset it again or just check :</strong></p>
+</li>
+</ul>
+<pre><code class="language-sh">aas@aas:~$ echo $ELASTIC_PASS
+hel+6ncXHaUKps*RU-k5
+aas@aas:~$
+</code></pre>
+<blockquote>
+<p>That's why we made it a variable.</p>
+</blockquote>
+<ul>
+<li>This completes Part 1 :</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087592464/c5b479d8-058d-4682-b82d-6311e485c20a.png" alt="" align="left" fullwidth="false" /></p>
+<hr />
+<hr />
+<hr />
+<h1 id="part-2-installing-kibana-and-connecting-it-to-elasticsearch"><strong>Part 2: Installing Kibana and Connecting It to Elasticsearch :</strong></h1>
+<blockquote>
+<p><a href="https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-kibana-with-debian-package">https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-kibana-with-debian-package</a></p>
+</blockquote>
+<ul>
+<li>
+<p>Kibana is the graphical interface for Elasticsearch. Without it, we would have to use curl or other API tools to manipulate data.</p>
+</li>
+<li>
+<p>With Kibana, we can:</p>
+</li>
+<li>
+<p>Display data in the form of graphics and reports.</p>
+</li>
+<li>
+<p>Manage Elasticsearch indices and settings through a graphical interface.</p>
+</li>
+<li>
+<p>Monitor cluster performance and health.</p>
+</li>
+<li>
+<p>Create interactive dashboards.</p>
+</li>
+</ul>
+<hr />
+<h3 id="1-import-the-pgp-signing-key"><strong>1️⃣ Import the PGP Signing Key</strong></h3>
+<pre><code class="language-bash">wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+</code></pre>
+<blockquote>
+<p><strong>Our goal:</strong> to ensure that the packages we install are original and safe.</p>
+</blockquote>
+<hr />
+<h3 id="2-install-kibana-from-the-apt-repository"><strong>2️⃣ Install Kibana from the APT Repository</strong></h3>
+<ul>
+<li><strong>Add Elastic repository to sources list :</strong></li>
+</ul>
+<pre><code class="language-bash">echo &quot;deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/9.x/apt stable main&quot; | sudo tee /etc/apt/sources.list.d/elastic-9.x.list
+</code></pre>
+<ul>
+<li>
+<p>Here, we tell Ubuntu/Debian (“hey <code>apt</code>”) where the official repository containing Kibana is.</p>
+</li>
+<li>
+<p>The option <code>[signed-by=...]</code> tells <code>apt</code> to use the key we added in the previous step to verify the authenticity of packages from this repository.</p>
+</li>
+</ul>
+<p><strong>Update package list and install Kibana:</strong></p>
+<pre><code class="language-bash">sudo apt-get install apt-transport-https
+
+sudo apt-get update
+
+sudo apt-get install kibana
+</code></pre>
+<blockquote>
+<p>Our goal: to locate the official repository and ensure that apt can validate packages before installing them.</p>
+</blockquote>
+<hr />
+<h3 id="3create-an-enrollment-token-for-kibana"><strong>3️⃣Create an Enrollment Token for Kibana</strong></h3>
+<p><strong>Step (we do this on the Elasticsearch server):</strong></p>
+<pre><code class="language-bash">sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+</code></pre>
+<ul>
+<li>
+<p>This will generate an <strong>Enrollment Token</strong>.</p>
+</li>
+<li>
+<p>We will do the following:</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087636660/ea30a40b-0c10-48e2-a7a9-558a41835b86.png" alt="" align="left" fullwidth="false" /></p>
+</li>
+</ul>
+<pre><code class="language-bash">aas@aas:~$ echo $KIBANA_ENROLL_TOKEN
+eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTkyLjE2OC4xLjEwMDo5MjAwIl0sImZnciI6ImJhNjY4ZjVlNjhkZjk1ODM4ZmE4ZjI5ZmUzOWQ1Mjg5YmU3MGViNTU3OTJiMDlmN2VkYTllMjk2MjM3NTMyMjMiLCJrZXkiOiJhMHY0VFprQnlfWEd5Z3BzVmRDUDpIbWpUZHhYZzNNVEhGdGRwcTZfMnpRIn0=
+</code></pre>
+<blockquote>
+<p>If the token appears correctly, everything is fine.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Why this step is important:</strong></p>
+</li>
+<li>
+<p>This token serves as a "secure invitation" for Kibana to connect to the cluster.</p>
+</li>
+<li>
+<p>It contains security settings (TLS certificates) and grants user privileges to the kibana_system user.</p>
+</li>
+<li>
+<p>It expires after 30 minutes to maintain security.</p>
+</li>
+</ul>
+<hr />
+<h3 id="4make-kibana-accessible-externally"><strong>4️⃣Make Kibana Accessible Externally</strong></h3>
+<p>Open the configuration file:</p>
+<pre><code class="language-bash">sudo nano /etc/kibana/kibana.yml
+</code></pre>
+<ul>
+<li>
+<p>Search for the line <code>#</code><a href="http://server.host"><code>server.host</code></a><code>: "</code><a href="http://localhost"><code>localhost</code></a><code>"</code> and other lines other than:</p>
+</li>
+<li>
+<p>Perform a search using Cntrl + W</p>
+</li>
+</ul>
+<pre><code class="language-bash">server.host: &quot;0.0.0.0&quot;
+</code></pre>
+<blockquote>
+<p>Save file.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Default:</strong> <a href="http://localhost"><code>localhost</code></a> means Kibana only listens for connections from the same machine — secure but not accessible from other devices.</p>
+</li>
+<li>
+<p><strong>Change:</strong> <code>0.0.0.0</code> means “listen on all available IP addresses on this server.” This allows any device on the network to access Kibana (authentication is still required).</p>
+</li>
+</ul>
+<blockquote>
+<p>Our goal: to allow access to Kibana from any device on the network (authentication is still required).</p>
+</blockquote>
+<hr />
+<h3 id="5-run-kibana-as-a-systemd-service"><strong>5️⃣ Run Kibana as a systemd Service</strong></h3>
+<ol>
+<li><strong>Enable automatic startup at boot:</strong></li>
+</ol>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+OR 
+sudo /bin/systemctl daemon-reload
+
+sudo systemctl enable kibana.service
+OR
+sudo /bin/systemctl enable kibana.service
+</code></pre>
+<ul>
+<li>
+<p><strong>Explanation:</strong> <code>enable</code> creates a symbolic link so the service <strong>starts automatically</strong> on system boot; no need to start it manually each time.</p>
+</li>
+<li>
+<p><strong>Start the Kibana service:</strong></p>
+</li>
+</ul>
+<pre><code class="language-bash">sudo systemctl start kibana.service
+</code></pre>
+<blockquote>
+<p>Our goal: Kibana starts right away and automatically when your device starts up. ✅</p>
+</blockquote>
+<hr />
+<hr />
+<hr />
+<h1 id="part-three-register-kibana-with-elasticsearch"><strong>Part Three: Register Kibana with Elasticsearch</strong></h1>
+<blockquote>
+<p>This step is the most important; in it we will connect Kibana with Elasticsearch .</p>
+</blockquote>
+<h3 id="1-obtain-the-verification-code"><strong>1️⃣ Obtain the Verification Code:</strong></h3>
+<ul>
+<li>Let's see the status of Kibana service with this command:</li>
+</ul>
+<pre><code class="language-sh">sudo systemctl status kibana
+</code></pre>
+<ul>
+<li>If it appears to you like this :</li>
+</ul>
+<pre><code class="language-sh">● kibana.service - Kibana
+     Loaded: loaded (/lib/systemd/system/kibana.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2025-09-15 18:49:09 EEST; 1min 43s ago
+</code></pre>
+<ul>
+<li>Kibana is still running but you haven't registered with Elasticsearch yet.</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087670623/144b577d-7c3a-4c99-9af7-5be2c5a037e8.png" alt="" align="left" fullwidth="false" /></p>
+<p>2️⃣ We will open the link that contains the code:</p>
+<pre><code class="language-ruby">http://&lt;host-IP&gt;:5601/?code=&lt;6-digit-code&gt;
+
+EX :
+http://192.168.1.100:5601/?code=823251
+</code></pre>
+<blockquote>
+<p>Open it in the browser and complete the steps that appear.</p>
+</blockquote>
+<ul>
+<li>After that :</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087688441/ae5e52ef-20d2-4631-bf68-e998952f6293.png" alt="" align="left" fullwidth="false" /></p>
+<ul>
+<li>
+<p>This is the token we stored in a variable.</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087739846/6c8f00ad-31ea-4d91-89fd-bf576fe3653a.png" alt="" align="left" fullwidth="false" /></p>
+</li>
+<li>
+<p>There is a problem, we told you above that it closes every half hour:</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087767962/5efd8923-06ef-434e-88bf-4f26a072081d.png" alt="" align="left" fullwidth="false" /></p>
+</li>
+</ul>
+<h4 id="3-if-the-code-or-token-expires">3️⃣ If the code or token expires:</h4>
+<ul>
+<li>The enrollment token will expire after half an hour. If it expires, we'll create a new one:</li>
+</ul>
+<pre><code class="language-sh">sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+</code></pre>
+<blockquote>
+<p>You'll receive a new token valid for 30 minutes.</p>
+</blockquote>
+<ul>
+<li>Return to the Kibana registration page, enter the new token in the required field, and click Configure Elastic again :</li>
+</ul>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087789659/9f14870e-0656-4a71-b6b6-e44ab8613659.png" alt="" align="left" fullwidth="false" /></p>
+<h3 id="4-login-credentials"><strong>4️⃣ Login Credentials:</strong></h3>
+<ul>
+<li>We will use the username and password that we stored before:</li>
+</ul>
+<pre><code class="language-sh">aas@aas:~$ echo $ELASTIC_PASS
+hel+6ncXHaUKps*RU-k5
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p>The username will be: elastic</p>
+</li>
+<li>
+<p>The password will be the value in $ELASTIC_PASS</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>We enter them, and now we've registered Kibana with Elasticsearch.</li>
+</ul>
+<hr />
+<hr />
+<hr />
+<h1 id="part-4">Part 4</h1>
+<blockquote>
+<ul>
+<li>
+<p>Windows Device</p>
+</li>
+<li>
+<p>In this section, we'll work on a Windows device to:</p>
+</li>
+<li>
+<p>Enable Audit Policy to record all important events (logon, user creation, user deletion, group creation, user addition to group).</p>
+</li>
+<li>
+<p>Send the logs to a SIEM using Winlogbeat.</p>
+</li>
+<li>
+<p>Let's divide this into two parts:</p>
+</li>
+<li>
+<p>First, we enable the <strong>Audit Policy</strong>.</p>
+</li>
+<li>
+<p>Second, we send the logs to the SIEM.</p>
+</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="step-1-activate-audit-policy"><strong>Step 1: Activate Audit Policy</strong></h2>
+<h5 id="1-open-local-security-policy"><strong>1️⃣ Open Local Security Policy</strong></h5>
+<ul>
+<li>
+<p>Press Win + R</p>
+</li>
+<li>
+<p>Type secpol.msc and press Enter</p>
+</li>
+<li>
+<p>Local Security Policy will open (you can also search for it in Windows as Local Security Policy)</p>
+</li>
+</ul>
+<h5 id="2-navigate-to-audit-policy"><strong>2️⃣ Navigate to Audit Policy</strong></h5>
+<ol>
+<li>
+<p>On the left panel, choose:\
+   <strong>Security Settings → Local Policies → Audit Policy</strong></p>
+</li>
+<li>
+<p>On the right panel, you will see the policies you can enable</p>
+</li>
+</ol>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087821509/6fad09ea-16f7-4497-8ce1-27792bed1629.png" alt="" align="left" fullwidth="false" /></p>
+<h5 id="3-enable-policies-for-the-required-actions"><strong>3️⃣ Enable Policies for the Required Actions</strong></h5>
+<ul>
+<li>
+<p>Logging in → <strong>Audit logon events</strong> + <strong>Audit account logon events</strong></p>
+</li>
+<li>
+<p>Creating/Deleting a user or group → <strong>Audit account management</strong></p>
+</li>
+<li>
+<p>Adding a user to a group → <strong>Audit account management</strong></p>
+</li>
+<li>
+<p>For each policy:</p>
+</li>
+<li>
+<p>Select Success and Failure to record success and failure.</p>
+</li>
+<li>
+<p>Click OK.</p>
+</li>
+</ul>
+<h5 id="4-well-apply-the-settings-immediately"><strong>4️⃣ We'll apply the settings immediately:</strong></h5>
+<ul>
+<li>Open CMD as Administrator and type:</li>
+</ul>
+<pre><code class="language-sh">gpupdate /force
+|
+|
+C:\Windows\system32&gt;gpupdate /force
+Updating policy...
+
+Computer Policy update has completed successfully.
+User Policy update has completed successfully.
+</code></pre>
+<ul>
+<li>Run this command to apply the policies immediately</li>
+</ul>
+<h4 id="5-lets-test-in-event-viewer"><strong>5️⃣ Let's test in Event Viewer:</strong></h4>
+<ul>
+<li>
+<p>Log out and log back in to make sure.</p>
+</li>
+<li>
+<p>From the left: Windows Logs → Security</p>
+</li>
+<li>
+<p>Here you'll find all the events that were logged.</p>
+</li>
+</ul>
+<p><strong><em>Here, all events related to the enabled Audit Policy will be recorded</em></strong></p>
+<h5 id="example-event-ids-for-login"><strong>Example Event IDs for Login:</strong></h5>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087848073/0321e0e1-645d-41eb-ab68-022ef46551a2.png" alt="" align="left" fullwidth="false" /></p>
+<ul>
+<li>
+<p>Event ID 4624 → successful logon</p>
+</li>
+<li>
+<p>Event ID 4625 → failed logon</p>
+</li>
+<li>
+<p>I tested both a correct and incorrect login:</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087867976/f091a944-9d23-4945-a367-f071e82a499d.png" alt="" align="left" fullwidth="false" /></p>
+</li>
+</ul>
+<blockquote>
+<p>Now everything is working correctly.</p>
+</blockquote>
+<hr />
+<h2 id="step-2-send-logs-to-the-siem-using-winlogbeat"><strong>Step 2: Send logs to the SIEM using Winlogbeat</strong></h2>
+<blockquote>
+<p>(After completing the steps above)</p>
+</blockquote>
+<h5 id="-you-will-ping-the-server-to-make-sure-of-the-connection"><strong>- You will ping the server to make sure of the connection :</strong></h5>
+<pre><code class="language-bash">C:\Users\aas&gt;ping 192.168.1.100
+
+Pinging 192.168.1.100 with 32 bytes of data:
+Reply from 192.168.1.100: bytes=32 time=2ms TTL=64
+Reply from 192.168.1.100: bytes=32 time=1ms TTL=64
+Reply from 192.168.1.100: bytes=32 time=2ms TTL=64
+Reply from 192.168.1.100: bytes=32 time=1ms TTL=64
+
+Ping statistics for 192.168.1.100:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 1ms, Maximum = 2ms, Average = 1ms
+</code></pre>
+<blockquote>
+<p>I initially faced a network issue because the device couldn’t see the network, which I solved by setting a static IP and pointing it to the DHCP from the NAT in the Virtual Machine.</p>
+</blockquote>
+<ul>
+<li>We need a little bit ahead</li>
+</ul>
+<pre><code class="language-powershell">PS C:\Users\aas&gt; hostname
+WIN-AS
+</code></pre>
+<blockquote>
+<p>To verify connectivity</p>
+</blockquote>
+<h5 id="-you-can-download-winlogbeat-from-the-official-website"><strong>- You can download Winlogbeat from the official website :</strong></h5>
+<ol>
+<li>
+<p>Go to the <a href="https://www.elastic.co/downloads/beats/winlogbeat">official Elastic download page</a></p>
+</li>
+<li>
+<p>Select the appropriate version for your system (usually 64-bit) → download the <code>.zip</code> file</p>
+</li>
+<li>
+<p>Follow the steps on the website in order:</p>
+<ol>
+<li>
+<p>Edit the <code>winlogbeat.yml</code> configuration file</p>
+</li>
+<li>
+<p>Run in PowerShell</p>
+</li>
+<li>
+<p>Reference: <a href="https://www.elastic.co/docs/reference/beats/winlogbeat/winlogbeat-installation-configuration">Winlogbeat quick start</a></p>
+</li>
+</ol>
+</li>
+<li>
+<p>Extract the files to a folder such as:</p>
+</li>
+</ol>
+<pre><code class="language-bash">C:\Program Files\Winlogbeat
+</code></pre>
+<h5 id="modify-the-winlogbeatyml-configuration-file"><strong>Modify the</strong> <code>winlogbeat.yml</code> Configuration File</h5>
+<blockquote>
+<p>Open the file with <strong>Notepad</strong> as Administrator</p>
+</blockquote>
+<h5 id="winlogbeat-setup">Winlogbeat Setup:</h5>
+<ol>
+<li>
+<p><strong>Install Winlogbeat on the Windows device</strong></p>
+</li>
+<li>
+<p><strong>Configure</strong> <code>winlogbeat.yml</code> to read Security logs (or all logs if needed):</p>
+</li>
+</ol>
+<pre><code class="language-bash"># ============= Winlogbeat specific options ==========
+winlogbeat.event_logs:
+  - name: Security
+    ignore_older: 72h
+
+  - name: System
+
+  - name: Application
+
+  - name: Microsoft-Windows-Sysmon/Operational
+
+  - name: Windows PowerShell
+    event_id: 400, 403, 600, 800
+
+  - name: Microsoft-Windows-PowerShell/Operational
+    event_id: 4103, 4104, 4105, 4106
+
+  - name: ForwardedEvents
+    tags: [forwarded]
+</code></pre>
+<ol>
+<li><strong>Specify the Elasticsearch endpoint to send the logs to:</strong></li>
+</ol>
+<pre><code class="language-bash"># ------------------- Elasticsearch Output ----------------
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: [&quot;https://192.168.1.100:9200&quot;]
+
+  # Protocol - either `http` (default) or `https`.
+  protocol: &quot;https&quot;
+  ssl:
+      enabled: true
+  ssl.verification_mode: none
+
+  # Authentication credentials - either API key or username/password.
+  #api_key: &quot;id:api_key&quot;
+  username: &quot;elastic&quot;
+  password: &quot;hel+6ncXHaUKps*RU-k5&quot;
+
+  # Pipeline to route events to security, sysmon, or powershell pipelines.
+  pipeline: &quot;winlogbeat-%{[agent.version]}-routing&quot;
+</code></pre>
+<ol>
+<li><strong>Specify Kibana to monitor the data:</strong></li>
+</ol>
+<pre><code class="language-bash"># =================== Kibana =====================
+
+# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
+# This requires a Kibana endpoint configuration.
+setup.kibana:
+
+  # Kibana Host
+  # Scheme and port can be left out and will be set to the default (http and 5601)
+  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
+  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
+  host: &quot;https://192.168.1.100:5601&quot;
+  ssl.verification_mode: none
+
+  # Kibana Space ID
+  # ID of the Kibana Space into which the dashboards should be loaded. By default,
+  # the Default Space will be used.
+  #space.id:
+</code></pre>
+<h5 id="run-the-service">Run the Service:</h5>
+<ul>
+<li>Open PowerShell as Administrator:</li>
+</ul>
+<pre><code class="language-bash">PS C:\Windows\system32&gt; cd ..
+PS C:\Windows&gt; cd 'C:\Program Files\Winlogbeat\'
+PS C:\Program Files\Winlogbeat&gt; .\install-service-winlogbeat.ps1
+.\install-service-winlogbeat.ps1 : File C:\Program Files\Winlogbeat\install-service-winlogbeat.ps1 cannot be loaded
+because running scripts is disabled on this system. For more information, see about_Execution_Policies at
+https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ .\install-service-winlogbeat.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+</code></pre>
+<blockquote>
+<p>If you get a policy error, scripts are blocked due to PowerShell Execution Policy</p>
+</blockquote>
+<ul>
+<li><strong>Check current Execution Policy:</strong></li>
+</ul>
+<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Get-ExecutionPolicy
+Restricted
+</code></pre>
+<ul>
+<li><strong>Change Execution Policy:</strong></li>
+</ul>
+<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Set-ExecutionPolicy Bypass -Scope Process
+
+Execution Policy Change
+The execution policy helps protect you from scripts that you do not trust. Changing the execution policy might expose
+you to the security risks described in the about_Execution_Policies help topic at
+https:/go.microsoft.com/fwlink/?LinkID=135170. Do you want to change the execution policy?
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;N&quot;): y
+</code></pre>
+<ul>
+<li><strong>Run the installation script again:</strong></li>
+</ul>
+<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; .\install-service-winlogbeat.ps1
+
+Status   Name               DisplayName
+------   ----               -----------
+Stopped  winlogbeat         winlogbeat
+
+
+PS C:\Program Files\Winlogbeat&gt;
+</code></pre>
+<ul>
+<li>
+<p><strong>The winlogbeat service is now created (initially Stopped)</strong></p>
+</li>
+<li>
+<p><strong>Start the service:</strong></p>
+</li>
+</ul>
+<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Start-Service winlogbeat
+</code></pre>
+<ul>
+<li><strong>Verify it is running:</strong></li>
+</ul>
+<pre><code class="language-powershell">PS C:\Program Files\Winlogbeat&gt; Get-Service winlogbeat
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  winlogbeat         winlogbeat
+
+
+PS C:\Program Files\Winlogbeat&gt;
+</code></pre>
+<blockquote>
+<p><code>Status: Running</code> means the service ran successfully.</p>
+</blockquote>
+<ul>
+<li>OR</li>
+</ul>
+<pre><code class="language-powershell">.\winlogbeat.exe test config -c .\winlogbeat.yml -e
+</code></pre>
+<blockquote>
+<p>If you get a Kibana HTTPS error, change the host in <code>winlogbeat.yml</code> to <a href="http://192.168.1.100:5601"><code>http://192.168.1.100:5601</code></a></p>
+</blockquote>
+<pre><code class="language-powershell">.\winlogbeat.exe setup -e
+</code></pre>
+<ul>
+<li>It will show something like this:</li>
+</ul>
+<pre><code class="language-bash">{&quot;log.level&quot;:&quot;error&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:27:56.151-0700&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/cmd/instance.handleError&quot;,&quot;file.name&quot;:&quot;instance/beat.go&quot;,&quot;file.line&quot;:1355},&quot;message&quot;:&quot;Exiting: error connecting to Kibana: fail to get the Kibana version: HTTP GET request to https://192.168.1.100:5601/api/status fails: fail to execute the HTTP GET request: Get \&quot;https://192.168.1.100:5601/api/status\&quot;: http: server gave HTTP response to HTTPS client (status=0). Response: &quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+Exiting: error connecting to Kibana: fail to get the Kibana version: HTTP GET request to https://192.168.1.100:5601/api/status fails: fail to execute the HTTP GET request: Get &quot;https://192.168.1.100:5601/api/status&quot;: http: server gave HTTP response to HTTPS client (status=0). Response:
+</code></pre>
+<ul>
+<li><strong>To solve the problem here :</strong></li>
+</ul>
+<pre><code class="language-powershell"># ======================= Kibana =========================
+
+# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
+# This requires a Kibana endpoint configuration.
+setup.kibana:
+
+  # Kibana Host
+  # Scheme and port can be left out and will be set to the default (http and 5601)
+  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
+  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
+  host: &quot;http://192.168.1.100:5601&quot;
+  #ssl.verification_mode: none
+</code></pre>
+<ul>
+<li>And then :</li>
+</ul>
+<pre><code class="language-powershell">.\winlogbeat.exe setup -e
+|
+|
+|
+line&quot;:299},&quot;message&quot;:&quot;Loaded index template.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+Index setup finished.
+Loading dashboards (Kibana must be running and reachable)
+{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:12.567-0700&quot;,&quot;log.logger&quot;:&quot;kibana&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/kibana.NewClientWithConfigDefault&quot;,&quot;file.name&quot;:&quot;kibana/client.go&quot;,&quot;file.line&quot;:181},&quot;message&quot;:&quot;Kibana url: http://192.168.1.100:5601&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:12.762-0700&quot;,&quot;log.logger&quot;:&quot;kibana&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/kibana.NewClientWithConfigDefault&quot;,&quot;file.name&quot;:&quot;kibana/client.go&quot;,&quot;file.line&quot;:181},&quot;message&quot;:&quot;Kibana url: http://192.168.1.100:5601&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:15.325-0700&quot;,&quot;log.logger&quot;:&quot;processors.add_cloud_metadata&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/processors/add_cloud_metadata.(*addCloudMetadata).init.func1&quot;,&quot;file.name&quot;:&quot;add_cloud_metadata/add_cloud_metadata.go&quot;,&quot;file.line&quot;:100},&quot;message&quot;:&quot;add_cloud_metadata: hosting provider type not detected.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.033-0700&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/cmd/instance.(*Beat).loadDashboards&quot;,&quot;file.name&quot;:&quot;instance/beat.go&quot;,&quot;file.line&quot;:1070},&quot;message&quot;:&quot;Kibana dashboards successfully loaded.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+Loaded dashboards
+{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.044-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/esleg/eslegclient.NewConnection&quot;,&quot;file.name&quot;:&quot;eslegclient/connection.go&quot;,&quot;file.line&quot;:132},&quot;message&quot;:&quot;elasticsearch url: https://192.168.1.100:9200&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+{&quot;log.level&quot;:&quot;warn&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.046-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg.tls&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/transport/tlscommon.(*TLSConfig).ToConfig&quot;,&quot;file.name&quot;:&quot;tlscommon/tls_config.go&quot;,&quot;file.line&quot;:109},&quot;message&quot;:&quot;SSL/TLS verifications disabled.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+{&quot;log.level&quot;:&quot;warn&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.047-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg.tls&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/elastic-agent-libs/transport/tlscommon.(*TLSConfig).ToConfig&quot;,&quot;file.name&quot;:&quot;tlscommon/tls_config.go&quot;,&quot;file.line&quot;:109},&quot;message&quot;:&quot;SSL/TLS verifications disabled.&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+{&quot;log.level&quot;:&quot;info&quot;,&quot;@timestamp&quot;:&quot;2025-09-15T17:37:34.120-0700&quot;,&quot;log.logger&quot;:&quot;esclientleg&quot;,&quot;log.origin&quot;:{&quot;function&quot;:&quot;github.com/elastic/beats/v7/libbeat/esleg/eslegclient.(*Connection).Ping&quot;,&quot;file.name&quot;:&quot;eslegclient/connection.go&quot;,&quot;file.line&quot;:324},&quot;message&quot;:&quot;Attempting to connect to Elasticsearch version 9.1.3 (default)&quot;,&quot;service.name&quot;:&quot;winlogbeat&quot;,&quot;ecs.version&quot;:&quot;1.6.0&quot;}
+Loaded Ingest pipelines
+</code></pre>
+<blockquote>
+<p>After setup, Winlogbeat will connect to Elasticsearch successfully and dashboards will load.</p>
+</blockquote>
+<ul>
+<li>To make sure again :</li>
+</ul>
+<pre><code class="language-bash">PS C:\Program Files\Winlogbeat&gt; .\winlogbeat.exe test config
+Config OK
+PS C:\Program Files\Winlogbeat&gt; .\winlogbeat.exe test output
+elasticsearch: https://192.168.1.100:9200...
+  parse url... OK
+  connection...
+    parse host... OK
+    dns lookup... OK
+    addresses: 192.168.1.100
+    dial up... OK
+  TLS...
+    security... WARN server's certificate chain verification is disabled
+    handshake... OK
+    TLS version: TLSv1.3
+    dial up... OK
+  talk to server... OK
+  version: 9.1.3
+</code></pre>
+<pre><code class="language-powershell">Restart-Service winlogbeat
+</code></pre>
+<h4 id="verify-logs-in-kibana">Verify Logs in Kibana:</h4>
+<ol>
+<li>
+<p>Open Kibana in browser (<code>https://&lt;kibana-server&gt;:5601</code>)</p>
+</li>
+<li>
+<p>Navigate to <strong>Analytics &gt; Dashboard</strong></p>
+</li>
+<li>
+<p>Search for <strong>"[Winlogbeat] Security"</strong></p>
+</li>
+<li>
+<p>Select any dashboard, e.g., <strong>"Failed Logon and Account Lockout Winlogbeat Security"</strong></p>
+</li>
+<li>
+<p>Test failed logons 3 times to see the events appear on the dashboard</p>
+</li>
+<li>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1758087918501/06cbd1ff-36db-4038-84ba-5c84fc2999fc.png" alt="" align="left" fullwidth="false" /></p>
+</li>
+<li>
+<p>So we almost did what was required of us in this task.</p>
+</li>
+</ol>
+<hr />
+<blockquote>
+<p><strong>Abdelwahab Ahmed Abdelwahab Mohamed</strong></p>
+<p><strong>15-09-2025</strong></p>
+<p><strong><em>💬 "Control</em></strong> <strong><em>the code, and you control the world." 🔐 From wiping metadata to gaining root access — every step is documented and my goal is to deeply understand the system, not just hack!</em></strong></p>
+<p><a href="https://abdelwahabshandy.hashnode.dev/"><strong><em>Abdelwahab Shandy</em></strong></a></p>
+<p><a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/"><strong><em>Linkedin</em></strong></a></p>
+<p><a href="https://github.com/abdelwahab-ahmed-shandy"><strong><em>GitHub</em></strong></a></p>
+<p><strong><em>See You Soon</em></strong></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
