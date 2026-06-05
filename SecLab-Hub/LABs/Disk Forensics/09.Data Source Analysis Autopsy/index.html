@@ -3219,14 +3219,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (1)
+    OSINT   MITRE 1 (CyberHaze)
   
 
     
@@ -3247,14 +3247,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (2)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -3275,14 +3275,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 3 (CyberHaze)
   
 
     
@@ -3303,14 +3303,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+      <a href="../../OSINT/Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shadow Rat
+    Shadow Rat (CyberHaze)
   
 
     
@@ -6196,280 +6196,6 @@
 <tr>
 <td>🏷️</td>
 <td>Use Tags and notes to organize your findings.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<hr />
-<h1 id="autopsy-analysis-of-data-source">🧪 <strong>تحليل مصدر البيانات باستخدام Autopsy – Analysis of Data Source</strong></h1>
-<p><em>Analysis of Data Source in Autopsy Forensic Tool</em></p>
-<hr />
-<h2 id="_1">🎯 <strong>الفكرة الأساسية</strong></h2>
-<p>بمجرد إدخال صورة قرص صلب (Disk Image)، تبدأ أداة <strong>Autopsy</strong> بتحليلها تلقائيًا باستخدام مجموعة من الموديولات (Modules)، وتُعرض النتائج في واجهة رسومية منظمة.</p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760448763208/5fd9b9d9-d41c-4d66-9406-db9596dd49ce.png" align="center" fullwidth="false" /></p>
-<hr />
-<h2 id="autopsy">🔄 <strong>مصطلحات أساسية داخل Autopsy</strong></h2>
-<table>
-<thead>
-<tr>
-<th>المصطلح</th>
-<th>الوصف</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Data Source</strong></td>
-<td>الصورة الرقمية الأصلية التي تم تحليلها (مثل: نسخة من قرص).</td>
-</tr>
-<tr>
-<td><strong>File Views</strong></td>
-<td>طرق مختلفة لاستعراض الملفات داخل الصورة.</td>
-</tr>
-<tr>
-<td><strong>Ingest Results</strong></td>
-<td>نتائج التحليل التلقائي الذي يتم بمجرد إدخال المصدر.</td>
-</tr>
-<tr>
-<td><strong>Tags</strong></td>
-<td>وسوم يضعها المحقق على ملفات أو كلمات مهمة.</td>
-</tr>
-<tr>
-<td><strong>Timeline</strong></td>
-<td>عرض زمني لتسلسل الأحداث داخل الجهاز.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="autopsy_1">🧱 <strong>هيكل التحليل داخل Autopsy</strong></h2>
-<h3 id="1-data-source">1. <strong>الـ إدخال مصدر البيانات Data Source (الصورة الأصلية)</strong></h3>
-<ul>
-<li>
-<p>يتم استيراد صورة القرص (<code>.E01</code> أو <code>.img</code>) كنقطة البداية , تحتوي على ملفات القرص الأصلية.</p>
-</li>
-<li>
-<p>يمكنك تصفحها بحرية كما لو كنت تتصفح الجهاز الحقيقي.</p>
-</li>
-<li>
-<p>يدعم الفلترة حسب :</p>
-</li>
-<li>
-<p><strong>الامتداد (Extension)</strong></p>
-</li>
-<li>
-<p><strong>رأس الملف (File Header)</strong></p>
-</li>
-<li>
-<p><strong>الحجم (Size)</strong></p>
-</li>
-</ul>
-<hr />
-<h3 id="2-ingest-results_1">2. <strong>نتائج التحليل (Ingest Results)</strong></h3>
-<p>Autopsy تلقائيًا يحلل الصورة ويستخرج:</p>
-<h4 id="recovered-files-file-carving_1">📂 <strong>Recovered Files (File Carving) (استخراج الملفات المحذوفة)</strong></h4>
-<ul>
-<li>
-<p>يستخرج الملفات حتى لو كانت محذوفة أو تالفة.</p>
-</li>
-<li>
-<p>مثل الصور، المستندات، ملفات النظام.</p>
-</li>
-<li>
-<p>بعض الملفات تظهر بحجم "0" → هذا يعني أنه لم يستطع استعادتها بشكل كامل (فشل الاستعادة)</p>
-</li>
-</ul>
-<h6 id="_2">مثال :</h6>
-<p>استخرج Autopsy 3 صور عبر Carving وظهرت في تبويب الصور.</p>
-<blockquote>
-<p>تم استخراج 3 صور باستخدام الـ File Carving\
-وظهرت أيضًا في تبويب الصور (Images)</p>
-</blockquote>
-<h6 id="deleted-recycle-bin-items_1">ال♻️ <strong>Deleted / Recycle Bin Items</strong></h6>
-<ul>
-<li>
-<p>يتم تحديد الملفات التي تم حذفها من Recycle Bin.</p>
-</li>
-<li>
-<p>يوضح وقت الحذف أو التعديل.</p>
-</li>
-</ul>
-<h4 id="_3">🛑 <strong>كيف تتعرف على الملفات المحذوفة؟</strong></h4>
-<ul>
-<li>
-<p>الملفات المحذوفة تظهر غالبًا بـ <strong>أسماء تبدأ بـ Underscore (_)</strong></p>
-</li>
-<li>
-<p>هذا جزء من طريقة نظام الملفات (مثل NTFS) لتعليم الملف كمحذوف.</p>
-</li>
-</ul>
-<p>🧠 <strong>معلومة DF مهمة</strong>:</p>
-<blockquote>
-<p>عندما يُحذف ملف في Windows، يتم إزالة أول حرف من اسمه واستبداله بـ <code>_filename.ext</code>، لكن تظل بياناته موجودة حتى يتم استبدالها.</p>
-</blockquote>
-<hr />
-<h2 id="keywords">📧 <strong>البحث عن البريد الإلكتروني والـ Keywords</strong></h2>
-<p>Autopsy يستطيع استخراج:</p>
-<ul>
-<li>
-<p>عناوين بريد إلكتروني من الملفات أو الأكواد (مثلاً داخل ملف netcat أو سكربت).</p>
-</li>
-<li>
-<p>كلمات مفتاحية (Keywords) تظهر من السياق.</p>
-</li>
-</ul>
-<p>مثال:</p>
-<blockquote>
-<p>تم استخراج عنواني بريد إلكتروني من ملف خاص بـ netcat داخل سكربت SQL، وقد ظهر ضمن help message للمطور.</p>
-</blockquote>
-<hr />
-<h2 id="_4">🖼️ <strong>تحليل الصور والفيديوهات</strong></h2>
-<h3 id="1-imagevideo-analysis_1">1. <strong>Image/Video Analysis (الصور والفيديوهات)</strong>:</h3>
-<ul>
-<li>
-<p>يظهر في تبويب خاص.</p>
-</li>
-<li>
-<p>يمكن من خلاله:</p>
-</li>
-<li>
-<p>تصفح الصور المستخرجة.</p>
-</li>
-<li>
-<p>معرفة ما إذا كانت الصور حقيقية أو System Generated.</p>
-</li>
-</ul>
-<h3 id="2-geo-location">2. <strong>Geo-location (الموقع الجغرافي)</strong>:</h3>
-<ul>
-<li>لو الصور تحتوي على بيانات موقع (GPS Metadata)، Autopsy يعرضها.</li>
-</ul>
-<hr />
-<h2 id="timeline">🗓️ <strong>تحليل الـ Timeline (الخط الزمني)</strong></h2>
-<p>واحدة من أقوى الأدوات داخل Autopsy.</p>
-<h3 id="_5">✅ لماذا هو مهم؟</h3>
-<p>لأن فهم <strong>تسلسل الأحداث</strong> يساعدك على تحديد:</p>
-<ul>
-<li>
-<p>وقت الدخول على موقع.</p>
-</li>
-<li>
-<p>وقت تشغيل أداة.</p>
-</li>
-<li>
-<p>وقت حذف ملف.</p>
-</li>
-</ul>
-<h3 id="timeline-analysis_1">🧠 <strong>أمثلة على Timeline Analysis</strong>:</h3>
-<table>
-<thead>
-<tr>
-<th>التاريخ</th>
-<th>الحدث</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2011</td>
-<td>تم إنشاء ملف باسم "cat" – تبين لاحقًا أنه ملف محذوف</td>
-</tr>
-<tr>
-<td>2023</td>
-<td>تم تعديل أدوات، وتم الوصول إلى Recycle Bin</td>
-</tr>
-</tbody>
-</table>
-<p>🔍 أي حدث يتم استخراجه يظهر في شكل "Time Point"\
-📌 <strong>حدد المنطقة الزمنية (Time Zone)</strong> بدقة للحصول على Timeline دقيق.</p>
-<hr />
-<h2 id="discovery-tool">🔁 <strong>Discovery Tool – البحث داخل النتائج</strong></h2>
-<ul>
-<li>
-<p>لو أردت إعادة تحليل مجموعة ملفات (صور، فيديو، لوجات):</p>
-</li>
-<li>
-<p>استخدم تبويب <strong>Discovery</strong> لتصفية النتائج ومراجعتها.</p>
-</li>
-</ul>
-<hr />
-<h2 id="generate-report">📊 <strong>توليد التقرير النهائي (Generate Report)</strong></h2>
-<p><em>بعد انتهاء التحليل</em> :</p>
-<h3 id="_6">📋 <strong>خطوات إنشاء التقرير:</strong></h3>
-<ol>
-<li>
-<p>اذهب إلى <code>Generate Report</code></p>
-</li>
-<li>
-<p>اختر:</p>
-</li>
-<li>
-<p>نوع التقرير: HTML, Excel</p>
-</li>
-<li>
-<p>اسم التقرير (مثلاً: "Draft_Analysis")</p>
-</li>
-<li>
-<p>ما تريد تضمينه:</p>
-<ul>
-<li>
-<p>ال Tags فقط</p>
-</li>
-<li>
-<p>نتائج مخصصة</p>
-</li>
-<li>
-<p>أو كل نتائج التحليل</p>
-</li>
-</ul>
-</li>
-<li>
-<p>يتم حفظه تلقائيًا في مجلد <code>/Reports</code> داخل القضية.</p>
-</li>
-</ol>
-<p>🔎 التقرير يحتوي على:</p>
-<ul>
-<li>
-<p>المسارات الأصلية للملفات</p>
-</li>
-<li>
-<p>الكلمات المفتاحية المستخرجة</p>
-</li>
-<li>
-<p>الصور والفيديوهات</p>
-</li>
-<li>
-<p>الوسوم (Tags)</p>
-</li>
-<li>
-<p>التواريخ</p>
-</li>
-</ul>
-<hr />
-<h2 id="autopsy_2">🧠 <strong>نصائح مهمة للتحليل داخل Autopsy</strong></h2>
-<table>
-<thead>
-<tr>
-<th>💡</th>
-<th>نصيحة</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>⏱️</td>
-<td>استخدم Timeline لفهم تسلسل الأحداث</td>
-</tr>
-<tr>
-<td>🔍</td>
-<td>ابدأ دائمًا بـ Ingest Results لتكوين نظرة شاملة</td>
-</tr>
-<tr>
-<td>🧹</td>
-<td>فلترة الملفات حسب النوع أو الحجم تُوفر وقت</td>
-</tr>
-<tr>
-<td>🗑️</td>
-<td>راجع الملفات ذات الحجم صفر — قد تكون أدلة تالفة</td>
-</tr>
-<tr>
-<td>🏷️</td>
-<td>استخدم الـ Tags والملاحظات لتنظيم الأدلة</td>
 </tr>
 </tbody>
 </table>

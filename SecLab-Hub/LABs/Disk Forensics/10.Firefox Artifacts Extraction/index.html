@@ -3207,14 +3207,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (1)
+    OSINT   MITRE 1 (CyberHaze)
   
 
     
@@ -3235,14 +3235,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (2)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -3263,14 +3263,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 3 (CyberHaze)
   
 
     
@@ -3291,14 +3291,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+      <a href="../../OSINT/Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shadow Rat
+    Shadow Rat (CyberHaze)
   
 
     
@@ -6315,415 +6315,6 @@ To convert to seconds (for <code>datetime(...,'unixepoch')</code>), you must div
 <tr>
 <td><code>Hindsight</code></td>
 <td>Python tool to analyze Chrome and Firefox with timeline reporting</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<hr />
-<h1 id="firefox-firefox-artifacts-extraction">🦊 <strong>استخراج الأدلة من متصفح Firefox – Firefox Artifacts Extraction</strong></h1>
-<h2 id="_1">🎯 <strong>الهدف</strong></h2>
-<p>الهدف من تحليل متصفح Firefox هو <strong>تتبع نشاط المستخدم</strong> على الجهاز من خلال سجلات التصفح، الكوكيز، البوك ماركس، بيانات النماذج، وبيانات تسجيل الدخول.\
-تُستخدم هذه الأدلة لتحديد :</p>
-<ul>
-<li>
-<p>سجلات التصفح (History)</p>
-</li>
-<li>
-<p>الكوكيز (Cookies)</p>
-</li>
-<li>
-<p>البوك ماركس (Bookmarks)</p>
-</li>
-<li>
-<p>بيانات النماذج (Forms)</p>
-</li>
-<li>
-<p>بيانات تسجيل الدخول (Logins)</p>
-</li>
-</ul>
-<p>تُستخدم هذه الأدلة لتحديد:</p>
-<ul>
-<li>
-<p>تتبع <strong>نشاط المستخدم عبر الإنترنت</strong></p>
-</li>
-<li>
-<p>تحديد <strong>سلوك التصفح والزمن بدقة</strong></p>
-</li>
-<li>
-<p>كشف محاولات <strong>إخفاء الأدلة</strong> مثل حذف الهيستوري أو استخدام الوضع الخفي</p>
-</li>
-<li>
-<p>اكتشاف استخدامات غير مشروعة مثل:</p>
-</li>
-<li>
-<p>الدخول لحسابات مسروقة</p>
-</li>
-<li>
-<p>زيارة مواقع اختراق أو تسريبات</p>
-</li>
-<li>
-<p>تحميل أدوات مشبوهة</p>
-</li>
-</ul>
-<hr />
-<h2 id="_2">🧪 <strong>السيناريو العملي</strong></h2>
-<blockquote>
-<p>نحن بصدد تحليل بيانات Firefox في أحد السيناريوهات التالية:</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>نوع السيناريو</th>
-<th>الوصف</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>🟢 Live Analysis</td>
-<td>الجهاز يعمل، ونقوم بالتحليل مباشرةً من النظام.</td>
-</tr>
-<tr>
-<td>🔵 Mounted Analysis</td>
-<td>تحليل قرص أو صورة قرص لجهاز آخر (كما في SIFT Workstation).</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="firefox-linux">📍 <strong>أماكن حفظ ملفات Firefox في أنظمة Linux</strong></h2>
-<h3 id="ubuntu-linux-mint-snap">🔹 <strong>Ubuntu / Linux Mint (عند التثبيت عبر Snap):</strong></h3>
-<pre><code class="language-bash">/home/USERNAME/snap/firefox/common/.mozilla/firefox/
-</code></pre>
-<ul>
-<li>
-<p>يحتوي على مجلد البروفايل وقواعد البيانات</p>
-</li>
-<li>
-<p>ال Snap يعمل ضمن بيئة معزولة (sandbox) لذا المسار مختلف</p>
-</li>
-</ul>
-<h3 id="kali-sift-apt">🔹 <strong>Kali / SIFT (عند التثبيت عبر apt):</strong></h3>
-<pre><code class="language-bash">/home/USERNAME/.mozilla/firefox/
-
-cd /home/as/.mozilla/firefox/i8moxwwr.default-esr
-
-cd /home/sansforensics/.mozilla/firefox/xn53uh5w.default-release/
-</code></pre>
-<ul>
-<li>
-<p>هو المسار الافتراضي عند التثبيت عبر apt</p>
-</li>
-<li>
-<p>مستخدم في توزيعات مثل Kali و SIFT Workstation</p>
-</li>
-<li>
-<p>في SIFT غالبًا يتم تحليل مسارات الأدلة على شكل:</p>
-</li>
-</ul>
-<pre><code class="language-bash">/mnt/evidence/home/USERNAME/.mozilla/firefox/
-</code></pre>
-<blockquote>
-<p>🔍 <strong>نصيحة DF</strong>: تأكد من mount الصورة بشكل صحيح واعمل دائمًا على نسخة وليس الأصل.</p>
-</blockquote>
-<hr />
-<h2 id="profile-folder">📂 <strong>مكونات مجلد البروفايل (Profile Folder)</strong></h2>
-<p>داخل مجلد مثل:</p>
-<pre><code class="language-bash">xxxxxxxx.default-release أو xxxxxxxx.default-esr
-</code></pre>
-<p>يوجد عدد من قواعد البيانات المهمة:</p>
-<table>
-<thead>
-<tr>
-<th>الملف</th>
-<th>الوصف</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>places.sqlite</code></td>
-<td>🔥 قاعدة البيانات الأساسية: سجل التصفح + البوك ماركس</td>
-</tr>
-<tr>
-<td><code>cookies.sqlite</code></td>
-<td>تخزين الكوكيز: الجلسات، إعدادات المواقع</td>
-</tr>
-<tr>
-<td><code>favicons.sqlite</code></td>
-<td>أيقونات المواقع (تعطي تصور مرئي عن النشاط)</td>
-</tr>
-<tr>
-<td><code>formhistory.sqlite</code></td>
-<td>بيانات تم إدخالها في النماذج (مثل كلمات البحث)</td>
-</tr>
-<tr>
-<td><code>webappsstore.sqlite</code></td>
-<td>تخزين بيانات التطبيقات (LocalStorage)</td>
-</tr>
-<tr>
-<td><code>logins.json</code> + <code>key4.db</code></td>
-<td>بيانات الدخول – مشفرة وتحتاج المفتاح لفك التشفير</td>
-</tr>
-</tbody>
-</table>
-<pre><code class="language-bash">cd /home/as/.mozilla/firefox/i8moxwwr.default-esr
-
-ls *.sqlite *.json *.db
-</code></pre>
-<p>إذا لم تجد الملفات، جرّب:</p>
-<pre><code class="language-bash">cd /home/as/.mozilla/firefox/yi64xyq1.default
-</code></pre>
-<hr />
-<h2 id="_3">🛠️ <strong>الخطوات العملية للتحليل</strong></h2>
-<h3 id="1">✅ 1. البحث عن الملفات المهمة</h3>
-<pre><code class="language-bash">find /home -type f -name &quot;places.sqlite&quot;
-</code></pre>
-<h3 id="2">✅ 2. نسخ الملفات للتحليل</h3>
-<pre><code class="language-bash">cp /home/USERNAME/.mozilla/firefox/xxxxxxxx.default-release/places.sqlite ~/Desktop/
-</code></pre>
-<h3 id="3-sqlite-viewer">✅ 3. تحليل الملفات باستخدام SQLite Viewer</h3>
-<ul>
-<li>
-<p>الموقع: <a href="https://sqliteviewer.app/">SQLViewer</a></p>
-</li>
-<li>
-<p>قم بتحميل ملف <code>places.sqlite</code></p>
-</li>
-<li>
-<p>أهم الجداول داخل القاعدة:</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>الجدول</th>
-<th>الوظيفة</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>moz_places</code></td>
-<td>عناوين URL التي تمت زيارتها</td>
-</tr>
-<tr>
-<td><code>moz_historyvisits</code></td>
-<td>ربط URL بزمن الزيارة</td>
-</tr>
-<tr>
-<td><code>moz_bookmarks</code></td>
-<td>البوك ماركس (المواقع المحفوظة كمفضلة)</td>
-</tr>
-<tr>
-<td><code>moz_bookmarks_deleted</code></td>
-<td>إشارات مرجعية تم حذفها (مهمة جدًا في التحقيق)</td>
-</tr>
-<tr>
-<td><code>moz_inputhistory</code></td>
-<td>كلمات تم إدخالها في شريط العنوان</td>
-</tr>
-<tr>
-<td><code>moz_keywords</code></td>
-<td>كلمات مفتاحية للبوكماركس</td>
-</tr>
-<tr>
-<td><code>moz_places_extra</code></td>
-<td>بيانات إضافية عن كل زيارة</td>
-</tr>
-<tr>
-<td><code>moz_historyvisits_extra</code></td>
-<td>زمن البقاء داخل الموقع</td>
-</tr>
-<tr>
-<td><code>moz_origins</code></td>
-<td>أصل النطاق (Domain)</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>💡 <strong>ربط moz_places بـ moz_historyvisits يعطيك Timeline للنشاط.</strong></p>
-</blockquote>
-<hr />
-<h3 id="firefox-artifacts">🔍 <strong>أدوات متقدمة لتحليل Firefox Artifacts</strong></h3>
-<table>
-<thead>
-<tr>
-<th>الأداة</th>
-<th>الفائدة</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sqlite3</code></td>
-<td>تحليل سريع من الطرفية بدون واجهة رسومية</td>
-</tr>
-<tr>
-<td><code>Browser History Examiner</code></td>
-<td>تحليل بصري متقدم للتواريخ، مدة البقاء، والمواقع (Windows)</td>
-</tr>
-<tr>
-<td><code>Hindsight</code> (by Obsidian)</td>
-<td>أداة Python مفتوحة المصدر لتحليل تاريخ التصفح وتوليد تقارير</td>
-</tr>
-<tr>
-<td><code>Autopsy</code></td>
-<td>أداة جنائية تحتوي على وحدة مدمجة لتحليل المتصفحات</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="firefox">🧠 <strong>مخرجات تحليل Firefox – ما الذي نستفيده؟</strong></h2>
-<ol>
-<li>
-<p><strong>المواقع التي زارها المستخدم</strong> وزمن الزيارة</p>
-</li>
-<li>
-<p><strong>تحليل البوك ماركس</strong> لفهم المواقع ذات الأهمية</p>
-</li>
-<li>
-<p><strong>تحليل الكوكيز</strong> لاستخراج:</p>
-</li>
-<li>
-<p>جلسات دخول نشطة</p>
-</li>
-<li>
-<p>أثر المواقع التي تتبع المستخدم</p>
-</li>
-<li>
-<p><strong>ربط زمني</strong> بين نشاط التصفح وأحداث أخرى في النظام</p>
-</li>
-<li>
-<p><strong>كشف محاولات الإخفاء</strong> (الوضع الخفي – حذف السجل)</p>
-</li>
-</ol>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760448265104/899425ff-c554-43a8-9bda-2afa4d448740.png" align="center" fullwidth="false" /></p>
-<hr />
-<h2 id="digital-forensics">💡 <strong>نصائح احترافية في Digital Forensics</strong></h2>
-<ul>
-<li>
-<p>🧪 اعمل دائمًا على نسخة readonly</p>
-</li>
-<li>
-<p>📅 استخدم <code>stat</code> لرؤية توقيتات الملفات :</p>
-</li>
-</ul>
-<pre><code class="language-bash">stat places.sqlite
-</code></pre>
-<ul>
-<li>
-<p>🔗 اربط النتائج مع:</p>
-</li>
-<li>
-<p>ال Bash history</p>
-</li>
-<li>
-<p>ال system logs (<code>/var/log/syslog</code>)</p>
-</li>
-<li>
-<p>نشاط الأجهزة الخارجية (USB logs)</p>
-</li>
-<li>
-<p>👥 افحص كل البروفايلات الموجودة — قد يكون هناك أكثر من مستخدم</p>
-</li>
-</ul>
-<hr />
-<h2 id="timeline">🔗 **مثال عملي: Timeline للزيارات</h2>
-<h4 id="sqlite">فتح الملف باستخدام SQLite</h4>
-<h5 id="terminal-sqlite3">✳️ الطريقة الأولى: من الطرفية (Terminal) باستخدام <code>sqlite3</code></h5>
-<pre><code class="language-bash">sqlite3 ~/Desktop/places.sqlite
-</code></pre>
-<blockquote>
-<p>داخل SQLite، نفذ الاستعلام , او اي استعلام تريد</p>
-</blockquote>
-<pre><code class="language-sql">SELECT 
-    moz_places.url, 
-    datetime(moz_historyvisits.visit_date/1000000,'unixepoch') AS visit_time 
-FROM 
-    moz_places, moz_historyvisits 
-WHERE 
-    moz_places.id = moz_historyvisits.place_id 
-ORDER BY 
-    visit_time DESC 
-LIMIT 20;
-</code></pre>
-<blockquote>
-<p>للخروج من SQLite :</p>
-</blockquote>
-<pre><code class="language-bash">.exit
-</code></pre>
-<h5 id="timestamp-1000000">📌 <strong>ليه بنقسم timestamp على 1,000,000؟</strong></h5>
-<blockquote>
-<p>لأن <code>visit_date</code> في جدول <code>moz_historyvisits</code> بيكون بالـ <strong>microseconds</strong> (منذ Unix epoch)، ولازم نحوله إلى <strong>seconds</strong> باستخدام <code>/1000000</code> عشان <code>datetime(...,'unixepoch')</code> تقدر تقراه صح.</p>
-</blockquote>
-<h5 id="_4">✅ <strong>النتيجة النهائية؟</strong></h5>
-<blockquote>
-<p>هتقدر تستخرج <strong>آخر 20 موقع زارهم المستخدم</strong>، مع <strong>توقيت كل زيارة</strong>، وده مفيد جدًا في بناء <strong>Timeline</strong> لنشاط المستخدم أثناء التحقيق الرقمي.</p>
-</blockquote>
-<hr />
-<h2 id="_5">📊 <strong>مُلخص مخرجات التحليل حسب نوع الملف</strong></h2>
-<table>
-<thead>
-<tr>
-<th>نوع الدليل</th>
-<th>ما الذي نستفيده منه؟</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>moz_places</code></td>
-<td>المواقع التي زارها المستخدم</td>
-</tr>
-<tr>
-<td><code>moz_historyvisits</code></td>
-<td>زمن الزيارة ومدة البقاء</td>
-</tr>
-<tr>
-<td><code>moz_bookmarks</code></td>
-<td>إشارات مرجعية مهمة لدى المستخدم</td>
-</tr>
-<tr>
-<td><code>moz_bookmarks_deleted</code></td>
-<td>محاولة إخفاء إشارات</td>
-</tr>
-<tr>
-<td><code>cookies.sqlite</code></td>
-<td>الجلسات النشطة – قد تتيح الدخول لحسابات</td>
-</tr>
-<tr>
-<td><code>logins.json</code> + <code>key4.db</code></td>
-<td>المستخدمين الذين سجلوا الدخول (حتى لو حُذف الهيستوري)</td>
-</tr>
-<tr>
-<td><code>formhistory.sqlite</code></td>
-<td>كلمات البحث وبيانات النماذج</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_6">🧰 <strong>أدوات مفيدة إضافية</strong></h2>
-<table>
-<thead>
-<tr>
-<th>الأداة</th>
-<th>الاستخدام</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sqlite3</code></td>
-<td>تحليل مباشر وسريع من الطرفية</td>
-</tr>
-<tr>
-<td><a href="https://sqliteviewer.app/">SQLite Viewer</a></td>
-<td>تحليل بصري لقواعد البيانات SQLite</td>
-</tr>
-<tr>
-<td><code>Browser History Examiner</code></td>
-<td>أداة رسومية قوية (مناسبة لأنظمة Windows)</td>
-</tr>
-<tr>
-<td><code>Autopsy</code></td>
-<td>تحليل شامل ومتكامل يشمل المتصفحات</td>
-</tr>
-<tr>
-<td><code>Hindsight</code></td>
-<td>Python tool لتحليل Chrome وFirefox وتوليد تقارير زمنية</td>
 </tr>
 </tbody>
 </table>

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/LABs/OSINT/OSINT%20-%20MITRE%20%283%29/">
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/LABs/OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/">
       
       
-        <link rel="prev" href="../OSINT%20-%20MITRE%20%282%29/">
+        <link rel="prev" href="../OSINT%20-%20MITRE%201%20%28CyberHaze%29/">
       
       
-        <link rel="next" href="../Shadow%20Rat/">
+        <link rel="next" href="../OSINT%20-%20MITRE%203%20%28CyberHaze%29/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>OSINT MITRE (3) - AAS Security Labs Docs</title>
+        <title>OSINT MITRE 2 (CyberHaze) - AAS Security Labs Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#incident-response-case-study-using-mitre-attck" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              OSINT   MITRE (3)
+              OSINT   MITRE 2 (CyberHaze)
             
           </span>
         </div>
@@ -2916,42 +2916,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+      <a href="../OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (1)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    OSINT   MITRE (2)
+    OSINT   MITRE 1 (CyberHaze)
   
 
     
@@ -2978,8 +2950,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -2988,7 +2958,7 @@
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -3006,7 +2976,7 @@
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -3022,8 +2992,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -3036,6 +3004,330 @@
     <span class="md-ellipsis">
       
         Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attack-chain-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attack Chain Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attack Chain Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-initial-access-spearphishing-link-t1566002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initial Access – Spearphishing Link (T1566.002)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Initial Access – Spearphishing Link (T1566.002)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-execution-windows-command-shell-t1059003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Execution – Windows Command Shell (T1059.003)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Execution – Windows Command Shell (T1059.003)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-credential-access-lsass-memory-t1003001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Credential Access – LSASS Memory (T1003.001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Credential Access – LSASS Memory (T1003.001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-persistence-registry-run-keys-t1547001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Persistence – Registry Run Keys (T1547.001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Persistence – Registry Run Keys (T1547.001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-command-control-web-protocols-t1071001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Command &amp; Control – Web Protocols (T1071.001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Command &amp; Control – Web Protocols (T1071.001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-collection-data-staged-t1074" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Collection – Data Staged (T1074)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Collection – Data Staged (T1074)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-archive-collected-data-t1560" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Archive Collected Data (T1560)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Archive Collected Data (T1560)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-exfiltration-over-c2-channel-t1041" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Exfiltration – Over C2 Channel (T1041)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Exfiltration – Over C2 Channel (T1041)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-defense-evasion-indicator-removal-on-host-t1070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Defense Evasion – Indicator Removal on Host (T1070)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Defense Evasion – Indicator Removal on Host (T1070)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attack-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attack Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
       
     </span>
   </a>
@@ -3058,14 +3350,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../Shadow%20Rat/" class="md-nav__link">
+      <a href="../OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shadow Rat
+    OSINT   MITRE 3 (CyberHaze)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shadow Rat (CyberHaze)
   
 
     
@@ -5410,8 +5730,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -5424,6 +5742,330 @@
     <span class="md-ellipsis">
       
         Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitre-attck-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attack-chain-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attack Chain Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attack Chain Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-initial-access-spearphishing-link-t1566002" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initial Access – Spearphishing Link (T1566.002)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Initial Access – Spearphishing Link (T1566.002)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-execution-windows-command-shell-t1059003" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Execution – Windows Command Shell (T1059.003)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Execution – Windows Command Shell (T1059.003)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-credential-access-lsass-memory-t1003001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Credential Access – LSASS Memory (T1003.001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Credential Access – LSASS Memory (T1003.001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-persistence-registry-run-keys-t1547001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Persistence – Registry Run Keys (T1547.001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Persistence – Registry Run Keys (T1547.001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-command-control-web-protocols-t1071001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Command &amp; Control – Web Protocols (T1071.001)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Command &amp; Control – Web Protocols (T1071.001)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-collection-data-staged-t1074" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Collection – Data Staged (T1074)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Collection – Data Staged (T1074)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-archive-collected-data-t1560" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Archive Collected Data (T1560)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Archive Collected Data (T1560)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-exfiltration-over-c2-channel-t1041" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Exfiltration – Over C2 Channel (T1041)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Exfiltration – Over C2 Channel (T1041)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-defense-evasion-indicator-removal-on-host-t1070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Defense Evasion – Indicator Removal on Host (T1070)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Defense Evasion – Indicator Removal on Host (T1070)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attck-details_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ATT&amp;CK Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attack-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attack Flow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Takeaways
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
       
     </span>
   </a>
@@ -5447,355 +6089,290 @@
 
 
 
-<p>During an active incident response scenario at Permalink Software, the SOC team noticed an unusual spike in traffic from one of their endpoints that was communicating with a known malicious IP address. This activity was flagged by the network intrusion detection system (NIDS) and correlated with other indicators of compromise found in threat intelligence feeds. Your task is to use your knowledge of the MITRE ATT&amp;CK framework and TTPs to help guide the team through identifying and reconstructing the attack kill chain. By doing so, the SOC can better understand the nature of the compromise and formulate a response plan.</p>
+<p>An internal system exhibited signs of compromise after user interaction with external content. The attacker executed commands, accessed credentials, established persistence, and eventually exfiltrated data outside the network.</p>
 <p>Link : 
-    https://cyberhaze.io/challange-details/6a02fcc0a677aef98ea51234</p>
+    https://cyberhaze.io/challange-details/6a01f4e8e82a439b197b0776</p>
 <hr />
-<h1 id="incident-response-case-study-using-mitre-attck">Incident Response Case Study Using MITRE ATT&amp;CK</h1>
-<h3 id="overview">Overview</h3>
-<p>During an incident response engagement at <strong>Permalink Software</strong>, the Security Operations Center (SOC) identified suspicious network activity originating from an internal endpoint communicating with a known malicious IP address.</p>
-<p>The activity was initially detected through the organization's Network Intrusion Detection System (NIDS) and later correlated with multiple Indicators of Compromise (IOCs) obtained from threat intelligence feeds.</p>
-<p>Further investigation revealed that the incident was not an isolated event but rather a complete attack lifecycle involving reconnaissance, exploitation, privilege escalation, persistence, defense evasion, data collection, exfiltration, and ultimately website defacement.</p>
-<p>This report reconstructs the attack using the MITRE ATT&amp;CK framework to better understand the adversary's behavior and tactics.</p>
+<h2 id="overview">Overview</h2>
+<p>This challenge analyzed a breach scenario that began with user interaction with malicious external content and ended with data theft and concealment of the attack. The goal of the challenge was to connect the various events within the MITRE ATT&amp;CK framework and understand the complete attack sequence from the initial access stage to the stage of covering up the malicious activity.</p>
 <hr />
-<h1 id="executive-summary">Executive Summary</h1>
-<p>The attacker conducted external reconnaissance against the organization using vulnerability scanning techniques. After identifying a vulnerable public-facing application, a SQL Injection vulnerability was exploited using SQLmap.</p>
-<p>The compromise enabled remote command execution through a Windows Command Shell, followed by privilege escalation via token impersonation abuse.</p>
-<p>To maintain long-term access, the adversary modified an existing Windows service. Security controls were then disabled, including the organization's EDR solution.</p>
-<p>After collecting sensitive information using malicious tooling, the attacker exfiltrated data to a public GitHub repository and concluded the operation by defacing the company's public website.</p>
+<h1 id="scenario-summary">Scenario Summary</h1>
+<p>An internal system exhibited signs of compromise after user interaction with external content. The attacker executed commands, accessed credentials, established persistence, communicated with external infrastructure, collected sensitive files, and ultimately exfiltrated data outside the organization before attempting to remove traces of the intrusion.</p>
 <hr />
-<h1 id="attack-timeline">Attack Timeline</h1>
+<h1 id="mitre-attck-mapping">MITRE ATT&amp;CK Mapping</h1>
 <table>
 <thead>
 <tr>
-<th>Stage</th>
-<th>MITRE ATT&amp;CK ID</th>
-<th>Description</th>
+<th>Phase</th>
+<th>Technique</th>
+<th>ID</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Reconnaissance</td>
-<td>T1595.002</td>
-<td>Vulnerability Scanning</td>
-</tr>
-<tr>
 <td>Initial Access</td>
-<td>T1190</td>
-<td>Exploit Public-Facing Application</td>
+<td>Spearphishing Link</td>
+<td>T1566.002</td>
 </tr>
 <tr>
 <td>Execution</td>
-<td>T1059.003</td>
 <td>Windows Command Shell</td>
+<td>T1059.003</td>
 </tr>
 <tr>
-<td>Privilege Escalation</td>
-<td>T1134</td>
-<td>Access Token Manipulation</td>
+<td>Credential Access</td>
+<td>LSASS Memory</td>
+<td>T1003.001</td>
 </tr>
 <tr>
 <td>Persistence</td>
-<td>T1543.003</td>
-<td>Windows Service</td>
+<td>Registry Run Keys / Startup Folder</td>
+<td>T1547.001</td>
 </tr>
 <tr>
-<td>Defense Evasion</td>
-<td>T1562.001</td>
-<td>Disable or Modify Security Tools</td>
+<td>Command &amp; Control</td>
+<td>Application Layer Protocol: Web Protocols</td>
+<td>T1071.001</td>
 </tr>
 <tr>
 <td>Collection</td>
-<td>TA0009</td>
-<td>Data Collection</td>
+<td>Data Staged</td>
+<td>T1074</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>Archive Collected Data</td>
+<td>T1560</td>
 </tr>
 <tr>
 <td>Exfiltration</td>
-<td>TA0010</td>
-<td>Exfiltration via GitHub</td>
+<td>Exfiltration Over C2 Channel</td>
+<td>T1041</td>
 </tr>
 <tr>
-<td>Impact</td>
-<td>T1491.002</td>
-<td>External Defacement</td>
+<td>Defense Evasion</td>
+<td>Indicator Removal on Host</td>
+<td>T1070</td>
+</tr>
+<tr>
+<td><img alt="" src="Photos/OSINT_MITRE_2_CYBERHAZE.svg" /></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h1 id="detailed-attack-analysis">Detailed Attack Analysis</h1>
-<h2 id="1-reconnaissance">1. Reconnaissance</h2>
-<p>The attack began with active reconnaissance against internet-facing assets belonging to Permalink Software.</p>
-<p>Network logs revealed the following User-Agent:</p>
-<pre><code class="language-text">Mozilla/5.0 (compatible; Nmap Scripting Engine;)
-</code></pre>
-<p>This indicator strongly suggests the use of Nmap Scripting Engine (NSE) to identify exposed services and discover exploitable vulnerabilities.</p>
-<h3 id="mitre-mapping">MITRE Mapping</h3>
+<h1 id="attack-chain-analysis">Attack Chain Analysis</h1>
+<h2 id="1-initial-access-spearphishing-link-t1566002">1. Initial Access – Spearphishing Link (T1566.002)</h2>
+<p>The attack started when the victim clicked on a malicious hyperlink delivered through email.</p>
+<p>Unlike phishing campaigns that rely on malicious attachments, the attacker used a specially crafted link that required user interaction. This technique often bypasses attachment-based security controls and increases the likelihood of successful compromise.</p>
+<h3 id="attck-details">ATT&amp;CK Details</h3>
 <ul>
 <li>
-<p>Tactic: Reconnaissance</p>
+<p>Tactic: Initial Access</p>
 </li>
 <li>
-<p>Technique: Active Scanning</p>
+<p>Technique: Phishing</p>
 </li>
 <li>
-<p>Sub-technique: T1595.002 – Vulnerability Scanning</p>
-</li>
-</ul>
-<h3 id="detection-opportunities">Detection Opportunities</h3>
-<ul>
-<li>
-<p>Monitor abnormal scanning behavior.</p>
-</li>
-<li>
-<p>Detect repeated connections targeting multiple ports.</p>
-</li>
-<li>
-<p>Alert on known scanner User-Agent strings.</p>
+<p>Sub-technique: Spearphishing Link</p>
 </li>
 </ul>
 <hr />
-<h2 id="2-initial-access">2. Initial Access</h2>
-<p>Following reconnaissance, the adversary identified a vulnerable web application exposed to the internet.</p>
-<p>Investigation confirmed exploitation of a SQL Injection vulnerability that allowed the attacker to execute commands on the underlying server.</p>
-<p>The attacker utilized SQLmap to automate the exploitation process.</p>
-<h3 id="mitre-mapping_1">MITRE Mapping</h3>
-<ul>
-<li>Technique: T1190 – Exploit Public-Facing Application</li>
-</ul>
-<h3 id="tool-used">Tool Used</h3>
-<ul>
-<li>SQLmap (MITRE Software ID: S0225)</li>
-</ul>
-<h3 id="detection-opportunities_1">Detection Opportunities</h3>
+<h2 id="2-execution-windows-command-shell-t1059003">2. Execution – Windows Command Shell (T1059.003)</h2>
+<p>After gaining access, the attacker executed commands through the Windows Command Shell (cmd.exe).</p>
+<p>Using built-in operating system utilities is a common Living-Off-The-Land (LOTL) technique that allows attackers to blend malicious activity with legitimate system behavior.</p>
+<h3 id="attck-details_1">ATT&amp;CK Details</h3>
 <ul>
 <li>
-<p>Monitor suspicious SQL queries.</p>
+<p>Tactic: Execution</p>
 </li>
 <li>
-<p>Detect SQL Injection patterns within web logs.</p>
-</li>
-<li>
-<p>Implement Web Application Firewalls (WAF).</p>
+<p>Sub-technique: Windows Command Shell</p>
 </li>
 </ul>
 <hr />
-<h2 id="3-execution">3. Execution</h2>
-<p>Once access was obtained, the attacker achieved remote code execution and launched a reverse shell.</p>
-<p>Evidence showed the creation of a:</p>
-<pre><code class="language-cmd">cmd.exe
-</code></pre>
-<p>process to facilitate command execution.</p>
-<h3 id="mitre-mapping_2">MITRE Mapping</h3>
-<ul>
-<li>Technique: T1059.003 – Windows Command Shell</li>
-</ul>
-<h3 id="detection-opportunities_2">Detection Opportunities</h3>
+<h2 id="3-credential-access-lsass-memory-t1003001">3. Credential Access – LSASS Memory (T1003.001)</h2>
+<p>The attacker extracted credentials directly from the memory of the LSASS process.</p>
+<p>LSASS stores authentication-related information including:</p>
 <ul>
 <li>
-<p>Monitor suspicious child processes spawned from web servers.</p>
+<p>User credentials</p>
 </li>
 <li>
-<p>Detect command shell execution initiated by web applications.</p>
+<p>NTLM hashes</p>
+</li>
+<li>
+<p>Kerberos tickets</p>
 </li>
 </ul>
-<hr />
-<h2 id="4-privilege-escalation">4. Privilege Escalation</h2>
-<p>After gaining an initial foothold, the attacker elevated privileges by abusing the Windows:</p>
-<pre><code class="language-text">SeImpersonatePrivilege
-</code></pre>
-<p>permission.</p>
-<p>This enabled impersonation of an administrator access token without requiring valid credentials.</p>
-<p>One important API call associated with this behavior is:</p>
-<pre><code class="language-text">ImpersonateLoggedOnUser
-</code></pre>
-<h3 id="mitre-mapping_3">MITRE Mapping</h3>
-<ul>
-<li>Technique: T1134 – Access Token Manipulation</li>
-</ul>
-<h3 id="detection-opportunities_3">Detection Opportunities</h3>
+<p>Access to these artifacts can facilitate privilege escalation and lateral movement across the environment.</p>
+<h3 id="attck-details_2">ATT&amp;CK Details</h3>
 <ul>
 <li>
-<p>Monitor token manipulation events.</p>
+<p>Tactic: Credential Access</p>
 </li>
 <li>
-<p>Alert on unusual privilege assignment.</p>
-</li>
-<li>
-<p>Track calls to impersonation-related APIs.</p>
+<p>Sub-technique: LSASS Memory</p>
 </li>
 </ul>
 <hr />
-<h2 id="5-persistence">5. Persistence</h2>
-<p>To ensure continued access after reboot or service restart, the attacker modified an existing Windows service.</p>
-<p>The service ImagePath was changed to point to the attacker's reverse shell payload.</p>
-<p>As a result, the malicious payload would automatically execute whenever the service started.</p>
-<h3 id="mitre-mapping_4">MITRE Mapping</h3>
-<ul>
-<li>Sub-technique: T1543.003 – Windows Service</li>
-</ul>
-<h3 id="detection-opportunities_4">Detection Opportunities</h3>
+<h2 id="4-persistence-registry-run-keys-t1547001">4. Persistence – Registry Run Keys (T1547.001)</h2>
+<p>To survive system reboots and maintain long-term access, the attacker modified Registry Run Keys.</p>
+<p>Programs referenced in these registry locations are automatically executed whenever a user logs into the system, making them a popular persistence mechanism.</p>
+<h3 id="attck-details_3">ATT&amp;CK Details</h3>
 <ul>
 <li>
-<p>Monitor service creation and modification events.</p>
+<p>Tactic: Persistence</p>
 </li>
 <li>
-<p>Audit changes to service registry entries.</p>
+<p>Sub-technique: Registry Run Keys / Startup Folder</p>
 </li>
 </ul>
 <hr />
-<h2 id="6-defense-evasion">6. Defense Evasion</h2>
-<p>The attacker disabled the organization's Endpoint Detection and Response (EDR) solution.</p>
-<p>This action reduced visibility and hindered detection efforts.</p>
-<h3 id="mitre-mapping_5">MITRE Mapping</h3>
-<ul>
-<li>Sub-technique: T1562.001 – Disable or Modify Security Tools</li>
-</ul>
-<h3 id="detection-opportunities_5">Detection Opportunities</h3>
+<h2 id="5-command-control-web-protocols-t1071001">5. Command &amp; Control – Web Protocols (T1071.001)</h2>
+<p>Following persistence, the attacker established communication with an external command-and-control server using standard web protocols.</p>
+<p>HTTP and HTTPS traffic are frequently chosen because they blend naturally into normal network activity.</p>
+<h3 id="attck-details_4">ATT&amp;CK Details</h3>
 <ul>
 <li>
-<p>Alert when security software is stopped.</p>
+<p>Tactic: Command and Control</p>
 </li>
 <li>
-<p>Monitor tampering with EDR configurations.</p>
-</li>
-<li>
-<p>Detect unauthorized service termination events.</p>
+<p>Sub-technique: Web Protocols</p>
 </li>
 </ul>
 <hr />
-<h2 id="7-collection">7. Collection</h2>
-<p>After establishing persistence and disabling defenses, the attacker began gathering sensitive information.</p>
-<p>A tool identified as:</p>
-<pre><code class="language-text">ccf32
-</code></pre>
-<p>was transferred to the compromised host and used to collect valuable organizational data.</p>
-<h3 id="mitre-mapping_6">MITRE Mapping</h3>
-<ul>
-<li>Tactic: TA0009 – Collection</li>
-</ul>
-<h3 id="detection-opportunities_6">Detection Opportunities</h3>
+<h2 id="6-collection-data-staged-t1074">6. Collection – Data Staged (T1074)</h2>
+<p>Before exfiltration, the attacker gathered sensitive files from multiple locations and consolidated them into a staging directory.</p>
+<p>This process simplifies data management and prepares the files for transfer.</p>
+<h3 id="attck-details_5">ATT&amp;CK Details</h3>
 <ul>
 <li>
-<p>Monitor unexpected file access activity.</p>
+<p>Tactic: Collection</p>
 </li>
 <li>
-<p>Detect execution of unknown collection utilities.</p>
-</li>
-<li>
-<p>Track large-scale file enumeration behavior.</p>
+<p>Technique: Data Staged</p>
 </li>
 </ul>
 <hr />
-<h2 id="8-exfiltration">8. Exfiltration</h2>
-<p>Once data had been staged, the attacker transferred the collected information to a public GitHub repository.</p>
-<p>Using trusted cloud services for exfiltration is a common technique because such traffic often bypasses traditional security controls.</p>
-<h3 id="mitre-mapping_7">MITRE Mapping</h3>
-<ul>
-<li>Tactic: Exfiltration</li>
-</ul>
-<h3 id="recommended-mitigation">Recommended Mitigation</h3>
-<ul>
-<li>M1021 – Restrict Web-Based Content</li>
-</ul>
-<h3 id="detection-opportunities_7">Detection Opportunities</h3>
+<h2 id="7-archive-collected-data-t1560">7. Archive Collected Data (T1560)</h2>
+<p>The attacker compressed the staged files into an archive.</p>
+<p>Common reasons include:</p>
 <ul>
 <li>
-<p>Monitor outbound connections to cloud storage platforms.</p>
+<p>Reducing data size</p>
 </li>
 <li>
-<p>Detect abnormal upload volumes.</p>
+<p>Simplifying transmission</p>
 </li>
 <li>
-<p>Implement Data Loss Prevention (DLP) controls.</p>
+<p>Avoiding content inspection mechanisms</p>
 </li>
 </ul>
-<hr />
-<h2 id="9-impact">9. Impact</h2>
-<p>The final stage of the attack involved modification of the organization's public website.</p>
-<p>Visitors were presented with unauthorized propaganda messages, indicating successful website defacement.</p>
-<h3 id="mitre-mapping_8">MITRE Mapping</h3>
-<ul>
-<li>Sub-technique: T1491.002 – External Defacement</li>
-</ul>
-<h3 id="detection-opportunities_8">Detection Opportunities</h3>
+<h3 id="attck-details_6">ATT&amp;CK Details</h3>
 <ul>
 <li>
-<p>File integrity monitoring.</p>
+<p>Tactic: Collection</p>
 </li>
 <li>
-<p>Website content validation.</p>
-</li>
-<li>
-<p>Continuous monitoring of public-facing assets.</p>
+<p>Technique: Archive Collected Data</p>
 </li>
 </ul>
 <hr />
-<h1 id="mitre-attck-attack-flow">MITRE ATT&amp;CK Attack Flow</h1>
-<pre><code class="language-text">T1595.002
-Vulnerability Scanning
-        │
-        ▼
-T1190
-Exploit Public-Facing Application
-(SQL Injection)
-        │
-        ▼
-S0225
-SQLmap
+<h2 id="8-exfiltration-over-c2-channel-t1041">8. Exfiltration – Over C2 Channel (T1041)</h2>
+<p>The archived data was transmitted to attacker-controlled infrastructure through the previously established command-and-control channel.</p>
+<p>Reusing an existing communication path reduces the likelihood of detection because no additional suspicious connections need to be created.</p>
+<h3 id="attck-details_7">ATT&amp;CK Details</h3>
+<ul>
+<li>
+<p>Tactic: Exfiltration</p>
+</li>
+<li>
+<p>Technique: Exfiltration Over C2 Channel</p>
+</li>
+</ul>
+<hr />
+<h2 id="9-defense-evasion-indicator-removal-on-host-t1070">9. Defense Evasion – Indicator Removal on Host (T1070)</h2>
+<p>To hinder forensic investigations, the attacker attempted to remove traces of malicious activity.</p>
+<p>Evidence suggested log tampering or deletion, making incident reconstruction more difficult.</p>
+<h3 id="attck-details_8">ATT&amp;CK Details</h3>
+<ul>
+<li>
+<p>Tactic: Defense Evasion</p>
+</li>
+<li>
+<p>Technique: Indicator Removal on Host</p>
+</li>
+</ul>
+<hr />
+<h1 id="attack-flow">Attack Flow</h1>
+<pre><code class="language-text">T1566.002
+Spearphishing Link
         │
         ▼
 T1059.003
 Windows Command Shell
         │
         ▼
-T1134
-Access Token Manipulation
+T1003.001
+LSASS Memory
         │
         ▼
-T1543.003
-Windows Service
+T1547.001
+Registry Run Keys
         │
         ▼
-T1562.001
-Disable Security Tools
+T1071.001
+Web Protocols (C2)
         │
         ▼
-TA0009
-Collection
+T1074
+Data Staged
         │
         ▼
-GitHub Exfiltration
+T1560
+Archive Collected Data
         │
         ▼
-T1491.002
-External Defacement
+T1041
+Exfiltration Over C2 Channel
+        │
+        ▼
+T1070
+Indicator Removal on Host
 </code></pre>
 <hr />
-<h1 id="key-lessons-learned">Key Lessons Learned</h1>
-<ol>
+<h1 id="key-takeaways">Key Takeaways</h1>
+<p>This scenario demonstrates a complete cyber intrusion lifecycle that aligns closely with real-world threat actor behavior.</p>
+<p>Several important attacker tradecraft patterns were observed:</p>
+<ul>
 <li>
-<p>External-facing applications remain one of the most common initial access vectors.</p>
+<p>Social engineering was used for initial compromise.</p>
 </li>
 <li>
-<p>SQL Injection vulnerabilities can rapidly lead to full system compromise.</p>
+<p>Native Windows tools were leveraged for execution.</p>
 </li>
 <li>
-<p>Service modification remains a common persistence technique.</p>
+<p>Credentials were extracted from LSASS memory.</p>
 </li>
 <li>
-<p>Security tool tampering should always generate high-priority alerts.</p>
+<p>Registry-based persistence ensured long-term access.</p>
 </li>
 <li>
-<p>Cloud platforms such as GitHub can be abused for data exfiltration.</p>
+<p>Web protocols were used for command-and-control traffic.</p>
 </li>
 <li>
-<p>Effective detection requires correlating network, endpoint, and threat intelligence data.</p>
+<p>Data was staged and archived before exfiltration.</p>
 </li>
-</ol>
+<li>
+<p>Log tampering was performed to conceal evidence.</p>
+</li>
+</ul>
+<p>For SOC analysts, understanding how these ATT&amp;CK techniques connect together is essential for building detections, performing investigations, and reconstructing attack timelines during incident response activities.</p>
 <hr />
 <h1 id="conclusion">Conclusion</h1>
-<p>This incident demonstrates a complete adversary attack lifecycle mapped to the MITRE ATT&amp;CK framework. Beginning with vulnerability scanning and ending with website defacement, the attacker successfully moved through multiple phases of the intrusion kill chain.</p>
-<p>The case highlights the importance of layered defenses, continuous monitoring, threat intelligence correlation, and proactive detection engineering to identify and contain sophisticated attacks before significant damage occurs.</p>
+<p>The attacker successfully progressed through multiple stages of the cyber kill chain, beginning with a phishing link and ending with data exfiltration and evidence removal. Mapping each action to the MITRE ATT&amp;CK framework provides a structured understanding of adversary behavior and highlights the detection opportunities available to defenders throughout the attack lifecycle.</p>
 
 
 

@@ -3358,14 +3358,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (1)
+    OSINT   MITRE 1 (CyberHaze)
   
 
     
@@ -3386,14 +3386,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (2)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -3414,14 +3414,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 3 (CyberHaze)
   
 
     
@@ -3442,14 +3442,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+      <a href="../../OSINT/Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shadow Rat
+    Shadow Rat (CyberHaze)
   
 
     
@@ -6638,431 +6638,6 @@ It works on both Windows and Linux and comes in two versions:</p>
 <td>Automated detailed reports</td>
 <td>All hives</td>
 <td>Comprehensive analysis via multiple plugins</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<hr />
-<h1 id="registry-analysis-using-registry-explorer-shellbags-explorer-and-regripper_1">🧪 <strong>Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper</strong></h1>
-<h2 id="_1">🎯 <strong>مقدمة عامة</strong></h2>
-<p>عند التعامل مع جهاز مشتبه به في سياق جنائي رقمي (Digital Forensics)، غالبًا ما نقوم باستخراج ملفات الريجستري (Registry Hives) لتحليل سلوك المستخدم والنظام. ولكن بما أننا لا نعمل على النظام مباشرة، لا يمكننا استخدام Regedit.</p>
-<h4 id="regedit">⚠️ لماذا لا يمكن استخدام Regedit؟</h4>
-<ul>
-<li>
-<p>ال Regedit <strong>يقرأ فقط من النظام الحالي</strong>.</p>
-</li>
-<li>
-<p>لا يمكن توجيهه لقراءة ملفات <code>.dat</code> أو <code>.hiv</code> مستقلة.</p>
-</li>
-<li>
-<p>لذلك يجب استخدام أدوات تدعم تحليل <strong>Offline Registry Files</strong>.</p>
-</li>
-</ul>
-<h2 id="_2">🧰 <strong>الأدوات المطلوبة</strong></h2>
-<p>لحل هذه المشكلة، نستخدم أدوات متخصصة لتحليل ملفات الريجستري المستخرجة من نظام مستهدف. أبرز هذه الأدوات:</p>
-<table>
-<thead>
-<tr>
-<th>🛠️ الأداة</th>
-<th>📌 الوظيفة</th>
-<th>🧾 الملفات المدعومة</th>
-<th>💡 ملاحظات مميزة</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Registry Explorer</strong></td>
-<td>تحليل يدوي</td>
-<td>جميع ملفات الـ Hive</td>
-<td>يدعم المحذوفات، Transaction Logs، القراءة فقط</td>
-</tr>
-<tr>
-<td><strong>ShellBags Explorer</strong></td>
-<td>تحليل نشاط المستخدم</td>
-<td><code>NTUSER.DAT</code>, <code>USRCLASS.DAT</code></td>
-<td>استخراج هيستوري المجلدات والأجهزة</td>
-</tr>
-<tr>
-<td><strong>RegRipper</strong></td>
-<td>تقارير تحليل أوتوماتيكية</td>
-<td>جميع الملفات</td>
-<td>يعمل بـ CLI/GUI ويعتمد على Plugins جاهزة</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="registry-explorer">📂 <strong>أولاً: Registry Explorer</strong></h2>
-<h3 id="_3">✅ مقدمة</h3>
-<ul>
-<li>
-<p>تم تطوير هذه الأداة بواسطة <strong>Eric Zimmerman</strong>، وهو أحد المدربين في SANS وله مساهمات كبيرة في مجال الأدوات الجنائية.</p>
-</li>
-<li>
-<p>تقدم واجهة مشابهة لـ Regedit لكنها تدعم ملفات الريجستري بشكل مستقل.</p>
-</li>
-<li>
-<h6 id="_4">🔍 مميزات إضافية:</h6>
-</li>
-<li>
-<p><strong>عرض السجلات المحذوفة</strong> (Deleted Keys &amp; Values)</p>
-</li>
-<li>
-<p>دعم البحث المتقدم</p>
-</li>
-<li>
-<p>عرض TimeStamp لكل مفتاح (<code>Last Written Time</code>)</p>
-</li>
-<li>
-<p><strong>يدعم القراءة فقط</strong> (مناسبة للـ Forensics)</p>
-</li>
-</ul>
-<h4 id="_5">📥 تحميل الأداة</h4>
-<p>يمكن تحميل Registry Explorer من =&gt; موقع <a href="https://www.sans.org/tools/registry-explorer">SANS</a> او Tool List الخاصة بـ <a href="https://ericzimmerman.github.io/">Eric Zimmerman</a></p>
-<h4 id="_6">💻 حالات الاستخدام:</h4>
-<ul>
-<li>
-<p>عندما تحتاج تصفح مفاتيح الريجستري يدويًا.</p>
-</li>
-<li>
-<p>استخراج بيانات مثل:</p>
-</li>
-<li>
-<p>معلومات الشبكات</p>
-</li>
-<li>
-<p>البرامج المثبتة</p>
-</li>
-<li>
-<p>إعدادات التشغيل</p>
-</li>
-<li>
-<p>ال Last Write Time</p>
-</li>
-</ul>
-<h4 id="_7">🛠️ خطوات الاستخدام</h4>
-<ol>
-<li>
-<p>قم بتحميل الأداة، فهي تأتي في صورة ملف ZIP.</p>
-</li>
-<li>
-<p>بعد فك الضغط، يجب التأكد من وجود <strong>.NET Framework 4.0</strong> لتشغيل الأداة.</p>
-</li>
-<li>
-<p>واجهة الأداة تشبه Regedit لكن بإمكانك تحديد <strong>ملف الريجستري</strong> يدويًا (offline hive).</p>
-</li>
-</ol>
-<h3 id="registry-file">🧪 خطوات تحليل Registry File</h3>
-<h5 id="dirty-hive">مشكلة <strong>Dirty Hive</strong>:</h5>
-<p>عند فتح ملفات مثل <code>NTUSER.DAT</code> أو <code>SOFTWARE</code>، قد تظهر رسالة:</p>
-<blockquote>
-<p>"The hive appears to be dirty… transaction logs missing."</p>
-</blockquote>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447400986/6cc0ac2d-40d8-4029-8393-35a7bba9ce06.png" align="center" fullwidth="false" /></p>
-<h4 id="ftk-imager">الحل باستخدام FTK Imager:</h4>
-<ul>
-<li>
-<p>فتح <strong>FTK Imager</strong></p>
-</li>
-<li>
-<p>تحديد مسار <code>NTUSER.DAT</code></p>
-</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447415088/3351a3b2-ea39-4577-9e27-b73d34079d54.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>استخراج <strong>الهايف</strong> مع ملفات <code>.LOG1</code>, <code>.LOG2</code>, و <code>.BLF</code></li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447432713/ce14c32f-2fec-48f4-9f0f-f845c36c7226.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>نقوم بعمل Export لهذه الملفات، ونضعها في مجلد العمل :</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447455747/765eeecd-38f9-4631-9430-53de22ff7a98.png" align="center" fullwidth="false" /></p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447460441/732d6940-fb94-4f14-9f5b-888649a06884.png" align="center" fullwidth="false" /></p>
-<h4 id="_8">✅ النتيجة:</h4>
-<ul>
-<li>
-<p>تم حل مشكلة الـ Dirty Hive.</p>
-</li>
-<li>
-<p>الأداة تعرض كل المفاتيح والقيم بدقة.</p>
-</li>
-<li>
-<p>تستطيع البحث داخل الريجستري عن أي مفتاح.</p>
-</li>
-</ul>
-<h3 id="_9">📌 الفائدة:</h3>
-<ul>
-<li>
-<p>بعد التحميل بنجاح، سنتمكن من رؤية جميع المفاتيح والقيم كما لو كنا داخل Regedit، ويمكن البحث عن القيم بسهولة.</p>
-</li>
-<li>
-<p>نعود لـ Registry Explorer ونقوم بعمل Load للهايف مرة أخرى مع اللوجات.</p>
-</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447496488/977e418d-d99c-421a-b3cd-e7ccf448755c.png" align="center" fullwidth="false" /></p>
-<pre><code class="language-css">- **Associated deleted records**  
-    سجلات تم حذفها ولكنها **مرتبطة بمفتاح معروف**، وعددها في هذه الحالة **0**.
-
-- **Unassociated deleted records**  
-    سجلات محذوفة وغير مرتبطة بأي مفتاح نشط، وعددها أيضًا **0**.
-
-- **Unassociated deleted values**  
-    القيم التي تم حذفها ولم تعد مرتبطة بأي مفتاح.
-</code></pre>
-<ul>
-<li>لكن البحث اليدوي قد يكون مرهق، لذلك ننتقل إلى أدوات تكميلية.</li>
-</ul>
-<hr />
-<h2 id="shellbags-explorer">🧳 <strong>ثانيًا: ShellBags Explorer</strong></h2>
-<h3 id="shellbags">✅ ما هي ShellBags؟</h3>
-<p>ال ShellBags عبارة عن مفاتيح داخل <code>NTUSER.DAT</code> و <code>USRCLASS.DAT</code> تُستخدم لتتبع:</p>
-<ul>
-<li>
-<p>المجلدات التي تم تصفحها</p>
-</li>
-<li>
-<p>شكل العرض (Details/List/Icons)</p>
-</li>
-<li>
-<p>توقيت آخر تصفح</p>
-</li>
-<li>
-<p>أسماء الأجهزة المتصلة</p>
-</li>
-<li>
-<p>سجلات MRU (Most Recently Used).</p>
-</li>
-</ul>
-<h3 id="_10">🛠️ خطوات الاستخدام:</h3>
-<ol>
-<li>
-<p>حمل ShellBags Explorer من موقع Eric Zimmerman.</p>
-</li>
-<li>
-<p>الأداة تحتاج أيضًا إلى .NET Framework.</p>
-</li>
-<li>
-<p>عند تشغيلها، يمكنك:</p>
-</li>
-<li>
-<p>تحليل <strong>Registry Live</strong> (جهازك الحالي)،</p>
-</li>
-<li>
-<p>أو اختيار <strong>Offline Hive</strong> مثل- <code>NTUSER.DAT</code> أو <code>USRCLASS.DAT</code></p>
-</li>
-</ol>
-<h4 id="_11">⚠️ تنبيه:</h4>
-<ul>
-<li>عند فتح ملفات مثل <code>SAM</code> أو <code>SYSTEM</code> باستخدام أداة <strong>ShellBags Explorer</strong>، قد تظهر رسائل خطأ مثل:</li>
-</ul>
-<blockquote>
-<p>"No MRU Bags found"\
-"Not a valid ShellBag Hive"</p>
-</blockquote>
-<ul>
-<li>
-<p>السبب في ذلك هو أن أداة <strong>ShellBags Explorer</strong> مخصصة لتحليل مفاتيح الريجستري المرتبطة ببيانات <strong>ShellBag</strong>، والتي تتواجد فقط داخل الملفات التالية: <code>NTUSER.DAT</code> , <code>USRCLASS.DAT</code></p>
-</li>
-<li>
-<p>أما الملفات مثل: <code>SAM</code> , <code>SYSTEM</code> ,<code>SECURITY</code> فهي تحتوي على معلومات مختلفة كليًا، مثل:</p>
-</li>
-<li>
-<p>بيانات المستخدمين</p>
-</li>
-<li>
-<p>كلمات المرور المشفرة</p>
-</li>
-<li>
-<p>إعدادات النظام</p>
-</li>
-</ul>
-<p>ولا تحتوي على المفاتيح <code>Shell\BagMRU</code> أو <code>Shell\Bags</code> التي تعتمد عليها أداة ShellBags Explorer في تحليلها.</p>
-<ul>
-<li>لذلك، عند محاولة فتح ملف غير مدعوم مثل <code>SAM</code> أو <code>SYSTEM</code>، لن تتمكن الأداة من العثور على المفاتيح المطلوبة، وتقوم بعرض رسالة تُفيد بأن الملف لا يحتوي على بيانات ShellBags.</li>
-</ul>
-<h3 id="_12">📁 ملاحظات:</h3>
-<ul>
-<li>
-<p>تعمل الأداة فقط مع: <code>NTUSER.DAT</code> , <code>USRCLASS.DAT</code></p>
-</li>
-<li>
-<p>إذا قمت بتحميل <code>SAM</code> أو <code>SYSTEM</code> لن تظهر بيانات ShellBags.</p>
-</li>
-</ul>
-<h3 id="_13">💡 مثال تطبيقي:</h3>
-<ul>
-<li>
-<p>فتحنا <code>NTUSER.DAT</code> الخاص بالمستخدم "أحمد".</p>
-</li>
-<li>
-<p>تم اكتشاف ملفات dirty وتم معالجتها باستخدام ملفات اللوج.</p>
-</li>
-<li>
-<p>ظهرت معلومات مثل:</p>
-</li>
-<li>
-<p>الأجهزة التي تم الاتصال بها مثل: جهاز بإسم <strong>IronMan</strong> أو <strong>BumbleBee</strong>.</p>
-</li>
-<li>
-<p>المجلدات التي تم استعراضها مثل: <code>SANS</code>, <code>iLearn Security</code>, <code>Work</code>.</p>
-</li>
-<li>
-<p>كلمات تم البحث عنها مثل: <code>forensics</code>, <code>Digital Forensics for Linux</code>, إلخ.</p>
-</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447513049/5f4c75f3-b258-4af1-94ec-3b0075c937d1.png" align="center" fullwidth="false" /></p>
-<blockquote>
-<p>قمت باخذ الصوره من اللاب المشروع في الكورس لاني عندما قمت بتنفيذ هذه الجزئيه بيدي على جهازي لم اجد شيئا مهما</p>
-</blockquote>
-<hr />
-<h2 id="regripper">🔍 <strong>ثالثًا: RegRipper</strong></h2>
-<h3 id="_14">✅ مقدمة</h3>
-<p>ال RegRipper أداة قوية تقوم بتحليل ملفات الريجستري بشكل أوتوماتيكي باستخدام <strong>Plugins جاهزة</strong>. تعمل على Windows وLinux، وتتوفر بنسختين:</p>
-<ul>
-<li>
-<p>Command Line =&gt; <code>rip.exe</code></p>
-</li>
-<li>
-<p>GUI (واجهة رسومية) =&gt; <code>rr.exe</code></p>
-</li>
-</ul>
-<h5 id="_15">📥 تحميل الأداة</h5>
-<ul>
-<li>
-<p>الأداة متاحة على <a href="https://github.com/keydet89/RegRipper3.0">GitHub</a>.</p>
-</li>
-<li>
-<p>يتم تحميلها على شكل ZIP ثم فك الضغط.</p>
-</li>
-</ul>
-<h3 id="_16">🛠️ خطوات الاستخدام:</h3>
-<h4 id="gui">عبر الـ GUI:</h4>
-<ol>
-<li>
-<p>افتح الأداة واختر الـ Hive الذي تريد تحليله مثل <code>SYSTEM</code> أو <code>NTUSER.DAT</code>.</p>
-</li>
-<li>
-<p>اختر أين تريد حفظ التقرير (مثلاً مجلد Reports).</p>
-</li>
-<li>
-<p>اضغط "Rip it" ليبدأ التحليل.</p>
-</li>
-</ol>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447535952/ebaf841c-8dc8-4304-8ffe-5a4c9a474607.png" align="center" fullwidth="false" /></p>
-<h4 id="cli">عبر الـ CLI:</h4>
-<ul>
-<li>
-<p>شغّل الملف <code>rip.exe</code>.</p>
-</li>
-<li>
-<p>حدّد الـ plugin المناسب والهَيف.</p>
-</li>
-</ul>
-<pre><code class="language-cs">rip.exe -r C:\Hive\NTUSER.DAT -f userassist &gt; report.txt
-</code></pre>
-<h3 id="_17">🧾 مثال على البيانات التي نستخرجها:</h3>
-<ul>
-<li>
-<p>معلومات الـ system:</p>
-</li>
-<li>
-<p>Boot Settings</p>
-</li>
-<li>
-<p>Backup/Restore Info</p>
-</li>
-<li>
-<p>قائمة البرامج التي تم تشغيلها.</p>
-</li>
-<li>
-<p>التايم لاين الخاص باستخدام النظام.</p>
-</li>
-</ul>
-<h3 id="_18">🧾 مخرجات الأداة:</h3>
-<ul>
-<li>
-<p>تقارير <code>.txt</code> تحتوي على تحليل مفصل حسب Plugin المستخدم.</p>
-</li>
-<li>
-<p>سهلة التصفح باستخدام Notepad++ أو grep في Linux. 📸 ده بيكون شكل التقرير :</p>
-</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760447544982/f22a4d78-f74a-4b96-93df-ba9e9da3bd3c.png" align="center" fullwidth="false" /></p>
-<h3 id="plugins">💡 أمثلة على Plugins:</h3>
-<ul>
-<li>
-<p>ال <code>userassist</code> → البرامج التي تم فتحها</p>
-</li>
-<li>
-<p>ال <code>services</code> → الخدمات النشطة في النظام</p>
-</li>
-<li>
-<p>ال <code>networklist</code> → الشبكات المتصلة</p>
-</li>
-<li>
-<p>ال <code>appcompatcache</code> → التطبيقات التي تم تشغيلها مسبقًا</p>
-</li>
-</ul>
-<hr />
-<h2 id="_19">🧠 <strong>نصائح مهمة أثناء التحليل</strong></h2>
-<table>
-<thead>
-<tr>
-<th>النصيحة</th>
-<th>الشرح</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>🔁 استخرج الـ Hive مع كل ملفاته</td>
-<td>خاصة ملفات <code>.LOG1</code>, <code>.LOG2</code>, <code>.BLF</code> لتجنب مشاكل الـ Dirty Hive</td>
-</tr>
-<tr>
-<td>🧪 لا تعمل على النسخة الأصلية</td>
-<td>اعمل دائمًا على <strong>نسخة من الملفات</strong></td>
-</tr>
-<tr>
-<td>🧰 استخدم الأدوات معًا</td>
-<td>Registry Explorer للبحث، ShellBags لهيستوري المستخدم، RegRipper للتقارير السريعة</td>
-</tr>
-<tr>
-<td>🕵️ ابحث في أكثر من مكان</td>
-<td>أحيانًا البيانات تكون في <code>USRCLASS.DAT</code> وليس <code>NTUSER.DAT</code> فقط</td>
-</tr>
-<tr>
-<td>📄 وثّق كل شيء</td>
-<td>ضع ملاحظات وتواريخ ونتائج في ملفات منفصلة للمراجعة</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="_20">✅ <strong>الملخص</strong></h2>
-<table>
-<thead>
-<tr>
-<th>الأداة</th>
-<th>الوظيفة الأساسية</th>
-<th>نوع الملفات</th>
-<th>أبرز الاستخدامات</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Registry Explorer</strong></td>
-<td>تصفح يدوي وتحليل كامل</td>
-<td>All Hives</td>
-<td>تحليل مفاتيح، قيم، المحذوفات، استرجاع البيانات</td>
-</tr>
-<tr>
-<td><strong>ShellBags Explorer</strong></td>
-<td>تتبع نشاط المستخدم</td>
-<td>NTUSER &amp; USRCLASS</td>
-<td>تحديد الأجهزة والمجلدات والتاريخ</td>
-</tr>
-<tr>
-<td><strong>RegRipper</strong></td>
-<td>تقارير أوتوماتيكية مفصلة</td>
-<td>All Hives</td>
-<td>تحليل شامل عبر Plugins متعددة</td>
 </tr>
 </tbody>
 </table>

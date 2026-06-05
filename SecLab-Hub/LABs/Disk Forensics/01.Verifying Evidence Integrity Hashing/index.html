@@ -2926,14 +2926,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (1)
+    OSINT   MITRE 1 (CyberHaze)
   
 
     
@@ -2954,14 +2954,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (2)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -2982,14 +2982,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 3 (CyberHaze)
   
 
     
@@ -3010,14 +3010,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+      <a href="../../OSINT/Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shadow Rat
+    Shadow Rat (CyberHaze)
   
 
     
@@ -5577,281 +5577,6 @@ $ sha512sum First\ Image.001
 </ul>
 <blockquote>
 <p>❗ If the hash matches the Windows-generated value, this proves the file <strong>has not been tampered with</strong>.</p>
-</blockquote>
-<hr />
-<h1 id="final-tips-recommendations">🧠 <strong>Final Tips &amp; Recommendations</strong></h1>
-<p>✅ Always use <strong>SHA-256</strong> or <strong>SHA-512</strong> only.\
-✅ Never work on the <strong>original copy</strong>.\
-✅ Make sure to <strong>record the hash</strong> in the forensic report, evidence label, and a digital copy.\
-⚠️ Avoid using <strong>MD5</strong> and <strong>SHA-1</strong>.\
-✅ Confirm the hash using <strong>multiple tools</strong> and <strong>across systems</strong>.</p>
-<hr />
-<h1 id="summary-table">🧾 <strong>Summary Table</strong></h1>
-<table>
-<thead>
-<tr>
-<th>Platform</th>
-<th>Tool(s)</th>
-<th>Security Level (with SHA-256)</th>
-<th>Recommendation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Windows</td>
-<td>HashCalc, QuickHash</td>
-<td>High</td>
-<td>✅ Yes</td>
-</tr>
-<tr>
-<td>Linux</td>
-<td>sha256sum (built-in)</td>
-<td>High</td>
-<td>✅ Yes</td>
-</tr>
-</tbody>
-</table>
-<p>✅ This simple process is one of the <strong>most important steps</strong> in verifying the <strong>integrity of digital evidence</strong>, and is a <strong>critical requirement</strong> in any digital forensic case.</p>
-<hr />
-<h2 id="_1">📌 <strong>مقدمة عامة</strong></h2>
-<p>في مجال <strong>التحقيقات الجنائية الرقمية</strong>، الحفاظ على <strong>سلامة الأدلة</strong> هو حجر الأساس لأي قضية ناجحة.\
-بعد أخذ نسخة رقمية (Forensic Image) من جهاز أو قرص، لا نعمل مباشرة على النسخة الأصلية، بل نقوم بتحليل <strong>نسخة Clone</strong> مطابقة لها تمامًا. لضمان أن هذه النسخة لم يتم التلاعب بها، نستخدم ما يُعرف بـ <strong>الهاش Hash</strong>.</p>
-<hr />
-<h2 id="hash">🧩 <strong>ما هو الهاش Hash؟</strong></h2>
-<p>الهاش هو <strong>بصمة رقمية فريدة</strong> يتم إنشاؤها لأي ملف. إذا تغيّر الملف ولو ببت واحد، فإن الهاش سيتغير كليًا.</p>
-<blockquote>
-<p>⛓️ في سياق التحقيقات الرقمية، الهاش يمثل دليلاً على أن الملف لم يتعرض لأي تعديل. يتم تسجيله ضمن ما يسمى بـ <strong>سلسلة حفظ الأدلة (Chain of Custody)</strong>.</p>
-</blockquote>
-<hr />
-<h2 id="_2">🎯 <strong>مراحل العمل على الأدلة الرقمية</strong></h2>
-<table>
-<thead>
-<tr>
-<th>المرحلة</th>
-<th>الشرح</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1️⃣ Acquisition</td>
-<td>استخراج صورة رقمية Bit-by-Bit من الجهاز الأصلي.</td>
-</tr>
-<tr>
-<td>2️⃣ Preservation</td>
-<td>الحفاظ على النسخة الأصلية دون تعديل.</td>
-</tr>
-<tr>
-<td>3️⃣ Hashing</td>
-<td>إثبات أن النسخة (Clone) مطابقة للأصل باستخدام الهاش.</td>
-</tr>
-<tr>
-<td>4️⃣ Analysis</td>
-<td>يتم على النسخة فقط، وليس الأصل.</td>
-</tr>
-<tr>
-<td>5️⃣ Reporting</td>
-<td>تسجيل كل شيء، خصوصًا الهاش، في تقرير رسمي.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="_3">🔁 <strong>لماذا نستخدم الهاش؟</strong></h2>
-<ul>
-<li>
-<p>للتحقق من أن نسخة الـ <strong>Clone</strong> مطابقة تمامًا للأصل.</p>
-</li>
-<li>
-<p>لكشف أي تعديل – حتى لو بسيط – على الملف.</p>
-</li>
-<li>
-<p>لإثبات صحة الدليل أمام المحكمة.</p>
-</li>
-</ul>
-<hr />
-<h2 id="_4">⚙️ <strong>أنواع خوارزميات الهاش المستخدمة</strong></h2>
-<table>
-<thead>
-<tr>
-<th>الخوارزمية</th>
-<th>الوضع الأمني</th>
-<th>التوصية</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>✅ SHA-256</td>
-<td>آمن جدًا</td>
-<td>موصى به</td>
-</tr>
-<tr>
-<td>✅ SHA-2</td>
-<td>آمن</td>
-<td>مقبول</td>
-</tr>
-<tr>
-<td>⚠️ SHA-1</td>
-<td>متوسط</td>
-<td>غير مفضل</td>
-</tr>
-<tr>
-<td>⚠️ MD5</td>
-<td>ضعيف</td>
-<td>غير آمن</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>❗ <strong>MD5 وSHA-1</strong> معرضتان لما يُعرف بـ <strong>Hash Collision</strong> – أي أن ملفين مختلفين قد يعطون نفس قيمة الهاش.</p>
-</blockquote>
-<hr />
-<h2 id="_5">⚖️ <strong>التصادم ومخاطره في القضايا</strong></h2>
-<ul>
-<li>
-<p>في حالات نادرة، قد تنتج <strong>نفس قيمة الهاش</strong> لملفين مختلفين.</p>
-</li>
-<li>
-<p>هذا قد يُستخدم في المحكمة للطعن في مصداقية الدليل.</p>
-</li>
-<li>
-<p>لذلك نفضل استخدام خوارزميات قوية (SHA-256).</p>
-</li>
-</ul>
-<hr />
-<h2 id="lab">🧪 <strong>التجربة العملية – Lab عملي</strong></h2>
-<h3 id="_6">🧮 <strong>أهداف اللاب:</strong></h3>
-<ul>
-<li>
-<p>إنشاء قيمة هاش لملف معين على نظامي Windows وLinux.</p>
-</li>
-<li>
-<p>التحقق من تطابق القيم الناتجة على كلا النظامين.</p>
-</li>
-</ul>
-<hr />
-<h2 id="windows">🪟 <strong>الجزء الأول: إنشاء هاش على Windows</strong></h2>
-<h3 id="_7">❗ ملحوظة:</h3>
-<p>Windows لا يحتوي على أداة مدمجة لحساب الهاش، لذلك سنستخدم أداة خارجية مثل <strong>HashCalc</strong>.</p>
-<h3 id="_8">✅ الخطوات:</h3>
-<ol>
-<li>
-<p>ابحث عن أداة <strong>HashCalc</strong> على الإنترنت.</p>
-</li>
-<li>
-<p>قم بتنزيلها وتثبيتها.</p>
-</li>
-<li>
-<p>افتح الأداة، وحدد:</p>
-</li>
-<li>
-<p><strong>Input Type:</strong> File</p>
-</li>
-</ol>
-<p>![[Pasted image 20250725171905.png]]</p>
-<ul>
-<li>
-<p><strong>File:</strong> اختر الملف (مثل: <code>evidence.img</code>)</p>
-</li>
-<li>
-<p><strong>Hash Type:</strong> SHA-256 فقط</p>
-</li>
-<li>
-<p>اضغط على <strong>Calculate</strong></p>
-</li>
-<li>
-<p>سيتم عرض الهاش الناتج. ![[Pasted image 20250725172259.png]]</p>
-</li>
-</ul>
-<blockquote>
-<p>✨ قم بتوثيق الهاش في مكان آمن (تقرير، سجل، نسخة رقمية).</p>
-</blockquote>
-<hr />
-<h2 id="linux">🐧 <strong>الجزء الثاني: إنشاء هاش على Linux</strong></h2>
-<h3 id="_9">✅ الأدوات المتوفرة مسبقًا:</h3>
-<pre><code class="language-bash">sansforensics@as: ~/DF/Images
-$ md5sum First\ Image.001
-53d3193fc1596f91f9fb6486d73986fa  First Image.001
-
-sansforensics@as: ~/DF/Images
-$ sha1sum First\ Image.001
-48a371c5054005ad8edf41272db2171d2743967c  First Image.001
-
-sansforensics@as: ~/DF/Images
-$ sha256sum First\ Image.001
-a9adc88a012a2de92c886de95b379b29e2ff2c6cb8ffc6af4ddea088b3193f8a  First Image.001
-
-sansforensics@as: ~/DF/Images
-$ sha512sum First\ Image.001
-0c99fcd51225448ec9948e749104a12c4ae68ef133a978049ec451bd09571d612103f9a469e45f737a81e35535acf31f48d7fcfadec7431f860f81127ee50d6a  First Image.001
-</code></pre>
-<h3 id="_10">📝 الخطوات:</h3>
-<ol>
-<li>
-<p>افتح التيرمنال.</p>
-</li>
-<li>
-<p>انتقل إلى مجلد الملف:</p>
-</li>
-</ol>
-<pre><code class="language-bash">cd /path/to/image/
-</code></pre>
-<ol>
-<li>احسب قيمة SHA-256:</li>
-</ol>
-<pre><code class="language-bash">sha256sum filename.img
-</code></pre>
-<ol>
-<li>سيتم عرض قيمة هاش طويلة.</li>
-</ol>
-<blockquote>
-<p>❗ إذا كانت القيمة مطابقة لقيمة Windows، فهذا يعني أن الملف لم يتم التلاعب به.</p>
-</blockquote>
-<hr />
-<h2 id="_11">🧠 <strong>نصائح وتوصيات ختامية</strong></h2>
-<ul>
-<li>
-<p>✅ دائمًا استخدم <strong>SHA-256 أو SHA-512</strong> فقط.</p>
-</li>
-<li>
-<p>✅ لا تعمل على النسخة الأصلية أبدًا.</p>
-</li>
-<li>
-<p>✅ تأكد من تسجيل الهاش في <strong>التقرير + بطاقة الدليل + نسخة رقمية</strong>.</p>
-</li>
-<li>
-<p>⚠️ تجنب استخدام MD5 وSHA-1.</p>
-</li>
-<li>
-<p>✅ تحقق من تطابق الهاش عبر أكثر من أداة ونظام.</p>
-</li>
-</ul>
-<hr />
-<h2 id="_12">🧾 <strong>الخلاصة</strong></h2>
-<table>
-<thead>
-<tr>
-<th>النظام</th>
-<th>الأداة</th>
-<th>مستوى الأمان</th>
-<th>التوصية</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Windows</td>
-<td>HashCalc, QuickHash</td>
-<td>مرتفع إذا استخدمنا SHA-256</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Linux</td>
-<td>sha256sum (مضمن تلقائيًا)</td>
-<td>مرتفع</td>
-<td>✅</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>✅ هذه العملية البسيطة تُمثل أحد أهم خطوات التحقق من <strong>سلامة الأدلة الرقمية</strong> وتُعد شرطًا أساسيًا في أي قضية جنائية رقمية.</p>
 </blockquote>
 
 

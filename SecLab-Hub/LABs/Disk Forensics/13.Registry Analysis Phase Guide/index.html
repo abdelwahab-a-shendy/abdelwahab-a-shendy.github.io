@@ -3107,14 +3107,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (1)
+    OSINT   MITRE 1 (CyberHaze)
   
 
     
@@ -3135,14 +3135,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (2)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -3163,14 +3163,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 3 (CyberHaze)
   
 
     
@@ -3191,14 +3191,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+      <a href="../../OSINT/Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shadow Rat
+    Shadow Rat (CyberHaze)
   
 
     
@@ -5987,285 +5987,6 @@ It contains details about user behavior and interactions with the system</p>
 </li>
 <li>
 <p>🧩 <strong>Check alternate registry paths</strong> for Windows 10/11 (some keys have changed)</p>
-</li>
-</ul>
-<hr />
-<hr />
-<hr />
-<h1 id="registry-analysis-guide-what-to-look-for-at-the-analysis-phase_1">🧠 <strong>Registry Analysis Guide – What to Look for at the Analysis Phase</strong></h1>
-<blockquote>
-<p>✅ <strong>الأدوات المستخدمة:</strong>\
-<code>Registry Explorer</code> | <code>ShellBags Explorer</code> | <code>RegRipper</code></p>
-</blockquote>
-<hr />
-<h2 id="_1">🎯 <strong>أولاً: هدف مرحلة التحليل</strong></h2>
-<p>بعد الحصول على ملفات الـ <strong>Registry Hives</strong>، نقوم بتحليلها لتجميع معلومات جنائية دقيقة تساعد في:</p>
-<ul>
-<li>
-<p>🧑‍💻 فهم <strong>سلوك المستخدم</strong></p>
-</li>
-<li>
-<p>⚙️ جمع <strong>معلومات عن النظام</strong></p>
-</li>
-<li>
-<p>🌐 كشف <strong>الاتصال بالشبكات</strong> أو الإنترنت</p>
-</li>
-<li>
-<p>💿 تحليل <strong>الأجهزة الخارجية</strong> المستخدمة (USBs)</p>
-</li>
-<li>
-<p>🧪 رصد <strong>أي نشاط مشبوه أو محاولة إخفاء أدلة</strong></p>
-</li>
-</ul>
-<hr />
-<h2 id="hive">🗂️ <strong>القسم الأول: التحليل حسب نوع ملف الـHive</strong></h2>
-<h3 id="1-system">📁 1. تحليل ملف <code>SYSTEM</code></h3>
-<table>
-<thead>
-<tr>
-<th>🔍 ماذا أبحث؟</th>
-<th>🧩 لماذا؟</th>
-<th>📁 المسار</th>
-<th>🛠️ الأداة</th>
-<th>🧪 ملاحظات تحليلية</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>🖥️ <strong>Computer Name</strong></td>
-<td>تحديد اسم الجهاز المرتبط بالأدلة</td>
-<td><code>ControlSet001\Control\ComputerName\ComputerName</code></td>
-<td>RegRipper: <code>compname</code></td>
-<td>مفيد في تتبع الأجهزة في شبكات كبيرة، وربطه بـ Network Logs</td>
-</tr>
-<tr>
-<td>⏰ <strong>Time Zone</strong></td>
-<td>تفسير التواريخ والـTimestamps</td>
-<td><code>ControlSet001\Control\TimeZoneInformation</code></td>
-<td><code>timezone</code></td>
-<td>قد يكشف تلاعب بالتاريخ، خصوصًا في سيناريوهات تغيير التوقيت للتضليل</td>
-</tr>
-<tr>
-<td>🌐 <strong>Network Interfaces</strong></td>
-<td>تحديد الشبكات المتصلة بالجهاز</td>
-<td><code>Services\Tcpip\Parameters\Interfaces</code></td>
-<td>يدوي أو RegRipper Plugin</td>
-<td>احرص على مقارنة IP الداخلي مع سجلات DHCP الخارجية أو ملفات الشبكة</td>
-</tr>
-<tr>
-<td>🔌 <strong>Mounted Devices</strong></td>
-<td>تتبع الأجهزة الخارجية المتصلة</td>
-<td><code>MountedDevices</code></td>
-<td><code>mountdev</code></td>
-<td>قد تحتوي على آثار لأقراص USB مشفرة أو أدوات اختراق مثل Kali Live USB</td>
-</tr>
-<tr>
-<td>📱 <strong>USBSTOR Artifacts</strong></td>
-<td>تتبع أجهزة USB المتصلة</td>
-<td><code>Enum\USBSTOR</code></td>
-<td>يدوي</td>
-<td>يكشف نوع الجهاز (مثلاً: "SanDisk", "iPhone") ويُستخدم لتحديد توقيت الاتصال بالتقريب</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="2-software">📁 2. تحليل ملف <code>SOFTWARE</code></h3>
-<table>
-<thead>
-<tr>
-<th>🔍 ماذا أبحث؟</th>
-<th>🧩 لماذا؟</th>
-<th>📁 المسار</th>
-<th>🛠️ الأداة</th>
-<th>🧪 ملاحظات تحليلية</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>💻 <strong>Installed Programs</strong></td>
-<td>معرفة ما تم تثبيته من أدوات/برامج</td>
-<td><code>Microsoft\Windows\CurrentVersion\Uninstall</code></td>
-<td><code>uninstall</code></td>
-<td>ابحث عن برامج مثل: <code>TeamViewer</code>, <code>AnyDesk</code>, <code>Wireshark</code>, <code>Tor</code>، أو أدوات اختراق</td>
-</tr>
-<tr>
-<td>🌐 <strong>Typed URLs (IE)</strong></td>
-<td>تحليل نشاط المستخدم على IE</td>
-<td><code>Microsoft\Internet Explorer\TypedURLs</code></td>
-<td><code>typedurls</code></td>
-<td>قد تجد مواقع دخول بريد، بنوك، صفحات استهداف</td>
-</tr>
-<tr>
-<td>🧭 <strong>Last Used Keys</strong></td>
-<td>تتبع ما استعرضه المستخدم في Regedit</td>
-<td><code>Applets\Regedit\LastKey</code></td>
-<td>يدوي / <code>recentdocs</code></td>
-<td>يدل على محاولة المستخدم تعديل أو رؤية مفاتيح حساسة في الريجستري</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="3-ntuserdat">📁 3. تحليل ملف <code>NTUSER.DAT</code></h3>
-<blockquote>
-<p>لكل مستخدم يوجد ملف <code>NTUSER.DAT</code> مختلف\
-يحتوي على معلومات تتعلق بسلوك المستخدم وتفاعله مع النظام</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>🔍 ماذا أبحث؟</th>
-<th>🧩 لماذا؟</th>
-<th>📁 المسار</th>
-<th>🛠️ الأداة</th>
-<th>🧪 ملاحظات تحليلية</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>📂 <strong>File MRUs (Recent Files)</strong></td>
-<td>تحليل الملفات التي تم فتحها مؤخرًا</td>
-<td><code>Office\&lt;ver&gt;\Word/Excel\File MRU</code></td>
-<td><code>officeMRU</code></td>
-<td>قد تتضمن مستندات بها بيانات سرية أو أدلة كتابة تقارير خبيثة</td>
-</tr>
-<tr>
-<td>▶️ <strong>Run MRU</strong></td>
-<td>البرامج التي تم تشغيلها يدويًا</td>
-<td><code>Explorer\RunMRU</code></td>
-<td><code>runmru</code></td>
-<td>أوامر مثل <code>cmd</code>, <code>powershell</code>, <code>nc.exe</code> قد تدل على أنشطة مشبوهة</td>
-</tr>
-<tr>
-<td>🔍 <strong>WordWheelQuery</strong></td>
-<td>الكلمات التي تم البحث عنها في النظام</td>
-<td><code>Explorer\WordWheelQuery</code></td>
-<td><code>wordwheel</code></td>
-<td>ابحث عن كلمات مثل "VPN", "delete logs", أو أسماء ملفات مثيرة</td>
-</tr>
-<tr>
-<td>🧳 <strong>ShellBags</strong></td>
-<td>معرفة المجلدات التي تم تصفحها</td>
-<td><code>Shell\BagMRU</code> و <code>ShellNoRoam</code></td>
-<td><code>ShellBags Explorer</code></td>
-<td>ShellBags تحتفظ بمعلومات حتى بعد حذف المجلدات – مفيدة جدًا في إثبات وجود دليل تم حذفه</td>
-</tr>
-<tr>
-<td>🔐 <strong>UserAssist</strong></td>
-<td>البرامج المفتوحة من خلال الواجهة الرسومية</td>
-<td><code>Explorer\UserAssist</code></td>
-<td><code>userassist</code></td>
-<td>يقوم النظام بتسجيل تشغيل معظم التطبيقات، حتى إن لم تظهر بوضوح</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="4-sam">📁 4. تحليل ملف <code>SAM</code></h3>
-<table>
-<thead>
-<tr>
-<th>🔍 ماذا أبحث؟</th>
-<th>🧩 لماذا؟</th>
-<th>📁 المسار</th>
-<th>🛠️ الأداة</th>
-<th>🧪 ملاحظات تحليلية</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>👥 <strong>User Accounts</strong></td>
-<td>جميع الحسابات على الجهاز</td>
-<td><code>SAM\Domains\Account\Users\Names</code></td>
-<td><code>samparse</code></td>
-<td>تحقق من الحسابات الغريبة أو الجديدة (مثال: <code>adm1n</code>, <code>test123</code>)</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="registry-forensics-checklist_1">🧾 قائمة مراجعة تحليل الريجستري (Registry Forensics Checklist)</h2>
-<table>
-<thead>
-<tr>
-<th>🔍 الملف</th>
-<th>🧠 نقاط أساسية للتحقق منها</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>SYSTEM</code></td>
-<td>ComputerName, TimeZone, Interfaces, Mounted Devices, USBSTOR</td>
-</tr>
-<tr>
-<td><code>SOFTWARE</code></td>
-<td>Installed Software, IE TypedURLs, Last Registry Keys</td>
-</tr>
-<tr>
-<td><code>NTUSER.DAT</code></td>
-<td>File MRU, RunMRU, WordWheel, ShellBags, UserAssist</td>
-</tr>
-<tr>
-<td><code>SAM</code></td>
-<td>User accounts, توقيت الإنشاء، الصلاحيات</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="_2">🔎 القسم الثاني: التحليل حسب النشاط أو السياق الجنائي</h2>
-<h3 id="_3">🧠 <strong>سلوك المستخدم</strong></h3>
-<ul>
-<li>
-<p>تنفيذ أوامر يدويًا (<code>RunMRU</code>)</p>
-</li>
-<li>
-<p>البحث داخل النظام (<code>WordWheelQuery</code>)</p>
-</li>
-<li>
-<p>الملفات المستخدمة مؤخرًا (Office MRU)</p>
-</li>
-<li>
-<p>تصفح المجلدات (Shellbags)</p>
-</li>
-<li>
-<p>البرامج المفتوحة عبر الواجهة (UserAssist)</p>
-</li>
-</ul>
-<h3 id="_4">🌐 <strong>التواصل مع الإنترنت والشبكات</strong></h3>
-<ul>
-<li>
-<p>ال TypedURLs → يظهر تاريخ التصفح</p>
-</li>
-<li>
-<p>ال Network Interfaces → يكشف الاتصال بـDHCP أو IP ثابت</p>
-</li>
-<li>
-<p>البرامج المثبتة → وجود VPNs أو أدوات تحويل IP</p>
-</li>
-</ul>
-<h3 id="usbphones">🔌 <strong>تحليل الأدوات المحمولة (USB/Phones)</strong></h3>
-<ul>
-<li>
-<p>ال MountedDevices → عرض ترتيب توصيل الأجهزة</p>
-</li>
-<li>
-<p>ال USBSTOR → يظهر أسماء الأجهزة، يمكن مقارنتها مع لقطات كاميرا مراقبة أو لوجات الشبكة</p>
-</li>
-</ul>
-<hr />
-<h2 id="_5">💡 نصائح ختامية للتحليل الذكي</h2>
-<ul>
-<li>
-<p>📋 <strong>جهّز قالب Timeline</strong> لربط الأدلة زمنيًا</p>
-</li>
-<li>
-<p>🔍 <strong>اربط الـSID</strong> لكل مستخدم مع اسمه الحقيقي</p>
-</li>
-<li>
-<p>🆚 <strong>قارن النتائج بين أكثر من أداة</strong> (RegRipper × Registry Explorer)</p>
-</li>
-<li>
-<p>📎 <strong>وثّق كل خطوة</strong> بالتاريخ والوقت والأداة المستخدمة</p>
-</li>
-<li>
-<p>🧩 <strong>راجع المفاتيح البديلة</strong> في حالات Windows 10 و11 (بعض المسارات تغيّرت)</p>
 </li>
 </ul>
 

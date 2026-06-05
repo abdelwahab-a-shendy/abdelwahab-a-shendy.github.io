@@ -3191,14 +3191,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%281%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (1)
+    OSINT   MITRE 1 (CyberHaze)
   
 
     
@@ -3219,14 +3219,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%282%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (2)
+    OSINT   MITRE 2 (CyberHaze)
   
 
     
@@ -3247,14 +3247,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/OSINT%20-%20MITRE%20%283%29/" class="md-nav__link">
+      <a href="../../OSINT/OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    OSINT   MITRE (3)
+    OSINT   MITRE 3 (CyberHaze)
   
 
     
@@ -3275,14 +3275,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OSINT/Shadow%20Rat/" class="md-nav__link">
+      <a href="../../OSINT/Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Shadow Rat
+    Shadow Rat (CyberHaze)
   
 
     
@@ -6181,309 +6181,6 @@ Always document the time zone that the system or user was operating in. An incor
 </li>
 <li>
 <p><strong>Understand each module</strong> before enabling it to save time and target evidence efficiently</p>
-</li>
-</ol>
-<hr />
-<hr />
-<h1 id="autopsy">🛠️ <strong>إنشاء قضية جديدة وإضافة مصدر بيانات في Autopsy – خطوة بخطوة مع الشرح الكامل</strong></h1>
-<h2 id="autopsy_1">🧭 <strong>مقدمة – لماذا Autopsy؟</strong></h2>
-<p><strong>Autopsy</strong> هي أداة مجانية ومفتوحة المصدر تُستخدم في تحليل الأدلة الرقمية.\
-تُعتبر واحدة من أقوى البدائل المجانية لأدوات مثل:</p>
-<ul>
-<li>
-<p><strong>FTK Imager</strong>: يستخدم لاستعراض الملفات وتحليلها لكنه محدود بدون رخصة مدفوعة.</p>
-</li>
-<li>
-<p><strong>EnCase</strong> و <strong>X-Ways</strong>: أدوات قوية لكن مكلفة.</p>
-</li>
-</ul>
-<p>💡 <strong>مميزات Autopsy</strong>:</p>
-<ul>
-<li>
-<p>واجهة رسومية سهلة (GUI).</p>
-</li>
-<li>
-<p>تحليل متعدد الأنواع (صور، ريجستري، متصفح، ملفات محذوفة...).</p>
-</li>
-<li>
-<p>يمكن استخدامها على Windows أو Linux (لكن واجهتها الرسومية أسهل على Windows).</p>
-</li>
-</ul>
-<hr />
-<h2 id="case-autopsy">🧱 <strong>مفهوم الـ Case في Autopsy</strong></h2>
-<p>كل تحقيق في Autopsy يبدأ بإنشاء "قضية - Case".</p>
-<h3 id="case">✅ لماذا نحتاج Case؟</h3>
-<ul>
-<li>
-<p>لأن Autopsy ينشئ قاعدة بيانات خاصة بكل قضية.</p>
-</li>
-<li>
-<p>يتم فيها حفظ كل:</p>
-</li>
-<li>
-<p>الأدلة (Evidence)</p>
-</li>
-<li>
-<p>التحليلات (Analysis results)</p>
-</li>
-<li>
-<p>التقارير النهائية (Reports)</p>
-</li>
-</ul>
-<hr />
-<h2 id="1">📁 <strong>الخطوة 1: إنشاء قضية جديدة</strong></h2>
-<p>عند فتح Autopsy لأول مرة:</p>
-<ol>
-<li>
-<p>اضغط على: <code>Create New Case</code></p>
-</li>
-<li>
-<p>أدخل البيانات التالية:</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>الحقل</th>
-<th>الشرح</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Case Name</strong></td>
-<td>اسم القضية (مثل: <code>Missing_Person</code>)</td>
-</tr>
-<tr>
-<td><strong>Base Directory</strong></td>
-<td>المكان الذي تريد حفظ ملف القضية فيه</td>
-</tr>
-<tr>
-<td><strong>Case Number</strong></td>
-<td>رقم فريد للقضية، يمكن أن يكون التاريخ</td>
-</tr>
-<tr>
-<td><strong>Examiner Name</strong></td>
-<td>اسم المحقق أو من يجري التحليل</td>
-</tr>
-<tr>
-<td><strong>Organization Name</strong></td>
-<td>اسم الجهة أو الشركة إن وجد</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>📌 <strong>نصيحة</strong>: اجعل أسماء القضايا مرتبة ومرقمة لتسهيل أرشفتها لاحقًا.</p>
-</blockquote>
-<hr />
-<h2 id="2-data-source">🧩 <strong>الخطوة 2: إضافة مصدر بيانات (Data Source)</strong></h2>
-<h3 id="data-source">💡 ما هو الـ Data Source؟</h3>
-<p>هو المصدر الذي يحتوي على البيانات التي نريد تحليلها، مثل:</p>
-<ul>
-<li>
-<p>صورة قرص (Disk Image)</p>
-</li>
-<li>
-<p>ملفات منطقية (Logical Files)</p>
-</li>
-<li>
-<p>هاتف محمول (Mobile Dump)</p>
-</li>
-</ul>
-<h4 id="_1">🧷 أنواع المصادر التي يمكن إضافتها:</h4>
-<table>
-<thead>
-<tr>
-<th>النوع</th>
-<th>الشرح</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Disk Image or VM File</strong></td>
-<td>صورة كاملة للهارد (مثل E01، DD، ISO) أو صورة نظام وهمي</td>
-</tr>
-<tr>
-<td><strong>Logical Files</strong></td>
-<td>ملفات منفردة أو مجلدات تم نسخها</td>
-</tr>
-<tr>
-<td><strong>Unallocated Space</strong></td>
-<td>المساحات غير المستخدمة في الهارد</td>
-</tr>
-<tr>
-<td><strong>Sparse Files</strong></td>
-<td>استخلاص جزئي للبيانات</td>
-</tr>
-<tr>
-<td><strong>Autopsy Log</strong></td>
-<td>ملفات سجل لمتابعة تحقيق سابق</td>
-</tr>
-</tbody>
-</table>
-<h3 id="_2">📌 <strong>نقطة مهمة جدًا</strong>:</h3>
-<ul>
-<li>يجب أن تعرف <strong>نوع الداتا</strong> التي لديك، وهل هي <strong>صورة كاملة للهارد</strong> أم مجرد ملفات.</li>
-</ul>
-<hr />
-<h2 id="3-host">🔐 <strong>الخطوة 3: تعريف الـ Host</strong></h2>
-<p>بعد اختيار نوع المصدر، يجب تعريف الـ Host (الجهاز المأخوذة منه البيانات):</p>
-<ul>
-<li>
-<p>يمكن أن يكون:</p>
-</li>
-<li>
-<p>كمبيوتر</p>
-</li>
-<li>
-<p>هاتف ذكي</p>
-</li>
-<li>
-<p>جهاز IoT</p>
-</li>
-<li>
-<p><strong>ضع اسم واضح له</strong> (مثل: <code>Laptop_MissingPerson</code>)</p>
-</li>
-</ul>
-<p>📌 <strong>معلومة مهمة في Digital Forensics</strong>:\
-كل جهاز يتم تحليله يُمثل كـ Host داخل الأداة، وده بيساعد على التوثيق وربط الأدلة بالجهاز.</p>
-<hr />
-<h2 id="4-time-zone">🕓 <strong>الخطوة 4: تحديد المنطقة الزمنية – Time Zone</strong></h2>
-<p>هذا الإعداد حرج جدًا!</p>
-<h3 id="_3">❗ لماذا مهم؟</h3>
-<p>لأن أغلب الأدلة الرقمية (Logs, Registry, Browsers…) تحتوي على <strong>أزمنة وأوقات</strong>.\
-تحديد التايم زون الصحيح يساعدك على بناء <strong>Timeline دقيق</strong> للأحداث.</p>
-<p>مثلاً:</p>
-<ul>
-<li>
-<p>متى تم فتح ملف معين؟</p>
-</li>
-<li>
-<p>متى زار المستخدم موقعًا ما؟</p>
-</li>
-<li>
-<p>متى تم توصيل USB؟</p>
-</li>
-</ul>
-<p>🧠 <strong>نصيحة جنائية</strong>:\
-احرص دائمًا على توثيق المنطقة الزمنية التي كانت تعمل بها الضحية أو الجهاز، لأن أي اختلاف فيها ممكن يؤدي إلى نتائج تحليل خاطئة.</p>
-<hr />
-<h2 id="5-hash-value">🔍 <strong>الخطوة 5: إدخال Hash Value (اختياري لكن مهم)</strong></h2>
-<p>لو كان عندك Hash لقطة القرص (MD5 أو SHA1)، ضعه هنا.</p>
-<h3 id="_4">✅ فائدته:</h3>
-<ul>
-<li>
-<p>التحقق من سلامة الـ Image.</p>
-</li>
-<li>
-<p>التأكد من أن البيانات لم تتغير أثناء النسخ أو التحميل.</p>
-</li>
-</ul>
-<hr />
-<h2 id="6-ingest-modules">🧪 <strong>الخطوة 6: اختيار التحليلات – Ingest Modules</strong></h2>
-<p>Autopsy يحتوي على عدد من <strong>Modules جاهزة للتحليل</strong>، مثل:</p>
-<table>
-<thead>
-<tr>
-<th>الموديول</th>
-<th>وظيفته</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Recent Activity</strong></td>
-<td>عرض الأنشطة الأخيرة للمستخدم</td>
-</tr>
-<tr>
-<td><strong>Web Artifacts</strong></td>
-<td>استخراج سجل التصفح والكوكيز</td>
-</tr>
-<tr>
-<td><strong>Extract Registry</strong></td>
-<td>تحليل الريجستري</td>
-</tr>
-<tr>
-<td><strong>File Type Identification</strong></td>
-<td>تحديد نوع الملفات</td>
-</tr>
-<tr>
-<td><strong>Keyword Search</strong></td>
-<td>البحث داخل الملفات</td>
-</tr>
-<tr>
-<td><strong>Email Parser</strong></td>
-<td>تحليل البريد الإلكتروني</td>
-</tr>
-<tr>
-<td><strong>Photo Analyzer</strong></td>
-<td>استخراج وتحليل الصور</td>
-</tr>
-</tbody>
-</table>
-<p>✅ <strong>نصيحة عملية</strong>:</p>
-<ul>
-<li>
-<p>لو حجم الـ Image صغير → فعّل كل الموديولز.</p>
-</li>
-<li>
-<p>لو كبير → فعّل فقط اللي أنت محتاجه.</p>
-</li>
-</ul>
-<hr />
-<h2 id="analysis-phase">🚀 <strong>الخطوة الأخيرة: بدء التحليل (Analysis Phase)</strong></h2>
-<p>بعد ضبط كل الإعدادات:</p>
-<ol>
-<li>
-<p>اضغط على <code>Finish</code></p>
-</li>
-<li>
-<p>ستبدأ عملية التحليل تلقائيًا، وسيظهر <strong>Progress Bar</strong></p>
-</li>
-<li>
-<p>لا تغلق Autopsy حتى تنتهي العملية</p>
-</li>
-</ol>
-<hr />
-<h2 id="_5">📊 <strong>أين تُحفظ النتائج؟</strong></h2>
-<p>كل ما يتم استخراجه (Artifacts, Reports, Logs...) يُحفظ داخل:</p>
-<ul>
-<li>
-<p>قاعدة بيانات Autopsy.</p>
-</li>
-<li>
-<p>فولدر الكيس الذي تم إنشاؤه في البداية.</p>
-</li>
-</ul>
-<hr />
-<h2 id="_6">⏱️ <strong>ماذا بعد التحليل؟</strong></h2>
-<p>بعد الانتهاء، يمكنك:</p>
-<ul>
-<li>
-<p>عرض نتائج تصفح الإنترنت.</p>
-</li>
-<li>
-<p>استعراض ملفات تم حذفها.</p>
-</li>
-<li>
-<p>تصدير تقرير نهائي احترافي.</p>
-</li>
-<li>
-<p>تتبع Timeline للأحداث.</p>
-</li>
-</ul>
-<hr />
-<h2 id="df">🧠 ملاحظات وتحليلات مهمة جدًا لك كدارس DF:</h2>
-<ol>
-<li>
-<p><strong>توثيق كل خطوة مهم</strong> – خاصةً وقت الاستخراج، التايم زون، والتحقق من سلامة البيانات.</p>
-</li>
-<li>
-<p><strong>التحليل مبني على Evidence Integrity</strong> – لو البيانات اتغيرت، التحليل كله يبقى غير موثوق.</p>
-</li>
-<li>
-<p><strong>استعد للسيناريوهات المتنوعة</strong> – مرات هيكون عندك Image، وأحيانًا مجرد ملفات.</p>
-</li>
-<li>
-<p><strong>فهم معنى كل موديول</strong> قبل تفعيله بيساعدك توفر وقت وتستهدف الدليل بشكل دقيق.</p>
 </li>
 </ol>
 
