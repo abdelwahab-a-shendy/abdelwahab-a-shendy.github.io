@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LABs/OSINT/0.Some info in MITRE.md",
+                "file": "LABs/Malware/Follina.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0.Some info in MITRE"
+              "title": "Follina"
             }
           }
         ]
@@ -185,8 +185,11 @@
   },
   "active": "0324fb2c155c81c2",
   "lastOpenFiles": [
-    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
+    "LABs/Phishing Investigation/Phishing Analysis (BTLO).md",
+    "LABs/Malware/Follina.md",
+    "LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze).md",
     "LABs/OSINT/0.Some info in MITRE.md",
+    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
     "LABs/Disk Forensics/09.Data Source Analysis Autopsy.md",
     "LABs/Disk Forensics/10.Firefox Artifacts Extraction.md",
     "LABs/Disk Forensics/11.Linux os forensics Analysis.md",
@@ -206,13 +209,10 @@
     "LABs/OSINT/Shadow Rat (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
-    "LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze).md",
     "SIEM & SOAR Integration HOME LAB/00.Pre Lab Overview.md",
     "Photos/OSINT_MITRE_2_CYBERHAZE.svg",
     "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
     "LABs/Phishing Investigation/Phishing Response Playbook.md",
-    "LABs/Phishing Investigation/Paypal Phishing Investigation (LetsDefend).md",
-    "LABs/WIN Server/10-post-domain-join-steps.md",
     "LABs/OSINT",
     "LABs/WIN Server",
     "LABs/Threat Hunting",
