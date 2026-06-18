@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/LABs/Threat%20Hunting/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/">
+        <link rel="canonical" href="https://abdelwahab-ahmed-shandy.github.io/SecLab-Hub/LABs/Threat%20Intelligence/Qradar101%20%28SIEM%29/">
       
       
-        <link rel="prev" href="../../Stego%20Forensics/WOW%20SO%20META%20%28CTF%20Learn%29/">
+        <link rel="prev" href="../Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/">
       
       
-        <link rel="next" href="../Qradar101%20%28SIEM%29/">
+        <link rel="next" href="../The%20Report%20%28BTLO%29/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Boss Of The Soc BOTsV1 Scenario1 (SPLUNK) - AAS Security Labs Docs</title>
+        <title>Qradar101 (SIEM) - AAS Security Labs Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#web-site-defacement" class="md-skip">
+        <a href="#category-threat-hunting" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Boss Of The Soc BOTsV1 Scenario1 (SPLUNK)
+              Qradar101 (SIEM)
             
           </span>
         </div>
@@ -4875,7 +4875,7 @@
   <span class="md-ellipsis">
     
   
-    Threat Hunting
+    Threat Intelligence
   
 
     
@@ -4891,7 +4891,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Threat Hunting
+    Threat Intelligence
   
 
           </label>
@@ -4901,19 +4901,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/" class="md-nav__link">
         
   
   
@@ -4929,6 +4920,474 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qradar101 (SIEM)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qradar101 (SIEM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#category-threat-hunting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category : Threat Hunting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category : Threat Hunting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cyberdefenders-write-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CyberDefenders : Write up
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#siem-threathunting-ibm-qradar-cyberdefenders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIEM ThreatHunting IBM QRadar CyberDefenders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyberdefenders-qradar101-blue-team-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CyberDefenders : Qradar101 Blue Team Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Details :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-we-will-prepare-the-network-for-the-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First we will prepare the network for the machines:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let’s get started :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Let’s get started :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1how-many-log-sources-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (1)How many log sources available?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2what-is-the-ids-software-used-to-monitor-the-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (2)What is the IDS software used to monitor the network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-is-the-domain-name-used-in-the-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (3) What is the domain name used in the network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-multiple-ips-were-communicating-with-the-malicious-server-one-of-them-ends-with-20-provide-the-full-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (4) Multiple IPs were communicating with the malicious server. One of them ends with “20”. Provide the full IP ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-what-is-the-sid-of-the-most-frequent-alert-rule-in-the-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (5) What is the SID of the most frequent alert rule in the dataset?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-what-is-the-attackers-ip-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (6) What is the attacker’s IP address?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-the-attacker-was-searching-for-data-belonging-to-one-of-the-companys-projects-can-you-find-the-name-of-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (7) The attacker was searching for data belonging to one of the company’s projects, can you find the name of the project ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-what-is-the-ip-address-of-the-first-infected-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (8) What is the IP address of the first infected machine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-what-is-the-username-of-the-infected-employee-using-1921681015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (9) What is the username of the infected employee using 192.168.10.15 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-hackers-do-not-like-logging-what-logging-was-the-attacker-checking-to-see-if-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (10) Hackers do not like logging, what logging was the attacker checking to see if enabled ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-name-of-the-second-system-the-attacker-targeted-to-cover-up-the-employee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (11) Name of the second system the attacker targeted to cover up the employee ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-when-was-the-first-malicious-connection-to-the-domain-controller-log-start-time-hhmmss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (12) When was the first malicious connection to the domain controller (log start time — hh:mm:ss)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-is-the-md5-hash-of-the-malicious-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (13) What is the md5 hash of the malicious file?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-what-is-the-mitre-persistence-technique-id-used-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (14) What is the MITRE persistence technique ID used by the attacker?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-what-protocol-is-used-to-perform-host-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (15) What protocol is used to perform host discovery?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-what-is-the-email-service-used-by-the-companyone-word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (16) What is the email service used by the company?(one word)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-what-is-the-name-of-the-malicious-file-used-for-the-initial-infection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (17) What is the name of the malicious file used for the initial infection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-what-is-the-name-of-the-new-account-added-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (18) What is the name of the new account added by the attacker ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-what-is-the-pid-of-the-process-that-performed-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (19) What is the PID of the process that performed injection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-what-is-the-name-of-the-tool-used-for-lateral-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (20) What is the name of the tool used for lateral movement ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-attacker-exfiltrated-one-file-what-is-the-name-of-the-tool-used-for-exfiltration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (21) Attacker exfiltrated one file, what is the name of the tool used for exfiltration ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-who-is-the-other-legitimate-domain-admin-other-than-the-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (22) Who is the other legitimate domain admin other than the administrator ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23the-attacker-used-the-host-discovery-technique-to-know-how-many-hosts-available-in-a-certain-network-what-is-the-network-the-hacker-scanned-from-the-host-ip-1-to-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (23)The attacker used the host discovery technique to know how many hosts available in a certain network, what is the network the hacker scanned from the host IP 1 to 30 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24what-is-the-name-of-the-employee-who-hired-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (24)What is the name of the employee who hired the attacker ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(24)What is the name of the employee who hired the attacker ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abdelwahab_shandy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abdelwahab_Shandy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#as_cyber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AS_Cyber
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4942,14 +5401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../Qradar101%20%28SIEM%29/" class="md-nav__link">
+      <a href="../The%20Report%20%28BTLO%29/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Qradar101 (SIEM)
+    The Report - Blue Team Labs Online
   
 
     
@@ -5418,8 +5877,412 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#category-threat-hunting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Category : Threat Hunting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category : Threat Hunting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cyberdefenders-write-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CyberDefenders : Write up
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#siem-threathunting-ibm-qradar-cyberdefenders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIEM ThreatHunting IBM QRadar CyberDefenders
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cyberdefenders-qradar101-blue-team-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CyberDefenders : Qradar101 Blue Team Challenge
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Details :
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenge-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenge Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-we-will-prepare-the-network-for-the-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First we will prepare the network for the machines:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Let’s get started :
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Let’s get started :">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1how-many-log-sources-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (1)How many log sources available?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2what-is-the-ids-software-used-to-monitor-the-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (2)What is the IDS software used to monitor the network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-what-is-the-domain-name-used-in-the-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (3) What is the domain name used in the network?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-multiple-ips-were-communicating-with-the-malicious-server-one-of-them-ends-with-20-provide-the-full-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (4) Multiple IPs were communicating with the malicious server. One of them ends with “20”. Provide the full IP ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-what-is-the-sid-of-the-most-frequent-alert-rule-in-the-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (5) What is the SID of the most frequent alert rule in the dataset?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-what-is-the-attackers-ip-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (6) What is the attacker’s IP address?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-the-attacker-was-searching-for-data-belonging-to-one-of-the-companys-projects-can-you-find-the-name-of-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (7) The attacker was searching for data belonging to one of the company’s projects, can you find the name of the project ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-what-is-the-ip-address-of-the-first-infected-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (8) What is the IP address of the first infected machine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-what-is-the-username-of-the-infected-employee-using-1921681015" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (9) What is the username of the infected employee using 192.168.10.15 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-hackers-do-not-like-logging-what-logging-was-the-attacker-checking-to-see-if-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (10) Hackers do not like logging, what logging was the attacker checking to see if enabled ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-name-of-the-second-system-the-attacker-targeted-to-cover-up-the-employee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (11) Name of the second system the attacker targeted to cover up the employee ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-when-was-the-first-malicious-connection-to-the-domain-controller-log-start-time-hhmmss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (12) When was the first malicious connection to the domain controller (log start time — hh:mm:ss)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-is-the-md5-hash-of-the-malicious-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (13) What is the md5 hash of the malicious file?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-what-is-the-mitre-persistence-technique-id-used-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (14) What is the MITRE persistence technique ID used by the attacker?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-what-protocol-is-used-to-perform-host-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (15) What protocol is used to perform host discovery?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-what-is-the-email-service-used-by-the-companyone-word" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (16) What is the email service used by the company?(one word)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-what-is-the-name-of-the-malicious-file-used-for-the-initial-infection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (17) What is the name of the malicious file used for the initial infection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18-what-is-the-name-of-the-new-account-added-by-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (18) What is the name of the new account added by the attacker ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19-what-is-the-pid-of-the-process-that-performed-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (19) What is the PID of the process that performed injection ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#20-what-is-the-name-of-the-tool-used-for-lateral-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (20) What is the name of the tool used for lateral movement ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#21-attacker-exfiltrated-one-file-what-is-the-name-of-the-tool-used-for-exfiltration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (21) Attacker exfiltrated one file, what is the name of the tool used for exfiltration ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-who-is-the-other-legitimate-domain-admin-other-than-the-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (22) Who is the other legitimate domain admin other than the administrator ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23the-attacker-used-the-host-discovery-technique-to-know-how-many-hosts-available-in-a-certain-network-what-is-the-network-the-hacker-scanned-from-the-host-ip-1-to-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (23)The attacker used the host discovery technique to know how many hosts available in a certain network, what is the network the hacker scanned from the host IP 1 to 30 ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24what-is-the-name-of-the-employee-who-hired-the-attacker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (24)What is the name of the employee who hired the attacker ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(24)What is the name of the employee who hired the attacker ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#abdelwahab_shandy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abdelwahab_Shandy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#as_cyber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AS_Cyber
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -5436,867 +6299,247 @@
 
 
 
-<hr />
-<h1 id="web-site-defacement"><strong>Web site defacement</strong></h1>
-<p><strong>Scenario:</strong></p>
-<ul>
-<li>
-<p>Today is the first day for <strong>Alice</strong> at the Security Operations Center (SOC) of <strong>Wayne Enterprises</strong>.</p>
-</li>
-<li>
-<p>The manager <strong>Lucius</strong> gave her a first task: to verify a report from the <strong>Gotham City Police Department (GCPD)</strong>. The report indicates that the site <a href="http://www.imreallynotbatman.com"><code>www.imreallynotbatman.com</code></a> (which is the personal blog of the company’s CEO) has been <strong>compromised</strong>.</p>
-</li>
-<li>
-<p>The hacker group has multiple objectives, but <strong>their main goal</strong> is <strong>Website Defacement</strong> to embarrass the victims.</p>
-</li>
-<li>
-<p>Alice is required to confirm whether the site has indeed been <strong>hacked</strong> or not.</p>
-</li>
-<li>
-<p>The attackers used a Scanner, then Brute Force, then uploaded Malware, and finally performed a Defacement.</p>
-</li>
-<li>
-<p>In short: <strong>the task is to investigate a website compromise and determine whether it was defaced by a hacker group, using analysis tools such as Splunk.</strong></p>
-</li>
-</ul>
-<hr />
-<h1 id="before-any-analysis-some-important-basics-to-know"><strong>Before Any Analysis – Some Important Basics to Know</strong></h1>
-<p>In Wireshark, we look at <strong>Statistics, Follow TCP Stream, or Endpoints</strong>, and in Splunk we focus on <strong>Logs and Events</strong> from servers and websites.</p>
-<h4 id="1-splunk-basics-the-essentials"><strong>1️⃣ Splunk Basics – The Essentials</strong></h4>
-<p><strong>Splunk</strong> is a tool for collecting, analyzing, and visualizing data from various sources (logs, network data, application events…).</p>
-<h4 id="core-components"><strong>Core Components:</strong></h4>
-<ul>
-<li>
-<p><strong>Search Head</strong></p>
-</li>
-<li>
-<p>The place where you perform searches (queries) on the data.</p>
-</li>
-<li>
-<p>Similar to Wireshark when you click “Statistics” or “Follow TCP stream” but for logs.</p>
-</li>
-<li>
-<p><strong>Indexers</strong></p>
-</li>
-<li>
-<p>Stores all the data after <strong>indexing</strong> the logs so that searching is fast.</p>
-</li>
-<li>
-<p><strong>Forwarders</strong></p>
-</li>
-<li>
-<p>Programs or agents that send logs from servers to Splunk.</p>
-</li>
-<li>
-<p>Similar to sniffing in Wireshark but for logs instead of packets.</p>
-</li>
-<li>
-<p><strong>User Interface (UI)</strong></p>
-</li>
-<li>
-<p>The interface where you view results, dashboards, reports…</p>
-</li>
-</ul>
-<hr />
-<h1 id="2-basic-search-terms"><strong>2️⃣ Basic Search Terms</strong></h1>
-<p>Almost everything in Splunk starts with searching for data.</p>
-<h4 id="common-splunk-queries"><strong>Common Splunk Queries</strong></h4>
-<ol>
-<li>
-<p><code>search</code></p>
-</li>
-<li>
-<p>Search for keywords or events.</p>
-</li>
-<li>
-<p>Example:</p>
-<p><code>index=web_logs host="</code><a href="http://www.imreallynotbatman.com"><code>www.imreallynotbatman.com</code></a><code>"</code></p>
-<p>This retrieves all events related to this website.</p>
-</li>
-<li>
-<p><code>dedup</code></p>
-</li>
-<li>
-<p>Remove duplicates.</p>
-</li>
-<li>
-<p>Example:</p>
-<p><code>... | dedup clientip</code></p>
-<p>Ensures each IP appears only once.</p>
-</li>
-<li>
-<p><code>table</code></p>
-</li>
-<li>
-<p>Display the columns you want in an organized way.</p>
-</li>
-<li>
-<p>Example:</p>
-<p><code>... | table _time, clientip, status, uri</code></p>
-</li>
-<li>
-<p><code>sort</code></p>
-</li>
-<li>
-<p>Sort results based on a chosen column.</p>
-</li>
-<li>
-<p>Example:</p>
-<p><code>... | sort -_time</code></p>
-<p>Displays the newest events first.</p>
-</li>
-<li>
-<p><code>regex</code></p>
-</li>
-<li>
-<p>Filter using regular expressions.</p>
-</li>
-<li>
-<p>Example:</p>
-<p><code>... | regex uri="/admin"</code></p>
-<p>Focuses on requests that attempted to access <code>/admin</code>.</p>
-</li>
-<li>
-<p><code>stats values</code></p>
-</li>
-<li>
-<p>Calculate statistics for different fields.</p>
-</li>
-<li>
-<p>Example:</p>
-<p><code>... | stats values(uri) by clientip</code></p>
-<p>Shows all URLs that each IP tried to access.</p>
-</li>
-<li>
-<p><code>count</code></p>
-</li>
-<li>
-<p>Count the number of events.</p>
-</li>
-<li>
-<p>Example:</p>
-<p><code>... | stats count by clientip</code></p>
-<p>Highlights which IP performed the most <strong>brute-force</strong> or unusual attempts.</p>
-</li>
-</ol>
-<hr />
-<h1 id="now-we-have-some-points-we-can-build-on"><strong>Now we have some points we can build on:</strong></h1>
-<ul>
-<li>
-<p>We have <strong>13 questions</strong> that need to be answered with <strong>screenshots</strong>, mentioning <strong>reasons and details</strong>:</p>
-</li>
-<li>
-<p>What is the IP address of our web server?</p>
-</li>
-<li>
-<p>What is the likely IPv4 address of someone from the Po1s0n1vy group scanning <a href="http://imreallynotbatman.com">imreallynotbatman.com</a> for web application vulnerabilities?</p>
-</li>
-<li>
-<p>What company created the web vulnerability scanner used by Po1s0n1vy?</p>
-</li>
-<li>
-<p>What content management system is <a href="http://imreallynotbatman.com">imreallynotbatman.com</a> using?</p>
-</li>
-<li>
-<p>What is the content management system imreallynotbatman using?</p>
-</li>
-<li>
-<p>What address is performing the brute-forcing attack against our website?</p>
-</li>
-<li>
-<p>What was the correct password for the content management system running <a href="http://imreallynotbatman.com">imreallynotbatman.com</a>?</p>
-</li>
-<li>
-<p>After successful exploitation, what is the uploaded malicious software?</p>
-</li>
-<li>
-<p>Mention some internal discovery command lines that were used?</p>
-</li>
-<li>
-<p>What is the name of the file that defaced the <a href="http://imreallynotbatman.com">imreallynotbatman.com</a> website?</p>
-</li>
-<li>
-<p>What fully qualified domain name (FQDN) is associated with this attack?</p>
-</li>
-</ul>
-<hr />
-<h2 id="1-what-is-the-ip-address-of-our-web-server">1. <strong>What is the IP address of our web server?</strong></h2>
-<h4 id="analysis"><strong>Analysis:</strong></h4>
-<ul>
-<li>Used the Splunk query:</li>
-</ul>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http | stats count by src_ip
-</code></pre>
+<p>CyberDefenders</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760456023066/fd4a8a70-a352-4f32-93f8-130e65f857d6.webp" align="center" fullwidth="false" /></p>
+<h3 id="category-threat-hunting">Category : Threat Hunting</h3>
+<h4 id="cyberdefenders-write-up">CyberDefenders : Write up</h4>
+<h4 id="siem-threathunting-ibm-qradar-cyberdefenders">SIEM ThreatHunting IBM QRadar CyberDefenders</h4>
+<h4 id="cyberdefenders-qradar101-blue-team-challenge">CyberDefenders : <a href="https://cyberdefenders.org/blueteam-ctf-challenges/39#nav-questions">Qradar101</a> Blue Team Challenge</h4>
 <blockquote>
+<h3 id="details">Details :</h3>
+<p>Instructions:</p>
 <ul>
 <li>
-<p>This query retrieves all HTTP requests related to the site <a href="http://imreallynotbatman.com"><code>imreallynotbatman.com</code></a> from the <code>botsv1</code> index and counts the number of requests per source IP.</p>
+<p>This challenge is designed to work with <strong>VirtualBox</strong>. Download challenge VM and uncompress it using the password ‘cyberdefenders.org’</p>
 </li>
 <li>
-<p>Useful to identify who interacted most with the server or attempted scanning, brute-force, or any abnormal activity.</p>
+<p>Please make sure to watch the instructional video under the <strong>Walkthroughs</strong> section.</p>
+</li>
+<li>
+<p>Make sure you have a host-only subnet within the following IP range <strong>192.168.20.0/24</strong>.</p>
+</li>
+<li>
+<p>Assign the proper network adapter (192.168.20.0/24) to the VM before starting it.</p>
+</li>
+<li>
+<p>Wait for some minutes after the import completes then visit: https\://192.168.20.21/.</p>
+</li>
+<li>
+<p>Challenge credentials: <strong>QRadar Dashboard</strong>: admin:Admin\@123 — <strong>SSH</strong>: root:cyberdefenders</p>
+</li>
+<li>
+<p>In case you face a license issue, please go to &gt; License Pool Management. Edit and set eps &gt; 0 and edit the FPM and set it to 0. This will ensure you will not have a license problem.</p>
+</li>
+<li>
+<p><strong>Hardware Requirements</strong>: 8GB of memory and 65GB of disk space.</p>
 </li>
 </ul>
 </blockquote>
-<ul>
-<li>Results shown in Statistics:</li>
-</ul>
-<pre><code class="language-bash">src_ip          count
-23.22.63.114    1236
-40.80.148.42    20932
-</code></pre>
-<h5 id="observation"><strong>Observation:</strong></h5>
-<ul>
-<li>
-<p>We have <strong>src_ip</strong>: 23.22.63.114 and 40.80.148.42.</p>
-</li>
-<li>
-<p>But inspecting the HTTP headers in the logs shows <strong>Host:</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a> and the <code>dest_ip</code> is: <strong>192.168.250.70</strong>.</p>
-</li>
-<li>
-<p>The server responds with <code>Server: Microsoft-IIS/8.5</code>, indicating that the internal server is the <strong>destination IP</strong>.</p>
-</li>
-</ul>
-<h5 id="reason"><strong>Reason:</strong></h5>
-<ul>
-<li>
-<p><code>src_ip</code> in Splunk represents the <strong>source that sent the request</strong>, not the server itself.</p>
-</li>
-<li>
-<p>The actual server is located in the <code>dest_ip</code> field: <strong>192.168.250.70</strong>.</p>
-</li>
-</ul>
-<h5 id="answer">✅ <strong>Answer:</strong></h5>
-<ul>
-<li>
-<p><strong>IP address of the web server:</strong> <code>192.168.250.70</code></p>
-</li>
-<li>
-<p><strong>Evidence:</strong> <code>dest_ip</code> in HTTP logs and response headers from Splunk.</p>
-</li>
-</ul>
-<hr />
-<h2 id="2-what-is-the-likely-ipv4-address-of-someone-from-the-po1s0n1vy-group-scanning-imreallynotbatmancom-for-web-application-vulnerabilities">2. <strong>What is the likely IPv4 address of someone from the Po1s0n1vy group scanning</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a> <strong>for web application vulnerabilities?</strong></h2>
-<p>Since the attackers used a scanner, then brute force, then uploaded malware, and finally performed defacement, we can deduce that the brute force came from the likely IPv4 of a Po1s0n1vy member probing <a href="http://imreallynotbatman.com"><code>imreallynotbatman.com</code></a> for web application vulnerabilities.</p>
-<p>Given this is a web server, the brute force likely targeted admin/login pages, preceded by scanning, resulting in high request counts.</p>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http | stats count by src_ip
-</code></pre>
-<blockquote>
-<ul>
-<li>
-<p><strong>index="botsv1"</strong> → Searching in the BOTS V1 index.</p>
-</li>
-<li>
-<p><a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a> → Filter for traffic to/from this domain.</p>
-</li>
-<li>
-<p><strong>sourcetype=stream:http</strong> → Only HTTP traffic.</p>
-</li>
-<li>
-<p><strong>| stats count by src_ip</strong> → Count requests from each IP to see who generated the most traffic.</p>
-</li>
-</ul>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>src_ip</th>
-<th>count</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>23.22.63.114</td>
-<td>1236</td>
-</tr>
-<tr>
-<td><strong>40.80.148.42</strong></td>
-<td><strong>20932</strong></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>🔹 <code>40.80.148.42</code> shows <strong>very high traffic</strong>, likely the scanner.</p>
-</blockquote>
-<p>To confirm this IP is doing scanning:</p>
-<ul>
-<li>In one of the events:</li>
-</ul>
-<pre><code class="language-sh">http_method: POST
-request: POST /joomla/index.php/component/search/ HTTP/1.1
-|
-|
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21 
-Acunetix-Product: WVS/10.0 (Acunetix Web Vulnerability Scanner - Free Edition) 
-Acunetix-Scanning-agreement: Third Party Scanning PROHIBITED Acunetix-User-agreement: http://www.acunetix.com/wvs/disc.htm
-</code></pre>
-<ul>
-<li>
-<p>The <strong>Acunetix Web Vulnerability Scanner - Free Edition</strong> confirms it's a web vulnerability scanner.</p>
-</li>
-<li>
-<p><code>POST</code> requests with many parameters → testing/SQLi.</p>
-</li>
-<li>
-<p>Request rate very high (20932 requests).</p>
-</li>
-<li>
-<p>Target: <code>/joomla/index.php/component/search/</code> → clear injection attempts.</p>
-</li>
-</ul>
-<h5 id="answer_1">✅ <strong>Answer:</strong></h5>
-<ul>
-<li>
-<p><strong>Likely scanning IP:</strong> <code>40.80.148.42</code></p>
-</li>
-<li>
-<p><strong>Evidence:</strong> High request count in Splunk logs and presence of Acunetix scanner in HTTP headers.</p>
-</li>
-</ul>
-<hr />
-<h2 id="3-what-company-created-the-web-vulnerability-scanner-used-by-po1s0n1vy"><strong>3. What company created the web vulnerability scanner used by Po1s0n1vy?</strong></h2>
-<ul>
-<li>
-<p>From the previous step, we observed that Po1s0n1vy used a <strong>Web Vulnerability Scanner</strong>, as indicated in the <strong>User-Agent</strong> header.</p>
-</li>
-<li>
-<p>The User-Agent reveals the scanner’s name, which tells us the <strong>manufacturer</strong>:</p>
-</li>
-</ul>
-<pre><code class="language-sh">Acunetix-Product: WVS/10.0 (Acunetix Web Vulnerability Scanner - Free Edition) 
-</code></pre>
-<ul>
-<li>Verified with Splunk query:</li>
-</ul>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http | stats values(http_user_agent) by src_ip
-</code></pre>
-<ul>
-<li>Sample output:</li>
-</ul>
-<pre><code class="language-sh">User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.21 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.21 Acunetix-Product: WVS/10.0 (Acunetix Web Vulnerability Scanner - Free Edition)
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760457274606/291dd098-f096-4967-857c-dae8f7d7e890.png" align="center" fullwidth="false" /></p>
-<h5 id="answer_2">✅ <strong>Answer:</strong></h5>
-<ul>
-<li><strong>Company:</strong> <code>Acunetix</code></li>
-</ul>
-<hr />
-<h2 id="45what-content-management-system-is-imreallynotbatmancom-using"><strong>4&amp;5.What content management system is</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a> <strong>using?</strong></h2>
-<p>Honestly, searching on Google was the best solution: "How can I know the content management system in the header in the logs siem?"</p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760457224381/7270c1ca-9754-404d-8e50-d8115e7c1dc2.png" align="center" fullwidth="false" /></p>
-<p>The simplest way to identify the <strong>CMS</strong> through <strong>Logs</strong> is to focus on the <strong>HTTP Headers</strong> and <strong>URI Paths</strong> because they reveal clear fingerprints :</p>
-<ul>
-<li>
-<p>In the <strong>HTTP Headers</strong>: <code>Server</code> or <code>X-Powered-By</code></p>
-</li>
-<li>
-<p>In the <strong>URLs</strong>: for example <code>/administrator</code>, <code>/wp-admin</code>, <code>index.php?option=com_content</code></p>
-</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http 
-| table _time src_ip dest_ip uri_path http_user_agent http_content_type http_server http_x_powered_by
-</code></pre>
-<blockquote>
-<p>This query fetches all <strong>HTTP Requests</strong> to the site and displays columns that might reveal the CMS.</p>
-</blockquote>
-<h5 id="analysis-of-results">🔹 Analysis of results:</h5>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760457353858/d7f74cbf-6f91-45e8-85c1-a6ecd202573c.png" align="center" fullwidth="false" /></p>
-<p>The path appearing: <code>/joomla/index.php/component/search/</code></p>
-<p>Repeatedly appearing in the logs is a <strong>clear indication</strong> that the site is using <strong>Joomla</strong>, as it is a well-known signature of Joomla CMS.</p>
-<h5 id="answer_3">✅ <strong>Answer:</strong></h5>
-<blockquote>
-<p><a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a> <strong>is using Joomla CMS</strong></p>
-</blockquote>
-<hr />
-<h2 id="6what-address-is-performing-the-brute-forcing-attack-against-our-website"><strong>6.What address is performing the brute-forcing attack against our website?</strong></h2>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http Login Admin
-|
-|
-c_ip: 40.80.148.42
-src_ip: 40.80.148.42
-</code></pre>
-<p>From the logs, it is clear that the <strong>IP address</strong> performing the brute-force attack is: <code>40.80.148.42</code></p>
-<p>🔹 Reason:\
-In Splunk, <strong>c_ip</strong> or <strong>src_ip</strong> represents the client (attacker) IP, while <strong>dest_ip</strong> represents the targeted server (here 192.168.250.70).</p>
-<p>So the answer to question 6 👇</p>
-<blockquote>
-<p><strong>The IP address performing the brute-forcing attack is</strong> <code>40.80.148.42</code>. ✅</p>
-</blockquote>
-<p>To <strong>prove</strong> that the IP <code>40.80.148.42</code> is indeed performing <strong>brute force/scanning</strong> on the site, we can use:</p>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http src_ip=40.80.148.42 | table _time src_ip dest_ip uri_path http_user_agent http_method
-</code></pre>
-<p>The result was:</p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760457401640/b1ffcc7f-f795-4f87-8663-9d63fd5a1ec5.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>
-<p>Why this proves that 40.80.148.42 is the attacker:</p>
-</li>
-<li>
-<p>All requests occur within 1–2 seconds. This is not human behavior.</p>
-</li>
-<li>
-<p>The many POST requests to the same path in a short time → pattern of Brute-force or Scanner sending data.</p>
-</li>
-<li>
-<p><strong>src_ip is constant</strong> and <strong>dest_ip is constant</strong></p>
-</li>
-</ul>
-<h5 id="answer_4">✅ <strong>Answer:</strong></h5>
-<blockquote>
-<p>40.80.148.42</p>
-</blockquote>
-<hr />
-<h2 id="7-what-was-the-correct-password-for-the-content-management-system-running-imreallynotbatmancom"><strong>7. What was the correct password for the content management system running</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a><strong>?</strong></h2>
-<h3 id="1-scenario-understanding"><strong>1️⃣ Scenario Understanding</strong></h3>
-<ul>
-<li>
-<p>There was a <strong>Brute-Force attack</strong> on the <strong>Joomla admin page</strong> (<code>/joomla/administrator/index.php</code>).</p>
-</li>
-<li>
-<p>We focus on <strong>POST requests</strong> containing password fields (<code>pass</code>, <code>passwd</code>, <code>password</code>).</p>
-</li>
-<li>
-<p>We need to identify: <strong>source IP, destination IP, time, page, and response status</strong>.</p>
-</li>
-</ul>
-<h3 id="2-initial-filtering-for-post-requests-containing-passwords"><strong>2️⃣ Initial filtering for POST requests containing passwords</strong></h3>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http (pass OR passwd OR password) | table status http_post_data _time src_ip dest_ip  http_method
-</code></pre>
-<ul>
-<li>Initial results:</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458882174/b6dee187-4955-43e7-b562-a1acbb67486f.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>Noticed both <strong>GET and POST</strong> requests; passwords are normally in POST :</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http (pass OR passwd OR password) http_method=POST | table status http_post_data _time src_ip dest_ip
-</code></pre>
-<ul>
-<li>Results displayed:</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458882184/984be91e-8d85-444a-ab15-c7cd5f40691b.png" align="center" fullwidth="false" /></p>
-<h3 id="3-identify-the-page-targeted-for-login"><strong>3️⃣ Identify the page targeted for login</strong></h3>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http (pass OR passwd OR password) http_method=POST | table status http_post_data _time src_ip dest_ip url_path
-</code></pre>
-<ul>
-<li>Shows <strong>uri_path</strong> for each login attempt:</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458956437/f20c6870-2267-4bf0-9ee8-30cca61bc0fc.png" align="center" fullwidth="false" /></p>
-<h3 id="4-log-analysis"><strong>4️⃣ Log Analysis</strong></h3>
-<ul>
-<li>
-<p>IP <strong>23.22.63.114</strong> tried logging in to <code>/joomla/administrator/index.php</code> and received many <strong>303</strong> responses (Redirect / Failed Login).</p>
-</li>
-<li>
-<p>Later, IP <strong>40.80.148.42</strong> sent POST requests to the same page with status <strong>200</strong> (<strong>Login Successful / Accepted</strong>).</p>
-</li>
-<li>
-<p><strong>Same</strong> <code>uri_path</code> and <strong>http_method</strong> (POST)</p>
-</li>
-<li>
-<p><strong>Different status codes</strong> (303 → Fail / 200 → Success)</p>
-</li>
-</ul>
-<p>This strongly indicates that IP <code>40.80.148.42</code> successfully logged in.</p>
-<h3 id="5-extract-the-password"><strong>5️⃣ Extract the password</strong></h3>
-<pre><code class="language-sql">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http http_method=POST | regex src_content=&quot;(username=|passwd=)&quot;
-| table _time src_ip dest_ip uri_path http_post_data src_content
-</code></pre>
-<ul>
-<li>This query searches all POST requests containing login credentials (username/password) on <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a> and presents them in a clear table.</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760459068922/09d127ae-acba-4a4a-988a-fbd1acc97508.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>
-<p>From the logs of the successful IP (<code>40.80.148.42</code>), we can see the <strong>correct password</strong> used for login.</p>
-</li>
-<li>
-<p>The key idea: focus on POST requests with login data, identify successful vs. failed IPs, and extract the attempted passwords without wasting time on irrelevant data.</p>
-</li>
-</ul>
-<h5 id="answer_5">✅ <strong>Answer:</strong></h5>
-<blockquote>
-<ul>
-<li>
-<p><strong>Username:</strong> <code>admin</code></p>
-</li>
-<li>
-<p><strong>Password:</strong> <code>batman</code></p>
-</li>
-<li>
-<p>Therefore, the correct password for the CMS on <a href="http://www.imreallynotbatman.com">www.imreallynotbatman.com</a> is <code>batman</code>.</p>
-</li>
-</ul>
-</blockquote>
-<hr />
-<h2 id="8-after-successful-exploitation-what-is-the-uploaded-malicious-software"><strong>8. After Successful Exploitation, What is the uploaded Malicious Software?</strong></h2>
-<p>Since the attack sequence was:\
-Scan → Brute-Force → Login → Upload Malware → Defacement</p>
-<p><strong>Logical deduction:</strong></p>
-<ul>
-<li>
-<p>The <strong>uploaded malicious software</strong> is likely a <strong>Web Shell or PHP Backdoor</strong>.</p>
-</li>
-<li>
-<p>This file would be placed in <code>/administrator</code> or a directory accessible from the admin panel.</p>
-</li>
-<li>
-<p>Purpose: <strong>establish attacker control over the site and enable remote access</strong>.</p>
-</li>
-</ul>
-<p>To identify the uploaded file or malicious software after a successful login, we can use a Splunk query focusing on POST requests from IP <code>40.80.148.42</code> after logging in successfully to <code>/joomla/administrator/index.php</code>, searching for any file uploads or suspicious PHP content.</p>
-<ul>
-<li>Query to get all <strong>POST requests</strong> the attacker made on the Admin Panel after login:</li>
-</ul>
-<pre><code class="language-sh">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http http_method=POST src_ip=40.80.148.42 uri_path=&quot;/joomla/administrator/index.php&quot; | sort _time | table _time src_ip dest_ip uri_path http_post_data src_content
-</code></pre>
-<p>This shows all POST requests from the attacker after accessing the admin page, including:</p>
-<ul>
-<li>
-<p>The login using <code>admin/batman</code></p>
-</li>
-<li>
-<p>Any uploaded files (like <code>agent.php</code>)</p>
-</li>
-<li>
-<p>Other commands or movements after the compromise:</p>
-</li>
-</ul>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760459268289/082412a3-fd59-4b3c-9311-f183076a6679.png" align="center" fullwidth="false" /></p>
-<p>Event sequence in the logs:</p>
-<ol>
-<li>
-<p>First event: <strong>successful login</strong>:\
-   <code>username=admin&amp;passwd=batman</code> on <code>/joomla/administrator/index.php</code>\
-   Status = 200 → Successful Login.</p>
-</li>
-<li>
-<p>Immediately after, a suspicious request <strong>uploaded</strong> <code>agent.php</code> via <code>install_package</code>:\
-   <code>Content-Disposition: form-data; name="install_package"; filename="agent.php"</code></p>
-</li>
-<li>
-<p>Then the attacker used <strong>com_extplorer</strong>:</p>
-</li>
-</ol>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760459277060/d99b81f6-cade-422c-afea-96e4b746b04a.png" align="center" fullwidth="false" /></p>
-<p><code>com_extplorer</code> is a <strong>Joomla Extension</strong> acting as a <strong>File Manager</strong> inside the Admin Panel, similar to Windows “File Explorer.”</p>
-<p>This extension allowed the attacker to:</p>
-<ul>
-<li>
-<p>View site files on the server</p>
-</li>
-<li>
-<p>Move, delete, upload files</p>
-</li>
-<li>
-<p>Change permissions</p>
-</li>
-</ul>
-<h5 id="answer_6">✅ <strong>Answer:</strong></h5>
-<blockquote>
-<p><code>agent.php</code>\
-an obfuscated PHP backdoor</p>
-</blockquote>
-<hr />
-<h2 id="9-mention-some-internal-discovery-command-lines-that-were-used"><strong>9. Mention some internal discovery command lines that were used?</strong></h2>
-<ul>
-<li>
-<p>We want to extract all <strong>commands executed</strong> on the server or machine after the compromise.</p>
-</li>
-<li>
-<p>In previous tasks, sometimes Winlogbeat settings were adjusted to track which logs were sent to the SIEM:</p>
-</li>
-<li>
-<p><code>name: System</code></p>
-</li>
-<li>
-<p><code>name: Security</code></p>
-</li>
-<li>
-<p>Occasionally <code>Sysmon</code></p>
-</li>
-<li>
-<p>We can organize the search the same way, meaning:</p>
-</li>
-<li>
-<p>Check the Security Logs with:</p>
-</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot;  sourcetype=&quot;WinEventLog:Security&quot; sourcetype=&quot;sourcetype=WinEventLog:System&quot;
-</code></pre>
-<ul>
-<li>To get all logs after 2016-08-10:</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot; (sourcetype=&quot;WinEventLog:Security&quot; OR sourcetype=&quot;WinEventLog:System&quot;) earliest=&quot;08/10/2016:21:50:00&quot;
-</code></pre>
-<ul>
-<li>
-<p>This helps identify what happened after the attacker logged in or ran commands.</p>
-</li>
-<li>
-<p>Testing with:</p>
-</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot; (sourcetype=&quot;WinEventLog:Security&quot; OR sourcetype=&quot;WinEventLog:System&quot;) earliest=&quot;08/10/2016:21:50:00&quot; | table _time host user EventCode Process_Name CommandLine
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760459307899/7a0ffa1b-496a-4e12-a425-19ef2fe10457.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>
-<p>This shows all <strong>programs and commands</strong> executed on the machines after a specific time.</p>
-</li>
-<li>
-<p>To filter further, I tried:</p>
-</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot; (sourcetype=&quot;WinEventLog:Security&quot; OR sourcetype=&quot;WinEventLog:System&quot;) earliest=&quot;08/10/2016:21:50:00&quot; whoami
-</code></pre>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458210643/56d7fa37-6e67-4c0b-aa13-4bd777ce6d73.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>
-<p>I tested expected commands like <code>nslookup</code>, <code>whoami</code>, <code>net use</code>, <code>net group</code>, <code>net view</code>. Each command ran individually; no straightforward way to combine them.</p>
-</li>
-<li>
-<p>Another approach: identify all values in <strong>Process_Command_Line</strong> and count occurrences:</p>
-</li>
-</ul>
-<pre><code class="language-sh">index=&quot;botsv1&quot; sourcetype=&quot;WinEventLog:Security&quot; EventCode=4688 earliest=&quot;08/10/2016:21:50:00&quot;
-| search (Process_Command_Line=&quot;*net use*&quot; OR Process_Command_Line=&quot;*net view*&quot; OR Process_Command_Line=&quot;*net group*&quot; OR Process_Command_Line=&quot;*whoami*&quot; OR Process_Command_Line=&quot;*systeminfo*&quot; OR Process_Command_Line=&quot;*tasklist*&quot; OR Process_Command_Line=&quot;*wmic*&quot;)
-| where NOT like(Process_Command_Line,&quot;%Microsoft.NET%&quot;)
-| dedup Process_Command_Line
-| table _time, Account_Name, New_Process_Name, Process_Command_Line
-| sort 0 + _time
-</code></pre>
-<ul>
-<li>
-<p><strong>Explanation:</strong></p>
-</li>
-<li>
-<p><code>index="botsv1"</code> → database</p>
-</li>
-<li>
-<p><code>sourcetype="WinEventLog:Security"</code> → focus on Security logs</p>
-</li>
-<li>
-<p><code>EventCode=4688</code> → new process creation events</p>
-</li>
-<li>
-<p><code>earliest="08/10/2016:21:50:00"</code> → start after attacker logged in</p>
-</li>
-<li>
-<p><strong>Filter internal discovery commands:</strong></p>
-</li>
-<li>
-<p><code>net use</code>, <code>net view</code>, <code>net group</code>, <code>whoami</code>, <code>systeminfo</code>, <code>tasklist</code>, <code>wmic</code></p>
-</li>
-<li>
-<p><strong>Exclude normal .NET processes:</strong></p>
-</li>
-<li>
-<p><code>where NOT like(Process_Command_Line,"%</code><a href="http://Microsoft.NET"><code>Microsoft.NET</code></a><code>%")</code></p>
-</li>
-<li>
-<p><strong>Remove duplicates:</strong></p>
-</li>
-<li>
-<p><code>dedup Process_Command_Line</code> → show each command only once</p>
-</li>
-<li>
-<p><strong>Display results neatly:</strong></p>
-</li>
-<li>
-<p><code>table _time, Account_Name, New_Process_Name, Process_Command_Line</code> → clear columns</p>
-</li>
-<li>
-<p><code>sort 0 + _time</code> → order by execution time</p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458191994/8fd9d0b7-b983-4528-9b7d-2dcf2d4763ab.png" align="center" fullwidth="false" /></p>
-</li>
-</ul>
-<blockquote>
-<ul>
-<li>
-<p>Initial activity: <strong>user and system info discovery</strong> (<code>whoami</code>, <code>tasklist</code>)</p>
-</li>
-<li>
-<p>Then: <strong>saving process and service lists</strong> to temporary files (likely for information gathering)</p>
-</li>
-<li>
-<p>Finally: <strong>suspicious activity deleting shadow copies</strong> (<code>shadowcopy delete</code>)</p>
-</li>
-</ul>
-</blockquote>
-<h5 id="answer_7">✅ <strong>Answer:</strong></h5>
-<blockquote>
-<p>A set of commands:</p>
-<ul>
-<li>
-<p>whoami</p>
-</li>
-<li>
-<p>tasklist</p>
-</li>
-<li>
-<p>tasklist /svc &gt; temp file</p>
-</li>
-<li>
-<p>tasklist /svc</p>
-</li>
-<li>
-<p>tasklist /svc &gt; temp file</p>
-</li>
-<li>
-<p>wmic shadowcopy delete</p>
-</li>
-</ul>
-</blockquote>
-<hr />
-<h2 id="10-what-is-the-name-of-the-file-that-defaced-the-imreallynotbatmancom-website"><strong>10. What is the name of the file that defaced the</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a> <strong>website?</strong></h2>
-<p>Remember that <strong>Defacement</strong> usually involves HTML or even PHP files that are new on the server. We can search the POST requests for file uploads that occurred after the hacker logged in:</p>
-<pre><code class="language-bash">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http http_method=POST earliest=&quot;08/10/2016:21:50:00&quot; | table _time src_ip dest_ip uri_path http_post_data
-</code></pre>
-<p>But this returned many logs because the attacker was also performing <strong>Scanning and Brute-force</strong>.</p>
-<p>To find the <strong>Defacement file</strong>:</p>
-<ul>
-<li>
-<p>From previous analysis, we know the <strong>successful login happened via the Joomla admin panel</strong>: <code>/joomla/administrator/index.php</code></p>
-</li>
-<li>
-<p>This is the natural place where files could have been uploaded. So we refine the query:</p>
-</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http http_method=POST earliest=&quot;08/10/2016:21:50:00&quot; uri_path=&quot;/joomla/administrator/*&quot; | table _time src_ip dest_ip uri_path http_post_data
-</code></pre>
-<ul>
-<li>I searched using <code>uri_path="/joomla/administrator/*"</code> thinking there might be another path, but the results of both queries were identical:</li>
-</ul>
-<pre><code class="language-bash">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http http_method=POST earliest=&quot;08/10/2016:21:50:00&quot; uri_path=&quot;/joomla/administrator/index.php&quot; | table _time src_ip dest_ip uri_path http_post_data
-</code></pre>
-<p>Both results are the same:</p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458111551/757763b3-ae47-429a-9f0c-22b3ff2f7e63.png" align="center" fullwidth="false" /></p>
-<p>From reviewing the logs, it appears the attacker used <code>com_extplorer</code> to leave traces.</p>
-<p>To extract the uploaded files:</p>
-<pre><code class="language-bash">index=&quot;botsv1&quot; imreallynotbatman.com sourcetype=stream:http uri_path=&quot;/joomla/administrator/index.php&quot; http_method=POST form_data=&quot;*upload*&quot; | table _time src_ip dest_ip uri_path form_data
-</code></pre>
-<p><strong>form_data="<em>upload</em>"</strong> → searches for any request containing file upload data:</p>
-<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760458118206/ad255b34-8612-40eb-9bd5-c3d6f5e81cb7.png" align="center" fullwidth="false" /></p>
-<ul>
-<li>
-<p>First log:</p>
-</li>
-<li>
-<p>POST data: <code>option=com_extplorer&amp;dir=&amp;item=/joomla&amp;selitems[]=/joomla&amp;action=upload</code></p>
-</li>
-<li>
-<p>This indicates an attempt to upload a file or folder via <code>com_extplorer</code>.</p>
-</li>
-<li>
-<p>Second log:</p>
-</li>
-<li>
-<p>POST data contains <strong>encoded/encrypted PHP code</strong> (usually a web shell or backdoor).</p>
-</li>
-</ul>
-<p>This points to an attempt to upload a <strong>malicious PHP file</strong> using Joomla’s package installation feature (<code>install_package</code>).</p>
-<p>We confirmed the file was uploaded via <code>install_package</code>. After further searching in the logs, we found:</p>
-<pre><code class="language-ini">part_filename: agent.php
-
-request: POST /joomla/administrator/index.php option=com_installer&amp;view=install HTTP/1.1
-
-Content-Disposition: form-data; name=&quot;install_package&quot;; filename=&quot;agent.php&quot; Content-Type: text/plain
-</code></pre>
-<h5 id="answer_8">✅ <strong>Answer:</strong></h5>
-<blockquote>
-<p><strong>File Involved:</strong> <code>agent.php</code> (PHP web shell)</p>
-</blockquote>
-<hr />
-<h2 id="11-what-fully-qualified-domain-name-fqdn-is-associated-with-this-attack"><strong>11. What fully qualified domain name (FQDN) is associated with this attack?</strong></h2>
-<ul>
-<li>
-<p>A Fully Qualified Domain Name (FQDN) is the complete, unambiguous internet address of a network resource, such as a server or website, specifying its exact location within the Domain Name System (DNS) hierarchy.</p>
-</li>
-<li>
-<p>In this scenario:</p>
-</li>
-<li>
-<p>The targeted website is: <a href="http://www.imreallynotbatman.com"><code>www.imreallynotbatman.com</code></a></p>
-</li>
-<li>
-<p>The server itself has an internal IP: <code>192.168.250.70</code></p>
-</li>
-</ul>
-<h5 id="answer_9">✅ <strong>Answer:</strong></h5>
-<blockquote>
-<p><a href="http://www.imreallynotbatman.com">www.imreallynotbatman.com</a></p>
-</blockquote>
-<hr />
-<h3 id="summary-of-all-answers"><strong>Summary of All Answers</strong></h3>
-<p>Here’s a clean summary of your answers:</p>
-<ol>
-<li>
-<p><strong>IP address of our web server:</strong> <code>192.168.250.70</code></p>
-</li>
-<li>
-<p><strong>Likely IPv4 of Po1s0n1vy group scanning the site:</strong> <code>40.80.148.42</code></p>
-</li>
-<li>
-<p><strong>Company that created the web vulnerability scanner:</strong> <code>Acunetix</code></p>
-</li>
-<li>
-<p><strong>CMS used by</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a><strong>:</strong> <code>Joomla CMS</code></p>
-</li>
-<li>
-<p><strong>CMS used by iamnotreallybatman:</strong> <code>Joomla CMS</code></p>
-</li>
-<li>
-<p><strong>Address performing the brute-force attack:</strong> <code>40.80.148.42</code></p>
-</li>
-<li>
-<p><strong>Correct password for the CMS on</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a><strong>:</strong> <code>batman</code></p>
-</li>
-<li>
-<p><strong>Uploaded malicious software after exploitation:</strong> <code>agent.php</code></p>
-</li>
-<li>
-<p><strong>Some internal discovery command lines used:</strong></p>
-</li>
-<li>
-<p><code>whoami</code></p>
-</li>
-<li>
-<p><code>tasklist</code></p>
-</li>
-<li>
-<p><code>tasklist /svc &gt; temp file</code></p>
-</li>
-<li>
-<p><code>tasklist /svc</code></p>
-</li>
-<li>
-<p><code>wmic shadowcopy delete</code></p>
-</li>
-<li>
-<p><strong>File that defaced</strong> <a href="http://imreallynotbatman.com"><strong>imreallynotbatman.com</strong></a><strong>:</strong> <code>agent.php</code> (PHP web shell)</p>
-</li>
-<li>
-<p><strong>Fully qualified domain name (FQDN) associated with this attack:</strong> <a href="http://www.imreallynotbatman.com"><code>www.imreallynotbatman.com</code></a></p>
-</li>
-</ol>
-<hr />
-<h3 id="observations"><strong>Observations</strong></h3>
-<ul>
-<li>
-<p>The attack started <strong>Scan → Brute Force → Successful Login → Upload PHP Backdoor → Defacement</strong></p>
-</li>
-<li>
-<p>The IP <code>40.80.148.42</code> is responsible for most of the attacker activity (Scanner + Brute Force + Exploitation).</p>
-</li>
-<li>
-<p>The uploaded file (<code>agent.php</code>) allowed the attacker to remotely control the website.</p>
-</li>
-</ul>
-<hr />
-<h3 id="references">References</h3>
-<p>Splunk Quick Reference Guide → The most important Commands and Stats.</p>
-<p>Splunk Cheat Sheet: Query, SPL, RegEx, &amp; Commands</p>
-<p>Acunetix Official Documentation</p>
+<h2 id="challenge-overview">Challenge Overview</h2>
+<p><strong>A financial company was compromised, and they are looking for a security analyst to help them investigate the incident, This Challenge consists of 24 questions, we will solve them and make things easier for those who have problems in solving them, let’s start.</strong></p>
+<p><strong>Dataset:</strong></p>
+<p><strong>-Sysmon — swift on security configuration</strong></p>
+<p><strong>-PowerShell logging</strong></p>
+<p><strong>-Windows Eventlog</strong></p>
+<p><strong>-Suricata IDS</strong></p>
+<p><strong>-Zeek logs (conn, HTTP)</strong></p>
+<h3 id="first-we-will-prepare-the-network-for-the-machines"><strong><em>First we will prepare the network for the machines:</em></strong></h3>
+<p><strong>Open oracle vm virtulbox &gt; file &gt; tools &gt; network manager &gt; host only Ethernet adapter</strong></p>
+<p><strong>Then we will do the following:</strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455354824/bf49d7ba-fdd0-4d0b-8065-590fff191f43.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Adapter should be set like this ….</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455356123/b17da9da-bfeb-46bc-b028-5a3a52a095d5.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>The DHCP Server must be set up like this ….</em></strong></p>
+<p><strong>-Make sure you have a host-only subnet within the following IP range 192.168.20.0/24.</strong></p>
+<p><strong>-Assign the proper network adapter (192.168.20.0/24) to the VM before starting it.</strong></p>
+<p><strong>-Wait for some minutes after the import completes then visit:</strong> <a href="https://192.168.20.21/"><strong>https://192.168.20.21/</strong></a><strong>.</strong></p>
+<p><strong>-Challenge credentials: QRadar Dashboard: admin:Admin\@123 — SSH: root:cyberdefenders.</strong></p>
+<p><strong>-Hardware Requirements: 8GB of memory and 65GB of disk space.</strong></p>
+<h1 id="lets-get-started"><strong>Let’s get started :</strong></h1>
+<h2 id="1how-many-log-sources-available"><strong>(1)How many log sources available?</strong></h2>
+<p><strong><em>Log in to QRadar SIEM and select the Admin tap&gt;&gt; and then click Log sources :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455357484/3626465b-a7c5-411d-bd97-99b298afbe81.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer: 1# Log sources .</em></strong></p>
+<h2 id="2what-is-the-ids-software-used-to-monitor-the-network"><strong>(2)What is the IDS software used to monitor the network?</strong></h2>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455358996/63e476b9-4fdc-427f-9d42-b825938da303.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Looking at the sources of the logs above, you can find out what IDS is:</em></strong></p>
+<p><strong><em>Answer: ####cata .</em></strong></p>
+<h2 id="3-what-is-the-domain-name-used-in-the-network"><strong>(3) What is the domain name used in the network?</strong></h2>
+<p><strong><em>The Event ID 4624 in the Windows Event Log indicates a successful logon event.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455360379/6368ac29-e17b-4aa0-ad9e-3262d05e842a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We examine the first event.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455362342/3d911673-6081-4644-a344-a747d6daa84a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found the Domain here.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455363642/ace962ca-a437-4e19-993a-5a3773314709.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer:</em></strong> ##########<strong><em>.local .</em></strong></p>
+<h2 id="4-multiple-ips-were-communicating-with-the-malicious-server-one-of-them-ends-with-20-provide-the-full-ip"><strong>(4) Multiple IPs were communicating with the malicious server. One of them ends with “20”. Provide the full IP ?</strong></h2>
+<p><strong><em>We went to Dashboard and looked at top sources. We found 192.168.##.## have a greatest offenses 7 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455365151/532805b6-d9d7-48d1-9640-a7a25cb57008.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We can display a log of activity by source IP to see which IPs generated the most communication :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455366693/186bd710-be7a-47e2-ae5f-920712e5e363.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found that the IP 192.168.##.## generated the most communication :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455367940/fe67fcfb-d186-4032-af93-e87d15a9cdf9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer: 192.168.##.## .</em></strong></p>
+<h2 id="5-what-is-the-sid-of-the-most-frequent-alert-rule-in-the-dataset"><strong>(5) What is the SID of the most frequent alert rule in the dataset?</strong></h2>
+<p>We went to search edit, then we went to column definition, then we added the RULE SID :</p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455369555/e6db25f9-7fc7-44cf-8cb3-77d27f9bf7b5.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong>Then we know that “<em>#####65</em>” is the correct answer, because it is the highest in the count column with a number of 72 :</strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455370814/1a91e9a1-0f83-4506-b021-768a51ebbb7a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong>Now that we are here we can see that the highest SID for the base is :</strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455372226/5423af1e-c131-4f8f-9eb3-7662f76ded89.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer: #####65 .</em></strong></p>
+<h2 id="6-what-is-the-attackers-ip-address"><strong>(6) What is the attacker’s IP address?</strong></h2>
+<p><strong><em>In closed offenses, we can see a suspicious public IP .</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455373584/b84f538d-a845-4ae6-b3d0-9714e42f8801.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 192.##.##.## .</em></strong></p>
+<h2 id="7-the-attacker-was-searching-for-data-belonging-to-one-of-the-companys-projects-can-you-find-the-name-of-the-project"><strong>(7) The attacker was searching for data belonging to one of the company’s projects, can you find the name of the project ?</strong></h2>
+<p><strong><em>We can search for the project with regular expression then :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455374648/908e159d-b950-4398-bca2-be82fdf43031.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We can see 4 events :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455375967/d28120a9-5f70-4cd1-b8c2-85a9be66b841.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>then read payload information :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455377112/36f29b0b-1443-45c6-9b74-d06c557d1e19.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #######48 .</em></strong></p>
+<h2 id="8-what-is-the-ip-address-of-the-first-infected-machine"><strong>(8) What is the IP address of the first infected machine ?</strong></h2>
+<p><strong><em>We have added a filter for the attacker’s IP address with the source IP :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455378154/69c05d0f-6828-4745-a5ed-904a7a48433f.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found that the attacker’s IP was sending malware to IP 192.168.10.15 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455379456/3f9baef0-3c83-445b-970d-eb8ead596c89.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>I found the serukata alert, like this :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455381048/da9d285e-c9e1-4bc9-ab50-1f2c9fbbd2cc.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 192.168.##.## .</em></strong></p>
+<h2 id="9-what-is-the-username-of-the-infected-employee-using-1921681015"><strong>(9) What is the username of the infected employee using 192.168.10.15 ?</strong></h2>
+<p><strong><em>We searched for successful logon event id on Google :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455382410/fa0be86d-ab7d-4477-a38e-a18b70d4aba2.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we added the filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455383967/0d000a07-a88d-43f7-9dfb-42b714bd3148.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then I found that the username for 192.168.10.15 is Nour :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455385315/0c04f690-b696-4c9c-8dca-8ae49b97aca9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We also looked at the payload information :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455386913/d6bb5457-2b2a-4fc5-8131-d23fbfda1a9b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ###r .</em></strong></p>
+<h2 id="10-hackers-do-not-like-logging-what-logging-was-the-attacker-checking-to-see-if-enabled"><strong>(10) Hackers do not like logging, what logging was the attacker checking to see if enabled ?</strong></h2>
+<p><strong><em>We can apply a new filter for log source is HD-FIN-03 , and the username “nour” :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455388038/3752135e-27bb-4920-b2b9-02dd0b51157b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>You’ll find that the attacker tried using PowerShell :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455389461/45639567-9c9f-4295-8c31-c4d2cd0b30fa.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : p######### .</em></strong></p>
+<h2 id="11-name-of-the-second-system-the-attacker-targeted-to-cover-up-the-employee"><strong>(11) Name of the second system the attacker targeted to cover up the employee ?</strong></h2>
+<p><strong><em>We added a process commandline filter with del :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455391178/d3729663-bfc1-402d-bb87-56ed7e152a4c.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we entered :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455392382/58369143-5780-4344-8922-1d3977e1e08e.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found a second system :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455393828/d69a2832-7fca-4594-b1e8-93f2a4b64fb9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>This is the command line :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455395581/c152fbc4-e15e-48cc-868e-b2f4aaf43b0b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ####-01 .</em></strong></p>
+<h2 id="12-when-was-the-first-malicious-connection-to-the-domain-controller-log-start-time-hhmmss"><strong>(12) When was the first malicious connection to the domain controller (log start time — hh:mm:ss)?</strong></h2>
+<p><strong><em>We have searched for :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455396937/250b7479-ed27-40ad-8a89-5cf6dbd1a6b7.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>So we added id :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455398507/8c40e1b5-3c80-4ca0-9e4b-7d7957b87ecc.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found a file that the attacker is uploading at the same time :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455400024/cddfb164-d5d5-422d-a1ac-61a3e5a190a6.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 11:##:## .</em></strong></p>
+<h2 id="13-what-is-the-md5-hash-of-the-malicious-file"><strong>(13) What is the md5 hash of the malicious file?</strong></h2>
+<p><strong><em>We will add a new filter by hash, we can find the .docx file that contains the malicious hash or add filter with event number 15 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455401335/9c49dd17-a6a3-4ff2-8668-90d8bb4375e0.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We can look at the payload information to access the hash of the file:</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455402679/9f88e541-465b-4190-b795-1a7842928dc1.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer :</em></strong> ###########CD9D35###############<strong><em>.</em></strong></p>
+<h2 id="14-what-is-the-mitre-persistence-technique-id-used-by-the-attacker">(14) <strong>What is the MITRE persistence technique ID used by the attacker?</strong></h2>
+<p><strong><em>we searched on google and found out that the most common techniques for establishing persistence by malware and threat actors is the usage of registry Run keys &amp; Start up folders in a windows system.</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455404307/fe80e482-e80b-4987-8946-d068c7e58b1b.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Add filter Event id with number 13 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455405680/ba112d4d-d32d-4dd5-86cc-a49c7b340531.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>we applied a filter for Sysmon Event ID 13: RegistryEvent (Value Set) and added a column for “Target Object”</em></strong><em>.</em></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455407316/7f7db6fb-dbe0-4a7a-9028-24943c7b9c89.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We will go to MITER ATT\&amp;CK® , Then we will search for \windows\current\version :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455408991/c4e250fa-016f-4a9f-b976-02db2a31e0bc.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>The expected result will appear :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455410788/f87eabda-486f-43e8-9c20-512c89bfb3b2.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #####.001 .</em></strong></p>
+<h2 id="15-what-protocol-is-used-to-perform-host-discovery"><strong>(15) What protocol is used to perform host discovery?</strong></h2>
+<p><strong><em>We have added a filter , We can discover this information by analyzing outgoing traffic from “192.168.10.15”, with Log source is Zeek_conn</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455412312/4d7f4fe0-aef6-457b-b238-024594ee4c7a.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we block udp , tcp connections :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455414045/04780bdc-8663-4f60-af03-9b2cdab9cb10.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : i### .</em></strong></p>
+<h2 id="16-what-is-the-email-service-used-by-the-companyone-word"><strong>(16) What is the email service used by the company?(one word)</strong></h2>
+<p><strong><em>We added these filters, to find all the companies that speak from outside the network, to find the service that the company relies on :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455415664/1e328eee-d65c-4951-ad37-0913ded0796f.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we searched the website</em></strong> <a href="http://www.iplocation.net"><strong><em>www.iplocation.net</em></strong></a> <strong><em>to find out the IP address of any service :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455417431/34777b6d-0e27-4803-9fe6-bb3c77974e49.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Hijab The search result showed #########365 and ######365</em></strong></p>
+<p><strong><em>Answer : ######365 .</em></strong></p>
+<h2 id="17-what-is-the-name-of-the-malicious-file-used-for-the-initial-infection"><strong>(17) What is the name of the malicious file used for the initial infection ?</strong></h2>
+<p><strong><em>Referring to Question No 13, We found the file with the md5 hash :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455418822/ab0def64-3edb-4e21-9221-24130829ffd2.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer :</em></strong> #########_############.docx***.***</p>
+<h2 id="18-what-is-the-name-of-the-new-account-added-by-the-attacker"><strong>(18) What is the name of the new account added by the attacker ?</strong></h2>
+<p><strong><em>We will search for the event id of A user account was created :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455420194/b79f5871-8ea5-4e1e-83db-83dd28b12de9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>So I took the ID 4720 and added a filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455421633/dd38b5b7-1264-4ab2-ba21-4f4855365142.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we will look at the payload information :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455423160/63e24fab-52e8-4ffc-b147-dd0a4e1c0609.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ####o .</em></strong></p>
+<h2 id="19-what-is-the-pid-of-the-process-that-performed-injection"><strong>(19) What is the PID of the process that performed injection ?</strong></h2>
+<p><strong><em>We will search for what is event id of the process that performed injection in Google :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455424493/c9a9d94a-6c32-43f5-8fd4-f80fb2113171.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We added this filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455426127/0d9639d8-e67f-4083-9080-bfad303b6da9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we found, an alarm for the notepad file being uploaded :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455427691/c70c8ed1-c606-4288-a03f-030b013eabd7.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found the PID :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455429212/9fd351af-b25f-4754-a61f-81fb090e7fc9.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #### .</em></strong></p>
+<h2 id="20-what-is-the-name-of-the-tool-used-for-lateral-movement"><strong>(20) What is the name of the tool used for lateral movement ?</strong></h2>
+<p><strong><em>We have added a filter to find out what technique the attacker used :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455430765/cfb7d22e-afeb-4d26-b9bc-c1e12ef7cb38.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>The result was some commands that the attacker typed into the command lines :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455432700/5c20e089-2503-46d6-a24c-4b32265ab789.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We used</em></strong> <a href="https://attack.mitre.org/"><em>MITRE ATT\&amp;CK®</em></a> <strong><em>Software\policies\microsoft\windows\powershell</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455434449/743cd465-4f93-429e-b2cd-b750e64bb2f0.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Here we found Impacket and searched it :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455435889/ef9c25e9-a2bd-4f2e-9f0c-7678fa69b84e.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We even found the tool used for lateral movement, which the attacker used :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455437132/2592df89-b41f-4c52-b478-356664f7b5bf.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we headed to</em></strong> <a href="https://github.com/"><strong><em>https://github.com/</em></strong></a> <strong><em>To look at it :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455438499/a1535df0-590b-4b7e-a110-e7257022df27.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer :</em></strong> #######.py <strong><em>.</em></strong></p>
+<h2 id="21-attacker-exfiltrated-one-file-what-is-the-name-of-the-tool-used-for-exfiltration"><strong>(21) Attacker exfiltrated one file, what is the name of the tool used for exfiltration ?</strong></h2>
+<p><strong><em>We used this filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455439651/d1f83a06-0235-4444-8537-5c9219044b04.png" alt="" align="left" fullwidth="false" /></p>
+<p><em>The result was :</em></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455440976/bf2b8666-75cb-49ef-b21a-f8109a56f588.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ###l.</em></strong></p>
+<h2 id="22-who-is-the-other-legitimate-domain-admin-other-than-the-administrator"><strong>(22) Who is the other legitimate domain admin other than the administrator ?</strong></h2>
+<p><strong><em>To find the other domain admin, I applied a filter for event ID 4672 :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455442075/adfda984-aacd-4475-b116-50dc33f93a0d.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Then we added a filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455443377/136c9765-8651-4039-ac1f-204bd2d5a833.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>We found the two devices logging into Administrator Adam’s account :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455444711/dd676715-a07a-43bf-911c-abe60f7f7c8f.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : ###m .</em></strong></p>
+<h2 id="23the-attacker-used-the-host-discovery-technique-to-know-how-many-hosts-available-in-a-certain-network-what-is-the-network-the-hacker-scanned-from-the-host-ip-1-to-30"><strong>(23)The attacker used the host discovery technique to know how many hosts available in a certain network, what is the network the hacker scanned from the host IP 1 to 30 ?</strong></h2>
+<p><strong><em>We used this filter :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455446224/1bd116d8-e510-4728-9631-11b058ae8a28.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>You will find that the IP 192.168.10.15 has started scanning the IP addresses from 192.168.20.1 to 192.168.20.30 .</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455447900/e03bbb00-277e-4002-934c-996b56a3567c.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : 192.168.##.# .</em></strong></p>
+<h2 id="24what-is-the-name-of-the-employee-who-hired-the-attacker"><strong>(24)What is the name of the employee who hired the attacker ?</strong></h2>
+<p><strong><em>Looking at the answers to the previous questions, we may know that the file is called Sami :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455449538/94daa58e-f94b-4578-ab3b-b5474ab8951e.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>but we added the answers for confirmation :</em></strong></p>
+<p><Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1746455450680/fe6f1556-cf18-402a-9569-6b83920fddc6.png" alt="" align="left" fullwidth="false" /></p>
+<p><strong><em>Answer : #a## .</em></strong></p>
+<p><strong><em>in the end :\
+ I hope you start solving the challenge before looking at where the solutions are. At the end of this wonderful challenge, I hope that we have succeeded in writing the report well. If you find any problem understanding part of the solution, please contact me. Thank you for reading the report.</em></strong></p>
+<p><strong><em>See you soon in other reports….!!</em></strong></p>
+<h4 id="abdelwahab_shandy"><strong>Abdelwahab_Shandy</strong></h4>
+<h4 id="as_cyber"><strong>AS_Cyber</strong></h4>
 
 
 

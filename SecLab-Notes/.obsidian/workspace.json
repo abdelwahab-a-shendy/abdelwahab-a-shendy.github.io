@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "aa0427603f8d083a",
+        "id": "a953dea41108c7e6",
         "type": "tabs",
         "children": [
           {
-            "id": "0324fb2c155c81c2",
+            "id": "08755314bf84fc52",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -179,8 +179,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "0324fb2c155c81c2",
+  "active": "08755314bf84fc52",
   "lastOpenFiles": [
+    "LABs/Threat Intelligence/The Report (BTLO).md",
     "LABs/Phishing Investigation/Phishing Analysis (BTLO).md",
     "LABs/Malware/Follina.md",
     "LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze).md",
@@ -208,10 +209,9 @@
     "SIEM & SOAR Integration HOME LAB/00.Pre Lab Overview.md",
     "Photos/OSINT_MITRE_2_CYBERHAZE.svg",
     "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
-    "LABs/Phishing Investigation/Phishing Response Playbook.md",
     "LABs/OSINT",
     "LABs/WIN Server",
-    "LABs/Threat Hunting",
+    "LABs/Threat Intelligence",
     "LABs/Phishing Investigation",
     "LABs/Engineering",
     "LABs/Malware",
