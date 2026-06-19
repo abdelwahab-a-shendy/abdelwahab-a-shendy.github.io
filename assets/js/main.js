@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ==================== ANIMATED ROLE ROTATION ====================
-    const roles = ['SOC Analyst', 'Security Engineer', 'Threat Hunter', 'Technical Writer', 'n8n Automator'];
+    const roles = ['SOC Analyst', 'Security Engineer', 'Network Security Engineer', 'SOC Engineer'];
     let roleIndex = 0;
     const roleElement = document.getElementById('dynamicRole');
     
