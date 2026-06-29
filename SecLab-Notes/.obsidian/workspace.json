@@ -11,10 +11,14 @@
             "id": "08755314bf84fc52",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "SIEM & SOAR Integration HOME LAB/09.SOARN8NWorkflow.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "09.SOARN8NWorkflow"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 361.5004348754883
+    "width": 453.5
   },
   "right": {
     "id": "47e6593b75a87b7f",
@@ -181,6 +185,13 @@
   },
   "active": "08755314bf84fc52",
   "lastOpenFiles": [
+    "SIEM & SOAR Integration HOME LAB/06.FluentBitConfiguration.md",
+    "SIEM & SOAR Integration HOME LAB/05.WinlogbeatConfiguration.md",
+    "SIEM & SOAR Integration HOME LAB/04.BuildingaSIEM.md",
+    "SIEM & SOAR Integration HOME LAB/03.InstallLabFluentbit.md",
+    "SIEM & SOAR Integration HOME LAB/02.InstallLabWinServer.md",
+    "SIEM & SOAR Integration HOME LAB/01.InstallLabELKSiem&N8N.md",
+    "SIEM & SOAR Integration HOME LAB/00.PreLabOverview.md",
     "LABs/Threat Intelligence/The Report (BTLO).md",
     "LABs/Phishing Investigation/Phishing Analysis (BTLO).md",
     "LABs/Malware/Follina.md",
@@ -200,13 +211,6 @@
     "LABs/Disk Forensics/06.Disk Acquisition linux dd.md",
     "LABs/Disk Forensics/05.Image Analysis Exiftool Linux.md",
     "LABs/Disk Forensics/04.File Analysis Stat command linux.md",
-    "LABs/Disk Forensics/03.Analyzing file properties windows.md",
-    "LABs/Disk Forensics/01.Verifying Evidence Integrity Hashing.md",
-    "LABs/Disk Forensics/00.Software Write Blocker Concept.md",
-    "LABs/OSINT/Shadow Rat (CyberHaze).md",
-    "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
-    "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
-    "SIEM & SOAR Integration HOME LAB/00.Pre Lab Overview.md",
     "Photos/OSINT_MITRE_2_CYBERHAZE.svg",
     "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
     "LABs/OSINT",
