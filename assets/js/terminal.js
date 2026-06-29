@@ -1,10 +1,10 @@
 // ==================== TERMINAL TYPEWRITER EFFECT ====================
 document.addEventListener('DOMContentLoaded', function() {
     const terminalCmds = [
-        { cmd: "whoami", resp: "Abdelwahab Shandy | June 2026 Graduate | SOC Analyst | IT Infrastructure" },
-        { cmd: "cat interests.txt", resp: "SOC | DFIR | Threat Hunting | n8n SOAR | CTF" },
+        { cmd: "whoami", resp: "Abdelwahab Shandy | June 2026 Graduate | SOC Analyst | Network Security | SOC Analyst | IT Infrastructure" },
+        { cmd: "cat interests.txt", resp: "DFIR | Threat Hunting | Security Automation" },
         { cmd: "git status", resp: "Open for hire. Seeking SOC Analyst , Network Security Engineer or Security Engineer roles." },
-        { cmd: "echo $status", resp: "Currently: Building Security Labs & Technical Blogging" },
+        // { cmd: "echo $status", resp: "Currently: Building Security Labs & Technical Blogging" },
         { cmd: "ls certifications/", resp: " eCIR | Google Cybersecurity | Google IT Support" },   
     ];
     
