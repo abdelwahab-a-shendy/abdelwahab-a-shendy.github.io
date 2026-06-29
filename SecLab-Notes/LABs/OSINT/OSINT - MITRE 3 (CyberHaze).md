@@ -1,3 +1,5 @@
+# MITRE 3 :
+
 During an active incident response scenario at Permalink Software, the SOC team noticed an unusual spike in traffic from one of their endpoints that was communicating with a known malicious IP address. This activity was flagged by the network intrusion detection system (NIDS) and correlated with other indicators of compromise found in threat intelligence feeds. Your task is to use your knowledge of the MITRE ATT&CK framework and TTPs to help guide the team through identifying and reconstructing the attack kill chain. By doing so, the SOC can better understand the nature of the compromise and formulate a response plan.
 
 Link : 

@@ -1,4 +1,5 @@
-## Shadow Rat – AgentTesla InfoStealer Campaign (ANY.RUN Case Study)
+# Shadow Rat – AgentTesla InfoStealer Campaign (ANY.RUN Case Study)
+
 During a routine monitoring shift, a high-severity alert was triggered on a workstation belonging to the Finance department. The EDR flagged an unsigned executable running from a temporary directory, followed by an unusual PowerShell script execution with an encoded payload. Preliminary threat intelligence suggests the involvement of a sophisticated InfoStealer. As a SOC Analyst, your mission is to dive into the threat intelligence platforms and sandbox analysis reports, reconstruct the attack stages, and identify the attacker's infrastructure to prevent further data exfiltration. To access the full analysis report, navigate to the 'Reports' section in Any.run and search using the file's hash or directly access through the link below: https://app.any.run/tasks/dac94262-a989-4a9b-a1bc-1b67e38a0e72 Malware Hash: f9525037843247d0c1e183c3d95666af.
 
 Link :

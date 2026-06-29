@@ -1,3 +1,5 @@
+# MITRE 1 :
+
 The SOC team detected unusual behavior from a user workstation shortly after opening an email attachment. Over time, multiple indicators appeared, including command execution, persistence, and communication with external infrastructure.
 Link : 
 	https://cyberhaze.io/challange-details/6a01edd7e82a439b197afd10

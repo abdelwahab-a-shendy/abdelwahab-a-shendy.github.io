@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "a953dea41108c7e6",
+        "id": "06c369bff1da0787",
         "type": "tabs",
         "children": [
           {
-            "id": "08755314bf84fc52",
+            "id": "35bbd221a6798527",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "SIEM & SOAR Integration HOME LAB/09.SOARN8NWorkflow.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "09.SOARN8NWorkflow"
+              "title": "New tab"
             }
           }
         ]
@@ -78,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 453.5
+    "width": 453.5,
+    "collapsed": true
   },
   "right": {
     "id": "47e6593b75a87b7f",
@@ -183,34 +180,34 @@
       "bases:Create new base": false
     }
   },
-  "active": "08755314bf84fc52",
+  "active": "35bbd221a6798527",
   "lastOpenFiles": [
-    "SIEM & SOAR Integration HOME LAB/06.FluentBitConfiguration.md",
-    "SIEM & SOAR Integration HOME LAB/05.WinlogbeatConfiguration.md",
-    "SIEM & SOAR Integration HOME LAB/04.BuildingaSIEM.md",
-    "SIEM & SOAR Integration HOME LAB/03.InstallLabFluentbit.md",
-    "SIEM & SOAR Integration HOME LAB/02.InstallLabWinServer.md",
-    "SIEM & SOAR Integration HOME LAB/01.InstallLabELKSiem&N8N.md",
-    "SIEM & SOAR Integration HOME LAB/00.PreLabOverview.md",
-    "LABs/Threat Intelligence/The Report (BTLO).md",
-    "LABs/Phishing Investigation/Phishing Analysis (BTLO).md",
-    "LABs/Malware/Follina.md",
-    "LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze).md",
-    "LABs/OSINT/0.Some info in MITRE.md",
+    "LABs/Engineering/Ubuntu Web Server WAF Nginx Modsecurity.md",
+    "LABs/Engineering/Detect Nmap Scan Using Snort.md",
+    "LABs/Engineering/Collecting Visualizing ssh logs Fluentbit.md",
+    "LABs/Engineering/Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB).md",
+    "LABs/Malware/Persistence Analysis Remediation Python PopUp Malware.md",
+    "LABs/Malware/Follina (BTLO).md",
+    "LABs/Network Forensics/Suspicious File Download Fake Authenticator.md",
+    "LABs/Network Forensics/Psexec Hunt.md",
+    "LABs/Network Forensics/Hawkeye.md",
+    "LABs/Network Forensics/Examining Pcaps Emails Malware Infection.md",
+    "LABs/Network Forensics/Arp Storm (Cyber Talents).md",
+    "LABs/OSINT/Shadow Rat (CyberHaze).md",
+    "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
+    "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
-    "LABs/Disk Forensics/09.Data Source Analysis Autopsy.md",
-    "LABs/Disk Forensics/10.Firefox Artifacts Extraction.md",
-    "LABs/Disk Forensics/11.Linux os forensics Analysis.md",
-    "LABs/Disk Forensics/12.Registry Hives Extraction FTK.md",
-    "LABs/Disk Forensics/13.Registry Analysis Phase Guide.md",
-    "LABs/Disk Forensics/14.Registry Analysis Tools Explorer Regripper.md",
-    "LABs/Disk Forensics/15.Ntfs1 Evidence Acquisition Analysis.md",
+    "LABs/OSINT/0.Some info in MITRE.md",
+    "LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze).md",
+    "LABs/Phishing Investigation/Phishing Response Playbook.md",
+    "LABs/Phishing Investigation/Phishing Analysis (BTLO).md",
+    "LABs/Phishing Investigation/Paypal Phishing Investigation (LetsDefend).md",
+    "LABs/Threat Intelligence/The Report (BTLO).md",
+    "LABs/Threat Intelligence/Qradar101 (SIEM).md",
+    "LABs/Threat Intelligence/Boss Of The Soc BOTsV1 Scenario1 (SPLUNK).md",
     "LABs/Disk Forensics/Search in trash (Cyber Talents).md",
-    "LABs/Disk Forensics/08.Autopsy case creation and setup.md",
-    "LABs/Disk Forensics/07.Disk Acquisition FTK imager windows.md",
-    "LABs/Disk Forensics/06.Disk Acquisition linux dd.md",
-    "LABs/Disk Forensics/05.Image Analysis Exiftool Linux.md",
-    "LABs/Disk Forensics/04.File Analysis Stat command linux.md",
+    "LABs/Disk Forensics/15.Ntfs1 Evidence Acquisition Analysis.md",
+    "LABs/Disk Forensics/14.Registry Analysis Tools Explorer Regripper.md",
     "Photos/OSINT_MITRE_2_CYBERHAZE.svg",
     "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
     "LABs/OSINT",

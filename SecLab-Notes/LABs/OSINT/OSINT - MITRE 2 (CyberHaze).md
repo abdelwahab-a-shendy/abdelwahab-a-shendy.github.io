@@ -1,3 +1,5 @@
+# MITRE 2 :
+
 An internal system exhibited signs of compromise after user interaction with external content. The attacker executed commands, accessed credentials, established persistence, and eventually exfiltrated data outside the network.
 
 Link : 

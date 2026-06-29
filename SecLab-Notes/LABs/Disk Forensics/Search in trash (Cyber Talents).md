@@ -1,3 +1,5 @@
+# Search in trash 
+
 
 <Image src="https://cdn.hashnode.com/res/hashnode/image/upload/v1760454200626/6c0190c9-7d25-49fa-b32b-06aa31f46acd.png" align="center" fullwidth="false" />
 
