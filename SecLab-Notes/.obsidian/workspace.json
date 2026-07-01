@@ -11,13 +11,32 @@
             "id": "35bbd221a6798527",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "OSINT - MITRE 1 (CyberHaze)"
+            }
+          },
+          {
+            "id": "bc62ece3384f7344",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "1.Practical implementation"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -179,8 +198,36 @@
       "bases:Create new base": false
     }
   },
-  "active": "35bbd221a6798527",
+  "active": "bc62ece3384f7344",
   "lastOpenFiles": [
+    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
+    "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
+    "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/0.Requirements.md",
+    "Enterprise Offensive Defensive Security Simulation HOME LAB/01-objective.md",
+    "Photos/Pasted Image 20251106232854_638.png",
+    "Photos/Pasted Image 20251106223819_032.png",
+    "Photos/Pasted Image 20251106223813_633.png",
+    "Photos/Pasted Image 20251106212935_630.png",
+    "Photos/Pasted Image 20251106212537_483.png",
+    "Photos/Pasted Image 20251106212435_877.png",
+    "Photos/Pasted Image 20251106212253_197.png",
+    "Photos/Pasted Image 20251106212039_331.png",
+    "Photos/Pasted Image 20251106211116_562.png",
+    "Photos/Pasted Image 20251106042612_268.png",
+    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/0.Requirements.md",
+    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)",
+    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/0.Requirements.md",
+    "Windows-Server-Labs/3.AD User Delegation (Windows Server)",
+    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/0.Requirements.md",
+    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)",
+    "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)",
+    "Windows-Server-Labs",
     "LABs/Engineering/Ubuntu Web Server WAF Nginx Modsecurity.md",
     "LABs/Engineering/Detect Nmap Scan Using Snort.md",
     "LABs/Engineering/Collecting Visualizing ssh logs Fluentbit.md",
@@ -195,37 +242,9 @@
     "LABs/OSINT/Shadow Rat (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
-    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
-    "LABs/OSINT/0.Some info in MITRE.md",
-    "LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze).md",
-    "LABs/Phishing Investigation/Phishing Response Playbook.md",
-    "LABs/Phishing Investigation/Phishing Analysis (BTLO).md",
-    "LABs/Phishing Investigation/Paypal Phishing Investigation (LetsDefend).md",
-    "LABs/Threat Intelligence/The Report (BTLO).md",
-    "LABs/Threat Intelligence/Qradar101 (SIEM).md",
-    "LABs/Threat Intelligence/Boss Of The Soc BOTsV1 Scenario1 (SPLUNK).md",
-    "LABs/Disk Forensics/Search in trash (Cyber Talents).md",
-    "LABs/Disk Forensics/15.Ntfs1 Evidence Acquisition Analysis.md",
-    "LABs/Disk Forensics/14.Registry Analysis Tools Explorer Regripper.md",
-    "Photos/OSINT_MITRE_2_CYBERHAZE.svg",
-    "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
     "LABs/OSINT",
     "LABs/WIN Server",
     "LABs/Threat Intelligence",
-    "LABs/Phishing Investigation",
-    "LABs/Engineering",
-    "LABs/Malware",
-    "LABs/Disk Forensics",
-    "LABs/Network Forensics",
-    "LABs/Stego Forensics",
-    "LABs/PENTEST",
-    "Photos/ab6226ef-792c-40a5-9764-0c43fc941764.jpeg",
-    "Photos/3402d759-c5e1-4c23-a4cf-b633be3c8a93.png",
-    "Photos/e87b9d24-8e80-4816-9be8-18d7fbc635f3.png",
-    "Photos/f939859e-dbfe-4f5c-ad5a-4c499c275c6f.png",
-    "Photos/c10e7cff-c1ed-4cb7-992f-75f139d19b06.png",
-    "Photos/bffdbcce-4c88-4e2d-977d-69fe44e4d1fa.png",
-    "Photos/6fcabbac-ffdc-4390-bb69-8964326bd7e3.png",
-    "Photos/fe8b6e3b-8ea4-40c7-810d-6471556cce20.png"
+    "LABs/Phishing Investigation"
   ]
 }

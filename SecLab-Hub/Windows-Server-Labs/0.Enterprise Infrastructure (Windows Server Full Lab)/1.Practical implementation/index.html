@@ -1,0 +1,7763 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/0.Enterprise%20Infrastructure%20%28Windows%20Server%20Full%20Lab%29/1.Practical%20implementation/">
+      
+      
+        <link rel="prev" href="../0.Requirements/">
+      
+      
+        <link rel="next" href="../../1.AD%20Hardening%20%26%20Compliance%20Simulation%20%28Windows%20Server%29/0.Requirements/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>1.Infrastructure Setup : - AAS Security Labs Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1infrastructure-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AAS Security Labs Docs" class="md-header__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AAS Security Labs Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.Infrastructure Setup :
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🛡️ Welcome to AAS Security Labs Hub
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/01-objective/" class="md-tabs__link">
+          
+  
+  
+  Enterprise Offensive Defensive Security Simulation HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../LABs/Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-tabs__link">
+          
+  
+  
+  LABs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.PreLabOverview/" class="md-tabs__link">
+          
+  
+  
+  SIEM & SOAR Integration HOME LAB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../0.Requirements/" class="md-tabs__link">
+          
+  
+  
+  Windows Server Labs
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AAS Security Labs Docs" class="md-nav__button md-logo" aria-label="AAS Security Labs Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AAS Security Labs Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🛡️ Welcome to AAS Security Labs Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise Offensive Defensive Security Simulation HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/01-objective/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 objective
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/02-architecture-and-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 architecture and design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/03-network-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 network design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/04-external-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 external zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/05-kali-linux-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 kali linux config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/06-commandovm-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 commandovm configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/07-running-commandovm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 running commandovm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/08-dmz-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 dmz zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/09-pfsense-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 pfsense firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/10-configuration-pfsense/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 configuration pfsense
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/11-vulnerable-webserver/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11 vulnerable webserver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/12-configuration-webserver-bwapp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12 configuration webserver bwapp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/13-install-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13 install metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/14-configuration-linux-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14 configuration linux metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/15-configuration-windows-metasploitable3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15 configuration windows metasploitable3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/16-internal-zone/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16 internal zone
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/17-building-windows-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17 building windows server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/18-building-domain-control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18 building domain control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/19-windows-server-basic-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19 windows server basic configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/20-building-windows-clients/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20 building windows clients
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/21-join-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21 join domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/22-building-iis-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22 building iis server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/23-iis-and-sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IIS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/24-building-the-elastic-stack-elk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24 building the elastic stack elk
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/25-to-activate-the-rules-age/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25 to activate the rules age
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/26-troubleshooting-network-connectivity-and-ip-conflicts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26 troubleshooting network connectivity and ip conflicts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/27-building-n8n/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    27 building n8n
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/28-log-collection-strategies-and-architectures/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Windows Log Collection Scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/29-windows-log-collection-scenarios/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    29 windows log collection scenarios
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/30-agent-based-per-host-collection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    30 agent based per host collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/31-advanced-log-collection-and-shipping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Log Collection and Shipping :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/32-logstash-with-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ⚙️ First: Install Logstash on the Server that hosts Elasticsearch and Kibana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/33-centralized-log-collection-and-indexing-with-logstash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ ELK/ SIEM Machine Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/34-logstash-with-filebeat-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    34 logstash with filebeat integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    35 linux log collection and analysis with fluent bit and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/36-windows-event-forwarding-and-elk-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    36 windows event forwarding and elk integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/37-enrichment-and-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    37 enrichment and analytics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/38-automations-for-siem-and-edr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM : Implement a Manual Data Retention Policy with n8n and Elasticsearch :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    39 implement a manual data retention policy with n8n and elasticsearch
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/40-security-awareness-email-automation-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    40 security awareness email automation workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LABs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Disk Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software Write Blocker Concept :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/01.Verifying%20Evidence%20Integrity%20Hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verifying Evidence Integrity Hashing :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/03.Analyzing%20file%20properties%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analyzing file properties windows :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/04.File%20Analysis%20Stat%20command%20linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Analysis Stat command linux :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/05.Image%20Analysis%20Exiftool%20Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Analysis Stat command linux :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/06.Disk%20Acquisition%20linux%20dd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Acquisition linux dd :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/07.Disk%20Acquisition%20FTK%20imager%20windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disk Acquisition FTK imager windows :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/08.Autopsy%20case%20creation%20and%20setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopsy case creation and setup :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/09.Data%20Source%20Analysis%20Autopsy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Source Analysis Autopsy :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/10.Firefox%20Artifacts%20Extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🦊 Firefox Artifacts Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/11.Linux%20os%20forensics%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Linux OS Forensics – Digital Analysis on Linux Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/12.Registry%20Hives%20Extraction%20FTK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Hives Extraction FTK :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/13.Registry%20Analysis%20Phase%20Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧠 Registry Analysis Guide – What to Look for at the Analysis Phase
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/14.Registry%20Analysis%20Tools%20Explorer%20Regripper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry Analysis using Registry Explorer, ShellBags Explorer, and RegRipper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/15.Ntfs1%20Evidence%20Acquisition%20Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15.Ntfs1 Evidence Acquisition Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Disk%20Forensics/Search%20in%20trash%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search in trash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Engineering/Building%20SIEM%20Filebeat%20Winlogbeat%20Kibana%20%28SIEM%20LAB%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Engineering/Collecting%20Visualizing%20ssh%20logs%20Fluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collecting Visualizing ssh logs Fluentbit :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Engineering/Detect%20Nmap%20Scan%20Using%20Snort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detect Nmap Scan Using Snort :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Engineering/Ubuntu%20Web%20Server%20WAF%20Nginx%20Modsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu Web Server WAF Nginx Modsecurity :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINUX
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LINUX
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/LINUX/0.Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/LINUX/1.1.Unix%20vs%20Linux%20History/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Unix vs Linux History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/LINUX/1.2.Linux%20Commands%20Review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Linux Basic Commands Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/LINUX/2.1.Bandit%20level%200%20to%2010%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Bandit level 0 to 10 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/LINUX/2.2.Bandit%20level%2010%20to%2020%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2.Bandit level 10 to 20 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/LINUX/2.3.Bandit%20level%2020%20to%2023%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3.Bandit level 20 to 23 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/LINUX/3.Leviathan%200-1%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.Leviathan 0 1 (Overthewire)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Malware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Malware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Malware/Follina%20%28BTLO%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forensic Incident Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Malware/Persistence%20Analysis%20Remediation%20Python%20PopUp%20Malware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence Analysis Remediation Python PopUp Malware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Network Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Network%20Forensics/Arp%20Storm%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arp Storm (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Network%20Forensics/Examining%20Pcaps%20Emails%20Malware%20Infection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examining Pcaps Emails Malware Infection :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Network%20Forensics/Hawkeye/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hawkeye :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Network%20Forensics/Psexec%20Hunt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Psexec Hunt :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Network%20Forensics/Suspicious%20File%20Download%20Fake%20Authenticator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suspicious File Download Fake Authenticator :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OSINT
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OSINT
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/OSINT/0.Some%20info%20in%20MITRE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Professional Use of MITRE ATT&amp;CK (SOC &amp; Detection Engineering Guide)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/OSINT/OSINT%20-%20MITRE%201%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MITRE 1 :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/OSINT/OSINT%20-%20MITRE%202%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MITRE 2 :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/OSINT/OSINT%20-%20MITRE%203%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MITRE 3 :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/OSINT/Shadow%20Rat%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shadow Rat – AgentTesla InfoStealer Campaign (ANY.RUN Case Study)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PENTEST
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PENTEST
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/0.1.Beginnings%20of%20the%20Internet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.Beginnings of the Internet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/0.1.HTTP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.1.HTTP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/0.2.Dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.2.Dns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/1.1.Passive%20Reconnaissance%20%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1.Passive Reconnaissance (THM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/1.2.Active%20Rreconnaissance%28THM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task 1 — Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/2.1.Cybersecurity%20beginner%20labs%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1.Cybersecurity beginner labs (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/2.2.ITI%20Penetration%20Tester%20Track%202025%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LABs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/24.Natas%200%20to%203%20%28Overthewire%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Natas 0:
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/3.1.Kioptrix%20level1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1.Kioptrix level1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/3.2.Metasploitable1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2.Metasploitable1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/3.3.Metasploitable2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3.Metasploitable2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.1.web-unprotected-admin-functionality%20%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1.web unprotected admin functionality (Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.10.web-source-code-disclosure-backup-files%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10.web source code disclosure backup files(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.11.web-auth-bypass-via-info-disclosure%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11.web auth bypass via info disclosure(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.12.web-info-disclosure-version-control-git%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.12.web info disclosure version control git(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.2.web-unprotected-admin-functionality-unpredictable-url%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2.web unprotected admin functionality unpredictable url(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.3.web-user-id-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3.web user id controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.4.15-web-user-id-controlled-by-request-parameter-with-dynamic-id%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4.15 web user id controlled by request parameter with dynamic id(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.5.web-user-role-modification-in-profile%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5.web user role modification in profile(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.6.web-user-role-controlled-by-request-parameter%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6.web user role controlled by request parameter(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.7.web-idor-corridor-thm%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7.web idor corridor thm(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.8.web-info-disclosure-error-messages%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8.web info disclosure error messages(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/PENTEST/4.9.web-info-disclosure-debug-page%28Web%20Security%20Academy%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9.web info disclosure debug page(Web Security Academy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Phishing Investigation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Phishing%20Investigation/Paypal%20Phishing%20Investigation%20%28LetsDefend%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Paypal Phishing Investigation (LetsDefend)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Phishing%20Investigation/Phishing%20Analysis%20%28BTLO%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Analysis – Blue Team Labs Online
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Phishing%20Investigation/Phishing%20Response%20Playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Response Playbook :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Phishing%20Investigation/Wallet%20Verification%20Scam%20%28CyberHaze%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Phishing Investigation: Wallet Verification Scam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stego Forensics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Stego Forensics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Binwalk%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Binwalk (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Canyousee%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canyousee (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Chalkboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chalkboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Cypher%20Anxiety%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cypher Anxiety (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Disko%201%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disko 1(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Exif%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exif (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/File%20Found/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File Found
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Forensics%20101%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forensics 101 (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Gandp%20List%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gandp List (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Git%20IS%20Good%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git IS Good (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Glory-of-the-garden%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 Glory of the Garden – PicoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Hidden%20Message%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hidden Message (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/I%20love%20images%20%28Cyber%20Talents%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I love images (Cyber Talents)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Im%20a%20Dump%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Im a Dump(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Information%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧪 cat.jpg Challenge Report – picoCTF
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Meta%20%28BTLO%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meta (BTLO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Minions%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minions (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/PDF%20by%20fdpumyp%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDF by fdpumyp (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Pho%20is%20Tasty%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pho is Tasty (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Pikespeak%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pikespeak (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Red%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Red (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Rubber%20Duck%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rubber Duck(CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Scan%20Surprise%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scan Surprise (picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Secret%20of%20the%20polyglot%20%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Digital Forensics Report (DFIR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Simple%20Steganography%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Steganography (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Snowboard%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowboard (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/TUX%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TUX (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Taking%20ls%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taking ls (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/Verify%28picoCTF%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify(picoCTF)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Stego%20Forensics/WOW%20SO%20META%20%28CTF%20Learn%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WOW SO META (CTF Learn)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Threat Intelligence
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Threat Intelligence
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Threat%20Intelligence/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Boss Of The Soc BOTsV1 Scenario1 (SPLUNK)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Threat%20Intelligence/Qradar101%20%28SIEM%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Qradar101 (SIEM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LABs/Threat%20Intelligence/The%20Report%20%28BTLO%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The Report - Blue Team Labs Online
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SIEM & SOAR Integration HOME LAB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.PreLabOverview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.PreLabOverview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/01.InstallLabELKSiem%26N8N/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01.InstallLabELKSiem&N8N
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/02.InstallLabWinServer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02.InstallLabWinServer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/03.InstallLabFluentbit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03.InstallLabFluentbit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/04.BuildingaSIEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04.BuildingaSIEM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/05.WinlogbeatConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05.WinlogbeatConfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/06.FluentBitConfiguration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06.FluentBitConfiguration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/07.DetectionEgnineeringIntro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1️⃣ Definition of Detection Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.1.PreStart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🧾 Quick Verification Commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.2.Detectionofpowershellbasedwindowsfirewalltampering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detection of powershell based windows firewall tampering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.3.registrypersistencedetectionwithsysmonandkql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Registry persistence detection with sysmon and kql
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/08.4.PrivilegeEscalationand%20Informationgatheringdetection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privilege Escalation and Information gathering detection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/09.SOARN8NWorkflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09.SOARN8NWorkflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Server Labs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows Server Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Enterprise Infrastructure (Windows Server Full Lab)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0.Enterprise Infrastructure (Windows Server Full Lab)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0.Requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.Infrastructure Setup :
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.Infrastructure Setup :
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-preparing-the-servers-pdc-adc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Preparing the Servers (PDC &amp; ADC)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Preparing the Servers (PDC &amp; ADC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuring-the-primary-server-pdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuring the Primary Server (PDC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configuring-the-additional-server-adc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuring the Additional Server (ADC)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configuring the Additional Server (ADC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#we-make-sure-the-devices-can-see-each-other" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        We make sure the devices can see each other:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-installing-active-directory-on-the-pdc-or-more-accurately-it-will-be-the-forest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Installing Active Directory on the PDC (or more accurately, it will be the Forest)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Installing Active Directory on the PDC (or more accurately, it will be the Forest)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-the-pdc-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On the PDC machine:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-adding-the-adc-to-the-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Adding the ADC to the Domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ---
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.AD Hardening & Compliance Simulation (Windows Server)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    1.AD Hardening & Compliance Simulation (Windows Server)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.AD%20Hardening%20%26%20Compliance%20Simulation%20%28Windows%20Server%29/0.Requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.AD%20Hardening%20%26%20Compliance%20Simulation%20%28Windows%20Server%29/1.Practical%20implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.Practical implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.Printer GPO Distribution (Windows Server)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2.Printer GPO Distribution (Windows Server)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.Printer%20GPO%20Distribution%20%28Windows%20Server%29/0.Requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.Printer%20GPO%20Distribution%20%28Windows%20Server%29/1.Practical%20implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.Practical implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.AD User Delegation (Windows Server)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3.AD User Delegation (Windows Server)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.AD%20User%20Delegation%20%28Windows%20Server%29/0.Requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.AD%20User%20Delegation%20%28Windows%20Server%29/1.Practical%20implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.Practical implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.Disable Run & Domain Wide Wallpaper (Windows Server)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4.Disable Run & Domain Wide Wallpaper (Windows Server)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.Disable%20Run%20%26%20Domain-Wide%20Wallpaper%20%28Windows%20Server%29/0.Requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0.Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.Disable%20Run%20%26%20Domain-Wide%20Wallpaper%20%28Windows%20Server%29/1.Practical%20implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.Practical implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-preparing-the-servers-pdc-adc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Preparing the Servers (PDC &amp; ADC)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Preparing the Servers (PDC &amp; ADC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuring-the-primary-server-pdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Configuring the Primary Server (PDC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-configuring-the-additional-server-adc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuring the Additional Server (ADC)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Configuring the Additional Server (ADC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#we-make-sure-the-devices-can-see-each-other" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        We make sure the devices can see each other:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-installing-active-directory-on-the-pdc-or-more-accurately-it-will-be-the-forest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Installing Active Directory on the PDC (or more accurately, it will be the Forest)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Installing Active Directory on the PDC (or more accurately, it will be the Forest)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-the-pdc-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On the PDC machine:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-adding-the-adc-to-the-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Adding the ADC to the Domain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ---
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="1infrastructure-setup"><strong>1.Infrastructure Setup :</strong></h1>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323035207.png" /></p>
+<h2 id="step-1-preparing-the-servers-pdc-adc">Step 1: Preparing the Servers (PDC &amp; ADC)</h2>
+<p>I mentioned installing Windows Server before, so let’s start by installing Active Directory, configuring the IP addresses, and changing the server names so the connection works correctly.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Device</strong></th>
+<th><strong>IP Address</strong></th>
+<th><strong>Subnet Mask</strong></th>
+<th><strong>Default Gateway</strong></th>
+<th><strong>Preferred DNS</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PDC</strong></td>
+<td><code>192.168.56.2</code></td>
+<td><code>255.255.255.0</code></td>
+<td><code>192.168.56.1</code></td>
+<td><code>127.0.0.1</code></td>
+</tr>
+<tr>
+<td><strong>ADC</strong></td>
+<td><code>192.168.56.3</code></td>
+<td><code>255.255.255.0</code></td>
+<td><code>192.168.56.1</code></td>
+<td><code>192.168.56.2</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-configuring-the-primary-server-pdc">1. Configuring the Primary Server (PDC)</h3>
+<ul>
+<li><strong>Change the name:</strong> From Computer Properties, change the name to <strong>PDC</strong> and perform a restart.</li>
+<li><strong>Configure the IP from Network and Sharing Center:</strong><ul>
+<li>IP Address: <code>192.168.56.10</code></li>
+<li>Subnet Mask: <code>255.255.255.0</code></li>
+<li>Default Gateway: <code>192.168.56.1</code></li>
+<li>Preferred DNS: <code>127.0.0.1</code> OR <code>192.168.56.10</code> (because it will act as the DNS later).</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sh">C:\Users\Administrator&gt;ipconfig /all
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : PDC
+   Primary Dns Suffix  . . . . . . . :
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Desktop Adapter
+   Physical Address. . . . . . . . . : 08-00-27-68-FE-D5
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::1c7f:2aa7:ecf9:2715%6(Preferred)
+   IPv4 Address. . . . . . . . . . . : 192.168.56.10(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.56.1
+   DHCPv6 IAID . . . . . . . . . . . : 101187623
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-31-51-80-91-08-00-27-68-FE-D5
+   DNS Servers . . . . . . . . . . . : 127.0.0.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+C:\Users\Administrator&gt;
+</code></pre>
+<h3 id="2-configuring-the-additional-server-adc">2. Configuring the Additional Server (ADC)</h3>
+<ul>
+<li><strong>Change the name:</strong> Change the name to <strong>ADC</strong>.</li>
+<li><strong>Configure the IP:</strong><ul>
+<li>IP Address: <code>192.168.56.11</code></li>
+<li>Subnet Mask: <code>255.255.255.0</code></li>
+<li>Default Gateway: <code>192.168.56.1</code></li>
+<li><strong>Preferred DNS:</strong> <code>192.168.56.10</code> (it must point to the PDC first so it can join the domain).</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-sh">C:\Users\Administrator&gt;ipconfig /all
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : ADC
+   Primary Dns Suffix  . . . . . . . :
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Desktop Adapter
+   Physical Address. . . . . . . . . : 08-00-27-B6-6B-8C
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::4c2d:31d5:8891:dc4f%4(Preferred)
+   IPv4 Address. . . . . . . . . . . : 192.168.56.11(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.56.1
+   DHCPv6 IAID . . . . . . . . . . . : 101187623
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-31-51-85-F6-08-00-27-B6-6B-8C
+   DNS Servers . . . . . . . . . . . : 192.168.56.10
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+C:\Users\Administrator&gt;
+</code></pre>
+<h4 id="we-make-sure-the-devices-can-see-each-other">We make sure the devices can see each other:</h4>
+<ul>
+<li>From the ADC :</li>
+</ul>
+<pre><code class="language-sh">C:\Users\Administrator&gt;ping 192.168.56.10
+
+Pinging 192.168.56.10 with 32 bytes of data:
+Reply from 192.168.56.10: bytes=32 time&lt;1ms TTL=128
+Reply from 192.168.56.10: bytes=32 time=1ms TTL=128
+Reply from 192.168.56.10: bytes=32 time&lt;1ms TTL=128
+Reply from 192.168.56.10: bytes=32 time=1ms TTL=128
+
+Ping statistics for 192.168.56.10:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\Users\Administrator&gt;
+</code></pre>
+<hr />
+<h2 id="step-2-installing-active-directory-on-the-pdc-or-more-accurately-it-will-be-the-forest">Step 2: Installing Active Directory on the PDC (or more accurately, it will be the Forest)</h2>
+<p>This is the moment where we convert the server from a "Workgroup" to a "Domain Controller".</p>
+<p>I did the following (the steps were explained in detail in previous labs):</p>
+<h4 id="on-the-pdc-machine">On the PDC machine:</h4>
+<ol>
+<li>Opened <strong>Server Manager</strong>.</li>
+<li>Clicked <strong>Manage</strong> then <strong>Add Roles and Features</strong>.</li>
+<li>Selected <strong>Active Directory Domain Services</strong> and continued until the installation completed.</li>
+<li>After installation, a yellow warning sign will appear at the top in Server Manager, click it and choose:<ul>
+<li><strong>Promote this server to a domain controller</strong>.</li>
+<li>Select <strong>Add a new forest</strong>.</li>
+<li><strong>Root domain name</strong>: enter <code>FINAL.LOCAL</code>.</li>
+</ul>
+</li>
+<li>In the <strong>Domain Controller Options</strong> page:<ul>
+<li>Entered the <strong>DSRM</strong> password (very important, save it).</li>
+</ul>
+</li>
+<li>Make sure this server has the roles <strong>GC (Global Catalog)</strong> and <strong>DNS</strong>.</li>
+<li>
+<p>Completed the wizard (left the NetBIOS name as <code>FINAL</code>) until it finished and performed an automatic <strong>Restart</strong>.</p>
+</li>
+<li>
+<p>To verify the PDC, I opened PowerShell :</p>
+</li>
+</ol>
+<pre><code class="language-sh">PS C:\Users\Administrator&gt; Get-ADDomainController
+
+
+ComputerObjectDN           : CN=PDC,OU=Domain Controllers,DC=FINAL,DC=LOCAL
+DefaultPartition           : DC=FINAL,DC=LOCAL
+Domain                     : FINAL.LOCAL
+Enabled                    : True
+Forest                     : FINAL.LOCAL
+HostName                   : PDC.FINAL.LOCAL
+InvocationId               : 574fd1e7-9b71-4a5b-a2ee-cf223f0a267e
+IPv4Address                : 192.168.56.10
+IPv6Address                :
+IsGlobalCatalog            : True
+IsReadOnly                 : False
+LdapPort                   : 389
+Name                       : PDC
+NTDSSettingsObjectDN       : CN=NTDS Settings,CN=PDC,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC
+                             =FINAL,DC=LOCAL
+OperatingSystem            : Windows Server 2022 Datacenter
+OperatingSystemHotfix      :
+OperatingSystemServicePack :
+OperatingSystemVersion     : 10.0 (20348)
+OperationMasterRoles       : {SchemaMaster, DomainNamingMaster, PDCEmulator, RIDMaster...}
+Partitions                 : {DC=ForestDnsZones,DC=FINAL,DC=LOCAL, DC=DomainDnsZones,DC=FINAL,DC=LOCAL,
+                             CN=Schema,CN=Configuration,DC=FINAL,DC=LOCAL, CN=Configuration,DC=FINAL,DC=LOCAL...}
+ServerObjectDN             : CN=PDC,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configuration,DC=FINAL,DC=LOCAL
+ServerObjectGuid           : f6467926-bb4e-4973-8d03-7295b239a350
+Site                       : Default-First-Site-Name
+SslPort                    : 636
+</code></pre>
+<hr />
+<h2 id="step-3-adding-the-adc-to-the-domain">Step 3: Adding the ADC to the Domain</h2>
+<p>Now we will make the second server (ADC) a partner to the PDC.</p>
+<ul>
+<li>On the <strong>ADC</strong> server, I opened <strong>Add Roles and Features</strong> and installed <strong>ADDS</strong>.</li>
+<li>Click on <strong>Promote this server to a domain controller</strong>.</li>
+</ul>
+<p>Then we start from here:</p>
+<ul>
+<li>
+<p>This time choose the first option: <strong>Add a domain controller to an existing domain</strong>.</p>
+</li>
+<li>
+<p>Enter the domain name <code>FINAL.LOCAL</code> and provide the Administrator credentials:</p>
+</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260322044936.png" /></p>
+<ul>
+<li>
+<p>Make sure this server has the role as <strong>GC (Global Catalog)</strong> and <strong>DNS</strong>.</p>
+</li>
+<li>
+<p>Then it asks me where to retrieve my data from:
+<img alt="" src="/Photos/Pasted%20image%2020260322045326.png" /></p>
+<blockquote>
+<p>Selected <strong>PDC.FINAL.LOCAL</strong> from the list.</p>
+</blockquote>
+</li>
+<li>
+<p>Then click Next again and complete the installation so that it becomes an Additional Domain Controller for our main PDC, after which it will restart automatically.</p>
+</li>
+<li>
+<p>Verification:</p>
+</li>
+</ul>
+<pre><code class="language-sh">PS C:\Users\Administrator.FINAL&gt; Get-ADDomainController                                          
+
+ComputerObjectDN           : CN=ADC,OU=Domain Controllers,DC=FINAL,DC=LOCAL
+DefaultPartition           : DC=FINAL,DC=LOCAL
+Domain                     : FINAL.LOCAL
+Enabled                    : True
+Forest                     : FINAL.LOCAL
+HostName                   : ADC.FINAL.LOCAL
+InvocationId               : bd9460a8-39ea-496e-8a1d-9f4af9c6d82b
+IPv4Address                : 192.168.56.11
+IPv6Address                :
+IsGlobalCatalog            : True
+IsReadOnly                 : False
+LdapPort                   : 389
+Name                       : ADC
+NTDSSettingsObjectDN       : CN=NTDS Settings,CN=ADC,CN=Servers,CN=Default-First-Site-Name,CN=Si
+                             tes,CN=Configuration,DC=FINAL,DC=LOCAL
+OperatingSystem            : Windows Server 2022 Datacenter
+OperatingSystemHotfix      :
+OperatingSystemServicePack :
+OperatingSystemVersion     : 10.0 (20348)
+OperationMasterRoles       : {}
+Partitions                 : {DC=ForestDnsZones,DC=FINAL,DC=LOCAL,
+                             DC=DomainDnsZones,DC=FINAL,DC=LOCAL,
+                             CN=Schema,CN=Configuration,DC=FINAL,DC=LOCAL,
+                             CN=Configuration,DC=FINAL,DC=LOCAL...}
+ServerObjectDN             : CN=ADC,CN=Servers,CN=Default-First-Site-Name,CN=Sites,CN=Configurat
+                             ion,DC=FINAL,DC=LOCAL
+ServerObjectGuid           : 1706aeb3-0bc7-4fd7-ba72-3add255730e4
+Site                       : Default-First-Site-Name
+SslPort                    : 636
+
+</code></pre>
+<blockquote>
+<p>Now the data on the PDC is listened to (replicated) at the ADC and vice versa, and this is the basis of High Availability.</p>
+</blockquote>
+<h2 id="-">---</h2>
+<hr />
+<h1 id="2-organizational-structure"><strong>2. Organizational Structure :</strong></h1>
+<ul>
+<li>The second step is converting the servers into an actual company structure to meet the requirements:</li>
+</ul>
+<h3 id="from-ad-users-and-computers"><strong>From AD Users and Computers:</strong></h3>
+<ul>
+<li>I will create four departments (HR, Sales, Development, IT).</li>
+<li>Right-click on the domain itself to create an Organizational Unit under <code>FINAL.LOCAL</code>.</li>
+<li>I repeated this step for all four departments.</li>
+</ul>
+<h3 id="creating-security-groups"><strong>Creating Security Groups:</strong></h3>
+<ul>
+<li>Inside each OU, it is preferable to create a group to manage permissions easily:</li>
+<li>Go inside each OU -&gt; Right-click -&gt; <strong>New</strong> -&gt; <strong>Group</strong>.</li>
+<li>I will name it in the format <code>Name_Group</code>, and set the Scope type to Global.</li>
+</ul>
+<h3 id="adding-users"><strong>Adding Users</strong></h3>
+<p>To properly test the lab, we need at least one user in each department.</p>
+<ul>
+<li>Right-click inside the <strong>OU</strong> -&gt; <strong>New</strong> -&gt; <strong>User</strong>.</li>
+<li>After creating the user, right-click on it -&gt; <strong>Add to a group</strong>, then type the group name for the department (e.g., <code>HR_Group</code>).</li>
+<li>This is the structure I want to implement:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Department (OU)</strong></th>
+<th><strong>User Name</strong></th>
+<th><strong>Security Group</strong></th>
+<th><strong>Testing Purpose</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IT</strong></td>
+<td><code>IT_Admin</code> / <code>IT_Support</code></td>
+<td><code>IT_Group</code></td>
+<td>Testing Remote Assistance and Full Access.</td>
+</tr>
+<tr>
+<td><strong>HR</strong></td>
+<td><code>HR_Manager</code> / <code>HR_Staff</code></td>
+<td><code>HR_Group</code></td>
+<td>Testing file deletion restriction and USB blocking.</td>
+</tr>
+<tr>
+<td><strong>Development</strong></td>
+<td><code>Dev_Lead</code> / <code>Dev_Dev1</code></td>
+<td><code>Development_Group</code></td>
+<td>Testing Shared Folders and Task Manager restriction.</td>
+</tr>
+<tr>
+<td><strong>Sales</strong></td>
+<td><code>Sales_Rep1</code> / <code>Sales_Rep2</code></td>
+<td><code>Sales_Group</code></td>
+<td>Testing Quota (storage limits) and Printer Management.</td>
+</tr>
+</tbody>
+</table>
+<p>Now we will add the users to their respective groups, and I will do the following in each group:</p>
+<ul>
+<li>Right-click on the users.</li>
+<li>I selected <strong>Add to a Group</strong>.</li>
+<li>I typed the group name <code>HR_Group</code> and clicked <strong>OK</strong>.</li>
+<li>I repeated this for every user in their respective department.</li>
+</ul>
+<p>And now, to make sure everything is correct, I did a double check on the groups:</p>
+<ul>
+<li>I opened the properties of the group (<code>HR_Group</code>) and checked the <strong>Members</strong> tab, and I should find all the assigned users there.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260322054459.png" /></p>
+<p>To check the settings :</p>
+<pre><code class="language-sh">PS C:\Users\Administrator&gt; Get-ADGroup -Filter 'Name -like &quot;*_Group&quot;' | ForEach-Object {
+&gt;&gt;     $group = $_.Name
+&gt;&gt;     Get-ADGroupMember -Identity $_ | Select-Object @{N=&quot;GroupName&quot;;E={$group}}, Name, SamAccountName
+&gt;&gt; } | Format-Table -AutoSize
+
+GroupName         Name       SamAccountName
+---------         ----       --------------
+IT_Group          IT_Admin   IT_Admin
+IT_Group          IT_Support IT_Support
+Development_Group Dev_Lead   Dev_Lead
+Development_Group Dev_Dev1   Dev_Dev1
+Sales_Group       Sales_Rep1 Sales_Rep1
+Sales_Group       Sales_Rep2 Sales_Rep2
+HR_Group          HR_Manager HR_Manager
+HR_Group          HR_Staff   HR_Staff
+
+PS C:\Users\Administrator&gt;
+</code></pre>
+<blockquote>
+<p>At this point, we have verified that each user is inside their correct group before proceeding with anything else.</p>
+</blockquote>
+<h2 id="-_1">---</h2>
+<hr />
+<h1 id="3-security-policies-gpo"><strong>3. Security Policies (GPO) :</strong></h1>
+<p>We will start with the Policies, first the Password and Lockout.</p>
+<p>In Active Directory, Account Policies such as password and lockout <strong>must</strong> be applied at the domain level, which is why we modify them in the <strong>Default Domain Policy</strong>.</p>
+<ul>
+<li>From <strong>Server Manager</strong>, I opened <strong>Tools</strong> and selected <strong>Group Policy Management</strong>.</li>
+<li>I expanded the Forest and the Domain until I reached <strong>Default Domain Policy</strong>, then right-clicked on it and selected <strong>Edit</strong>.</li>
+<li>To configure the Password Policy:<ul>
+<li>From the path:<ul>
+<li><code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Windows Settings</code> &gt; <code>Security Settings</code> &gt; <code>Account Policies</code> &gt; <strong><code>Password Policy</code></strong></li>
+</ul>
+</li>
+<li>Then I applied the following:<ul>
+<li><strong>Enforce password history:</strong> set it to <strong>3</strong> passwords remembered.</li>
+<li><strong>Maximum password age:</strong> set it to <strong>60</strong> days.</li>
+<li><strong>Minimum password length:</strong> set it to <strong>6</strong> characters.</li>
+<li><strong>Password must meet complexity requirements:</strong> set it to <strong>Enabled</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323041743.png" /></p>
+<p>Configuring the <strong>Account Lockout Policy</strong>:</p>
+<ul>
+<li><strong>Account lockout threshold:</strong> set it to <strong>4</strong> invalid logon attempts (if the user enters the wrong password 4 times, the account will be locked).</li>
+<li><strong>Account lockout duration:</strong> set it to <strong>60</strong> minutes (a full hour as required).</li>
+<li><strong>Reset account lockout counter after:</strong> set it to <strong>60</strong> minutes.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323042209.png" /></p>
+<h2 id="-_2">---</h2>
+<hr />
+<h1 id="4-remote-access-configuration"><strong>4. Remote Access Configuration :</strong></h1>
+<p>Now we want to apply requirement number 4 so that the IT team can assist employees:</p>
+<h4 id="enabling-remote-desktop-via-gpo">Enabling Remote Desktop via GPO</h4>
+<p>Instead of configuring each machine one by one, we will apply it once:</p>
+<ol>
+<li>I opened <strong>Group Policy Management</strong>.</li>
+<li>Right-clicked on the domain <code>FINAL.LOCAL</code> and selected <strong>Create a GPO in this domain, and Link it here</strong>.</li>
+<li>Named it <strong>"RemoteAccessGPO"</strong>.</li>
+<li>Right-clicked on it and selected <strong>Edit</strong>.</li>
+<li>Follow this path:<ol>
+<li><code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>Windows Components</code> &gt; <code>Remote Desktop Services</code> &gt; <code>Remote Desktop Session Host</code> &gt; <code>Connections</code>.</li>
+<li>Opened <strong>Allow users to connect remotely by using Remote Desktop Services</strong><ol>
+<li>Set it to <strong>Enabled</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323043622.png" /></p>
+<h4 id="enabling-remote-assistance-and-assigning-it-as-helpers">Enabling Remote Assistance and Assigning IT as Helpers</h4>
+<p>In the same GPO, follow this path:<br />
+<code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>System</code> &gt; <strong><code>Remote Assistance</code></strong></p>
+<ol>
+<li>Open <strong>Configure Solicited Remote Assistance</strong> and set it to <strong>Enabled</strong>.</li>
+<li>
+<p>Open <strong>Configure Offer Remote Assistance</strong> and set it to <strong>Enabled</strong>.</p>
+<ul>
+<li>Click on <strong>Show</strong> (under Helpers) and enter your group name: <code>FINAL\IT_Group</code>.
+     <img alt="" src="/Photos/Pasted%20image%2020260323044359.png" /></li>
+</ul>
+<p>Any user inside the IT group is allowed to initiate remote access and assist other users.</p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323044556.png" /></p>
+</li>
+<li>
+<p>Remote Assistance requires a “rule” in the employees’ firewall to allow IT access. Since we are using GPO, we will handle it here:</p>
+</li>
+<li>
+<p>In the same GPO Editor, I opened:</p>
+<ul>
+<li><code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Windows Settings</code> &gt; <code>Security Settings</code> &gt; <code>Windows Defender Firewall with Advanced Security</code>.</li>
+</ul>
+</li>
+<li>Right-clicked on <strong>Inbound Rules</strong> and selected <strong>New Rule</strong>.</li>
+<li>Chose <strong>Predefined</strong>.</li>
+<li>From the list, selected <strong>Remote Desktop</strong> and completed the wizard (Allow the connection).</li>
+<li>I repeated the same steps and tried to select <strong>Remote Assistance</strong>, but it was not available, so we did the following:<ul>
+<li>Opened <strong>Server Manager</strong> and clicked <strong>Manage</strong> -&gt; <strong>Add Roles and Features</strong>, then continued until reaching <strong>Features</strong>.</li>
+<li>Searched for <strong>Remote Assistance</strong>, ensured it was checked, installed it, and performed a restart.</li>
+<li>In the same GPO Editor, I opened:<ul>
+<li><code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Windows Settings</code> &gt; <code>Security Settings</code> &gt; <code>Windows Defender Firewall with Advanced Security</code>.</li>
+</ul>
+</li>
+<li>Right-clicked on <strong>Inbound Rules</strong> and selected <strong>New Rule</strong>.</li>
+<li>Chose <strong>Predefined</strong>.</li>
+<li>From the list, selected <strong>Remote Assistance</strong> and completed the wizard (Allow the connection).</li>
+</ul>
+</li>
+</ol>
+<p><img alt="697" src="/Photos/Pasted%20image%2020260323054826.png" /></p>
+<blockquote>
+<p>At this point, the <strong>Firewall Rules</strong> for <strong>Remote Desktop</strong> and <strong>Remote Assistance</strong> have been successfully applied.</p>
+</blockquote>
+<h2 id="-_3">---</h2>
+<hr />
+<h1 id="5-user-restrictions-gpo"><strong>5. User Restrictions (GPO) :</strong></h1>
+<p>Before leaving Group Policy, we still have “User Restrictions” to secure the lab.</p>
+<p><strong>Requirements:</strong></p>
+<ol>
+<li><strong>Block USB (External Storage).</strong></li>
+<li><strong>Disable Task Manager.</strong></li>
+<li>
+<p><strong>Disable Control Panel.</strong></p>
+</li>
+<li>
+<p>I will create a new GPO called <strong>"SecurityRestrictionsGPO"</strong> and link it to the domain <code>FINAL.LOCAL</code>.</p>
+</li>
+<li>
+<p>I want these policies to be applied to everyone except IT, and at the same time, if new OUs are added later, they should automatically inherit these settings without modifying our configuration. So, in this case, I will use <strong>Security Filtering</strong>.</p>
+</li>
+<li>
+<p>I created the <strong>SecurityRestrictionsGPO</strong>, then clicked on it. On the right side, there is a section called <strong>Security Filtering</strong>, which contains <strong>Authenticated Users</strong> (meaning all users). I will remove <strong>Authenticated Users</strong> and instead click <strong>ADD</strong> to include only the specific groups I need, like this:</p>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323190619.png" /></p>
+<p>And now the GPO is linked to the domain, but Windows will only apply it to the members of these groups, while ignoring the IT group. If new groups are added later, nothing complex is needed—just simply add them here.</p>
+<p>After that, I clicked <strong>Edit</strong> on this GPO:</p>
+<ul>
+<li><strong>To block USB (at the computer level):</strong><ul>
+<li><code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>System</code> &gt; <code>Removable Storage Access</code></li>
+<li>I enabled the following option:<ul>
+<li><strong>All Removable Storage classes: Deny all access</strong>.
+<img alt="" src="/Photos/Pasted%20image%2020260323192219.png" /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>To disable Task Manager (at the user level):</strong></p>
+<ul>
+<li>
+<p><code>User Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>System</code> &gt; <code>Ctrl+Alt+Del Options</code></p>
+</li>
+<li>
+<p>I enabled the following option:
+        - <strong>Remove Task Manager</strong>.
+    <img alt="" src="/Photos/Pasted%20image%2020260323192052.png" /></p>
+</li>
+<li>
+<p><strong>To disable Control Panel (at the user level):</strong></p>
+<ul>
+<li><code>User Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>Control Panel</code></li>
+<li>I enabled the following option:<ul>
+<li><strong>Prohibit access to Control Panel and PC settings</strong>.
+<img alt="" src="/Photos/Pasted%20image%2020260323191930.png" /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="-_4">---</h2>
+<hr />
+<h1 id="verifying-gpo-execution"><strong>Verifying GPO Execution:</strong></h1>
+<ul>
+<li>Before applying changes:</li>
+</ul>
+<pre><code class="language-powershell">gpupdate /force
+</code></pre>
+<ul>
+<li>Verifying the Password Policy:</li>
+</ul>
+<pre><code class="language-powershell">PS C:\Users\Administrator&gt; Get-ADDefaultDomainPasswordPolicy                                                            
+
+ComplexityEnabled           : True
+DistinguishedName           : DC=FINAL,DC=LOCAL
+LockoutDuration             : 01:00:00
+LockoutObservationWindow    : 01:00:00
+LockoutThreshold            : 4
+MaxPasswordAge              : 60.00:00:00
+MinPasswordAge              : 1.00:00:00
+MinPasswordLength           : 6
+objectClass                 : {domainDNS}
+objectGuid                  : 8d625e44-0912-4e1a-9d65-135306d5ce06
+PasswordHistoryCount        : 3
+ReversibleEncryptionEnabled : False
+
+PS C:\Users\Administrator&gt;
+</code></pre>
+<ul>
+<li>To verify GPO linking status:</li>
+</ul>
+<pre><code class="language-powershell">Get-GPOReport -All -ReportType HTML -Path &quot;C:\GPO_Report.html&quot;
+</code></pre>
+<p>This is to confirm that the GPO is actually linked to the domain or OU.</p>
+<p>After running <code>gpupdate /force</code>, to ensure the settings are truly applied:</p>
+<pre><code class="language-powershell">gpresult /r
+</code></pre>
+<blockquote>
+<blockquote>
+<p>The results here show the current state report, which tells what Windows sees and what is actually applied on the server.</p>
+</blockquote>
+</blockquote>
+<p>All results confirm that the required configurations have been successfully implemented.</p>
+<h2 id="-_5">---</h2>
+<hr />
+<h1 id="6-dhcp-configuration"><strong>6. DHCP Configuration :</strong></h1>
+<h3 id="first-i-will-install-the-role-on-both-pdc-and-adc-servers"><strong>First, I will install the Role on both PDC and ADC servers:</strong></h3>
+<p>The service must be installed on both machines before we configure them together.</p>
+<ol>
+<li>I opened <strong>Server Manager</strong> on both servers.</li>
+<li>Clicked on <strong>Manage</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
+<li>Selected <strong>DHCP Server</strong> and clicked <strong>Next</strong> until the installation completed.</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323200733.png" /></p>
+<ol>
+<li>After installation, a yellow triangle (Notifications) appears at the top. I clicked on it and selected <strong>Complete DHCP Configuration</strong>.
+<img alt="" src="/Photos/Pasted%20image%2020260323201440.png" /><blockquote>
+<p>I clicked <strong>Commit</strong> then <strong>Close</strong>. (This step authorizes the server in Active Directory).</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="configuring-the-scope-on-the-pdc-only"><strong>Configuring the Scope (on the PDC only):</strong></h3>
+<p>The scope is the range of IP addresses that will be distributed, and we will create it on the primary server, which will then automatically relay to the additional server.</p>
+<ul>
+<li>From the PDC, I opened <strong>Tools</strong> -&gt; <strong>DHCP</strong>.</li>
+<li>Expanded the arrow next to the server name, then right-clicked on <strong>IPv4</strong> and selected <strong>New Scope</strong>.</li>
+<li><strong>Name:</strong> I named it <code>FINAL_SCOPE</code>.</li>
+<li>
+<p><strong>IP Address Range:</strong></p>
+<ul>
+<li>Start IP: <code>192.168.56.40</code></li>
+<li>End IP: <code>192.168.56.230</code></li>
+<li>Length: <code>24</code> (Subnet Mask: <code>255.255.255.0</code>).</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323203005.png" /></p>
+</li>
+</ul>
+<p><strong>Add Exclusions:</strong> (the IP addresses we do not want to be assigned):</p>
+<ul>
+<li>Start: <code>192.168.56.80</code></li>
+<li>
+<p>End: <code>192.168.56.85</code> then I clicked <strong>Add</strong>.</p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323203452.png" /></p>
+</li>
+<li>
+<p><strong>Lease Duration:</strong> Change the Days to <strong>10</strong> days.</p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323203542.png" /></p>
+</li>
+<li>
+<p><strong>Configure DHCP Options:</strong> I selected <strong>Yes, I want to configure these options now</strong>.</p>
+<ul>
+<li><strong>Router (Default Gateway):</strong> I entered <code>192.168.56.1</code> and clicked <strong>Add</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323204201.png" /></p>
+</li>
+<li>
+<p><strong>DNS Server:</strong> I made sure that my IPs are added (<code>192.168.56.10</code> and <code>192.168.56.11</code>).</p>
+<ul>
+<li><strong>Preferred DNS server:</strong> I left it as <code>127.0.0.1</code> (so it can resolve itself first).</li>
+<li><strong>Alternate DNS server:</strong> I entered the second server (<strong>ADC</strong>) IP: <strong><code>192.168.56.11</code></strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323204249.png" /></p>
+</li>
+<li>
+<p>At the same time, I went to the <strong>ADC</strong>, which has the IP <code>192.168.56.11</code>, and did the opposite configuration:</p>
+<ul>
+<li><strong>Preferred DNS:</strong> set it to <code>127.0.0.1</code>.</li>
+<li><strong>Alternate DNS:</strong> set it to <code>192.168.56.10</code> (the PDC).</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323205017.png" /></p>
+</li>
+<li>
+<p>Here, I added the ADC in the <strong>IP address</strong> field:</p>
+<ul>
+<li><code>192.168.56.11</code> then clicked <strong>Add</strong>.</li>
+<li>Then we wait a few seconds for Windows to validate it.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323205555.png" /></p>
+</li>
+<li>
+<p>And then here we will click Next in the <code>WINS Servers</code> screen:</p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323205811.png" /></p>
+<blockquote>
+<p>The <strong>WINS Servers</strong> is a very old technology that was used to resolve computer names into IP addresses before <strong>DNS</strong> became the standard. Since we are working with modern DNS on Windows Server 2022, there is no need to configure anything here.</p>
+</blockquote>
+</li>
+<li>
+<p>The <strong>Activate Scope</strong> window appeared, so I selected <strong>Yes, I want to activate this scope now</strong></p>
+<ul>
+<li>(so it can start distributing IP addresses immediately).</li>
+<li>I clicked <strong>Next</strong> and then <strong>Finish</strong>.**</li>
+</ul>
+</li>
+</ul>
+<h3 id="configuring-failover-linking-with-adc"><strong>Configuring Failover (Linking with ADC):</strong></h3>
+<p>This is the step that allows both servers to communicate with each other.</p>
+<ol>
+<li>From the same DHCP console on the <strong>PDC</strong>.</li>
+<li>Right-click on the newly created scope (<code>FINAL_SCOPE</code>) and select <strong>Configure Failover</strong>.</li>
+<li>
+<p>Click <strong>Next</strong>, and in the <strong>Partner Server</strong> section:</p>
+<ul>
+<li>In the small <strong>Add Server</strong> window that appears, select the server: <strong><code>adc.final.local</code></strong> (with IP <code>192.168.56.11</code>).</li>
+<li>I clicked <strong>OK</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323211006.png" />
+ - Then I clicked <strong>Next</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Create a new failover relationship</strong> screen:</p>
+</li>
+<li>
+<p>This is the final step to link both servers (<strong>DHCP Failover</strong>). This screen defines the “password” that both servers will use to trust each other and exchange data.</p>
+<ul>
+<li><strong>Mode:</strong> I set it to <strong>Load Balance</strong> (so they split the workload 50/50).</li>
+<li><strong>Shared Secret:</strong> I entered a password for the relationship (for example <code>P@$$w0rd</code>).</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323211353.png" /></p>
+<p>The DHCP Failover worked at 100%, and the two servers (PDC and ADC) are now "working together" in distributing IPs:</p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323211621.png" /></p>
+</li>
+<li>
+<p>After clicking <strong>Finish</strong>, to verify:</p>
+<ul>
+<li>I went to the <strong>ADC</strong> (the additional server).</li>
+<li>Opened the <strong>DHCP</strong> console.</li>
+<li>Right-clicked on <strong>IPv4</strong> and selected <strong>Refresh</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323214313.png" />
+- The <code>FINAL_SCOPE</code> appeared on the ADC automatically with all the settings configured on the primary server.
+- <strong>Scope Status:</strong> The <code>FINAL_SCOPE</code> is present and shows as <strong>Active</strong>, which means the replication from the primary server was successful.
+- <strong>Failover Status:</strong> The status shows <code>Normal</code> and the partner is <code>pdc.final.local</code> in <strong>Load Balance</strong> mode. This means both servers now see each other and are working as a single system.</p>
+</li>
+</ol>
+<h2 id="-_6">---</h2>
+<hr />
+<h1 id="7-dns-load-balancing"><strong>7. DNS &amp; Load Balancing</strong></h1>
+<p>The idea here is that we will make the website name <code>www.final.local</code> point to both of our servers (<code>192.168.56.10</code> and <code>192.168.56.11</code>) using a method called <strong>Round Robin</strong>. This means that when someone requests the website, DNS will return the first server’s IP, and the next request will return the second server’s IP, and so on.</p>
+<h3 id="dns-load-balancing-configuration-steps">🌍 DNS Load Balancing Configuration Steps:</h3>
+<p>Do the following from the <strong>PDC</strong> server:</p>
+<ol>
+<li><strong>Open the tool:</strong> From <strong>Server Manager</strong>, click <strong>Tools</strong> then <strong>DNS</strong>.</li>
+<li><strong>Go to the zone:</strong> Expand the server name <code>PDC</code> -&gt; then <strong>Forward Lookup Zones</strong> -&gt; open the zone named <strong><code>FINAL.LOCAL</code></strong>.</li>
+<li>
+<p><strong>Add the first record:</strong></p>
+<ul>
+<li>Right-click in an empty area and select <strong>New Host (A or AAAA)</strong>.
+<img alt="" src="/Photos/Pasted%20image%2020260323223027.png" /></li>
+</ul>
+</li>
+<li>
+<p>In the <strong>Name</strong> field, I entered: <strong><code>www</code></strong>.</p>
+</li>
+<li>In the <strong>IP address</strong> field, I entered: <strong><code>192.168.56.10</code></strong>.</li>
+<li>I clicked <strong>Add Host</strong>.</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323223343.png" /></p>
+<ol>
+<li>
+<p><strong>Adding the second record (with the same name):</strong></p>
+</li>
+<li>
+<p>In the same window (or by right-clicking and selecting <strong>New Host</strong> again):</p>
+</li>
+<li>In the <strong>Name</strong> field, I also entered: <strong><code>www</code></strong>.</li>
+<li>In the <strong>IP address</strong> field, this time I entered: <strong><code>192.168.56.11</code></strong>.</li>
+<li>
+<p>I clicked <strong>Add Host</strong>.</p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323223442.png" /></p>
+</li>
+</ol>
+<h3 id="verifying-round-robin-is-enabled"><strong>Verifying Round Robin is enabled:</strong></h3>
+<p>By default, Windows Server enables this feature, but we will verify it:</p>
+<ol>
+<li>Right-clicked on the server name (<code>PDC</code>) in the DNS console and selected <strong>Properties</strong>.</li>
+<li>Opened the <strong>Advanced</strong> tab.</li>
+<li>Made sure that <strong>Enable round robin</strong> is checked ✅.</li>
+</ol>
+<h3 id="testing-via-cmd-fastest-and-most-accurate-method"><strong>Testing via CMD (fastest and most accurate method):</strong></h3>
+<p>In <strong>CMD</strong>:</p>
+<pre><code class="language-sh">C:\Users\Administrator&gt;nslookup www.final.local
+DNS request timed out.
+    timeout was 2 seconds.
+Server:  UnKnown
+Address:  ::1
+
+Name:    www.final.local
+Addresses:  192.168.56.11
+          192.168.56.10
+
+C:\Users\Administrator&gt;
+</code></pre>
+<blockquote>
+<blockquote>
+<p>The appearance of both addresses means that DNS understands that this name has two sources, and it will distribute requests between them.</p>
+</blockquote>
+</blockquote>
+<h2 id="-_7">---</h2>
+<hr />
+<h1 id="web-server-iis-high-availability"><strong>Web Server (IIS) &amp; High Availability</strong></h1>
+<h3 id="installing-the-web-server-iis-on-pdc-and-adc">Installing the Web Server (IIS) on PDC and ADC</h3>
+<p><em>(I performed these steps on the PDC and repeated them on the ADC)</em></p>
+<ol>
+<li>Open <strong>Server Manager</strong>.</li>
+<li>Click <strong>Add Roles and Features</strong>.</li>
+<li>Click <strong>Next</strong> until reaching the <strong>Server Roles</strong> screen.</li>
+<li>Check <strong>Web Server (IIS)</strong>. A small window will appear, click <strong>Add Features</strong>.</li>
+<li>Continue clicking <strong>Next</strong> until the end without changing any other settings, and finally click <strong>Install</strong>.</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323225539.png" /></p>
+<h3 id="customization-to-verify-round-robin"><strong>Customization to verify Round Robin</strong></h3>
+<p>To know which server you are hitting when opening the website, we need to modify the default page on each server:</p>
+<p><strong>On the PDC server:</strong></p>
+<ol>
+<li>Go to the path: <code>C:\inetpub\wwwroot</code>.</li>
+<li>Locate the file named <code>iisstart.htm</code>.</li>
+<li>Right-click it -&gt; <strong>Open with</strong> -&gt; <strong>Notepad</strong>.</li>
+<li>Edit it so that the page displays the PDC server identifier, e.g., change the code to: <code>&lt;div class="server-box"&gt;SERVER: PDC&lt;/div&gt;</code></li>
+</ol>
+<p><strong>On the ADC server:</strong></p>
+<ul>
+<li>Repeat the same steps exactly, but change the line to: <code>&lt;div class="server-box"&gt;SERVER: ADC&lt;/div&gt;</code></li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323232041.png" /></p>
+<h3 id="verification-phase"><strong>Verification Phase:</strong></h3>
+<p>Now it’s time to enjoy the result of your work:</p>
+<ol>
+<li>Open a browser (Edge) from any device (PDC or Client).</li>
+<li>Type in the address: <code>http://www.final.local</code>.</li>
+<li>The server page should open (e.g., PDC).</li>
+<li>Refresh the browser several times, or open the site from another device on the network.</li>
+<li><strong>The surprise:</strong> DNS will rotate the requests to the ADC, and you’ll see the line change to:</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323232119.png" /></p>
+<blockquote>
+<p>When I completely shut down the PDC (Shut down) and tried to open the site from the client, I found that it opened normally through the ADC. That's how I actually achieved <strong>High Availability</strong>.</p>
+</blockquote>
+<h2 id="-_8">---</h2>
+<hr />
+<h1 id="9-file-server-permissions"><strong>9. File Server &amp; Permissions :</strong></h1>
+<p>Since we have “finalized” the Web and infrastructure, it’s time to secure the company files. The requirement now:</p>
+<h3 id="1-creating-the-shared-folder-on-the-pdc"><strong>1. Creating the Shared Folder (on the PDC):</strong></h3>
+<ul>
+<li>Open the <strong>C</strong> partition and create a folder named <strong><code>FinalProject</code></strong>.</li>
+<li>Right-click on it -&gt; <strong>Properties</strong> -&gt; <strong>Sharing</strong> -&gt; <strong>Advanced Sharing</strong>.</li>
+<li>Enable <strong>Share this folder</strong> and click <strong>Permissions</strong>.</li>
+<li>Set <code>Everyone</code> to have <strong>Read</strong> permission only:</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323234559.png" /></p>
+<ul>
+<li>The function of the <code>IT Group</code> and its <strong>Full Control</strong> function:</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323234503.png" /></p>
+<ul>
+<li>I added the <code>HR_Group</code> and <code>Dev_Group</code> and gave them <strong>Change</strong> and <strong>Read</strong>:</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323235222.png" /></p>
+<h3 id="2-preventing-delete-ntfs-advanced-permissions">2. Preventing Delete (NTFS Advanced Permissions):</h3>
+<p>To execute the (Allow: Edit / Deny: Delete) request:</p>
+<ol>
+<li>
+<p>From the same Properties window, go to the <strong>Security</strong> tab.</p>
+</li>
+<li>
+<p>Click <strong>Advanced</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Disable inheritance</strong> and select the first option (Convert...) to manually control the permissions.</p>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260323235543.png" /></p>
+<ol>
+<li>
+<p>Add the HR group and click <strong>Edit</strong>.</p>
+</li>
+<li>
+<p>Click on <strong>Show advanced permissions</strong> (very important).</p>
+</li>
+<li>
+<p><strong>Settings:</strong></p>
+<ul>
+<li>
+<p>Leave all options checked (Read, Write, Create).</p>
+</li>
+<li>
+<p><strong>Uncheck</strong> the boxes next to: <strong><code>Delete</code></strong> and <strong><code>Delete subfolders and files</code></strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324000626.png" /></p>
+<ol>
+<li>I pressed <strong>OK</strong> and repeated this with the required groups (Development_Group and Sales_Group):</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324001017.png" /></p>
+<blockquote>
+<p>This means that the Development_Group, Sales_Group, and HR_Group will be able to upload and modify files, but if anyone tries to delete a colleague’s file, Windows will display “Access Denied”.</p>
+</blockquote>
+<h3 id="3-preventing-upload-of-dangerous-files-file-screening"><strong>3. Preventing Upload of Dangerous Files (File Screening):</strong></h3>
+<p>We want to prevent employees from uploading:</p>
+<ul>
+<li>Executable files <strong>(.exe)</strong> to protect against viruses.</li>
+<li>Audio &amp; video files <strong>(Audio &amp; Video)</strong> to preserve server storage.</li>
+</ul>
+<h4 id="we-need-a-tool-called-fsrm-which-requires-installing-the-role">We need a tool called FSRM, which requires installing the Role:</h4>
+<ul>
+<li>From <strong>Server Manager</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
+<li>I went to <strong>File and Resource Manager</strong> -&gt; <strong>File and iSCSI Services</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324002107.png" /></p>
+<ul>
+<li>I checked <strong>File Server Resource Manager</strong> and installed it.</li>
+</ul>
+<h4 id="configuring-the-restriction"><strong>Configuring the restriction:</strong></h4>
+<ul>
+<li>I opened the tool from <strong>Tools</strong> -&gt; <strong>File Server Resource Manager</strong>.</li>
+<li>From the left menu, I opened <strong>File Screening Management</strong> -&gt; then <strong>File Screens</strong>.</li>
+<li>Right-clicked in the middle and selected <strong>Create File Screen</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324002604.png" /></p>
+<ul>
+<li>In <strong>File screen path</strong>, I selected the folder <code>C:\Final_Project</code>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324002633.png" /></p>
+<ul>
+<li>
+<p>Under the options, I selected:</p>
+<ul>
+<li><strong>Block Audio and Video Files</strong>.</li>
+<li><strong>Block Executable Files</strong> (to prevent <code>.exe</code> files).</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324002726.png" /></p>
+<blockquote>
+<p><strong>Create</strong>.</p>
+</blockquote>
+<ul>
+<li>A prompt will appear asking: “Do you want to save these custom settings as a template?”</li>
+<li>I selected <strong>Save the custom file screen without creating a template</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324003010.png" /></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324003615.png" /></p>
+<p>Let’s verify the setup:</p>
+<p>From the server itself:</p>
+<ul>
+<li>I named the file <code>test.mp3</code> or <code>test.exe</code>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324003729.png" /></p>
+<ul>
+<li>And with that, we have applied the policy to the folder to ensure it remains free from any unauthorized files or viruses. </li>
+<li>Also, even the admin must comply with storage security standards and prevent Shadow IT.</li>
+</ul>
+<h2 id="-_9">---</h2>
+<hr />
+<h1 id="10-network-drives"><strong>10. Network Drives :</strong></h1>
+<h3 id="creating-the-public-share"><strong>Creating the Public Share:</strong></h3>
+<ol>
+<li>On the <strong>PDC</strong>, I opened <code>C:\</code> and created a new folder named <strong><code>PublicShare</code></strong>.</li>
+<li>Right-clicked -&gt; <strong>Properties</strong> -&gt; <strong>Sharing</strong> -&gt; <strong>Advanced Sharing</strong>.</li>
+<li>Enabled sharing and went to <strong>Permissions</strong>: set <code>Everyone</code> to have <strong>Full Control</strong> (because NTFS permissions will control access later).</li>
+<li>Then I went to the <strong>Security</strong> tab (NTFS Permissions):<ul>
+<li>Added the <strong><code>Domain Users</code></strong> group.</li>
+<li>Granted them <strong>Modify</strong> permission (so they can create and edit files as required).</li>
+</ul>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324012927.png" /></p>
+<h3 id="setting-storage-limit-2gb-quota"><strong>Setting Storage Limit (2GB Quota):</strong></h3>
+<ul>
+<li>I opened <strong>File Server Resource Manager</strong> from the <strong>Tools</strong> menu.</li>
+<li>From the left panel, I selected <strong>Quota Management</strong> -&gt; then <strong>Quotas</strong>.</li>
+<li>Right-clicked in the middle -&gt; <strong>Create Quota</strong>.</li>
+<li>In the <strong>Quota path</strong>, I selected the <code>Public_Share</code> folder that we just created.</li>
+<li>Under <strong>Template</strong>, I chose <strong>2 GB Limit</strong> and set it as a <strong>Hard Quota</strong>.</li>
+<li>Clicked <strong>Create</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324010843.png" /></p>
+<h3 id="mapping-the-network-drive"><strong>Mapping the Network Drive:</strong></h3>
+<p>To make the folder automatically appear for users in <strong>This PC</strong>:</p>
+<ul>
+<li>Opened <strong>Group Policy Management</strong>.</li>
+<li>Right-clicked on <strong>FINAL.LOCAL</strong> (the domain itself) and selected <strong>Create a GPO in this domain, and Link it here...</strong> and named it <code>MapPublicDrive</code>.</li>
+<li>Right-clicked on the new GPO -&gt; <strong>Edit</strong>.</li>
+<li>Went to the following path:<ul>
+<li><code>User Configuration</code> -&gt; <code>Preferences</code> -&gt; <code>Windows Settings</code> -&gt; <strong>Drive Maps</strong>.</li>
+</ul>
+</li>
+<li>Right-clicked in the middle -&gt; <strong>New</strong> -&gt; <strong>Mapped Drive</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324011406.png" /></p>
+<ul>
+<li><strong>Action:</strong> Update</li>
+<li><strong>Location:</strong> <code>\\PDC\PublicShare</code></li>
+<li><strong>Drive Letter:</strong> She chose the letter <strong>P:</strong> (to stand for Public).</li>
+<li><strong>Label:</strong> She wrote <code>Public Shared Folder</code>.<ul>
+<li>Check mark for <strong>Reconnect</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324011754.png" /></p>
+<p>Then I went to the <strong>Common</strong> tab next to the General tab at the top:</p>
+<ul>
+<li>**<code>Run in logged-on user's security context (user policy option)</code></li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324012225.png" /></p>
+<blockquote>
+<blockquote>
+<p>This ensures that the GPO works with the privileges of the user who logs in and that the drives appear without problems.</p>
+</blockquote>
+</blockquote>
+<p><img alt="" src="Photos/Pasted%20image%2020260324012515.png" /></p>
+<blockquote>
+<blockquote>
+<p>That's perfect :)</p>
+</blockquote>
+</blockquote>
+<h2 id="-_10">---</h2>
+<hr />
+<h1 id="11-printer-management"><strong>11. Printer Management</strong></h1>
+<p>Manage consumables (such as ink and paper) and define official working hours for printing:</p>
+<h3 id="steps-to-implement-printer-management-on-the-pdc"><strong>Steps to implement Printer Management on the PDC:</strong></h3>
+<h3 id="adding-and-configuring-the-print-server-role"><strong>Adding and configuring the Print Server Role:</strong></h3>
+<p>Before anything, we need to make sure the server is ready to manage printers:</p>
+<ol>
+<li>From <strong>Server Manager</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
+<li>Select <strong>Print and Document Services</strong> and install it (default settings are fine).</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324013833.png" /></p>
+<blockquote>
+<blockquote>
+<p>After installation, I opened the tool from <strong>Tools</strong> -&gt; <strong>Print Management</strong>.</p>
+</blockquote>
+</blockquote>
+<h3 id="adding-a-dummy-printer"><strong>Adding a Dummy Printer:</strong></h3>
+<p>Since we don’t have a real printer, we will create a virtual one to apply policies on it:</p>
+<ol>
+<li>In <strong>Print Management</strong>, expand <strong>Print Servers</strong> -&gt; your server name -&gt; <strong>Printers</strong>.</li>
+<li>Right-click in the middle and select <strong>Add Printer</strong>.</li>
+<li>Choose <strong>Add a new printer using an existing port</strong> (leave it as LPT1 for example).</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324014451.png" /></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324015556.png" /></p>
+<p>Because this is a new printer:</p>
+<ol>
+<li>Select any common printer driver (e.g., <em>HP LaserJet Series</em>).</li>
+<li>Name it <strong><code>Office_Printer_BW</code></strong>.</li>
+<li><strong>Very important:</strong> check <strong>Share this printer</strong>.</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324015648.png" /></p>
+<h3 id="configuring-restrictions-black-white-time">Configuring Restrictions (Black &amp; White &amp; Time)</h3>
+<h4 id="setting-available-time-900-am-400-pm"><strong>Setting Available Time (9:00 AM → 4:00 PM)</strong></h4>
+<ol>
+<li>Right-click on the printer you created -&gt; <strong>Properties</strong>.</li>
+<li>Go to the <strong>Advanced</strong> tab.</li>
+<li>Select <strong>Available from</strong> and set the time:<ul>
+<li>From: <strong>9:00 AM</strong></li>
+<li>To: <strong>4:00 PM</strong></li>
+</ul>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324014923.png" /></p>
+<blockquote>
+<blockquote>
+<p>This means that if an employee tries to print at 5 PM, the job will remain in a <strong>Pending</strong> state until the next morning.</p>
+</blockquote>
+</blockquote>
+<h4 id="second-enforcing-black-white-printing-bw-only"><strong>Second: Enforcing Black &amp; White Printing (B&amp;W Only)</strong></h4>
+<ol>
+<li>From the same <strong>Properties</strong> window, go to the <strong>General</strong> tab.</li>
+<li>Click on <strong>Preferences</strong> (or <strong>Printing Preferences</strong>).</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324020030.png" /></p>
+<blockquote>
+<p>Since the driver is <code>Generic / Text Only</code>, this ensures that printing is forced to be Black &amp; White (B&amp;W) for all users.</p>
+</blockquote>
+<h3 id="deploying-the-printer"><strong>Deploying the Printer</strong></h3>
+<p>To make the printer automatically appear for users (just like we did with Network Drives):</p>
+<ol>
+<li>I went to the main <strong>Print Management</strong> console.</li>
+<li>Right-clicked on the <strong><code>Office_Printer_BW</code></strong> printer.</li>
+<li>Selected <strong>Deploy with Group Policy</strong>.</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324020214.png" /></p>
+<ol>
+<li>I clicked <strong>Browse</strong> and selected the GPO we created earlier named: <code>PrintersPolicy</code>.</li>
+<li>
+<p>I checked both boxes:</p>
+<ul>
+<li>
+<p><code>The users that this GPO applies to</code></p>
+</li>
+<li>
+<p><code>The computers that this GPO applies to</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260324020522.png" /></p>
+<blockquote>
+<blockquote>
+<p>Don't forget "Add"
+I clicked <strong>Add</strong> then <strong>OK</strong>.</p>
+</blockquote>
+</blockquote>
+<p>After that, from <strong>Group Policy Management</strong>:</p>
+<p>I selected the GPO named <code>Printers_Policy</code>, then went to:<br />
+<strong>User Configuration</strong> -&gt; <strong>Policies</strong> -&gt; <strong>Windows Settings</strong></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260325234736.png" /></p>
+<h2 id="-_11">---</h2>
+<hr />
+<h1 id="12-active-directory-features"><strong>12. Active Directory Features :</strong></h1>
+<ul>
+<li>Enable <strong>Active Directory Recycle Bin</strong></li>
+</ul>
+<h3 id="the-active-directory-recycle-bin-is-a-lifeline-for-any-admin">The <strong>Active Directory Recycle Bin</strong> is a “lifeline” for any Admin.</h3>
+<p>If you accidentally delete a user or group, this feature allows you to restore it with all its data and permissions (Group Membership) with a single click, without needing to restore the entire database.</p>
+<p>From the PDC:</p>
+<ul>
+<li>I opened <strong>Server Manager</strong>.</li>
+<li>From the <strong>Tools</strong> menu, I selected <strong>Active Directory Administrative Center</strong>.</li>
+<li>From the left panel, I clicked on my domain name (<strong>final (local)</strong>).</li>
+<li>On the far right under the <strong>Tasks</strong> section, I selected: <strong><code>Enable Recycle Bin...</code></strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260325235406.png" /></p>
+<ul>
+<li>Click on it, and a warning message will appear telling you that “activation is final and cannot be cancelled” (which is what is required). Click <strong>OK</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260325235626.png" /></p>
+<ul>
+<li>A message saying that the change will take time to be heard in the <strong>ADC</strong> (Additional Domain Controller). Click <strong>OK</strong>.</li>
+</ul>
+<h3 id="are-you-sure-it-did">Are you sure it did?</h3>
+<ul>
+<li>
+<p>In the same <strong>Active Directory Administrative Center</strong> tool.</p>
+</li>
+<li>
+<p>I did <strong>Refresh</strong>.
+<img alt="" src="/Photos/Pasted%20image%2020260326000015.png" /></p>
+</li>
+<li>
+<p>A new folder appeared under the domain name called <strong><code>Deleted Objects</code></strong>.</p>
+</li>
+</ul>
+<h2 id="-_12">---</h2>
+<hr />
+<h1 id="13-virtualization-infrastructure"><strong>13. Virtualization Infrastructure :</strong></h1>
+<p>Hyper-V will not install unless this feature is enabled in the machine settings itself (while it is powered off):</p>
+<h3 id="pre-installation-preparation">Pre-installation preparation:</h3>
+<ul>
+<li>I went to the machine settings (PDC).</li>
+<li>Navigated to <strong>Processor</strong>.</li>
+<li>Checked <strong><code>Enable Nested VT-x/AMD-V</code></strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326001328.png" />
+<strong>And this is exactly what is required.</strong><br />
+This feature allows the server (the VM) to run other Virtual Machines inside it (this is what we call Nested Virtualization).</p>
+<h3 id="step-2-adding-a-new-network-adapter"><strong>Step (2): Adding a new Network Adapter:</strong></h3>
+<ul>
+<li>In the <strong>Network</strong> settings in VirtualBox:</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326005614.png" /></p>
+<p><strong>In the VirtualBox settings (on PDC):</strong></p>
+<ul>
+<li>I went to <strong>Network</strong> -&gt; <strong>Adapter 2</strong>.</li>
+<li>Selected <strong>Host-only Adapter</strong>.</li>
+<li>From the dropdown list below, I chose <strong><code>vboxnet1</code></strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326005754.png" /></p>
+<ul>
+<li><strong>I started the servers (PDC):</strong><ul>
+<li>I opened <strong>Network Connections</strong> in Windows Server.</li>
+<li>I found a new adapter named <strong><code>Ethernet 2</code></strong>.</li>
+<li>I assigned it a manual IP from the same new range:</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326010350.png" /></p>
+<ul>
+<li>On the <strong>PDC</strong>: set it to <code>192.168.57.10</code>.</li>
+<li><strong>Subnet:</strong> <code>255.255.255.0</code>.</li>
+<li><strong>DNS and Gateway:</strong> I left them <strong>empty</strong> (because this adapter is internal only for the VMs).</li>
+</ul>
+<blockquote>
+<p><strong>Configuration Note:</strong> Hypervisor acceleration set to <strong>KVM</strong> in VirtualBox to ensure stable nested virtualization on PDC.</p>
+</blockquote>
+<h3 id="step-3-installing-the-hyper-v-role-on-pdc-and-adc"><strong>Step (3): Installing the Hyper-V Role (on PDC and ADC)</strong></h3>
+<p>On the server (PDC), I performed the following:</p>
+<ol>
+<li>From <strong>Server Manager</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
+<li>Selected <strong>Hyper-V</strong>.</li>
+<li>In <strong>Virtual Switches</strong>: selected the available network adapter (the new Host-only adapter).</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326010556.png" /></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326010723.png" />
+Since we will be using <strong>Hyper-V Replica</strong> (which we will enable manually from the Settings after installation), we <strong>do not need</strong> to enable Live Migration at this stage:</p>
+<ul>
+<li>I left the checkbox for <strong>"Allow this server to send and receive live migrations..."</strong> <strong>unchecked</strong>.</li>
+<li>Then I clicked <strong>Next</strong>.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326011024.png" /></p>
+<ul>
+<li>Clicked <strong>Next</strong>.</li>
+<li>In the following (<strong>Confirmation</strong>) screen, checked:<ul>
+<li><strong>Restart the destination server automatically</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Clicked <strong>Install</strong>.</p>
+</li>
+<li>
+<p>Completed the wizard and clicked <strong>Install</strong>.</p>
+</li>
+<li><strong>Restart:</strong> The server will reboot twice to enable the Hypervisor.</li>
+</ul>
+<h3 id="creating-the-core-vm-virtual-skeleton">Creating the Core VM (Virtual Skeleton)</h3>
+<p>This step demonstrates to reviewers that virtualization is working properly inside the server:</p>
+<ol>
+<li>In <strong>Hyper-V Manager</strong>, right-click on the server name (<strong>PDC</strong>) -&gt; <strong>New</strong> -&gt; <strong>Virtual Machine</strong>.</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326021505.png" /></p>
+<ol>
+<li><strong>Name:</strong> Name it <strong><code>Core_VM</code></strong>:</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326021647.png" /></p>
+<ol>
+<li><strong>Generation:</strong> Choose <strong>Generation 1</strong> (lightest and safest in the labs):</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326021829.png" /></p>
+<ol>
+<li>
+<p><strong>Memory:</strong> Leave it <strong>512 MB</strong> (and remove the check mark from Use Dynamic Memory so that it does not take too much RAM from your device):
+<img alt="" src="/Photos/Pasted%20image%2020260326022003.png" /></p>
+<blockquote>
+<p>I made sure that the check mark <strong>is not there</strong> on “Use Dynamic Memory” (exactly as it is in the picture).
+<strong>Reason:</strong> We want to fix the RAM consumption so that there is no conflict between Hyper-V and VirtualBox.</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Networking:</strong> In the Connection box, choose the <strong>Virtual Switch</strong> that we made (the one connected to Ethernet 2):
+<img alt="" src="/Photos/Pasted%20image%2020260326022139.png" /></p>
+</li>
+<li>
+<p><strong>Hard Disk:</strong> Leave a small virtual hard disk (for example 20 GB):
+<img alt="" src="/Photos/Pasted%20image%2020260326022225.png" /></p>
+</li>
+<li>
+<p><strong>Installation Options:</strong> Choose <strong>Install an operating system later</strong>:</p>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326022432.png" />
+6. I pressed <strong>Finish</strong>.</p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326022525.png" /></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326022616.png" /></p>
+<blockquote>
+<p>Done .</p>
+</blockquote>
+<h2 id="-_13">---</h2>
+<hr />
+<h1 id="14-backup-configuration"><strong>14. Backup Configuration :</strong></h1>
+<p>The <strong>“safety”</strong> step ensures that if anything happens to the <strong>PDC</strong> (crash, virus, or technical mistake), you can restore it exactly as it was with just one click.</p>
+<h3 id="step-one-preparing-the-storage-on-the-adc">Step One: Preparing the “Storage” on the ADC</h3>
+<p>On the <strong>ADC</strong> machine, do the following:</p>
+<ol>
+<li>On the <strong>C</strong> drive (or any available disk), create a new folder named <strong><code>Backups</code></strong>.</li>
+<li>Right-click the folder -&gt; <strong>Properties</strong> -&gt; <strong>Sharing</strong> -&gt; <strong>Advanced Sharing</strong>.</li>
+<li>Check <strong>Share this folder</strong>.</li>
+<li>Click <strong>Permissions</strong>:<ul>
+<li>Give <strong>Everyone</strong> <strong>Full Control</strong>.</li>
+<li>(This ensures the <strong>PDC</strong> can write to it without any “Permissions” issues).</li>
+</ul>
+</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326023654.png" /></p>
+<ol>
+<li>I pressed <strong>OK</strong> in all screens.</li>
+</ol>
+<h3 id="step-two-installing-the-backup-feature-on-the-pdc">Step Two: Installing the Backup Feature on the PDC</h3>
+<p>On the <strong>PDC</strong> machine, do the following:</p>
+<ol>
+<li>Open <strong>Server Manager</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
+<li>Click <strong>Next</strong> until you reach the <strong>Features</strong> page (not the Roles page).</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326023909.png" />
+3. I downloaded it completely and correctly on <strong><code>Windows Server Backup</code></strong>.</p>
+<ol>
+<li>Press <strong>Install</strong> (this is very light and will not require a restart).</li>
+</ol>
+<h3 id="step-three-scheduling-the-backup">Step Three: Scheduling the Backup</h3>
+<p>While still on the <strong>PDC</strong>:</p>
+<ol>
+<li>Open <strong>Server Manager</strong> -&gt; <strong>Tools</strong> -&gt; <strong>Windows Server Backup</strong>.</li>
+<li>On the right-hand side (Actions), click <strong>Backup Schedule...</strong>.</li>
+</ol>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326024824.png" /></p>
+<ol>
+<li>
+<p>In the Wizard:</p>
+</li>
+<li>
+<p><strong>Select Backup Configuration:</strong> Select <strong>Full Server (recommended)</strong>:</p>
+</li>
+</ol>
+<p><img alt="" src="Photos/Pasted%20image%2020260326025035.png" /></p>
+<ul>
+<li><strong>Specify Backup Time:</strong> Choose <strong>Once a day</strong> and set the time to <strong>11:00 PM</strong>:</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326025212.png" /></p>
+<ul>
+<li><strong>Specify Destination Type:</strong> Choose <strong>Back up to a shared network folder</strong>. (You will receive a Dos OK warning message):</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326025244.png" /></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326025312.png" /></p>
+<ul>
+<li><strong>Location:</strong> Type the ADC path: <code>\\192.168.56.11\Backups</code> (or the server name <code>\\ADC\Backups</code>).</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326025504.png" /></p>
+<ul>
+<li><strong>Access Control:</strong> You will be asked for a user and password. Enter the information for the <strong>Administrator</strong> of the domain.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326025635.png" /></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326025726.png" /></p>
+<blockquote>
+<p>It will start preparing the schedule (Creating Backup Schedule), and then it will show you a message that the process was completed successfully.</p>
+</blockquote>
+<h2 id="-_14">---</h2>
+<hr />
+<h1 id="15-client-configuration"><strong>🖥️ 15. إعداد العميل والتحقق من الاتصال (Client Configuration)</strong></h1>
+<p><strong>1. Verifying the IP Settings (DHCP Service):</strong></p>
+<ul>
+<li><strong>Action:</strong> The client machine (Windows 10) was connected to the internal network.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326030847.png" /></p>
+<ul>
+<li><strong>Result:</strong> The device successfully obtained an IP address automatically (<strong>192.168.56.138</strong>) from the <strong>DHCP Scope</strong> previously configured on the <strong>PDC</strong>.
+<img alt="" src="/Photos/Pasted%20image%2020260326030939.png" /><blockquote>
+<p>The domain name was automatically assigned as <strong><code>FINAL.LOCAL</code></strong>, confirming that the DHCP options (Option 006) successfully distributed the correct DNS addresses.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>2. DNS Connectivity Test:</strong></p>
+<ul>
+<li><strong>Test:</strong> A connectivity test was performed using the <code>ping final.local</code> command from the <strong>CMD</strong>.</li>
+</ul>
+<pre><code class="language-sh">C:\Users\win-soc101&gt;ping final.local
+
+Pinging final.local [192.168.56.11] with 32 bytes of data:
+Reply from 192.168.56.11: bytes=32 time&lt;1ms TTL=128
+Reply from 192.168.56.11: bytes=32 time=1ms TTL=128
+Reply from 192.168.56.11: bytes=32 time&lt;1ms TTL=128
+Reply from 192.168.56.11: bytes=32 time&lt;1ms TTL=128
+
+Ping statistics for 192.168.56.11:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+
+C:\Users\win-soc101&gt;
+</code></pre>
+<blockquote>
+<p>A successful reply was received from the primary server (<strong>192.168.56.10</strong>), confirming that the DNS service is working and directing devices to the domain correctly.</p>
+</blockquote>
+<p><strong>3. Joining the Domain:</strong></p>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326031412.png" /></p>
+<ul>
+<li><strong>Action:</strong> The machine’s membership was changed from a <strong>Workgroup</strong> to the <strong>Domain</strong> <strong><code>FINAL.LOCAL</code></strong>.</li>
+<li><strong>Authentication:</strong> The domain administrator account (<strong>Administrator</strong>) credentials were entered to authorize the join.</li>
+</ul>
+<p><img alt="" src="/Photos/Pasted%20image%2020260326031507.png" /></p>
+<blockquote>
+<p>A welcome message appeared: <strong>"Welcome to the FINAL.LOCAL domain"</strong>.</p>
+</blockquote>
+<p>After that, a regular user logged in and ran:</p>
+<pre><code class="language-sh">gpupdate /force
+</code></pre>
+<blockquote>
+<blockquote>
+<p>This forced the client to immediately pull all security settings, permissions, and shared folders configured on the <strong>PDC</strong>.</p>
+</blockquote>
+</blockquote>
+<h2 id="-_15">---</h2>
+<hr />
+<p><a href="https://abdelwahabshandy.hashnode.dev/"><strong>Abdelwahab Shandy</strong></a>
+<a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/"><strong>Linkedin</strong></a>
+<a href="https://github.com/abdelwahab-ahmed-shandy"><strong>GitHub</strong></a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
