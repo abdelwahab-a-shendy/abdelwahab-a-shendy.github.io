@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "70c6447f6aa363e3",
+        "id": "11bb7cbbc4fc8317",
         "type": "tabs",
         "children": [
           {
-            "id": "06f1be99a705ccf3",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Photos/OSINT_MITRE_1-CYBERHAZE.svg"
-              },
-              "icon": "lucide-image",
-              "title": "OSINT_MITRE_1-CYBERHAZE"
-            }
-          },
-          {
-            "id": "6fce28c207576880",
+            "id": "eb2cf6f05cafe898",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -29,8 +17,7 @@
               "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -87,7 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 453.5
+    "width": 338.5
   },
   "right": {
     "id": "47e6593b75a87b7f",
@@ -192,8 +179,17 @@
       "bases:Create new base": false
     }
   },
-  "active": "f40198bfb4533b5a",
+  "active": "eb2cf6f05cafe898",
   "lastOpenFiles": [
+    "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
+    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
+    "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
+    "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
+    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
+    "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
     "Windows-Server-Labs/Photos/Pasted image 20260326031507.png",
     "Windows-Server-Labs/Photos/Pasted image 20260326031412.png",
     "Windows-Server-Labs/Photos/Pasted image 20260326030939.png",
@@ -203,18 +199,10 @@
     "Windows-Server-Labs/Photos/Pasted image 20260326025504.png",
     "Windows-Server-Labs/Photos/Pasted image 20260326025312.png",
     "Windows-Server-Labs/Photos/Pasted image 20260326025244.png",
-    "Windows-Server-Labs/Photos/Pasted image 20260326025212.png",
-    "Windows-Server-Labs/Photos/Pasted image 20260326025035.png",
     "Windows-Server-Labs/Photos",
-    "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
-    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
-    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
     "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/0.Requirements.md",
-    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/3.AD User Delegation (Windows Server)/0.Requirements.md",
-    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/0.Requirements.md",
-    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/0.Requirements.md",
     "index.md",
@@ -236,7 +224,6 @@
     "LABs/Network Forensics/Hawkeye.md",
     "LABs/Network Forensics/Examining Pcaps Emails Malware Infection.md",
     "LABs/Network Forensics/Arp Storm (Cyber Talents).md",
-    "LABs/OSINT/Shadow Rat (CyberHaze).md",
     "LABs/OSINT",
     "LABs/WIN Server",
     "LABs/Threat Intelligence"
