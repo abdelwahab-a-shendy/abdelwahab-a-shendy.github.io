@@ -4,39 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "06c369bff1da0787",
+        "id": "70c6447f6aa363e3",
         "type": "tabs",
         "children": [
           {
-            "id": "35bbd221a6798527",
+            "id": "06f1be99a705ccf3",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "OSINT - MITRE 1 (CyberHaze)"
-            }
-          },
-          {
-            "id": "bc62ece3384f7344",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "1.Practical implementation"
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,11 +179,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "bc62ece3384f7344",
+  "active": "06f1be99a705ccf3",
   "lastOpenFiles": [
-    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
+    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
+    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
+    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/0.Requirements.md",
+    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/0.Requirements.md",
+    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/0.Requirements.md",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/0.Requirements.md",
+    "index.md",
     "Enterprise Offensive Defensive Security Simulation HOME LAB/01-objective.md",
     "Photos/Pasted Image 20251106232854_638.png",
     "Photos/Pasted Image 20251106223819_032.png",
@@ -214,17 +204,9 @@
     "Photos/Pasted Image 20251106212039_331.png",
     "Photos/Pasted Image 20251106211116_562.png",
     "Photos/Pasted Image 20251106042612_268.png",
-    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
-    "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)",
-    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/1.Practical implementation.md",
-    "Windows-Server-Labs/3.AD User Delegation (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/3.AD User Delegation (Windows Server)",
-    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/1.Practical implementation.md",
-    "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)",
-    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
-    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)",
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)",
     "Windows-Server-Labs",
@@ -241,7 +223,6 @@
     "LABs/Network Forensics/Arp Storm (Cyber Talents).md",
     "LABs/OSINT/Shadow Rat (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
-    "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
     "LABs/OSINT",
     "LABs/WIN Server",
     "LABs/Threat Intelligence",

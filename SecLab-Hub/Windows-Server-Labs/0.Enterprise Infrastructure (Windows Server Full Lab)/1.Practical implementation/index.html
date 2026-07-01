@@ -6376,7 +6376,7 @@
 
 
 <h1 id="1infrastructure-setup"><strong>1.Infrastructure Setup :</strong></h1>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323035207.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323035207.png" /></p>
 <h2 id="step-1-preparing-the-servers-pdc-adc">Step 1: Preparing the Servers (PDC &amp; ADC)</h2>
 <p>I mentioned installing Windows Server before, so let’s start by installing Active Directory, configuring the IP addresses, and changing the server names so the connection works correctly.</p>
 <table>
@@ -6576,14 +6576,14 @@ SslPort                    : 636
 <p>Enter the domain name <code>FINAL.LOCAL</code> and provide the Administrator credentials:</p>
 </li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260322044936.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260322044936.png" /></p>
 <ul>
 <li>
 <p>Make sure this server has the role as <strong>GC (Global Catalog)</strong> and <strong>DNS</strong>.</p>
 </li>
 <li>
 <p>Then it asks me where to retrieve my data from:
-<img alt="" src="/Photos/Pasted%20image%2020260322045326.png" /></p>
+<img alt="" src="Photos/Pasted%20image%2020260322045326.png" /></p>
 <blockquote>
 <p>Selected <strong>PDC.FINAL.LOCAL</strong> from the list.</p>
 </blockquote>
@@ -6703,7 +6703,7 @@ SslPort                    : 636
 <ul>
 <li>I opened the properties of the group (<code>HR_Group</code>) and checked the <strong>Members</strong> tab, and I should find all the assigned users there.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260322054459.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260322054459.png" /></p>
 <p>To check the settings :</p>
 <pre><code class="language-sh">PS C:\Users\Administrator&gt; Get-ADGroup -Filter 'Name -like &quot;*_Group&quot;' | ForEach-Object {
 &gt;&gt;     $group = $_.Name
@@ -6749,14 +6749,14 @@ PS C:\Users\Administrator&gt;
 </ul>
 </li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323041743.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323041743.png" /></p>
 <p>Configuring the <strong>Account Lockout Policy</strong>:</p>
 <ul>
 <li><strong>Account lockout threshold:</strong> set it to <strong>4</strong> invalid logon attempts (if the user enters the wrong password 4 times, the account will be locked).</li>
 <li><strong>Account lockout duration:</strong> set it to <strong>60</strong> minutes (a full hour as required).</li>
 <li><strong>Reset account lockout counter after:</strong> set it to <strong>60</strong> minutes.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323042209.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323042209.png" /></p>
 <h2 id="-_2">---</h2>
 <hr />
 <h1 id="4-remote-access-configuration"><strong>4. Remote Access Configuration :</strong></h1>
@@ -6777,7 +6777,7 @@ PS C:\Users\Administrator&gt;
 </ol>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323043622.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323043622.png" /></p>
 <h4 id="enabling-remote-assistance-and-assigning-it-as-helpers">Enabling Remote Assistance and Assigning IT as Helpers</h4>
 <p>In the same GPO, follow this path:<br />
 <code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>System</code> &gt; <strong><code>Remote Assistance</code></strong></p>
@@ -6787,10 +6787,10 @@ PS C:\Users\Administrator&gt;
 <p>Open <strong>Configure Offer Remote Assistance</strong> and set it to <strong>Enabled</strong>.</p>
 <ul>
 <li>Click on <strong>Show</strong> (under Helpers) and enter your group name: <code>FINAL\IT_Group</code>.
-     <img alt="" src="/Photos/Pasted%20image%2020260323044359.png" /></li>
+     <img alt="" src="Photos/Pasted%20image%2020260323044359.png" /></li>
 </ul>
 <p>Any user inside the IT group is allowed to initiate remote access and assist other users.</p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323044556.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323044556.png" /></p>
 </li>
 <li>
 <p>Remote Assistance requires a “rule” in the employees’ firewall to allow IT access. Since we are using GPO, we will handle it here:</p>
@@ -6817,7 +6817,7 @@ PS C:\Users\Administrator&gt;
 </ul>
 </li>
 </ol>
-<p><img alt="697" src="/Photos/Pasted%20image%2020260323054826.png" /></p>
+<p><img alt="697" src="Photos/Pasted%20image%2020260323054826.png" /></p>
 <blockquote>
 <p>At this point, the <strong>Firewall Rules</strong> for <strong>Remote Desktop</strong> and <strong>Remote Assistance</strong> have been successfully applied.</p>
 </blockquote>
@@ -6842,7 +6842,7 @@ PS C:\Users\Administrator&gt;
 <p>I created the <strong>SecurityRestrictionsGPO</strong>, then clicked on it. On the right side, there is a section called <strong>Security Filtering</strong>, which contains <strong>Authenticated Users</strong> (meaning all users). I will remove <strong>Authenticated Users</strong> and instead click <strong>ADD</strong> to include only the specific groups I need, like this:</p>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323190619.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323190619.png" /></p>
 <p>And now the GPO is linked to the domain, but Windows will only apply it to the members of these groups, while ignoring the IT group. If new groups are added later, nothing complex is needed—just simply add them here.</p>
 <p>After that, I clicked <strong>Edit</strong> on this GPO:</p>
 <ul>
@@ -6850,7 +6850,7 @@ PS C:\Users\Administrator&gt;
 <li><code>Computer Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>System</code> &gt; <code>Removable Storage Access</code></li>
 <li>I enabled the following option:<ul>
 <li><strong>All Removable Storage classes: Deny all access</strong>.
-<img alt="" src="/Photos/Pasted%20image%2020260323192219.png" /></li>
+<img alt="" src="Photos/Pasted%20image%2020260323192219.png" /></li>
 </ul>
 </li>
 </ul>
@@ -6864,7 +6864,7 @@ PS C:\Users\Administrator&gt;
 <li>
 <p>I enabled the following option:
         - <strong>Remove Task Manager</strong>.
-    <img alt="" src="/Photos/Pasted%20image%2020260323192052.png" /></p>
+    <img alt="" src="Photos/Pasted%20image%2020260323192052.png" /></p>
 </li>
 <li>
 <p><strong>To disable Control Panel (at the user level):</strong></p>
@@ -6872,7 +6872,7 @@ PS C:\Users\Administrator&gt;
 <li><code>User Configuration</code> &gt; <code>Policies</code> &gt; <code>Administrative Templates</code> &gt; <code>Control Panel</code></li>
 <li>I enabled the following option:<ul>
 <li><strong>Prohibit access to Control Panel and PC settings</strong>.
-<img alt="" src="/Photos/Pasted%20image%2020260323191930.png" /></li>
+<img alt="" src="Photos/Pasted%20image%2020260323191930.png" /></li>
 </ul>
 </li>
 </ul>
@@ -6931,10 +6931,10 @@ PS C:\Users\Administrator&gt;
 <li>Clicked on <strong>Manage</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
 <li>Selected <strong>DHCP Server</strong> and clicked <strong>Next</strong> until the installation completed.</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323200733.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323200733.png" /></p>
 <ol>
 <li>After installation, a yellow triangle (Notifications) appears at the top. I clicked on it and selected <strong>Complete DHCP Configuration</strong>.
-<img alt="" src="/Photos/Pasted%20image%2020260323201440.png" /><blockquote>
+<img alt="" src="Photos/Pasted%20image%2020260323201440.png" /><blockquote>
 <p>I clicked <strong>Commit</strong> then <strong>Close</strong>. (This step authorizes the server in Active Directory).</p>
 </blockquote>
 </li>
@@ -6952,7 +6952,7 @@ PS C:\Users\Administrator&gt;
 <li>End IP: <code>192.168.56.230</code></li>
 <li>Length: <code>24</code> (Subnet Mask: <code>255.255.255.0</code>).</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323203005.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323203005.png" /></p>
 </li>
 </ul>
 <p><strong>Add Exclusions:</strong> (the IP addresses we do not want to be assigned):</p>
@@ -6960,18 +6960,18 @@ PS C:\Users\Administrator&gt;
 <li>Start: <code>192.168.56.80</code></li>
 <li>
 <p>End: <code>192.168.56.85</code> then I clicked <strong>Add</strong>.</p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323203452.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323203452.png" /></p>
 </li>
 <li>
 <p><strong>Lease Duration:</strong> Change the Days to <strong>10</strong> days.</p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323203542.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323203542.png" /></p>
 </li>
 <li>
 <p><strong>Configure DHCP Options:</strong> I selected <strong>Yes, I want to configure these options now</strong>.</p>
 <ul>
 <li><strong>Router (Default Gateway):</strong> I entered <code>192.168.56.1</code> and clicked <strong>Add</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323204201.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323204201.png" /></p>
 </li>
 <li>
 <p><strong>DNS Server:</strong> I made sure that my IPs are added (<code>192.168.56.10</code> and <code>192.168.56.11</code>).</p>
@@ -6979,7 +6979,7 @@ PS C:\Users\Administrator&gt;
 <li><strong>Preferred DNS server:</strong> I left it as <code>127.0.0.1</code> (so it can resolve itself first).</li>
 <li><strong>Alternate DNS server:</strong> I entered the second server (<strong>ADC</strong>) IP: <strong><code>192.168.56.11</code></strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323204249.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323204249.png" /></p>
 </li>
 <li>
 <p>At the same time, I went to the <strong>ADC</strong>, which has the IP <code>192.168.56.11</code>, and did the opposite configuration:</p>
@@ -6987,7 +6987,7 @@ PS C:\Users\Administrator&gt;
 <li><strong>Preferred DNS:</strong> set it to <code>127.0.0.1</code>.</li>
 <li><strong>Alternate DNS:</strong> set it to <code>192.168.56.10</code> (the PDC).</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323205017.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323205017.png" /></p>
 </li>
 <li>
 <p>Here, I added the ADC in the <strong>IP address</strong> field:</p>
@@ -6995,11 +6995,11 @@ PS C:\Users\Administrator&gt;
 <li><code>192.168.56.11</code> then clicked <strong>Add</strong>.</li>
 <li>Then we wait a few seconds for Windows to validate it.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323205555.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323205555.png" /></p>
 </li>
 <li>
 <p>And then here we will click Next in the <code>WINS Servers</code> screen:</p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323205811.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323205811.png" /></p>
 <blockquote>
 <p>The <strong>WINS Servers</strong> is a very old technology that was used to resolve computer names into IP addresses before <strong>DNS</strong> became the standard. Since we are working with modern DNS on Windows Server 2022, there is no need to configure anything here.</p>
 </blockquote>
@@ -7023,7 +7023,7 @@ PS C:\Users\Administrator&gt;
 <li>In the small <strong>Add Server</strong> window that appears, select the server: <strong><code>adc.final.local</code></strong> (with IP <code>192.168.56.11</code>).</li>
 <li>I clicked <strong>OK</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323211006.png" />
+<p><img alt="" src="Photos/Pasted%20image%2020260323211006.png" />
  - Then I clicked <strong>Next</strong>.</p>
 </li>
 <li>
@@ -7035,9 +7035,9 @@ PS C:\Users\Administrator&gt;
 <li><strong>Mode:</strong> I set it to <strong>Load Balance</strong> (so they split the workload 50/50).</li>
 <li><strong>Shared Secret:</strong> I entered a password for the relationship (for example <code>P@$$w0rd</code>).</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323211353.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323211353.png" /></p>
 <p>The DHCP Failover worked at 100%, and the two servers (PDC and ADC) are now "working together" in distributing IPs:</p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323211621.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323211621.png" /></p>
 </li>
 <li>
 <p>After clicking <strong>Finish</strong>, to verify:</p>
@@ -7046,7 +7046,7 @@ PS C:\Users\Administrator&gt;
 <li>Opened the <strong>DHCP</strong> console.</li>
 <li>Right-clicked on <strong>IPv4</strong> and selected <strong>Refresh</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323214313.png" />
+<p><img alt="" src="Photos/Pasted%20image%2020260323214313.png" />
 - The <code>FINAL_SCOPE</code> appeared on the ADC automatically with all the settings configured on the primary server.
 - <strong>Scope Status:</strong> The <code>FINAL_SCOPE</code> is present and shows as <strong>Active</strong>, which means the replication from the primary server was successful.
 - <strong>Failover Status:</strong> The status shows <code>Normal</code> and the partner is <code>pdc.final.local</code> in <strong>Load Balance</strong> mode. This means both servers now see each other and are working as a single system.</p>
@@ -7065,7 +7065,7 @@ PS C:\Users\Administrator&gt;
 <p><strong>Add the first record:</strong></p>
 <ul>
 <li>Right-click in an empty area and select <strong>New Host (A or AAAA)</strong>.
-<img alt="" src="/Photos/Pasted%20image%2020260323223027.png" /></li>
+<img alt="" src="Photos/Pasted%20image%2020260323223027.png" /></li>
 </ul>
 </li>
 <li>
@@ -7074,7 +7074,7 @@ PS C:\Users\Administrator&gt;
 <li>In the <strong>IP address</strong> field, I entered: <strong><code>192.168.56.10</code></strong>.</li>
 <li>I clicked <strong>Add Host</strong>.</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323223343.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323223343.png" /></p>
 <ol>
 <li>
 <p><strong>Adding the second record (with the same name):</strong></p>
@@ -7086,7 +7086,7 @@ PS C:\Users\Administrator&gt;
 <li>In the <strong>IP address</strong> field, this time I entered: <strong><code>192.168.56.11</code></strong>.</li>
 <li>
 <p>I clicked <strong>Add Host</strong>.</p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323223442.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323223442.png" /></p>
 </li>
 </ol>
 <h3 id="verifying-round-robin-is-enabled"><strong>Verifying Round Robin is enabled:</strong></h3>
@@ -7127,7 +7127,7 @@ C:\Users\Administrator&gt;
 <li>Check <strong>Web Server (IIS)</strong>. A small window will appear, click <strong>Add Features</strong>.</li>
 <li>Continue clicking <strong>Next</strong> until the end without changing any other settings, and finally click <strong>Install</strong>.</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323225539.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323225539.png" /></p>
 <h3 id="customization-to-verify-round-robin"><strong>Customization to verify Round Robin</strong></h3>
 <p>To know which server you are hitting when opening the website, we need to modify the default page on each server:</p>
 <p><strong>On the PDC server:</strong></p>
@@ -7141,7 +7141,7 @@ C:\Users\Administrator&gt;
 <ul>
 <li>Repeat the same steps exactly, but change the line to: <code>&lt;div class="server-box"&gt;SERVER: ADC&lt;/div&gt;</code></li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323232041.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323232041.png" /></p>
 <h3 id="verification-phase"><strong>Verification Phase:</strong></h3>
 <p>Now it’s time to enjoy the result of your work:</p>
 <ol>
@@ -7151,7 +7151,7 @@ C:\Users\Administrator&gt;
 <li>Refresh the browser several times, or open the site from another device on the network.</li>
 <li><strong>The surprise:</strong> DNS will rotate the requests to the ADC, and you’ll see the line change to:</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323232119.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323232119.png" /></p>
 <blockquote>
 <p>When I completely shut down the PDC (Shut down) and tried to open the site from the client, I found that it opened normally through the ADC. That's how I actually achieved <strong>High Availability</strong>.</p>
 </blockquote>
@@ -7166,15 +7166,15 @@ C:\Users\Administrator&gt;
 <li>Enable <strong>Share this folder</strong> and click <strong>Permissions</strong>.</li>
 <li>Set <code>Everyone</code> to have <strong>Read</strong> permission only:</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323234559.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323234559.png" /></p>
 <ul>
 <li>The function of the <code>IT Group</code> and its <strong>Full Control</strong> function:</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323234503.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323234503.png" /></p>
 <ul>
 <li>I added the <code>HR_Group</code> and <code>Dev_Group</code> and gave them <strong>Change</strong> and <strong>Read</strong>:</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323235222.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323235222.png" /></p>
 <h3 id="2-preventing-delete-ntfs-advanced-permissions">2. Preventing Delete (NTFS Advanced Permissions):</h3>
 <p>To execute the (Allow: Edit / Deny: Delete) request:</p>
 <ol>
@@ -7188,7 +7188,7 @@ C:\Users\Administrator&gt;
 <p>Click <strong>Disable inheritance</strong> and select the first option (Convert...) to manually control the permissions.</p>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260323235543.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260323235543.png" /></p>
 <ol>
 <li>
 <p>Add the HR group and click <strong>Edit</strong>.</p>
@@ -7208,11 +7208,11 @@ C:\Users\Administrator&gt;
 </ul>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324000626.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324000626.png" /></p>
 <ol>
 <li>I pressed <strong>OK</strong> and repeated this with the required groups (Development_Group and Sales_Group):</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324001017.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324001017.png" /></p>
 <blockquote>
 <p>This means that the Development_Group, Sales_Group, and HR_Group will be able to upload and modify files, but if anyone tries to delete a colleague’s file, Windows will display “Access Denied”.</p>
 </blockquote>
@@ -7227,7 +7227,7 @@ C:\Users\Administrator&gt;
 <li>From <strong>Server Manager</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
 <li>I went to <strong>File and Resource Manager</strong> -&gt; <strong>File and iSCSI Services</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324002107.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324002107.png" /></p>
 <ul>
 <li>I checked <strong>File Server Resource Manager</strong> and installed it.</li>
 </ul>
@@ -7237,11 +7237,11 @@ C:\Users\Administrator&gt;
 <li>From the left menu, I opened <strong>File Screening Management</strong> -&gt; then <strong>File Screens</strong>.</li>
 <li>Right-clicked in the middle and selected <strong>Create File Screen</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324002604.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324002604.png" /></p>
 <ul>
 <li>In <strong>File screen path</strong>, I selected the folder <code>C:\Final_Project</code>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324002633.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324002633.png" /></p>
 <ul>
 <li>
 <p>Under the options, I selected:</p>
@@ -7251,7 +7251,7 @@ C:\Users\Administrator&gt;
 </ul>
 </li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324002726.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324002726.png" /></p>
 <blockquote>
 <p><strong>Create</strong>.</p>
 </blockquote>
@@ -7259,14 +7259,14 @@ C:\Users\Administrator&gt;
 <li>A prompt will appear asking: “Do you want to save these custom settings as a template?”</li>
 <li>I selected <strong>Save the custom file screen without creating a template</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324003010.png" /></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324003615.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324003010.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324003615.png" /></p>
 <p>Let’s verify the setup:</p>
 <p>From the server itself:</p>
 <ul>
 <li>I named the file <code>test.mp3</code> or <code>test.exe</code>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324003729.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324003729.png" /></p>
 <ul>
 <li>And with that, we have applied the policy to the folder to ensure it remains free from any unauthorized files or viruses. </li>
 <li>Also, even the admin must comply with storage security standards and prevent Shadow IT.</li>
@@ -7285,7 +7285,7 @@ C:\Users\Administrator&gt;
 </ul>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324012927.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324012927.png" /></p>
 <h3 id="setting-storage-limit-2gb-quota"><strong>Setting Storage Limit (2GB Quota):</strong></h3>
 <ul>
 <li>I opened <strong>File Server Resource Manager</strong> from the <strong>Tools</strong> menu.</li>
@@ -7295,7 +7295,7 @@ C:\Users\Administrator&gt;
 <li>Under <strong>Template</strong>, I chose <strong>2 GB Limit</strong> and set it as a <strong>Hard Quota</strong>.</li>
 <li>Clicked <strong>Create</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324010843.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324010843.png" /></p>
 <h3 id="mapping-the-network-drive"><strong>Mapping the Network Drive:</strong></h3>
 <p>To make the folder automatically appear for users in <strong>This PC</strong>:</p>
 <ul>
@@ -7308,7 +7308,7 @@ C:\Users\Administrator&gt;
 </li>
 <li>Right-clicked in the middle -&gt; <strong>New</strong> -&gt; <strong>Mapped Drive</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324011406.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324011406.png" /></p>
 <ul>
 <li><strong>Action:</strong> Update</li>
 <li><strong>Location:</strong> <code>\\PDC\PublicShare</code></li>
@@ -7318,12 +7318,12 @@ C:\Users\Administrator&gt;
 </ul>
 </li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324011754.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324011754.png" /></p>
 <p>Then I went to the <strong>Common</strong> tab next to the General tab at the top:</p>
 <ul>
 <li>**<code>Run in logged-on user's security context (user policy option)</code></li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324012225.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324012225.png" /></p>
 <blockquote>
 <blockquote>
 <p>This ensures that the GPO works with the privileges of the user who logs in and that the drives appear without problems.</p>
@@ -7346,7 +7346,7 @@ C:\Users\Administrator&gt;
 <li>From <strong>Server Manager</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
 <li>Select <strong>Print and Document Services</strong> and install it (default settings are fine).</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324013833.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324013833.png" /></p>
 <blockquote>
 <blockquote>
 <p>After installation, I opened the tool from <strong>Tools</strong> -&gt; <strong>Print Management</strong>.</p>
@@ -7359,15 +7359,15 @@ C:\Users\Administrator&gt;
 <li>Right-click in the middle and select <strong>Add Printer</strong>.</li>
 <li>Choose <strong>Add a new printer using an existing port</strong> (leave it as LPT1 for example).</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324014451.png" /></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324015556.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324014451.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324015556.png" /></p>
 <p>Because this is a new printer:</p>
 <ol>
 <li>Select any common printer driver (e.g., <em>HP LaserJet Series</em>).</li>
 <li>Name it <strong><code>Office_Printer_BW</code></strong>.</li>
 <li><strong>Very important:</strong> check <strong>Share this printer</strong>.</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324015648.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324015648.png" /></p>
 <h3 id="configuring-restrictions-black-white-time">Configuring Restrictions (Black &amp; White &amp; Time)</h3>
 <h4 id="setting-available-time-900-am-400-pm"><strong>Setting Available Time (9:00 AM → 4:00 PM)</strong></h4>
 <ol>
@@ -7379,7 +7379,7 @@ C:\Users\Administrator&gt;
 </ul>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324014923.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324014923.png" /></p>
 <blockquote>
 <blockquote>
 <p>This means that if an employee tries to print at 5 PM, the job will remain in a <strong>Pending</strong> state until the next morning.</p>
@@ -7390,7 +7390,7 @@ C:\Users\Administrator&gt;
 <li>From the same <strong>Properties</strong> window, go to the <strong>General</strong> tab.</li>
 <li>Click on <strong>Preferences</strong> (or <strong>Printing Preferences</strong>).</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324020030.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324020030.png" /></p>
 <blockquote>
 <p>Since the driver is <code>Generic / Text Only</code>, this ensures that printing is forced to be Black &amp; White (B&amp;W) for all users.</p>
 </blockquote>
@@ -7401,7 +7401,7 @@ C:\Users\Administrator&gt;
 <li>Right-clicked on the <strong><code>Office_Printer_BW</code></strong> printer.</li>
 <li>Selected <strong>Deploy with Group Policy</strong>.</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324020214.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324020214.png" /></p>
 <ol>
 <li>I clicked <strong>Browse</strong> and selected the GPO we created earlier named: <code>PrintersPolicy</code>.</li>
 <li>
@@ -7416,7 +7416,7 @@ C:\Users\Administrator&gt;
 </ul>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260324020522.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260324020522.png" /></p>
 <blockquote>
 <blockquote>
 <p>Don't forget "Add"
@@ -7426,7 +7426,7 @@ I clicked <strong>Add</strong> then <strong>OK</strong>.</p>
 <p>After that, from <strong>Group Policy Management</strong>:</p>
 <p>I selected the GPO named <code>Printers_Policy</code>, then went to:<br />
 <strong>User Configuration</strong> -&gt; <strong>Policies</strong> -&gt; <strong>Windows Settings</strong></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260325234736.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260325234736.png" /></p>
 <h2 id="-_11">---</h2>
 <hr />
 <h1 id="12-active-directory-features"><strong>12. Active Directory Features :</strong></h1>
@@ -7442,11 +7442,11 @@ I clicked <strong>Add</strong> then <strong>OK</strong>.</p>
 <li>From the left panel, I clicked on my domain name (<strong>final (local)</strong>).</li>
 <li>On the far right under the <strong>Tasks</strong> section, I selected: <strong><code>Enable Recycle Bin...</code></strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260325235406.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260325235406.png" /></p>
 <ul>
 <li>Click on it, and a warning message will appear telling you that “activation is final and cannot be cancelled” (which is what is required). Click <strong>OK</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260325235626.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260325235626.png" /></p>
 <ul>
 <li>A message saying that the change will take time to be heard in the <strong>ADC</strong> (Additional Domain Controller). Click <strong>OK</strong>.</li>
 </ul>
@@ -7457,7 +7457,7 @@ I clicked <strong>Add</strong> then <strong>OK</strong>.</p>
 </li>
 <li>
 <p>I did <strong>Refresh</strong>.
-<img alt="" src="/Photos/Pasted%20image%2020260326000015.png" /></p>
+<img alt="" src="Photos/Pasted%20image%2020260326000015.png" /></p>
 </li>
 <li>
 <p>A new folder appeared under the domain name called <strong><code>Deleted Objects</code></strong>.</p>
@@ -7473,21 +7473,21 @@ I clicked <strong>Add</strong> then <strong>OK</strong>.</p>
 <li>Navigated to <strong>Processor</strong>.</li>
 <li>Checked <strong><code>Enable Nested VT-x/AMD-V</code></strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326001328.png" />
+<p><img alt="" src="Photos/Pasted%20image%2020260326001328.png" />
 <strong>And this is exactly what is required.</strong><br />
 This feature allows the server (the VM) to run other Virtual Machines inside it (this is what we call Nested Virtualization).</p>
 <h3 id="step-2-adding-a-new-network-adapter"><strong>Step (2): Adding a new Network Adapter:</strong></h3>
 <ul>
 <li>In the <strong>Network</strong> settings in VirtualBox:</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326005614.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326005614.png" /></p>
 <p><strong>In the VirtualBox settings (on PDC):</strong></p>
 <ul>
 <li>I went to <strong>Network</strong> -&gt; <strong>Adapter 2</strong>.</li>
 <li>Selected <strong>Host-only Adapter</strong>.</li>
 <li>From the dropdown list below, I chose <strong><code>vboxnet1</code></strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326005754.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326005754.png" /></p>
 <ul>
 <li><strong>I started the servers (PDC):</strong><ul>
 <li>I opened <strong>Network Connections</strong> in Windows Server.</li>
@@ -7496,7 +7496,7 @@ This feature allows the server (the VM) to run other Virtual Machines inside it 
 </ul>
 </li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326010350.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326010350.png" /></p>
 <ul>
 <li>On the <strong>PDC</strong>: set it to <code>192.168.57.10</code>.</li>
 <li><strong>Subnet:</strong> <code>255.255.255.0</code>.</li>
@@ -7512,14 +7512,14 @@ This feature allows the server (the VM) to run other Virtual Machines inside it 
 <li>Selected <strong>Hyper-V</strong>.</li>
 <li>In <strong>Virtual Switches</strong>: selected the available network adapter (the new Host-only adapter).</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326010556.png" /></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326010723.png" />
+<p><img alt="" src="Photos/Pasted%20image%2020260326010556.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326010723.png" />
 Since we will be using <strong>Hyper-V Replica</strong> (which we will enable manually from the Settings after installation), we <strong>do not need</strong> to enable Live Migration at this stage:</p>
 <ul>
 <li>I left the checkbox for <strong>"Allow this server to send and receive live migrations..."</strong> <strong>unchecked</strong>.</li>
 <li>Then I clicked <strong>Next</strong>.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326011024.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326011024.png" /></p>
 <ul>
 <li>Clicked <strong>Next</strong>.</li>
 <li>In the following (<strong>Confirmation</strong>) screen, checked:<ul>
@@ -7539,19 +7539,19 @@ Since we will be using <strong>Hyper-V Replica</strong> (which we will enable ma
 <ol>
 <li>In <strong>Hyper-V Manager</strong>, right-click on the server name (<strong>PDC</strong>) -&gt; <strong>New</strong> -&gt; <strong>Virtual Machine</strong>.</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326021505.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326021505.png" /></p>
 <ol>
 <li><strong>Name:</strong> Name it <strong><code>Core_VM</code></strong>:</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326021647.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326021647.png" /></p>
 <ol>
 <li><strong>Generation:</strong> Choose <strong>Generation 1</strong> (lightest and safest in the labs):</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326021829.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326021829.png" /></p>
 <ol>
 <li>
 <p><strong>Memory:</strong> Leave it <strong>512 MB</strong> (and remove the check mark from Use Dynamic Memory so that it does not take too much RAM from your device):
-<img alt="" src="/Photos/Pasted%20image%2020260326022003.png" /></p>
+<img alt="" src="Photos/Pasted%20image%2020260326022003.png" /></p>
 <blockquote>
 <p>I made sure that the check mark <strong>is not there</strong> on “Use Dynamic Memory” (exactly as it is in the picture).
 <strong>Reason:</strong> We want to fix the RAM consumption so that there is no conflict between Hyper-V and VirtualBox.</p>
@@ -7559,20 +7559,20 @@ Since we will be using <strong>Hyper-V Replica</strong> (which we will enable ma
 </li>
 <li>
 <p><strong>Networking:</strong> In the Connection box, choose the <strong>Virtual Switch</strong> that we made (the one connected to Ethernet 2):
-<img alt="" src="/Photos/Pasted%20image%2020260326022139.png" /></p>
+<img alt="" src="Photos/Pasted%20image%2020260326022139.png" /></p>
 </li>
 <li>
 <p><strong>Hard Disk:</strong> Leave a small virtual hard disk (for example 20 GB):
-<img alt="" src="/Photos/Pasted%20image%2020260326022225.png" /></p>
+<img alt="" src="Photos/Pasted%20image%2020260326022225.png" /></p>
 </li>
 <li>
 <p><strong>Installation Options:</strong> Choose <strong>Install an operating system later</strong>:</p>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326022432.png" />
+<p><img alt="" src="Photos/Pasted%20image%2020260326022432.png" />
 6. I pressed <strong>Finish</strong>.</p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326022525.png" /></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326022616.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326022525.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326022616.png" /></p>
 <blockquote>
 <p>Done .</p>
 </blockquote>
@@ -7592,7 +7592,7 @@ Since we will be using <strong>Hyper-V Replica</strong> (which we will enable ma
 </ul>
 </li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326023654.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326023654.png" /></p>
 <ol>
 <li>I pressed <strong>OK</strong> in all screens.</li>
 </ol>
@@ -7602,7 +7602,7 @@ Since we will be using <strong>Hyper-V Replica</strong> (which we will enable ma
 <li>Open <strong>Server Manager</strong> -&gt; <strong>Add Roles and Features</strong>.</li>
 <li>Click <strong>Next</strong> until you reach the <strong>Features</strong> page (not the Roles page).</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326023909.png" />
+<p><img alt="" src="Photos/Pasted%20image%2020260326023909.png" />
 3. I downloaded it completely and correctly on <strong><code>Windows Server Backup</code></strong>.</p>
 <ol>
 <li>Press <strong>Install</strong> (this is very light and will not require a restart).</li>
@@ -7613,7 +7613,7 @@ Since we will be using <strong>Hyper-V Replica</strong> (which we will enable ma
 <li>Open <strong>Server Manager</strong> -&gt; <strong>Tools</strong> -&gt; <strong>Windows Server Backup</strong>.</li>
 <li>On the right-hand side (Actions), click <strong>Backup Schedule...</strong>.</li>
 </ol>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326024824.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326024824.png" /></p>
 <ol>
 <li>
 <p>In the Wizard:</p>
@@ -7626,35 +7626,35 @@ Since we will be using <strong>Hyper-V Replica</strong> (which we will enable ma
 <ul>
 <li><strong>Specify Backup Time:</strong> Choose <strong>Once a day</strong> and set the time to <strong>11:00 PM</strong>:</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326025212.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326025212.png" /></p>
 <ul>
 <li><strong>Specify Destination Type:</strong> Choose <strong>Back up to a shared network folder</strong>. (You will receive a Dos OK warning message):</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326025244.png" /></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326025312.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326025244.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326025312.png" /></p>
 <ul>
 <li><strong>Location:</strong> Type the ADC path: <code>\\192.168.56.11\Backups</code> (or the server name <code>\\ADC\Backups</code>).</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326025504.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326025504.png" /></p>
 <ul>
 <li><strong>Access Control:</strong> You will be asked for a user and password. Enter the information for the <strong>Administrator</strong> of the domain.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326025635.png" /></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326025726.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326025635.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326025726.png" /></p>
 <blockquote>
 <p>It will start preparing the schedule (Creating Backup Schedule), and then it will show you a message that the process was completed successfully.</p>
 </blockquote>
 <h2 id="-_14">---</h2>
 <hr />
-<h1 id="15-client-configuration"><strong>🖥️ 15. إعداد العميل والتحقق من الاتصال (Client Configuration)</strong></h1>
+<h1 id="15-client-configuration-and-connection-verification"><strong>🖥️ 15. Client Configuration and Connection Verification</strong></h1>
 <p><strong>1. Verifying the IP Settings (DHCP Service):</strong></p>
 <ul>
 <li><strong>Action:</strong> The client machine (Windows 10) was connected to the internal network.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326030847.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326030847.png" /></p>
 <ul>
 <li><strong>Result:</strong> The device successfully obtained an IP address automatically (<strong>192.168.56.138</strong>) from the <strong>DHCP Scope</strong> previously configured on the <strong>PDC</strong>.
-<img alt="" src="/Photos/Pasted%20image%2020260326030939.png" /><blockquote>
+<img alt="" src="Photos/Pasted%20image%2020260326030939.png" /><blockquote>
 <p>The domain name was automatically assigned as <strong><code>FINAL.LOCAL</code></strong>, confirming that the DHCP options (Option 006) successfully distributed the correct DNS addresses.</p>
 </blockquote>
 </li>
@@ -7682,12 +7682,12 @@ C:\Users\win-soc101&gt;
 <p>A successful reply was received from the primary server (<strong>192.168.56.10</strong>), confirming that the DNS service is working and directing devices to the domain correctly.</p>
 </blockquote>
 <p><strong>3. Joining the Domain:</strong></p>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326031412.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326031412.png" /></p>
 <ul>
 <li><strong>Action:</strong> The machine’s membership was changed from a <strong>Workgroup</strong> to the <strong>Domain</strong> <strong><code>FINAL.LOCAL</code></strong>.</li>
 <li><strong>Authentication:</strong> The domain administrator account (<strong>Administrator</strong>) credentials were entered to authorize the join.</li>
 </ul>
-<p><img alt="" src="/Photos/Pasted%20image%2020260326031507.png" /></p>
+<p><img alt="" src="Photos/Pasted%20image%2020260326031507.png" /></p>
 <blockquote>
 <p>A welcome message appeared: <strong>"Welcome to the FINAL.LOCAL domain"</strong>.</p>
 </blockquote>
@@ -7701,9 +7701,8 @@ C:\Users\win-soc101&gt;
 </blockquote>
 <h2 id="-_15">---</h2>
 <hr />
-<p><a href="https://abdelwahabshandy.hashnode.dev/"><strong>Abdelwahab Shandy</strong></a>
-<a href="https://www.linkedin.com/in/abdelwahab-ahmed-shandy/"><strong>Linkedin</strong></a>
-<a href="https://github.com/abdelwahab-ahmed-shandy"><strong>GitHub</strong></a></p>
+<p><a href="https://www.linkedin.com/in/abdelwahab-a-shendy/"><strong>Linkedin</strong></a>
+<a href="https://github.com/abdelwahab-a-shendy"><strong>GitHub</strong></a></p>
 
 
 
