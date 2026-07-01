@@ -11,13 +11,26 @@
             "id": "06f1be99a705ccf3",
             "type": "leaf",
             "state": {
+              "type": "image",
+              "state": {
+                "file": "Photos/OSINT_MITRE_1-CYBERHAZE.svg"
+              },
+              "icon": "lucide-image",
+              "title": "OSINT_MITRE_1-CYBERHAZE"
+            }
+          },
+          {
+            "id": "6fce28c207576880",
+            "type": "leaf",
+            "state": {
               "type": "empty",
               "state": {},
               "icon": "lucide-file",
               "title": "New tab"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -179,8 +192,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "06f1be99a705ccf3",
+  "active": "f40198bfb4533b5a",
   "lastOpenFiles": [
+    "Windows-Server-Labs/Photos/Pasted image 20260326031507.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326031412.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326030939.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326030847.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326025726.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326025635.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326025504.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326025312.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326025244.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326025212.png",
+    "Windows-Server-Labs/Photos/Pasted image 20260326025035.png",
+    "Windows-Server-Labs/Photos",
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
     "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
     "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
@@ -194,16 +219,6 @@
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/0.Requirements.md",
     "index.md",
     "Enterprise Offensive Defensive Security Simulation HOME LAB/01-objective.md",
-    "Photos/Pasted Image 20251106232854_638.png",
-    "Photos/Pasted Image 20251106223819_032.png",
-    "Photos/Pasted Image 20251106223813_633.png",
-    "Photos/Pasted Image 20251106212935_630.png",
-    "Photos/Pasted Image 20251106212537_483.png",
-    "Photos/Pasted Image 20251106212435_877.png",
-    "Photos/Pasted Image 20251106212253_197.png",
-    "Photos/Pasted Image 20251106212039_331.png",
-    "Photos/Pasted Image 20251106211116_562.png",
-    "Photos/Pasted Image 20251106042612_268.png",
     "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)",
     "Windows-Server-Labs/3.AD User Delegation (Windows Server)",
     "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)",
@@ -222,10 +237,8 @@
     "LABs/Network Forensics/Examining Pcaps Emails Malware Infection.md",
     "LABs/Network Forensics/Arp Storm (Cyber Talents).md",
     "LABs/OSINT/Shadow Rat (CyberHaze).md",
-    "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
     "LABs/OSINT",
     "LABs/WIN Server",
-    "LABs/Threat Intelligence",
-    "LABs/Phishing Investigation"
+    "LABs/Threat Intelligence"
   ]
 }
