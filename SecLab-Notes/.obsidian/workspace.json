@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "11bb7cbbc4fc8317",
+        "id": "df0fd7ad42a2c2ca",
         "type": "tabs",
         "children": [
           {
-            "id": "eb2cf6f05cafe898",
+            "id": "9b01defb85638e86",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -179,16 +179,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "eb2cf6f05cafe898",
+  "active": "f40198bfb4533b5a",
   "lastOpenFiles": [
+    "LABs/OSINT/Shadow Rat (CyberHaze).md",
+    "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
+    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
+    "LABs/Memory Forensics/Volatile Secrets.md",
+    "LABs/Threat Intelligence/Boss Of The Soc BOTsV1 Scenario1 (SPLUNK).md",
+    "LABs/Untitled.canvas",
+    "LABs/Memory Forensics",
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/1.Practical implementation.md",
     "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/3.AD User Delegation (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
     "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
-    "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
-    "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
     "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
     "Windows-Server-Labs/Photos/Pasted image 20260326031507.png",
     "Windows-Server-Labs/Photos/Pasted image 20260326031412.png",
@@ -221,11 +226,7 @@
     "LABs/Malware/Follina (BTLO).md",
     "LABs/Network Forensics/Suspicious File Download Fake Authenticator.md",
     "LABs/Network Forensics/Psexec Hunt.md",
-    "LABs/Network Forensics/Hawkeye.md",
-    "LABs/Network Forensics/Examining Pcaps Emails Malware Infection.md",
-    "LABs/Network Forensics/Arp Storm (Cyber Talents).md",
     "LABs/OSINT",
-    "LABs/WIN Server",
-    "LABs/Threat Intelligence"
+    "LABs/WIN Server"
   ]
 }
