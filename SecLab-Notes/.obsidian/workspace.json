@@ -4,17 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "df0fd7ad42a2c2ca",
+        "id": "3443dda894e66181",
         "type": "tabs",
         "children": [
           {
-            "id": "9b01defb85638e86",
+            "id": "613e5928f95e5721",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Enterprise Network Infrastructure Project/02.Network-Topology.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "02.Network-Topology"
+            }
+          },
+          {
+            "id": "846a68acfec01392",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Enterprise Network Infrastructure Project/00.Project-Requirements.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00.Project-Requirements"
             }
           }
         ]
@@ -179,8 +197,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "f40198bfb4533b5a",
+  "active": "613e5928f95e5721",
   "lastOpenFiles": [
+    "Enterprise Network Infrastructure Project/01.Enterprise-Scenario.md",
+    "Enterprise Network Infrastructure Project/02.Network-Topology.md",
+    "Enterprise Network Infrastructure Project/00.Project-Requirements.md",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
+    "Enterprise Network Infrastructure Project",
+    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
+    "Photos/0b352fbf-412d-4f1a-bc77-d5cab8a542e6.png",
+    "Photos/0a3a41c3-cc8c-41fe-a8ca-9edcd78b5ddd.png",
     "LABs/OSINT/Shadow Rat (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 2 (CyberHaze).md",
     "LABs/OSINT/OSINT - MITRE 1 (CyberHaze).md",
@@ -192,7 +218,6 @@
     "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/3.AD User Delegation (Windows Server)/1.Practical implementation.md",
     "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/1.Practical implementation.md",
-    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
     "LABs/OSINT/OSINT - MITRE 3 (CyberHaze).md",
     "Photos/OSINT_MITRE_1-CYBERHAZE.svg",
     "Windows-Server-Labs/Photos/Pasted image 20260326031507.png",
@@ -202,13 +227,10 @@
     "Windows-Server-Labs/Photos/Pasted image 20260326025726.png",
     "Windows-Server-Labs/Photos/Pasted image 20260326025635.png",
     "Windows-Server-Labs/Photos/Pasted image 20260326025504.png",
-    "Windows-Server-Labs/Photos/Pasted image 20260326025312.png",
-    "Windows-Server-Labs/Photos/Pasted image 20260326025244.png",
     "Windows-Server-Labs/Photos",
     "Windows-Server-Labs/4.Disable Run & Domain-Wide Wallpaper (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/3.AD User Delegation (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/2.Printer GPO Distribution (Windows Server)/0.Requirements.md",
-    "Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
     "Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/0.Requirements.md",
     "index.md",
     "Enterprise Offensive Defensive Security Simulation HOME LAB/01-objective.md",
@@ -223,10 +245,6 @@
     "LABs/Engineering/Collecting Visualizing ssh logs Fluentbit.md",
     "LABs/Engineering/Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB).md",
     "LABs/Malware/Persistence Analysis Remediation Python PopUp Malware.md",
-    "LABs/Malware/Follina (BTLO).md",
-    "LABs/Network Forensics/Suspicious File Download Fake Authenticator.md",
-    "LABs/Network Forensics/Psexec Hunt.md",
-    "LABs/OSINT",
-    "LABs/WIN Server"
+    "LABs/OSINT"
   ]
 }
