@@ -11,12 +11,10 @@
             "id": "1f52477e10cec3ae",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "docs/Enterprise_Network_Project.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Enterprise_Network_Project"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -188,8 +186,8 @@
   },
   "active": "1de85f3a93d9293c",
   "lastOpenFiles": [
-    "SecLab-Notes/Enterprise Network Infrastructure/00.Project-Requirements.md",
     "docs/Enterprise_Network_Project.pdf",
+    "SecLab-Notes/Enterprise Network Infrastructure/00.Project-Requirements.md",
     "SecLab-Notes/Enterprise Network Infrastructure/01.Enterprise-Scenario.md",
     "SecLab-Notes/Enterprise Network Infrastructure/02.Network-Topology.md"
   ]
