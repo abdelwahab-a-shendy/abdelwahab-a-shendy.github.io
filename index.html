@@ -172,7 +172,7 @@
                         </button>
                         <button class="filter-btn" data-filter="infrastructure">
                             <i class="fas fa-server"></i> Infrastructure
-                            <span class="filter-count" id="infrastructureCount">1</span>
+                            <span class="filter-count" id="infrastructureCount">2</span>
                         </button>
                         <button class="filter-btn" data-filter="programming">
                             <i class="fas fa-code"></i> Programming
@@ -471,42 +471,133 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure Simulation" data-tech="Active Directory,Windows Server,TCP/IP,Virtualization">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/IT.png" alt="Enterprise Infrastructure Simulation" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Jun 2025 – Sep 2025</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-infra">Active Directory</span>
-                                <span class="tag tag-infra">Windows Server</span>
-                                <span class="tag tag-infra">Networking</span>
-                            </div>
-                            <h3 class="project-card__title">Windows Server Labs</h3>
-                            <p class="project-card__desc">A structured collection of hands-on labs covering Windows Server administration, Active Directory deployment, networking (Cisco), and security hardening in enterprise environments.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fab fa-windows"></i> Windows Server 2019/2022</span>
-                                <span class="pill"><i class="fas fa-users"></i> Active Directory & GPO</span>
-                                <span class="pill"><i class="fas fa-network-wired"></i> Cisco Packet Tracer</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-a-shendy/Windows-Server-Labs" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
-                                <!-- <button class="btn btn--sm btn--ghost more-details-btn" data-project="infra-lab"><i class="fas fa-ellipsis-h"></i> More Details</button> -->
-                            </div>
-                            <div class="project-details-dropdown" id="infra-lab-details" style="display: none;">
-                                <div class="dropdown-content">
-                                    <a href="./SecLab-Hub/windows-server-labs-and/05-active-directory-basics "><i class="fas fa-server"></i> Active Directory Infrastructure Basics</a>
-                                    <a href="./SecLab-Hub/windows-server-labs-and/06-login-protocols-ntlm-vs-kerberos "><i class="fas fa-shield-alt"></i> Authentication Mechanisms: NTLM & Kerberos</a>
-                                    <a href="./SecLab-Hub/windows-server-labs-and/08-join-domain "><i class="fas fa-link"></i> Group Policy Enforcements & Joins</a>
-                                    <a href="./SecLab-Hub/windows-server-labs-and/09-how-to-join-domain-in-background "><i class="fas fa-user-cog"></i> AD Automated Domain Background Deployment</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                    <article class="project-card" data-category="infrastructure" data-title="AAAS Enterprise Network Infrastructure" data-tech="Cisco,Packet Tracer,OSPF,HSRP,IPv6,Dual-Stack,EtherChannel,NAT,ACL,Port Security">
+    <div class="project-card__media">
+        <img class="project-img" src="./assets/img/AAAS-Enterprise-Network.png" alt="AAAS Enterprise Network Infrastructure" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/06b6d4?text=Enterprise+Network'">
+        <div class="project-overlay">
+            <span class="project-date"><i class="far fa-calendar-alt"></i> Aug 2026</span>
+            <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+        </div>
+    </div>
+    <div class="project-card__body">
+        <div class="project-tags">
+            <span class="tag tag-infra">Network Infrastructure</span>
+            <span class="tag tag-infra">Dual-Stack IPv4/IPv6</span>
+            <span class="tag tag-security">Network Security</span>
+            <span class="tag tag-infra">High Availability</span>
+        </div>
+        <h3 class="project-card__title">AAAS Enterprise Multi-Site Network Infrastructure</h3>
+        <p class="project-card__desc">Full-scale enterprise campus and remote branch network simulation in Cisco Packet Tracer. Features Dual-Stack (IPv4/IPv6) dynamic routing via OSPFv2/OSPFv3, First-Hop Redundancy with HSRPv2, LACP EtherChannel, centralized Server Farm services (DHCP/DNS/Web/FTP/Email/NTP/Syslog), Edge PAT, and Defense-in-Depth security hardening (Extended ACLs & Port Security).</p>
+        <div class="project-card__meta">
+            <span class="pill"><i class="fas fa-network-wired"></i> OSPFv2 / OSPFv3</span>
+            <span class="pill"><i class="fas fa-shield-alt"></i> HSRPv2 & LACP</span>
+            <span class="pill"><i class="fas fa-globe"></i> IPv4/IPv6 Dual-Stack</span>
+            <span class="pill"><i class="fas fa-server"></i> Centralized Server Farm</span>
+            <span class="pill"><i class="fas fa-lock"></i> Extended ACLs</span>
+            <span class="pill"><i class="fas fa-plug"></i> Router-on-a-Stick</span>
+        </div>
+        <div class="project-card__actions">
+            <a href="https://abdelwahab-a-shendy.github.io/docs/Enterprise_Network_Project.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
+            <button class="btn btn--sm btn--ghost more-details-btn" data-project="enterprise-network-project"><i class="fas fa-ellipsis-h"></i> More Details</button>
+        </div>
+        <div class="project-details-dropdown" id="enterprise-network-project-details" style="display: none;">
+            <div class="dropdown-section">
+                <span class="dropdown-section-title"><i class="fas fa-sitemap"></i> Network Architecture</span>
+                <div class="dropdown-content">
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Multi-layer Campus & WAN: Access, Distribution, Edge & Remote Branch</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> High Availability: HSRPv2 (Active/Standby Gateway Failover)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Link Aggregation: LACP EtherChannel (Port-Channel 1)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Layer 2 Loop Prevention: Rapid-PVST+ (Primary & Secondary Root Bridges)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Branch Connectivity: Routed WAN Point-to-Point & Router-on-a-Stick</span>
+                </div>
+            </div>
+            <div class="dropdown-section">
+                <span class="dropdown-section-title"><i class="fas fa-route"></i> Dual-Stack Routing & Edge Services</span>
+                <div class="dropdown-content">
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Dynamic Routing: OSPFv2 (IPv4) & OSPFv3 (IPv6) in Area 0</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Edge Translation: PAT (NAT Overload) with Default Static Route Injection</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Centralized Services: DHCP Relay (`ip helper-address`), Split DNS & Web (HTTP)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Enterprise Storage & Mail: Authenticated FTP, Local SMTP/POP3 Email</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Network Telemetry: Centralized NTP Clock Synchronization & Syslog Logging</span>
+                </div>
+            </div>
+            <div class="dropdown-section">
+                <span class="dropdown-section-title"><i class="fas fa-shield-virus"></i> Defense-in-Depth Security Hardening</span>
+                <div class="dropdown-content">
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Zero-Trust Segmentation: Extended ACLs for Guest Isolation & Finance Protection</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Layer 2 Protection: Port Security (Sticky MAC max 2, Restrict Violation Mode)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> STP Edge Hardening: PortFast & BPDU Guard on all access ports</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Management Plane: SSHv2 Only, Disabled Telnet, Session Timeouts & Login Banners</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Attack Surface Reduction: Unused Switch Interfaces Administratively Shutdown</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
 
+<article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure (Windows Server Full Lab)" data-tech="Windows Server,Active Directory,GPO,DHCP Failover,DNS,IIS,Hyper-V,File Server,FSRM">
+    <div class="project-card__media">
+        <img class="project-img" src="./assets/img/IT.png" alt="Enterprise Infrastructure Windows Server Full Lab" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'">
+        <div class="project-overlay">
+            <span class="project-date"><i class="far fa-calendar-alt"></i> Jun 2025 – Sep 2025</span>
+            <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
+        </div>
+    </div>
+    <div class="project-card__body">
+        <div class="project-tags">
+            <span class="tag tag-infra">Active Directory</span>
+            <span class="tag tag-infra">Windows Server</span>
+            <span class="tag tag-infra">High Availability</span>
+            <span class="tag tag-security">GPO Hardening</span>
+        </div>
+        <h3 class="project-card__title">Enterprise Infrastructure: Windows Server Full Lab</h3>
+        <p class="project-card__desc">A comprehensive enterprise simulation featuring Dual Domain Controllers (PDC & ADC), advanced GPO security policies (USB/Task Manager restrictions), DHCP Failover, DNS Round Robin load balancing, IIS Web High Availability, FSRM File Server quotas, Hyper-V virtualization, and automated daily backups.</p>
+        <div class="project-card__meta">
+            <span class="pill"><i class="fab fa-windows"></i> PDC & ADC Setup</span>
+            <span class="pill"><i class="fas fa-users-cog"></i> GPO & Security Policies</span>
+            <span class="pill"><i class="fas fa-network-wired"></i> DHCP Failover & DNS</span>
+            <span class="pill"><i class="fas fa-globe"></i> IIS Web Cluster</span>
+            <span class="pill"><i class="fas fa-folder-open"></i> FSRM File Server</span>
+            <span class="pill"><i class="fas fa-server"></i> Hyper-V Core VM</span>
+        </div>
+        <div class="project-card__actions">
+            <a href="https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/0.Enterprise%20Infrastructure%20%28Windows%20Server%20Full%20Lab%29/0.Requirements/" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
+            <button class="btn btn--sm btn--ghost more-details-btn" data-project="infra-full-lab"><i class="fas fa-ellipsis-h"></i> More Details</button>
+        </div>
+        <div class="project-details-dropdown" id="infra-full-lab-details" style="display: none;">
+            <div class="dropdown-section">
+                <span class="dropdown-section-title"><i class="fas fa-server"></i> Core Infrastructure & High Availability</span>
+                <div class="dropdown-content">
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Primary (PDC) & Additional (ADC) Domain Controllers (FINAL.LOCAL)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> DHCP Scope & Hot-Standby Failover with ADC Partner</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> DNS Round Robin Load Balancing (www.final.local)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Highly Available IIS Web Server Deployment on PDC & ADC</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Hyper-V Virtualization Role & Core_VM Template Deployment</span>
+                </div>
+            </div>
+            <div class="dropdown-section">
+                <span class="dropdown-section-title"><i class="fas fa-shield-alt"></i> GPO Security & Access Control</span>
+                <div class="dropdown-content">
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Enterprise Password & Account Lockout Enforcement (4 attempts / 1hr lockout)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Endpoint Restrictions: Disabling USB Storage, Task Manager & Control Panel</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Remote Desktop & Assistance GPOs with IT Delegation</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Active Directory Recycle Bin & OU Department Structuring</span>
+                </div>
+            </div>
+            <div class="dropdown-section">
+                <span class="dropdown-section-title"><i class="fas fa-hdd"></i> Storage, Backup & Resource Management</span>
+                <div class="dropdown-content">
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> FSRM File Server: File Screening (Blocking .exe, audio, video)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Department Network Drives & Public Shared Quota (2 GB per user)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Managed Shared Printer with Time-based Scheduling (9 AM - 4 PM)</span>
+                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Windows Server Daily Full Backup Scheduled to ADC (11:00 PM)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+                    
                     <article class="project-card" data-category="programming" data-title="Movie Market" data-tech="ASP.NET Core,MVC,SQL Server,3-Tier">
                         <div class="project-card__media">
                             <img class="project-img" src="./assets/img/MovieMarket.png" alt="Movie Market" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=Movie+Market'">
