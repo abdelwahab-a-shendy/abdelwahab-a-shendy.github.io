@@ -11,10 +11,14 @@
             "id": "1f52477e10cec3ae",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "SecLab-Notes/Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "1.Practical implementation"
             }
           }
         ]
@@ -184,8 +188,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "1de85f3a93d9293c",
+  "active": "1f52477e10cec3ae",
   "lastOpenFiles": [
+    "SecLab-Notes/Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
+    "SecLab-Notes/SIEM & SOAR Integration HOME LAB/03.InstallLabFluentbit.md",
+    "SecLab-Notes/SIEM & SOAR Integration HOME LAB/01.InstallLabELKSiem&N8N.md",
+    "SecLab-Notes/index.md",
     "docs/Enterprise_Network_Project.pdf",
     "docs/Enterprise_Network_Project.pdf",
     "SecLab-Notes/Enterprise Network Infrastructure/00.Project-Requirements.md",
