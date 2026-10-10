@@ -20,3 +20,7 @@ site_dir: 'SecLab-Hub'
 
 extra_css:
   - extra.css
+
+extra_javascript:
+  - assets/js/main.js
+  - assets/js/terminal.js

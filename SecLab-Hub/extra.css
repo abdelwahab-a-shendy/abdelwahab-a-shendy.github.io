@@ -1,0 +1,84 @@
+:root [data-md-color-scheme="slate"] {
+  --md-default-bg-color: #060813 !important;
+  --md-default-bg-color--light: #0d1224 !important;
+  --md-default-bg-color--lighter: #121833 !important;
+
+  --md-default-fg-color: #f1f5f9 !important;
+  --md-default-fg-color--light: #94a3b8 !important;
+  --md-default-fg-color--lighter: #64748b !important;
+
+  --md-primary-fg-color: #080b18 !important;
+  --md-accent-fg-color: #3b82f6 !important;
+  --md-accent-fg-color--transparent: rgba(59, 130, 246, 0.12) !important;
+  --md-typeset-a-color: #60a5fa !important;
+}
+
+.md-header {
+  background-color: #080b18 !important;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6) !important;
+}
+
+.md-tabs {
+  background-color: #0a0e20 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.md-main {
+  background-color: #060813 !important;
+}
+
+.md-search__inner {
+  background-color: #0e142b !important;
+  border: 1px solid rgba(59, 130, 246, 0.25) !important;
+  border-radius: 8px !important;
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 1.5rem;
+}
+
+.hub-card {
+  padding: 18px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  background-color: #0a0e20;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease-in-out;
+  text-decoration: none !important;
+  display: block;
+}
+
+.hub-card:hover {
+  border-color: #3b82f6;
+  background-color: #0f1530;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.18);
+}
+
+.hub-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #60a5fa !important;
+}
+
+.hub-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #94a3b8 !important;
+  line-height: 1.5;
+}
+
+.md-nav__link--active, 
+.md-nav__link:hover {
+  color: #3b82f6 !important;
+}
+
+.md-typeset pre > code {
+  background-color: #0a0e20 !important;
+  border: 1px solid rgba(59, 130, 246, 0.2) !important;
+}
