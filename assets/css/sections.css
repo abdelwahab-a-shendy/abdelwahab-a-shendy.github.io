@@ -222,6 +222,7 @@
   top: calc(var(--header-height) + var(--sp-6));
 }
 
+/* === PORTRAIT FRAME (Enhanced) === */
 .portrait-frame {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -229,36 +230,61 @@
   overflow: hidden;
   border: 1px solid var(--border-default);
   background: var(--bg-surface);
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(14, 165, 233, 0.1);
+  box-shadow:
+    var(--shadow-lg),
+    0 0 40px rgba(14, 165, 233, 0.15),
+    0 0 80px rgba(16, 185, 129, 0.1);
 }
 
 .portrait-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: contrast(1.05) saturate(1.1);
+  filter: contrast(1.05) saturate(1.1) brightness(0.95);
 }
 
+/* Cyan/emerald gradient overlay — z-index: 1 */
 .portrait-frame::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, transparent 60%, rgba(5, 10, 15, 0.7) 100%),
-    linear-gradient(135deg, rgba(14, 165, 233, 0.05), transparent 50%);
+    linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+    linear-gradient(315deg, rgba(16, 185, 129, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, transparent 60%, rgba(5, 10, 15, 0.7) 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
+/* Scan lines — z-index: 2 */
+.portrait-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(14, 165, 233, 0.03) 2px,
+    rgba(14, 165, 233, 0.03) 3px
+  );
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
+}
+
+/* Badge overlay — z-index: 4 (فوق كل حاجة) */
 .portrait-overlay {
   position: absolute;
   bottom: var(--sp-3);
   left: var(--sp-3);
   right: var(--sp-3);
-  z-index: 2;
+  z-index: 4;
   display: flex;
   justify-content: flex-start;
 }
 
+/* HUD Corners — z-index: 3 */
 .portrait-corner {
   position: absolute;
   width: 20px;
@@ -333,7 +359,7 @@
 /* (Skill cards بتنسيق موجود في components.css) */
 
 /* ============================================================
-   SECTION TRANSITIONS (Bottom spacing بين الأقسام)
+   SECTION TRANSITIONS
    ============================================================ */
 
 .section + .section {
@@ -343,11 +369,6 @@
 .section--alt + .section {
   border-top: none;
 }
-
-/* ============================================================
-   SECTIONS — Part 2: Projects, Journey, Credentials, Write-ups
-   (يُضاف بعد Hero + About + Skills)
-   ============================================================ */
 
 /* ============================================================
    PROJECTS — 04
@@ -871,6 +892,71 @@
   padding: var(--sp-2) var(--sp-3);
 }
 
+/* === CERT CARD MEDIA (صورة الشهادة) === */
+.cred-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin: calc(var(--sp-5) * -1) calc(var(--sp-5) * -1) var(--sp-3);
+  background: var(--bg-elevated);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cred-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform var(--t-slow) var(--ease-out);
+}
+
+.cred-card:hover .cred-card__media img {
+  transform: scale(1.04);
+}
+
+.cred-card__media.no-image {
+  display: none;
+}
+
+.cred-card__desc {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-top: var(--sp-2);
+}
+
+/* === ACHIEVEMENT CARD (GDG CTF) === */
+.cred-card--achievement {
+  background: linear-gradient(160deg, var(--bg-surface), rgba(245, 158, 11, 0.06));
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.cred-card--achievement::before {
+  background: linear-gradient(90deg, #F59E0B, #FBBF24) !important;
+}
+
+.cred-card--achievement:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: var(--shadow-lg), 0 0 32px rgba(245, 158, 11, 0.15);
+}
+
+.cred-card__icon--award {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #F59E0B !important;
+}
+
+.cred-card--achievement .cred-card__issuer strong {
+  color: #F59E0B;
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.badge--warn {
+  color: #F59E0B;
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.1);
+}
+
 /* ============================================================
    WRITE-UPS — 07
    ============================================================ */
@@ -901,7 +987,6 @@
 }
 
 /* (contact-card موجود في components.css) */
-
 
 /* === CERT CARD MEDIA (صورة الشهادة) === */
 .cred-card__media {
@@ -982,3 +1067,5 @@
   border-color: rgba(245, 158, 11, 0.35);
   background: rgba(245, 158, 11, 0.1);
 }
+
+
