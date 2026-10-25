@@ -415,7 +415,334 @@
     </div>
 
     <div class="projects__grid" id="projectsGrid">
-      <!-- ستتم إضافة المشاريع بالكامل في المرحلة 3 -->
+        <!-- 01 — PhishOps -->
+        <article class="project-card" data-category="security" data-title="PhishOps - Automated Phishing Detection & Response" data-tech="n8n, SOAR, VirusTotal, AbuseIPDB, SIEM, Email Security">
+            <div class="project-card__media">
+            <img src="./assets/img/PhishOps.png" alt="PhishOps Email Security Automation" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Apr – May 2026</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>SOAR</span><span>Email Security</span><span>Threat Intel</span><span>Automation</span>
+            </div>
+            <h3 class="project-card__title">PhishOps: Automated Phishing Detection &amp; Response Pipeline</h3>
+            <p class="project-card__desc">
+                End-to-end automated phishing analysis pipeline with n8n. Parses email artifacts, enriches IoCs via threat intel, applies heuristic social engineering analysis, and automates SOC triage with shift-aware alerting and actionable verdicts (Deliver / Investigate / Quarantine).
+            </p>
+            <div class="project-card__tech">
+                <span>n8n</span><span>VirusTotal</span><span>AbuseIPDB</span><span>IMAP</span><span>Google Sheets</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="https://www.linkedin.com/posts/abdelwahab-a-shendy_cybersecurity-soc-detectionengineering-ugcPost-7464896010826407936-9aRS/" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fab fa-linkedin"></i> Post
+                </a>
+                <button class="btn btn--sm btn--ghost project-details-btn" data-project="phishops">
+                <i class="fas fa-ellipsis-h"></i> Details
+                </button>
+            </div>
+            </div>
+        </article>
+
+        <!-- 02 — AD Attack Detection -->
+        <article class="project-card" data-category="security" data-title="Multi-Stage Active Directory Attack Detection" data-tech="ELK, Sigma, MITRE ATT&CK, Sysmon, Active Directory">
+            <div class="project-card__media">
+            <img src="./assets/img/MSADADES.png" alt="Active Directory Attack Detection" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Jan 2026</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>Detection Eng.</span><span>AD</span><span>SIEM</span><span>Red/Blue</span>
+            </div>
+            <h3 class="project-card__title">Multi-Stage Active Directory Attack Detection</h3>
+            <p class="project-card__desc">
+                Realistic AD lab simulating full Windows attack chain: Initial Access → Privilege Escalation → Credential Dumping → Lateral Movement. Includes custom Sigma rules mapped to MITRE ATT&amp;CK and full ELK detection validation.
+            </p>
+            <div class="project-card__tech">
+                <span>ELK</span><span>Sysmon</span><span>Sigma</span><span>MITRE</span><span>Impacket</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="./docs/MSADADES.pdf" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fas fa-file-pdf"></i> PDF
+                </a>
+                <button class="btn btn--sm btn--ghost project-details-btn" data-project="ad-attack">
+                <i class="fas fa-ellipsis-h"></i> Details
+                </button>
+            </div>
+            </div>
+        </article>
+
+        <!-- 03 — SOC Home Lab -->
+        <article class="project-card" data-category="security" data-title="SOC Home Lab - SIEM & SOAR Integration" data-tech="ELK, Elasticsearch, Kibana, n8n, Winlogbeat, Fluent Bit">
+            <div class="project-card__media">
+            <img src="./assets/img/SOCHome.png" alt="SOC Home Lab" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Oct – Dec 2025</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>SIEM</span><span>SOC</span><span>Automation</span>
+            </div>
+            <h3 class="project-card__title">SOC Home Lab: SIEM &amp; SOAR Integration</h3>
+            <p class="project-card__desc">
+                Built a complete SOC environment from scratch: ELK Stack, Fluent Bit, Winlogbeat, and n8n SOAR. Implemented log collection, detection engineering use cases, Windows event monitoring, and automated incident response workflows.
+            </p>
+            <div class="project-card__tech">
+                <span>ELK</span><span>n8n</span><span>Winlogbeat</span><span>Fluent Bit</span><span>VirusTotal API</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="./SecLab-Hub/SIEM%20%26%20SOAR%20Integration%20HOME%20LAB/00.PreLabOverview" class="btn btn--sm btn--primary">
+                <i class="fas fa-book-open"></i> Write-up
+                </a>
+                <button class="btn btn--sm btn--ghost project-details-btn" data-project="soc-lab">
+                <i class="fas fa-ellipsis-h"></i> Details
+                </button>
+            </div>
+            </div>
+        </article>
+
+        <!-- 04 — Enterprise Security Lab -->
+        <article class="project-card" data-category="security" data-title="Enterprise Offensive & Defensive Security Lab" data-tech="pfSense, ELK, n8n, Kali, Metasploitable3, bWAPP">
+            <div class="project-card__media">
+            <img src="./assets/img/OffensiveandDefensive.png" alt="Enterprise Security Lab" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Dec 2025 – Mar 2026</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>Red Team</span><span>Blue Team</span><span>SOAR</span><span>SIEM</span>
+            </div>
+            <h3 class="project-card__title">Enterprise Offensive &amp; Defensive Security Simulation</h3>
+            <p class="project-card__desc">
+                Multi-zoned virtual enterprise simulating full attack lifecycle. pfSense firewall, ELK Stack SIEM, n8n SOAR automation, Metasploitable3, bWAPP, and full Windows domain environment with intentionally vulnerable systems.
+            </p>
+            <div class="project-card__tech">
+                <span>pfSense</span><span>ELK</span><span>n8n</span><span>Kali</span><span>CommandoVM</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="./SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation%20HOME%20LAB/01-objective" class="btn btn--sm btn--primary">
+                <i class="fas fa-book-open"></i> Write-up
+                </a>
+                <button class="btn btn--sm btn--ghost project-details-btn" data-project="ent-security">
+                <i class="fas fa-ellipsis-h"></i> Details
+                </button>
+            </div>
+            </div>
+        </article>
+
+        <!-- 05 — Enterprise Network -->
+        <article class="project-card" data-category="infrastructure" data-title="Enterprise Multi-Site Network Infrastructure" data-tech="Cisco, Packet Tracer, OSPF, HSRP, IPv4, IPv6, EtherChannel">
+            <div class="project-card__media">
+            <img src="./assets/img/AAAS-Enterprise-Network.png" alt="Enterprise Network Infrastructure" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Jul – Aug 2026</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>Networking</span><span>Dual-Stack</span><span>HA</span>
+            </div>
+            <h3 class="project-card__title">Enterprise Multi-Site Network (Dual-Stack IPv4/IPv6)</h3>
+            <p class="project-card__desc">
+                Full-scale enterprise campus + remote branch in Cisco Packet Tracer. Features HSRPv2 failover, LACP EtherChannel, OSPFv2/v3 dual-stack routing, centralized services, NAT/PAT, and defense-in-depth security hardening.
+            </p>
+            <div class="project-card__tech">
+                <span>OSPFv2/v3</span><span>HSRPv2</span><span>EtherChannel</span><span>ACLs</span><span>Port Security</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="./docs/Enterprise_Network_Project.pdf" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fas fa-file-pdf"></i> PDF
+                </a>
+                <button class="btn btn--sm btn--ghost project-details-btn" data-project="network">
+                <i class="fas fa-ellipsis-h"></i> Details
+                </button>
+            </div>
+            </div>
+        </article>
+
+        <!-- 06 — Windows Server Lab -->
+        <article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure Windows Server Full Lab" data-tech="Windows Server, AD, GPO, DHCP Failover, DNS, IIS, Hyper-V, FSRM">
+            <div class="project-card__media">
+            <img src="./assets/img/IT.png" alt="Windows Server Infrastructure Lab" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Jun – Sep 2025</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>Windows Server</span><span>AD</span><span>GPO</span><span>HA</span>
+            </div>
+            <h3 class="project-card__title">Enterprise Infrastructure: Windows Server Full Lab</h3>
+            <p class="project-card__desc">
+                Comprehensive enterprise simulation with dual domain controllers, advanced GPO policies, DHCP failover, DNS round-robin, IIS HA, FSRM quotas, Hyper-V virtualization, and automated daily backups.
+            </p>
+            <div class="project-card__tech">
+                <span>Windows Server</span><span>AD DS</span><span>GPO</span><span>DHCP</span><span>IIS</span><span>Hyper-V</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="./SecLab-Hub/Windows-Server-Labs/0.Enterprise%20Infrastructure%20(Windows%20Server%20Full%20Lab)/0.Requirements/" class="btn btn--sm btn--primary">
+                <i class="fas fa-book-open"></i> Write-up
+                </a>
+                <button class="btn btn--sm btn--ghost project-details-btn" data-project="windows-lab">
+                <i class="fas fa-ellipsis-h"></i> Details
+                </button>
+            </div>
+            </div>
+        </article>
+
+        <!-- 07 — Smart BI (Graduation) -->
+        <article class="project-card" data-category="programming" data-title="Smart BI - Graduation Project" data-tech="n8n, LLM, Chart.js, Business Intelligence">
+            <div class="project-card__media">
+            <img src="./assets/img/SmartBI.png" alt="Smart BI Reporting System" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Feb – May 2026</span>
+                <span class="project-card__status is-done"><i class="fas fa-award"></i> Awarded</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>AI &amp; Automation</span><span>n8n</span><span>BI</span>
+            </div>
+            <h3 class="project-card__title">Smart Business Intelligence Reporting System</h3>
+            <p class="project-card__desc">
+                Graduation Project — awarded Best in BIS Department. End-to-end automated BI pipeline with dual-path engine: real-time KPI visualization + AI-driven strategic analysis using LLMs. Featured in El Masry El Aan.
+            </p>
+            <div class="project-card__tech">
+                <span>n8n</span><span>LLMs</span><span>Chart.js</span><span>Flask</span><span>SQLite</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="https://github.com/abdelwahab-a-shendy/Smart-BI-Project" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fab fa-github"></i> Code
+                </a>
+                <a href="https://abdelwahab-a-shendy.github.io/Smart-BI-Project/Frontend/index.html" target="_blank" rel="noopener" class="btn btn--sm btn--ghost">
+                <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+            </div>
+            </div>
+        </article>
+
+        <!-- 08 — Movie Market -->
+        <article class="project-card" data-category="programming" data-title="Movie Market - Cinema Ticket Booking" data-tech="ASP.NET Core, MVC, SQL Server, Stripe, 3-Tier">
+            <div class="project-card__media">
+            <img src="./assets/img/MovieMarket.png" alt="Movie Market" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Jan – Apr 2025</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>ASP.NET Core</span><span>MVC</span><span>3-Tier</span>
+            </div>
+            <h3 class="project-card__title">Movie Market — Cinema Ticket Booking Platform</h3>
+            <p class="project-card__desc">
+                Full-featured cinema booking platform built with ASP.NET Core MVC on clean 3-tier architecture. Features role-based access, custom auth system (Claims), Stripe integration, global search, and admin dashboard.
+            </p>
+            <div class="project-card__tech">
+                <span>ASP.NET Core</span><span>EF Core</span><span>SQL Server</span><span>Stripe</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="https://github.com/abdelwahab-a-shendy/Movie-Market" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fab fa-github"></i> Code
+                </a>
+            </div>
+            </div>
+        </article>
+
+        <!-- 09 — Programming Challenges -->
+        <article class="project-card" data-category="programming" data-title="Programming Challenges Multi-Language" data-tech="C++, C#, Python, Algorithms">
+            <div class="project-card__media">
+            <img src="./assets/img/ProgrammingChallenges.png" alt="Programming Challenges" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> 2024 – 2025</span>
+                <span class="project-card__status is-done"><i class="fas fa-circle"></i> Ongoing</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>Multi-Language</span><span>Problem Solving</span>
+            </div>
+            <h3 class="project-card__title">Programming Challenges (Multi-Language)</h3>
+            <p class="project-card__desc">
+                Curated collection of programming challenges solved in C++, C#, and Python — covering algorithms, data structures, and problem-solving patterns.
+            </p>
+            <div class="project-card__tech">
+                <span>C++</span><span>C#</span><span>Python</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="https://github.com/abdelwahab-a-shendy/Programming-Challenges-Multi-Language" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fab fa-github"></i> Code
+                </a>
+            </div>
+            </div>
+        </article>
+
+        <!-- 10 — OOP Mini Projects -->
+        <article class="project-card" data-category="programming" data-title="OOP Mini Projects" data-tech="C#, C++, OOP, Design Patterns">
+            <div class="project-card__media">
+            <img src="./assets/img/OOPMiniProjects.png" alt="OOP Mini Projects" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> 2024 – 2025</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>OOP</span><span>C#</span><span>C++</span>
+            </div>
+            <h3 class="project-card__title">OOP Mini Projects</h3>
+            <p class="project-card__desc">
+                Collection of small projects demonstrating Object-Oriented Programming concepts in C# and C++ — inheritance, polymorphism, encapsulation, and design patterns.
+            </p>
+            <div class="project-card__tech">
+                <span>C# OOP</span><span>C++ OOP</span><span>Design Patterns</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="https://github.com/abdelwahab-a-shendy/OOP-Mini-Projects" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fab fa-github"></i> Code
+                </a>
+            </div>
+            </div>
+        </article>
+
+        <!-- 11 — Database Design -->
+        <article class="project-card" data-category="programming" data-title="Database Design with ERD, EERD & SQL" data-tech="SQL, ERD, EERD, Relational Schemas">
+            <div class="project-card__media">
+            <img src="./assets/img/DataBaseDesign.png" alt="Database Design" loading="lazy">
+            <div class="project-card__overlay">
+                <span class="project-card__date"><i class="far fa-calendar-alt"></i> Dec 2024 – Jan 2025</span>
+                <span class="project-card__status is-done"><i class="fas fa-check-circle"></i> Done</span>
+            </div>
+            </div>
+            <div class="project-card__body">
+            <div class="project-card__tags">
+                <span>Database</span><span>SQL</span><span>Design</span>
+            </div>
+            <h3 class="project-card__title">Database Design with ERD, EERD &amp; SQL</h3>
+            <p class="project-card__desc">
+                Practical examples of designing ERD &amp; EERD diagrams, converting them to relational schemas, and implementing them with SQL — including normalization and constraint enforcement.
+            </p>
+            <div class="project-card__tech">
+                <span>ERD/EERD</span><span>SQL</span><span>Normalization</span>
+            </div>
+            <div class="project-card__actions">
+                <a href="https://github.com/abdelwahab-a-shendy/Database-Design-with-ERD-EERD-Relational-Schemas-SQL-Implementation" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fab fa-github"></i> SQL
+                </a>
+            </div>
+            </div>
+        </article>
     </div>
 
     <div class="projects__empty" id="projectsEmpty" hidden>
@@ -442,12 +769,208 @@
       <button class="journey__tab" data-tab="training"><i class="fas fa-certificate"></i> Training</button>
     </div>
 
+    <!-- Work timeline — المرحلة 3 -->
     <div class="journey__panel is-active" id="panel-work">
-      <!-- Work timeline — المرحلة 3 -->
+    <div class="timeline">
+
+        <div class="timeline__item">
+        <div class="timeline__card">
+            <div class="timeline__head">
+            <h3 class="timeline__title">Security Operations &amp; Automation Engineer</h3>
+            <span class="timeline__date">Oct 2025 – Jan 2026</span>
+            </div>
+            <div class="timeline__company">
+            <i class="fas fa-building"></i> ZeroSploit MEA
+            <span class="timeline__badge">Internship · Hybrid</span>
+            </div>
+            <p class="timeline__desc">
+            Built ELK log pipelines (Winlogbeat, Filebeat, Fluent Bit, Logstash) for Windows/Linux. Developed n8n SOAR automations for security operations, data retention, and vulnerability remediation. Performed detection engineering through AD attack simulations, Sigma rule development, and MITRE ATT&amp;CK mapping.
+            </p>
+            <div class="timeline__skills">
+            <span>ELK Stack</span><span>n8n SOAR</span><span>Sigma Rules</span>
+            <span>MITRE ATT&amp;CK</span><span>Active Directory</span><span>Winlogbeat</span>
+            </div>
+        </div>
+        </div>
+
+        <div class="timeline__item">
+        <div class="timeline__card">
+            <div class="timeline__head">
+            <h3 class="timeline__title">Graduation Project — Team Leader</h3>
+            <span class="timeline__date">Feb – May 2026</span>
+            </div>
+            <div class="timeline__company">
+            <i class="fas fa-graduation-cap"></i> MCI Academy
+            <span class="timeline__badge">Awarded · Best Project</span>
+            </div>
+            <p class="timeline__desc">
+            Led a 6-person team to design and deliver "Smart BI" — an automated Business Intelligence pipeline combining n8n workflows, LLM integration, and secure development. Recognized as Best Graduation Project in the BIS Department and featured in El Masry El Aan.
+            </p>
+            <div class="timeline__skills">
+            <span>Team Leadership</span><span>n8n</span><span>LLMs</span>
+            <span>Business Intelligence</span><span>Project Management</span>
+            </div>
+        </div>
+        </div>
+
+    </div>
     </div>
 
+    <!-- Bootcamps grid — المرحلة 3 -->
     <div class="journey__panel" id="panel-training">
-      <!-- Bootcamps grid — المرحلة 3 -->
+    <div class="training-grid">
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <img src="./assets/img/weinnovateme_logo.jpeg" alt="WE INNOVATE" loading="lazy">
+            </div>
+            <span class="training-card__type">SOC · 2 months</span>
+        </div>
+        <h3 class="training-card__title">SOC Engineering &amp; Analysis Bootcamp</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> WE INNOVATE
+            <span>Sep – Oct 2025</span>
+        </div>
+        <p class="training-card__desc">Built full SOC environment: ELK Stack SIEM + n8n SOAR, threat hunting, incident response, PCAP analysis.</p>
+        <div class="training-card__skills">
+            <span>ELK</span><span>n8n</span><span>Threat Hunting</span><span>PCAP</span>
+        </div>
+        </article>
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <img src="./assets/img/cybertalans.png" alt="CyberTalents" loading="lazy">
+            </div>
+            <span class="training-card__type">Pentest · 1 month</span>
+        </div>
+        <h3 class="training-card__title">Penetration Testing Bootcamp</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> CyberTalents · ITI
+            <span>Oct 2025</span>
+        </div>
+        <p class="training-card__desc">22 hands-on labs: information gathering, vulnerability assessment, web security, exploitation, post-exploitation, final CTF.</p>
+        <div class="training-card__skills">
+            <span>Pentest</span><span>Web Security</span><span>Exploitation</span><span>CTF</span>
+        </div>
+        </article>
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <img src="./assets/img/nti_logo.jpeg" alt="NTI" loading="lazy">
+            </div>
+            <span class="training-card__type">Windows · 1 month</span>
+        </div>
+        <h3 class="training-card__title">Windows Server Administration</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> National Telecommunication Institute
+            <span>Aug 2025</span>
+        </div>
+        <p class="training-card__desc">Windows Server, Active Directory, Group Policy, DHCP/DNS, failover clustering, disaster recovery concepts.</p>
+        <div class="training-card__skills">
+            <span>Windows Server</span><span>AD</span><span>GPO</span><span>DHCP/DNS</span>
+        </div>
+        <div class="training-card__score">
+            <i class="fas fa-trophy"></i> Score: 92.5%
+        </div>
+        </article>
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <img src="./assets/img/iti_logo.jpeg" alt="ITI" loading="lazy">
+            </div>
+            <span class="training-card__type">Networks · 1 month</span>
+        </div>
+        <h3 class="training-card__title">Networks Infrastructure Bootcamp</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> Information Technology Institute
+            <span>Jun 2025</span>
+        </div>
+        <p class="training-card__desc">Computer networks, routing &amp; switching, network security fundamentals, ethical hacking basics, Huawei Cloud (HCCDA).</p>
+        <div class="training-card__skills">
+            <span>Routing</span><span>Switching</span><span>Network Security</span><span>HCCDA</span>
+        </div>
+        </article>
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <i class="fas fa-code"></i>
+            </div>
+            <span class="training-card__type">.NET · 7 months</span>
+        </div>
+        <h3 class="training-card__title">.NET Developer Bootcamp</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> EraaSoft
+            <span>Nov 2024 – May 2025</span>
+        </div>
+        <p class="training-card__desc">C#, ASP.NET Core, SQL Server, Entity Framework, MVC, 3-Tier Architecture, and SOLID principles.</p>
+        <div class="training-card__skills">
+            <span>C#</span><span>ASP.NET</span><span>SQL Server</span><span>EF Core</span><span>SOLID</span>
+        </div>
+        </article>
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <i class="fas fa-shield-halved"></i>
+            </div>
+            <span class="training-card__type">SOC · 4 months</span>
+        </div>
+        <h3 class="training-card__title">SOC Bootcamp</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> AMIT Learning
+            <span>Jun – Sep 2023</span>
+        </div>
+        <p class="training-card__desc">CyberOps, threat &amp; vulnerability management, incident response, malware analysis fundamentals, QRadar SIEM.</p>
+        <div class="training-card__skills">
+            <span>QRadar</span><span>IR</span><span>Malware</span><span>Threat Hunting</span>
+        </div>
+        <div class="training-card__score">
+            <i class="fas fa-trophy"></i> Score: 100%
+        </div>
+        </article>
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <img src="./assets/img/iti_logo.jpeg" alt="ITI" loading="lazy">
+            </div>
+            <span class="training-card__type">Security · 120h</span>
+        </div>
+        <h3 class="training-card__title">Network Security Bootcamp</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> Information Technology Institute
+            <span>Aug 2023</span>
+        </div>
+        <p class="training-card__desc">CCNA, CEH, Palo Alto, FortiGate, network security fundamentals. Served as team leader during group activities.</p>
+        <div class="training-card__skills">
+            <span>CCNA</span><span>CEH</span><span>Palo Alto</span><span>FortiGate</span>
+        </div>
+        </article>
+
+        <article class="training-card">
+        <div class="training-card__head">
+            <div class="training-card__logo">
+            <i class="fas fa-graduation-cap"></i>
+            </div>
+            <span class="training-card__type">Fundamentals · 3 months</span>
+        </div>
+        <h3 class="training-card__title">Cybersecurity Fundamentals</h3>
+        <div class="training-card__provider">
+            <i class="fas fa-university"></i> Raya Academy
+            <span>Oct – Dec 2022</span>
+        </div>
+        <p class="training-card__desc">Networking, Linux, programming, and cybersecurity fundamentals through hands-on labs and CTF challenges.</p>
+        <div class="training-card__skills">
+            <span>Networking</span><span>Linux</span><span>Programming</span><span>CEH Intro</span>
+        </div>
+        </article>
+
+    </div>
     </div>
   </div>
 </section>
@@ -463,9 +986,103 @@
       <p class="section__subtitle">Industry certifications, honors, and recognized achievements.</p>
     </header>
 
+    <!-- Cert cards — المرحلة 3 -->
     <div class="credentials__grid">
-      <!-- Cert cards — المرحلة 3 -->
+
+    <article class="cred-card cred-card--featured">
+        <div class="cred-card__head">
+        <div class="cred-card__icon"><i class="fas fa-shield-halved"></i></div>
+        <div class="cred-card__meta">
+            <span class="cred-card__date">Jun 2026</span>
+            <span class="badge badge--status"><i class="live-dot"></i> Featured</span>
+        </div>
+        </div>
+        <h3 class="cred-card__title">Certified Incident Responder (eCIR)</h3>
+        <div class="cred-card__issuer">
+        <i class="fas fa-building"></i> INE Security
+        </div>
+        <p class="cred-card__desc" style="font-size:var(--fs-sm);color:var(--text-secondary);line-height:1.55;margin-top:var(--sp-2)">
+        Practical DFIR certification covering incident response, SIEM operations, PCAP analysis, and forensics fundamentals.
+        </p>
+        <div class="cred-card__id">ID: 185687581</div>
+        <div class="cred-card__actions">
+            <a href="https://certs.ine.com/5e6129f5-1c8d-410e-ac90-85822a990663#acc.bZDIeCOz" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+            <i class="fas fa-external-link-alt"></i> Verify
+            </a>
+        </div>
+    </article>
+
+    <article class="cred-card">
+        <div class="cred-card__head">
+        <div class="cred-card__icon"><i class="fab fa-google"></i></div>
+        <div class="cred-card__meta">
+            <span class="cred-card__date">Jul 2023</span>
+        </div>
+        </div>
+        <h3 class="cred-card__title">Google Cybersecurity Professional</h3>
+        <div class="cred-card__issuer">
+        <i class="fas fa-building"></i> Google
+        </div>
+        <div class="cred-card__id">ID: S8WNUGABPSRE</div>
+        <div class="cred-card__actions">
+            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/S8WNUGABPSRE" target="_blank" rel="noopener" class="btn btn--sm btn--outline">
+            <i class="fas fa-external-link-alt"></i> Verify
+            </a>
+        </div>
+    </article>
+
+    <article class="cred-card">
+        <div class="cred-card__head">
+        <div class="cred-card__icon"><i class="fab fa-google"></i></div>
+        <div class="cred-card__meta">
+            <span class="cred-card__date">Feb 2023</span>
+        </div>
+        </div>
+        <h3 class="cred-card__title">Google IT Support Professional</h3>
+        <div class="cred-card__issuer">
+        <i class="fas fa-building"></i> Google
+        </div>
+        <div class="cred-card__id">ID: Q3VLSMMTT92Q</div>
+        <div class="cred-card__actions">
+        <a href="https://coursera.org/verify/professional-cert/Q3VLSMMTT92Q" target="_blank" rel="noopener" class="btn btn--sm btn--outline">
+            <i class="fas fa-external-link-alt"></i> Verify
+        </a>
+        </div>
+    </article>
+
+    <article class="cred-card">
+        <div class="cred-card__head">
+        <div class="cred-card__icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="cred-card__meta">
+            <span class="cred-card__date">Apr 2026</span>
+        </div>
+        </div>
+        <h3 class="cred-card__title">Certified Cybersecurity Educator (CCEP)</h3>
+        <div class="cred-card__issuer">
+        <i class="fas fa-building"></i> Red Team Leaders
+        </div>
+        <div class="cred-card__id">ID: 3397d6fa48ca7a52</div>
+    </article>
+
+    <article class="cred-card">
+        <div class="cred-card__head">
+        <div class="cred-card__icon"><i class="fas fa-award"></i></div>
+        <div class="cred-card__meta">
+            <span class="cred-card__date">Mar 2026</span>
+            <span class="badge badge--ghost">Achievement</span>
+        </div>
+        </div>
+        <h3 class="cred-card__title">GDG Future Academy CTF</h3>
+        <div class="cred-card__issuer">
+        <i class="fas fa-flag-checkered"></i> Ranked 10th of 106
+        </div>
+        <p class="cred-card__desc" style="font-size:var(--fs-sm);color:var(--text-secondary);line-height:1.55;margin-top:var(--sp-2)">
+        72-hour Capture The Flag competition — placed 10th out of 106 participants.
+        </p>
+    </article>
+
     </div>
+    
   </div>
 </section>
 
@@ -487,8 +1104,83 @@
       <div class="wstat"><strong>5500+</strong><span>Total Views</span><small>Across platforms</small></div>
     </div>
 
+    <!-- Write-up cards — المرحلة 3 -->
     <div class="writeups__grid" id="writeupsGrid">
-      <!-- Write-up cards — المرحلة 3 -->
+
+    <article class="writeup-card">
+        <div class="writeup-card__icon"><i class="fas fa-chart-line"></i></div>
+        <h4>Qradar101</h4>
+        <p>CyberDefenders · Threat Hunting &amp; SIEM Investigation</p>
+        <div class="writeup-card__meta">
+        <span><i class="far fa-calendar"></i> Nov 2023</span>
+        <span><i class="fas fa-eye"></i> Popular</span>
+        </div>
+        <a href="https://medium.com/@AAAS/cyberdefenders-qradar101-blue-team-challenge-cf2593f484d4" target="_blank" rel="noopener" class="writeup-card__link">
+        Read on Medium <i class="fas fa-arrow-right"></i>
+        </a>
+    </article>
+
+    <article class="writeup-card">
+        <div class="writeup-card__icon"><i class="fas fa-eye"></i></div>
+        <h4>HawkEye</h4>
+        <p>CyberDefenders · Network Forensics &amp; Keylogger Analysis</p>
+        <div class="writeup-card__meta">
+        <span><i class="far fa-calendar"></i> Nov 2023</span>
+        </div>
+        <a href="https://medium.com/@AAAS/hawkeye-blue-team-challenge-bcdfb1db1c71" target="_blank" rel="noopener" class="writeup-card__link">
+        Read on Medium <i class="fas fa-arrow-right"></i>
+        </a>
+    </article>
+
+    <article class="writeup-card">
+        <div class="writeup-card__icon"><i class="fas fa-network-wired"></i></div>
+        <h4>PsExec Hunt</h4>
+        <p>CyberDefenders · Network Forensics &amp; Lateral Movement</p>
+        <div class="writeup-card__meta">
+        <span><i class="far fa-calendar"></i> Sep 2025</span>
+        </div>
+        <a href="https://abdelwahabshandy.hashnode.dev/psexec-hunt-pcapng" target="_blank" rel="noopener" class="writeup-card__link">
+        Read on Hashnode <i class="fas fa-arrow-right"></i>
+        </a>
+    </article>
+
+    <article class="writeup-card">
+        <div class="writeup-card__icon"><i class="fas fa-search"></i></div>
+        <h4>Lespion</h4>
+        <p>CyberDefenders · Threat Intelligence &amp; OSINT</p>
+        <div class="writeup-card__meta">
+        <span><i class="far fa-calendar"></i> Mar 2026</span>
+        <span><i class="fas fa-newspaper"></i> Latest</span>
+        </div>
+        <a href="https://abdelwahabshandy.hashnode.dev/Lespion-Lab-Report" target="_blank" rel="noopener" class="writeup-card__link">
+        Read on Hashnode <i class="fas fa-arrow-right"></i>
+        </a>
+    </article>
+
+    <article class="writeup-card">
+        <div class="writeup-card__icon"><i class="fas fa-memory"></i></div>
+        <h4>Swap &amp; Pagefile Explained</h4>
+        <p>Hashnode · Technical Deep-dive on Memory Management</p>
+        <div class="writeup-card__meta">
+        <span><i class="fas fa-newspaper"></i> Article</span>
+        </div>
+        <a href="https://abdelwahabshandy.hashnode.dev/when-ram-isnt-enough-how-swap-and-pagefile-keep-your-systems-stable" target="_blank" rel="noopener" class="writeup-card__link">
+        Read on Hashnode <i class="fas fa-arrow-right"></i>
+        </a>
+    </article>
+
+    <article class="writeup-card">
+        <div class="writeup-card__icon"><i class="fab fa-github"></i></div>
+        <h4>CTF Library</h4>
+        <p>40+ write-ups across CyberDefenders, LetsDefend, BTLO, CTF Learn, picoCTF, and more.</p>
+        <div class="writeup-card__meta">
+        <span><i class="fas fa-folder-tree"></i> Full Archive</span>
+        </div>
+        <a href="https://abdelwahab-a-shendy.github.io/SecLab-Hub/" target="_blank" rel="noopener" class="writeup-card__link">
+        Explore All <i class="fas fa-arrow-right"></i>
+        </a>
+    </article>
+
     </div>
 
     <div class="writeups__cta reveal">
