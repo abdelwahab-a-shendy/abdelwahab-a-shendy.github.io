@@ -316,9 +316,12 @@ body {
 
 .menu-toggle:hover { border-color: var(--cyan); }
 
-/* === MOBILE NAV === */
-/* === MOBILE NAV (hidden by default) === */
+/* ═══════════════════════════════════════════════════
+   MOBILE NAV — Hidden by default, opens via JS
+   ═══════════════════════════════════════════════════ */
+/* 1️⃣ الحالة الافتراضية — مخفي */
 .mobile-nav {
+  display: none;
   position: fixed;
   top: var(--header-height);
   left: 0;
@@ -327,22 +330,30 @@ body {
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border-default);
   padding: var(--sp-4) var(--sp-6);
-  display: none;                /* ← مخفي افتراضياً */
   flex-direction: column;
   gap: var(--sp-1);
   max-height: calc(100vh - var(--header-height));
   overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* يظهر بس لما ياخد class is-open */
+/* 2️⃣ حالة مفتوح — أعلوية عالية */
 .mobile-nav.is-open {
-  display: flex;
+  display: flex !important;
   animation: slideDown var(--t-base) var(--ease-out);
 }
 
-/* إخفاء attribute hidden دايماً (fallback) */
-.mobile-nav[hidden] {
+/* 3️⃣ [hidden] لما يبقى فيه is-open، نتغلب عليه */
+.mobile-nav[hidden]:not(.is-open) {
   display: none !important;
+}
+
+/* 4️⃣ على Desktop — مخفي تماماً */
+@media (min-width: 1024px) {
+  .mobile-nav,
+  .mobile-nav.is-open {
+    display: none !important;
+  }
 }
 
 .mobile-nav a {
@@ -355,19 +366,12 @@ body {
   border-radius: var(--radius-md);
   transition: background var(--t-fast) var(--ease-out),
               color var(--t-fast) var(--ease-out);
+  text-decoration: none;
 }
 
 .mobile-nav a:hover {
   color: var(--text-primary);
   background: var(--bg-surface);
-}
-
-/* إخفاء كامل على Desktop */
-@media (min-width: 1024px) {
-  .mobile-nav,
-  .mobile-nav.is-open {
-    display: none !important;
-  }
 }
 
 @keyframes slideDown {

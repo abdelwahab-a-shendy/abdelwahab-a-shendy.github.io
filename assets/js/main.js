@@ -31,7 +31,7 @@
     }, 3500);
   }
 
-  /* === MOBILE NAV TOGGLE === */
+/* === MOBILE NAV TOGGLE === */
 function initMobileNav() {
   const toggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
@@ -40,34 +40,26 @@ function initMobileNav() {
   function openNav() {
     toggle.setAttribute('aria-expanded', 'true');
     mobileNav.classList.add('is-open');
-    mobileNav.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
   }
 
   function closeNav() {
     toggle.setAttribute('aria-expanded', 'false');
     mobileNav.classList.remove('is-open');
-    mobileNav.setAttribute('hidden', '');
     document.body.style.overflow = '';
   }
 
   function toggleNav() {
-    if (mobileNav.classList.contains('is-open')) {
-      closeNav();
-    } else {
-      openNav();
-    }
+    if (mobileNav.classList.contains('is-open')) closeNav();
+    else openNav();
   }
 
-  // Click on hamburger
   toggle.addEventListener('click', toggleNav);
 
-  // Close on link click
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', closeNav);
   });
 
-  // Close on ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
       closeNav();
@@ -75,7 +67,6 @@ function initMobileNav() {
     }
   });
 
-  // Close on outside click
   document.addEventListener('click', (e) => {
     if (!mobileNav.classList.contains('is-open')) return;
     if (mobileNav.contains(e.target)) return;
