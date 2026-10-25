@@ -1,0 +1,368 @@
+/* ============================================================
+   ANIMATIONS — Keyframes, Reveals, Effects
+   ============================================================ */
+
+/* === FADE IN === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* === REVEAL (سكرول) === */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 800ms var(--ease-out),
+              transform 800ms var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+/* Staggered children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms var(--ease-out),
+              transform 600ms var(--ease-out);
+}
+
+.reveal-stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 50ms; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 120ms; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 190ms; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 260ms; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 330ms; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 400ms; }
+
+/* === LIVE DOT === */
+@keyframes livePulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--emerald-glow), 0 0 8px var(--emerald);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0), 0 0 8px var(--emerald);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0), 0 0 8px var(--emerald);
+  }
+}
+
+.live-dot {
+  animation: livePulse 2.2s var(--ease-in-out) infinite;
+}
+
+/* === CURSOR BLINK === */
+@keyframes cursorBlink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* === GLOW PULSE === */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px var(--cyan-glow); }
+  50%      { box-shadow: 0 0 40px var(--cyan-glow), 0 0 60px rgba(56, 189, 248, 0.2); }
+}
+
+.glow-pulse { animation: glowPulse 3s var(--ease-in-out) infinite; }
+
+/* === AURORA FLOAT === */
+@keyframes auroraFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(60px, -40px) scale(1.08); }
+}
+
+@keyframes auroraFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-50px, 60px) scale(0.94); }
+}
+
+.aurora-cyan    { animation: auroraFloat1 24s var(--ease-in-out) infinite; }
+.aurora-emerald { animation: auroraFloat2 28s var(--ease-in-out) infinite; animation-delay: -12s; }
+
+/* === SCROLL BOB === */
+@keyframes scrollBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50%      { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+
+.hero__scroll { animation: scrollBob 2.4s var(--ease-in-out) infinite; }
+
+/* === TERMINAL LINE === */
+@keyframes terminalLineIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.terminal__line {
+  animation: terminalLineIn 250ms var(--ease-out) both;
+}
+
+/* === LOADING BAR === */
+@keyframes loadingProgress {
+  0%   { width: 0%; }
+  20%  { width: 18%; }
+  40%  { width: 42%; }
+  70%  { width: 78%; }
+  100% { width: 100%; }
+}
+
+.loading-bar i {
+  animation: loadingProgress 1.8s var(--ease-out) forwards;
+}
+
+/* === SPIN === */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin { animation: spin 1s linear infinite; }
+
+/* === RADAR SWEEP === */
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* === PING (نقاط radar) === */
+@keyframes radarPing {
+  0%   { transform: scale(0); opacity: 1; }
+  80%  { transform: scale(3); opacity: 0; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* === SLIDE DOWN (mobile nav) === */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === SHAKE (لأخطاء) === */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-4px); }
+  75%      { transform: translateX(4px); }
+}
+
+/* === TYPE (typewriter) === */
+@keyframes typeChar {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* === HOVER EFFECTS === */
+.hover-lift {
+  transition: transform var(--t-base) var(--ease-out),
+              box-shadow var(--t-base) var(--ease-out);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 0 32px rgba(14, 165, 233, 0.1);
+}
+
+.hover-glow {
+  position: relative;
+  transition: all var(--t-base) var(--ease-out);
+}
+
+.hover-glow::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--cyan), var(--emerald));
+  opacity: 0;
+  z-index: -1;
+  filter: blur(12px);
+  transition: opacity var(--t-base) var(--ease-out);
+}
+
+.hover-glow:hover::after { opacity: 0.5; }
+
+/* === BUTTON GLOW === */
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 600ms var(--ease-out),
+              height 600ms var(--ease-out);
+}
+
+.btn--primary:hover::before {
+  width: 400px;
+  height: 400px;
+  opacity: 0;
+}
+
+/* === PROJECT CARD STAGGER === */
+.projects__grid .project-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms var(--ease-out),
+              transform 500ms var(--ease-out);
+}
+
+.projects__grid .project-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects__grid .project-card:nth-child(1).is-visible { transition-delay: 0ms; }
+.projects__grid .project-card:nth-child(2).is-visible { transition-delay: 80ms; }
+.projects__grid .project-card:nth-child(3).is-visible { transition-delay: 160ms; }
+.projects__grid .project-card:nth-child(4).is-visible { transition-delay: 240ms; }
+.projects__grid .project-card:nth-child(5).is-visible { transition-delay: 320ms; }
+.projects__grid .project-card:nth-child(6).is-visible { transition-delay: 400ms; }
+
+/* === IMAGE SCALE ON HOVER === */
+.project-card__media img {
+  transition: transform 700ms var(--ease-out),
+              filter 700ms var(--ease-out);
+}
+
+.project-card:hover .project-card__media img {
+  transform: scale(1.06);
+  filter: brightness(1.05) saturate(1.1);
+}
+
+/* === UNDERLINE EFFECT (links) === */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* === GRADIENT TEXT === */
+.gradient-text {
+  background: linear-gradient(135deg, var(--cyan-bright), var(--emerald));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* === BORDER DRAW (على hover) === */
+.border-draw {
+  position: relative;
+}
+
+.border-draw::before,
+.border-draw::after {
+  content: '';
+  position: absolute;
+  background: var(--cyan);
+  opacity: 0;
+  transition: opacity var(--t-base) var(--ease-out);
+}
+
+.border-draw::before {
+  top: 0; left: 0;
+  width: 0; height: 2px;
+  transition: width 300ms var(--ease-out), opacity var(--t-base);
+}
+
+.border-draw::after {
+  top: 0; right: 0;
+  width: 2px; height: 0;
+  transition: height 300ms var(--ease-out), opacity var(--t-base);
+}
+
+.border-draw:hover::before { width: 100%; opacity: 1; }
+.border-draw:hover::after  { height: 100%; opacity: 1; }
+
+/* === FLOAT (لعناصر) === */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.float { animation: float 4s var(--ease-in-out) infinite; }
+
+/* === PREFERS-REDUCED-MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-stagger > *,
+  .projects__grid .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .aurora-cyan,
+  .aurora-emerald,
+  .live-dot,
+  .hero__scroll,
+  .float,
+  .glow-pulse {
+    animation: none !important;
+  }
+}
