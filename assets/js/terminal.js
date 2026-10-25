@@ -1,54 +1,114 @@
-// ==================== TERMINAL TYPEWRITER EFFECT ====================
-document.addEventListener('DOMContentLoaded', function() {
-    const terminalCmds = [
-        { cmd: "whoami", resp: "Abdelwahab Shendy | June 2026 Graduate | SOC Analyst | Security Automation | IT Infrastructure" },
-        { cmd: "cat interests.txt", resp: "Security Automation | Threat Investigation" },
-        { cmd: "git status", resp: "Open for hire | Seeking SOC Analyst or Security Engineer roles." },
-        // { cmd: "echo $status", resp: "Currently: Building Security Labs & Technical Blogging" },
-        { cmd: "ls certifications/", resp: " eCIR | Google Cybersecurity | Google IT Support" },   
-    ];
-    
-    const terminalContainer = document.getElementById('dynamicTerminal');
-    if (terminalContainer) {
-        // Clear the loading text
-        terminalContainer.innerHTML = '';
-        
-        let idx = 0;
-        
-        function addTerminalLine() {
-            if (idx >= terminalCmds.length) {
-                const lastDiv = document.createElement('div');
-                lastDiv.className = 'terminal-line';
-                lastDiv.innerHTML = `<span class="prompt">➜</span> <span class="command">~</span> <span class="cursor-blink"></span>`;
-                terminalContainer.appendChild(lastDiv);
-                return;
-            }
-            
-            const lineDiv = document.createElement('div');
-            lineDiv.className = 'terminal-line';
-            lineDiv.innerHTML = `<span class="prompt">➜</span> <span class="command"></span>`;
-            terminalContainer.appendChild(lineDiv);
-            
-            const cmdSpan = lineDiv.querySelector('.command');
-            const fullCmd = terminalCmds[idx].cmd;
-            let i = 0;
-            
-            const typeInterval = setInterval(() => {
-                if (i < fullCmd.length) {
-                    cmdSpan.textContent += fullCmd[i];
-                    i++;
-                } else {
-                    clearInterval(typeInterval);
-                    const respP = document.createElement('p');
-                    respP.className = 'response';
-                    respP.textContent = terminalCmds[idx].resp;
-                    lineDiv.appendChild(respP);
-                    idx++;
-                    setTimeout(addTerminalLine, 400);
-                }
-            }, 40);
-        }
-        
-        addTerminalLine();
+/* ============================================================
+   TERMINAL — Typewriter Effect for Hero
+   ============================================================ */
+
+(function () {
+  'use strict';
+
+  const LINES = [
+    { type: 'cmd',    text: 'whoami' },
+    { type: 'out',    text: 'abdelwahab_shendy',     cls: 'is-info' },
+    { type: 'cmd',    text: 'cat headline.txt' },
+    { type: 'out',    text: 'Security Operations & Automation | eCIR | Building GRC Foundations', cls: 'is-info' },
+    { type: 'cmd',    text: 'cat status.txt' },
+    { type: 'out',    text: '● Open to SOC & GRC opportunities', cls: 'is-success' },
+    { type: 'cmd',    text: 'ls focus/' },
+    { type: 'out',    text: 'soc/    automation/    grc_foundations/', cls: '' },
+    { type: 'cmd',    text: 'system_status' },
+    { type: 'out',    text: '● OPERATIONAL — Learning in public', cls: 'is-success' }
+  ];
+
+  const DELAY_BETWEEN = 350;
+  const TYPE_SPEED = 35;
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function createLine(type) {
+    const line = document.createElement('div');
+    line.className = 'terminal__line';
+
+    if (type === 'cmd') {
+      const prompt = document.createElement('span');
+      prompt.className = 'terminal__prompt';
+      prompt.textContent = '➜';
+
+      const cmd = document.createElement('span');
+      cmd.className = 'terminal__cmd';
+
+      line.appendChild(prompt);
+      line.appendChild(cmd);
+      return { line, textTarget: cmd };
     }
-});
+
+    const out = document.createElement('span');
+    out.className = 'terminal__output';
+    line.appendChild(out);
+    return { line, textTarget: out };
+  }
+
+  async function typeText(el, text, speed = TYPE_SPEED) {
+    for (let i = 0; i < text.length; i++) {
+      el.textContent += text.charAt(i);
+      await sleep(speed);
+    }
+  }
+
+  async function runTerminal(body) {
+    // Clear initial content
+    body.innerHTML = '';
+
+    for (let i = 0; i < LINES.length; i++) {
+      const item = LINES[i];
+      const { line, textTarget } = createLine(item.type);
+      body.appendChild(line);
+      body.scrollTop = body.scrollHeight;
+
+      await typeText(textTarget, item.text, item.type === 'cmd' ? 45 : TYPE_SPEED);
+
+      if (item.cls) textTarget.classList.add(item.cls);
+
+      // Blinking cursor at end of line
+      const cursor = document.createElement('span');
+      cursor.className = 'terminal__cursor';
+      line.appendChild(cursor);
+      await sleep(DELAY_BETWEEN);
+      cursor.remove();
+    }
+
+    // Add final cursor on last line
+    const lastLine = body.lastElementChild;
+    if (lastLine) {
+      const cursor = document.createElement('span');
+      cursor.className = 'terminal__cursor';
+      lastLine.appendChild(cursor);
+    }
+  }
+
+  function init() {
+    const body = document.getElementById('terminalBody');
+    if (!body) return;
+
+    // Respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      body.innerHTML = '';
+      LINES.forEach(item => {
+        const { line, textTarget } = createLine(item.type);
+        textTarget.textContent = item.text;
+        if (item.cls) textTarget.classList.add(item.cls);
+        body.appendChild(line);
+      });
+      return;
+    }
+
+    // Delay start until loading screen is gone
+    setTimeout(() => runTerminal(body), 2400);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
