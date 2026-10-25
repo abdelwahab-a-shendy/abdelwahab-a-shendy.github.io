@@ -5,13 +5,13 @@
 (function () {
   'use strict';
 
-  const CERT_IMAGES = {
-    ecir:             { src: './assets/img/certs/ecir.png',             title: 'Certified Incident Responder (eCIR)', issuer: 'INE Security' },
-    'google-cybersec':{ src: './assets/img/certs/google-cybersec.png',  title: 'Google Cybersecurity Professional', issuer: 'Google' },
-    'google-itsupport':{ src: './assets/img/certs/google-itsupport.png',title: 'Google IT Support Professional', issuer: 'Google' },
-    ccep:             { src: './assets/img/certs/ccep.png',             title: 'Certified Cybersecurity Educator (CCEP)', issuer: 'Red Team Leaders' },
-    'cybertalents-pentest': { src: './assets/img/certs/cybertalents-pentest.png', title: 'Penetration Testing Bootcamp', issuer: 'CyberTalents · ITI' 
-}, 
+const CERT_IMAGES = {
+  ecir:              { src: './assets/img/certs/ecir.png',              title: 'Certified Incident Responder (eCIR)', issuer: 'INE Security' },
+  'google-cybersec': { src: './assets/img/certs/google-cybersec.png',   title: 'Google Cybersecurity Professional',   issuer: 'Google' },
+  'google-itsupport':{ src: './assets/img/certs/google-itsupport.png',  title: 'Google IT Support Professional',      issuer: 'Google' },
+  ccep:              { src: './assets/img/certs/ccep.png',              title: 'Certified Cybersecurity Educator (CCEP)', issuer: 'Red Team Leaders' },
+  'cybertalents-pentest': { src: './assets/img/certs/cybertalents-pentest.png', title: 'Penetration Testing Bootcamp', issuer: 'CyberTalents · ITI' },
+  'gdg-ctf':         { src: './assets/img/certs/gdg-ctf.png',           title: 'GDG Future Academy CTF — 10th of 106', issuer: 'Google Developer Groups' }
 };
 
   let modal = null;

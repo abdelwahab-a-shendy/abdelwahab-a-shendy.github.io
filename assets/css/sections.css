@@ -950,3 +950,35 @@
   color: #F59E0B;
   font-size: 1.1em;
 }
+
+/* === ACHIEVEMENT CARD (GDG CTF) === */
+.cred-card--achievement {
+  background: linear-gradient(160deg, var(--bg-surface), rgba(245, 158, 11, 0.06));
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.cred-card--achievement::before {
+  background: linear-gradient(90deg, #F59E0B, #FBBF24) !important;
+}
+
+.cred-card--achievement:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: var(--shadow-lg), 0 0 32px rgba(245, 158, 11, 0.15);
+}
+
+.cred-card__icon--award {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #F59E0B !important;
+}
+
+.cred-card--achievement .cred-card__issuer strong {
+  color: #F59E0B;
+  font-size: 1.15em;
+  font-weight: 700;
+}
+
+.badge--warn {
+  color: #F59E0B;
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.1);
+}
