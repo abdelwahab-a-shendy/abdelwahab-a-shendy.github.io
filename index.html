@@ -18,7 +18,12 @@
 <meta property="og:image" content="https://abdelwahab-a-shendy.github.io/assets/img/AbdelwahabShandyPhoto.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" type="image/svg+xml" href="./assets/img/gemini-svg.svg">
+<!-- ═══ FAVICONS ═══ -->
+<link rel="icon" type="image/png" href="./assets/img/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+<link rel="shortcut icon" href="./assets/img/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png">
+<link rel="manifest" href="./assets/img/site.webmanifest">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +42,6 @@
 <link rel="stylesheet" href="./assets/css/animations.css">
 <link rel="stylesheet" href="./assets/css/responsive.css">
 </head>
-<script src="./assets/js/cert-viewer.js"></script>
 <body>
 
 <!-- ============================================================
@@ -75,7 +79,8 @@
 <header class="header" id="header">
   <div class="container header__inner">
     <a href="#home" class="logo" aria-label="Abdelwahab Shendy — Home">
-      <span class="logo__mark">AAS<span>.</span>Sec</span>
+       <!-- <img src="./assets/img/favicon.svg" alt="" width="36" height="36" class="logo__img" aria-hidden="true">-->
+        <span class="logo__mark">AAS<span>.</span>Sec</span>
       <span class="logo__status"><i class="live-dot"></i> OPERATIONAL</span>
     </a>
 
@@ -1094,14 +1099,14 @@
             </div>
             <div class="cred-card__id">ID: 3397d6fa48ca7a52</div>
             <div class="cred-card__actions">
-                <button class="btn btn--sm btn--outline" data-cert="ccep">
-                    <i class="fas fa-image"></i> View
-                </button>
-                <a href="https://courses.redteamleaders.com/exam-completion/3397d6fa48ca7a52" 
-                    target="_blank" rel="noopener" class="btn btn--sm btn--primary">
-                    <i class="fas fa-external-link-alt"></i> Verify
-                </a>
-            </div>
+            <button class="btn btn--sm btn--outline" data-cert="ccep">
+                <i class="fas fa-image"></i> View
+            </button>
+            <a href="https://courses.redteamleaders.com/exam-completion/3397d6fa48ca7a52" 
+                target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fas fa-external-link-alt"></i> Verify
+            </a>
+            </div> 
         </article>
 
         <!-- 05 — CyberTalents Pentest Bootcamp -->
@@ -1351,6 +1356,6 @@
 <script src="./assets/js/projects.js"></script>
 <script src="./assets/js/cursor.js"></script>
 <script src="./assets/js/easter-egg.js"></script>
-
+<script src="./assets/js/cert-viewer.js"></script>
 </body>
 </html>
