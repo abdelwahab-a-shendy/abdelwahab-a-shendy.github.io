@@ -317,6 +317,7 @@ body {
 .menu-toggle:hover { border-color: var(--cyan); }
 
 /* === MOBILE NAV === */
+/* === MOBILE NAV (hidden by default) === */
 .mobile-nav {
   position: fixed;
   top: var(--header-height);
@@ -326,10 +327,22 @@ body {
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border-default);
   padding: var(--sp-4) var(--sp-6);
-  display: flex;
+  display: none;                /* ← مخفي افتراضياً */
   flex-direction: column;
   gap: var(--sp-1);
+  max-height: calc(100vh - var(--header-height));
+  overflow-y: auto;
+}
+
+/* يظهر بس لما ياخد class is-open */
+.mobile-nav.is-open {
+  display: flex;
   animation: slideDown var(--t-base) var(--ease-out);
+}
+
+/* إخفاء attribute hidden دايماً (fallback) */
+.mobile-nav[hidden] {
+  display: none !important;
 }
 
 .mobile-nav a {
@@ -347,6 +360,14 @@ body {
 .mobile-nav a:hover {
   color: var(--text-primary);
   background: var(--bg-surface);
+}
+
+/* إخفاء كامل على Desktop */
+@media (min-width: 1024px) {
+  .mobile-nav,
+  .mobile-nav.is-open {
+    display: none !important;
+  }
 }
 
 @keyframes slideDown {

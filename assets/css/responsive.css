@@ -230,12 +230,19 @@
 
 /* === MOBILE NAV (تظهر فقط على الموبايل) === */
 @media (min-width: 1024px) {
-  .mobile-nav { display: none !important; }
-  .menu-toggle { display: none; }
+  .mobile-nav,
+  .mobile-nav.is-open {
+    display: none !important;
+  }
+  .menu-toggle {
+    display: none !important;
+  }
 }
 
 @media (max-width: 1023px) {
-  .nav { display: none; }
+  .nav {
+    display: none !important;    /* ← مهم! */
+  }
 }
 
 /* === HIDE CUSTOM CURSOR ON TOUCH === */
