@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="./assets/css/animations.css">
 <link rel="stylesheet" href="./assets/css/responsive.css">
 </head>
+<script src="./assets/js/cert-viewer.js"></script>
 <body>
 
 <!-- ============================================================
@@ -987,102 +988,136 @@
     </header>
 
     <!-- Cert cards — المرحلة 3 -->
-    <div class="credentials__grid">
+     <div class="credentials__grid">
 
-    <article class="cred-card cred-card--featured">
-        <div class="cred-card__head">
-        <div class="cred-card__icon"><i class="fas fa-shield-halved"></i></div>
-        <div class="cred-card__meta">
-            <span class="cred-card__date">Jun 2026</span>
-            <span class="badge badge--status"><i class="live-dot"></i> Featured</span>
-        </div>
-        </div>
-        <h3 class="cred-card__title">Certified Incident Responder (eCIR)</h3>
-        <div class="cred-card__issuer">
-        <i class="fas fa-building"></i> INE Security
-        </div>
-        <p class="cred-card__desc" style="font-size:var(--fs-sm);color:var(--text-secondary);line-height:1.55;margin-top:var(--sp-2)">
-        Practical DFIR certification covering incident response, SIEM operations, PCAP analysis, and forensics fundamentals.
-        </p>
-        <div class="cred-card__id">ID: 185687581</div>
-        <div class="cred-card__actions">
-            <a href="https://certs.ine.com/5e6129f5-1c8d-410e-ac90-85822a990663#acc.bZDIeCOz" target="_blank" rel="noopener" class="btn btn--sm btn--primary">
-            <i class="fas fa-external-link-alt"></i> Verify
+        <!-- 01 — eCIR -->
+        <article class="cred-card cred-card--featured">
+            <div class="cred-card__media">
+            <img src="./assets/img/certs/ecir.png" alt="eCIR Certificate — INE Security" loading="lazy" 
+                onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+            </div>
+            <div class="cred-card__head">
+            <div class="cred-card__icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="cred-card__meta">
+                <span class="cred-card__date">Jun 2026</span>
+                <span class="badge badge--status"><i class="live-dot"></i> Featured</span>
+            </div>
+            </div>
+            <h3 class="cred-card__title">Certified Incident Responder (eCIR)</h3>
+            <div class="cred-card__issuer">
+            <i class="fas fa-building"></i> INE Security
+            </div>
+            <p class="cred-card__desc">Practical DFIR certification covering incident response, SIEM operations, PCAP analysis, and forensics fundamentals.</p>
+            <div class="cred-card__id">ID: 185687581</div>
+            <div class="cred-card__actions">
+            <button class="btn btn--sm btn--outline" data-cert="ecir">
+                <i class="fas fa-image"></i> View
+            </button>
+            <a href="https://certs.ine.com/5e6129f5-1c8d-410e-ac90-85822a990663#acc.bZDIeCOz" 
+                target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fas fa-external-link-alt"></i> Verify
             </a>
-        </div>
-    </article>
+            </div>
+        </article>
 
-    <article class="cred-card">
-        <div class="cred-card__head">
-        <div class="cred-card__icon"><i class="fab fa-google"></i></div>
-        <div class="cred-card__meta">
-            <span class="cred-card__date">Jul 2023</span>
-        </div>
-        </div>
-        <h3 class="cred-card__title">Google Cybersecurity Professional</h3>
-        <div class="cred-card__issuer">
-        <i class="fas fa-building"></i> Google
-        </div>
-        <div class="cred-card__id">ID: S8WNUGABPSRE</div>
-        <div class="cred-card__actions">
-            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/S8WNUGABPSRE" target="_blank" rel="noopener" class="btn btn--sm btn--outline">
-            <i class="fas fa-external-link-alt"></i> Verify
+        <!-- 02 — Google Cybersecurity -->
+        <article class="cred-card">
+            <div class="cred-card__media">
+            <img src="./assets/img/certs/google-cybersec.png" alt="Google Cybersecurity Certificate" loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+            </div>
+            <div class="cred-card__head">
+            <div class="cred-card__icon"><i class="fab fa-google"></i></div>
+            <div class="cred-card__meta">
+                <span class="cred-card__date">Jul 2023</span>
+            </div>
+            </div>
+            <h3 class="cred-card__title">Google Cybersecurity Professional</h3>
+            <div class="cred-card__issuer">
+            <i class="fas fa-building"></i> Google
+            </div>
+            <div class="cred-card__id">ID: S8WNUGABPSRE</div>
+            <div class="cred-card__actions">
+            <button class="btn btn--sm btn--outline" data-cert="google-cybersec">
+                <i class="fas fa-image"></i> View
+            </button>
+            <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/S8WNUGABPSRE" 
+                target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fas fa-external-link-alt"></i> Verify
             </a>
-        </div>
-    </article>
+            </div>
+        </article>
 
-    <article class="cred-card">
-        <div class="cred-card__head">
-        <div class="cred-card__icon"><i class="fab fa-google"></i></div>
-        <div class="cred-card__meta">
-            <span class="cred-card__date">Feb 2023</span>
-        </div>
-        </div>
-        <h3 class="cred-card__title">Google IT Support Professional</h3>
-        <div class="cred-card__issuer">
-        <i class="fas fa-building"></i> Google
-        </div>
-        <div class="cred-card__id">ID: Q3VLSMMTT92Q</div>
-        <div class="cred-card__actions">
-        <a href="https://coursera.org/verify/professional-cert/Q3VLSMMTT92Q" target="_blank" rel="noopener" class="btn btn--sm btn--outline">
-            <i class="fas fa-external-link-alt"></i> Verify
-        </a>
-        </div>
-    </article>
+        <!-- 03 — Google IT Support -->
+        <article class="cred-card">
+            <div class="cred-card__media">
+            <img src="./assets/img/certs/google-itsupport.png" alt="Google IT Support Certificate" loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+            </div>
+            <div class="cred-card__head">
+            <div class="cred-card__icon"><i class="fab fa-google"></i></div>
+            <div class="cred-card__meta">
+                <span class="cred-card__date">Feb 2023</span>
+            </div>
+            </div>
+            <h3 class="cred-card__title">Google IT Support Professional</h3>
+            <div class="cred-card__issuer">
+            <i class="fas fa-building"></i> Google
+            </div>
+            <div class="cred-card__id">ID: Q3VLSMMTT92Q</div>
+            <div class="cred-card__actions">
+            <button class="btn btn--sm btn--outline" data-cert="google-itsupport">
+                <i class="fas fa-image"></i> View
+            </button>
+            <a href="https://coursera.org/verify/professional-cert/Q3VLSMMTT92Q" 
+                target="_blank" rel="noopener" class="btn btn--sm btn--primary">
+                <i class="fas fa-external-link-alt"></i> Verify
+            </a>
+            </div>
+        </article>
 
-    <article class="cred-card">
-        <div class="cred-card__head">
-        <div class="cred-card__icon"><i class="fas fa-graduation-cap"></i></div>
-        <div class="cred-card__meta">
-            <span class="cred-card__date">Apr 2026</span>
-        </div>
-        </div>
-        <h3 class="cred-card__title">Certified Cybersecurity Educator (CCEP)</h3>
-        <div class="cred-card__issuer">
-        <i class="fas fa-building"></i> Red Team Leaders
-        </div>
-        <div class="cred-card__id">ID: 3397d6fa48ca7a52</div>
-    </article>
+        <!-- 04 — CCEP -->
+        <article class="cred-card">
+            <div class="cred-card__media">
+            <img src="./assets/img/certs/ccep.png" alt="CCEP Certificate" loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.classList.add('no-image')">
+            </div>
+            <div class="cred-card__head">
+            <div class="cred-card__icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="cred-card__meta">
+                <span class="cred-card__date">Apr 2026</span>
+            </div>
+            </div>
+            <h3 class="cred-card__title">Certified Cybersecurity Educator (CCEP)</h3>
+            <div class="cred-card__issuer">
+            <i class="fas fa-building"></i> Red Team Leaders
+            </div>
+            <div class="cred-card__id">ID: 3397d6fa48ca7a52</div>
+            <div class="cred-card__actions">
+            <button class="btn btn--sm btn--outline" data-cert="ccep">
+                <i class="fas fa-image"></i> View
+            </button>
+            </div>
+        </article>
 
-    <article class="cred-card">
-        <div class="cred-card__head">
-        <div class="cred-card__icon"><i class="fas fa-award"></i></div>
-        <div class="cred-card__meta">
-            <span class="cred-card__date">Mar 2026</span>
-            <span class="badge badge--ghost">Achievement</span>
-        </div>
-        </div>
-        <h3 class="cred-card__title">GDG Future Academy CTF</h3>
-        <div class="cred-card__issuer">
-        <i class="fas fa-flag-checkered"></i> Ranked 10th of 106
-        </div>
-        <p class="cred-card__desc" style="font-size:var(--fs-sm);color:var(--text-secondary);line-height:1.55;margin-top:var(--sp-2)">
-        72-hour Capture The Flag competition — placed 10th out of 106 participants.
-        </p>
-    </article>
+        <!-- 05 — GDG CTF Achievement -->
+        <article class="cred-card">
+            <div class="cred-card__head">
+            <div class="cred-card__icon"><i class="fas fa-award"></i></div>
+            <div class="cred-card__meta">
+                <span class="cred-card__date">Mar 2026</span>
+                <span class="badge badge--ghost">Achievement</span>
+            </div>
+            </div>
+            <h3 class="cred-card__title">GDG Future Academy CTF</h3>
+            <div class="cred-card__issuer">
+            <i class="fas fa-flag-checkered"></i> Ranked 10th of 106
+            </div>
+            <p class="cred-card__desc">72-hour Capture The Flag competition — placed 10th out of 106 participants.</p>
+        </article>
 
-    </div>
-    
+        </div>
+
   </div>
 </section>
 
