@@ -1,0 +1,345 @@
+/* ============================================================
+   SECTIONS — Hero, About, Skills, Projects, Journey, etc.
+   ============================================================ */
+
+/* ============================================================
+   HERO — 01 OPERATIONS
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--header-height) + var(--sp-10));
+  padding-bottom: var(--sp-16);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 0%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 100%, rgba(16, 185, 129, 0.06) 0%, transparent 60%);
+}
+
+.hero__radar {
+  position: absolute;
+  top: 50%;
+  right: -15%;
+  width: 900px;
+  height: 900px;
+  max-width: 90vw;
+  max-height: 90vw;
+  transform: translateY(-50%);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 1023px) {
+  .hero__radar {
+    right: 50%;
+    transform: translate(50%, -50%);
+    opacity: 0.15;
+  }
+}
+
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--container-wide);
+}
+
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-6);
+}
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: var(--sp-4);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--sp-5);
+}
+
+.hero__title-line {
+  display: block;
+  color: var(--text-primary);
+}
+
+.hero__title-line--accent {
+  color: var(--cyan);
+  background: linear-gradient(135deg, var(--cyan-bright), var(--cyan), var(--emerald));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 24px rgba(14, 165, 233, 0.3));
+}
+
+.hero__role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-base);
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-5);
+  letter-spacing: 0.02em;
+}
+
+.hero__role-sep {
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.hero__desc {
+  max-width: 620px;
+  font-size: var(--fs-lg);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--sp-8);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-10);
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4);
+  max-width: 640px;
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 640px) {
+  .hero__stats { grid-template-columns: repeat(4, 1fr); }
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.hero__stat strong {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.hero__stat span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: var(--sp-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-default);
+  color: var(--text-muted);
+  background: var(--bg-primary);
+  transition: all var(--t-base) var(--ease-out);
+  animation: scrollBob 2.4s var(--ease-in-out) infinite;
+}
+
+.hero__scroll:hover {
+  color: var(--cyan-bright);
+  border-color: var(--cyan);
+  transform: translateX(-50%) translateY(-2px);
+}
+
+@keyframes scrollBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ============================================================
+   ABOUT — 02 PROFILE
+   ============================================================ */
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-10);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .about__grid {
+    grid-template-columns: 320px 1fr;
+    gap: var(--sp-12);
+  }
+}
+
+/* Portrait */
+.about__portrait {
+  position: sticky;
+  top: calc(var(--header-height) + var(--sp-6));
+}
+
+.portrait-frame {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(14, 165, 233, 0.1);
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.05) saturate(1.1);
+}
+
+.portrait-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 60%, rgba(5, 10, 15, 0.7) 100%),
+    linear-gradient(135deg, rgba(14, 165, 233, 0.05), transparent 50%);
+  pointer-events: none;
+}
+
+.portrait-overlay {
+  position: absolute;
+  bottom: var(--sp-3);
+  left: var(--sp-3);
+  right: var(--sp-3);
+  z-index: 2;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.portrait-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--cyan);
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.pc-1 { top: 8px;    left: 8px;    border-right: none; border-bottom: none; }
+.pc-2 { top: 8px;    right: 8px;   border-left: none;  border-bottom: none; }
+.pc-3 { bottom: 8px; left: 8px;    border-right: none; border-top: none; }
+.pc-4 { bottom: 8px; right: 8px;   border-left: none;  border-top: none; }
+
+.portrait-meta {
+  margin-top: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.portrait-meta p {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+}
+
+.portrait-meta i {
+  color: var(--cyan);
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Bio */
+.about__bio {
+  margin-bottom: var(--sp-8);
+}
+
+.about__bio p {
+  font-size: var(--fs-lg);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--sp-4);
+  max-width: 65ch;
+}
+
+.about__bio p:last-child { margin-bottom: 0; }
+
+.about__bio strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.about__bio em {
+  color: var(--cyan);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ============================================================
+   SKILLS — 03 CAPABILITIES
+   ============================================================ */
+
+/* (Skill cards بتنسيق موجود في components.css) */
+
+/* ============================================================
+   SECTION TRANSITIONS (Bottom spacing بين الأقسام)
+   ============================================================ */
+
+.section + .section {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section--alt + .section {
+  border-top: none;
+}
