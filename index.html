@@ -1,1473 +1,587 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Abdelwahab Shendy | SOC Analyst & Security Engineer | Portfolio">
-    <meta name="author" content="Abdelwahab Ahmed Shendy">
-    <meta name="keywords" content="Abdelwahab Ahmed Shendy, Abdelwahab Shendy, SOC Analyst, Security Engineer, Cybersecurity Portfolio">
-    <meta name="theme-color" content="#0a0c15">
-    <meta property="og:title" content="Abdelwahab A. Shendy | SOC Analyst & Security Engineer">
-    <meta property="og:description" content="Cybersecurity professional specializing in SOC operations and Security Automation">
-    <meta property="og:image" content="./assets/img/AbdelwahabShandyPhoto.jpeg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://abdelwahab-a-shendy.github.io">
-    <title>Abdelwahab A. Shendy | SOC Analyst & Security Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="icon" href="./assets/img/gemini-svg.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050A0F">
+<meta name="color-scheme" content="dark">
+
+<!-- SEO -->
+<title>Abdelwahab Shendy | Security Operations & Automation | GRC Foundations</title>
+<meta name="description" content="Abdelwahab Ahmed Shendy — Security Operations & Automation Engineer. eCIR certified. Building GRC foundations. SOC, SIEM, SOAR, and defensive security portfolio.">
+<meta name="author" content="Abdelwahab Ahmed Shendy">
+<meta name="keywords" content="Abdelwahab Shendy, SOC Analyst, Security Automation, GRC, eCIR, SIEM, SOAR, n8n, Elastic, Cybersecurity Portfolio">
+<meta property="og:title" content="Abdelwahab Shendy | Security Operations & Automation">
+<meta property="og:description" content="Security Operations & Automation | eCIR | Building GRC Foundations">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abdelwahab-a-shendy.github.io">
+<meta property="og:image" content="https://abdelwahab-a-shendy.github.io/assets/img/AbdelwahabShandyPhoto.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="./assets/img/gemini-svg.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Styles -->
+<link rel="stylesheet" href="./assets/css/variables.css">
+<link rel="stylesheet" href="./assets/css/base.css">
+<link rel="stylesheet" href="./assets/css/layout.css">
+<link rel="stylesheet" href="./assets/css/components.css">
+<link rel="stylesheet" href="./assets/css/sections.css">
+<link rel="stylesheet" href="./assets/css/animations.css">
+<link rel="stylesheet" href="./assets/css/responsive.css">
 </head>
 <body>
-    <div class="progress-bar" id="readingProgress"></div>
 
-    <header class="header">
-        <div class="container header__inner">
-            <a href="#" class="logo" aria-label="Home">
-                <span class="logo__text">AAS<span class="dot-color">.</span>Sec</span>
-            </a>
-            <nav class="nav" aria-label="Main navigation">
-                <a href="#home" class="nav__link">About</a>
-                <a href="#projects" class="nav__link">Projects</a>
-                <a href="#journey" class="nav__link">Journey</a>
-                <a href="#writeups" class="nav__link">Write-ups</a>
-            </nav>
-            <div class="header__actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-                    <i class="fas fa-moon"></i>
-                </button> 
-                <a href="#contact" class="btn btn--sm btn--primary">
-                    <i class="fas fa-paper-plane"></i> Connect
-                </a>
-            </div>
-        </div>
-    </header>
-    
-    <main>  
-        <section id="home" class="section hero">
-            <div class="container">
-                <div class="profile-wrapper">
-                    <div class="profile-image-area">
-                        <div class="image-frame">
-                            <div class="image-glow"></div>
-                            <img class="profile-img" 
-                                 src="./assets/img/AbdelwahabShandyPhoto.jpeg" 
-                                 alt="Abdelwahab Shendy - SOC Analyst Profile Photo"
-                                 width="400"
-                                 height="400"
-                                 loading="eager"
-                                 onerror="this.src='https://placehold.co/400x400/1e293b/3b82f6?text=Abdelwahab_Shandy_photo'">
-                            <div class="image-overlay">
-                                <div class="status-badge">
-                                    <span class="status-dot"></span>
-                                    Open for Opportunities
-                                </div>
-                            </div>
-                        </div>
-                        <div class="floating-elements">
-                            <div class="floating-icon icon-1"><i class="fas fa-database"></i></div>
-                            <div class="floating-icon icon-2"><i class="fas fa-code"></i></div>
-                            <div class="floating-icon icon-3"><i class="fas fa-terminal"></i></div>
-                            <div class="floating-icon icon-4"><i class="fas fa-network-wired"></i></div>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-content">
-                        <div class="greeting-badge">
-                            <span class="wave-emoji">👋</span> Hello, I'm
-                        </div>
-                        <h1 class="hero__title">
-                            Abdelwahab <span class="text-gradient">Shendy</span>
-                        </h1>
-                        
-                        <div class="animated-role-container">
-                            <div class="animated-role">
-                                <span class="role-label">⚡</span>
-                                <span class="role-text" id="dynamicRole">SOC Analyst</span>
-                                <span class="role-cursor">|</span>
-                            </div>
-                        </div>
-                    
-                        
-                        <p class="hero__subtitle">
-                            Cybersecurity professional focused on SOC operations, SIEM monitoring, incident response, and security automation.                        
-                        </p>
-                        
-                        <div class="professional-info">
-                            <div class="info-chip"><i class="fas fa-shield-alt"></i><span>SOC Analyst & Engineering</span></div>
-                            <div class="info-chip"><i class="fas fa-robot"></i><span>Security Automation</span></div>
-                            <div class="info-chip"><i class="fas fa-server"></i><span>IT Infrastructure</span></div>
-                            <div class="info-chip"><i class="fas fa-microchip"></i><span>DFIR</span></div>
-                            <div class="info-chip"><i class="fas fa-flag-checkered"></i><span>CTF Player</span></div>
-                        </div>
-                        
-                        <div class="hero-actions">
-                            <a href="#projects" class="btn btn--primary btn--large">
-                                <i class="fas fa-arrow-down"></i> View Projects
-                            </a>
-                            <a href="#contact" class="btn btn--outline btn--large">
-                                <i class="fas fa-paper-plane"></i> Contact Me
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="terminal-title">aas@security-lab:~/portfolio</div>
-                    </div>
-                    <div class="terminal-body" id="dynamicTerminal">
-                        <div class="terminal-line">
-                            <span class="prompt">➜</span> <span class="command">initializing_profile...</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="projects" class="section section-bg-alt">
-            <div class="container">
-                <div class="section__head">
-                    <div class="section-badge">
-                        <i class="fas fa-code-branch"></i> My Portfolio
-                    </div>
-                    <h2 class="section__title">Featured <span class="text-gradient">Projects</span></h2>
-                    <p class="section__subtitle">A showcase of my security labs, infrastructure work, and programming achievements</p>
-                </div>
-
-                <div class="projects-search-section">
-                    <div class="search-wrapper">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="projectSearch" placeholder="Search projects by title, technology, or keyword..." class="project-search-input">
-                        <button id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
-                    </div>
-                    
-                    <div class="projects-filter">
-                        <button class="filter-btn active" data-filter="all">
-                            <i class="fas fa-th-large"></i> All
-                            <span class="filter-count" id="allCount">11</span>
-                        </button>
-                        <button class="filter-btn" data-filter="security">
-                            <i class="fas fa-shield-alt"></i> Security
-                            <span class="filter-count" id="securityCount">4</span>
-                        </button>
-                        <button class="filter-btn" data-filter="infrastructure">
-                            <i class="fas fa-server"></i> Infrastructure
-                            <span class="filter-count" id="infrastructureCount">2</span>
-                        </button>
-                        <button class="filter-btn" data-filter="programming">
-                            <i class="fas fa-code"></i> Programming
-                            <span class="filter-count" id="programmingCount">6</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div id="noResults" class="no-results" style="display: none;">
-                    <i class="fas fa-search"></i>
-                    <h3>No projects found</h3>
-                    <p>Try adjusting your search or filter criteria</p>
-                </div>
-
-                <div class="grid grid--projects" id="projectsGrid">
-                    
-                    <article class="project-card" data-category="security" data-title="PhishOps - Email Security Automation" data-tech="n8n,SOAR,VirusTotal,AbuseIPDB,SIEM,Email Security">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/PhishOps.png" alt="PhishOps Email Security Automation" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=PhishOps'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> May 2026</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-security">SOAR</span>
-                                <span class="tag tag-security">Email Security</span>
-                                <span class="tag tag-security">Threat Intelligence</span>
-                                <span class="tag tag-security">Automation</span>
-                            </div>
-                            <h3 class="project-card__title">PhishOps: Automated Phishing Detection & Response Pipeline</h3>
-                            <p class="project-card__desc">End-to-end automated phishing email detection and response pipeline built with n8n. It parses email artifacts, enriches indicators using Threat Intelligence, detects social engineering through heuristic analysis, calculates explainable risk scores, and automates SOC triage with shift-aware alerting and actionable verdicts (Deliver, Investigate, or Quarantine).</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-robot"></i> n8n SOAR</span>
-                                <span class="pill"><i class="fas fa-shield-virus"></i> VirusTotal API</span>
-                                <span class="pill"><i class="fas fa-map-marker-alt"></i> AbuseIPDB</span>
-                                <span class="pill"><i class="fas fa-brain"></i> Heuristic Analysis</span>
-                                <span class="pill"><i class="fas fa-envelope"></i> IMAP/Email Parsing</span>
-                                <span class="pill"><i class="fas fa-chart-line"></i> Shift-Aware Routing</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://www.linkedin.com/posts/abdelwahab-a-shendy_cybersecurity-soc-detectionengineering-ugcPost-7464896010826407936-9aRS/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9GDgYBA065TqN0qcT1JFeSRWxxbogH5ZE" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> More Details </a>
-                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="phishops"><i class="fas fa-ellipsis-h"></i> More Details</button>
-                            </div>
-                            <div class="project-details-dropdown" id="phishops-details" style="display: none;">
-                                
-                                <div class="dropdown-section">
-                                    <span class="dropdown-section-title"><i class="fas fa-project-diagram"></i> Pipeline Architecture</span>
-                                    <div class="dropdown-content">
-                                        <span class="dropdown-item-text"><i class="fas fa-cloud-upload-alt"></i> Ingestion: IMAP / Webhook (EML/MSG)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-code"></i> Parsing: Custom JS Normalization Engine</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-filter"></i> Pre-filtering: Whitelisting (Preserve API Quota)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-chart-line"></i> Enrichment: DNS (HackerTarget) + IP (AbuseIPDB) + URL (VirusTotal)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-language"></i> NLP: Social Engineering Keyword Detection</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-calculator"></i> Scoring: Heuristic Risk Engine (0-100)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-code-branch"></i> Routing: Switch Node (DELIVER / INVESTIGATE / QUARANTINE)</span>
-                                    </div>
-                                </div>
-
-                                <div class="dropdown-section">
-                                    <span class="dropdown-section-title"><i class="fas fa-shield-alt"></i> Detection Capabilities</span>
-                                    <div class="dropdown-content">
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> SPF/DKIM/DMARC Authentication Analysis</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Domain Alignment & Spoofing Detection</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Malicious URL Detection (VirusTotal 70+ Engines)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> IP Reputation Scoring (AbuseIPDB)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Social Engineering Linguistic Analysis (5 Categories)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Urgency & Time-Pressure Pattern Detection</span>
-                                    </div>
-                                </div>
-
-                                <div class="dropdown-section">
-                                    <span class="dropdown-section-title"><i class="fas fa-chart-bar"></i> Decision Engine (Heuristic Scoring)</span>
-                                    <div class="dropdown-content">
-                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> Malicious URLs → +50 points</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> Bad IP Reputation (Score > 40) → +30 points</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> Social Engineering Detected → +20 points</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-plus-circle" style="color: #ef4444;"></i> SPF/DKIM Authentication Failure → +20 points</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-trophy" style="color: #f59e0b;"></i> Score ≥ 70 → QUARANTINE</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-trophy" style="color: #f59e0b;"></i> Score ≥ 30 → INVESTIGATE</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-trophy" style="color: #f59e0b;"></i> Score &lt; 30 → DELIVER</span>
-                                    </div>
-                                </div>
-
-                                <div class="dropdown-section">
-                                    <span class="dropdown-section-title"><i class="fas fa-plug"></i> Integrations & Notifications</span>
-                                    <div class="dropdown-content">
-                                        <span class="dropdown-item-text"><i class="fab fa-google"></i> Google Sheets (Shift Schedule Sync)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-users"></i> Shift-Aware SOC Alerting (Automatic Analyst Routing)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-envelope"></i> User Notifications (Deliver / Quarantine Alerts)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-chart-line"></i> SOC Report (HTML with IoCs & Full Forensics)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-tachometer-alt"></i> Rate Limiting & API Quota Optimization</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="programming" data-title="Smart BI Reporting System" data-tech="n8n,LLM,Chart.js,BI">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/SmartBI.png" alt="Smart BI Reporting System" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Smart+BI'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Feb 2026 – May 2026</span>
-                                <span class="project-status status-active"><i class="fas fa-circle"></i> Graduation Project</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-dev">AI & Automation</span>
-                                <span class="tag tag-dev">n8n</span>
-                                <span class="tag tag-dev">Business Intelligence</span>
-                            </div>
-                            <h3 class="project-card__title">Smart Business Intelligence Reporting System</h3>
-                            <p class="project-card__desc">Graduation Project (MCI Academy 2026). An end-to-end automated BI pipeline that processes Excel datasets through a dual-path engine: a "Fast Track" for real-time KPI visualization and a "Slow Track" for AI-driven strategic analysis using LLMs.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-robot"></i> n8n Workflows</span>
-                                <span class="pill"><i class="fas fa-brain"></i> LLMs (GPT-4o/Claude)</span>
-                                <span class="pill"><i class="fas fa-chart-pie"></i> Chart.js</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-a-shendy/Smart-BI-Project" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
-                                <a href="https://abdelwahab-a-shendy.github.io/Smart-BI-Project/Frontend/index.html" target="_blank" class="btn btn--sm btn--ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article class="project-card" data-category="security" data-title="Enterprise Security Simulation Lab" data-tech="pfSense,ELK,n8n,Kali,SIEM,SOAR">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/OffensiveandDefensive.png" alt="Enterprise Security Simulation Lab" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=Security+Lab'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2025 – Mar 2026</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-security">Red Team</span>
-                                <span class="tag tag-security">Blue Team</span>
-                                <span class="tag tag-security">SOAR</span>
-                                <span class="tag tag-security">SIEM</span>
-                            </div>
-                            <h3 class="project-card__title">Enterprise Offensive & Defensive Security Lab</h3>
-                            <p class="project-card__desc">Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, Metasploitable3, bWAPP, and full Windows domain environment.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-firewall"></i> pfSense</span>
-                                <span class="pill"><i class="fas fa-chart-line"></i> ELK Stack</span>
-                                <span class="pill"><i class="fas fa-robot"></i> n8n SOAR</span>
-                                <span class="pill"><i class="fas fa-skull"></i> Kali & Commando</span>
-                                <span class="pill"><i class="fas fa-server"></i> Metasploitable3</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/01-objective " class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
-                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="security-lab-1"><i class="fas fa-ellipsis-h"></i> More Details</button>
-                            </div>
-                            <div class="project-details-dropdown" id="security-lab-1-details" style="display: none;">
-                                <div class="dropdown-content">
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/01-objective"><i class="fas fa-bullseye"></i> Introduction & Objective</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/03-network-design"><i class="fas fa-project-diagram"></i> Network Design</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/02-architecture-and-design"><i class="fas fa-cubes"></i> Architecture & Virtualization</a>
-                                    
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/24-building-the-elastic-stack-elk"><i class="fas fa-database"></i> Building ELK Stack</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/25-to-activate-the-rules-age"><i class="fas fa-gavel"></i> SIEM Rule Activation</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/26-troubleshooting-network-connectivity-and-ip-conflicts"><i class="fas fa-wrench"></i> Troubleshooting & Connectivity</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/27-building-n8n"><i class="fas fa-robot"></i> Building n8n (SOAR)</a>
-                                    
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/16-internal-zone"><i class="fas fa-network-wired"></i> Internal Zone Overview</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/17-building-windows-server"><i class="fab fa-windows"></i> Building Windows Server</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/19-windows-server-basic-configuration"><i class="fas fa-cog"></i> Server Basic Configuration</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/18-building-domain-control"><i class="fas fa-crown"></i> Domain Controller Setup</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/20-building-windows-clients"><i class="fas fa-laptop"></i> Deploying Win Clients</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/21-join-domain"><i class="fas fa-link"></i> Domain Join Operations</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/22-building-iis-server"><i class="fas fa-globe"></i> IIS Web Server Deployment</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/23-iis-and-sql"><i class="fas fa-database"></i> IIS and SQL Backend Integration</a>
-                                    
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/08-dmz-zone"><i class="fas fa-cloud"></i> DMZ Zone Overview</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/13-install-metasploitable3"><i class="fas fa-bug"></i> Metasploitable3 Base Deployment</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/15-configuration-windows-metasploitable3"><i class="fab fa-windows"></i> Windows Metasploitable3 Config</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/14-configuration-linux-metasploitable3"><i class="fab fa-linux"></i> Linux Metasploitable3 Config</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/09-pfsense-firewall"><i class="fas fa-firewall"></i> pfSense Firewall Setup</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/10-configuration-pfsense"><i class="fas fa-sliders-h"></i> Routing & Rules Config (pfSense)</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/11-vulnerable-webserver"><i class="fas fa-code"></i> bWAPP Web Application Deployment</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/12-configuration-webserver-bwapp"><i class="fas fa-server"></i> Securing Apache/bWAPP Environment</a>
-                                            
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/04-external-zone"><i class="fas fa-external-link-alt"></i> External Architecture</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/05-kali-linux-config"><i class="fab fa-linux"></i> Kali Linux Toolkit Setup</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/06-commandovm-configuration"><i class="fab fa-windows"></i> CommandoVM Threat Emulation</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/07-running-commandovm"><i class="fas fa-terminal"></i> Command-Line Execution Environments</a>
-                                            
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/28-log-collection-strategies-and-architectures"><i class="fas fa-archive"></i> Strategy & Pipelines</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/29-windows-log-collection-scenarios"><i class="fab fa-windows"></i> Active Threat Windows Monitoring</a>
-                                    <a href="./SecLab-Hub/Enterprise Offensive Defensive Security Simulation HOME LAB/30-agent-based-per-host-collection"><i class="fas fa-microchip"></i> Host Collection Architectures</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="security" data-title="Active Directory Attack Detection" data-tech="ELK,Sigma,MITRE,Sysmon,AD">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/MSADADES.png" alt="Active Directory Attack Detection" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=AD+Attack+Detection'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2026</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-security">Detection Engineering</span>
-                                <span class="tag tag-security">Active Directory</span>
-                                <span class="tag tag-security">SIEM</span>
-                                <span class="tag tag-security">Red/Blue Team</span>
-                            </div>
-                            <h3 class="project-card__title">Multi-Stage Active Directory Attack Detection</h3>
-                            <p class="project-card__desc">A realistic AD lab simulating a full Windows attack chain: Initial Access (Reverse Shell), Privilege Escalation (SeImpersonatePrivilege), Credential Dumping (LSASS), and Lateral Movement (Pass-the-Hash). Includes custom Sigma rules mapped to MITRE ATT&CK with full ELK implementation.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-search"></i> Sigma Rules</span>
-                                <span class="pill"><i class="fas fa-project-diagram"></i> MITRE ATT&CK</span>
-                                <span class="pill"><i class="fas fa-chart-line"></i> ELK Stack</span>
-                                <span class="pill"><i class="fas fa-shield-virus"></i> Sysmon</span>
-                                <span class="pill"><i class="fas fa-network-wired"></i> Pass-the-Hash</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="./docs/MSADADES.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-file-pdf"></i> Full Report (PDF)</a>
-                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="ad-attack-lab"><i class="fas fa-ellipsis-h"></i> More Details</button>
-                            </div>
-                            <div class="project-details-dropdown" id="ad-attack-lab-details" style="display: none;">
-                                <div class="dropdown-section">
-                                    <span class="dropdown-section-title"><i class="fas fa-network-wired"></i> Lab Architecture</span>
-                                    <div class="dropdown-content">
-                                        <span class="dropdown-item-text"><i class="fas fa-server"></i> DC: Windows Server 2019/2022</span>
-                                        <span class="dropdown-item-text"><i class="fab fa-windows"></i> Client: Windows 10/11</span>
-                                        <span class="dropdown-item-text"><i class="fab fa-ubuntu"></i> SIEM: Ubuntu + ELK Stack</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-user-secret"></i> Attacker: Ubuntu + Metasploit/Impacket</span>
-                                    </div>
-                                </div>
-                                <div class="dropdown-section">
-                                    <span class="dropdown-section-title"><i class="fas fa-bolt"></i> Attack Chain</span>
-                                    <div class="dropdown-content">
-                                        <span class="dropdown-item-text"><i class="fas fa-plug"></i> 1. Initial Access - Reverse Shell (T1059)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-arrow-up"></i> 2. Privilege Escalation - SeImpersonate (T1134)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-database"></i> 3. Credential Dumping - LSASS (T1003.001)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-people-arrows"></i> 4. Lateral Movement - Pass-the-Hash (T1550.002)</span>
-                                    </div>
-                                </div>
-                                <div class="dropdown-section">
-                                    <span class="dropdown-section-title"><i class="fas fa-shield-alt"></i> Detection Rules Matrix</span>
-                                    <div class="dropdown-content">
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Reverse Shell Event Identifiers (Sysmon Id 3)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Privilege Escalation Operations (Sysmon Id 1)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> LSASS Memory Core Access Audits (Sysmon Id 10 / 11)</span>
-                                        <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Pass-the-Hash Security Event Verification (Logon Type 3 - ID 4624)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="security" data-title="SOC Home Lab" data-tech="ELK,Elasticsearch,Kibana,n8n,SIEM,SOAR">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/SOCHome.png" alt="SOC Home Lab" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/ef4444?text=SOC+Lab'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Oct 2025 – Dec 2025</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-security">SIEM</span>
-                                <span class="tag tag-security">SOC</span>
-                                <span class="tag tag-security">Automation</span>
-                            </div>
-                            <h3 class="project-card__title">SOC Home Lab</h3>
-                            <p class="project-card__desc">Built a complete SOC Home Lab featuring ELK Stack SIEM, Fluent Bit, Winlogbeat, and n8n SOAR. Implemented log collection, detection engineering use cases, Windows event monitoring, alert generation, and automated incident response workflows to simulate a real-world Security Operations Center.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-database"></i> Elasticsearch</span>
-                                <span class="pill"><i class="fas fa-chart-bar"></i> Kibana</span>
-                                <span class="pill"><i class="fas fa-robot"></i> n8n SOAR</span>
-                                <span class="pill"><i class="fab fa-windows"></i> Winlogbeat</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/00.PreLabOverview" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
-                                <button class="btn btn--sm btn--ghost more-details-btn" data-project="soc-home-lab"><i class="fas fa-ellipsis-h"></i> More Details</button>
-                            </div>
-                            <div class="project-details-dropdown" id="soc-home-lab-details" style="display: none;">
-                                <div class="dropdown-content">
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/00.PreLabOverview"><i class="fas fa-clipboard-list"></i> Pre-Lab Architectural Overview</a>
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/01.InstallLabELKSiem&N8N"><i class="fas fa-server"></i> Deployment of LAB-ELK-SIEM-N8N</a>
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/02.InstallLabWinServer"><i class="fab fa-windows"></i> provisioning Windows Domains Server</a>
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/03.InstallLabFluentbit"><i class="fas fa-stream"></i> Host Auditing via Fluent Bit Infrastructure</a>
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/04.BuildingaSIEM"><i class="fas fa-chart-line"></i> Pipeline Parsing & Mapping Setup</a>
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/05.WinlogbeatConfiguration"><i class="fas fa-cog"></i> Advanced Event Forwarding Configurations</a>
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/06.FluentBitConfiguration"><i class="fas fa-sliders-h"></i> Fluent Bit Output Optimization Rules</a>
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/09.SOARN8NWorkflow"><i class="fas fa-robot"></i> n8n SOAR Incident Escalation Workflows</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="infrastructure" data-title="AAAS Enterprise Network Infrastructure" data-tech="Cisco,Packet Tracer,OSPF,HSRP,IPv6,Dual-Stack,EtherChannel,NAT,ACL,Port Security">
-    <div class="project-card__media">
-        <img class="project-img" src="./assets/img/AAAS-Enterprise-Network.png" alt="AAAS Enterprise Network Infrastructure" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/06b6d4?text=Enterprise+Network'">
-        <div class="project-overlay">
-            <span class="project-date"><i class="far fa-calendar-alt"></i> July 2026 – Aug 2026</span>
-            <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-        </div>
-    </div>
-    <div class="project-card__body">
-        <div class="project-tags">
-            <span class="tag tag-infra">Network Infrastructure</span>
-            <span class="tag tag-infra">Dual-Stack IPv4/IPv6</span>
-            <span class="tag tag-security">Network Security</span>
-            <span class="tag tag-infra">High Availability</span>
-        </div>
-        <h3 class="project-card__title">Enterprise Multi-Site Network Infrastructure (Dual-Stack IPv4/IPv6)</h3>
-        <p class="project-card__desc">Full-scale enterprise campus and remote branch network simulation in Cisco Packet Tracer. Features Dual-Stack (IPv4/IPv6) dynamic routing via OSPFv2/OSPFv3, First-Hop Redundancy with HSRPv2, LACP EtherChannel, centralized Server Farm services (DHCP/DNS/Web/FTP/Email/NTP/Syslog), Edge PAT, and Defense-in-Depth security hardening (Extended ACLs & Port Security).</p>
-        <div class="project-card__meta">
-            <span class="pill"><i class="fas fa-network-wired"></i> OSPFv2 / OSPFv3</span>
-            <span class="pill"><i class="fas fa-shield-alt"></i> HSRPv2 & LACP</span>
-            <span class="pill"><i class="fas fa-globe"></i> IPv4/IPv6 Dual-Stack</span>
-            <span class="pill"><i class="fas fa-server"></i> Centralized Server Farm</span>
-            <span class="pill"><i class="fas fa-lock"></i> Extended ACLs</span>
-            <span class="pill"><i class="fas fa-plug"></i> Router-on-a-Stick</span>
-        </div>
-        <div class="project-card__actions">
-            <a href="https://abdelwahab-a-shendy.github.io/docs/Enterprise_Network_Project.pdf" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
-            <button class="btn btn--sm btn--ghost more-details-btn" data-project="enterprise-network-project"><i class="fas fa-ellipsis-h"></i> More Details</button>
-        </div>
-        <div class="project-details-dropdown" id="enterprise-network-project-details" style="display: none;">
-            <div class="dropdown-section">
-                <span class="dropdown-section-title"><i class="fas fa-sitemap"></i> Network Architecture</span>
-                <div class="dropdown-content">
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Multi-layer Campus & WAN: Access, Distribution, Edge & Remote Branch</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> High Availability: HSRPv2 (Active/Standby Gateway Failover)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Link Aggregation: LACP EtherChannel (Port-Channel 1)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Layer 2 Loop Prevention: Rapid-PVST+ (Primary & Secondary Root Bridges)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Branch Connectivity: Routed WAN Point-to-Point & Router-on-a-Stick</span>
-                </div>
-            </div>
-            <div class="dropdown-section">
-                <span class="dropdown-section-title"><i class="fas fa-route"></i> Dual-Stack Routing & Edge Services</span>
-                <div class="dropdown-content">
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Dynamic Routing: OSPFv2 (IPv4) & OSPFv3 (IPv6) in Area 0</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Edge Translation: PAT (NAT Overload) with Default Static Route Injection</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Centralized Services: DHCP Relay (`ip helper-address`), Split DNS & Web (HTTP)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Enterprise Storage & Mail: Authenticated FTP, Local SMTP/POP3 Email</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Network Telemetry: Centralized NTP Clock Synchronization & Syslog Logging</span>
-                </div>
-            </div>
-            <div class="dropdown-section">
-                <span class="dropdown-section-title"><i class="fas fa-shield-virus"></i> Defense-in-Depth Security Hardening</span>
-                <div class="dropdown-content">
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Zero-Trust Segmentation: Extended ACLs for Guest Isolation & Finance Protection</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Layer 2 Protection: Port Security (Sticky MAC max 2, Restrict Violation Mode)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> STP Edge Hardening: PortFast & BPDU Guard on all access ports</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Management Plane: SSHv2 Only, Disabled Telnet, Session Timeouts & Login Banners</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Attack Surface Reduction: Unused Switch Interfaces Administratively Shutdown</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
-
-<article class="project-card" data-category="infrastructure" data-title="Enterprise Infrastructure (Windows Server Full Lab)" data-tech="Windows Server,Active Directory,GPO,DHCP Failover,DNS,IIS,Hyper-V,File Server,FSRM">
-    <div class="project-card__media">
-        <img class="project-img" src="./assets/img/IT.png" alt="Enterprise Infrastructure Windows Server Full Lab" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Infrastructure'">
-        <div class="project-overlay">
-            <span class="project-date"><i class="far fa-calendar-alt"></i> Jun 2025 – Sep 2025</span>
-            <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-        </div>
-    </div>
-    <div class="project-card__body">
-        <div class="project-tags">
-            <span class="tag tag-infra">Active Directory</span>
-            <span class="tag tag-infra">Windows Server</span>
-            <span class="tag tag-infra">High Availability</span>
-            <span class="tag tag-security">GPO Hardening</span>
-        </div>
-        <h3 class="project-card__title">Enterprise Infrastructure: Windows Server Full Lab</h3>
-        <p class="project-card__desc">A comprehensive enterprise simulation featuring Dual Domain Controllers (PDC & ADC), advanced GPO security policies (USB/Task Manager restrictions), DHCP Failover, DNS Round Robin load balancing, IIS Web High Availability, FSRM File Server quotas, Hyper-V virtualization, and automated daily backups.</p>
-        <div class="project-card__meta">
-            <span class="pill"><i class="fab fa-windows"></i> PDC & ADC Setup</span>
-            <span class="pill"><i class="fas fa-users-cog"></i> GPO & Security Policies</span>
-            <span class="pill"><i class="fas fa-network-wired"></i> DHCP Failover & DNS</span>
-            <span class="pill"><i class="fas fa-globe"></i> IIS Web Cluster</span>
-            <span class="pill"><i class="fas fa-folder-open"></i> FSRM File Server</span>
-            <span class="pill"><i class="fas fa-server"></i> Hyper-V Core VM</span>
-        </div>
-        <div class="project-card__actions">
-            <a href="https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/0.Enterprise%20Infrastructure%20%28Windows%20Server%20Full%20Lab%29/0.Requirements/" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--primary"><i class="fas fa-book-open"></i> Read Write-up</a>
-            <button class="btn btn--sm btn--ghost more-details-btn" data-project="infra-full-lab"><i class="fas fa-ellipsis-h"></i> More Details</button>
-        </div>
-        <div class="project-details-dropdown" id="infra-full-lab-details" style="display: none;">
-            <div class="dropdown-section">
-                <span class="dropdown-section-title"><i class="fas fa-server"></i> Core Infrastructure & High Availability</span>
-                <div class="dropdown-content">
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Primary (PDC) & Additional (ADC) Domain Controllers (FINAL.LOCAL)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> DHCP Scope & Hot-Standby Failover with ADC Partner</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> DNS Round Robin Load Balancing (www.final.local)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Highly Available IIS Web Server Deployment on PDC & ADC</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Hyper-V Virtualization Role & Core_VM Template Deployment</span>
-                </div>
-            </div>
-            <div class="dropdown-section">
-                <span class="dropdown-section-title"><i class="fas fa-shield-alt"></i> GPO Security & Access Control</span>
-                <div class="dropdown-content">
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Enterprise Password & Account Lockout Enforcement (4 attempts / 1hr lockout)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Endpoint Restrictions: Disabling USB Storage, Task Manager & Control Panel</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Remote Desktop & Assistance GPOs with IT Delegation</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Active Directory Recycle Bin & OU Department Structuring</span>
-                </div>
-            </div>
-            <div class="dropdown-section">
-                <span class="dropdown-section-title"><i class="fas fa-hdd"></i> Storage, Backup & Resource Management</span>
-                <div class="dropdown-content">
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> FSRM File Server: File Screening (Blocking .exe, audio, video)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Department Network Drives & Public Shared Quota (2 GB per user)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Managed Shared Printer with Time-based Scheduling (9 AM - 4 PM)</span>
-                    <span class="dropdown-item-text"><i class="fas fa-check-circle" style="color: #10b981;"></i> Windows Server Daily Full Backup Scheduled to ADC (11:00 PM)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</article>
-
-                    
-                    <article class="project-card" data-category="programming" data-title="Movie Market" data-tech="ASP.NET Core,MVC,SQL Server,3-Tier">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/MovieMarket.png" alt="Movie Market" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/10b981?text=Movie+Market'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025 – Jul 2025</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-dev">ASP.NET Core</span>
-                                <span class="tag tag-dev">MVC</span>
-                            </div>
-                            <h3 class="project-card__title">Movie Market</h3>
-                            <p class="project-card__desc">Full-featured cinema ticket booking platform built with ASP.NET Core MVC following clean 3-Tier Architecture.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-code"></i> ASP.NET Core</span>
-                                <span class="pill"><i class="fas fa-layer-group"></i> 3-Tier Arch</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-a-shendy/Movie-Market" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Source Code</a>
-                                <a href="https://www.linkedin.com/posts/abdelwahab-a-shendy_aspnetcore-entityframework-webdevelopment-ugcPost-7347084260282937344-TJyR/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD9GDgYBA065TqN0qcT1JFeSRWxxbogH5ZE" target="_blank" class="btn btn--sm btn--ghost"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="programming" data-title="Programming Challenges" data-tech="C++,C#,Python,Algorithms">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/ProgrammingChallenges.png" alt="Programming Challenges" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/f59e0b?text=Programming+Challenges'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Jan 2024 – Jun 2025</span>
-                                <span class="project-status status-active"><i class="fas fa-circle"></i> Ongoing</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-prog">Multi-Language</span>
-                                <span class="tag tag-prog">Problem Solving</span>
-                            </div>
-                            <h3 class="project-card__title">Programming Challenges Multi Language</h3>
-                            <p class="project-card__desc">Curated collection of programming challenges solved in multiple languages (C++, C#, Python).</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fab fa-cuttlefish"></i> C++</span>
-                                <span class="pill"><i class="fas fa-code"></i> C#</span>
-                                <span class="pill"><i class="fab fa-python"></i> Python</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-a-shendy/Programming-Challenges-Multi-Language" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="programming" data-title="Arduino Calculator" data-tech="Arduino,Embedded C++,IoT">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/ArduinoCalculator.png" alt="Arduino Calculator" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/06b6d4?text=Arduino+Calculator'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> May 2025</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-iot">Arduino</span>
-                                <span class="tag tag-iot">Embedded Systems</span>
-                            </div>
-                            <h3 class="project-card__title">Arduino Calculator 4x4 Keypad LCD</h3>
-                            <p class="project-card__desc">Simple calculator built with Arduino Uno, 4x4 keypad, and I2C LCD screen.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-microchip"></i> Arduino Uno</span>
-                                <span class="pill"><i class="fas fa-keyboard"></i> 4x4 Keypad</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-a-shendy/Arduino-Calculator-4x4-Keypad-LCD" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Code</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="programming" data-title="OOP Mini Projects" data-tech="C++,C#,OOP,Design Patterns">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/OOPMiniProjects.png" alt="OOP Mini Projects" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/8b5cf6?text=OOP+Projects'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Nov 2024 – Feb 2025</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-prog">OOP</span>
-                                <span class="tag tag-prog">C#</span>
-                            </div>
-                            <h3 class="project-card__title">OOP Mini Projects</h3>
-                            <p class="project-card__desc">Collection of small projects demonstrating Object-Oriented Programming concepts in C# and C++.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fab fa-cuttlefish"></i> C++ OOP</span>
-                                <span class="pill"><i class="fas fa-code"></i> C# OOP</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-a-shendy/OOP-Mini-Projects" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> Repository</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" data-category="programming" data-title="Database Design" data-tech="SQL,ERD,Database Design">
-                        <div class="project-card__media">
-                            <img class="project-img" src="./assets/img/DataBaseDesign.png" alt="Database Design" loading="lazy" onerror="this.src='https://placehold.co/600x400/1e293b/a855f7?text=Database+Design'">
-                            <div class="project-overlay">
-                                <span class="project-date"><i class="far fa-calendar-alt"></i> Dec 2024 – Jan 2025</span>
-                                <span class="project-status status-completed"><i class="fas fa-check-circle"></i> Completed</span>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <div class="project-tags">
-                                <span class="tag tag-db">Database Design</span>
-                                <span class="tag tag-db">SQL</span>
-                            </div>
-                            <h3 class="project-card__title">Database Design with ERD, EERD & SQL</h3>
-                            <p class="project-card__desc">Practical examples and detailed explanations on designing ERD and EERD diagrams, converting to Relational Schemas, and implementing with SQL code.</p>
-                            <div class="project-card__meta">
-                                <span class="pill"><i class="fas fa-project-diagram"></i> ERD/EERD</span>
-                                <span class="pill"><i class="fas fa-database"></i> SQL</span>
-                            </div>
-                            <div class="project-card__actions">
-                                <a href="https://github.com/abdelwahab-a-shendy/Database-Design-with-ERD-EERD-Relational-Schemas-SQL-Implementation" target="_blank" class="btn btn--sm btn--primary"><i class="fab fa-github"></i> SQL Scripts</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                
-                <div class="project-stats">
-                    <div class="stat-item"><i class="fas fa-code-branch"></i><span>12</span><small>Total Projects</small></div>
-                    <div class="stat-item"><i class="fas fa-shield-alt"></i><span>4</span><small>Security Labs</small></div>
-                    <div class="stat-item"><i class="fas fa-server"></i><span>2</span><small>Infrastructure</small></div>
-                    <div class="stat-item"><i class="fas fa-code"></i><span>6</span><small>Programming</small></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="journey" class="section">
-            <div class="container">
-                <div class="section__head">
-                    <div class="section-badge"><i class="fas fa-road"></i> Career Path</div>
-                    <h2 class="section__title">Professional <span class="text-gradient">Journey</span></h2>
-                    <p class="section__subtitle">Work experience and continuous professional development</p>
-                </div>
-
-                <div class="journey-tabs">
-                    <button class="journey-tab active" data-tab="work">
-                        <i class="fas fa-briefcase"></i> Work Experience
-                    </button>
-                    <button class="journey-tab" data-tab="training">
-                        <i class="fas fa-certificate"></i> Training & Bootcamps
-                    </button>
-                </div>
-
-                <div class="journey-content active" id="work-content">
-                    <div class="work-timeline">
-                        <div class="work-card">
-                            <div class="work-icon work-icon--image">
-                                <img src="./assets/img/zerosploit_mea_logo.jpeg" 
-                                     alt="ZeroSploit MEA Logo" 
-                                     class="company-logo-img"
-                                     onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shield-haltered\'></i>'">
-                            </div>
-                            <div class="work-content">
-                                <div class="work-header">
-                                    <h3>SOC & Detection Engineering Intern</h3>
-                                    <span class="work-date">Oct 2025 - Jan 2026 · 4 mos</span>
-                                </div>
-                                <div class="work-company">
-                                    <i class="fas fa-building"></i> ZeroSploit MEA
-                                    <span class="work-badge">Internship · Hybrid</span>
-                                </div>
-                                <p class="work-desc">
-                                    Log ingestion pipelines (ELK Stack) · n8n SOAR automation · Sigma rules & MITRE ATT&CK · AD attack simulation
-                                </p>
-                                <div class="work-skills">
-                                    <span>ELK Stack</span>
-                                    <span>n8n SOAR</span>
-                                    <span>Sigma Rules</span>
-                                    <span>MITRE ATT&CK</span>
-                                    <span>Active Directory</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="journey-content" id="training-content">
-                    <div class="training-stats">
-                        <div class="stat-badge">
-                            <i class="fas fa-certificate"></i>
-                            <small>Bootcamps & Programs</small>
-                        </div>
-                        <div class="stat-badge">
-                            <i class="fas fa-shield-alt"></i>
-                            <small>Security focused</small>
-                        </div>
-                    </div>
-
-                    <div class="training-grid">
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon card-icon--image">
-                                    <img src="./assets/img/weinnovateme_logo.jpeg" 
-                                         alt="WE INNOVATE Logo" 
-                                         class="training-logo-img"
-                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-chart-line\'></i>'">
-                                </div>
-                                <div class="card-type">Bootcamp</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>SOC Bootcamp</h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> WE INNOVATE
-                                    <span class="date">Sep 2025 - Oct 2025</span>
-                                </div>
-                                <p>Built full SOC environment: ELK Stack SIEM + n8n SOAR · Threat hunting & incident response</p>
-                                <div class="skills">
-                                    <span>ELK Stack</span>
-                                    <span>n8n SOAR</span>
-                                    <span>Threat Hunting</span>
-                                </div>
-                                <div class="writeup-link">
-                                    <a href="./SecLab-Hub/SIEM & SOAR Integration HOME LAB/00.PreLabOverview"><i class="fas fa-book-open"></i> SIEM Home Lab Architecture</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon card-icon--image">
-                                    <img src="./assets/img/cybertalans.png" 
-                                         alt="CyberTalents Logo" 
-                                         class="training-logo-img"
-                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-user-secret\'></i>'">
-                                </div>
-                                <div class="card-type">Bootcamp · Phase 03</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>Penetration Testing Bootcamp</h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> CyberTalents (ITI Program)
-                                    <span class="date">Oct 2025 - Nov 2025 · 2 mos</span>
-                                </div>
-                                <p>Information gathering · Vulnerability assessment · Web security · Exploitation & Post-exploitation · Final CTF</p>
-                                <div class="skills">
-                                    <span>Penetration Testing</span>
-                                    <span>Information Gathering</span>
-                                    <span>Vulnerability Assessment</span>
-                                    <span>Web Security</span>
-                                    <span>Exploitation</span>
-                                    <span>CTF</span>
-                                </div>
-                                <div class="writeup-link">
-                                    <a href="./SecLab-Hub/penetration-testing-trainee/08-iti-penetration-tester-track-2025 "><i class="fas fa-book-open"></i> View Lab Write-ups</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon">
-                                    <img src="./assets/img/nti_logo.jpeg" 
-                                         alt="NTI Logo" 
-                                         class="training-logo-img"
-                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-network-wired\'></i>'">                                
-                                </div>
-                                <div class="card-type">Bootcamp · 120 Hours</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>Windows Server Administration</h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> National Telecommunication Institute (NTI)
-                                    <span class="date">Aug 2025 - Sep 2025 · 2 mos</span>
-                                </div>
-                                <p>Active Directory · Group Policy · DHCP/DNS · Failover Clustering · Disaster Recovery</p>
-                                <div class="skills">
-                                    <span>Windows Server</span>
-                                    <span>Active Directory</span>
-                                    <span>Group Policy</span>
-                                    <span>DHCP/DNS</span>
-                                    <span>Failover Clustering</span>
-                                </div>
-                                <div class="score-badge">🏆 Score: 92.5%</div>
-                            </div>
-                        </div>
-
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon card-icon--image">
-                                    <img src="./assets/img/iti_logo.jpeg" 
-                                         alt="ITI Logo" 
-                                         class="training-logo-img"
-                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-network-wired\'></i>'">
-                                </div>
-                                <div class="card-type">Bootcamp · 120 Hours</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>Networks Infrastructure Summer Boot Camp</h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> Information Technology Institute (ITI)
-                                    <span class="date">Jun 2025 - Jul 2025 · 2 mos</span>
-                                </div>
-                                <p>Computer Networks · Routing & Switching · Cybersecurity Fundamentals · Ethical Hacking Basics · Huawei Cloud (HCCDA)</p>
-                                <div class="skills">
-                                    <span>Routing & Switching</span>
-                                    <span>Network Security</span>
-                                    <span>Ethical Hacking</span>
-                                    <span>Huawei Cloud</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-code"></i></div>
-                                <div class="card-type">Bootcamp · 7 Months</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>.NET Developer Bootcamp</h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> EraaSoft
-                                    <span class="date">Nov 2024 - May 2025</span>
-                                </div>
-                                <p>C# · OOP · SQL Server · Entity Framework · LINQ · MVC · 3-Tier Architecture · SOLID Principles</p>
-                                <div class="skills">
-                                    <span>C#</span>
-                                    <span>ASP.NET Core</span>
-                                    <span>SQL Server</span>
-                                    <span>Entity Framework</span>
-                                    <span>MVC</span>
-                                    <span>3-Tier Arch</span>
-                                    <span>SOLID</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
-                                <div class="card-type">Self-Study · 1 Year</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>Programming Basics</h3>
-                                <div class="provider">
-                                    <i class="fas fa-user-graduate"></i> Programming Advices
-                                    <span class="date">Aug 2024 - Jul 2025</span>
-                                </div>
-                                <p>Problem-solving with C++ · Algorithms & Data Structures · Database & SQL · OOP Foundations</p>
-                                <div class="skills">
-                                    <span>C++</span>
-                                    <span>Algorithms</span>
-                                    <span>SQL</span>
-                                    <span>Database Design</span>
-                                    <span>Problem Solving</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="training-card featured">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-trophy"></i></div>
-                                <div class="card-type">Bootcamp · 4 Months</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>SOC Bootcamp <span class="achievement">🏆 100% Score</span></h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> AMIT Learning
-                                    <span class="date">Jun 2023 - Sep 2023</span>
-                                </div>
-                                <p>CyberOps · Threat & Vulnerability Management · Incident Response · Malware Analysis · QRadar SIEM</p>
-                                <div class="skills">
-                                    <span>QRadar SIEM</span>
-                                    <span>Intro Incident Response</span>
-                                    <span>Intro Malware Analysis</span>
-                                    <span>Intro Threat Hunting</span>
-                                    <span>CyberOps</span>
-                                </div>
-                                <div class="writeup-link">
-                                    <a href="https://medium.com/@AAAS/cyberdefenders-qradar101-blue-team-challenge-cf2593f484d4" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i> Qradar101 Write-up</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon card-icon--image">
-                                    <img src="./assets/img/iti_logo.jpeg" 
-                                         alt="ITI Logo" 
-                                         class="training-logo-img"
-                                         onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'">
-                                </div>
-                                <div class="card-type">Bootcamp · 120 Hours</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>Network Security Summer Boot Camp</h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> Information Technology Institute (ITI)
-                                    <span class="date">Aug 2023 · 1 mo</span>
-                                </div>
-                                <p>CCNA · CEH · Intro Palo Alto · Intro FortiGate · Network Security Fundamentals</p>
-                                <div class="skills">
-                                    <span>CCNA</span>
-                                    <span>CEH</span>
-                                    <span>Palo Alto</span>
-                                    <span>FortiGate</span>
-                                    <span>Network Security</span>
-                                </div>
-                                <div class="leader-badge">👑 Training Leader</div>
-                            </div>
-                        </div>
-
-                        <div class="training-card">
-                            <div class="card-header">
-                                <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-                                <div class="card-type">Bootcamp</div>
-                            </div>
-                            <div class="card-body">
-                                <h3>Cybersecurity Fundamentals Boot Camp</h3>
-                                <div class="provider">
-                                    <i class="fas fa-university"></i> Raya Academy
-                                    <span class="date">Oct 2022 - Dec 2022 · 3 mos</span>
-                                </div>
-                                <p>Networking basics · Linux basics · Programming basics · Introduction to CEH</p>
-                                <div class="skills">
-                                    <span>Networking</span>
-                                    <span>Linux</span>
-                                    <span>Ethical Hacking</span>
-                                    <span>Programming</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                
-            </div>
-        </section>
-
-        <section id="writeups" class="section section-bg-alt">
-            <div class="container">
-                <div class="section__head">
-                    <div class="section-badge">
-                        <i class="fas fa-pen-fancy"></i> Technical Content
-                    </div>
-                    <h2 class="section__title">Write-ups & <span class="text-gradient">Solutions</span></h2>
-                    <p class="section__subtitle">Official platform solutions, CTF walkthroughs, and hands-on cybersecurity labs</p>
-                </div>
-
-                <div class="content-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-certificate"></i></div>
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Official Solutions</div>
-                        <div class="stat-platform">CyberDefenders</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fab fa-medium"></i></div>
-                        <div class="stat-number">49+</div>
-                        <div class="stat-label">Articles</div>
-                        <div class="stat-platform">Medium & Hashnode</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-flag-checkered"></i></div>
-                        <div class="stat-number">40+</div>
-                        <div class="stat-label">CTF Write-ups</div>
-                        <div class="stat-platform">Multi-Platform</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-heart"></i></div>
-                        <div class="stat-number">5500+</div>
-                        <div class="stat-label">Total Views</div>
-                        <div class="stat-platform">Across Platforms</div>
-                    </div>
-                </div>
-
-                <div class="platform-section">
-                    <div class="platform-header">
-                        <h3>CyberDefenders <span class="official-badge">Official Solutions ✅</span></h3>
-                        <a href="https://cyberdefenders.org/p/Abdelwahab_Shandy/?tab=writeups" target="_blank" rel="noopener noreferrer" class="profile-link">View Profile →</a>
-                    </div>
-                    <div class="writeup-grid">
-                        <div class="writeup-card featured">
-                            <div class="featured-badge">⭐ Most Popular </div>
-                            <div class="writeup-icon"><i class="fas fa-chart-line"></i></div>
-                            <h4>Qradar101</h4>
-                            <p>Threat Hunting - SIEM Investigation</p>
-                            <div class="writeup-meta">
-                                <span><i class="far fa-calendar"></i> Nov 2023</span>
-                                <span><i class="fas fa-eye"></i> Popular</span>
-                            </div>
-                            <div class="writeup-links">
-                                <a href="https://medium.com/@AAAS/cyberdefenders-qradar101-blue-team-challenge-cf2593f484d4" target="_blank" rel="noopener noreferrer" class="btn-link">📖 Read on Medium</a>
-                                <a href="https://cyberdefenders.org/blueteam-ctf-challenges/qradar101" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
-                            </div>
-                        </div>
-
-                        <div class="writeup-card">
-                            <div class="writeup-icon"><i class="fas fa-eye"></i></div>
-                            <h4>HawkEye</h4>
-                            <p>Network Forensics - Keylogger Analysis</p>
-                            <div class="writeup-meta">
-                                <span><i class="far fa-calendar"></i> Nov 2023</span>
-                            </div>
-                            <div class="writeup-links">
-                                <a href="https://medium.com/@AAAS/hawkeye-blue-team-challenge-bcdfb1db1c71" target="_blank" rel="noopener noreferrer" class="btn-link">📖 Read on Medium</a>
-                                <a href="https://cyberdefenders.org/blueteam-ctf-challenges/hawkeye/" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
-                            </div>
-                        </div>
-
-                        <div class="writeup-card">
-                            <div class="writeup-icon"><i class="fas fa-network-wired"></i></div>
-                            <h4>PsExec Hunt</h4>
-                            <p>Network Forensics - Lateral Movement</p>
-                            <div class="writeup-meta">
-                                <span><i class="far fa-calendar"></i> Sep 2025</span>
-                            </div>
-                            <div class="writeup-links">
-                                <a href="https://abdelwahabshandy.hashnode.dev/psexec-hunt-pcapng" class="btn-link">📖 Read hashnode</a>
-                                <a href="https://cyberdefenders.org/writeups/psexec-hunt" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
-                            </div>
-                        </div>
-
-                        <div class="writeup-card">
-                            <div class="writeup-icon"><i class="fas fa-search"></i></div>
-                            <h4>Lespion</h4>
-                            <p>Threat Intelligence - OSINT Investigation</p>
-                            <div class="writeup-meta">
-                                <span><i class="far fa-calendar"></i> Mar 2026</span>
-                                <span><i class="fas fa-newspaper"></i> Latest</span>
-                            </div>
-                            <div class="writeup-links">
-                                <a href="https://abdelwahabshandy.hashnode.dev/Lespion-Lab-Report" target="_blank" rel="noopener noreferrer" class="btn-link">📖 Read on Hashnode</a>
-                                <a href="https://cyberdefenders.org/blueteam-ctf-challenges/lespion/" target="_blank" rel="noopener noreferrer" class="btn-link">🔗 CyberDefenders</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="platform-section">
-                    <div class="platform-header">
-                        <i class="fab fa-medium" style="font-size: 2rem; color: #000;"></i>
-                        <h3>Medium Blog <span class="count-badge">49+ Articles</span></h3>
-                        <a href="https://medium.com/@AAAS/lists" target="_blank" rel="noopener noreferrer" class="profile-link">Follow on Medium →</a>
-                    </div>
-                </div>
-
-                <div class="platform-section">
-                    <div class="platform-header">
-                        <i class="fab fa-hashnode" style="font-size: 2rem; color: #2962FF;"></i>
-                        <h3>Hashnode Lab Notes <span class="count-badge">Documentation Hub</span></h3>
-                        <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" rel="noopener noreferrer" class="profile-link">Explore Docs →</a>
-                     </div>
-
-                    <div class="hashnode-featured-grid">
-                        <a href="https://abdelwahabshandy.hashnode.dev/when-ram-isnt-enough-how-swap-and-pagefile-keep-your-systems-stable" target="_blank" rel="noopener noreferrer" class="hashnode-card">
-                            <div class="hashnode-card-icon">
-                                <i class="fas fa-memory"></i>
-                            </div>
-                            <div class="hashnode-card-content">
-                                <h4>Swap & Pagefile Explained</h4>
-                                <p>When RAM isn't enough: How swap and pagefile keep your systems stable</p>
-                                <span class="hashnode-card-meta">
-                                    <i class="fas fa-eye"></i> Technical Deep Dive
-                                </span>
-                            </div>
-                            <div class="hashnode-card-arrow">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                        </a>
-
-                        <a href="https://abdelwahabshandy.hashnode.dev/connecting-github-with-obsidian" target="_blank" rel="noopener noreferrer" class="hashnode-card">
-                            <div class="hashnode-card-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="hashnode-card-content">
-                                <h4>GitHub + Obsidian Integration</h4>
-                                <p>Seamless workflow: Connect your second brain with version control</p>
-                                <span class="hashnode-card-meta">
-                                    <i class="fas fa-code-branch"></i> Workflow Guide
-                                </span>
-                            </div>
-                            <div class="hashnode-card-arrow">
-                                <i class="fas fa-arrow-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="platform-section">
-                    <div class="platform-header">
-                        <i class="fas fa-folder-tree"></i>
-                        <h4>Complete CTF and Task Library</h4>
-                        <button class="expand-all-btn" id="expandAllBtn">Expand All</button>
-                    </div>
-                    
-                    <div class="ctf-accordion" id="ctfAccordion">
-
-    <!-- 1. Threat Intelligence -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="threat">
-            <i class="fas fa-search"></i>
-            <span>Threat Intelligence</span>
-            <span class="count">(3 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/Threat Intelligence/Boss Of The Soc BOTsV1 Scenario1 (SPLUNK)">Boss Of The Soc BOTsV1 Scenario1 (SPLUNK)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Threat Intelligence/Qradar101 (SIEM)">Qradar101 (Cyber Defender)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Threat Intelligence/The Report (BTLO)">The Report (BTLO)</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 2. OSINT & MITRE -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="osint">
-            <i class="fas fa-search-location"></i>
-            <span>OSINT & MITRE</span>
-            <span class="count">(5 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/OSINT/0.Some info in MITRE">Some info in MITRE</a></li>
-                <li><a href="./SecLab-Hub/LABs/OSINT/OSINT - MITRE 1 (CyberHaze)">OSINT - MITRE 1 (CyberHaze)</a></li>
-                <li><a href="./SecLab-Hub/LABs/OSINT/OSINT - MITRE 2 (CyberHaze)">OSINT - MITRE 2 (CyberHaze)</a></li>
-                <li><a href="./SecLab-Hub/LABs/OSINT/OSINT - MITRE 3 (CyberHaze)">OSINT - MITRE 3 (CyberHaze)</a></li>
-                <li><a href="./SecLab-Hub/LABs/OSINT/Shadow Rat (CyberHaze)">Shadow Rat (CyberHaze)</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 3. Phishing Investigation -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="phishing">
-            <i class="fas fa-eye"></i>
-            <span>Phishing Investigation</span>
-            <span class="count">(4 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/Phishing Investigation/Phishing Response Playbook">Phishing Response Playbook</a></li>
-                <li><a href="./SecLab-Hub/LABs/Phishing Investigation/Paypal Phishing Investigation (LetsDefend)">Paypal Phishing Investigation (LetsDefend)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Phishing Investigation/Wallet Verification Scam (CyberHaze)">Wallet Verification Scam (CyberHaze)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Phishing Investigation/Phishing Analysis (BTLO)">Phishing Analysis (BTLO)</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 4. Network Forensics -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="network">
-            <i class="fas fa-network-wired"></i>
-            <span>Network Forensics</span>
-            <span class="count">(5 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/Network Forensics/Arp Storm (Cyber Talents)">Arp Storm (Cyber Talents)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Network Forensics/Examining Pcaps Emails Malware Infection">Examining Pcaps Emails Malware Infection</a></li>
-                <li><a href="./SecLab-Hub/LABs/Network Forensics/Hawkeye">Hawkeye</a></li>
-                <li><a href="./SecLab-Hub/LABs/Network Forensics/Psexec Hunt">Psexec Hunt</a></li>
-                <li><a href="./SecLab-Hub/LABs/Network Forensics/Suspicious File Download Fake Authenticator">Suspicious File Download Fake Authenticator</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 5. Engineering -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="engineering">
-            <i class="fas fa-microchip"></i>
-            <span>Security Engineering</span>
-            <span class="count">(4 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/Engineering/Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB)">Building SIEM: Filebeat, Winlogbeat, Kibana</a></li>
-                <li><a href="./SecLab-Hub/LABs/Engineering/Collecting Visualizing ssh logs Fluentbit">Collecting & Visualizing SSH Logs with Fluentbit</a></li>
-                <li><a href="./SecLab-Hub/LABs/Engineering/Detect Nmap Scan Using Snort">Detect Nmap Scan Using Snort</a></li>
-                <li><a href="./SecLab-Hub/LABs/Engineering/Ubuntu Web Server WAF Nginx Modsecurity">Ubuntu Web Server WAF: Nginx + Modsecurity</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 6. Disk Forensics -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="forensics">
-            <i class="fas fa-hdd"></i>
-            <span>Disk Forensics</span>
-            <span class="count">(16 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/00.Software Write Blocker Concept">Software Write Blocker Concept</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/01.Verifying Evidence Integrity Hashing">Verifying Evidence Integrity Hashing</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/03.Analyzing file properties windows">Analyzing File Properties (Windows)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/04.File Analysis Stat command linux">File Analysis: Stat Command (Linux)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/05.Image Analysis Exiftool Linux">Image Analysis: Exiftool (Linux)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/06.Disk Acquisition linux dd">Disk Acquisition: Linux dd</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/07.Disk Acquisition FTK imager windows">Disk Acquisition: FTK Imager (Windows)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/08.Autopsy case creation and setup">Autopsy Case Creation & Setup</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/09.Data Source Analysis Autopsy">Data Source Analysis with Autopsy</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/10.Firefox Artifacts Extraction">Firefox Artifacts Extraction</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/11.Linux os forensics Analysis">Linux OS Forensics Analysis</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/12.Registry Hives Extraction FTK">Registry Hives Extraction with FTK</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/13.Registry Analysis Phase Guide">Registry Analysis Phase Guide</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/14.Registry Analysis Tools Explorer Regripper">Registry Analysis Tools: Explorer & Regripper</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/15.Ntfs1 Evidence Acquisition Analysis">NTFS Evidence Acquisition & Analysis</a></li>
-                <li><a href="./SecLab-Hub/LABs/Disk Forensics/Search in trash (Cyber Talents)">Search in Trash (Cyber Talents)</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 7. Malware Analysis -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="malware">
-            <i class="fas fa-bug"></i>
-            <span>Malware Analysis</span>
-            <span class="count">(2 lab)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/Malware/Persistence Analysis Remediation Python PopUp Malware">Persistence Analysis & Remediation: Python PopUp Malware</a></li>
-                <li><a href="./SecLab-Hub/LABs/Malware/Follina (BTLO)">Follina (BTLO)</a></li>
-
-            </ul>
-        </div>
-    </div>
-
-    <!-- 8. LINUX -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="linux">
-            <i class="fab fa-linux"></i>
-            <span>Linux Security & CTF</span>
-            <span class="count">(7 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/LINUX/0.Linux History">Linux History</a></li>
-                <li><a href="./SecLab-Hub/LABs/LINUX/1.1.Unix vs Linux History">Unix vs Linux History</a></li>
-                <li><a href="./SecLab-Hub/LABs/LINUX/1.2.Linux Commands Review">Linux Commands Review</a></li>
-                <li><a href="./SecLab-Hub/LABs/LINUX/2.1.Bandit level 0 to 10 (Overthewire)">Bandit Level 0-10 (OverTheWire)</a></li>
-                <li><a href="./SecLab-Hub/LABs/LINUX/2.2.Bandit level 10 to 20 (Overthewire)">Bandit Level 10-20 (OverTheWire)</a></li>
-                <li><a href="./SecLab-Hub/LABs/LINUX/2.3.Bandit level 20 to 23 (Overthewire)">Bandit Level 20-23 (OverTheWire)</a></li>
-                <li><a href="./SecLab-Hub/LABs/LINUX/3.Leviathan 0-1 (Overthewire)">Leviathan 0-1 (OverTheWire)</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 9. PENTEST -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="pentest">
-            <i class="fas fa-user-secret"></i>
-            <span>Penetration Testing</span>
-            <span class="count">(24 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/PENTEST/0.1.Beginnings of the Internet">Beginnings of the Internet</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/0.1.HTTP">HTTP Protocol</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/0.2.Dns">DNS Fundamentals</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/1.1.Passive Reconnaissance (THM)">Passive Reconnaissance (THM)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/1.2.Active Rreconnaissance(THM)">Active Reconnaissance (THM)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/2.1.Cybersecurity beginner labs (Cyber Talents)">Cybersecurity Beginner Labs (Cyber Talents)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/2.2.ITI Penetration Tester Track 2025 (Cyber Talents)">ITI Penetration Tester Track 2025 (Cyber Talents)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/24.Natas 0 to 3 (Overthewire)">Natas 0-3 (OverTheWire)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/3.1.Kioptrix level1">Kioptrix Level 1</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/3.2.Metasploitable1">Metasploitable 1</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/3.3.Metasploitable2">Metasploitable 2</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.1.web-unprotected-admin-functionality (Web Security Academy)">Web: Unprotected Admin Functionality</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.2.web-unprotected-admin-functionality-unpredictable-url(Web Security Academy)">Web: Unprotected Admin Functionality (Unpredictable URL)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.3.web-user-id-controlled-by-request-parameter(Web Security Academy)">Web: User ID Controlled by Request Parameter</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.4.15-web-user-id-controlled-by-request-parameter-with-dynamic-id(Web Security Academy)">Web: User ID Controlled by Request Parameter (Dynamic ID)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.5.web-user-role-modification-in-profile(Web Security Academy)">Web: User Role Modification in Profile</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.6.web-user-role-controlled-by-request-parameter(Web Security Academy)">Web: User Role Controlled by Request Parameter</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.7.web-idor-corridor-thm(Web Security Academy)">Web: IDOR Corridor (THM)</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.8.web-info-disclosure-error-messages(Web Security Academy)">Web: Information Disclosure via Error Messages</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.9.web-info-disclosure-debug-page(Web Security Academy)">Web: Information Disclosure via Debug Page</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.10.web-source-code-disclosure-backup-files(Web Security Academy)">Web: Source Code Disclosure via Backup Files</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.11.web-auth-bypass-via-info-disclosure(Web Security Academy)">Web: Auth Bypass via Information Disclosure</a></li>
-                <li><a href="./SecLab-Hub/LABs/PENTEST/4.12.web-info-disclosure-version-control-git(Web Security Academy)">Web: Information Disclosure via Version Control (Git)</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- 10. Stego Forensics -->
-    <div class="accordion-item">
-        <div class="accordion-header" data-category="stego">
-            <i class="fas fa-image"></i>
-            <span>Steganography Forensics</span>
-            <span class="count">(30 labs)</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-body">
-            <ul class="lab-list">
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Binwalk (CTF Learn)">Binwalk (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Canyousee (picoCTF)">Canyousee (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Chalkboard (CTF Learn)">Chalkboard (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Cypher Anxiety (Cyber Talents)">Cypher Anxiety (Cyber Talents)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Disko 1(picoCTF)">Disko 1 (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Exif (CTF Learn)">Exif (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/File Found">File Found</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Forensics 101 (CTF Learn)">Forensics 101 (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Gandp List (Cyber Talents)">Gandp List (Cyber Talents)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Git IS Good (CTF Learn)">Git IS Good (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Glory-of-the-garden(picoCTF)">Glory of the Garden (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Hidden Message (Cyber Talents)">Hidden Message (Cyber Talents)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/I love images (Cyber Talents)">I Love Images (Cyber Talents)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Im a Dump(CTF Learn)">I'm a Dump (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Information (picoCTF)">Information (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Meta (BTLO)">Meta (BTLO)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Minions (CTF Learn)">Minions (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/PDF by fdpumyp (CTF Learn)">PDF by fdpumyp (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Pho is Tasty (CTF Learn)">Pho is Tasty (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Pikespeak (CTF Learn)">Pikespeak (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Red (picoCTF)">Red (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Rubber Duck(CTF Learn)">Rubber Duck (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Scan Surprise (picoCTF)">Scan Surprise (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Secret of the polyglot (picoCTF)">Secret of the Polyglot (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Simple Steganography (CTF Learn)">Simple Steganography (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Snowboard (CTF Learn)">Snowboard (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Taking ls (CTF Learn)">Taking ls (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/TUX (CTF Learn)">TUX (CTF Learn)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/Verify(picoCTF)">Verify (picoCTF)</a></li>
-                <li><a href="./SecLab-Hub/LABs/Stego Forensics/WOW SO META (CTF Learn)">WOW SO META (CTF Learn)</a></li>
-            </ul>
-        </div>
-    </div>
-
+<!-- ============================================================
+     LOADING SCREEN
+     ============================================================ -->
+<div class="loading-screen" id="loadingScreen" aria-hidden="true">
+  <div class="loading-inner">
+    <div class="loading-logo">AAS<span>.</span>Sec</div>
+    <div class="loading-bar"><i></i></div>
+    <p class="loading-text">Initializing secure profile...</p>
+  </div>
 </div>
-                    
-                </div>
 
-                <!-- CTA Section -->
-                <div class="blog-cta">
-                    <p>📚 I regularly publish new write-ups, CTF solutions, and security research. Follow me for more content!</p>
-                    <div class="cta-buttons">
-                        <a href="https://medium.com/@AAAS" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-                            <i class="fab fa-medium"></i> Follow on Medium
-                        </a>
-                        <a href="https://abdelwahab-a-shendy.github.io/SecLab-Hub/" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-                             Abdelwahab A. Shendy Docs
-                        </a>
-                        <a href="https://cyberdefenders.org/profile/Abdelwahab_Shendy" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
-                            <i class="fas fa-shield-alt"></i> CyberDefenders Profile
-                        </a>
-                    </div>
-                </div>
+<!-- ============================================================
+     BACKGROUND EFFECTS
+     ============================================================ -->
+<div class="grain" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true">
+  <div class="aurora-blob aurora-cyan"></div>
+  <div class="aurora-blob aurora-emerald"></div>
+</div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" aria-hidden="true"><i id="scrollLine"></i></div>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#home" class="logo" aria-label="Abdelwahab Shendy — Home">
+      <span class="logo__mark">AAS<span>.</span>Sec</span>
+      <span class="logo__status"><i class="live-dot"></i> OPERATIONAL</span>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#home" class="nav__link is-active"><b>01</b> HOME</a>
+      <a href="#about" class="nav__link"><b>02</b> PROFILE</a>
+      <a href="#skills" class="nav__link"><b>03</b> CAPABILITIES</a>
+      <a href="#projects" class="nav__link"><b>04</b> PROJECTS</a>
+      <a href="#journey" class="nav__link"><b>05</b> JOURNEY</a>
+      <a href="#writeups" class="nav__link"><b>06</b> WRITE-UPS</a>
+      <a href="#contact" class="nav__link"><b>07</b> CONTACT</a>
+    </nav>
+
+    <div class="header__actions">
+      <a href="./docs/Abdelwahab_Shendy.pdf" target="_blank" rel="noopener" class="btn btn--sm btn--outline">
+        <i class="fas fa-file-pdf"></i> CV
+      </a>
+      <a href="#contact" class="btn btn--sm btn--primary">
+        <i class="fas fa-satellite-dish"></i> Connect
+      </a>
+      <button id="menuToggle" class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobileNav" class="mobile-nav" hidden aria-label="Mobile navigation">
+    <a href="#home">HOME</a>
+    <a href="#about">PROFILE</a>
+    <a href="#skills">CAPABILITIES</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#journey">JOURNEY</a>
+    <a href="#writeups">WRITE-UPS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     01 — HERO / OPERATIONS
+     ============================================================ -->
+<section id="home" class="hero">
+  <canvas id="radarCanvas" class="hero__radar" aria-hidden="true"></canvas>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <div class="hero__badges">
+      <span class="badge badge--status"><i class="live-dot"></i> SYSTEM ONLINE</span>
+      <span class="badge badge--ghost">eCIR CERTIFIED</span>
+      <span class="badge badge--ghost">MCI ACADEMY · 2026</span>
+    </div>
+
+    <p class="hero__eyebrow">// 01 — OPERATIONS</p>
+
+    <h1 class="hero__title">
+      <span class="hero__title-line">Abdelwahab</span>
+      <span class="hero__title-line hero__title-line--accent">Shendy</span>
+    </h1>
+
+    <p class="hero__role">
+      Security Operations &amp; Automation
+      <span class="hero__role-sep">·</span>
+      eCIR
+      <span class="hero__role-sep">·</span>
+      Building GRC Foundations
+    </p>
+
+    <p class="hero__desc">
+      Securing operations today. Building governance foundations for tomorrow.
+      Hands-on SOC experience, automated detection pipelines, and a clear path toward governance, risk, and compliance.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#projects" class="btn btn--primary btn--lg">
+        <i class="fas fa-terminal"></i> Explore Work
+      </a>
+      <a href="./docs/Abdelwahab_Shendy.pdf" target="_blank" rel="noopener" class="btn btn--outline btn--lg">
+        <i class="fas fa-file-pdf"></i> Download CV
+      </a>
+    </div>
+
+    <!-- Terminal -->
+    <div class="terminal" id="heroTerminal">
+      <div class="terminal__head">
+        <div class="terminal__dots">
+          <i></i><i></i><i></i>
+        </div>
+        <span class="terminal__title">aas@security-lab:~/profile</span>
+        <span class="terminal__badge">● LIVE</span>
+      </div>
+      <div class="terminal__body" id="terminalBody">
+        <div class="terminal__line">
+          <span class="terminal__prompt">➜</span>
+          <span class="terminal__cmd">initializing_profile...</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__stats">
+      <div class="hero__stat"><strong>11</strong><span>Projects</span></div>
+      <div class="hero__stat"><strong>4</strong><span>Certifications</span></div>
+      <div class="hero__stat"><strong>49+</strong><span>Write-ups</span></div>
+      <div class="hero__stat"><strong>9</strong><span>Bootcamps</span></div>
+    </div>
+  </div>
+
+  <a href="#about" class="hero__scroll" aria-label="Scroll to profile">
+    <i class="fas fa-chevron-down"></i>
+  </a>
+</section>
+
+<!-- ============================================================
+     02 — PROFILE / ABOUT
+     ============================================================ -->
+<section id="about" class="section about">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="section__label">// 02 — PROFILE</p>
+      <h2 class="section__title">From SOC <span class="text-accent">operations</span><br>to GRC <span class="text-emerald">foundations.</span></h2>
+      <p class="section__subtitle">Practical security today. Governance-focused thinking for tomorrow.</p>
+    </header>
+
+    <div class="about__grid">
+      <aside class="about__portrait reveal">
+        <div class="portrait-frame">
+          <img src="./assets/img/AbdelwahabShandyPhoto.jpeg" alt="Abdelwahab Shendy" width="400" height="400" loading="eager">
+          <div class="portrait-overlay">
+            <span class="badge badge--status"><i class="live-dot"></i> OPEN TO WORK</span>
+          </div>
+          <span class="portrait-corner pc-1"></span>
+          <span class="portrait-corner pc-2"></span>
+          <span class="portrait-corner pc-3"></span>
+          <span class="portrait-corner pc-4"></span>
+        </div>
+        <div class="portrait-meta">
+          <p><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+          <p><i class="fas fa-briefcase"></i> Open to SOC &amp; GRC roles</p>
+          <p><i class="fas fa-language"></i> AR · EN · FR (Basic)</p>
+        </div>
+      </aside>
+
+      <div class="about__content">
+        <div class="about__bio reveal">
+          <p>
+            I'm a <strong>Security Operations &amp; Automation engineer</strong> with a certified
+            incident response background (<strong>eCIR</strong>), currently building my
+            <strong>GRC foundations</strong> — bridging hands-on SOC experience with governance,
+            risk, and compliance thinking.
+          </p>
+          <p>
+            My work spans <strong>SIEM engineering</strong>, <strong>SOAR automation</strong>,
+            <strong>detection engineering</strong>, and <strong>active directory attack simulation</strong>.
+            I believe the strongest security programs combine <em>operational visibility</em>
+            with <em>governance discipline</em>.
+          </p>
+        </div>
+
+        <div class="focus-grid reveal">
+          <article class="focus-card focus-card--active">
+            <div class="focus-card__head">
+              <span class="focus-card__index">01</span>
+              <span class="focus-card__status"><i class="live-dot"></i> ACTIVE</span>
             </div>
-        </section>
-
-        <!-- ==================== Contact Section ==================== -->
-        <section id="contact" class="section">
-            <div class="container contact-container">
-                <div class="contact-card">
-                    <h2 style="font-size: 2rem;">Let's Connect Securely</h2>
-                    <p style="color: var(--text-secondary); margin-top: 0.5rem;">Seeking career opportunities in SOC | Open for internships and technical collaborations</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/abdelwahab-a-shendy/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/201017417103" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:abdelwahab.a.shendy@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
+            <h3>SOC Operations</h3>
+            <p>SIEM monitoring, detection engineering, incident response, threat hunting.</p>
+            <div class="focus-card__tags">
+              <span>ELK</span><span>Splunk</span><span>Sigma</span><span>MITRE ATT&amp;CK</span>
             </div>
-        </section>
-    </main>
+          </article>
 
-    <footer class="footer">
-        <p>© 2026 Abdelwahab Ahmed Shendy</p>
-    </footer>
-    
-    <script src="assets/js/terminal.js"></script>
-    <script src="assets/js/main.js"></script>
+          <article class="focus-card focus-card--active">
+            <div class="focus-card__head">
+              <span class="focus-card__index">02</span>
+              <span class="focus-card__status"><i class="live-dot"></i> ACTIVE</span>
+            </div>
+            <h3>SOAR Automation</h3>
+            <p>n8n workflows, API integrations, automated incident response pipelines.</p>
+            <div class="focus-card__tags">
+              <span>n8n</span><span>JavaScript</span><span>REST APIs</span><span>Webhooks</span>
+            </div>
+          </article>
+
+          <article class="focus-card focus-card--progress">
+            <div class="focus-card__head">
+              <span class="focus-card__index">03</span>
+              <span class="focus-card__status focus-card__status--progress"><i class="live-dot live-dot--warn"></i> IN PROGRESS</span>
+            </div>
+            <h3>GRC Foundations</h3>
+            <p>Risk assessment, ISO 27001 foundations, NIST CSF, security policies.</p>
+            <div class="focus-card__tags">
+              <span>ISO 27001</span><span>NIST CSF</span><span>Risk</span><span>ISMS</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 — CAPABILITIES
+     ============================================================ -->
+<section id="skills" class="section section--alt skills">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="section__label">// 03 — CAPABILITIES</p>
+      <h2 class="section__title">Technical <span class="text-accent">arsenal.</span></h2>
+      <p class="section__subtitle">A focused, hands-on toolkit — with an honest look at what's still in progress.</p>
+    </header>
+
+    <div class="skills__grid">
+      <!-- SOC -->
+      <article class="skill-card reveal">
+        <div class="skill-card__head">
+          <i class="fas fa-shield-halved"></i>
+          <h3>SOC &amp; Detection</h3>
+          <span class="badge badge--status"><i class="live-dot"></i> STRONG</span>
+        </div>
+        <ul class="skill-card__list">
+          <li>ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+          <li>Splunk · QRadar (intro)</li>
+          <li>Sigma Rules · MITRE ATT&amp;CK</li>
+          <li>Detection Engineering · Threat Hunting</li>
+          <li>Incident Response · DFIR fundamentals</li>
+        </ul>
+      </article>
+
+      <!-- Automation -->
+      <article class="skill-card reveal">
+        <div class="skill-card__head">
+          <i class="fas fa-robot"></i>
+          <h3>Automation &amp; SOAR</h3>
+          <span class="badge badge--status"><i class="live-dot"></i> STRONG</span>
+        </div>
+        <ul class="skill-card__list">
+          <li>n8n workflow automation</li>
+          <li>JavaScript custom logic</li>
+          <li>REST APIs · Webhooks</li>
+          <li>Threat intel enrichment (VirusTotal, AbuseIPDB)</li>
+          <li>Python scripting</li>
+        </ul>
+      </article>
+
+      <!-- Networking -->
+      <article class="skill-card reveal">
+        <div class="skill-card__head">
+          <i class="fas fa-network-wired"></i>
+          <h3>Networking</h3>
+          <span class="badge badge--status"><i class="live-dot"></i> STRONG</span>
+        </div>
+        <ul class="skill-card__list">
+          <li>TCP/IP · Routing &amp; Switching</li>
+          <li>OSPF (v2/v3) · HSRP · EtherChannel</li>
+          <li>VLANs · NAT · ACLs</li>
+          <li>Cisco Packet Tracer</li>
+          <li>Firewalls · IDS/IPS fundamentals</li>
+        </ul>
+      </article>
+
+      <!-- Systems -->
+      <article class="skill-card reveal">
+        <div class="skill-card__head">
+          <i class="fas fa-server"></i>
+          <h3>Systems &amp; Infrastructure</h3>
+          <span class="badge badge--status"><i class="live-dot"></i> STRONG</span>
+        </div>
+        <ul class="skill-card__list">
+          <li>Active Directory · Group Policy</li>
+          <li>Windows Server administration</li>
+          <li>Linux administration</li>
+          <li>DNS · DHCP · IIS · Hyper-V</li>
+          <li>Backup &amp; failover clustering</li>
+        </ul>
+      </article>
+
+      <!-- DFIR -->
+      <article class="skill-card reveal">
+        <div class="skill-card__head">
+          <i class="fas fa-magnifying-glass-chart"></i>
+          <h3>DFIR &amp; Forensics</h3>
+          <span class="badge badge--ghost">PROFICIENT</span>
+        </div>
+        <ul class="skill-card__list">
+          <li>Wireshark · PCAP analysis</li>
+          <li>Disk forensics (FTK, Autopsy)</li>
+          <li>Registry analysis · Regripper</li>
+          <li>Malware analysis fundamentals</li>
+          <li>Incident response workflow</li>
+        </ul>
+      </article>
+
+      <!-- GRC -->
+      <article class="skill-card skill-card--progress reveal">
+        <div class="skill-card__head">
+          <i class="fas fa-scale-balanced"></i>
+          <h3>GRC Foundations</h3>
+          <span class="badge badge--warn"><i class="live-dot live-dot--warn"></i> LEARNING</span>
+        </div>
+        <ul class="skill-card__list">
+          <li>Risk assessment fundamentals</li>
+          <li>ISO 27001 foundations</li>
+          <li>NIST Cybersecurity Framework</li>
+          <li>Security policies &amp; ISMS basics</li>
+          <li>Compliance awareness</li>
+        </ul>
+        <div class="skill-progress">
+          <div class="skill-progress__bar"><i style="width: 40%"></i></div>
+          <span>40% · in progress</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     04 — PROJECTS
+     ============================================================ -->
+<section id="projects" class="section projects">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="section__label">// 04 — PROJECTS</p>
+      <h2 class="section__title">Selected <span class="text-accent">work.</span></h2>
+      <p class="section__subtitle">Security labs, infrastructure builds, and automation pipelines — built to solve real problems.</p>
+    </header>
+
+    <div class="projects__controls reveal">
+      <div class="filter">
+        <button class="filter__btn is-active" data-filter="all">All <span>11</span></button>
+        <button class="filter__btn" data-filter="security">Security <span>4</span></button>
+        <button class="filter__btn" data-filter="infrastructure">Infrastructure <span>2</span></button>
+        <button class="filter__btn" data-filter="programming">Programming <span>5</span></button>
+      </div>
+      <div class="search">
+        <i class="fas fa-search"></i>
+        <input type="search" id="projectSearch" placeholder="Search projects, technologies, keywords..." aria-label="Search projects">
+      </div>
+    </div>
+
+    <div class="projects__grid" id="projectsGrid">
+      <!-- ستتم إضافة المشاريع بالكامل في المرحلة 3 -->
+    </div>
+
+    <div class="projects__empty" id="projectsEmpty" hidden>
+      <i class="fas fa-search"></i>
+      <h3>No projects found</h3>
+      <p>Try adjusting your search or filter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     05 — JOURNEY (Experience + Bootcamps)
+     ============================================================ -->
+<section id="journey" class="section section--alt journey">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="section__label">// 05 — JOURNEY</p>
+      <h2 class="section__title">Experience &amp; <span class="text-accent">training.</span></h2>
+      <p class="section__subtitle">Professional experience and continuous development.</p>
+    </header>
+
+    <div class="journey__tabs reveal">
+      <button class="journey__tab is-active" data-tab="work"><i class="fas fa-briefcase"></i> Work</button>
+      <button class="journey__tab" data-tab="training"><i class="fas fa-certificate"></i> Training</button>
+    </div>
+
+    <div class="journey__panel is-active" id="panel-work">
+      <!-- Work timeline — المرحلة 3 -->
+    </div>
+
+    <div class="journey__panel" id="panel-training">
+      <!-- Bootcamps grid — المرحلة 3 -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     06 — CREDENTIALS
+     ============================================================ -->
+<section id="credentials" class="section credentials">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="section__label">// 06 — CREDENTIALS</p>
+      <h2 class="section__title">Certified &amp; <span class="text-emerald">recognized.</span></h2>
+      <p class="section__subtitle">Industry certifications, honors, and recognized achievements.</p>
+    </header>
+
+    <div class="credentials__grid">
+      <!-- Cert cards — المرحلة 3 -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     07 — WRITE-UPS
+     ============================================================ -->
+<section id="writeups" class="section section--alt writeups">
+  <div class="container">
+    <header class="section__head reveal">
+      <p class="section__label">// 07 — WRITE-UPS</p>
+      <h2 class="section__title">Learning in <span class="text-accent">public.</span></h2>
+      <p class="section__subtitle">Official platform solutions, technical deep-dives, and CTF walkthroughs.</p>
+    </header>
+
+    <div class="writeups__stats reveal">
+      <div class="wstat"><strong>4</strong><span>Official Solutions</span><small>CyberDefenders</small></div>
+      <div class="wstat"><strong>49+</strong><span>Articles</span><small>Medium · Hashnode</small></div>
+      <div class="wstat"><strong>40+</strong><span>CTF Write-ups</span><small>Multi-platform</small></div>
+      <div class="wstat"><strong>5500+</strong><span>Total Views</span><small>Across platforms</small></div>
+    </div>
+
+    <div class="writeups__grid" id="writeupsGrid">
+      <!-- Write-up cards — المرحلة 3 -->
+    </div>
+
+    <div class="writeups__cta reveal">
+      <a href="https://medium.com/@AAAS" target="_blank" rel="noopener" class="btn btn--primary">
+        <i class="fab fa-medium"></i> Medium
+      </a>
+      <a href="https://abdelwahabshandy.hashnode.dev/" target="_blank" rel="noopener" class="btn btn--primary">
+        <i class="fab fa-hashnode"></i> Hashnode
+      </a>
+      <a href="https://cyberdefenders.org/p/Abdelwahab_Shandy/" target="_blank" rel="noopener" class="btn btn--outline">
+        <i class="fas fa-shield-halved"></i> CyberDefenders
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     08 — CONTACT
+     ============================================================ -->
+<section id="contact" class="section contact">
+  <div class="container contact__inner">
+    <div class="contact__card reveal">
+      <p class="section__label">// 08 — OPEN CHANNEL</p>
+      <h2 class="contact__title">Let's build <span class="text-accent">something secure.</span></h2>
+      <p class="contact__desc">
+        Open to SOC Analyst, Security Automation, and GRC-related opportunities.
+        Also available for technical collaborations, research, and community contributions.
+      </p>
+
+      <div class="contact__grid">
+        <a href="mailto:abdelwahab.a.shendy@gmail.com" class="contact__link">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong>Email</strong>
+            <span>abdelwahab.a.shendy@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/abdelwahab-a-shendy/" target="_blank" rel="noopener" class="contact__link">
+          <i class="fab fa-linkedin-in"></i>
+          <div>
+            <strong>LinkedIn</strong>
+            <span>in/abdelwahab-a-shendy</span>
+          </div>
+        </a>
+        <a href="https://github.com/abdelwahab-a-shendy" target="_blank" rel="noopener" class="contact__link">
+          <i class="fab fa-github"></i>
+          <div>
+            <strong>GitHub</strong>
+            <span>@abdelwahab-a-shendy</span>
+          </div>
+        </a>
+        <a href="https://wa.me/201017417103" target="_blank" rel="noopener" class="contact__link">
+          <i class="fab fa-whatsapp"></i>
+          <div>
+            <strong>WhatsApp</strong>
+            <span>+20 101 741 7103</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo__mark">AAS<span>.</span>Sec</span>
+      <p>© <span id="year">2026</span> Abdelwahab Ahmed Shendy</p>
+    </div>
+    <p class="footer__tagline">
+      Securing operations today. Building governance foundations for tomorrow.
+    </p>
+    <a href="#home" class="footer__top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script src="./assets/js/main.js"></script>
+<script src="./assets/js/scroll.js"></script>
+<script src="./assets/js/terminal.js"></script>
+<script src="./assets/js/radar.js"></script>
+<script src="./assets/js/projects.js"></script>
+<script src="./assets/js/cursor.js"></script>
+<script src="./assets/js/easter-egg.js"></script>
+
 </body>
 </html>
