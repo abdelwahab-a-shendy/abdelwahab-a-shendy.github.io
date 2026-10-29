@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "4df901fb659fc38b",
+        "id": "d7eb0ea758cbdb56",
         "type": "tabs",
         "children": [
           {
-            "id": "1f52477e10cec3ae",
+            "id": "6e36fec69151e101",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "SecLab-Notes/Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/1.Practical implementation.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "1.Practical implementation"
+              "title": "New tab"
             }
           }
         ]
@@ -83,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 841.5
+    "width": 631.96875
   },
   "right": {
     "id": "3e18374e3db4c177",
@@ -188,16 +184,47 @@
       "bases:Create new base": false
     }
   },
-  "active": "1f52477e10cec3ae",
+  "active": "6e36fec69151e101",
   "lastOpenFiles": [
-    "SecLab-Notes/Windows-Server-Labs/1.AD Hardening & Compliance Simulation (Windows Server)/0.Requirements.md",
-    "SecLab-Notes/SIEM & SOAR Integration HOME LAB/03.InstallLabFluentbit.md",
-    "SecLab-Notes/SIEM & SOAR Integration HOME LAB/01.InstallLabELKSiem&N8N.md",
-    "SecLab-Notes/index.md",
-    "docs/Enterprise_Network_Project.pdf",
-    "docs/Enterprise_Network_Project.pdf",
-    "SecLab-Notes/Enterprise Network Infrastructure/00.Project-Requirements.md",
-    "SecLab-Notes/Enterprise Network Infrastructure/01.Enterprise-Scenario.md",
-    "SecLab-Notes/Enterprise Network Infrastructure/02.Network-Topology.md"
+    "SecLab-Notes/Write-ups/Linux & System Administration/Overthewire(Bandit)/Bandit level 20 to 23 (Overthewire).md",
+    "SecLab-Notes/Write-ups/Linux & System Administration/Overthewire(Bandit)/Bandit level 10 to 20 (Overthewire).md",
+    "SecLab-Notes/Write-ups/Linux & System Administration/Overthewire(Bandit)/Bandit level 0 to 10 (Overthewire).md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Cyber Talents/ITI Penetration Tester Track 2025 (Cyber Talents).md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Overthewire(Natas)/Natas 0 to 3 (Overthewire).md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Overthewire(Natas)",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Cyber Talents",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/tryhackme/1.1.Passive Reconnaissance (THM).md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Machines/Kioptrix level1.md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/tryhackme",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Machines/Metasploitable2.md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Machines/Metasploitable1.md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Machines",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Web Security Academy/4.9.web-info-disclosure-debug-page(Web Security Academy).md",
+    "SecLab-Notes/Write-ups/Web Security & Penetration Testing/Web Security Academy",
+    "SecLab-Notes/Write-ups/OSINT Investigations/CyberHaze/Shadow Rat.md",
+    "SecLab-Notes/Write-ups/OSINT Investigations/CyberHaze/OSINT - MITRE 3.md",
+    "SecLab-Notes/Write-ups/OSINT Investigations/CyberHaze/OSINT - MITRE 2.md",
+    "SecLab-Notes/Write-ups/OSINT Investigations/CyberHaze/OSINT - MITRE 1.md",
+    "SecLab-Notes/Write-ups/OSINT Investigations/CyberHaze",
+    "SecLab-Notes/Write-ups/Security Engineering & Detection/WE INNOVATE Tasks/Building SIEM Filebeat Winlogbeat Kibana (SIEM LAB).md",
+    "SecLab-Notes/Write-ups/Phishing Analysis & Investigation/Malware-Traffic-Analysis/Examining Pcaps Emails Malware Infection.md",
+    "SecLab-Notes/Write-ups/Security Engineering & Detection/WE INNOVATE Tasks",
+    "SecLab-Notes/Write-ups/Phishing Analysis & Investigation/Malware-Traffic-Analysis",
+    "SecLab-Notes/Write-ups/Phishing Analysis & Investigation/CyberHaze/Wallet Verification Scam.md",
+    "SecLab-Notes/Write-ups/Phishing Analysis & Investigation/CyberHaze",
+    "SecLab-Notes/Write-ups/Phishing Analysis & Investigation/BTLO/Phishing Analysis.md",
+    "SecLab-Notes/Write-ups/Phishing Analysis & Investigation/LetsDefend/Paypal Phishing Investigation.md",
+    "SecLab-Notes/Write-ups/Phishing Analysis & Investigation/BTLO",
+    "SecLab-Notes/Write-ups/Network Forensics/WE INNOVATE Tasks/Psexec Hunt (CyberDefenders).md",
+    "SecLab-Notes/Write-ups/Network Forensics/WE INNOVATE Tasks/Suspicious File Download Fake Authenticator.md",
+    "SecLab-Notes/Write-ups/Network Forensics/CyberDefenders/Hawkeye.md",
+    "SecLab-Notes/Write-ups/Network Forensics/Cyber Talents/Arp Storm.md",
+    "SecLab-Notes/Write-ups/Malware Analysis/BTLO/Follina.md",
+    "SecLab-Notes/Write-ups/Malware Analysis/WE INNOVATE Tasks/Persistence Analysis Remediation Python PopUp Malware.md",
+    "SecLab-Notes/Write-ups/Disk Forensics/Cyber Talents/Search in trash.md",
+    "SecLab-Notes/Write-ups/Disk Forensics/Untitled.canvas",
+    "SecLab-Hub/assets/images/favicon.png",
+    "SecLab-Hub/assets/images/favicon_.png",
+    "SecLab-Hub/assets/images/favicon_.svg"
   ]
 }

@@ -9,7 +9,7 @@ hide:
     Abdelwahab Ahmed Shendy
   </h1>
   <p style="font-size: 1.1rem; color: var(--text-secondary); margin-top: 0;">
-    SOC Analyst | Security Automation | Cybersecurity Engineer
+    SOC Analyst | Security Automation | Building GRC Foundations
   </p>
   <p style="font-size: 0.9rem; color: var(--text-muted);">
     📍 Cairo, Egypt &nbsp;•&nbsp; 
@@ -137,20 +137,20 @@ hide:
 
 ##  Key Reports & Write-ups
 
-| Investigation | Focus | Platform |
-| :--- | :--- | :--- |
-| **Boss Of The SOC (BOTSv1)** | Splunk Enterprise hunt, endpoint investigation, web attacks | [View Notes](LABs/Threat%20Intelligence/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/) |
-| **QRadar101 Investigation** | Rule validation, offenses triage, network flow analysis | [View Walkthrough](LABs/Threat%20Intelligence/Qradar101%20%28SIEM%29/) |
-| **PsExec Hunt** | Lateral movement identification, Windows Event IDs, PCAP | [View Report](LABs/Network%20Forensics/Psexec%20Hunt/) |
-| **HawkEye Malware Infection** | Keylogger network traffic, payload analysis, Wireshark | [View Walkthrough](LABs/Network%20Forensics/Hawkeye/) |
-| **Disk Forensics & DFIR** | Evidence integrity, SHA-256 hashing, Autopsy & FTK | [View Guide](LABs/Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/) |
+| Investigation                 | Focus                                                       | Platform                                                                                            |
+| :---------------------------- | :---------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
+| **Boss Of The SOC (BOTSv1)**  | Splunk Enterprise hunt, endpoint investigation, web attacks | [View Notes](LABs/Threat%20Intelligence/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/) |
+| **QRadar101 Investigation**   | Rule validation, offenses triage, network flow analysis     | [View Walkthrough](LABs/Threat%20Intelligence/Qradar101%20%28SIEM%29/)                              |
+| **PsExec Hunt**               | Lateral movement identification, Windows Event IDs, PCAP    | [View Report](LABs/Network%20Forensics/Psexec%20Hunt/)                                              |
+| **HawkEye Malware Infection** | Keylogger network traffic, payload analysis, Wireshark      | [View Walkthrough](LABs/Network%20Forensics/Hawkeye/)                                               |
+| **Disk Forensics & DFIR**     | Evidence integrity, SHA-256 hashing, Autopsy & FTK          | [View Guide](LABs/Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/)                        |
 
 
 ---
 
 <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-color);">
   <h3 style="color: var(--accent-blue); margin-top: 0;">Let's Connect Securely</h3>
-  <p style="color: var(--text-secondary);">Class of June 2026 | Seeking career opportunities in SOC & Network Security.</p>
+  <p style="color: var(--text-secondary);">Securing operations today | Building governance foundations for tomorrow</p>
   <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 1rem;">
     <a href="https://abdelwahab-a-shendy.github.io/" class="btn btn-outline">Portfolio</a>
     <a href="https://linkedin.com/in/abdelwahab-a-shendy" class="btn btn-primary">LinkedIn</a>
