@@ -19,132 +19,71 @@ hide:
   </p>
 </div>
 
----
-
-##  Certifications
-
 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 1.5rem 0;">
   <span class="cert-badge"> Certified Incident Responder (eCIR) — INE Security</span>
   <span class="cert-badge">|  Google Cybersecurity Professional Certificate</span>
   <span class="cert-badge">|  Google IT Support Professional Certificate</span>
 </div>
 
----
-
-##  Work Experience
-
-<div class="timeline">
-  <div class="timeline-item">
-    <h4>SOC & Detection Engineering Intern</h4>
-    <span class="timeline-date">ZeroSploit MEA · Oct 2025 – Jan 2026</span>
-    <ul>
-      <li>Architected centralized ELK log pipelines using <strong>Winlogbeat</strong>, <strong>Filebeat</strong>, <strong>Fluent Bit</strong>, and <strong>Logstash</strong> across Windows/Linux hosts.</li>
-      <li>Engineered automated incident triage, data retention, and remediation playbooks via <strong>n8n SOAR</strong>.</li>
-      <li>Executed Active Directory attack simulations, developed <strong>Sigma rules</strong>, and mapped detection coverage to <strong>MITRE ATT&CK</strong>.</li>
-    </ul>
-  </div>
-</div>
 
 ---
 
-##  Training & Bootcamps
+## 🛡️ Featured Security & Automation Projects
 
-<div class="project-grid">
+*   **[PhishOps: Automated Phishing Detection & Response Pipeline](Write-ups/Phishing%20Analysis%20&%20Investigation/Phishing%20Response%20Playbook/)**  
+    End-to-end automated phishing analysis pipeline built with n8n. Parses email artifacts, enriches IoCs via Threat Intelligence (VirusTotal & AbuseIPDB), applies heuristic social engineering analysis, and automates SOC triage with shift-aware alerting and actionable verdicts (Deliver / Investigate / Quarantine).
 
-  <div class="project-card">
-    <h3> Penetration Testing Bootcamp</h3>
-    <p><strong>CyberTalents</strong> · Oct 2025 · Remote</p>
-    <p>Completed the ITI Universities Penetration Testing Bootcamp, solving 22 hands-on labs covering information gathering, vulnerability assessment, web security, exploitation, post-exploitation, and a final CTF.</p>
-  </div>
+*   **[Enterprise Offensive & Defensive Security Simulation](Enterprise%20Offensive%20Defensive%20Security%20Simulation/01-objective/)**  
+    Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles (Red Team / Blue Team lab). Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, Metasploitable3, bWAPP, and full Windows domain environment.
 
-  <div class="project-card">
-    <h3> Security Operations Center Bootcamp</h3>
-    <p><strong>WE INNOVATE</strong> · Sep 2025 – Oct 2025 · Hybrid</p>
-    <p>Completed an intensive SOC Engineering & Analysis bootcamp, gaining hands-on experience in SIEM deployment, threat hunting, incident response, PCAP analysis, and building an ELK Stack SIEM with n8n SOAR.</p>
-  </div>
+*   **[Multi-Stage Active Directory Attack Detection using ELK](Write-ups/Security%20Engineering%20&%20Detection/WE%20INNOVATE%20Tasks/Building%20SIEM%20Filebeat%20Winlogbeat%20Kibana%20(SIEM%20LAB)/)**  
+    Realistic AD lab simulating full Windows attack chain: Initial Access → Privilege Escalation → Credential Dumping → Lateral Movement. Includes custom Sigma detection rules mapped to MITRE ATT&CK, custom GPOs, Sysmon, and full ELK detection validation.
 
-  <div class="project-card">
-    <h3> Windows Server Administration Bootcamp</h3>
-    <p><strong>National Telecommunication Institute (NTI)</strong> · Aug 2025 · Remote</p>
-    <p>Completed a Windows Server Administration training program with a score of 92.5%, gaining hands-on experience in Windows Server, Active Directory, Group Policy, DHCP/DNS, Failover Clustering, and disaster recovery concepts.</p>
-  </div>
-
-  <div class="project-card">
-    <h3> Networks Infrastructure Bootcamp</h3>
-    <p><strong>Information Technology Institute (ITI)</strong> · Jun 2025 · Remote</p>
-    <p>Completed a Network Infrastructure Summer Boot Camp, gaining hands-on experience in computer networks, routing and switching, with introductory training in network security, ethical hacking, and Huawei Cloud (HCCDA).</p>
-  </div>
-
-  <div class="project-card">
-    <h3> .NET Developer Bootcamp</h3>
-    <p><strong>EraaSoft</strong> · Nov 2024 – May 2025 · On-site</p>
-    <p>Completed a .NET Developer Bootcamp, building a strong foundation and gaining introductory hands-on experience in C#, ASP.NET Core, SQL Server, Entity Framework, MVC, 3-Tier Architecture, and SOLID principles.</p>
-  </div>
-
-  <div class="project-card">
-    <h3> Security Operations Center Bootcamp</h3>
-    <p><strong>AMIT Learning</strong> · Jun 2023 – Sep 2023 · On-site</p>
-    <p>Completed a SOC Boot Camp with a 100% final score, covering the fundamentals of SOC operations and providing an introduction to QRadar SIEM, incident response, malware analysis, and threat hunting.</p>
-  </div>
-
-  <div class="project-card">
-    <h3> Network Security Bootcamp</h3>
-    <p><strong>Information Technology Institute (ITI)</strong> · Aug 2023 · Remote</p>
-    <p>Completed a 120-hour program focused on network fundamentals, routing, switching, and firewall configuration. Acted as the team leader during group activities and projects.</p>
-  </div>
-
-  <div class="project-card">
-    <h3> Cybersecurity Fundamentals Bootcamp</h3>
-    <p><strong>Raya Academy</strong> · Oct 2022 – Dec 2022 · On-site</p>
-    <p>Built foundational skills in networking, Linux, programming, and cybersecurity through hands-on labs and CTF challenges.</p>
-  </div>
-
-</div>
+*   **[SOC Home Lab: SIEM & SOAR Integration](SIEM%20&%20SOAR%20Integration/00.PreLabOverview/)**  
+    Built a complete SOC environment from scratch: ELK Stack, Fluent Bit, Winlogbeat, and n8n SOAR. Implemented log collection, detection engineering use cases, Windows event monitoring, and automated incident response workflows.
 
 ---
 
-##  Featured Projects & Labs
+## 🌐 Network & Systems Infrastructure Labs
 
-<div class="project-grid">
+*   **[Enterprise Multi-Site Network Infrastructure (Dual-Stack IPv4/IPv6)](Write-ups/Network%20Forensics/)**  
+    Full-scale enterprise campus (HQ + Branch) in Cisco Packet Tracer. Features HSRPv2 gateway failover, LACP EtherChannel, OSPFv2/v3 dual-stack routing, centralized server farm, NAT/PAT, and defense-in-depth security hardening (SSH, Port Security, BPDU Guard, ACLs).
 
-  <div class="project-card">
-    <h3> PhishOps: Automated Phishing Pipeline</h3>
-    <p>End-to-end automated phishing email detection and response pipeline built with n8n. Parses email artifacts, enriches indicators using Threat Intelligence, calculates explainable risk scores, and automates SOC triage.</p>
-    <a href="https://www.linkedin.com/posts/abdelwahab-a-shendy_cybersecurity-soc-detectionengineering-ugcPost-7464896010826407936-9aRS/" class="btn btn-primary" style="margin-top: 15px;">View Lab →</a>
-  </div>
-
-  <div class="project-card">
-    <h3> Enterprise Multi-Zone Lab</h3>
-    <p>Multi-zoned virtual enterprise infrastructure simulating full cyber-attack life cycles. Features pfSense firewall, ELK Stack SIEM, n8n SOAR automation, Metasploitable3, bWAPP, and full Windows domain environment.</p>
-    <a href="Enterprise Offensive Defensive Security Simulation HOME LAB/01-objective/" class="btn btn-primary" style="margin-top: 15px;">View Lab →</a>
-  </div>
-
-  <div class="project-card">
-    <h3> AD Attack Detection Lab</h3>
-    <p>A realistic AD lab simulating a full Windows attack chain: Initial Access (Reverse Shell), Privilege Escalation, Credential Dumping (LSASS), and Lateral Movement (Pass-the-Hash). Includes custom Sigma rules mapped to MITRE ATT&CK.</p>
-    <a href="SIEM & SOAR Integration HOME LAB/00.PreLabOverview/" class="btn btn-primary" style="margin-top: 15px;">View Lab →</a>
-  </div>
-
-  <div class="project-card">
-    <h3> Enterprise Infrastructure: Windows Server</h3>
-    <p>A comprehensive enterprise simulation featuring Dual Domain Controllers (PDC & ADC), advanced GPO security policies, DHCP Failover, DNS Round Robin load balancing, IIS Web High Availability, and FSRM File Server quotas.</p>
-    <a href="Windows-Server-Labs/0.Enterprise Infrastructure (Windows Server Full Lab)/0.Requirements/" class="btn btn-primary" style="margin-top: 15px;">View Lab →</a>
-  </div>
-
-</div>
+*   **[Enterprise Infrastructure: Windows Server Full Lab](Windows-Server-Labs/0.Enterprise%20Infrastructure%20(Windows%20Server%20Full%20Lab)/0.Requirements/)**  
+    Comprehensive enterprise simulation featuring Dual Domain Controllers (PDC & ADC), advanced GPO security policies, DHCP Failover, DNS Round Robin, IIS High Availability, FSRM quotas, Hyper-V virtualization, and automated backups.
 
 ---
 
-##  Key Reports & Write-ups
+## 📊 Software Engineering, AI & Data Projects
 
-| Investigation                 | Focus                                                       | Platform                                                                                            |
-| :---------------------------- | :---------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- |
-| **Boss Of The SOC (BOTSv1)**  | Splunk Enterprise hunt, endpoint investigation, web attacks | [View Notes](LABs/Threat%20Intelligence/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/) |
-| **QRadar101 Investigation**   | Rule validation, offenses triage, network flow analysis     | [View Walkthrough](LABs/Threat%20Intelligence/Qradar101%20%28SIEM%29/)                              |
-| **PsExec Hunt**               | Lateral movement identification, Windows Event IDs, PCAP    | [View Report](LABs/Network%20Forensics/Psexec%20Hunt/)                                              |
-| **HawkEye Malware Infection** | Keylogger network traffic, payload analysis, Wireshark      | [View Walkthrough](LABs/Network%20Forensics/Hawkeye/)                                               |
-| **Disk Forensics & DFIR**     | Evidence integrity, SHA-256 hashing, Autopsy & FTK          | [View Guide](LABs/Disk%20Forensics/00.Software%20Write%20Blocker%20Concept/)                        |
+*   **[Smart System for Automating Data Analysis (Smart BI)](Write-ups/Security%20Engineering%20&%20Detection/)**  
+    *Graduation Project — Awarded Best in BIS Department at MCI Academy.* End-to-end automated BI pipeline with a dual-path engine: real-time KPI visualization + AI-driven strategic analysis using LLMs and n8n workflows. Features Flask API backend with SQLite/Bcrypt and Bootstrap 5/Chart.js frontend.
 
+*   **[Movie Market – Cinema Ticket Booking Platform](Write-ups/Web%20Security%20&%20Penetration%20Testing/)**  
+    Full-featured cinema booking platform built with ASP.NET Core MVC following clean 3-tier architecture. Features custom claims-based authentication/authorization built from scratch, Stripe payment integration, role management, dynamic search, and SQL Server backend.
+
+*   **[Database Design with ERD, EERD & SQL](Write-ups/Web%20Security%20&%20Penetration%20Testing/)**  
+    Practical implementation of database design workflow: conceptualizing ERD/EERD models, translating them to relational schemas, database normalization, and SQL script implementation with constraint enforcement.
+
+*   **[Foundational Programming & Challenges (Archive)](Write-ups/Linux%20&%20System%20Administration/)**  
+    Curated collection of problem-solving solutions, OOP mini-projects (C# & C++), algorithmic challenges (C++, Python, Bash), and hardware/IT prototypes (Arduino Calculator) building a strong technical core.
+
+---
+
+## 📂 Write-ups & Practical Walkthroughs
+
+Browse through hands-on technical write-ups, CTF solutions, and forensic investigations:
+
+*   **[Disk Forensics & DFIR](Write-ups/Disk%20Forensics/)** — Evidence integrity, hashing, Autopsy & FTK Imager setup, and Linux/Windows artifact extraction.
+*   **[Linux & System Administration](Write-ups/Linux%20&%20System%20Administration/)** — OverTheWire (Bandit & Leviathan) walkthroughs and command-line reviews.
+*   **[Malware Analysis](Write-ups/Malware%20Analysis/)** — BTLO cases (Follina) and Python popup malware persistence analysis.
+*   **[Network Forensics](Write-ups/Network%20Forensics/)** — PCAP analysis, ARP storms, PsExec hunts, and Hawkeye malware network traffic analysis.
+*   **[OSINT Investigations](Write-ups/OSINT%20Investigations/)** — CyberHaze MITRE-mapped OSINT challenges and Shadow Rat investigation.
+*   **[Phishing Analysis & Investigation](Write-ups/Phishing%20Analysis%20&%20Investigation/)** — Email header analysis, LetsDefend/BTLO phishing playbooks, and wallet verification scams.
+*   **[Security Engineering & Detection](Write-ups/Security%20Engineering%20&%20Detection/)** — Snort Nmap scan detection, Fluentbit log shipping, and Nginx ModSecurity WAF.
+*   **[Steganography & File Analysis](Write-ups/Steganography%20&%20File%20Analysis/)** — CTF write-ups (picoCTF, CTF Learn, Cyber Talents) covering binwalk, exiftool, and steganography.
+*   **[Threat Hunting & Intelligence](Write-ups/Threat%20Hunting%20&%20Intelligence/)** — Splunk BOTSv1 scenarios, QRadar 101 investigations, and BTLO threat reports.
+*   **[Web Security & Penetration Testing](Write-ups/Web%20Security%20&%20Penetration%20Testing/)** — PortSwigger Web Security Academy labs, TryHackMe rooms, and vulnerable machine walkthroughs (Kioptrix, Metasploitable).
 
 ---
 

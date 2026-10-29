@@ -11,10 +11,14 @@
             "id": "6e36fec69151e101",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "SecLab-Notes/index.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "index"
             }
           }
         ]
@@ -79,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 631.96875
+    "width": 631.96875,
+    "collapsed": true
   },
   "right": {
     "id": "3e18374e3db4c177",
@@ -186,6 +191,7 @@
   },
   "active": "6e36fec69151e101",
   "lastOpenFiles": [
+    "README.md",
     "SecLab-Notes/Write-ups/Linux & System Administration/Overthewire(Bandit)/Bandit level 20 to 23 (Overthewire).md",
     "SecLab-Notes/Write-ups/Linux & System Administration/Overthewire(Bandit)/Bandit level 10 to 20 (Overthewire).md",
     "SecLab-Notes/Write-ups/Linux & System Administration/Overthewire(Bandit)/Bandit level 0 to 10 (Overthewire).md",
@@ -221,7 +227,6 @@
     "SecLab-Notes/Write-ups/Network Forensics/Cyber Talents/Arp Storm.md",
     "SecLab-Notes/Write-ups/Malware Analysis/BTLO/Follina.md",
     "SecLab-Notes/Write-ups/Malware Analysis/WE INNOVATE Tasks/Persistence Analysis Remediation Python PopUp Malware.md",
-    "SecLab-Notes/Write-ups/Disk Forensics/Cyber Talents/Search in trash.md",
     "SecLab-Notes/Write-ups/Disk Forensics/Untitled.canvas",
     "SecLab-Hub/assets/images/favicon.png",
     "SecLab-Hub/assets/images/favicon_.png",
