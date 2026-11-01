@@ -2,554 +2,558 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/01-objective/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/02-architecture-and-design/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/03-network-design/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/04-external-zone/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/05-kali-linux-config/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/06-commandovm-configuration/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/07-running-commandovm/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/08-dmz-zone/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/09-pfsense-firewall/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/10-configuration-pfsense/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/11-vulnerable-webserver/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/12-configuration-webserver-bwapp/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/13-install-metasploitable3/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/14-configuration-linux-metasploitable3/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/15-configuration-windows-metasploitable3/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/16-internal-zone/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/17-building-windows-server/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/18-building-domain-control/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/19-windows-server-basic-configuration/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/20-building-windows-clients/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/21-join-domain/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/22-building-iis-server/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/23-iis-and-sql/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/24-building-the-elastic-stack-elk/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/25-to-activate-the-rules-age/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/26-troubleshooting-network-connectivity-and-ip-conflicts/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/27-building-n8n/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/28-log-collection-strategies-and-architectures/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/29-windows-log-collection-scenarios/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/30-agent-based-per-host-collection/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/31-advanced-log-collection-and-shipping/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/32-logstash-with-windows/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/33-centralized-log-collection-and-indexing-with-logstash/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/34-logstash-with-filebeat-integration/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/35-linux-log-collection-and-analysis-with-fluent-bit-and-elasticsearch/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/36-windows-event-forwarding-and-elk-integration/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/37-enrichment-and-analytics/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/38-automations-for-siem-and-edr/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/39-implement-a-manual-data-retention-policy-with-n8n-and-elasticsearch/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Enterprise%20Offensive%20Defensive%20Security%20Simulation/40-security-awareness-email-automation-workflow/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/00.PreLabOverview/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/01.InstallLabELKSiem%26N8N/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/02.InstallLabWinServer/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/03.InstallLabFluentbit/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/04.BuildingaSIEM/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/05.WinlogbeatConfiguration/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/06.FluentBitConfiguration/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/07.DetectionEgnineeringIntro/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/08.1.PreStart/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/08.2.Detectionofpowershellbasedwindowsfirewalltampering/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/08.3.registrypersistencedetectionwithsysmonandkql/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/08.4.PrivilegeEscalationand%20Informationgatheringdetection/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/SIEM%20%26%20SOAR%20Integration/09.SOARN8NWorkflow/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/0.Enterprise%20Infrastructure%20%28Windows%20Server%20Full%20Lab%29/0.Requirements/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/0.Enterprise%20Infrastructure%20%28Windows%20Server%20Full%20Lab%29/1.Practical%20implementation/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/1.AD%20Hardening%20%26%20Compliance%20Simulation%20%28Windows%20Server%29/0.Requirements/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/1.AD%20Hardening%20%26%20Compliance%20Simulation%20%28Windows%20Server%29/1.Practical%20implementation/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/2.Printer%20GPO%20Distribution%20%28Windows%20Server%29/0.Requirements/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/2.Printer%20GPO%20Distribution%20%28Windows%20Server%29/1.Practical%20implementation/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/3.AD%20User%20Delegation%20%28Windows%20Server%29/0.Requirements/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/3.AD%20User%20Delegation%20%28Windows%20Server%29/1.Practical%20implementation/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/4.Disable%20Run%20%26%20Domain-Wide%20Wallpaper%20%28Windows%20Server%29/0.Requirements/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Windows-Server-Labs/4.Disable%20Run%20%26%20Domain-Wide%20Wallpaper%20%28Windows%20Server%29/1.Practical%20implementation/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
+    </url>
+    <url>
+         <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/00.Important%20things/Connecting-GitHub-with-Obsidian/</loc>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Disk%20Forensics/Cyber%20Talents/Search%20in%20trash/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Linux%20%26%20System%20Administration/Overthewire%28Bandit%29/Bandit%20level%200%20to%2010%20%28Overthewire%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Linux%20%26%20System%20Administration/Overthewire%28Bandit%29/Bandit%20level%2010%20to%2020%20%28Overthewire%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Linux%20%26%20System%20Administration/Overthewire%28Bandit%29/Bandit%20level%2020%20to%2023%20%28Overthewire%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Malware%20Analysis/BTLO/Follina/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Malware%20Analysis/WE%20INNOVATE%20Tasks/Persistence%20Analysis%20Remediation%20Python%20PopUp%20Malware/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Network%20Forensics/Cyber%20Talents/Arp%20Storm/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Network%20Forensics/CyberDefenders/Hawkeye/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Network%20Forensics/WE%20INNOVATE%20Tasks/Psexec%20Hunt%20%28CyberDefenders%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Network%20Forensics/WE%20INNOVATE%20Tasks/Suspicious%20File%20Download%20Fake%20Authenticator/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/OSINT%20Investigations/CyberHaze/OSINT%20-%20MITRE%201/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/OSINT%20Investigations/CyberHaze/OSINT%20-%20MITRE%202/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/OSINT%20Investigations/CyberHaze/OSINT%20-%20MITRE%203/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/OSINT%20Investigations/CyberHaze/Shadow%20Rat/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Phishing%20Analysis%20%26%20Investigation/BTLO/Phishing%20Analysis/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Phishing%20Analysis%20%26%20Investigation/CyberHaze/Wallet%20Verification%20Scam/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Phishing%20Analysis%20%26%20Investigation/LetsDefend/Paypal%20Phishing%20Investigation/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Phishing%20Analysis%20%26%20Investigation/Malware-Traffic-Analysis/Examining%20Pcaps%20Emails%20Malware%20Infection/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Security%20Engineering%20%26%20Detection/WE%20INNOVATE%20Tasks/Building%20SIEM%20Filebeat%20Winlogbeat%20Kibana%20%28SIEM%20LAB%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Security%20Engineering%20%26%20Detection/WE%20INNOVATE%20Tasks/Collecting%20Visualizing%20ssh%20logs%20Fluentbit/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Security%20Engineering%20%26%20Detection/WE%20INNOVATE%20Tasks/Detect%20Nmap%20Scan%20Using%20Snort/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Security%20Engineering%20%26%20Detection/WE%20INNOVATE%20Tasks/Ubuntu%20Web%20Server%20WAF%20Nginx%20Modsecurity/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/Meta%20%28BTLO%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Binwalk%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Chalkboard%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Exif%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/File%20Found/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Forensics%20101%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Git%20IS%20Good%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Im%20a%20Dump%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Minions%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/PDF%20by%20fdpumyp%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Pho%20is%20Tasty%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Pikespeak%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Rubber%20Duck%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Simple%20Steganography%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Snowboard%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/TUX%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/Taking%20ls%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/CTF%20Learn/WOW%20SO%20META%20%28CTF%20Learn%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/Cyber%20Talents/Cypher%20Anxiety%20%28Cyber%20Talents%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/Cyber%20Talents/Gandp%20List%20%28Cyber%20Talents%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/Cyber%20Talents/Hidden%20Message%20%28Cyber%20Talents%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/Cyber%20Talents/I%20love%20images%20%28Cyber%20Talents%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Canyousee%20%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Disko%201%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Glory-of-the-garden%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Information%20%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Red%20%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Scan%20Surprise%20%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Secret%20of%20the%20polyglot%20%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Steganography%20%26%20File%20Analysis/picoCTF/Verify%28picoCTF%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Threat%20Hunting%20%26%20Intelligence/Boss%20Of%20The%20Soc%20BOTsV1%20Scenario1%20%28SPLUNK%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Threat%20Hunting%20%26%20Intelligence/Qradar101%20%28CyberDefenders%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Threat%20Hunting%20%26%20Intelligence/The%20Report%20%28BTLO%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Cyber%20Talents/ITI%20Penetration%20Tester%20Track%202025%20%28Cyber%20Talents%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Machines/Kioptrix%20level1/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Machines/Metasploitable1/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Machines/Metasploitable2/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Overthewire%28Natas%29/Natas%200%20to%203%20%28Overthewire%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.1.web-unprotected-admin-functionality%20%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.10.web-source-code-disclosure-backup-files%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.11.web-auth-bypass-via-info-disclosure%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.12.web-info-disclosure-version-control-git%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.2.web-unprotected-admin-functionality-unpredictable-url%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.3.web-user-id-controlled-by-request-parameter%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.4.15-web-user-id-controlled-by-request-parameter-with-dynamic-id%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.5.web-user-role-modification-in-profile%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.6.web-user-role-controlled-by-request-parameter%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.7.web-idor-corridor-thm%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.8.web-info-disclosure-error-messages%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/Web%20Security%20Academy/4.9.web-info-disclosure-debug-page%28Web%20Security%20Academy%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/tryhackme/1.1.Passive%20Reconnaissance%20%28THM%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
     <url>
          <loc>https://abdelwahab-a-shendy.github.io/SecLab-Hub/Write-ups/Web%20Security%20%26%20Penetration%20Testing/tryhackme/1.2.Active%20Rreconnaissance%28THM%29/</loc>
-         <lastmod>2026-10-29</lastmod>
+         <lastmod>2026-11-01</lastmod>
     </url>
 </urlset>
